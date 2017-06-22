@@ -1,0 +1,22 @@
+<html ng-app="myApp">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/demo.css">
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-route.js"></script>
+	<script type="text/javascript" src="controller.js"></script>
+	<script type="text/javascript" src="service.js"></script>
+	<script type="text/javascript" src="directive.js"></script>
+	<script type="text/javascript" src="router.js"></script>
+</head>
+<body ng-controller="myCtrl">
+	<div>{{info}}</div>
+	<div>{{num}}</div>
+	<my-directive>
+		<span>hello</span>
+	</my-directive>
+	<div ng-view></div>
+</body>
+</html>

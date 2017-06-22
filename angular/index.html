@@ -1,0 +1,19 @@
+<html ng-app="app">
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/demo.css">
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="controller.js"></script>
+	<script type="text/javascript" src="service.js"></script>
+	<script type="text/javascript" src="directive.js"></script>
+</head>
+<body ng-controller="myCtrl">
+	<!-- 父亲:{{uesrs.name}}<input ng-model="uesrs.name" /> 
+ 	<div my-directive user="uesrs"></div> -->
+ 	<my-directive></my-directive>
+	<p>{{info}}</p>
+	<hello><span>1111</span></hello>
+</body>
+</html>

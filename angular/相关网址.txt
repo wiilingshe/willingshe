@@ -1,0 +1,6 @@
+directive scope:
+http://www.cnblogs.com/mafeifan/p/5817626.html
+
+service:
+http://www.runoob.com/angularjs/angularjs-services.html
+
