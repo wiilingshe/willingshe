@@ -1,0 +1,8 @@
+1、在cmd输入node server.js启动项目
+2、webpack有两个方法转换成es5
+	1）写好配置文件webpack.config.js；在cmd输入webpack；
+	2）写好配置文件gulpfile.js；在cmd输入gulp；
+
+注意：1）要在html文件引入转化好的文件；
+      2）看看package.json安装了那些插件；
+      3）gulp注意设置.babelrc.文件	
