@@ -1,0 +1,2 @@
+cmd打包命令：electron-packager my_app my_app windows x64 --version 1.4.12 
+electron-prebuilt 是一个 npm 的模块，它包含了一个预编译的Electron版本。

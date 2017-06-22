@@ -1,0 +1,14 @@
+{
+  "name": "your-app",
+  "version": "0.1.0",
+  "main": "main.js",
+  "devDependencies": {
+    "electron-packager": "^8.7.1",
+    "electron-prebuilt": "^1.4.13"
+  },
+  "script":{
+  	"test":"start",
+  	"start":"electron .",
+  	"packager": "electron-packager ./a a --all --out ./OutApp --version 1.4.13"
+  }
+}
