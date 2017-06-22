@@ -1,9 +1,0 @@
-
-main.js
-----------------
-js/angular.min.js
-js/angular-route.js
-module1/module1.js
-module2/module2.js
-router.js
-main.js
