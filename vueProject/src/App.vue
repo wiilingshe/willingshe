@@ -1,6 +1,5 @@
 <template>
   <div id="class">
-    <img src="./assets/logo.png">
     <router-link to="/a">a</router-link>
     <router-link to="/b">b</router-link>
     <button v-on:click="onclick">点击我试试</button>

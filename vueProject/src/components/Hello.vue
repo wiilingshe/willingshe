@@ -3,6 +3,11 @@
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <willing></willing>
+    <ul>
+      <li v-for="article in articles">
+        {{article.title}}
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -13,8 +18,17 @@ export default {
   components: {willing},
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      articles: ''
     }
+  },
+  mounted: function () {
+    this.$http.jsonp('https://api.douban.com/v2/movie/top250?count=10', {}, {headers: {}, emulateJSON: true}).then(function (response) {
+      this.articles = response.data.subjects
+      console.log(response.data)
+    }, function (response) {
+      console.log(response)
+    })
   }
 }
 </script>
