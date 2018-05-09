@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/shopping/shopping",
     "pages/index/index",
     "pages/indent/indent",
     "pages/bannerurl/bannerurl",
@@ -8,7 +9,6 @@
     "pages/coupon/coupon",
     "pages/my/my",
     "pages/merList/merList",
-    "pages/shopping/shopping",
     "pages/login/login",
     "pages/addressList/addressList",
     "pages/address/address",

@@ -30,6 +30,7 @@ Page({
               if(res.data.code == 1){
                 that.setData({
                   carts:res.data.data
+                  // carts:[]
                 })
               }else{
                 wx.showToast({
