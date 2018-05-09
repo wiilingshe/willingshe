@@ -129,19 +129,23 @@
   box-sizing: border-box;
   background: #fff;
   height: 314rpx;
-  margin-bottom: 10rpx;
+  width: calc(100% - 60rpx);
+  margin: 0 auto;
+  margin-bottom: 20rpx;
 }
 .recommend .r_name{
-  color: #7c7c7c;
+  color: #848780;
   text-transform:uppercase;
   display: block;
+  font-size: 32rpx;
 }
 .recommend .r_intor{
   display: block;
   width: 355rpx;
   white-space: normal;
   outline: none !important;
-  font-size: 30rpx;
+  font-size: 26rpx;
+  color: #353535;
 }
 .recommend image{
   width: 200rpx;
@@ -169,7 +173,10 @@
   text-align: center;
   display: block;
   float: left;
-  margin-top:3px;
+  margin-top:8rpx;
+  line-height: 34rpx;
+  text-align: center;
+  overflow: hidden;
 
 }
 .recommend .r_right{
@@ -177,12 +184,12 @@
 
 }
 /**导航的样式*/
-.tab-item{display: inline-block;}
+.tab-item{display: inline-block;font-size: 24rpx;text-align: center;color: #656565;}
 .tab-item.active{color: #e11f1f;position: relative;}
-.tab-item.active:after{ 
+/*.tab-item.active:after{ 
   content: "";display: block;height: 8rpx;
   width: 120rpx;background: #e11f1f;position: absolute; 
-  bottom: -10rpx;left: 5rpx;border-radius: 16rpx;}
+  bottom: -10rpx;left: 35rpx;border-radius: 16rpx;}*/
 
   .shop{
     width: 100%;

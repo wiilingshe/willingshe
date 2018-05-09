@@ -6,7 +6,7 @@
   <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">已取消</view>
 </view>
 <swiper current="{{currentTab}}" class="swiper-box"  style="height:{{winHeight - 31}}px" bindchange="bindChange"> 
-<view class="img-list">
+<view class="img-list" wx:if="{{ifshow}}">
   <swiper-item> 
    <scroll-view scroll-y="true" duration="300" style="height: {{winHeight?winHeight+'px':'auto'}}" lower-threshold="10" bindscrolltolower="more">
     <!--当没有订单的 -->
@@ -16,7 +16,7 @@
            <image class="scimg" src="../../images/indent_order.png"></image>
         </view>
         <text>您还没有相关订单/(ㄒoㄒ)/~~</text>
-        <button>去逛逛</button>
+        <button bindtap="fenlei">去逛逛</button>
     </view>
 
 
@@ -54,6 +54,7 @@
     </view>
     </scroll-view>
    </swiper-item> 
+
   <!--模拟前 待收货-->
   <swiper-item>
    <scroll-view scroll-y="true" duration="300" style="height: {{winHeight?winHeight+'px':'auto'}}" lower-threshold="10" bindscrolltolower="more">
@@ -61,108 +62,125 @@
     <view class="search_no" wx:if="{{!orderList1.length}}">
         <view class="font_14"><image class="scimg" src="../../images/indent_order.png"></image></view>
         <text>您还没有相关订单/(ㄒoㄒ)/~~</text>
-        <button>去逛逛</button>
+        <button bindtap="fenlei">去逛逛</button>
     </view>
 
-    <view class="container  carts-list" wx:for="{{orderList1}}" >
+    <view class="container  carts-list" wx:for="{{orderList1}}">
         <view class="trade_name">
-          <view class="trade_logo">
-              <image src="../../images/small.png"></image>
-              <text>紫荆燃具官方专营店</text>
-              <text class="t_right">待收货</text>
+          <view>
+            XXXXXX
+          </view>
+          <view>
+            {{item.order_state==-1?'取消订单':item.order_state==0?'待付款':item.order_state==1?'已付款':item.order_state==2?'已发货':item.order_state==3?'已完成':''}}
           </view>
         </view>
         <view class="list-item">
             <!-- 图片-->
             <view class="viewImg">
-              <image src="../../images/goods.png"></image>
+              <image src="{{item.goods[0].product_img}}"></image>
             </view>
             <!-- 文字 -->
             <view class="info">
-                <text class="pro_name">德国304不锈钢炒锅家用无涂层布粘锅无油烟</text>
-                <text class="pro_classtiy">A款  香槟金;</text>
-                <text class="pro_num">X1</text>
-                <view class="pro_price">共1件商品 需付款:<text>￥799</text>元</view>
+                <text class="pro_name">{{item.goods[0].product_name}}</text>
+                <text class="pro_classtiy">{{item.goods[0].spec}};</text>
+                <text class="pro_num">X{{item.total_count}}</text>
+                <view class="pro_price">共{{item.total_count}}件商品 需付款:<text>￥{{item.paid_price}}</text>元</view>
             </view>
         </view>
         <view class="choice">
-                <button class="canel" bindtap="payOrderByWechat" data-order-id="{{item.id}}  ">取消订单</button>
-                <navigator url=" "> <button class="logis">物流信息</button></navigator>
-                <button class="sure">立即付款</button>
-        </view>
+                <button class="canel" bindtap="removeOrder" wx:if="{{item.order_state==0}}">取消订单</button>
+                <button class="sure" bindtap="payOrderByWechat" wx:if="{{item.order_state==0}}">立即付款</button>
+                <!-- <navigator  url="../applyReturn/applyReturn" hover-class="none"> -->
+                  <button class="canel" wx:if="{{item.order_state==1 || item.order_state==2}}">申请退货</button>
+                <!-- </navigator> -->
+                  <button class="logis">再次购买</button>
+                  <button class="logis" wx:if="{{item.order_state==2 || item.order_state==3}}">物流信息</button>
+            </view>
     </view>
     </scroll-view>
   </swiper-item>
-
+  <!--模拟前 已经完成-->
   <swiper-item>
-   <scroll-view scroll-y="{{true}}" duration="300" style="height: {{winHeight?winHeight+'px':'auto'}}">
-    <!--模拟前 已经完成-->
-    <view class="container  carts-list">
+   <scroll-view scroll-y="true" duration="300" style="height: {{winHeight?winHeight+'px':'auto'}}" lower-threshold="10" bindscrolltolower="more">
+    <view class="search_no" wx:if="{{!orderList2.length}}">
+        <view class="font_14"><image class="scimg" src="../../images/indent_order.png"></image></view>
+        <text>您还没有相关订单/(ㄒoㄒ)/~~</text>
+        <button bindtap="fenlei">去逛逛</button>
+    </view>
+    <view class="container  carts-list" wx:for="{{orderList2}}">
         <view class="trade_name">
-          <view class="trade_logo">
-              <image src="../../images/small.png"></image>
-              <text>紫荆燃具官方专营店</text>
-              <text class="t_right">已完成</text>
+          <view>
+            XXXXXX
+          </view>
+          <view>
+            {{item.order_state==-1?'取消订单':item.order_state==0?'待付款':item.order_state==1?'已付款':item.order_state==2?'已发货':item.order_state==3?'已完成':''}}
           </view>
         </view>
         <view class="list-item">
             <!-- 图片-->
             <view class="viewImg">
-              <image src="../../images/goods.png"></image>
+              <image src="{{item.goods[0].product_img}}"></image>
             </view>
             <!-- 文字 -->
             <view class="info">
-                <text class="pro_name">德国304不锈钢炒锅家用无涂层布粘锅无油烟</text>
-                <text class="pro_classtiy">A款  香槟金;</text>
-                <text class="pro_num">X1</text>
-                <view class="pro_price">共1件商品 需付款:<text>￥799</text>元</view>
+                <text class="pro_name">{{item.goods[0].product_name}}</text>
+                <text class="pro_classtiy">{{item.goods[0].spec}};</text>
+                <text class="pro_num">X{{item.total_count}}</text>
+                <view class="pro_price">共{{item.total_count}}件商品 需付款:<text>￥{{item.paid_price}}</text>元</view>
             </view>
         </view>
         <view class="choice">
-          <navigator  url="../applyReturn/applyReturn" hover-class="none">
-            <button class="canel">申请退货</button>
-          </navigator>
-            <button class="logis">再次购买</button>
-        </view>
-        <view class="prod_default">
-           <view class="introduce">
-              <image class="" src="../../images/member.png"></image>
-               <text class="intro">会员福利</text>
-           </view>
-            <view class="h_recommend">
-              <view class="r_imgbox">
-                <image src="../../images/r1.png"></image>
-              </view>
-              <text class="r_intor" >德国304不锈钢炒锅家用无涂层布粘锅无油烟</text>
-              <text class="red">$799</text>
+                <button class="canel" bindtap="removeOrder" wx:if="{{item.order_state==0}}">取消订单</button>
+                <button class="sure" bindtap="payOrderByWechat" wx:if="{{item.order_state==0}}">立即付款</button>
+                <!-- <navigator  url="../applyReturn/applyReturn" hover-class="none"> -->
+                  <button class="canel" wx:if="{{item.order_state==1 || item.order_state==2}}">申请退货</button>
+                <!-- </navigator> -->
+                  <button class="logis">再次购买</button>
+                  <button class="logis" wx:if="{{item.order_state==2 || item.order_state==3}}">物流信息</button>
             </view>
-            <view class="h_recommend">
-              <view class="r_imgbox">
-                <image src="../../images/r1.png"></image>
-              </view>
-              <text class="r_intor" >德国304不锈钢炒锅家用无涂层布粘锅无油烟</text>
-              <text class="red">$799</text>
-            </view>
-             <view class="h_recommend">
-              <view class="r_imgbox">
-                <image src="../../images/r1.png"></image>
-              </view>
-              <text class="r_intor" >德国304不锈钢炒锅家用无涂层布粘锅无油烟</text>
-              <text class="red">$799</text>
-            </view>
-        </view>
     </view>
     </scroll-view>
 </swiper-item>
-
+<!--模拟前 已取消-->
  <swiper-item>
-   <scroll-view scroll-y="{{true}}" duration="300" style="height: {{winHeight?winHeight+'px':'auto'}}">
-    <view class="search_no">
+   <scroll-view scroll-y="true" duration="300" style="height: {{winHeight?winHeight+'px':'auto'}}" lower-threshold="10" bindscrolltolower="more">
+    <view class="search_no" wx:if="{{!orderList3.length}}">
         <view class="font_14"><image class="scimg" src="../../images/indent_order.png"></image></view>
         <text>您还没有相关订单/(ㄒoㄒ)/~~</text>
-        <button>去逛逛</button>
+        <button bindtap="fenlei">去逛逛</button>
     </view>
-    <view></view>
+    <view class="container  carts-list" wx:for="{{orderList3}}">
+        <view class="trade_name">
+          <view>
+            XXXXXX
+          </view>
+          <view>
+            {{item.order_state==-1?'取消订单':item.order_state==0?'待付款':item.order_state==1?'已付款':item.order_state==2?'已发货':item.order_state==3?'已完成':''}}
+          </view>
+        </view>
+        <view class="list-item">
+            <!-- 图片-->
+            <view class="viewImg">
+              <image src="{{item.goods[0].product_img}}"></image>
+            </view>
+            <!-- 文字 -->
+            <view class="info">
+                <text class="pro_name">{{item.goods[0].product_name}}</text>
+                <text class="pro_classtiy">{{item.goods[0].spec}};</text>
+                <text class="pro_num">X{{item.total_count}}</text>
+                <view class="pro_price">共{{item.total_count}}件商品 需付款:<text>￥{{item.paid_price}}</text>元</view>
+            </view>
+        </view>
+        <view class="choice">
+                <button class="canel" bindtap="removeOrder" wx:if="{{item.order_state==0}}">取消订单</button>
+                <button class="sure" bindtap="payOrderByWechat" wx:if="{{item.order_state==0}}">立即付款</button>
+                <!-- <navigator  url="../applyReturn/applyReturn" hover-class="none"> -->
+                  <button class="canel" wx:if="{{item.order_state==1 || item.order_state==2}}">申请退货</button>
+                <!-- </navigator> -->
+                  <button class="logis">再次购买</button>
+                  <button class="logis" wx:if="{{item.order_state==2 || item.order_state==3}}">物流信息</button>
+            </view>
+    </view>
   </scroll-view>
  </swiper-item>  
 </view>

@@ -53,7 +53,7 @@ Page({
         var calc = clientHeight * rpxR - 180;
         console.log(calc)
         that.setData({
-          winHeight: calc
+          winHeight: calc+60
         });
       }
     });

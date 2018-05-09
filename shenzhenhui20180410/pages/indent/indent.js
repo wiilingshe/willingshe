@@ -19,8 +19,10 @@ Page({
     orderList2: [],
     orderList3: [],
     orderList4: [],
+    ifshow:false,
   },
   onLoad: function (options) { 
+    wx.showLoading()
     this.initSystemInfo();
     this.setData({
       // currentTab: parseInt(options.currentTab),
@@ -50,6 +52,10 @@ Page({
                   duration: 2000
                 })
               }
+              wx.hideLoading()
+              that.setData({
+                ifshow:true
+              })
             }
           })
       } 
@@ -271,6 +277,7 @@ Page({
     });
   },
   bindChange: function (e) {
+    console.log(e.detail.current)
     var that = this;
     that.setData({ 
       currentTab: e.detail.current ,
@@ -335,22 +342,22 @@ Page({
       });
 
       //没有数据就进行加载
-      switch (that.data.currentTab) {
-        case 0:
-        //because  Cannot read property 'length' of undefined  delete"!"
-          that.data.orderList0.length && that.loadOrderList();
-          break;
-        case 1:
-          that.data.orderList1.length && that.loadOrderList();
-          break;
-        case 2:
-          that.data.orderList2.length && that.loadOrderList();
-          break;
-        case 3:
-          that.data.orderList3.length && that.loadOrderList();
-          that.loadReturnOrderList();
-          break;
-      }
+      // switch (that.data.currentTab) {
+      //   case 0:
+      //   //because  Cannot read property 'length' of undefined  delete"!"
+      //     that.data.orderList0.length && that.loadOrderList();
+      //     break;
+      //   case 1:
+      //     that.data.orderList1.length && that.loadOrderList();
+      //     break;
+      //   case 2:
+      //     that.data.orderList2.length && that.loadOrderList();
+      //     break;
+      //   case 3:
+      //     that.data.orderList3.length && that.loadOrderList();
+      //     that.loadReturnOrderList();
+      //     break;
+      // }
     };
   },
   /**
@@ -447,6 +454,11 @@ Page({
   //     };
   //     common.sentHttpRequestToServer(uri, dataMap, method, successCallback);
   //   }
+  fenlei(){
+    wx.switchTab({
+      url: '../classfiy/classfiy'
+    })
+  },
   more(){
     var that = this;
     that.data.page++;

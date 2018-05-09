@@ -1,8 +1,8 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/bannerurl/bannerurl",
     "pages/indent/indent",
+    "pages/bannerurl/bannerurl",
     "pages/orderform/orderform",
     "pages/mycoupon/mycoupon",
     "pages/coupon/coupon",
