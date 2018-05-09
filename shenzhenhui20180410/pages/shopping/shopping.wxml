@@ -54,33 +54,33 @@
     <image src="//gw.alicdn.com/tfscom/TB1xdQSJFXXXXcuXXXXy7S8WFXX-176-176.png" />
   </view>
   <text>购物车没有商品哦</text>
-  <!-- <view class="prod_default">
-       <view class="introduce">
-          <image class="" src="../../images/member.png"></image>
-           <text class="intro">会员福利</text>
-       </view>
-        <view class="h_recommend">
-          <view class="r_imgbox">
-            <image src="../../images/r1.png"></image>
-          </view>
-          <text class="r_intor" >德国304不锈钢炒锅家用无涂层布粘锅无油烟</text>
-          <text class="red">$799</text>
+  <view class="prod_default" wx:if="{{carts.length==0}}">
+     <view class="introduce">
+        <image class="" src="../../images/member.png"></image>
+         <text class="intro">会员福利</text>
+     </view>
+      <view class="h_recommend">
+        <view class="r_imgbox">
+          <image src="../../images/r1.png"></image>
         </view>
-        <view class="h_recommend">
-          <view class="r_imgbox">
-            <image src="../../images/r1.png"></image>
-          </view>
-          <text class="r_intor" >德国304不锈钢炒锅家用无涂层布粘锅无油烟</text>
-          <text class="red">$799</text>
+        <text class="r_intor" >德国304不锈钢炒锅家用无涂层布粘锅无油烟</text>
+        <text class="red">$799</text>
+      </view>
+      <view class="h_recommend">
+        <view class="r_imgbox">
+          <image src="../../images/r1.png"></image>
         </view>
-         <view class="h_recommend">
-          <view class="r_imgbox">
-            <image src="../../images/r1.png"></image>
-          </view>
-          <text class="r_intor" >德国304不锈钢炒锅家用无涂层布粘锅无油烟</text>
-          <text class="red">$799</text>
+        <text class="r_intor" >德国304不锈钢炒锅家用无涂层布粘锅无油烟</text>
+        <text class="red">$799</text>
+      </view>
+       <view class="h_recommend">
+        <view class="r_imgbox">
+          <image src="../../images/r1.png"></image>
         </view>
-    </view> -->
+        <text class="r_intor" >德国304不锈钢炒锅家用无涂层布粘锅无油烟</text>
+        <text class="red">$799</text>
+      </view>
+  </view>
 </view>
 </view>
 

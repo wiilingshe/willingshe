@@ -209,7 +209,7 @@ Page({
             //   }
             // })
             wx.navigateTo({
-              url:'../orderform/orderform'
+              url:'../orderform/orderform?type=1&spec_id='+that.data.selectedinfo.id+'&count='+that.data.num
             })
         } 
       })

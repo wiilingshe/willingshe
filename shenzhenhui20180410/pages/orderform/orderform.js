@@ -23,7 +23,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     var that = this;
+    wx.getStorage({
+      key:'access_token',
+      success:function(res1){
+        wx.request({
+          url:app.data.url+'/api/order/preOrder',
+          method:'POST',
+          data:{access_token:res1.data,type:options.type,spec_id:options.spec_id,count:options.count},
+          success:function(res){
+            console.log(res.data)
+          }
+        })
+      }
+    })
     wx.getStorage({
       key: 'selectedinfo',
       success: function(res) {

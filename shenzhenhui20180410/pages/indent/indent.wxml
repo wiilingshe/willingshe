@@ -43,8 +43,8 @@
             </view>
         </view>
         <view class="choice">
-                <button class="canel" bindtap="removeOrder" wx:if="{{item.order_state==0}}">取消订单</button>
-                <button class="sure" bindtap="payOrderByWechat" wx:if="{{item.order_state==0}}">立即付款</button>
+                <button class="canel" data-order_id="{{item.order_id}}" bindtap="removeOrder" wx:if="{{item.order_state==0}}">取消订单</button>
+                <button class="sure" data-order_id="{{item.order_id}}" bindtap="payOrderByWechat" wx:if="{{item.order_state==0}}">立即付款</button>
                 <!-- <navigator  url="../applyReturn/applyReturn" hover-class="none"> -->
                   <button class="canel" wx:if="{{item.order_state==1 || item.order_state==2}}">申请退货</button>
                 <!-- </navigator> -->

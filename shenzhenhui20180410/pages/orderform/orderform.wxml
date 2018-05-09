@@ -16,10 +16,10 @@
     <text>x{{selectedinfo.goodsNum}}</text>
   </view>
   <view class="orderclient">
-      <view class="leave">
+      <!-- <view class="leave">
         <text class="l_left">卖家留言:</text>
         <text class="l_right">30字以内(选项)</text>
-      </view>
+      </view> -->
       <view class="order_tick">
           <text class="bill">发票</text>
           <text class="sub">个人;</text>

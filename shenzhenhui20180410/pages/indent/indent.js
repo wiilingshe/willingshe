@@ -73,41 +73,46 @@ Page({
       title: '提示',
       content: '你确定要取消订单吗？',
       success: function (res) {
-        res.confirm && wx.request({
-          url: app.data.url + '/api/order/cancel',
-          method: 'post',
-          data: {
-            access_token:"",
-            id: order_id,
-            type: that.data.currentTab,
-          },
-          header: { 
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },
-          success: function (res) {
-            //--init data
-            var status = res.data.status;
-            if (status == 1) {
-              wx.showToast({
-                title: '操作成功！',
-                duration: 2000
-              });
-              that.loadOrderList();
-            } else {
-              wx.showToast({
-                title:'success',
-                duration: 2000
-              });
-            }
-          },
-          fail: function () {
-            // fail
-            wx.showToast({
-              title: '网络异常！',
-              duration: 2000
+        wx.getStorage({
+          key:'access_token',
+          success:function(res1){
+            res.confirm && wx.request({
+              url: app.data.url + '/api/order/cancel',
+              method: 'post',
+              data: {
+                access_token:res1.data,
+                order_id: orderId
+              },
+              header: { 
+                'Content-Type': 'application/x-www-form-urlencoded'
+              },
+              success: function (res) {
+                //--init data
+                var status = res.data.code;
+                if (status == 1) {
+                  wx.showToast({
+                    title: '操作成功！',
+                    duration: 2000
+                  });
+                  that.loadOrderList();
+                } else {
+                  wx.showToast({
+                    title:res.data.message,
+                    icon:'none',
+                    duration: 2000
+                  });
+                }
+              },
+              fail: function () {
+                // fail
+                wx.showToast({
+                  title: '网络异常！',
+                  duration: 2000
+                });
+              }
             });
           }
-        });
+        })
 
       }
     });
@@ -133,7 +138,7 @@ Page({
           },
           success: function (res) {
             //--init data
-            var status = res.data.status;
+            var status = res.data.code;
             if (status == 1) {
               wx.showToast({
                 title: '操作成功！',
@@ -160,59 +165,102 @@ Page({
   },
   loadOrderList: function () {
     var that = this;
-    wx.request({  // 这是个请求,
-      url: app.data.url + '/api/order', //请求地址
-      method: 'post', //请求方式
-      data: {//请求需要带过去的参数
-        // 这里是你要传出去的参数，你可以去app那里取
-        // 请求参数,对照接口文档里面的 body
-        access_token : "",
-        type: that.data.currentTab, //这是取当前tab	订单类型:
-        // 1为待收货2为已完成3为已取消（不传默认返回全部）  这里取值报错了， 不能这样取
-        page: that.data.page, //		第几页(不传默认第1页)		  
-        limit: 10 //  	每页条数（不传默认10条）	
+    that.data.page = 1;
+    wx.getStorage({
+      key:'access_token',
+      success:function(res1){
+        if(that.data.currentTab == 0){
+          var type = ''
+          var data = {access_token:res1.data,page:that.data.page}
+        }else if(that.data.currentTab == 1){
+          var type = 1
+          var data = {access_token:res1.data,page:that.data.page,type:type}
+        }else if(that.data.currentTab == 2){
+          var type = 2
+          var data = {access_token:res1.data,page:that.data.page,type:type}
+        }else if(that.data.currentTab == 3){
+          var type = 3
+          var data = {access_token:res1.data,page:that.data.page,type:type}
+        }
+        wx.request({  // 这是个请求,
+          url: app.data.url + '/api/order', //请求地址
+          method: 'post', //请求方式
+          data: data,
+          success: function (res) {
+            wx.showToast({
+            //  title: res,
+              icon: 'success',
+              duration: 2000
+            });
+            //这里才是你刚刚看的那边的那个返回参数里面取的，  app.data.list.order_id 这里才能取的到值
+            //--init data        
+            var status = res.data.code; // 如果用aaaaa, 那这里就是用aaaaa.data.status 去取状态值
+            var list = res.data.data[0].list;
+            switch (that.data.currentTab) {
+              case 0:
+                that.setData({
+                  orderList0: list,
+                });
+                break;
+              case 1:
+                that.setData({
+                  orderList1: list,
+                });
+                break;
+              case 2:
+                that.setData({
+                  orderList2: list,
+                });
+                break;
+              case 3:
+                that.setData({
+                  orderList3: list,
+                });
+                break;
+              case 4:
+                that.setData({
+                  orderList4: list,
+                });
+                break;
+            }
+          },
+          fail: function () {
+            // fail
+            wx.showToast({
+              title: '网络异常！',
+              duration: 2000
+            });
+          }
+        });
+      }
+    })
+  },
+
+  loadReturnOrderList: function () {
+    var that = this;
+    wx.request({
+      url: app.data.url + '/Api/Order/order_refund',
+      method: 'post',
+      data: {
+        uid: app.data.order_id,
+        page: that.data.refundpage,
       },
-      header: {//   请求头部设置
+      header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      success: function (res) {// 请求成功后的回调,这里的res是你请求完成后,
-      //有要用她的返回值就会在res里面,你也可以随便命名,你这里取名字只是个变量， 下面用的时候就得用aaaaa去点
-      // 先看看是不是请求成功
-        wx.showToast({
-        //  title: res,
-          icon: 'success',
-          duration: 2000
-        });
-        //这里才是你刚刚看的那边的那个返回参数里面取的，  app.data.list.order_id 这里才能取的到值
+      success: function (res) {
         //--init data        
-        var status = res.data.status; // 如果用aaaaa, 那这里就是用aaaaa.data.status 去取状态值
-        var list = res.data.ord;
-        switch (that.data.currentTab) {
-          case 0:
-            that.setData({
-              orderList0: list,
-            });
-            break;
-          case 1:
-            that.setData({
-              orderList1: list,
-            });
-            break;
-          case 2:
-            that.setData({
-              orderList2: list,
-            });
-            break;
-          case 3:
-            that.setData({
-              orderList3: list,
-            });
-            break;
-          case 4:
-            that.setData({
-              orderList4: list,
-            });
-            break;
+        var data = res.data.ord;
+        var status = res.data.status;
+        if (status == 1) {
+          that.setData({
+            orderList4: that.data.orderList4.concat(data),
+          });
+        } else {
+          wx.showToast({
+            title: "fail",
+            duration: 2000
+          });
         }
       },
       fail: function () {
@@ -224,43 +272,6 @@ Page({
       }
     });
   },
-
-  // loadReturnOrderList: function () {
-  //   var that = this;
-  //   wx.request({
-  //     url: app.data.url + '/Api/Order/order_refund',
-  //     method: 'post',
-  //     data: {
-  //       uid: app.data.order_id,
-  //       page: that.data.refundpage,
-  //     },
-  //     header: {
-  //       'Content-Type': 'application/x-www-form-urlencoded'
-  //     },
-  //     success: function (res) {
-  //       //--init data        
-  //       var data = res.data.ord;
-  //       var status = res.data.status;
-  //       if (status == 1) {
-  //         that.setData({
-  //           orderList4: that.data.orderList4.concat(data),
-  //         });
-  //       } else {
-  //         wx.showToast({
-  //           title: "fail",
-  //           duration: 2000
-  //         });
-  //       }
-  //     },
-  //     fail: function () {
-  //       // fail
-  //       wx.showToast({
-  //         title: '网络异常！',
-  //         duration: 2000
-  //       });
-  //     }
-  //   });
-  // },
 
   // returnProduct:function(){
   // },
