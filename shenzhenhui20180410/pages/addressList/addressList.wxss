@@ -1,0 +1,54 @@
+page{
+	background-color: #eee;
+}
+.add-list{
+	font-size: 26rpx;
+	padding-bottom: 20rpx;
+	padding-top: 20rpx;
+	background-color: #fff;
+	margin-bottom: 20rpx;
+}
+.add-list .namephone{
+	display: flex;
+	-webkit-display:flex;
+	justify-content: space-between;
+	font-size: 26rpx;
+}
+.add-list .namephone .name{
+	margin-left: 30rpx;
+}
+.add-list .namephone .phone{
+	margin-right: 30rpx;
+}
+.add-list .address{
+	border-bottom: 2rpx solid #eee;
+	padding-bottom: 20rpx;
+	margin-top: 20rpx;
+	margin-right: 30rpx;
+	margin-left: 30rpx;
+	font-size: 28rpx;
+}
+.add-list .caozuo{
+	display: flex;
+	-webkit-display:flex;
+	justify-content: flex-end;
+}
+.add-list .caozuo view{
+	margin-right: 30rpx;
+	margin-top: 20rpx;
+}
+
+.addAddress{
+	width: 100%;
+	height: 90rpx;
+	text-align: center;line-height: 90rpx;
+	overflow: hidden;
+	color: #fff;
+	background-color: #fe413b;
+	position: fixed;
+	bottom: 0;
+	font-size: 30rpx;
+}
+scroll-view{
+	height: calc(100vh - 90rpx);
+}

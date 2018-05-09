@@ -1,0 +1,189 @@
+/* pages/indent/indent.wxss */
+.img-list{
+     height: 100%;
+    overflow: scroll;
+    position: relative;
+}
+.swiper-tab{  
+    width: 100%;  
+    border-top: 1px solid #eee;  
+    text-align: center;  
+    line-height: 80rpx;
+    background: #fff;  
+    /*position: fixed;
+    top: 0;  
+    z-index: 999;*/
+    margin: 0 0 11rpx;
+    }  
+.trade_name{
+  display: flex;
+  justify-content: space-between;
+}
+.swiper-tab-list{ 
+  width: 25%; 
+  font-size: 28rpx;  
+  display: inline-block;  
+  color: #666;  
+  }  
+.on{ 
+  color: #dd2727;  
+  border-bottom: 5rpx solid #dd2727;
+  }  
+  
+.swiper-box{ 
+  display: block; 
+  height: 100%; 
+  width: 100%; 
+  overflow: scroll; 
+  } 
+
+  .container{
+    margin: 0  26rpx;
+  }
+  .carts-list .info{
+    margin-left: 0;
+  }
+  .carts-list .t_right{
+    color: #e11f1f;
+    float: right;
+    margin-right: 12rpx;
+  }
+
+
+ .choice{
+   width: 100%;
+   height: 108rpx;
+   background: #fff;
+   display: flex;
+   -webkit-display:flex;
+   justify-content: flex-end;
+ }
+  .choice button{
+    width: 144rpx;
+    height: 56rpx;
+    display: block;
+    font-size: 24rpx;
+    background: #fff;
+    line-height: 56rpx;
+    margin: 22rpx 20rpx;
+
+  }
+ .choice .canel{
+    float: left;
+    /*margin-left: 27%;*/
+    border: 2rpx solid #7c7c7c;
+    color: #7c7c7c;
+ }
+  .choice .logis{
+    border: 2rpx solid #7c7c7c;
+    color: #7c7c7c;
+    float: left;
+    /*margin-left: -6rpx;*/
+ }
+ .choice .sure{
+    border: 2rpx solid #e11f1f;
+    color: #e11f1f;
+ }
+ /**已完成*/
+ .prod_default{
+   width: 100%;
+   clear: both;
+ }
+.prod_default .h_recommend{
+  width: 334rpx;
+  height: 351rpx;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  float: left;
+  margin-right: 10rpx;
+  margin-top: 18rpx;
+}
+.h_recommend  .r_imgbox{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 28rpx 54rpx 20rpx 36rpx;
+  box-sizing: border-box;
+}
+  .h_recommend  .r_imgbox  image{
+  width: 238rpx;
+  height: 198rpx;
+
+}
+.h_recommend .r_intor{
+  width: 100%;
+  font-size: 24rpx;
+  padding:  0 20rpx;
+  box-sizing: border-box;
+  white-space: normal;
+  color: #313131;
+}
+.prod_default .introduce {
+  width: 100%;
+  height: 92rpx;
+  padding-top: 12rpx;
+  box-sizing: border-box;
+}
+.prod_default .introduce image{
+   float: left;
+   width: 30rpx;
+   height: 30rpx;
+   margin: 10rpx 14rpx 0 0;
+   position: absolute;
+   left: 50%;
+   margin-left: -120rpx;
+  
+ 
+}
+.prod_default .introduce text{
+   color: #5e5e5e;
+   position: absolute;
+   left: 60%;
+   margin-left: -160rpx;
+}
+.h_recommend .red{
+   color: #e11f1f; 
+   margin-left: 36rpx;
+}
+/**若没有订单*/
+.search_no button{
+   width: 288rpx;
+   height: 72rpx;
+   border: 1px solid #e11f1f;
+   color: #e11f1f;
+   font-size: 32rpx;
+   align-items: center;
+   text-align: center;
+   border-radius: 16rpx;   
+   padding-top: 12rpx;
+   position: absolute;
+   left: 50%;
+   margin-left: -158rpx;
+   margin-top: 88rpx;
+}
+
+
+.search_no{
+    width: 100%; 
+    display: block;
+    color: #666;
+    text-align: center;
+    font-size: 14px;
+    position: absolute;
+    top: 20%;
+}
+.scimg{
+    width: 200rpx;
+    height: 200rpx;
+    display: inline-block;
+    background-size:100px; 
+}
+.carts-list .pro_price {
+font-size:24rpx;
+float:right;
+margin-right:-30rpx;
+margin-top:70rpx;
+
+}
+

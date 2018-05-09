@@ -1,0 +1,39 @@
+<!--pages/coupon/coupon.wxml
+<view class="tick">
+    <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+         <view class="tab-item {{currentTab==0?'active':''}}" style=" padding-left: 154rpx;" data-current="0" bindtap="swichNav">燃气劵</view>
+          <view class="tab-item {{currentTab==0?'active':''}}"  data-current="0" bindtap="swichNav">商品劵</view>
+    </scroll-view>
+</view>
+-->
+
+<view class="container">
+  <view class="coupon-form">
+    <view class="input-box">
+      <input class="coupon-sn" placeholder="请输入优惠码" />
+      <image class="clear-icon" src="http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/clear-fb-dd9d604f86.png"></image>
+    </view>
+    <button class="add-btn disabled">兑换</button>
+  </view>
+  <scroll-view class="coupon-list" scroll-y="true" lower-threshold="10" bindscrolltolower="more">
+    <view class="tip" wx:if="{{list.length==0}}">暂无优惠券领取，如果已经领取的请到个人中心里查看</view>
+    <view class="item" wx:for="{{list}}">
+      <view class="tag">新人专享</view>
+      <view class="content">
+        <view class="left">
+          <view class="name">{{item.name}}</view>
+          <view class="time">有效时间 {{item.useful_day}}天 （满{{item.fullmoney}}减{{item.deduction}}）</view>
+        </view>
+        <view class="right">
+          <button class="go" bindtap="getItem" data-id="{{item.id}}">去使用</button>
+        </view>
+      </view>
+      <view class="condition">
+        <text class="txt">简约陶瓷马克杯专享；小米用户福利；限时购、三石福利价、礼品卡及详情页标注不可用券特殊商品除外</text>
+        <image src="https://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/couponArrow-71315b4145.png" class="icon"></image>
+      </view>
+    </view>
+  </scroll-view>
+
+
+</view>

@@ -1,0 +1,145 @@
+/*.useravatar{
+   width: 100%;
+   height: 184rpx;
+   background: #fff;
+   border-top: 1px solid #ccc;
+   margin-bottom: 16rpx;
+}
+.at_box{
+   margin: 18rpx  58rpx  0  22rpx;
+}
+.useravatar .disc{
+   font-size: 28rpx;
+   line-height: 28rpx;
+   padding: 35rpx  0  84rpx  30rpx;
+   box-sizing: border-box;
+}
+.change_content{
+    background: #fff;
+    height: 88rpx;
+    
+}
+.change_content text{
+    width: 80%;
+    font-size: 32rpx;
+    margin: 22rpx   20rpx    22rpx  32rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;  
+    white-space: nowrap;
+}*/
+.change_content  .p_content{
+      padding: 28rpx  20rpx  20rpx;
+      box-sizing: border-box;
+     
+}
+.change_content .pdetail{
+  float: left;
+
+}
+.change_content  .gray{
+    color: #7c7c7c;
+}
+.change_content  picker{
+    width: 100%;
+    height: 78rpx;
+}
+.body-view{
+  float: right;
+  margin-top: -14rpx;
+  margin-right: 20rpx;
+  color: #e11f1f;
+}
+.change_content .addtip{
+  float: left;
+  margin-right: 24rpx;
+}
+.change_content .adressmap .picker{
+    font-size: 26rpx;
+}
+.change_content  .detailaddre{
+  display:flex;  flex-direction: row;justify-content: flex-start; margin-right:0; white-space:nowrap;  align-items: center;
+}
+.detailaddre .street{
+  white-space:nowrap; width:160rpx;
+}
+.detailaddre .street2{
+  white-space:nowrap; width:220rpx; padding-left:20rpx;
+}
+.change_content .pickerdetail{
+   font-size: 24rpx;
+   margin:4rpx 16rpx;
+
+
+}
+page{
+  background-color: #eee;
+}
+.list{
+  display: flex;
+  -webkit-display:flex;
+  justify-content: flex-start;
+  font-size: 30rpx;
+  background-color: #fff;
+  border-bottom: 2rpx solid #eee;
+  width: 100%;
+  height: 80rpx;
+}
+.list .left{
+  line-height: 80rpx;
+  width: 130rpx;
+  margin-left: 30rpx;
+}
+.list input{
+  height: 80rpx;
+  width: 565rpx;
+  font-size: 30rpx;
+}
+checkbox-group{
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+}
+.addAddress{
+  width: 100%;
+  height: 90rpx;
+  text-align: center;line-height: 90rpx;
+  overflow: hidden;
+  color: #fff;
+  background-color: #fe413b;
+  position: fixed;
+  bottom: 0;
+  font-size: 30rpx;
+}
+.checkbox{
+  font-size: 30rpx;
+}
+.selectqu{
+  display: flex;
+  -webkit-display:flex;
+  justify-content: flex-end;
+  height: 600rpx;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  z-index: 2;
+  width: 100%;
+}
+.selectqu scroll-view{
+  height: 600rpx; 
+}
+.queding{
+  width: 100%;
+  height: 80rpx;
+  position: fixed;
+  bottom: 600rpx;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  text-align: right;
+  line-height: 80rpx;
+  overflow: hidden;
+}
+.queding text{
+  margin-right: 30rpx;
+}
+scroll-view view{
+  margin-left: 40rpx;
+}

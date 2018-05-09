@@ -1,0 +1,116 @@
+<!--pages/choiceGoods/choiceGoods.wxml-->
+<import src="../wxParse/wxParse.wxml"/>
+<view class="ware">
+ <view class="detail">
+      <image class="show_img" src="{{detailList.image}}"></image>
+      <view class="detail_cont">
+        <view class='detcont_box'>  
+            <text class="porname">{{detailList.name}}</text>
+            <text class="stats">{{detailList.des}}</text>
+            <view class="pir_line">
+                <text class="price">￥{{detailList.price_min}}</text>
+                <view class="adv" >直降{{detailList.price_max}}元</view>
+                <view>
+                  <image class="tick-ex" src="../../images/ticky.png"></image>
+                  <text class="tick_text">100元优惠券可用</text>
+                </view>
+            </view>
+        </view>
+      </view>
+      <view class="statu" bindtap="select">
+        <view class="statu_box">
+          <text class="s_gray">已选:</text>
+          <text>{{selectedinfo.spec_name==undefined?'请选择规格':selectedinfo.spec_name}}</text>
+         </view>
+      </view>
+  </view>
+
+  <view class="wxParse">
+    <!-- <template is="wxParse" data="{{wxParseData:content}}"/> -->
+    <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+  </view>
+
+<!--  <view class="mask"  catchtap='oilConfirm'></view>-->
+  <!--弹出框
+  <view class="view_contents"> 
+     <view class="content_show">
+        <view class="cont_left">
+          <image src="../../images"></image>
+        </view>
+        <view class="con_right">
+          <text class="prod">德国304不锈钢炒锅家用无涂层不粘锅无油烟电磁炉磁</text>
+          <text class="cprice">$799.00</text>
+        </view>
+     </view>-->
+     <!--款式 
+     <view class="con_style">
+        <text>款式</text>
+        <input class=""></input>
+     </view>
+     <!--颜色
+     <view class="con_col">
+        <text>颜色</text>
+     </view>
+     <!--计数器
+     <view class="">
+         <text class="num"></text>
+     </view>
+     <button class="sure">确定</button>
+  </view>
+-->
+<!-- <view class="selectBox" wx:if="{{selectBox}}">
+  <radio-group class="radio-group" bindchange="radioChange" wx:for="{{detailList2.specs}}" data-id="{{item.id}}">
+    <label class="radio" wx:for="{{item.list}}">
+      <radio value="{{item.id}}"/>{{item.title}}
+    </label>
+  </radio-group>
+  <view class="queding" bindtap="queding">确定</view>
+</view> -->
+
+
+<view class="selectBox" wx:if="{{selectBox}}">
+  <view class="desc">
+    <view class="desc_img">
+      <image src="{{detailList.image}}"></image>
+    </view>
+    <view class="desc1">
+      <view>{{detailList2.goods.name}}</view>
+      <view style="color:#f28f27;">{{detailList.price_min}}</view>
+    </view>
+    <view class="close" bindtap="close1">X</view>
+  </view>
+  <!-- <view class="shuxing" wx:for="{{detailList2.specs}}">
+    <view class="shuxing_name">{{item.title}}</view>
+    <view class="shuxing_lists">
+      <view class="shuxing_item {{item.id==selectid?'shuxing_item1':''}}" bindtap="select" wx:for="{{item.list}}" data-id="{{item.id}}">{{item.title}}</view>
+    </view>
+  </view> -->
+  <radio-group class="radio-group" bindchange="radioChange" wx:for="{{detailList2.specs}}" data-id="{{item.id}}">
+    <view class="shuxing_name">{{item.title}}</view>
+    <label class="radio" wx:for="{{item.list}}">
+      <radio value="{{item.id}}"/>{{item.title}}
+    </label>
+  </radio-group>
+  <view class="shuxing">
+    <view class="shuxing_name">数量</view>
+    <view class="nums">
+      <view class="nums_left" bindtap="remove">-</view>
+      <view class="nums_middle">{{num}}</view>
+      <view class="nums_right" bindtap="add">+</view>
+    </view>
+  </view>
+  <view class="sure1" bindtap="queding">确定</view>
+</view>
+<!--这个底部导航是需要用js来判断，如果有access_token，则直接是加入购物车，
+   如果access_token 为空，则跳转到登录链接 -->
+  <view class="probuy" >
+    <view type="text" value="" class="shopIimg" >
+        <image src='../../images/shop.png' style='width:72rpx;height:72rpx;'></image>
+    </view> 
+   <!-- <navigator class="recommend" url="../login/login" hover-class="none"> -->
+     <view type="button"   class="cartBtn "  bindtap="onClickButton" ><text>加入购物车</text></view>
+   <!-- </navigator> -->
+    <view type="button"   class="cartBtn  diyBgColor" bindtap="buy"><text>立即购买</text></view>
+  </view>
+  <template is="diaView" data="{{showDialog:showDialog}}" />
+</view>

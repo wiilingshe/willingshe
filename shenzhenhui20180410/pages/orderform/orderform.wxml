@@ -1,0 +1,91 @@
+<!--pages/orderform/orderform.wxml-->
+<view class="">
+  <view  class="orderInf" bindtap="selectaddresslist">
+      <text class="name">{{addressinfo.name}}</text>
+      <text class="tel">{{addressinfo.mobile}}</text>
+      <text class="adress">{{addressinfo.province}}{{addressinfo.city}}{{addressinfo.country}}{{addressinfo.detail}}</text>
+      <text class="more">></text>
+  </view>
+  <view class="orderDetail">
+    <image src="{{selectedinfo.image}}"></image>
+    <view class="">
+      <text class="title">{{selectedinfo.name}}</text>
+      <text class="stying">{{selectedinfo.spec_name}}</text>
+    </view>
+    <text class="pcri">￥{{selectedinfo.price}}</text>
+    <text>x{{selectedinfo.goodsNum}}</text>
+  </view>
+  <view class="orderclient">
+      <view class="leave">
+        <text class="l_left">卖家留言:</text>
+        <text class="l_right">30字以内(选项)</text>
+      </view>
+      <view class="order_tick">
+          <text class="bill">发票</text>
+          <text class="sub">个人;</text>
+      </view>
+       <view class="ord_tick" bindtap="couponList">
+          <text class="bill">优惠劵</text>
+          <text class="sub">{{useing}}</text>
+      </view>
+  </view>
+  <view class="order_num">
+    <view class="checkout">
+      <text class="payup payt"> 商品小计</text>
+      <text class="num payt">￥{{selectedinfo.price}}</text>
+    </view>
+     <view class="checkout">
+      <text class="payup"> 优惠:</text>
+      <text class="num">-0.00</text>
+    </view>
+     <view class="checkout">
+      <text class="payup"> 运费:</text>
+      <text class="num">+0.00</text>
+    </view>
+  </view>
+
+  <view class="but">
+    <view class="b_left">
+        <text class="account">实付款:</text>
+        <text class="money">￥{{selectedinfo.price*selectedinfo.goodsNum-jian}}</text>
+    </view>
+    <view class="b_right">
+        <text class="ready" bindtap="pay">去支付</text>
+    </view>
+  </view>
+</view>
+<view class="addresslist1" wx:if="{{selectaddress}}" bindtap="addresslist1">
+   <view class="addresslist">
+    <view class="addresstitle">
+      选择地址
+    </view>
+    <view  class="orderInf orderInf1" bindtap="selectaddress" wx:for="{{addressList}}" data-id="{{item.address_id}}" data-name="{{item.name}}" data-mobile="{{item.mobile}}" data-province="{{item.province}}" data-city="{{item.city}}" data-country="{{item.country}}" data-detail="{{item.detail}}">
+        <text class="name">{{item.name}}</text>
+        <text class="tel">{{item.mobile}}</text>
+        <text class="adress"><text style="color:red;" wx:if="{{item.isdefault==1}}">[默认地址]</text>{{item.province}}{{item.city}}{{item.country}}{{item.detail}}</text>
+    </view>
+    <view class="newaddress" bindtap="addaddress">+ 新增地址</view>
+  </view> 
+</view>
+<scroll-view wx:if="{{youhuijuan}}" class="youhuijuan" scroll-y="true" lower-threshold="10" bindscrolltolower="scrolltolower">
+  <view class="addresstitle">
+    优惠券
+    <text bindtap="close">X</text>
+  </view>
+  <view class="item" wx:for="{{keyongcoupon}}">
+    <view class="tag">新人专享</view>
+    <view class="content">
+      <view class="left">
+        <view class="name">{{item.name}}</view>
+        <view class="time">有效时间 {{item.useful_day}}天 （满{{item.fullmoney}}减{{item.money}}）</view>
+      </view>
+      <view class="right">
+        <button class="go" bindtap="getItem" data-id="{{item.id}}" data-name="满{{item.fullmoney}}减{{item.money}}" data-jian="{{item.money}}">去使用</button>
+      </view>
+    </view>
+    <view class="condition">
+      <text class="txt">简约陶瓷马克杯专享；小米用户福利；限时购、三石福利价、礼品卡及详情页标注不可用券特殊商品除外</text>
+      <image src="https://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/couponArrow-71315b4145.png" class="icon"></image>
+    </view>
+  </view>
+</scroll-view>

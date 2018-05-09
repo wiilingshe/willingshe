@@ -1,0 +1,181 @@
+/* pages/applyReturn/applyReturn.wxss */
+.retgoods{
+   width: 100%;
+   height: 82rpx;
+   background: white;
+   border-top: 2rpx solid #ccc;
+}
+.retgoods text{
+   padding: 20rpx 25rpx 26rpx 25rpx;
+   box-sizing: border-box;
+   position: relative;
+
+}
+.list-item{
+  height: 154rpx;
+  margin: 30rpx 26rpx 24rpx  30rpx;
+}
+.list-item image{
+   width: 88rpx;
+   height: 88rpx;
+}
+.list-item  .pro_classtiy,
+.list-item  .pro_classtiy{
+  margin-top: 33rpx;
+}
+.container text{
+   display: block;
+}
+/** */
+.refund{
+  width: 100%;
+  height: 80rpx;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+}
+.refund .r_left{
+  padding: 18rpx 0 0 26rpx;
+  box-sizing: border-box;
+}
+.refund .r_right{
+  float: right;
+  margin-top: -36rpx;
+
+  color: #e11f1f;
+}
+.state{
+  width: 100%;
+  height: 230rpx;
+  margin-bottom: 18rpx;
+  background: #fff;
+}
+.state button{
+  width: 170rpx;
+  height: 60rpx;
+  font-size: 24rpx;
+  float: left;
+  margin-right: 50rpx;
+
+}
+.state button{
+   background: #fff;
+   padding-top: 12rpx;
+   box-sizing: border-box;
+}
+.state .quatitfy{
+  border: 2rpx solid #e11f1f;
+  color: #e11f1f;
+  margin: 40rpx  30rpx 30rpx 50rpx;
+}
+.state .gray_reason{
+  color: 7c7c7c;
+  border: 2rpx solid #7c7c7c;
+  margin: 40rpx 0  30rpx 10rpx;
+}
+.state input{
+  width: 100%;
+  height: 66rpx;
+  color: #7c7c7c;
+  font-size: 24rpx;
+  border: 1px solid #ccc;
+  margin: 0 32rpx;
+  padding-left: 24rpx;
+  box-sizing: border-box;
+
+}
+.verfiy{
+  width: 100%;
+  background: #fff;
+}
+.verfiy .sure_add{
+  height: 76rpx;
+  border-bottom: 2rpx solid #ccc;
+  padding: 14rpx 0 14rpx 16rpx;
+  box-sizing: border-box;
+}
+.verfiy .address{
+   height: 114rpx;
+   border: 2rpx solid #ccc;
+}
+.verfiy .address .addressName{
+   float: left;
+   padding: 42rpx 0 40rpx 85rpx;
+   box-sizing: border-box;
+   font-size: 24rpx;
+   color: #7c7c7c;
+   white-space: normal;
+
+} 
+.verfiy .address .edit,
+.bindable .edit{
+   width: 114rpx;
+   height: 38rpx;
+   background: #e11f1f;
+   color: #fff;
+   font-size: 24rpx;
+   border: none;
+   border-radius: 18rpx;
+   padding: 4rpx 0;
+   box-sizing: border-box;
+   float: right;
+   margin-right: 30rpx;
+   margin-top: 42rpx;
+
+
+
+} 
+.bindable{
+  width: 100%;
+  height: 182rpx;
+  background: #fff;
+}
+
+.bindable .reciver{
+  width: 210rpx;
+  height: 54rpx;
+  border: 2rpx solid #ccc;
+  float: left;
+  margin:  31rpx 22rpx 31rpx   40rpx;
+}
+.bindable .edit{
+   width: 212rpx;
+   height: 58rpx;
+   border-radius: 32rpx;
+   padding: 12rpx 0;
+}
+.apply_tip{
+  width: 100%;
+  height: 124rpx;
+}
+.apply_tip  text{
+  padding: 51rpx 57rpx 0  40rpx;
+  box-sizing: border-box;
+  font-size: 24rpx;
+  color: #7c7c7c;
+  display:block;
+}
+
+.applyt .canel_g,
+.applyt .hesiter{
+  width: 308rpx;
+  height: 56rpx;
+  border-radius: 66rpx;
+  font-size: 24rpx;
+  border: none;
+}
+.applyt button{
+  padding-top: 12rpx;
+  box-sizing: border-box;
+}
+.applyt .canel_g{
+  background: #e11f1f;
+  color: white;
+  float: left;
+  margin: 40rpx 90rpx 40rpx 24rpx;
+}
+.applyt .hesiter{
+  border: 2rpx solid #e11f1f;
+  background: #fff;
+  color: #e11f1f;
+   margin: 40rpx 0 40rpx 4rpx;
+}

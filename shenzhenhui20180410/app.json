@@ -1,0 +1,65 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/bannerurl/bannerurl",
+    "pages/indent/indent",
+    "pages/orderform/orderform",
+    "pages/mycoupon/mycoupon",
+    "pages/coupon/coupon",
+    "pages/my/my",
+    "pages/merList/merList",
+    "pages/shopping/shopping",
+    "pages/login/login",
+    "pages/addressList/addressList",
+    "pages/address/address",
+    "pages/flagship/flagship",
+    "pages/qijiandian/qijiandian",
+    "pages/applyReturn/applyReturn",
+    "pages/reservation/reservation",
+    "pages/choiceGoods/choiceGoods",
+    "pages/perMaterial/perMaterial" ,
+    "pages/logs/logs",
+    "pages/classfiy/classfiy",
+    "pages/set/set"
+   
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#e21a81",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "#d9d9d9",
+    "list": [
+      {
+        "selectedIconPath": "images/index-active.png",
+        "iconPath": "images/index.png",
+        "pagePath": "pages/index/index",
+        "text": "深燃荟"
+      },
+      {
+        "selectedIconPath": "images/classfiy-active.png",
+        "iconPath": "images/classfiy.png",
+        "pagePath": "pages/classfiy/classfiy",
+        "text": "分类"
+      },
+      {
+        "selectedIconPath": "images/shopping-active.png",
+        "iconPath": "images/shopping.png",
+        "pagePath": "pages/shopping/shopping",
+        "text": "购物车"
+      },
+      {
+        "selectedIconPath": "images/my-active.png",
+        "iconPath": "images/my.png",
+        "pagePath": "pages/my/my",
+        "text": "我的"
+      }
+    ]
+  }
+}
+

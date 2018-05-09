@@ -1,0 +1,54 @@
+<!--pages/applyReturn/applyReturn.wxml-->
+<view class=" container carts-list">
+  <view class="retgoods">
+      <text>需要退货的商品</text>
+  </view>
+  <view class="list-item">
+      <!-- 图片-->
+      <view class="viewImg">
+          <image src="../../images/goods.png"></image>
+      </view>
+      <!-- 文字 -->
+      <view class="info">
+          <text class="pro_name">德国304不锈钢炒锅家用无涂层 不粘锅无油烟电磁炉···</text>
+          <text class="pro_classtiy">A款  香槟金;</text>
+          <text class="pro_num">X1</text>
+      </view>
+  </view>
+
+  <view class="refund">
+      <text class="r_left">退款金额</text>
+      <text class="r_right">$799</text>
+  </view>
+   <view class="refund">
+      <text class="r_left">退款原因</text>
+  </view>
+
+  <view class="state">
+    <button class="quatitfy">质量问题</button>
+    <button class="gray_reason">无理由</button>
+    <input value="退款说明(60字以内){{reason}}"></input>
+  </view>
+
+  <view class="verfiy">
+    <text class="sure_add">确认收货地址</text>
+    <view class="address">
+      <text class="addressName">深圳市南山区南山大道1088号南园枫叶大厦4m</text>
+      <button class="edit">编辑</button>
+    </view>
+  </view>
+
+  <view class="bindable">
+    <text class="tip">绑定的手机号码134****5976接收短信</text>
+    <input class="reciver"></input>
+    <button class="edit">获取验证码</button>
+  </view>
+  <view class="apply_tip">
+    <text>申请退货后不可取消,商家会根据以上地址联系快递上门收货,快递费用由商家承担</text>
+  </view>
+  <view class="applyt">
+      <button class="canel_g">申请退货</button>
+      <button class="hesiter">我再想想</button>
+  </view>
+
+</view>

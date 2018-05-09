@@ -1,0 +1,374 @@
+
+/*@import "pages/wxParse/wxParse.wxss";*/
+/**app.wxss**/
+/**
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  min-height: 100%;
+  font-size: 32rpx;
+  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+} **/
+
+/* reset css*/
+blockquote, body, button, caption, dd, div, dl, dt, fieldset, figure, form, h1,
+h2, h3, h4, h5, h6, hr, html, input, legend, li, menu, ol, p, pre, table, td,
+textarea, th, ul {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+address, article, aside, details, figcaption, figure, footer, header, hgroup,
+menu, nav, section {
+    display: block;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, th {
+    text-align: left;
+    font-weight: 400;
+}
+
+abbr, body, fieldset, html, iframe, image {
+    border: 0;
+}
+
+address, cite, dfn, em, i, var {
+    font-style: normal;
+}
+
+[hidefocus], summary {
+    outline: 0;
+}
+
+li {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6, small {
+    font-size: 100%;
+}
+
+sub, sup {
+    font-size: 83%;
+}
+
+code, kbd, pre, samp {
+    font-family: inherit;
+}
+
+q:after, q:before {
+    content: none;
+}
+
+textarea {
+    overflow: auto;
+    resize: none;
+}
+
+label, summary {
+    cursor: default;
+}
+
+a, button {
+    cursor: pointer;
+}
+
+b, em, h1, h2, h3, h4, h5, h6, strong {
+    font-weight: 400;
+}
+
+a, a:hover, del, ins, s, u {
+    text-decoration: none;
+    outline: 0;
+}
+
+body, button, input, keygen, legend, select, textarea {
+    font-size: 56rpx;
+    line-height: 1.5;
+    color: #333;
+    outline: 0;
+    font-family: PingFangSC-Light, helvetica, 'Heiti SC';
+}
+
+input::-ms-clear, input::-ms-reveal {
+    display: none;
+}
+
+html {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
+input {
+    box-shadow: none;
+}
+
+video {
+    width: 100%;
+    height: auto;
+}
+
+::-webkit-input-placeholder {
+    color: #999;
+}
+
+:-moz-placeholder {
+    color: #999;
+}
+
+::-moz-placeholder {
+    color: #999;
+}
+
+:-ms-input-placeholder {
+    color: #999;
+}
+
+.ysf-online-invite-wrap, .ysf-online-kefu {
+    display: none !important;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration,
+input[type=search]::-webkit-search-results-button,
+input[type=search]::-webkit-search-results-decoration {
+    display: none;
+}
+/* reset */
+page {
+  background-color: #F8F8F8;
+  height: 100%;
+  font-size: 32rpx;
+  line-height: 1.6;
+}
+
+/* 商品编辑按钮组样式 */
+.editBtn{
+  color: #30b601;
+  border: 1px solid;
+  font-size: 26rpx;
+  border-radius: 10rpx;
+  padding:.7em 1.8em;
+}
+
+
+/* 导航条的样式 */
+.mainNav{
+  background: #fff;
+  line-height: 88rpx;
+  font-size: 30rpx;
+  text-align: center;
+  color: #333;
+  display: -webkit-flex;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}
+
+.mainNav .item{
+  position: relative;
+  flex:1;
+  width:0;
+}
+
+.mainNav .item:after{
+  position: absolute;
+  content: "";
+  left:0;
+  right: 100vw;
+  display: block;
+  height: 2px;
+  bottom: 0;
+  background: #e71751;
+  transition: right 1s, left 1s;
+}
+
+.mainNav .item:first-child:after{
+  right:0;
+  left:100vw;
+}
+
+.mainNav .item.active{
+  color: #e71751;
+}
+
+.mainNav .active.item:after{
+  right:0;
+}
+
+.mainNav .active.item:first-child:after{
+  left:0;
+}
+/** */
+/*外部容器*/
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  align-items: left;
+}
+.container  .trade_name {
+  width: 100%;
+  background: #fff;
+  border-bottom: 2rpx solid  #e5e5e5;
+  padding: 20rpx 22rpx;
+  box-sizing: border-box;
+  margin-top: 22rpx;
+}
+ .container  .trade_name icon{
+    display: block;
+    float: left;
+
+ }
+.container .trade_logo{
+   width: 100%;
+}
+.container .trade_logo image{
+    width: 28rpx;
+    height: 28rpx;
+    margin: 0 30rpx;
+}
+.container .list-item{
+    width: 100%;
+    padding: 30rpx  22rpx  28rpx  34rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    position: relative;
+    background: #fff;
+    border-bottom: 2rpx solid #e5e5e5;
+    box-sizing: border-box;
+}
+.container .list-item icon{
+    padding-right: 0.3333rem;
+    box-sizing: border-box;
+}
+.carts-list .viewImg{
+   
+    position: relative;
+    background: #fff;
+    
+}
+.carts-list .info{
+  margin-left: 22rpx;
+}
+.carts-list .viewImg image{
+    width: 160rpx;
+    height: 160rpx;
+}
+.carts-list .pro_name{
+   width: 438rpx;
+   margin: 10rpx;
+   font-size: 28rpx;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 2;
+   -webkit-box-orient: vertical;
+}
+.carts-list .pro_price{
+    color: #e11f1f;
+    font-size: 24rpx;
+    float: right;
+    margin-right: 50rpx;
+    margin-top: 26rpx;
+}
+
+.carts-list .pro_classtiy{
+    float: left;
+    margin-left: 12rpx;
+}
+.carts-list .pro_num{
+    float: right;
+    font-size: 18rpx;
+    color: #7c7c7c;
+}
+ .carts-list .pro_price text{
+    color: red;
+ }
+.carts-list .pro_classtiy{
+   font-size: 24rpx;
+   color: #7c7c7c;
+   display: block;
+}
+
+.m-selnum {
+    display: flex;
+    background-color: #fff;
+    position: absolute;
+    right: 0;
+    margin-top: 70rpx;
+    margin-right: 22rpx;
+}
+
+.m-selnum .less, .m-selnum .plus {
+    width: 40rpx;
+    height: 44rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.m-selnum .less {
+    border: 2rpx solid #e11f1f;
+    border-right: 0;
+    color: #e11f1f;
+}
+
+.m-selnum .plus {
+    border: 2rpx solid #e11f1f;
+    border-left: 0;
+    background: #fe413b;
+}
+.m-selnum  .rear{
+  color: #fff;
+}
+.m-selnum .dis {
+    border-color: #e11f1f;
+    color: #e11f1f;
+}
+
+.m-selnum .dis .icon {
+    color: #d9d9d9;
+}
+
+.m-selnum .dis .txt {
+    border: 2rpx solid #d9d9d9;
+    color: #e11f1f;
+}
+
+.m-selnum .textWrap {
+    width: 84rpx;
+    height: 44rpx;
+    line-height: 44rpx;
+    text-align: center;
+    font-size: 24rpx;
+    border: 2rpx solid #e11f1f;
+}
+
+.m-selnum .icon {
+    font-size: 49rpx;
+}
+
+.m-selnum .textWrap .txt {
+    width: 100%;
+    font-size: 28rpx;
+    text-align: center;
+}

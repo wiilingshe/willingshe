@@ -1,0 +1,219 @@
+/**index.wxss**/
+@import "../wxParse/wxParse.wxss";
+.img-list{
+    height: 100%;
+    overflow: scroll;
+    position: relative;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 256rpx;
+  height: 256rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+/**index-banner**/
+.img-item {
+
+}
+
+/*中间描述文字样式*/
+.centerContent{
+  margin-top: 20rpx;
+  width: 100%;
+  height: 600rpx;
+
+}
+
+.membership{
+  background: #fff;
+
+}
+.membership .introduce image{
+   /*float: left;
+   width: 30rpx;
+   height: 30rpx;
+   margin-left: 240rpx;
+   margin-right: 18rpx;
+   margin-top: 20rpx;*/
+   position: relative;
+   top: 6rpx;
+   margin-right: 10rpx;
+}
+.membership  image{
+   width: 354rpx;
+   height: 150rpx;
+}
+.membership  .m-message{
+  float: left;
+  margin-right: 12rpx;
+}
+.membership  .m-message text{
+   font-size: 24rpx;
+   position: relative;
+}
+.membership .m-mesright{
+
+}
+.membership .introduce{
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  width: 100%;
+}
+.membership .introduce .intro{
+  width: 100%;
+  text-align: center;
+  font-size: 38rpx;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.membership .introduce image{
+  width: 38rpx;
+  height: 38rpx;
+}
+.membership  .ticket  images{
+  width: 50%;
+  height: 48rpx;
+}
+.membership  .ticket .johnn{
+    position: absolute;
+    left: 0;
+    margin-left: 50rpx;
+    margin-top: 40rpx;
+    color: white;
+}
+.membership  .ticket .other{
+   margin-left: 36rpx;
+   margin-top: 84rpx;
+   text-align: center;
+   font-size: 24rpx;
+}
+.membership .share{
+   width: 140rpx;
+   white-space: nowrap;
+   position: absolute;
+}
+ .ticket {
+    padding: 12rpx;
+}
+/* 导航条的样式 自己写*/
+.bar{
+  height: 78rpx;
+  background: #fff;
+  margin: 12rpx 0;
+  padding: 16rpx;
+  box-sizing: border-box;
+}
+
+.bar text{
+   width: 25%;
+   display: inherit;
+   float: left;
+}
+/**产品介绍**/
+.recommend{
+  padding: 30rpx 30rpx;
+  box-sizing: border-box;
+  background: #fff;
+  height: 314rpx;
+  margin-bottom: 10rpx;
+}
+.recommend .r_name{
+  color: #7c7c7c;
+  text-transform:uppercase;
+  display: block;
+}
+.recommend .r_intor{
+  display: block;
+  width: 355rpx;
+  white-space: normal;
+  outline: none !important;
+  font-size: 30rpx;
+}
+.recommend image{
+  width: 200rpx;
+  height: 200rpx;
+  float: right;
+}
+.recommend .pri{
+  width: 100%;
+  margin-top: 10rpx;
+}
+.recommend .pri{
+  width: 100%;
+}
+.recommend .pri text{
+   color: #f28f27;
+   font-weight: bold;
+   float: left;
+   margin-right: 12rpx;
+}
+.recommend .r_text{
+  width: 105rpx;
+  height: 34rpx;
+  font-size: 20rpx;
+  color: #f28f27;
+  text-align: center;
+  display: block;
+  float: left;
+  margin-top:3px;
+
+}
+.recommend .r_right{
+  font-size: 16rpx;
+
+}
+/**导航的样式*/
+.tab-item{display: inline-block;}
+.tab-item.active{color: #e11f1f;position: relative;}
+.tab-item.active:after{ 
+  content: "";display: block;height: 8rpx;
+  width: 120rpx;background: #e11f1f;position: absolute; 
+  bottom: -10rpx;left: 5rpx;border-radius: 16rpx;}
+
+  .shop{
+    width: 100%;
+    height: 76rpx;
+    position: absolute;
+    bottom: -80rpx;
+  }
+  .shop image{
+    width: 20rpx;
+    height: 20rpx;  
+  }
+.shop text{
+   font-size: 24rpx;
+   color: #7c7c7c;
+   line-height: 75rpx;
+  
+}
+
+swiper-box{ 
+    display: block; 
+    width: 100%; 
+    height: 100%; 
+    margin-top: 92rpx; 
+    overflow: hidden;
+}  
+.swiper-items{
+  height: 100%;
+}
+.scroll-views{
+  height: 100%;
+}
+swiper{
+  height: 400rpx;
+}

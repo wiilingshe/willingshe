@@ -1,0 +1,59 @@
+<view class="img-list">
+    <view class="top_bg" >
+      <image class="bg" src="../../images/my-bg.png"></image>
+      <image class="userImg" src="{{userInfo.avatarUrl}}"></image>
+     <!-- <text class="userName">{{userInfo.nickname}}</text> -->
+      <text class="userName tel">{{userInfo.nickName}}</text>
+      <view class="bindable" style='display:none;'>
+        <navigator   url="../set/set" hover-class="none" style='display:none;'>
+          <image class="cl" src="../../images/account.png"></image>
+          <text>绑定深圳燃煤气账号</text>
+       </navigator>  
+       
+      </view>
+    </view>
+     <view class="m_content" >
+      <navigator class="my_box" url="../indent/indent" hover-class="none" >
+        <view class="my_line ind">
+          <image src="../../images/my-indent.png"></image>
+          <text class="m_tcontent ind">我的订单</text>
+        </view>
+     </navigator>
+     <navigator class="my_box" url="../addressList/addressList" hover-class="none" >
+        <view class="my_line">
+          <image src="../../images/my-indent.png"></image>
+          <text class="m_tcontent ind">收货地址管理</text>
+        </view>
+     </navigator>
+
+      <!-- <navigator class="my_box" url="./../shopping/shopping" hover-class="none" >
+        <view class="my_line">
+          <image src="../../images/my-shoppingcat.png"></image>
+          <text class="m_tcontent">购物车</text>
+        </view>
+      </navigator>  --> 
+
+     
+      <navigator class="my_box" url="../coupon/coupon" hover-class="none" >
+       <!-- <web-view src="http://wechat.szgas.com.cn/weixin/views/bespeak/besIndex.html"></web-view> -->
+        <view class="my_line">
+          <image src="../../images/my-indent.png"></image>
+          <text class="m_tcontent">预约</text>
+        </view>
+      </navigator>
+
+    <navigator class="my_box" url="../mycoupon/mycoupon" hover-class="none" >
+        <view class="my_line">
+          <image src="../../images/my-coupon.png"></image>
+          <text class="m_tcontent">我的优惠劵</text>
+        </view>
+      </navigator>
+
+      <navigator class="my_box" url="../perMaterial/perMaterial" hover-class="none" >
+        <view class="my_line">
+          <image src="../../images/my-material.png"></image>
+          <text class="m_tcontent">完善资料</text>
+        </view>
+      </navigator>
+   </view>
+</view>

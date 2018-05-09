@@ -1,0 +1,80 @@
+/* pages/login/login.wxss */
+.login image{
+   width: 100%;
+   height: 1204rpx;
+ 
+}
+.login .priture  image{
+   width: 326rpx;
+   height: 74rpx;
+}
+.login .content_pos{
+  position: absolute;
+  top: 36%;
+  margin-top: -120rpx;
+  margin-left: 140rpx;
+}
+.login .give{
+  font-size: 48rpx;
+  text-align: center;
+  
+}
+.login .give text{
+  display: block;
+}
+.login .phone{
+  width: 454rpx;
+  margin: 72rpx 10rpx 30rpx;
+}
+.login .v_code {
+  margin-bottom: 68rpx;
+ 
+}
+.login .phone input,
+.login .v_code input{
+    height: 72rpx;
+    font-size: 28rpx;
+    color: #7c7c7c;
+    border: 2rpx solid #7c7c7c;
+    border-radius: 36rpx;
+    padding: 10rpx 0 24rpx 18rpx;
+    box-sizing: border-box;
+}
+.login .v_code .indentf{
+  width: 270rpx;
+  float: left;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right:none;
+
+}
+.login .v_code .getcode{
+  width: 192rpx;
+  height: 72rpx;
+  font-size: 22rpx;
+  border-radius: 36rpx;
+  padding: 18rpx 16rpx;
+  box-sizing: border-box;
+  background: #f28f27;
+  color: white;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.login .priture{
+  margin-left: 44rpx;
+}
+.login .priture .binding{
+  position: relative;
+  text-align: center;
+  margin-left: -200rpx;
+  top: -28rpx;
+  color: white;
+  
+}
+/**跳转*/
+.contact2  .tip{
+
+}
+.con_tick{
+  
+}

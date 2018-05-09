@@ -1,0 +1,16 @@
+<!--pages/set/set.wxml-->
+<view class="logo_box">
+    <image src="../../images/logo.png"></image>
+</view>
+
+<view class="s_content">
+    <text class="s_text">管理收货地址</text>
+</view>
+
+<view class="s_content">
+    <text class="s_text">管理深圳燃气账号</text>
+</view>
+
+<view class="s_content">
+    <text class="s_text">联系客服</text>
+</view>

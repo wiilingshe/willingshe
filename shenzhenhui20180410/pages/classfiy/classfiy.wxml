@@ -1,0 +1,55 @@
+<!--主盒子-->
+<view class="container">
+<!--左侧栏-->
+<view class="nav_left" >
+ <block wx:for="{{cateItems}}" >
+   <!--当前项的id等于item项的id，那个就是当前状态-->
+   <!--用data-index记录这个数据在数组的下标位置，使用data-id设置每个item的id值，供打开2级页面使用-->
+   <view class="nav_left_items {{curNav == item.id ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.id}}">{{item.name}}</view>
+ </block>
+</view>
+<!--右侧栏-->
+<scroll-view class="nav_right" scroll-y="true" lower-threshold="10" bindscrolltolower="more">
+ <!--如果有数据，才遍历项-->
+ <view wx:if="{{cateItems[curIndex].children.length != 0}}">
+  <view class="nav_right_items">
+     <navigator url="../reservation/reservation" open-type="navigate">  
+       <image src="../../images/business3.png"></image>
+       <text>燃气业务</text>
+     </navigator>
+   </view>
+   <view class="nav_right_items">
+     <navigator url="../reservation/reservation" open-type="navigate">  
+       <image src="../../images/business4.png"></image>
+       <text>气费账单</text>
+     </navigator>
+   </view>
+   <view class="nav_right_items">
+     <navigator url="../reservation/reservation" open-type="navigate">  
+       <image src="../../images/business5.png"></image>
+       <text>预约办理</text>
+     </navigator>
+   </view>
+   <view class="nav_right_items">
+     <navigator url="../reservation/reservation" open-type="navigate">  
+       <image src="../../images/business5.png"></image>
+       <text>科学馆预约</text>
+     </navigator>
+   </view>
+   <block wx:for="{{cateItems[curIndex].children}}">
+     <view class="nav_right_items" bindtap="detail" data-id="{{item.id}}">
+       <image src="{{item.image}}"></image>
+       <text>{{item.name}}</text>
+     </view>
+   </block>
+   <block wx:for="{{cateItems2}}">
+     <view class="nav_right_items" bindtap="detail" data-id="{{item.id}}">
+       <image src="{{item.image}}"></image>
+       <text>{{item.name}}</text>
+     </view>
+   </block>
+ </view>
+ <!--如果无数据，则显示数据-->
+ <view class="nodata_text" wx:else>该分类暂无数据</view>
+</scroll-view>
+</view>

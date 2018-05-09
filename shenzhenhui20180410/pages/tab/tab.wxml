@@ -1,0 +1,13 @@
+<!--pages/tab/tab.wxml-->
+<view class="nav-warp">
+        <view class="tab">
+            <block wx:for="{{navItem}}" wx:key="index">
+                <text bindtap="navToggle" 
+                    data-id="{{index}}" 
+                    class="tab-txt ">
+                            {{showItem == index ? 'active' : '' }}"
+                    {{item}}
+                </text>
+            </block>
+        </view>
+    </view>

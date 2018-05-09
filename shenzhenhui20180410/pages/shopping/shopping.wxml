@@ -1,0 +1,64 @@
+<view wx:if="{{loading}}">
+  <view  wx:if="{{carts.length>0}}" class="container carts-list">
+      <!-- <view class="trade_name" bindtap="bindSelectAll">
+
+            <icon wx:if="{{selectedAllStatus}}" type="success_circle" size="20"/>
+            <icon wx:else type="circle" size="20" />
+
+            <view class="trade_logo" style="width:90%;">
+                <image src="../../images/small.png"></image>
+                <text>深圳土特此专营店</text>
+            </view>
+        </view> -->
+
+
+    <view wx:for="{{carts}}" wx:key="{{item.id}}" class="carts-item" data-title="{{item.title}}" data-url="{{item.url}}" bindtouchend="touchend">
+     <icon wx:if="{{item.selected}}" data-type="success_circle" type="success_circle" size="20" bindtap="bindCheckbox" data-index="{{index}}"/>
+        <icon wx:else data-type="circle" type="circle" size="20" bindtap="bindCheckbox" data-index="{{index}}"/>
+
+    
+        <view>
+          <image class="carts-image" src="{{item.image}}" mode="aspectFill" />
+        </view>
+      <view class="carts-text">
+        <text class="carts-title">{{item.name}}</text>
+        <view class="carts-subtitle">
+          <text class="carts-price">{{item.price}}</text>
+          <!--<text>WXStepper</text>-->
+          <view class="stepper">
+                <!-- 减号 -->
+                <text class="{{minusStatuses[index]}}" data-index="{{index}}" data-stock="{{item.stock}}" data-id="{{item.id}}" bindtap="bindMinus">-</text>
+                <!-- 数值 -->
+                <input type="number" bindchange="bindManual" data-index="{{index}}" value="{{item.total}}" />
+                <!-- 加号 -->
+                <text class="normal" data-id="{{item.id}}" data-index="{{index}}" data-stock="{{item.stock}}" bindtap="bindPlus">+</text>
+            </view>
+        </view>
+      </view>
+        <!-- <view class="del" data-id="{{item.cid}}" bindtap="del" data-index="{{index}}">删除</view> -->
+    </view>
+    <view class="carts-footer">
+        <view bindtap="bindSelectAll" class="selectall">
+            <icon wx:if="{{selectedAllStatus}}" type="success_circle" size="20"/>
+            <icon wx:else type="circle" size="20" />
+            <text>全选</text>
+            <text class="priceTotal">{{total}}</text>
+        </view>
+         <navigator url="../orderform/orderform" hover-class="none">
+            <view class="button">立即结算</view>
+        </navigator>
+    </view>
+</view>
+<view wx:else class="container carts-list">
+<view class="no-cart">
+  <image src="//gw.alicdn.com/tfscom/TB1xdQSJFXXXXcuXXXXy7S8WFXX-176-176.png" />
+</view>
+  <text>购物车没有商品哦</text>
+</view>
+</view>
+
+<!-- <view class="body-view">
+  <loading hidden="{{loadingHidden}}" bindchange="loadingChange">
+    加载中...
+  </loading>
+</view> -->

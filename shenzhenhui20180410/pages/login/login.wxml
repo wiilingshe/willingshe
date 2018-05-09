@@ -1,0 +1,42 @@
+<!--pages/login/login.wxml-->
+<view class="login">
+  <image src="../../images/bindable.png" style="display:none;"></image>
+  <image src="../../images/bindable2.png"></image>
+  <view class="" style="">
+    <view class="content_pos">
+      <view class="give">
+        <text>新人绑定手机</text>
+        <text>即送10元抵用劵</text>
+      </view>
+      <view class="phone">
+          <input class="p_num" placeholder="请输入手机号"  bindinput='outInput' value=""></input>
+      </view>
+      <view class="v_code">
+          <input class="indentf"  placeholder="请输入验证码" bindinput='codeInput'></input>
+          <button class="getcode"  bindtap='takeCode' >点击获取({{time}}s)</button><!--wx:if="{{getcode}}"-->
+          <!--<button class='getcode' wx:else>{{time}}秒后重新获取</button>-->
+      </view>
+      <view class="priture">
+        <image src="../../images/sucess.png"></image>
+        <text class="binding" bindtap='modifyPhoneNumber'>绑定</text>
+      </view>
+    </view>
+  </view>
+ <!--
+      <view class="tip">
+          <image src='../../images/'></image>
+          <text>绑定成功</text>
+      </view>
+      <view class="con_tick">
+          <image src="../../images/"></image>
+      </view>
+      <view class="con_button">
+          <image src="../../images/"></image>
+          <text>进入深燃荟</text>
+      </view>
+       <view class="con_button">
+          <image src="../../images/"></image>
+          <text>分享深燃荟再领最高666气劵</text>
+      </view>
+  </view>-->
+</view>

@@ -1,0 +1,69 @@
+
+ <view class="container  carts-list" >
+        <view class="trade_name"  style='border-bottom:none; margin-top:0;'>
+        </view>
+        <view class="list-item">
+            <!-- 图片-->
+            <view class="viewImg">
+              <image src="../../images/goods.png"></image>
+            </view>
+            <!-- 文字 -->
+            <view class="info">
+                <text class="pro_name">德国304不锈钢炒锅家用无涂层布粘锅无油烟</text>
+                <text class="pro_classtiy">A款  香槟金;</text>
+                <text class="pro_num">X1</text>
+          
+            </view>
+        </view>
+    </view>
+ <view class="container  carts-list" >
+        <view class="trade_name"  style='border-bottom:none; margin-top:0;'>
+        </view>
+        <view class="list-item">
+            <!-- 图片-->
+            <view class="viewImg">
+              <image src="../../images/goods.png"></image>
+            </view>
+            <!-- 文字 -->
+            <view class="info">
+                <text class="pro_name">德国304不锈钢炒锅家用无涂层布粘锅无油烟</text>
+                <text class="pro_classtiy">A款  香槟金;</text>
+                <text class="pro_num">X1</text>
+              
+            </view>
+        </view>
+    </view>
+    <view class="container  carts-list" >
+        <view class="trade_name"  style='border-bottom:none; margin-top:0;'>
+        </view>
+        <view class="list-item">
+            <!-- 图片-->
+            <view class="viewImg">
+              <image src="../../images/goods.png"></image>
+            </view>
+            <!-- 文字 -->
+            <view class="info">
+                <text class="pro_name">德国304不锈钢炒锅家用无涂层布粘锅无油烟</text>
+                <text class="pro_classtiy">A款  香槟金;</text>
+                <text class="pro_num">X1</text>
+              
+            </view>
+        </view>
+    </view>
+ <view class="container  carts-list" >
+        <view class="trade_name"  style='border-bottom:none; margin-top:0;'>
+        </view>
+        <view class="list-item">
+            <!-- 图片-->
+            <view class="viewImg">
+              <image src="../../images/goods.png"></image>
+            </view>
+            <!-- 文字 -->
+            <view class="info">
+                <text class="pro_name">德国304不锈钢炒锅家用无涂层布粘锅无油烟</text>
+                <text class="pro_classtiy">A款  香槟金;</text>
+                <text class="pro_num">X1</text>
+              
+            </view>
+        </view>
+    </view>
