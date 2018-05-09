@@ -26,19 +26,6 @@ Page({
     console.log(options)
     var that = this;
     wx.getStorage({
-      key:'access_token',
-      success:function(res1){
-        wx.request({
-          url:app.data.url+'/api/order/preOrder',
-          method:'POST',
-          data:{access_token:res1.data,type:options.type,spec_id:options.spec_id,count:options.count},
-          success:function(res){
-            console.log(res.data)
-          }
-        })
-      }
-    })
-    wx.getStorage({
       key: 'selectedinfo',
       success: function(res) {
           console.log(res.data)
@@ -46,6 +33,37 @@ Page({
             selectedinfo:res.data
           })
       } 
+    })
+    wx.getStorage({
+      key:'access_token',
+      success:function(res1){
+        if(options.type == 1){
+          var data = {access_token:res1.data,type:options.type,spec_id:options.spec_id,count:options.count}
+        }else if(options.type == 2){
+          var data={access_token:res1.data,type:2}
+        }else if(options.type == 3){
+          var data={access_token:res1.data,type:3,order_id:options.order_id}
+        }
+        wx.request({
+          url:app.data.url+'/api/order/preOrder',
+          method:'POST',
+          data:data,
+          success:function(res){
+            if(res.data.code == 1){
+              that.setData({
+                // selectedinfo:res.data.data
+              })
+            }else{
+              wx.showToast({
+                title:res.data.message,
+                icon:'none',
+                duration:2000
+              })
+            }
+            console.log(res.data)
+          }
+        })
+      }
     })
     wx.getStorage({
       key: 'access_token',

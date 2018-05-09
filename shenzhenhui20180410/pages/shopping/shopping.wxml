@@ -35,7 +35,7 @@
             </view>
         </view>
       </view>
-        <!-- <view class="del" data-id="{{item.cid}}" bindtap="del" data-index="{{index}}">删除</view> -->
+        <view class="del" data-id="{{item.cid}}" bindtap="del" data-index="{{index}}">删除</view>
     </view>
     <view class="carts-footer">
         <view bindtap="bindSelectAll" class="selectall">
@@ -44,9 +44,7 @@
             <text>全选</text>
             <text class="priceTotal">{{total}}</text>
         </view>
-         <navigator url="../orderform/orderform" hover-class="none">
-            <view class="button">立即结算</view>
-        </navigator>
+            <view class="button" bindtap="jiesuan">立即结算</view>
     </view>
 </view>
 <view wx:else class="container carts-list">

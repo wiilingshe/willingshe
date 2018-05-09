@@ -68,7 +68,7 @@
 .carts-list {
     display: flex;
     flex-direction: column;
-    padding: 20rpx 40rpx;
+    /*padding: 20rpx 40rpx;*/
     /*background-color: #fff;*/
 }
 .carts-list .no-cart {
@@ -157,6 +157,7 @@
 .carts-list icon {
     margin-top: 60rpx;
     margin-right: 20rpx;
+    margin-left: 30rpx;
 }
 
 .carts-footer .selectall{

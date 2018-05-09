@@ -48,7 +48,7 @@
                 <!-- <navigator  url="../applyReturn/applyReturn" hover-class="none"> -->
                   <button class="canel" wx:if="{{item.order_state==1 || item.order_state==2}}">申请退货</button>
                 <!-- </navigator> -->
-                  <button class="logis">再次购买</button>
+                  <!-- <button class="logis">再次购买</button> -->
                   <button class="logis" wx:if="{{item.order_state==2 || item.order_state==3}}">物流信息</button>
             </view>
     </view>

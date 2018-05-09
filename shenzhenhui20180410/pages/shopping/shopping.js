@@ -287,5 +287,10 @@ Page({
   },
   onUnload: function () {
     // 页面关闭
+  },
+  jiesuan(){
+    wx.navigateTo({
+      url:'../orderform/orderform?type=2'
+    })
   }
 })

@@ -40,7 +40,7 @@
     </view>
      <view class="checkout">
       <text class="payup"> 运费:</text>
-      <text class="num">+0.00</text>
+      <text class="num">+{{selectedinfo.postage}}</text>
     </view>
   </view>
 
