@@ -9,7 +9,8 @@ Page({
     total: '￥0.00',
     loading:false,
     carts: [
-    ]
+    ],
+    adlist:[],
   },
   onLoad: function (options) {
     wx.showLoading()
@@ -32,6 +33,25 @@ Page({
                   carts:res.data.data
                   // carts:[]
                 })
+                if(res.data.data.length == 0){
+                  wx.request({
+                    url:app.data.url+'/api/index/ad',
+                    method:'GET',
+                    success:function(res2){
+                      if(res2.data.code == 1){
+                        that.setData({
+                          adlist:res2.data.data
+                        })
+                      }else{
+                        wx.showToast({
+                          title: res.data.message,
+                          icon: 'none',
+                          duration: 2000
+                        })
+                      }
+                    }
+                  })
+                }
               }else{
                 wx.showToast({
                   title: res.data.message,
@@ -254,14 +274,58 @@ Page({
     });
   },
   del: function (e) {
+    wx.showLoading()
     //删除购物车商品商品
-    var carts = this.data.carts;
-    var index = e.target.dataset.index;
-    carts.splice(index, 1);
-    this.sum();
-    this.setData({
-      carts: carts
-    });
+    var that = this;
+    console.log(e)
+    wx.getStorage({
+      key:'access_token',
+      success:function(res1){
+        wx.request({
+          url:app.data.url+'/api/cart/remove',
+          method:'POST',
+          data:{access_token:res1.data,id:e.currentTarget.dataset.id},
+          success:function(res){
+            if(res.data.code == 1){
+              wx.request({
+                url:app.data.url+'/api/cart',
+                method:'POST',
+                data:{access_token:res1.data},
+                success:function(res2){
+                  wx.hideLoading()
+                  if(res2.data.code == 1){
+                    that.setData({
+                      carts:res2.data.data
+                      // carts:[]
+                    })
+                    wx.showToast({
+                      title:'删除成功',
+                      icon:'none',
+                      duration:2000
+                    })
+                  }else{
+                    wx.showToast({
+                      title: res2.data.message,
+                      icon: 'none',
+                      duration: 2000
+                    })
+                  }
+                  that.setData({
+                    loading:true
+                  })
+                }
+              })
+            }else{
+              wx.showToast({
+                title:res.data.message,
+                icon:'none',
+                duration:2000
+              })
+            }
+          }
+        })
+      }
+    })
   },
   touchend: function (e) {
     console.log(e);
@@ -291,6 +355,12 @@ Page({
   jiesuan(){
     wx.navigateTo({
       url:'../orderform/orderform?type=2'
+    })
+  },
+  detail(e){
+    console.log(e)
+    wx.navigateTo({
+      url:'../choiceGoods/choiceGoods?id='+e.currentTarget.dataset.id
     })
   }
 })

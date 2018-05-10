@@ -72,7 +72,7 @@
     /*background-color: #fff;*/
 }
 .carts-list .no-cart {
-    margin-top: 40%;
+    margin-top: 20%;
     width: 2.933rem;
     height: 2.933rem;
     border-radius: 100%;
@@ -191,8 +191,9 @@
   overflow: hidden;
   background: #fff;
   float: left;
-  margin-right: 10rpx;
-  margin-top: 18rpx;
+  /*margin-right: 10rpx;*/
+  margin-top: 20rpx;
+  margin-left: 30rpx;
 }
 .h_recommend  .r_imgbox{
   position: relative;
@@ -239,7 +240,7 @@
 }
 .h_recommend .red{
    color: #e11f1f; 
-   margin-left: 36rpx;
+   margin-left: 20rpx;
 }
 /**若没有订单*/
 .search_no button{
@@ -281,3 +282,7 @@ margin-right:-30rpx;
 margin-top:70rpx;
 
 }
+/*.adall{
+  display: flex;
+  justify-content: space-between;
+}*/

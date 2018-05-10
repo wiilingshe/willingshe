@@ -1,13 +1,15 @@
 {
   "pages":[
-    "pages/shopping/shopping",
     "pages/index/index",
+    "pages/shopping/shopping",
+    "pages/mycoupon/mycoupon",
+    "pages/reservation/reservation",
+    "pages/my/my",
+    "pages/classfiy/classfiy",
     "pages/indent/indent",
     "pages/bannerurl/bannerurl",
     "pages/orderform/orderform",
-    "pages/mycoupon/mycoupon",
     "pages/coupon/coupon",
-    "pages/my/my",
     "pages/merList/merList",
     "pages/login/login",
     "pages/addressList/addressList",
@@ -15,11 +17,9 @@
     "pages/flagship/flagship",
     "pages/qijiandian/qijiandian",
     "pages/applyReturn/applyReturn",
-    "pages/reservation/reservation",
     "pages/choiceGoods/choiceGoods",
     "pages/perMaterial/perMaterial" ,
     "pages/logs/logs",
-    "pages/classfiy/classfiy",
     "pages/set/set"
    
   ],

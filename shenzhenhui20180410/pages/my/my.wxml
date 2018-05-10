@@ -34,13 +34,15 @@
       </navigator>  --> 
 
      
-      <navigator class="my_box" url="../coupon/coupon" hover-class="none" >
+      <!-- <navigator class="my_box" url="../coupon/coupon" hover-class="none" > -->
        <!-- <web-view src="http://wechat.szgas.com.cn/weixin/views/bespeak/besIndex.html"></web-view> -->
-        <view class="my_line">
-          <image src="../../images/my-indent.png"></image>
-          <text class="m_tcontent">预约</text>
-        </view>
-      </navigator>
+       <view class="my_box">
+          <view class="my_line" bindtap="yuyue">
+            <image src="../../images/my-indent.png"></image>
+            <text class="m_tcontent">预约</text>
+          </view>
+       </view>
+      <!-- </navigator> -->
 
     <navigator class="my_box" url="../mycoupon/mycoupon" hover-class="none" >
         <view class="my_line">

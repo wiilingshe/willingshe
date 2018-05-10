@@ -20,6 +20,7 @@ Page({
     orderList3: [],
     orderList4: [],
     ifshow:false,
+    spec_id:''
   },
   onLoad: function (options) { 
     wx.showLoading()
@@ -386,7 +387,7 @@ Page({
   payOrderByWechat: function (e) {
     var order_id = e.currentTarget.dataset.order_id;
     wx.navigateTo({
-      url:'../orderform/orderform?type=3&order_id='+order_id
+      url:'../orderform/orderform?type=3&order_id='+order_id+'&spec_id='+e.currentTarget.dataset.sid
     })
   },
 

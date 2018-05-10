@@ -6,7 +6,7 @@
     <swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" circular="{{circular}}" indicator-active-color="{{indicatorActiveColor}}"  interval="{{interval}}" duration="{{duration}}"><!--autoplay="{{autoplay}}"-->
       <swiper-item wx:for="{{imgUrl}}" wx:key="item.id" > 
         <!--<image   wx:if="{{item.pic}}"   src="{{item.pic}}" wx:key="item.id" class="slide-image" style="width:100%; height:170px;"></image>-->
-        <image bindtap="detail" data-id="{{item.id}}" data-url="{{item.url}}" src="{{item.pic}}" class="slide-image" style="width:100%; height:170px;"></image>
+        <image bindtap="detail" data-id="{{item.id}}" data-url="{{item.url}}" src="{{item.pic}}" class="slide-image" style="width:100%;"></image>
       </swiper-item>
     </swiper>
   </view>

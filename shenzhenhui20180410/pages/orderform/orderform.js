@@ -17,6 +17,9 @@ Page({
     useing:'',
     keyongcoupon:[],
     jian:0,
+    postage:0,
+    type:'',
+    spec_id:'',
   },
 
   /**
@@ -39,20 +42,37 @@ Page({
       success:function(res1){
         if(options.type == 1){
           var data = {access_token:res1.data,type:options.type,spec_id:options.spec_id,count:options.count}
+          that.data.type = 1
+          that.data.spec_id = options.spec_id;
         }else if(options.type == 2){
           var data={access_token:res1.data,type:2}
+          that.data.type = 2
         }else if(options.type == 3){
           var data={access_token:res1.data,type:3,order_id:options.order_id}
+          that.data.type = 1;
+          that.data.spec_id = options.spec_id;
         }
         wx.request({
-          url:app.data.url+'/api/order/preOrder',
+          url:app.data.url+'/api/order/pre',
           method:'POST',
           data:data,
           success:function(res){
             if(res.data.code == 1){
-              that.setData({
-                // selectedinfo:res.data.data
-              })
+              console.log(res.data.data[0].products[0])
+              if(res.data.data[0].voucher.length != 0){
+                that.setData({
+                  selectedinfo:res.data.data[0].products[0],
+                  postage:res.data.data[0].postage,
+                  keyongcoupon:res.data.data[0].voucher,
+                  useing:'有优惠券使用'
+                })
+              }else{
+                that.setData({
+                  selectedinfo:res.data.data[0].products[0],
+                  postage:res.data.data[0].postage,
+                  useing:'暂无优惠券使用'
+                })
+              }
             }else{
               wx.showToast({
                 title:res.data.message,
@@ -82,41 +102,41 @@ Page({
             }
           }
         })
-        wx.request({
-          url:app.data.url+'/api/personal/coupon',
-          method:'POST',
-          data:{access_token:res.data},
-          success:function(res1){
-            if(res1.data.code == 1){
-              that.setData({
-                list:res1.data.data[0].list
-              })
-              if(res1.data.data[0].list.length != 0){
-                for(let i=0;i<res1.data.data[0].list.length;i++){
-                  var price = that.data.selectedinfo.price*that.data.selectedinfo.goodsNum;
-                  if(Number(price)>Number(res1.data.data[0].list[i].fullmoney)){
-                    that.data.keyongcoupon = that.data.keyongcoupon.concat(res1.data.data[0].list[i])
-                  }
-                }
-                console.log(that.data.keyongcoupon)
-                that.setData({
-                  keyongcoupon:that.data.keyongcoupon,
-                  useing:'有优惠券使用'
-                })
-              }else{
-                that.setData({
-                  useing:'暂无优惠券使用'
-                })
-              }
-            }else{
-              wx.showToast({
-                title: res1.data.message,
-                icon: 'none',
-                duration: 2000
-              })
-            }
-          }
-        })
+        // wx.request({
+        //   url:app.data.url+'/api/personal/coupon',
+        //   method:'POST',
+        //   data:{access_token:res.data},
+        //   success:function(res1){
+        //     if(res1.data.code == 1){
+        //       that.setData({
+        //         list:res1.data.data[0].list
+        //       })
+        //       if(res1.data.data[0].list.length != 0){
+        //         for(let i=0;i<res1.data.data[0].list.length;i++){
+        //           var price = that.data.selectedinfo.price*that.data.selectedinfo.goodsNum;
+        //           if(Number(price)>Number(res1.data.data[0].list[i].fullmoney)){
+        //             that.data.keyongcoupon = that.data.keyongcoupon.concat(res1.data.data[0].list[i])
+        //           }
+        //         }
+        //         console.log(that.data.keyongcoupon)
+        //         that.setData({
+        //           keyongcoupon:that.data.keyongcoupon,
+        //           useing:'有优惠券使用'
+        //         })
+        //       }else{
+        //         that.setData({
+        //           useing:'暂无优惠券使用'
+        //         })
+        //       }
+        //     }else{
+        //       wx.showToast({
+        //         title: res1.data.message,
+        //         icon: 'none',
+        //         duration: 2000
+        //       })
+        //     }
+        //   }
+        // })
       } 
     })
   },
@@ -176,9 +196,9 @@ Page({
       key: 'access_token',
       success: function(res) {
         if(that.data.voucher_id == ''){
-          var data = {access_token:res.data,name:that.data.selectedinfo.name,type:'1',spec_id:that.data.selectedinfo.id,count:that.data.selectedinfo.goodsNum,address_id:that.data.addressinfo.address_id}
+          var data = {access_token:res.data,type:that.data.type,spec_id:that.data.spec_id,count:that.data.selectedinfo.count,address_id:that.data.addressinfo.address_id}
         }else{
-          var data = {access_token:res.data,name:that.data.selectedinfo.name,type:'1',spec_id:that.data.selectedinfo.id,count:that.data.selectedinfo.goodsNum,address_id:that.data.addressinfo.address_id,voucher_id:that.data.voucher_id}
+          var data = {access_token:res.data,type:that.data.type,spec_id:that.data.spec_id,count:that.data.selectedinfo.count,address_id:that.data.addressinfo.address_id,voucher_id:that.data.voucher_id}
         }
         wx.request({
           url:app.data.url+'/api/order/place',

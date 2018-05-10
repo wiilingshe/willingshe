@@ -7,13 +7,13 @@
       <text class="more">></text>
   </view>
   <view class="orderDetail">
-    <image src="{{selectedinfo.image}}"></image>
+    <image src="{{selectedinfo.product_img}}"></image>
     <view class="">
-      <text class="title">{{selectedinfo.name}}</text>
-      <text class="stying">{{selectedinfo.spec_name}}</text>
+      <text class="title">{{selectedinfo.product_name}}</text>
+      <text class="stying">{{selectedinfo.spec}}</text>
     </view>
-    <text class="pcri">￥{{selectedinfo.price}}</text>
-    <text>x{{selectedinfo.goodsNum}}</text>
+    <text class="pcri">￥{{selectedinfo.product_price}}</text>
+    <text>x{{selectedinfo.count}}</text>
   </view>
   <view class="orderclient">
       <!-- <view class="leave">
@@ -32,22 +32,22 @@
   <view class="order_num">
     <view class="checkout">
       <text class="payup payt"> 商品小计</text>
-      <text class="num payt">￥{{selectedinfo.price}}</text>
+      <text class="num payt">￥{{selectedinfo.product_price*selectedinfo.count}}</text>
     </view>
      <view class="checkout">
       <text class="payup"> 优惠:</text>
-      <text class="num">-0.00</text>
+      <text class="num">-{{jian}}</text>
     </view>
      <view class="checkout">
       <text class="payup"> 运费:</text>
-      <text class="num">+{{selectedinfo.postage}}</text>
+      <text class="num">+{{postage}}</text>
     </view>
   </view>
 
   <view class="but">
     <view class="b_left">
         <text class="account">实付款:</text>
-        <text class="money">￥{{selectedinfo.price*selectedinfo.goodsNum-jian}}</text>
+        <text class="money">￥{{selectedinfo.product_price*selectedinfo.count-jian+postage}}</text>
     </view>
     <view class="b_right">
         <text class="ready" bindtap="pay">去支付</text>
@@ -83,9 +83,9 @@
         <button class="go" bindtap="getItem" data-id="{{item.id}}" data-name="满{{item.fullmoney}}减{{item.money}}" data-jian="{{item.money}}">去使用</button>
       </view>
     </view>
-    <view class="condition">
+    <!-- <view class="condition">
       <text class="txt">简约陶瓷马克杯专享；小米用户福利；限时购、三石福利价、礼品卡及详情页标注不可用券特殊商品除外</text>
       <image src="https://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/couponArrow-71315b4145.png" class="icon"></image>
-    </view>
+    </view> -->
   </view>
 </scroll-view>

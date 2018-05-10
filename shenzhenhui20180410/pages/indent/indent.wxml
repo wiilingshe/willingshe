@@ -44,7 +44,7 @@
         </view>
         <view class="choice">
                 <button class="canel" data-order_id="{{item.order_id}}" bindtap="removeOrder" wx:if="{{item.order_state==0}}">取消订单</button>
-                <button class="sure" data-order_id="{{item.order_id}}" bindtap="payOrderByWechat" wx:if="{{item.order_state==0}}">立即付款</button>
+                <button class="sure" data-order_id="{{item.order_id}}" data-sid="{{item.goods[0].id}}" bindtap="payOrderByWechat" wx:if="{{item.order_state==0}}">立即付款</button>
                 <!-- <navigator  url="../applyReturn/applyReturn" hover-class="none"> -->
                   <button class="canel" wx:if="{{item.order_state==1 || item.order_state==2}}">申请退货</button>
                 <!-- </navigator> -->
@@ -93,7 +93,7 @@
                 <!-- <navigator  url="../applyReturn/applyReturn" hover-class="none"> -->
                   <button class="canel" wx:if="{{item.order_state==1 || item.order_state==2}}">申请退货</button>
                 <!-- </navigator> -->
-                  <button class="logis">再次购买</button>
+                  <button class="logis"  data-order_id="{{item.order_id}}" data-sid="{{item.goods[0].id}}" bindtap="payOrderByWechat" >再次购买</button>
                   <button class="logis" wx:if="{{item.order_state==2 || item.order_state==3}}">物流信息</button>
             </view>
     </view>
@@ -177,7 +177,7 @@
                 <!-- <navigator  url="../applyReturn/applyReturn" hover-class="none"> -->
                   <button class="canel" wx:if="{{item.order_state==1 || item.order_state==2}}">申请退货</button>
                 <!-- </navigator> -->
-                  <button class="logis">再次购买</button>
+                  <button  data-order_id="{{item.order_id}}" data-sid="{{item.goods[0].id}}" bindtap="payOrderByWechat"  class="logis">再次购买</button>
                   <button class="logis" wx:if="{{item.order_state==2 || item.order_state==3}}">物流信息</button>
             </view>
     </view>

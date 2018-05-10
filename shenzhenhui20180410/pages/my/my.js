@@ -47,4 +47,9 @@ Page({
       }
     });
   },
+  yuyue(){
+    wx.navigateTo({
+      url: '../reservation/reservation'
+    })
+  }
 })
