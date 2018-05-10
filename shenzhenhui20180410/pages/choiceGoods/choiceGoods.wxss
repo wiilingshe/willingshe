@@ -120,7 +120,7 @@
 .probuy .cartBtn{
     cursor: pointer;
     width: 33.3333%;
-    height: 86rpx;
+    height: 90rpx;
     border-radius: 0;
     font-family: 'Microsoft Yahei';
     font-size: 32rpx;

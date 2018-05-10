@@ -6,14 +6,14 @@
       <text class="adress">{{addressinfo.province}}{{addressinfo.city}}{{addressinfo.country}}{{addressinfo.detail}}</text>
       <text class="more">></text>
   </view>
-  <view class="orderDetail">
-    <image src="{{selectedinfo.product_img}}"></image>
+  <view class="orderDetail" wx:for="{{selectedinfo}}">
+    <image src="{{item.product_img}}"></image>
     <view class="">
-      <text class="title">{{selectedinfo.product_name}}</text>
-      <text class="stying">{{selectedinfo.spec}}</text>
+      <text class="title">{{item.product_name}}</text>
+      <text class="stying">{{item.spec}}</text>
     </view>
-    <text class="pcri">￥{{selectedinfo.product_price}}</text>
-    <text>x{{selectedinfo.count}}</text>
+    <text class="pcri">￥{{item.product_price}}</text>
+    <text>x{{item.count}}</text>
   </view>
   <view class="orderclient">
       <!-- <view class="leave">
@@ -32,7 +32,7 @@
   <view class="order_num">
     <view class="checkout">
       <text class="payup payt"> 商品小计</text>
-      <text class="num payt">￥{{selectedinfo.product_price*selectedinfo.count}}</text>
+      <text class="num payt">￥{{alldata.productTotalPrice}}</text>
     </view>
      <view class="checkout">
       <text class="payup"> 优惠:</text>
@@ -40,14 +40,14 @@
     </view>
      <view class="checkout">
       <text class="payup"> 运费:</text>
-      <text class="num">+{{postage}}</text>
+      <text class="num">+{{alldata.postage}}</text>
     </view>
   </view>
 
   <view class="but">
     <view class="b_left">
         <text class="account">实付款:</text>
-        <text class="money">￥{{selectedinfo.product_price*selectedinfo.count-jian+postage}}</text>
+        <text class="money">￥{{alldata.productTotalPrice-jian+postage}}</text>
     </view>
     <view class="b_right">
         <text class="ready" bindtap="pay">去支付</text>

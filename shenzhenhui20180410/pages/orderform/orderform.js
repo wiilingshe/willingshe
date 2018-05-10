@@ -20,6 +20,7 @@ Page({
     postage:0,
     type:'',
     spec_id:'',
+    alldata:[],
   },
 
   /**
@@ -28,15 +29,15 @@ Page({
   onLoad: function (options) {
     console.log(options)
     var that = this;
-    wx.getStorage({
-      key: 'selectedinfo',
-      success: function(res) {
-          console.log(res.data)
-          that.setData({
-            selectedinfo:res.data
-          })
-      } 
-    })
+    // wx.getStorage({
+    //   key: 'selectedinfo',
+    //   success: function(res) {
+    //       console.log(res.data)
+    //       that.setData({
+    //         selectedinfo:res.data
+    //       })
+    //   } 
+    // })
     wx.getStorage({
       key:'access_token',
       success:function(res1){
@@ -61,14 +62,16 @@ Page({
               console.log(res.data.data[0].products[0])
               if(res.data.data[0].voucher.length != 0){
                 that.setData({
-                  selectedinfo:res.data.data[0].products[0],
+                  alldata:res.data.data[0],
+                  selectedinfo:res.data.data[0].products,
                   postage:res.data.data[0].postage,
                   keyongcoupon:res.data.data[0].voucher,
                   useing:'有优惠券使用'
                 })
               }else{
                 that.setData({
-                  selectedinfo:res.data.data[0].products[0],
+                  alldata:res.data.data[0],
+                  selectedinfo:res.data.data[0].products,
                   postage:res.data.data[0].postage,
                   useing:'暂无优惠券使用'
                 })
@@ -196,9 +199,9 @@ Page({
       key: 'access_token',
       success: function(res) {
         if(that.data.voucher_id == ''){
-          var data = {access_token:res.data,type:that.data.type,spec_id:that.data.spec_id,count:that.data.selectedinfo.count,address_id:that.data.addressinfo.address_id}
+          var data = {access_token:res.data,type:that.data.type,spec_id:that.data.spec_id,count:that.data.alldata.totalCount,address_id:that.data.addressinfo.address_id}
         }else{
-          var data = {access_token:res.data,type:that.data.type,spec_id:that.data.spec_id,count:that.data.selectedinfo.count,address_id:that.data.addressinfo.address_id,voucher_id:that.data.voucher_id}
+          var data = {access_token:res.data,type:that.data.type,spec_id:that.data.spec_id,count:that.data.alldata.totalCount,address_id:that.data.addressinfo.address_id,voucher_id:that.data.voucher_id}
         }
         wx.request({
           url:app.data.url+'/api/order/place',

@@ -113,7 +113,7 @@
 .bar{
   height: 78rpx;
   background: #fff;
-  margin: 12rpx 0;
+  margin: 12rpx 0 0;
   padding: 16rpx;
   box-sizing: border-box;
 }
@@ -184,7 +184,7 @@
 
 }
 /**导航的样式*/
-.tab-item{display: inline-block;font-size: 24rpx;text-align: center;color: #656565;}
+.tab-item{display: inline-block;font-size: 26rpx;text-align: center;color: #656565;}
 .tab-item.active{color: #e11f1f;position: relative;}
 /*.tab-item.active:after{ 
   content: "";display: block;height: 8rpx;
