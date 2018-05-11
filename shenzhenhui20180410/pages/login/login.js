@@ -104,6 +104,7 @@ Page({
    * 
    */
   takeCode: function(e){
+    wx.showLoading()
     var that = this
     var path = url + '/api/Msns'
     var data = { mobile: that.data.phoneNumber, openid: that.data.session.openid,type: 1}
@@ -112,7 +113,13 @@ Page({
     }
     request.sendRrquest(path , 'POST' , data , {}).then(function (res){
       console.log(res.data);
+      wx.hideLoading()
       if(res.data.code ==1){
+        wx.showToast({
+          title: '获取成功',
+          icon: 'none',
+          duration: 2000
+        })
         var count = setInterval(function () {
           that.data.time--
           if(that.data.time >= 0){
@@ -125,7 +132,7 @@ Page({
               time: 60,
               getcode: true
             })
-            clearInterval(count)
+            clearInterval(count);
           }
         },1000)
       }else{
@@ -151,6 +158,7 @@ Page({
    * 修改电话号码
    */
   modifyPhoneNumber: function (){
+    wx.showLoading()
     var that = this 
     var data = { openid:that.data.session.openid,code: this.data.code, mobile: that.data.phoneNumber,sex:that.data.userinfo.gender,nickname:that.data.userinfo.nickName,avatarUrl:that.data.userinfo.avatarUrl,province:that.data.userinfo.province,city:that.data.userinfo.city,country:that.data.userinfo.country}
     var path = url + '/api/member/register'
@@ -158,21 +166,25 @@ Page({
     request.sendRrquest(path,'POST',data, {})
     .then(function (items){
       console.log(items.data)
+      wx.hideLoading()
       if(items.data.code ==1){
         wx.showToast({
-          title:'登录成功',
+          title:'绑定成功',
           icon:"success",
-          mask: true,
+          duration:2000,
           success: function (res){
-             wx.setStorage({
-                key:"access_token",
-                data:res.data.data[0].access_token
-            })
-            setTimeout(function(res){
-              wx.navigateBack({
+            //  wx.setStorage({
+            //     key:"access_token",
+            //     data:res.data.data[0].access_token
+            // })
+            // setTimeout(function(res){
+            //   wx.navigateBack({
 
-              })
-            },1500)
+            //   })
+            // },1500)
+            wx.switchTab({
+              url: '../index/index'
+            })
           }
         })
       }

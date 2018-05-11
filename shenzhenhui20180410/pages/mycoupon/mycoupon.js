@@ -38,7 +38,23 @@ Page({
               })
             }
           })
-      } 
+      },
+      fail:function(res){
+        wx.hideLoading()
+        wx.showModal({
+          title: '提示',
+          content: '您尚未注册，是否前往注册页面？',
+          success: function(res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: '../login/login'
+              })
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
+        })
+      }
     })
   },
   onReady: function () {

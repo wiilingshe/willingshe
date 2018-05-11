@@ -1,10 +1,10 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/login/login",
     "pages/orderform/orderform",
     "pages/coupon/coupon",
     "pages/mycoupon/mycoupon",
-    "pages/login/login",
     "pages/choiceGoods/choiceGoods",
     "pages/shopping/shopping",
     "pages/reservation/reservation",
@@ -24,10 +24,11 @@
    
   ],
   "window":{
-    "backgroundTextStyle":"light",
+    "backgroundTextStyle":"#999",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh":true
   },
   "tabBar": {
     "color": "#666",

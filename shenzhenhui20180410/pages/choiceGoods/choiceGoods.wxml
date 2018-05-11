@@ -9,11 +9,11 @@
             <text class="stats">{{detailList.des}}</text>
             <view class="pir_line">
                 <text class="price">￥{{detailList.price_min}}</text>
-                <view class="adv" >直降{{detailList.price_max}}元</view>
+                <!-- <view class="adv" >直降{{detailList.price_max}}元</view>
                 <view>
                   <image class="tick-ex" src="../../images/ticky.png"></image>
                   <text class="tick_text">100元优惠券可用</text>
-                </view>
+                </view> -->
             </view>
         </view>
       </view>

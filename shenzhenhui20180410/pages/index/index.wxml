@@ -22,8 +22,8 @@
       <!-- <view bindtap="getcoupon"> -->
         <image class="m-message" src='../../images/tick3.jpg' bindtap="getcoupon">
         </image>
-        <text class="johnn">新人福利</text>
-        <text class="johnn other">綁定手机即领</text>
+        <text class="johnn" bindtap="getcoupon">新人福利</text>
+        <text class="johnn other" bindtap="getcoupon">綁定手机即领</text>
       <!-- </view> -->
       <!-- </navigator> -->
       <navigator class="my_box" url="../mycoupon/mycoupon" hover-class="none" >

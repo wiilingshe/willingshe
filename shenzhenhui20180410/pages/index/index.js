@@ -143,6 +143,21 @@ Page({
     wx.navigateTo({
       url:'../bannerurl/bannerurl?url='+e.currentTarget.dataset.url
     })
+  },
+  onPullDownRefresh(){
+    var that = this;
+    wx.login({
+      success: function (res) {
+        console.log('获取微信授权返回结果：'+JSON.stringify(res))
+        if (res.code) {
+          //发起网络请求
+          app.getSession1(res.code)
+        } else {
+          console.log('获取用户登录态失败！' + res.errMsg)
+        }
+      }
+    });
+    
   }
   // onLoad: function () {
   //   var that = this;
