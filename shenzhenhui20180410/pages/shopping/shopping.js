@@ -11,6 +11,7 @@ Page({
     carts: [
     ],
     adlist:[],
+    selectArr:'',
   },
   onLoad: function (options) {
     wx.showLoading()
@@ -190,13 +191,21 @@ Page({
     var carts = this.data.carts;
     // 对勾选状态取反
     carts[index].selected = !selected;
-    var selectArr = [];
+    var selectArr = '';
     // 遍历
     for (var i = 0; i < carts.length; i++) {
       if (carts[i].selected == true) {
-        selectArr.push(carts[i].selected)
+        if(selectArr == ''){
+          selectArr = carts[i].id
+        }else{
+          selectArr = selectArr+','+carts[i].id
+        }
+        // selectArr.push(carts[i].id)
       }
     }
+    this.setData({
+      selectArr:selectArr
+    })
     if (e.currentTarget.dataset.type == 'success_circle') {
       this.setData({
         selectedAllStatus: false
@@ -217,18 +226,32 @@ Page({
   bindSelectAll: function () {
     // 环境中目前已选状态
     var selectedAllStatus = this.data.selectedAllStatus;
-    // 取反操作
+    // // 取反操作
     selectedAllStatus = !selectedAllStatus;
-    // 购物车数据，关键是处理selected值
+    // // 购物车数据，关键是处理selected值
     var carts = this.data.carts;
+    var selectArr = '';
     if (carts.length > 0) {
       for (var i = 0; i < carts.length; i++) {
+        if(selectArr == ''){
+          selectArr = carts[i].id
+        }else{
+          selectArr = selectArr + ',' + carts[i].id
+        }
         carts[i].selected = selectedAllStatus;
       }
+      this.setData({
+        selectArr:selectArr
+      })
+      console.log(selectArr)
     } else {
-      selectedAllStatus = false
+      wx.showToast({
+        title:'购物车没东西',
+        icon:'none',
+        duration:2000
+      })
     }
-    // 遍历
+    // // 遍历
     this.setData({
       selectedAllStatus: selectedAllStatus,
       carts: carts
@@ -353,8 +376,31 @@ Page({
     // 页面关闭
   },
   jiesuan(){
-    wx.navigateTo({
-      url:'../orderform/orderform?type=2'
+    var that = this;
+    wx.showLoading()
+    wx.getStorage({
+      key:'access_token',
+      success:function(res1){
+        wx.request({
+          url:app.data.url+'/api/cart/select',
+          method:'POST',
+          data:{access_token:res1.data,id:that.data.selectArr},
+          success:function(res){
+            wx.hideLoading()
+            if(res.data.code == 1){
+              wx.navigateTo({
+                url:'../orderform/orderform?type=2'
+              })
+            }else{
+              wx.showToast({
+                title:res.data.message,
+                icon:'none',
+                duration:2000
+              })
+            }
+          }
+        })
+      }
     })
   },
   detail(e){

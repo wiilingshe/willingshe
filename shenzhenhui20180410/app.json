@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/choiceGoods/choiceGoods",
     "pages/shopping/shopping",
     "pages/mycoupon/mycoupon",
     "pages/reservation/reservation",
@@ -17,7 +18,6 @@
     "pages/flagship/flagship",
     "pages/qijiandian/qijiandian",
     "pages/applyReturn/applyReturn",
-    "pages/choiceGoods/choiceGoods",
     "pages/perMaterial/perMaterial" ,
     "pages/logs/logs",
     "pages/set/set"
