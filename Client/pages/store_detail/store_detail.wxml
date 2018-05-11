@@ -1,0 +1,36 @@
+<!--pages/store_detail/store_detail.wxml-->
+<view class='flex1 padded font_h '>
+  <image src="{{detail.headimage}}" class='store_img'></image>
+  <view class='mar-l-20'> 
+    <view class='font_36 color_block2 '>{{detail.shopname}}</view>
+    <view class='font_26 color_gray4 mar-t-20'>{{detail.name}}</view>
+    <view class='font_28 color_gray4 mar-t-20'>月售{{detail.ordernum}}份</view>
+  </view>  
+</view>
+
+<view class='bor_t_20'>
+  <view class='title'>活动与属性</view>
+  <view class='flex1 cont bor_t_1' >
+         <text class='tag-round tag-org'>减</text>
+            <text class='font_28 font_f_f' style='width:90%;line-height:45rpx;color:#555;'><text wx:for="{{detail.discount}}" wx:for-item="discount" wx:key="id">满{{discount.full}}减{{discount.reduce}}元; </text></text>
+  </view> 
+</view>
+<view class='bor_t_20'>
+  <view class='title'>商家信息</view>
+  <view class='item flex1 bor_t_1'>电话：{{detail.tell}}</view>
+  <view class='item flex1 bor_t_1'>营业时间：<block wx:for="{{detail.open_time}}" wx:for-item="item">{{item.starttime}}-{{item.endtime}} </block></view>
+  <view class='item flex1 bor_t_1'>公告：{{detail.notice}}</view>
+  <view class='item flex9 bor_t_1'>地址：{{detail.province}}{{detail.city}}{{detail.county}}{{detail.street}}{{detail.address}}</view>
+</view>
+ <navigator class='bor_t_20 flex4 padded-lr-30 pop_btn' url="../qualification/qualification?id={{shop_id}}">
+   <view class='font_32 color_block2'>营业资质</view>
+   <image src='../../images/8sjxx_3.png' class='left_img'></image>
+ </navigator>
+ <view class='bor_t_20'>
+  <view class='title'>商家环境</view>
+  <view class='img_case padded-lr-30 flex1 flex_wrap mar-t-20'>
+    <block wx:for="{{detail.images}}" wx:for-item="image">
+    <image src="{{image}}" class="detail_img {{(index+1)%3==0?'':'mar'}}" mode='aspectFill'></image>
+    </block>
+  </view>
+</view>

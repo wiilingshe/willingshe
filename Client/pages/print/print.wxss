@@ -1,0 +1,24 @@
+page{
+  background-color: #eee;
+}
+input{
+  border-bottom: 1px solid #eee;
+  padding: 26rpx 30rpx;
+  background-color: #fff;
+}
+.title{
+  background: #eee;
+  color: #999;
+  padding: 26rpx 30rpx;
+  font-size: 30rpx; 
+}
+button{
+  width: 650rpx;
+  height: 100rpx;
+  background-color: #e71751;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+  font-size: 40rpx;
+  margin-top: 100rpx;
+}

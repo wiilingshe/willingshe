@@ -1,0 +1,18 @@
+<scroll-view scroll-y="true" lower-threshold="10" bindscrolltolower="scrolltolower">
+	<view class="add-list" wx:for="{{lists}}">
+		<view bindtap="select">
+			<view class="namephone">
+				<view class="name">{{item.name}}</view>
+				<view class="phone">{{item.mobile}}</view>
+			</view>
+			<view class="address">{{item.province}}{{item.city}}{{item.country}}{{item.detail}}
+				<text wx:if="{{item.isdefault==1}}" style="color:red;">（默地址认收货）</text>
+			</view>
+		</view>
+		<view class="caozuo">
+			<view bindtap="edit" id="{{item.address_id}}" data-name="{{item.name}}" data-phone="{{item.mobile}}" data-province="{{item.province}}" data-city="{{item.city}}" data-country="{{item.country}}" data-detail="{{item.detail}}">编辑</view>
+			<view bindtap="delete" id="{{item.address_id}}">删除</view>
+		</view>
+	</view>
+</scroll-view>
+<view bindtap="addAddress" class="addAddress">新建收货地址</view>

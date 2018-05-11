@@ -1,0 +1,38 @@
+/* pages/index/index.wxss */
+.header{position: relative;font-weight: 400;background: #e71751;}
+.search_case{display: flex;align-items: center;color: #ffffff;padding: 10rpx 30rpx;
+justify-content: space-between;height: 70rpx;}
+.search{background-color: #fff;height: 80rpx;display: flex;align-items: center;justify-content: center;}
+.picker{white-space:nowrap; height: 60rpx;line-height: 60rpx;width:572rpx;}
+.scan{width: 15%;}
+.search image{width: 30rpx;height: 30rpx;}
+.scan image{width: 30rpx;height: 30rpx;}
+.scan text{font-size: 30rpx;margin-left: 5rpx;}
+.search text{font-size: 26rpx;width: 90%;margin-left: 15rpx;height: 40rpx;color: #797979;line-height: 45rpx;}
+.swiper1 image{width: 100%;height: 100%;}
+.swiper2{padding: 20rpx 0 0;height: 340rpx;margin: 20rpx 0;}
+.nav_case{display: flex;flex-wrap: wrap;text-align: center;}
+.nav_case>navigator{width: 20%;margin: 0 2.5% 20rpx ;font-size: 24rpx;padding-bottom: 10rpx;}
+.nav_case>navigator image{height: 84rpx;width: 100%;}
+.nav_case>view{width: 20%;margin: 0 2.5% 20rpx ;font-size: 24rpx;padding-bottom: 10rpx;}
+.nav_case>view image{height: 84rpx;width: 100%;}
+.nav_case text{font: 400 30rpx "Microsoft YaHei";color:#3d3d3d;line-height: 35rpx;}
+
+.nav_img_case{width: 49%;padding-top: 37.5%;position: relative;}
+.nav_img{width: 100%;height: 100%;position: absolute;top:0;left: 0;}
+
+.title{font:500 34rpx "方正黑体简体";color: #3d3d3d;text-align: center;border-top:20rpx solid #f0f0f0;display: flex;justify-content: center;align-items: center;padding: 30rpx 0;}
+.title .line{width: 70rpx;height: 0px;border-top: 1rpx solid #3d3d3d;}
+.title .word{margin: 0 20rpx;}
+
+/*
+.store_case .item{width: 100%;padding:20rpx 3%;border-top:1rpx solid #f0f0f0;box-sizing: border-box;font-family: "Microsoft YaHei";font-weight: 400;}
+.store_case .item>image{width: 200rpx;height: 140rpx;margin-right: 20rpx;}
+.store_info{width: 70%;}
+.info_top{font-family: "Microsoft YaHei";height: 140rpx;border-bottom: 1rpx solid #f0f0f0;width: 100%;padding-bottom: 20rpx;}
+.info_top .name{color: #323232;font-size:32rpx;max-width: 80%;padding-right: 10rpx;}
+.info_top>view:nth-child(2){padding: 15rpx 0;}
+.info_bottom>view{padding: 15rpx 0;}
+*/
+
+

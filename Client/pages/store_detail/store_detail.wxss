@@ -1,0 +1,8 @@
+/* pages/store_detail/store_detail.wxss */
+.title{height: 85rpx;line-height: 85rpx;font-size: 32rpx;color: #333;padding: 0 30rpx;}
+.cont{height: 105rpx;padding: 0 30rpx;}
+.item{font-size: 30rpx;color: #555;padding: 21rpx 30rpx;line-height: 48rpx;}
+.left_img{width: 23rpx;height: 37rpx;}
+.pop_btn{height: 97rpx;}
+.detail_img{width: 32%;height: 220rpx;margin-bottom: 15rpx;}
+.mar{margin-right: 1.3%}

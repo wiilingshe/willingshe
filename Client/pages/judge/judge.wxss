@@ -1,0 +1,8 @@
+/* pages/judge/judge.wxss */
+page{width: 100%;height: 100%;}
+textarea{height: 200rpx;padding: 20rpx;font-size:30rpx;color:#434343;box-sizing: border-box;}
+.add_img{width: 155rpx;margin:20rpx 2% 0 0;height: 155rpx;border:1rpx dashed #dedede;}
+.tapimg{width: 70rpx;height: 65rpx;}
+.input{padding: 0 20rpx;background: #f0f0f0;border-radius: 5rpx;line-height: 80rpx;height:80rpx;}
+.clear{position: absolute;right: -10rpx;top:-10rpx;}
+.btn{background: #e71751;border-radius: 0;line-height: 100rpx;}

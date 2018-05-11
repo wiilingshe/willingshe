@@ -1,0 +1,4 @@
+/* pages/myCollection/myCollection.wxss */
+page{background: #f5f5f5;}
+.item{background: #fff;}
+.mat-b-20{margin-bottom: 20rpx;}

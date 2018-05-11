@@ -1,0 +1,6 @@
+/* pages/modify_tel/modify_tel.wxss */
+.item input{line-height: 70rpx;height: 70rpx;padding:0 10rpx;width: 100%;}
+.item{margin-bottom: 10rpx;height: 100rpx;}
+.btn-s{width: 250rpx;height: 70rpx;line-height: 70rpx;border: 1px solid #e71751;border-radius: 70rpx;text-align: center;}
+.read_btn{width: 250rpx;height: 70rpx;line-height: 70rpx;border: 1px solid #ddd;border-radius: 70rpx;text-align: center;color: #ddd;}
+.btn-m{margin-top: 80rpx;border-radius:100rpx;border: 1rpx solid #e71751;}

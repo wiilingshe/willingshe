@@ -1,0 +1,81 @@
+<!--pages/fill/fill.wxml-->
+<form bindsubmit="submit">
+  <view class='padded-b-100'>
+   <input name="access_token" value='{{access_token}}' hidden></input>
+  <view class='mar-t-20 padded-l-30 bg_white font_f_m'>
+    <view class='flex4 padded-r-30 bor_b_1 item'>
+      <view class='text'>姓名</view>
+      <input placeholder='请输入法人姓名' name="realname" type='text' class='input' placeholder-class='plac'></input>
+    </view>
+    <view class='flex4 padded-r-30 bor_b_1 item'>
+      <view class='text'>身份证号</view>
+      <input placeholder='请输入身份证号' name="idcard" type='text' class='input' placeholder-class='plac'></input>
+    </view>
+    <view class='flex4 padded-r-30 bor_b_1 item'>
+      <view class='text'>银行卡号</view>
+      <input placeholder='请输入银行卡号' name="bankcard" type='number' class='input' placeholder-class='plac'></input>
+    </view>
+  </view>
+  <view class='mar-t-20 padded-l-30 bg_white font_f_m'>
+    <view class='flex4 padded-r-30 bor_b_1 item'>
+      <view class='text'>店铺名称</view>
+      <input placeholder='请输入店铺名称' name="shopname" type='text' class='input' placeholder-class='plac'></input>
+    </view>
+    <view class='flex4 padded-r-30 bor_b_1 item'>
+      <view class='text'>店铺地址</view>
+      <input placeholder='请输入店铺地址' name="address" type='text' class='input' placeholder-class='plac'></input>
+    </view>  
+  </view>
+  <view class='bg_white padded-l-30'>
+    <view class='font_30 color_block2 word'>上传身份证</view> 
+    <view class='flex4 flex_wrap padded-r-30 bor_b_1'>
+      <view class='font_f_h img_item' bindtap='chosseImg' data-id='0'>
+        <image src="{{img[0]}}" class='choose_img' wx:if="{{img[0]}}" mode='aspectFit'></image>
+        <view class='add flex10' wx:else>
+          <image class='add_img' src='../../images/add.png'></image>
+          <view class='mar-t-20 font_30 color_gray2'>上传身份证正面照</view>
+        </view>
+      </view>
+      <view class='font_f_h img_item' bindtap='chosseImg' data-id='1'>
+        <image src="{{img[1]}}" class='choose_img' wx:if="{{img[1]}}" mode='aspectFit'></image>
+        <view class='add flex10'wx:else>
+          <image class='add_img' src='../../images/add.png'></image>
+          <view class='mar-t-20 font_30 color_gray2'>上传身份证反面照</view>
+        </view>
+      </view>
+      <view class='font_f_h img_item' bindtap='chosseImg' data-id='2'>
+        <image src="{{img[2]}}" class='choose_img' wx:if="{{img[2]}}" mode='aspectFit'></image>
+        <view class='add flex10' wx:else>
+          <image class='add_img' src='../../images/add.png'></image>
+          <view class='mar-t-20 font_30 color_gray2'>上传手持身份证照</view>
+        </view>
+      </view>     
+    </view>
+  </view>
+  <view class='bg_white padded-l-30'>
+    <view class='font_30 color_block2 word'>上传营业执照</view> 
+    <view class='flex4 flex_wrap padded-r-30 bor_b_1'>
+      <view class='font_f_h img_item'bindtap='chosseImg' data-id='3' >
+        <image src="{{img[3]}}" class='choose_img' wx:if="{{img[3]}}" mode='aspectFit'></image>
+        <view class='add flex10' wx:else>
+          <image class='add_img' src='../../images/add.png'></image>
+          <view class='mar-t-20 font_30 color_gray2'>上传营业执照</view>
+        </view>    
+      </view>    
+    </view>
+  </view>
+  <view class='bg_white padded-l-30' >
+    <view class='font_30 color_block2 word'>上传食品经营许可证</view> 
+    <view class='flex4 flex_wrap padded-r-30 bor_b_1'>
+      <view class='font_f_h img_item' bindtap='chosseImg' data-id='4'>
+        <image src="{{img[4]}}" class='choose_img' wx:if="{{img[4]}}" mode='aspectFit'></image>
+        <view class='add flex10' wx:else>
+          <image class='add_img' src='../../images/add.png'></image>
+          <view class='mar-t-20 font_30 color_gray2'>上传食品经营许可证</view>
+        </view>
+      </view>    
+    </view>
+  </view>
+  <button class='fiexd-b bg_red color_white font_32' form-type='submit'>确定提交</button>
+  </view>  
+</form>

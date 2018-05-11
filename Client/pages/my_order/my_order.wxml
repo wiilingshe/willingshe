@@ -1,0 +1,46 @@
+<!--pages/my_order/my_order.wxml-->
+<view class='fiexd-top flex bor_b_1 bg_white'>
+  <view class="nav {{type==0?'on':'off'}}" id="0" bindtap='nav'>全部</view>
+  <view class="nav {{type==1?'on':'off'}}" id="1" bindtap='nav'>待付款</view>
+  <view class="nav {{type==2?'on':'off'}}" id="2" bindtap='nav'>待评价</view>
+  <view class="nav {{type==3?'on':'off'}}" id="3" bindtap='nav'>已完成</view>
+</view>
+<view class='padded-top padded-b'>
+   <view wx:if="{{have==false}}" class='flex10'>
+     <view class="font_30 padded2" style='color:#a6a6a6;'>暂无订单</view>
+   </view>
+   <block wx:else>
+      <block wx:for="{{list}}">
+      <view class='bg_white bor_b_1'>     
+        <navigator url="../order_detail/order_detail?order_id={{item.id}}" class='padded2  flex'>
+            <view class='left relative'>
+              <image src="{{item.headimage}}" class='order_img' mode='aspectFill'></image>
+            </view>            
+            <view class='right'>
+              <view class="flex4">
+                <view class='font_34 color_block text_s' style='width:80%;'>{{item.shopname}}</view>
+                <view class='font_28 color_org2 text_r'style='width:20%;'>  
+                  <text wx:if="{{item.status==0}}">等待支付</text> 
+                  <text wx:if="{{item.status>0&&item.iscomment==0}}">等待评价</text> 
+                  <text wx:if="{{item.iscomment==1}}">已完成</text>                
+                </view>                            
+              </view>
+               <view class='font_24  padded-b-10' style='color:#999;'>
+                <text class=''>{{item.create_time}}</text>
+              </view>
+               <view class='font_30  padded-b-10 flex4' style='color:#444;'>
+                <text >{{item.product_name}} 等{{item.goods_count}}件商品</text>
+                <text>￥{{item.total_price}}</text>
+              </view>
+            </view>          
+        </navigator>
+          <view class='btn_case font_30 flex12' wx:if="{{item.status<=3&&item.status>=0&&item.iscomment==0}}">
+             <view  class='handle' bindtap='payment2' data-index="{{index}}" wx:if="{{item.status==0}}">立即支付</view>   
+            <navigator url='../judge/judge?id={{item.order_id}}&index={{index}}' class='handle' wx:if="{{item.status>0&&item.iscomment==0}}" >评价</navigator>          
+          </view>
+        </view>
+      </block>
+   </block>
+   
+</view>
+

@@ -1,0 +1,12 @@
+/* pages/fill/fill.wxss */
+page{background: #f5f5f5;}
+.item{width: 100%;height: 95rpx;}
+.text{width: 30%;font-size: 30rpx;color:#333,}
+.input{width: 70%;font-size: 30rpx;color: #333;line-height: 90rpx;height: 90rpx;}
+.plac{font-size: 30rpx;color: #888;}
+.add_img{width:85rpx;height:85rpx;}
+.img_item{width: 46%;height: 200rpx;margin-bottom: 30rpx;}
+.word{padding: 35rpx 0 20rpx;}
+.add{border: 1rpx dashed #dedede;border-radius: 5rpx;width:100%;height:100%;}
+button{border-radius: 0;line-height: 100rpx;}
+.choose_img{width:100%;height:100%;}

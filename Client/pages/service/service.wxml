@@ -1,0 +1,6 @@
+<!--pages/service/service.wxml-->
+<view class='text_c '> 
+  <image src="../../images/service.png" class='icon_img'></image>
+  <view class='tel font_f_h'>{{mobile}}</view>
+  <view class='btn font_f_h' bindtap='call'>一键拨打客服电话</view>
+</view>

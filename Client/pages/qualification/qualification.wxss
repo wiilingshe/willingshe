@@ -1,0 +1,8 @@
+/* pages/qualification/qualification.wxss */
+.title{height: 89rpx;line-height: 89rpx;}
+.grade{height: 129rpx;}
+.grade_img{width: 95rpx;height:95rpx;}
+.info_item{padding: 33rpx 30rpx;font-size: 30rpx;color: #555;line-height: 42rpx;border-top: 1rpx solid #ddd;}
+
+.img{width: 31%;height: 260rpx;}
+.mar{margin-right: 2.3%;}

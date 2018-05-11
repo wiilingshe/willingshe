@@ -1,0 +1,9 @@
+<!--pages/check_success/check_success.wxml-->
+<view class='container flex10'>    
+    <image src='../../images/24shz_1.png' class='success_img'></image>
+    <view class=''>
+    <view class='text' >资料提交成功</view>
+     <view class='text' >正在审核中...</view>
+     </view>
+</view>
+

@@ -1,0 +1,39 @@
+/* pages/shopList/shopList.wxss */
+/* pages/list/list.wxss */
+#container{font-family: "Microsoft YaHei";font-weight: 400;}
+.header{padding: 0 30rpx;height: 128rpx;
+display: flex;align-items: center;justify-content: space-between;}
+.header image{width: 40rpx ;height: 40rpx;padding-right: 10rpx;}
+.search{width: 80%;background-color: #fff;height: 2.4rem;padding: 0 20rpx;}
+.header .input1{font-size: 32rpx;padding: 0 10rpx;width: 80%;line-height: 2.4rem;min-height: 2.4rem;}
+.picker{white-space:nowrap; height: 60rpx;line-height: 60rpx;}
+.choose_case{width: 100%;background-color: #fff;height: 98rpx;}
+.choose_case image{width: 25rpx;height: 15rpx;margin-left: 10rpx;}
+.choose_case .item{width: 33.3%;height: 70%;font-size: 34rpx;color: #333;font-family: "Microsoft YaHei";}
+.choose_case .line{width: 0rpx;height: 70%;border-left:1rpx solid #f0f0f0;}
+.choose_case .item.active{font-weight: 600;}
+
+.hide_case{border-top:1rpx solid #f0f0f0;width: 100%;height: 700px;}
+.hide_case>view{z-index: 10;}
+.series{width: 34%;max-height: 864rpx;overflow: auto;}
+.series>view{width: 100%;height: 96rpx;text-align: center;box-sizing: border-box}
+.variety{border-left:5rpx solid #f6f6f6;background-color: #f6f6f6;}
+.variety_on{border-left:5rpx solid #fe7e00;background-color: #fff;}
+.left{width: 15rpx;height: 20rpx;}
+.variety_name{width: 50%;}
+.store_num{padding: 5rpx 0;width: 20%;font-size: 24rpx;}
+
+.type{width: 66%;max-height: 864rpx;overflow: auto;background-color: #fff;}
+.type>view{width: 100%;height: 96rpx;box-sizing: border-box;padding: 0 30rpx;border-bottom: 1rpx solid #f0f0f0;color: #969696;}
+
+.sort>view{width: 100%;height: 96rpx;border-bottom:1rpx solid #f0f0f0;padding: 0 30rpx;box-sizing: border-box;}
+.screen>.case{padding: 30rpx;}
+.screen>view .item{padding: 20rpx 30rpx;border-radius: 5rpx;box-sizing: border-box;margin: 20rpx 30rpx 0 0;}
+.screen>view .on{background-color: #fe7e00;color: #fff;border: 1px solid #fe7e00;}
+.screen>view .off{background-color: #fff;color: #1a1a1a;border: 1px solid #cdcbcb;}
+
+.button{width: 100%;height: 96rpx;margin-top: 20rpx;}
+.button>view{width: 50%;}
+
+
+

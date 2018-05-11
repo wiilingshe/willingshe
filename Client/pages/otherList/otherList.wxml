@@ -1,0 +1,55 @@
+<!--pages/otherList/otherList.wxml-->
+<view class="{{up?'fiexd-top':'fiexd-top2'}}">
+  <view class="header bg_red">
+    <view class='search flex1'>
+        <image src='../../images/1sy_4.png'></image>
+        <input placeholder="搜索商品、商家名称" class="input1" placeholder-style="color: #303030;" placeholder-class="font_32"  bindinput="input" value="{{input}}"/>      
+    </view>
+    <text class="font_38 color_white" bindtap='search'>搜索</text>
+  </view>
+ <view class='choose_case flex1 bor_b_1'>
+  <view class="flex6 item {{sort==0?'active':''}}" data-index='0' bindtap='choose'>综合排序</view>
+  <view class='line'></view>
+  <view class="flex6 item {{sort==1?'active':''}}" data-index='1' bindtap='choose'>销量最高</view>
+  <view class='line'></view>
+  <view class="flex6 item {{sort==2?'active':''}}" data-index='2' bindtap='choose'>距离最近</view>
+ </view>
+</view>
+<view class='padded-top2'>
+ <block wx:for="{{store}}" wx:for-item="detail" >
+   <view class='good_item'>
+    <view class='flex4 padded bor_b_1'>
+      <view class='flex1'>
+        <image class='shop_img' src="{{detail.headimage}}"></image>
+        <view class='mar-l-20'>
+          <view class='font_32 color_block2'>{{detail.shopname}}</view>
+          <view class='flex1 font_26 color_gray2 mar-t-20'>
+              <view>{{detail.catetoryname}}</view>
+              <view class="mar-lr-10">|</view>
+              <view>{{detail.street}}</view>             
+            </view>
+        </view>
+      </view>
+      <text class="range font_f_f">{{detail.distant}}</text>
+    </view>
+    <view class='padded-l-30'>
+      <block wx:for="{{detail.goods}}" wx:for-item="goods" wx:for-index="num"  wx:if="{{num<show[index]}}">
+        <view class='flex1 padded-r-30 padded-tb-20 bor_b_1'>
+          <image src="{{goods.image}}" class='goods_img'></image>
+          <view class='mar-l-20 flex11 info'>
+            <view class='font_32 color_block2'>{{goods.name}}</view>
+            <view class='font_26 color_gray'>月售{{goods.order_num}}份</view>
+            <view class='font_26 color_red'>￥<text class='font_36'>{{goods.price}}</text><text class='color_gray2 text_d_l'>￥<text>{{goods.oldprice}}</text></text></view>
+          </view>
+        </view>
+      </block>
+      <block wx:if="{{detail.goods.length>2&&show[index]==2}}">
+        <view class='flex6 down_case' bindtap='showHide' data-index="{{index}}">
+          <text class='font_30 color_gray4'>展开更多商品{{detail.goods.length-2}}个</text>
+          <image src='../../images/down.png' class="down_img"></image>
+        </view>
+      </block>
+    </view>
+   </view>
+ </block>
+</view>

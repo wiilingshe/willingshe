@@ -1,0 +1,47 @@
+<!--pages/list/list.wxml-->
+<view id="container" style='padding-bottom:120rpx;'>
+<view class="{{up?'fiexd-top':'fiexd-top2'}}">
+  <view class="header bg_red">
+    <view class='search flex1'>
+        <image src='../../images/1sy_4.png'></image>
+        <input placeholder="搜索商品、商家名称" class="input1" placeholder-style="color: #303030;" placeholder-class="font_32"  bindinput="input" value="{{input}}"/>      
+    </view>
+    <text class="font_38 color_white" bindtap='search'>搜索</text>
+  </view>
+ <view class='choose_case flex1 bor_b_1'>
+  <view class="flex6 item {{sort==0?'active':''}}" data-index='0' bindtap='choose'>综合排序</view>
+  <view class='line'></view>
+  <view class="flex6 item {{sort==1?'active':''}}" data-index='1' bindtap='choose'>销量最高</view>
+  <view class='line'></view>
+  <view class="flex6 item {{sort==2?'active':''}}" data-index='2' bindtap='choose'>距离最近</view>
+ </view>
+</view>
+ <view class="store_case bor_b_1 {{up?'padded-top':'padded-top2'}}" >    
+      <block wx:for="{{store}}" wx:key="id" wx:for-item="detail">
+     <navigator class="item flex bor_t_1" url="../menu/menu?id={{detail.id}}"  data-id="{{detail.id}}">
+        <image src="{{detail.headimage}}"></image>
+        <view class='store_info '>
+          <view class='info_top flex5 '>
+            <view class='flex4'>
+              <text class="name font_34 color_block">{{detail.shopname}}</text>
+              <text class="range font_f_f">{{detail.distant}}</text>
+            </view>
+            <view class='flex1 font_28 color_gray2'>
+              <view>{{detail.catetoryname}}</view>
+              <view class="mar-lr-10">|</view>
+              <view>{{detail.street}}</view>             
+            </view>
+            <view class='font_30 color_gray'>月售{{detail.ordernum}}单</view>
+          </view>
+          <view class='info_bottom bor_t_1' wx:if="{{detail.discount.length>0}}">            
+            <view class='flex' >
+               <text class='tag-round tag-org'>减</text>
+               <text class='font_28 font_f_f' style='width:90%;line-height:45rpx;color:#555;'><text wx:for="{{detail.discount}}" wx:for-item="discount" wx:key="id">满{{discount.full}}减{{discount.reduce}}元; </text></text>
+            </view>
+          </view>
+        </view>
+        
+      </navigator>
+    </block>
+  </view>
+  </view>

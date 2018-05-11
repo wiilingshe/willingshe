@@ -1,0 +1,268 @@
+<!--pages/menu/menu.wxml-->
+<scroll-view scroll-y="{{scroll1}}" style="width:100%;height:100%;" lower-threshold='10' bindscrolltolower="scrolltolower1">
+<view class="header font_f_h" style='z-index:1'>
+<view class='bg_red padded'>
+  <navigator class='flex' url='../store_detail/store_detail?id={{shop_id}}'>
+    <image src='{{shop.headimage}}' class='store_img' ></image>
+    <view class='info_case'>
+      <view class='flex4'>
+        <view >
+          <view class='color_white font_36'>{{shop.shopname}}</view>
+          <view class='flex1 font_26 color_white mar-t-20'>
+              <view>{{shop.catetoryname}}</view>
+              <view class="mar-lr-10">|</view>
+              <view>{{shop.street}}</view>             
+          </view>
+        </view>
+        <image src='../../images/7sjxq_2.png' style='width:23rpx;height:37rpx'></image>
+      </view>
+      <view>
+       <view class='flex mar-t-20' >
+         <text class='tag-round tag-org'>减</text>
+            <text class='font_28 font_f_f color_white' style='width:90%;line-height:45rpx;'><text wx:for="{{shop.discount}}" wx:for-item="discount" wx:key="id">满{{discount.full}}减{{discount.reduce}}元; </text></text>
+            </view>
+      </view>
+    </view>
+  </navigator>
+  <view class='mar-t-20 font_28 color_white text_c'>公告：{{shop.notice}}</view>
+</view>
+</view>
+<view class='btm'>
+  <view class='flex4 padded-lr-30 nav_list bor_b_1'>
+    <view class='flex1 font_30' style="height:100%;">
+      <view class="nav {{n_index==0?'active':''}}" data-n_index='0' bindtap="nav_n">商品</view>
+      <view class="nav {{n_index==1?'active':''}}" data-n_index='1' bindtap="nav_n">评价<text class='color_red'>（{{comment_num}}）</text></view>
+    </view>
+    <view class='flex1 font_28' bindtap='collect'>
+      <image src='../../images/sjpj_4.png' class='clo_img' wx:if="{{iscollect==0}}"></image>
+      <image src='../../images/7sjxq_3.png' class='clo_img' wx:else></image>
+      <text class="mar-l-10 {{iscollect==0?'color_block2':'color_org2'}}">收藏</text>
+    </view>
+  </view>
+<view class='flex btm_box' wx:if="{{n_index==0}}">
+  <view class="menu">
+    <scroll-view  scroll-y style="width:100%;height:100%;" >
+      <block wx:for="{{category}}" wx:key="id">
+      <view class="item" style="background:{{cindex==index?'#fff':'#f1f1f1'}};color:{{cindex==index?'#e71751':'#333'}}" data-index="{{index}}"  id="{{item.id}}" bindtap="choose_type" >
+        {{item.name}}
+      </view>
+      <!-- <view class="item" style="background:{{into_view==index?'#fff':'#f1f1f1'}};color:{{into_view==index?'#e71751':'#333'}}" data-index="{{index}}"  id="{{item.id}}" bindtap="choose_type" >
+        {{item.name}}
+      </view> -->
+    </block>
+    </scroll-view>
+  </view>
+  <!--商品列表-->
+
+  <view class='list'>
+  <scroll-view scroll-y="{{scroll2}}"  upper-threshold='10' bindscrolltoupper="scrolltoupper2" style="width:100%;height:100%;" scroll-into-view="{{into_view>0?'id'+into_view:'id'+into_view}}" bindscroll="getAllRects">
+    <block wx:for="{{category}}" wx:for-index="index1" wx:key="id">
+      <view id="id{{index1}}" class='node' data-index="{{index1}}">
+        <view class='title flex1 font_32 color_block2'>{{item.name}}<text class='font_22 mar-l-10 color_gray text_s' style='max-width:70%;'>{{item.des}}</text></view>
+          <block wx:for="{{item.goods}}" wx:for-item="items" wx:for-index="index2" wx:key="id">
+          <view class='list_item flex padded bor_b_1'  >
+            <view class='goods_img' bindtap='showGood' data-index="{{index1}}" data-num="{{index2}}">
+              <image src="{{items.image}}" mode='aspectFill' style='height:100%;' class='absolute'></image>
+              </view>
+            <view class='info mar-l-20'>
+              <view class="flex13">
+                <view bindtap='showGood' data-index="{{index1}}" data-num="{{index2}}" class="font_32 color_block2 name" style="width:{{items.label>0?'75%':'100%'}};">{{items.name}}</view>
+                <view wx:if="{{items.label>0}}">
+                  <view wx:if="{{items.label==1}}" class="status1">招牌</view>
+                  <view wx:if="{{items.label==2}}" class="status2">新品</view>
+                  <view wx:if="{{items.label==3}}" class="status3">推荐</view>
+                </view>
+              </view>
+              <view class="mar-t-20 font_24 color_gray dex">{{items.des}}</view>
+              <view class="mar-t-20 font_26 color_gray4 sale">月售{{items.ordernum}}份</view>
+              <view class='flex4 info_btm mar-t-20'>
+                <view class="font_34 color_red2">￥{{items.price}}</view>
+                <view>
+                  <view class='flex1' wx:if="{{items.option.length==0&&items.params.length==0}}">
+                    <block wx:for="{{orderRefer}}" wx:for-item="order">
+                      <block wx:if="{{order.goodsid==items.id}}">
+                        <image src='../../images/7sjxq_6.png' class="icon_img" data-id="{{items.id}}" data-name="{{items.name}}" data-price="{{items.price}}" bindtap='removeGood'></image>
+                        <view class="account">{{order.count}}</view>
+                      </block>
+                    </block>
+                    <image src='../../images/7sjxq_5.png' class="icon_img" bindtap='addGood' data-id="{{items.id}}" data-name="{{items.name}}" data-price="{{items.price}}"></image>
+                  </view>
+                  <view wx:else class='relative'>
+                    <view class="chosse_btn" bindtap='choose_spec' data-index="{{index1}}" data-num="{{index2}}">选规格</view>
+                     <block wx:for="{{cart}}" wx:for-item="cart">
+                      <block wx:if="{{cart.id==items.id}}">
+                        <view class='float'>{{cart.count}}</view>
+                      </block>
+                    </block>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </block>
+    </scroll-view>
+  </view>
+</view>
+<!--评价-->
+<view wx:if="{{n_index==1}}" class='btm_box'>
+  <scroll-view scroll-y="{{scroll2}}" style='width:100%;height:100%;' upper-threshold='10' bindscrolltoupper="scrolltoupper2" >
+     <view class='padded-b-100'>
+       <block wx:for="{{eva}}" wx:for-item="item" wx:key="id">
+          <view class='padded'>
+            <view class='flex1'>
+              <view class='headimage'><image src="{{item.headimage}}" class='absolute' mode=''></image></view>
+               <view class='flex4 right_case'>
+                <view class='font_28'>{{item.nickname}}</view>
+                <view class='font_24 color_gray'>{{item.create_time}}</view>
+              </view>
+              
+            </view>
+            <view class='btm_case'>
+              <view class='font_30 content' style='color:#444;'>{{item.content}}</view>
+              <view class=' flex flex_wrap mar-t-20' wx:if="{{item.images}}">
+                <block wx:for="{{item.images}}" wx:for-item="items">
+                  <view class='eva_image' style="margin-right:{{(index+1)%3==0?'':'2%'}}">
+                    <image src="{{items}}" class='' mode='aspectFill'></image>
+                  </view>                 
+                </block>
+              </view>
+              <view  class='reply flex9 font_28 mar-t-20' wx:if="{{item.reply}}">              
+                <view style='width:30%;color:#0b9bff;' >商家回复：</view>
+                <view style='width:70%;color:#444;'>{{item.reply}}</view>
+              </view>
+            </view>
+          </view>
+       </block>
+     </view>
+  </scroll-view>
+</view>
+<view class='' >
+  <view class='fiexd-b flex' style='z-index:22;'>
+    <view class='flex4 btn-l' style="background:#fff;">
+      <view class=' img relative'>
+        <view style='width:100%;height:100%;'>
+        <image src="../../images/7sjxq_9.png" style='width:100%;height:100%;' bindtap='cart_show'></image>
+        </view>
+        <view class='number' wx:if="{{number>0}}">{{number}}</view>
+      </view>
+      <view style="position: absolute;left:165rpx;" wx:if="{{jian==0 || total==0}}">
+        <text class='font_38 color_red' wx:if="{{type==2}}">￥{{total+box_all}}</text>
+        <text wx:else class='font_38 color_red'>￥{{total}}</text>
+        <view style="font-size:24rpx;">支持到店自取</view>
+      </view>
+      <view style="position: absolute;left:165rpx;" wx:if="{{jian!=0}}">
+        <text class='font_38 color_red' wx:if="{{type==2}}">￥{{total+box_all-jian}}</text>
+        <text wx:else class='font_38 color_red'>￥{{total-jian}}<text class='font_24 color_gray2 text_d_l mar-l-10'>￥{{total}}</text></text>
+        <view style="font-size:24rpx;">支持到店自取</view>
+      </view>
+      
+      <!-- <view style='font-size:30rpx;color:#4e4e4e;' class='mar-l-10'>
+        合计：
+        <text class='font_34 color_red' wx:if="{{type==2}}">￥{{total+box_all}}</text>
+        <text wx:else class='font_34 color_red'>￥{{total}}</text>
+      </view>  --> 
+    </view>
+    <view class='color_white btn-r font_34' bindtap='submit'>
+      预约订餐
+    </view>
+  </view>
+  <!--购物车-->
+  <view class='cart_case fiexd' style='z-index:20' wx:if="{{cart_show}}">
+    <view bindtap='cart_show' class='absolute bg_block' style='width:100%;height:700px;z-index:40;bottom:0;'></view>
+    <view class='cart ' >
+      <view class=' flex4 font_30 cart_top'>
+        <view class='font_32'>购物车</view>
+        <view bindtap='clearCart' class='flex1'><image src='../../images/11sjgwc_1.png' class='clear_img'></image>清空</view>
+      </view>
+      <view class=''>
+        <block wx:for="{{cart}}" wx:key="id">
+          <view class="item flex4 bor_b_1 padded"  data-index="{{index}}"  id="{{item.id}}"  >
+            <view class='text'>
+                <view class='font_32 text_s' style='color:#333'>{{item.name}}</view>
+                <view class='font_28' style='color:#777'>{{item.param}} {{item.option}}</view>
+            </view>
+            <view class='flex7'>
+              <view class='font_32' style='color:#ff1254'>￥{{item.price*item.count}}</view>
+              <view class='flex6 mar-l-50'>
+                <image src='../../images/7sjxq_6.png' data-index="{{index}}" data-key="{{item.name}}" style='width:50rpx;height:50rpx;' bindtap='remove2'></image>
+                  <input type='number' value='{{item.count}}' style='width:70rpx;text-align:center;' class='font_38' disabled='true'> </input>
+                <image src='../../images/7sjxq_5.png' data-index="{{index}}" data-key="{{item.name}}" style='width:50rpx;height:50rpx;' bindtap='add2'></image>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+     
+    </view> 
+  </view>
+</view>
+</view>
+</scroll-view>
+<!--选择规格-->
+<view class='pupop' wx:if="{{spec_show}}">
+  <view class='pup_spec absolute-m  box'>
+  <view>
+   <icon type='cancel' color='#555555' size='32' bindtap='hide_spec' class='icon_c'></icon>
+    <view class='text_c font_36 color_block2 spec_top'>{{good.name}}</view>
+    <view class='spec_scroll'>
+    <block wx:if="{{good.option.length>0}}">
+      <view class='padded_40'>
+      <view class='font_30 color_block2 mar-b-10'>规格：</view>
+      <radio-group bindchange="spec0">
+      <view class='flex flex_wrap padded-b'>     
+        <block wx:for="{{good.option}}" wx:for-item="option" wx:key="id">
+          <label class="r_la font_30 {{option_index==index?'on':'off'}}" >{{option.title}}<radio name="spec" value="{{index}}" ></radio></label>
+        </block>       
+      </view>
+      </radio-group>
+       </view>
+    </block>
+  <block wx:if="{{good.params.length>0}}"> 
+    <view class='padded_40'>
+    <block wx:for="{{good.params}}" wx:for-index="params_index" wx:for-item="params" wx:key="id">
+      <view class='font_30 color_block mar-b-10'>{{params.title}}：</view>
+       <radio-group bindchange="spec1" data-index="{{params_index}}">
+      <view class='flex flex_wrap padded-b' >     
+        <block wx:for="{{params.param}}" wx:for-item="param" wx:key="id"> 
+          <label class="r_la font_30 {{param_name[params_index]==param?'on':'off'}}">{{param}}<radio name="taste" value="{{param}}"></radio></label>      
+        </block> 
+      </view>
+       </radio-group>
+       </block>
+    </view>
+    </block>
+    </view> 
+  </view>  
+    <view class='flex4 pop_b bor_t_1'>
+      <view class='padded-lr-30'>
+        <text class=' font_38' style='color:#ff1254;' ><text class='font_30'>￥</text>{{good_price}}</text>
+      </view>
+      <view class='btn-pop font_36 color_white' bindtap='addToCart'>
+      加入购物车
+    </view>
+    </view>
+  </view>
+</view>
+<!--商品详情-->
+<view class='pupop' wx:if="{{good_show}}">
+  <view class='absolute' bindtap='hideGood' style='height:100%;'></view>
+  <view class='pup_good absolute-m' style='z-index:100'>
+    <view class='flex14' style='width:100%;height:100%;'>
+      <image src="{{good.image}}" class='good_img' mode='aspectFill'></image>
+      <view>
+        <view class="font_36 color_block2 padded-lr-30 mar-b-20 flex1 good_name">{{good.name}}</view>
+        <view class='flex4 padded mar-b-10'>       
+          <view class="font_30 color_red2">￥{{good.price}}</view>
+          <view>
+            <view class='flex1' wx:if="{{good.option.length==0&&good.params.length==0}}"><image wx:if="{{ifyou1==1}}" src='../../images/7sjxq_6.png' class="icon_img" bindtap='removeGood' data-id="{{good.id}}" data-name="{{good.name}}" data-price="{{good.price}}">></image><view class="account" wx:if="{{ifyou1==1}}">{{tannum}}</view><image src='../../images/7sjxq_5.png' class="icon_img" bindtap='addGood' data-id="{{good.id}}" data-name="{{good.name}}" data-price="{{good.price}}"></image></view>
+            <view wx:else>
+              <view class="chosse_btn" bindtap='show_spec'>选规格</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

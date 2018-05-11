@@ -1,0 +1,26 @@
+<!--pages/judge/judge.wxml-->
+<view class='padded-b-100'>
+<form bindsubmit="formSubmit">
+<input name="memid" value='{{memid}}' class='hid'></input>
+<input name="order_id" value='{{order_id}}' class='hid'></input>
+ 
+  <view class='padded bg_white '>
+    <textarea name="content" value='{{content}}'  placeholder='写评价...' bindinput="content"></textarea>
+  </view>
+  <view class='padded bg_white flex flex_wrap'>
+    <block wx:for="{{img}}">
+    <view class='relative' style='width:31%;height:200rpx;margin:20rpx 2% 0 0;'>
+      <image src='{{item}}' style='width:100%;height:100%;'></image>
+      <icon type='clear' size="20" class='clear' bindtap='clear' data-index="{{index}}"></icon>
+    </view>
+      
+    </block>
+    <view class='add_img flex10' bindtap='add_img'>
+      <image src='../../images/add_2.png' style='width:65rpx;height:65rpx;'></image>
+      <view class='mar-t-20 font_28 color_gray'>上传图片</view>
+    </view>
+  </view>
+  
+  <button formType="submit" class='fiexd-b  color_white font_36 btn' >发布</button>
+</form>
+</view>

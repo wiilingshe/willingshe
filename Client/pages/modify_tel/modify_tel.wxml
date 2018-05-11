@@ -1,0 +1,13 @@
+<!--pages/modify_tel/modify_tel.wxml-->
+<view class='padded'>
+  <view class='bor_b_1 flex4 item font_32 '>
+    <input type='number' placeholder='请输入手机号' bindinput='outInput'></input>
+  </view>
+  <view class='bor_b_1 flex4 item font_32 '>
+    <input type='number' placeholder='请输入验证码' style='width:60%;' bindinput='codeInput'></input>
+    <view class='btn-s color_red' bindtap='takeCode' wx:if="{{getcode}}">获取验证码</view>
+    <view class='read_btn' wx:else>{{time}}秒后重新获取</view>
+  </view>
+  <view class='btn-m bg_red color_white' style='' bindtap='modifyT'>确定</view>
+</view>
+

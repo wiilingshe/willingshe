@@ -1,0 +1,44 @@
+<view class="list">
+	<view class="left">姓名</view>
+	<view>
+		<input placeholder='名字最多10个字' bindinput="getname" value="{{name}}"></input>
+	</view>
+</view>
+<view class="list">
+	<view class="left">电话</view>
+	<view>
+		<input placeholder='请输入电话号码' bindinput="getphone" value="{{phone}}"></input>
+	</view>
+</view>
+<view class="list" bindtap="getweizhi">
+	<view class="left">地区</view>
+	<view>
+		<input placeholder='省份 城市 县区' value="{{inputTxt}}" value="{{inputTxt}}" disabled="true"></input>
+	</view>
+</view> 
+<view class="list">
+	<view class="left">地址</view>
+	<view>
+		<input placeholder='请输入地址' bindinput="getaddress" value="{{address}}"></input>
+	</view>
+</view>
+<checkbox-group bindchange="checkboxChange">
+  <label class="checkbox">
+    <checkbox value="1"/>设置成默认收货地址
+  </label>
+</checkbox-group>
+<view bindtap="addAddress" class="addAddress">保存</view>
+<view class="selectqu" wx:if="{{ifselect}}">
+	<scroll-view scroll-y="true">
+		<view style="color:{{provincecode==item.code?'#e71751':'#333'}}" wx:for="{{array}}" bindtap="getshi" id="{{item.code}}" data-name="{{item.name}}">{{item.name}}</view>
+	</scroll-view>
+	<scroll-view scroll-y="true">
+		<view style="color:{{citycode==item.code?'#e71751':'#333'}}" wx:for="{{array2}}" bindtap="getqu" id="{{item.code}}" data-name="{{item.name}}">{{item.name}}</view>
+	</scroll-view>
+	<scroll-view scroll-y="true">
+		<view style="color:{{areacode==item.code?'#e71751':'#333'}}" wx:for="{{array3}}" bindtap="comfirm" id="{{item.code}}" data-name="{{item.name}}">{{item.name}}</view>
+	</scroll-view>
+</view>
+<view class="queding" bindtap="queding"  wx:if="{{ifselect}}">
+	<text>确定</text>
+</view>

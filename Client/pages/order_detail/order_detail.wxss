@@ -1,0 +1,16 @@
+/* pages/order_detail/order_detail.wxss */
+page{width: 100%;min-height: 100%;background: #fff;box-sizing: border-box;}
+.top{height: 300rpx;padding: 20rpx 0;width: 100%;}
+.headimg{width: 135rpx;height:135rpx;border-radius: 50%;margin: 0 auto;}
+
+.btn_case{padding-bottom: 30rpx;}
+.btn1{width: 165rpx;border: 1rpx solid #999;color: #555;border-radius: 3rpx;text-align: center;height: ;line-height: 70rpx;}
+.btn2{width: 350rpx;background:#e71751;border: 1rpx solid #e71751;color: #fff;border-radius: 3rpx;text-align: center;height: 70rpx;line-height: 70rpx;margin-left: 30rpx;}
+.btn3{width: 165rpx;border: 1rpx solid #e71751;color: #e71751;border-radius: 3rpx;text-align: center;height: 70rpx;line-height: 70rpx;}
+
+.title{line-height: 88rpx;}
+.cont{line-height: 95rpx;color:#888;}
+
+list_case{height: 90rpx; display: flex;flex-direction: column;justify-content: center;}
+.item .left{width: 70%;}
+.item .right{width: 28%;font-size: 26rpx;color: #a6a6a6;}

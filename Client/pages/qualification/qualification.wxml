@@ -1,0 +1,18 @@
+<!--pages/qualification/qualification.wxml-->
+<view class='title font_32 color_block2 padded-lr-30'>食品安全监督公示</view>
+<view class='flex1 grade padded-lr-30 bor_t_1'>
+  <image src="{{detail.foodlicense}}" class='grade_img'></image>
+ <!-- <view class='mar-l-30 font_32 color_block2'>检查结果：{{}}</view>-->
+</view>
+<view class='info_item'>单位名称：{{detail.shopname}}</view>
+<view class='info_item'>经营地址：{{detail.province}}{{detail.city}}{{detail.county}}{{detail.street}}{{detail.address}}</view>
+<view class='info_item'>法定代表人：{{detail.realname}}</view>
+<view class='info_item'>许可证号：{{detail.licensekey}}</view>
+<view class='info_item'>经营范围：{{detail.scope}}</view>
+<view class='info_item'>有效期：{{detail.term}}</view>
+<view class='bor_t_20'>
+  <view class='title font_32 color_block2 padded-lr-30'>商家从业资质</view>
+  <view class='padded'>
+    <image src="{{detail.license}}" class="img {{(index+1)%3==0?'':'mar'}}"></image>
+  </view>
+</view>

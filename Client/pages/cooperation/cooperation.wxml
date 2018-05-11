@@ -1,0 +1,52 @@
+<!--pages/cooperation/cooperation.wxml-->
+<view class='font_f_m'>
+  <view class='header relative'>
+    <image src='../../images/21jmhz_1.png' class='bg_img absolute-m'></image>
+    <text class='absolute-m font_f_m color_white flex6 font_40'>商家入驻加盟合作</text>
+  </view>
+  <view class='summary'>{{summary}}</view>
+  <view class='word'>成为合作商户，只需三步</view>
+  <view class='mar-t-20 flex3 icon_case'>
+      <view class='text_c'>
+        <image src='../../images/22jmhzrz_1.png' class='icon_img'></image>
+        <view class='mar-t-20 font_34 color_block2 '>申请</view>
+      </view>
+      <view class='text_c'>
+        <image src='../../images/22jmhzrz_2.png' class='icon_img'></image>
+        <view class='mar-t-20 font_34 color_block2 '>审批</view>
+      </view>
+      <view class='text_c'>
+        <image src='../../images/22jmhzrz_3.png' class='icon_img'></image>
+        <view class='mar-t-20 font_34 color_block2 '>合作</view>
+      </view>
+  </view>
+  <view class='btn_case' wx:if="{{show}}">
+     <view class='btn-m bg_red color_white font_36' bindtap='show_form'>我要入驻</view>
+  </view>
+ <form wx:if="{{!show}}" bindsubmit="submit">
+ <input name="access_token" value='{{access_token}}' hidden></input>
+  <view class='input_case'>
+    <view class=''>
+        <view class='flex1 text'><image src='../../images/22jmhzrz_4.png' style='width:20rpx;height:20rpx;margin-right:12rpx;'></image>手机号</view>
+        <view class='flex4 fill'>
+          <input placeholder='请输入手机号' name="mobile" type='number' bindinput='input' class='input' placeholder-class='plac' style='width:62%;'></input>
+          <view class='code_btn' bindtap='sendCode' wx:if="{{btn}}">发送验证码</view>
+          <view class='read_btn' wx:else>{{time}}秒后重新获取</view>
+        </view>
+    </view>
+      <view class=''>
+        <view class='flex1 text'><image src='../../images/22jmhzrz_4.png' style='width:20rpx;height:20rpx;margin-right:12rpx;'></image>验证码</view>
+        <view class='flex1 fill'>
+          <input placeholder='请输入验证码' name="code" type='number' class='input' placeholder-class='plac'></input>
+        </view>
+    </view>
+    <view class=''>
+        <view class='flex1 text'>代理商手机号</view>
+        <view class='flex1 fill'>
+          <input placeholder='请输入代理商手机号' name="agent" type='number' class='input' placeholder-class='plac'></input>
+        </view>
+    </view>
+    <button class='btn-m bg_red color_white font_36' form-type='submit'>立刻入驻</button>
+   </view>
+ </form>
+</view>

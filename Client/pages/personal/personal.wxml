@@ -1,0 +1,45 @@
+<!--pages/personal/personal.wxml-->
+<view class='mar-t-20 padded-l-30 bg_white'>
+    <view class=" flex4 item bor_b_1 item padded-r-30" >
+      <view class='font_32 color_block2' >昵称</view>                         
+      <view class="flex4 color_gray2">
+        {{personal.nickname}}      
+      </view>  
+    </view>
+    <view class=" flex4 item bor_b_1 item padded-r-30" >
+      <view class='font_32 color_block2' >性别</view>                         
+      <view class="flex4 font_32 color_gray2">        
+          <view class="picker">{{array[personal.sex]}}</view>   
+      </view>  
+    </view>
+  
+     <view class=" flex4 item bor_b_1 item padded-r-30" >
+      <view class='font_32 color_block2' >绑定手机</view>                         
+      <view class="flex4 font_32 color_gray2">
+         <block wx:if="{{personal.mobile}}">
+        {{personal.mobile}}
+      </block>
+      <block wx:else>
+        <navigator url='../modify_tel/modify_tel'>绑定手机号</navigator>
+      </block>
+      </view>  
+    </view>
+    <!--
+     <view class=" flex4 padded bor_b_1 item" bindtap='phone'>
+      <view class='font_32 color_block2' style='line-height:40rpx;'>
+        <view>绑定手机</view>
+        <view>{{phone}}</view>
+      </view>                         
+      <view class="flex4">
+        <navigator class='font_32 color_org' url='../modify_tel/modify_tel'>更换</navigator>    
+        <image src="../../images/icon-left-2.png" style='width:25rpx;height:35rpx;margin-left:20rpx;'></image>
+      </view>  
+    </view>
+    -->
+</view>
+
+<view class='padded pupop' style="display:{{status==1?'block':'none'}}">
+  <input type='text' placeholder='输入昵称' class='font_32 bor_b_1' bindblur='outInput'></input>
+  <text class='font_28'>注意：2-20个字符，支持中英文，数字及‘-‘</text>
+  <view class='btn-m bg_org color_white' style='border-radius:100rpx;' bindtap='modifyN'>确定</view>
+</view>

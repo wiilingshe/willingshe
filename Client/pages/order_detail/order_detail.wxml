@@ -1,0 +1,59 @@
+<!--pages/order_detail/order_detail.wxml-->
+<view class='container '>
+  <view>
+    <view class='flex11 top text_c'>
+      <image class='headimg' src="{{order.headimage}}"></image>
+      <view class='font_36 color_block2'><text wx:if="{{order.status==0}}">等待支付</text><text wx:if="{{order.status>0&&order.iscomment==0}}">等待评价</text><text wx:if="{{order.status>0&&order.iscomment==1}}">已完成</text></view>
+      <view class='font_30 color_gray4'><text>逾期未支付，订单将自动取消</text></view>
+    </view>
+    <view class='flex6 btn_case font_30'>
+      <view class='btn1' wx:if="{{order.status==0}}" bindtap='cancel2' id="{{order.id}}">取消订单</view>
+      <view class='btn2'wx:if="{{order.status==0&&deadtime!==null}}">去支付(还剩{{deadtime}})</view>
+      <view class='btn3' wx:if="{{order.status>0&&order.iscomment==0}}">评价</view>
+    </view>
+  </view>
+  
+  <view class='bg_white bor_t_20'>
+    <view class='padded2 flex7 bor_b_1'>
+      <image src='{{order.headimage}}' class='img-round'></image>
+      <text class='font_34 color_block'>{{order.shopname}}</text>
+    </view>
+    <view  class=' goods_case bor_b_1 padded-tb-20'>
+      <block wx:for="{{order.order_goods}}">
+        <view class='padded-lr-30 list_case '>
+          <view class='item  flex4 '>
+            <view class='left flex7 text_s font_32' style='color:#444;'>
+              <view>{{item.goods_name}}</view>
+            </view>
+            <view class='right flex4'>
+              <view class='font_34 color_gray'>X{{item.goods_num}}</view>
+              <view class='font_32 color_block'>￥{{item.goods_price}}</view>
+            </view>
+          </view>
+          <view class='font_28 color_gray3 word'><block wx:if="{{item.param||item.option}}">({{item.param}} {{item.spec_name}})</block></view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <block wx:if="{{order.discount_title}}">
+  <view class='bg_white padded bor-b-1'>
+    <view class='flex' >
+        <text class='tag-round tag-org'>减</text>
+        <text class='font_28 font_f_f' style='width:90%;line-height:45rpx;color:#555;'><text>{{order.discount_title}}满{{discount.full}}减{{discount.reduce}}元;</text></text>
+    </view>
+  </view>
+  </block>
+    <view  class='font_32 color_block2  bg_white bor_t_20'>
+    <view class='padded-lr-30 bor_b_1 title'>订单信息</view>
+       <view class='padded-lr-30 bor_b_1 cont'>
+          订单号：{{order.order_sn}}
+       </view>
+        <view class='padded-lr-30 bor_b_1 cont'>
+          支付方式：<block wx:for="pay"><block wx:if="order.pay_type==item.id">{{item.name}}</block></block>
+       </view>
+       <view class='padded-lr-30 bor_b_1 cont'>
+          下单时间：{{order.create_time}}
+       </view>
+    </view>
+   
+</view>

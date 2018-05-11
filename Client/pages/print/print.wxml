@@ -1,0 +1,5 @@
+<view class='title'>添加打印机</view>
+<input placeholder='打印机编码(查看打印机底部标签）'></input>
+<input placeholder='KEY(查看打印机底部标签）'></input>
+<input placeholder='备注(例如：XXd店铺打印机)'></input>
+<button>确定</button>

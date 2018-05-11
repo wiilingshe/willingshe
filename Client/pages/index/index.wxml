@@ -1,0 +1,86 @@
+<!--pages/index/index.wxml-->
+<view class="header padded-b">
+  <view class='search_case mar-b-10 font_f_m' >
+    <navigator bindtap="selectLocation" class="picker font_34 flex1" url="../address/address?current={{location}}">
+    <image src='../../images/1sy_1.png' style='width:33rpx;height:40rpx;'></image>
+    <view class='font_34 mar-l-10 text_s' style='max-width:65%;'>{{location}}</view>  
+    <image src='../../images/1sy_2.png' style='width:25rpx;height:16rpx;margin-left:8rpx;'></image>
+    </navigator>
+      <view class='font_24 flex10' bindtap='scan' style="width:100rpx;">
+        <image src='../../images/1sy_3.png' style='width:38rpx;height:35rpx;' class='mar-b-10'></image>
+        <view class=''>点餐</view>
+      </view>
+  </view>
+  <view class='padded-lr-30 font_f_h'>
+    <navigator class='search' url='../search/search'>
+        <image src='../../images/1sy_4.png'></image>
+        <view class='font_30 color_gray mar-l-10'>搜索商家、商品名称</view>
+    </navigator>  
+  </view>
+</view>
+<swiper indicator-dots="true" indicator-color="#f0f0f0" indicator-active-color="#fe7e00"
+   class="swiper2">
+   <block wx:for="{{category}}" wx:key="id">
+    <swiper-item class="nav_case font_f_m" >
+      <block wx:for="{{item}}" wx:for-item="items" wx:key="id" wx:if="{{items.id}}">
+       <!--<navigator url="../list/list?id={{item.id}}">
+          <image src="{{item.images}}" mode="aspectFit"></image>
+          <text>{{item.name}}</text></navigator>-->
+        <view bindtap="navList" data-id="{{items.id}}" data-name="{{items.name}}">
+          <image src="{{items.image}}" mode="aspectFit"></image>
+          <text>{{items.name}}</text></view>
+      </block>
+     </swiper-item>
+    </block>
+</swiper>
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="true" interval="3000" duration="500" class="swiper1 padded-lr-30">
+  <block wx:for="{{imgUrls}}" wx:key="id">
+    <swiper-item>
+      <image src="{{item.pic}}" class="slide-image" mode="scaleToFill"/>
+    </swiper-item>
+  </block>
+</swiper>
+<view class='padded flex4'>
+  <navigator url='../store_detail/store_detail?id={{newStore.shop_id}}' class='nav_img_case'>
+    <image src="{{newStore.image}}" class='nav_img' ></image>
+  </navigator>
+  <navigator url='../otherList/otherList?from=2' class='nav_img_case'>
+    <image src="{{newDish.image}}" class='nav_img'></image>
+  </navigator>
+</view>
+<view class="store">
+  <view class='title'>
+    <view class='line'></view>
+    <view class="word">推荐商家</view>
+    <view class='line'></view>
+  </view>
+  <view class="store_case font_f_h">
+    <block wx:for="{{store}}" wx:key="id" wx:for-item="detail">
+      <navigator class="item flex bor_t_1" url="../menu/menu?id={{detail.id}}"  data-id="{{detail.id}}">
+        <image src="{{detail.headimage}}"></image>
+        <view class='store_info '>
+          <view class='info_top flex5 '>
+            <view class='flex4'>
+              <text class="name font_34 color_block">{{detail.shopname}}</text>
+              <text class="range font_f_f">{{detail.distant}}</text>
+            </view>
+            <view class='flex1 font_28 color_gray2'>
+              <view>{{detail.catetoryname}}</view>
+              <view class="mar-lr-10">|</view>
+              <view>{{detail.street}}</view>             
+            </view>
+            <view class='font_30 color_gray'>月售{{detail.ordernum}}单</view>
+          </view>
+          <view class='info_bottom bor_t_1' wx:if="{{detail.discount.length>0}}">            
+            <view class='flex' >
+               <text class='tag-round tag-org'>减</text>
+               <text class='font_28 font_f_f' style='width:90%;line-height:45rpx;color:#555;'><text wx:for="{{detail.discount}}" wx:for-item="discount" wx:key="id">满{{discount.full}}减{{discount.reduce}}元; </text></text>
+            </view>
+          </view>
+        </view>
+        
+      </navigator>
+    </block>
+  </view>
+</view>

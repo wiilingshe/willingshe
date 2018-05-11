@@ -1,0 +1,8 @@
+/* pages/search/search.wxss */
+.header{padding: 0 30rpx;height: 128rpx;
+display: flex;align-items: center;justify-content: space-between;}
+.header image{width: 40rpx ;height: 40rpx;padding-right: 10rpx;}
+.search{width: 80%;background-color: #fff;height: 2.4rem;padding: 0 20rpx;}
+.header .input1{font-size: 32rpx;padding: 0 10rpx;width: 100%;line-height: 2.4rem;min-height: 2.4rem;}
+
+

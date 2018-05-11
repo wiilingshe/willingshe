@@ -1,0 +1,60 @@
+/* pages/submitOrder/submitOrder.wxss */
+page{width: 100%;min-height: 100%;background: #f6f6f6;box-sizing: border-box;}
+.radio-group{
+	background-color: #fff;
+	padding-top: 30rpx;
+	padding-left: 30rpx;
+}
+.list_case{height: 90rpx; display: flex;flex-direction: column;justify-content: center;}
+.item .left{width: 70%;}
+.item .right{width: 28%;font-size: 26rpx;color: #a6a6a6;}
+textarea{width: 85%;height: 200rpx;padding: 20rpx;box-sizing: border-box;border: 1rpx solid #ddd;margin-left: 20rpx;font-size: 32rpx;}
+.btn-l{padding: 0 30rpx;}
+.all{font-size: 30rpx;color: #444;height: 110rpx;}
+.word{height: 30rpx;}
+
+.send{height: 100rpx;}
+.send image{width: 18rpx;height: 35rpx;margin-left: 30rpx;}
+
+.status{position: absolute;right: 20rpx;top:20rpx;}
+
+.pupop{background: rgba(0,0,0,0.5)}
+.pup_send{position: absolute;width: 100%;bottom:0;left: 0;background: #fff;}
+.pup_send .item{height: 60rpx;}
+.choose_img{width: 62rpx;height: 43rpx;}
+.add-list{
+	font-size: 26rpx;
+	padding-bottom: 20rpx;
+	padding-top: 20rpx;
+	background-color: #fff;
+	margin-bottom: 20rpx;
+}
+.add-list .namephone{
+	display: flex;
+	-webkit-display:flex;
+	justify-content: space-between;
+	font-size: 26rpx;
+}
+.add-list .namephone .name{
+	margin-left: 30rpx;
+}
+.add-list .namephone .phone{
+	margin-right: 30rpx;
+}
+.add-list .address{
+	/*border-bottom: 2rpx solid #eee;*/
+	padding-bottom: 20rpx;
+	margin-top: 20rpx;
+	margin-right: 30rpx;
+	margin-left: 30rpx;
+	font-size: 28rpx;
+}
+.add-list .caozuo{
+	display: flex;
+	-webkit-display:flex;
+	justify-content: flex-end;
+}
+.add-list .caozuo view{
+	margin-right: 30rpx;
+	margin-top: 20rpx;
+}

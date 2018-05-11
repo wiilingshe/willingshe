@@ -1,0 +1,4 @@
+/* pages/service/service.wxss */
+.icon_img{width:210rpx;height:200rpx;margin-top: 160rpx;}
+.tel{font-size: 46rpx;color: #333;line-height: 55rpx;margin:50rpx 0 135rpx;}
+.btn{width: 67%;height: 87rpx;line-height: 87rpx;font-size: 46rpx;color: #fff;border-radius: 10rpx;background: #e71751;margin: auto;}

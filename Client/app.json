@@ -1,0 +1,67 @@
+{
+  "pages":[ 
+    "pages/index/index",
+    "pages/submitOrder/submitOrder",
+    "pages/addAddress/addAddress",
+    "pages/addressLists/addressLists",
+    
+    "pages/search/search", 
+    "pages/list/list",
+    "pages/shopList/shopList",
+    "pages/otherList/otherList",
+    "pages/center/center",
+    "pages/store_detail/store_detail",
+    "pages/qualification/qualification",
+    "pages/cooperation/cooperation",
+    "pages/fill/fill",
+    "pages/myCollection/myCollection",
+    "pages/personal/personal",
+    "pages/menu/menu",
+    "pages/about_us/about_us",
+    "pages/service/service",
+    "pages/submit_success/submit_success",
+    "pages/my_order/my_order",
+    "pages/judge/judge",
+    "pages/modify_tel/modify_tel",
+    "pages/order_detail/order_detail",
+    "pages/print/print",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"#e71751",
+    "navigationBarBackgroundColor": "#e71751",
+    "navigationBarTitleText": "搜单网",
+    "navigationBarTextStyle":"white"   
+  },
+  "tabBar": {
+    "color": "#4e4e4e",
+    "selectedColor": "#e71751",
+    "backgroundColor": "#fff",
+    "list": [   
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath":"images/tar-1-1.png",
+        "selectedIconPath":"images/tar-1-2.png"
+      },
+      {
+        "pagePath": "pages/list/list",
+        "text": "附近",
+        "iconPath": "images/tar-2-1.png",
+        "selectedIconPath": "images/tar-2-2.png"
+      },
+      {
+        "pagePath": "pages/my_order/my_order",
+        "text": "订单",
+        "iconPath": "images/tar-3-1.png",
+        "selectedIconPath": "images/tar-3-2.png"
+      },
+      {
+        "pagePath": "pages/center/center",
+        "text": "我的",
+        "iconPath": "images/tar-4-1.png",
+        "selectedIconPath": "images/tar-4-2.png"
+      }
+    ]
+  }
+}

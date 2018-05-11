@@ -1,0 +1,20 @@
+/* pages/otherList/otherList.wxss */
+.header{padding: 0 30rpx;height: 3.2rem;
+display: flex;align-items: center;justify-content: space-between;}
+.header image{width: 40rpx ;height: 40rpx;padding-right: 10rpx;}
+.search{width: 80%;background-color: #fff;height: 2.4rem;padding: 0 20rpx;}
+.header .input1{font-size: 32rpx;padding: 0 10rpx;width: 80%;line-height: 2.4rem;min-height: 2.4rem;}
+.picker{white-space:nowrap; height: 60rpx;line-height: 60rpx;}
+.choose_case{width: 100%;background-color: #fff;height: 98rpx;}
+.choose_case image{width: 25rpx;height: 15rpx;margin-left: 10rpx;}
+.choose_case .item{width: 33.3%;height: 70%;font-size: 34rpx;color: #333;font-family: "Microsoft YaHei";}
+.choose_case .line{width: 0rpx;height: 70%;border-left:1rpx solid #f0f0f0;}
+.choose_case .item.active{font-weight: 600;}
+
+.good_item{border-bottom: 20rpx solid #f2f2f2;}
+.shop_img{width: 85rpx;height:85rpx;}
+.goods_img{width: 165rpx;height:165rpx;}
+.down_img{width: 30rpx;height:15rpx;margin-left: 15rpx;}
+.info{height:165rpx;}
+.range{padding: 0 8rpx;line-height: 35rpx;background: #ddd;border-radius: 3rpx;font-size: 22rpx;}
+.down_case{height: 85rpx;}

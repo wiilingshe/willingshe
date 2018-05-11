@@ -1,0 +1,36 @@
+<!--pages/myCollection/myCollection.wxml-->
+<view class="store_case">
+<block wx:if="{{store.length>0}}">
+    <block wx:for="{{store}}" wx:key="id" wx:for-item="detail">
+      <navigator class="item flex mat-b-20" url="../menu/menu?id={{detail.id}}"  data-id="{{detail.id}}">
+        <image src="{{detail.images}}"></image>
+        <view class='store_info '>
+          <view class='info_top flex5 '>
+            <view class='flex4'>
+              <text class="name font_34 color_block">{{detail.shopname}}</text>
+              <text class="range font_f_f">{{detail.distant}}</text>
+            </view>
+            <view class='flex1 font_28 color_gray2'>
+              <view>小吃快餐</view>
+              <view class="mar-lr-10">|</view>
+              <view>车陂</view>             
+            </view>
+            <view class='font_30 color_gray'>月售{{detail.sales_num}}单</view>
+          </view>
+          <view class='info_bottom bor_t_1' wx:if="{{detail.discount.length>0}}">            
+            <view class='flex' >
+               <text class='tag-round tag-org'>减</text>
+              <text class='font_28 font_f_f' style='width:90%;line-height:45rpx;color:#555;'><text wx:for="{{detail.discount}}" wx:for-item="discount" wx:key="id">满{{discount.full}}减{{discount.reduce}}元; </text></text>
+            </view>
+          </view>
+        </view>
+        
+      </navigator>
+    </block>
+ </block>
+ <block wx:else>
+  <view class='absolute-m color_org text_c font_30' style='height:30rpx;'>   
+    <view>还没有收藏任何店铺</view>
+  </view> 
+ </block>
+  </view>

@@ -1,0 +1,11 @@
+<!--pages/search/search.wxml-->
+
+<view class="header bg_red">
+  <view class='search flex1'>
+      <image src='../../images/1sy_4.png'></image>
+      <input placeholder="搜索商品、商家名称" class="input1" placeholder-style="color: #303030;" placeholder-class="font_32"  bindinput="input"/>      
+  </view>
+  <view class="font_38 color_white" bindtap='search'>搜索</view>
+</view>
+
+  

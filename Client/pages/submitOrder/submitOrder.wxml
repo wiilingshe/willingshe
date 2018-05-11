@@ -1,0 +1,122 @@
+<!--pages/submitOrder/submitOrder.wxml-->
+<view wx:if="{{ifaddress == 0}}">
+  <view class='container'>
+  <form bindsubmit='submit'>
+  <input name="type" value='{{type}}' class='hid'></input>
+  <input name="access_token" value='{{access_token}}' class='hid'></input>
+  <input name="shop_id" value='{{shop_id}}' class='hid'></input>
+  <input name="type" value='{{type}}' class='hid'></input>
+    <block wx:if="{{type<3}}">   
+      <picker mode="time" name="book_time" value="{{send_time}}" start="{{start_time}}" end="{{end_time}}" bindchange="bindTimeChange">
+      <view class='flex4 padded2 bg_white font_30 color_block bor_b_1 picker'>
+          <view class=''>        
+              <text>预约时间</text>                            
+          </view>
+          <view class='color_org flex1'>
+            <text >大约{{send_time}}到达</text>    
+            <image src='../../images/12tjdd_1.png' style='width:15rpx;height:25rpx;' class='mar-l-10'></image>
+          </view>
+         
+        </view>
+        </picker> 
+    </block>
+    <view class='bg_white padded flex ' wx:if="{{type==2}}">
+      <view class='font_32 color_block2' style="margin-right:20rpx;">地址</view>
+      <text class="font_32" style="width:550rpx;overflow-x:hidden;" bindtap="selectaddress">{{address}}</text>
+      <view style="color:#666;margin-left:20rpx;"><image src='../../images/12tjdd_1.png' style='width:15rpx;height:25rpx;' class='mar-l-10'></image></view>
+    </view>
+    <view class='bg_white padded flex'>
+      <view class='font_32 color_block2'>备注</view>
+      <textarea bindinput='input' name="preference" placeholder='请填写好您的姓名和联系方式，如需配送，请填写好房间号' value="{{remarks}}"></textarea>
+    </view>
+    <view class='bg_white mar-t-20'>
+      <view class='padded2 flex7 bor_b_1'>
+        <image src='{{shop.images}}' class='img-round'></image>
+        <text class='font_34 color_block'>{{shop.shopname}}</text>
+      </view>
+      <view  class=' goods_case bor_b_1 padded-tb-20'>
+        <block wx:for="{{list}}">
+          <view class='padded-lr-30 list_case '>
+            <view class='item  flex4 '>
+              <view class='left flex7 text_s font_32' style='color:#444;'>
+                <view>{{item.name}}</view>
+              </view>
+              <view class='right flex4'>
+                <view class='font_34 color_gray'>X{{item.count}}</view>
+                <view class='font_32 color_block'>￥{{item.total}}</view>
+              </view>
+            </view>
+            <view class='font_28 color_gray3 word'><block wx:if="{{item.param||item.option}}">({{item.param}} {{item.option}})</block></view>
+          </view>
+        </block>
+      </view>
+    </view>
+    <block wx:if="{{discount}}">
+    <view class='bg_white padded bor-b-1'>
+      <view class='flex' >
+          <text class='tag-round tag-org'>减</text>
+          <text class='font_28 font_f_f' style='width:90%;line-height:45rpx;color:#555;'><text>满{{discount.full}}减{{discount.reduce}}元;</text></text>
+      </view>
+    </view>
+    </block>
+    <block wx:if="{{shop.issend==1}}">
+     <!--  <view class='send flex4 bg_white padded-lr-30 bor_b_1 font_32 color_block2' bindtap='showSend'>
+        <view>{{send_way[way]}}</view>
+        <view class='flex1'><text wx:if="{{fee}}">￥{{fee}}</text><image src='../../images/8sjxx_3.png' ></image></view>
+      </view> -->
+      <radio-group class="radio-group" bindchange="radioChange">
+        <label class="radio">
+          <radio value="2" checked="{{type==1}}"/>
+          <text class="font_32">不接受配送</text>
+        </label>
+        <label class="radio mar-l-30">
+          <radio value="1" checked="{{type==2}}"/>
+          <text class="font_32">配送费 ￥{{shop.send_fee}}</text>
+        </label>
+      </radio-group>
+    </block>
+    <view class='bg_white flex12 text_r all padded-lr-30'>
+      <text class='mar-l-30'>订单￥{{total>0?total:0.01}}</text>   <text class='mar-l-30' wx:if="{{discount}}">优惠￥{{discount}}</text><text class='mar-l-30'>待支付￥{{total-discount+fee>0?total-discount+fee:0.01}}</text>
+    </view>
+   <view class='fiexd-b flex' style='z-index:100;'>
+      <view class='flex4 btn-l'>
+        <view style='font-size:36rpx;color:#333;' class='flex'>
+          待支付：
+          <text class='font_36 color_red flex'>￥{{total-discount+fee>0?total-discount+fee:0.01}}</text>            
+        </view>  
+      </view>
+      <button class='color_white btn-r font_34' style='border:none;border-radius:0;' form-type='submit'>
+        提交订单
+      </button>
+    </view>
+    </form>
+  <!--  <view class='pupop'wx:if="{{send_show}}">
+      <view  class='pup_send'>
+         <view class='padded text_c font_36 color_block2'>选择配送费</view>
+         <view class='font_32 color_gray4'>
+            <view class='flex4 bor_b_1 padded2 item' data-id="0" bindtap='chooseSend'><text>不接受配送</text><view><image src='../../images/choose.png' class='choose_img' wx:if="{{way==0}}" ></image></view></view>
+             <view class='flex4 padded2 item' data-id="1" bindtap='chooseSend'><text>配送费 ￥{{shop.send_fee}}</text><view><image src='../../images/choose.png' class='choose_img' wx:if="{{way==1}}"></image></view></view>
+         </view>
+      </view>
+   </view> -->
+  </view>
+</view>
+<view wx:else>
+  <view class="add-list" wx:for="{{addressLists}}">
+    <view bindtap="select" data-address="{{item.province}}{{item.city}}{{item.country}}{{item.detail}}">
+      <view class="namephone">
+        <view class="name">{{item.name}}</view>
+        <view class="phone">{{item.mobile}}</view>
+      </view>
+      <view class="address">{{item.province}}{{item.city}}{{item.country}}{{item.detail}}
+        <text wx:if="{{item.isdefault==1}}" style="color:red;">（默地址认收货）</text>
+      </view>
+    </view>
+    <!-- <view class="caozuo">
+      <view bindtap="edit" id="{{item.address_id}}" data-name="{{item.name}}" data-phone="{{item.mobile}}" data-province="{{item.province}}" data-city="{{item.city}}" data-country="{{item.country}}" data-detail="{{item.detail}}">编辑</view>
+      <view bindtap="delete" id="{{item.address_id}}">删除</view>
+    </view> -->
+  </view>
+</view>
+
+
