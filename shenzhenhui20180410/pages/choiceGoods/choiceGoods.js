@@ -78,38 +78,78 @@ Page({
   },
   onClickButton: function (e) {
     let that = this;
-    if(app.globalData.ifzhuce == 0){
-      wx.navigateTo({
-        url:'../login/login'
-      })
-    }else{
-      if(this.data.zhuheid == ''){
-        wx.showToast({
-          title: '请选择规格',
-          duration: 2000
-        });
-        return false;
-      }else{
-        wx.getStorage({
-        key: 'access_token',
-        success: function(res) {
-            wx.request({
-              url:app.data.url + '/api/cart/add',
-              method:'POST',
-              data:{access_token:res.data,id:that.data.detailList.id,total:that.data.num,specid:that.data.zhuheid},
-              success:function(res){
-                if(res.data.code == 1){
-                  wx.showToast({
-                    title: '添加成功',
-                    duration: 2000
-                  });
-                }
+    // wx.removeStorage({
+    //   key: 'access_token',
+    //   success: function(res) {
+    //     console.log(res.data)
+    //   } 
+    // })
+    wx.getStorage({
+      key:'access_token',
+      success:function(res1){
+        console.log(res1.data)
+        if(that.data.zhuheid == ''){
+          wx.showToast({
+            title: '请选择规格',
+            duration: 2000
+          });
+          return false;
+        }else{
+          wx.request({
+            url:app.data.url + '/api/cart/add',
+            method:'POST',
+            data:{access_token:res1.data,id:that.data.detailList.id,total:that.data.num,specid:that.data.zhuheid},
+            success:function(res){
+              if(res.data.code == 1){
+                wx.showToast({
+                  title: '添加成功',
+                  duration: 2000
+                });
               }
-            })
-          } 
+            }
+          })
+        }
+      },
+      fail(res){
+        wx.navigateTo({
+          url:'../login/login'
         })
       }
-    }
+    })
+    // if(app.globalData.ifzhuce == 0){
+    //   wx.navigateTo({
+    //     url:'../login/login'
+    //   })
+    // }else{
+    //   if(this.data.zhuheid == ''){
+    //     wx.showToast({
+    //       title: '请选择规格',
+    //       duration: 2000
+    //     });
+    //     return false;
+    //   }else{
+    //     wx.getStorage({
+    //     key: 'access_token',
+    //     success: function(res) {
+    //         wx.request({
+    //           url:app.data.url + '/api/cart/add',
+    //           method:'POST',
+    //           data:{access_token:res.data,id:that.data.detailList.id,total:that.data.num,specid:that.data.zhuheid},
+    //           success:function(res){
+    //             if(res.data.code == 1){
+    //               wx.showToast({
+    //                 title: '添加成功',
+    //                 duration: 2000
+    //               });
+    //             }
+    //           }
+    //         })
+    //       } 
+    //     })
+    //   }
+    // }
+
+
     // switch (e.currentTarget.dataset.index) {
     //   case '0':
     //     that.setData({
@@ -200,14 +240,6 @@ Page({
         key: 'access_token',
         success: function(res) {
             console.log(res.data)
-            // wx.request({
-            //   url:app.data.url+'/api/order/place',
-            //   method:'POST',
-            //   data:{access_token:res.data,type:1,spec_id:that.data.zhuheid,count:1,address_id:1},
-            //   success:function(res){
-
-            //   }
-            // })
             wx.navigateTo({
               url:'../orderform/orderform?type=1&spec_id='+that.data.selectedinfo.id+'&count='+that.data.num
             })

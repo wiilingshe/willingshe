@@ -116,15 +116,28 @@ Page({
     
   },
   getcoupon(){
-    if(app.globalData.ifzhuce == 0){
-      wx.navigateTo({
-        url:'../login/login'
-      })
-    }else{
-      wx.navigateTo({
-        url:'../coupon/coupon'
-      })
-    }
+    wx.getStorage({
+      key: 'access_token',
+      success: function(res1) {
+          wx.navigateTo({
+            url:'../coupon/coupon'
+          })
+      },
+      fail:function(res1){
+        wx.navigateTo({
+          url:'../login/login'
+        })
+      }
+    })
+    // if(app.globalData.ifzhuce == 0){
+    //   wx.navigateTo({
+    //     url:'../login/login'
+    //   })
+    // }else{
+    //   wx.navigateTo({
+    //     url:'../coupon/coupon'
+    //   })
+    // }
   },
   detail(e){
     wx.navigateTo({

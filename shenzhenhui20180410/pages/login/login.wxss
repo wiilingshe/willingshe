@@ -27,7 +27,10 @@
   margin: 72rpx 10rpx 30rpx;
 }
 .login .v_code {
+  width: 454rpx;
+  margin: 72rpx 10rpx 30rpx;
   margin-bottom: 68rpx;
+
  
 }
 .login .phone input,
@@ -49,7 +52,7 @@
 
 }
 .login .v_code .getcode{
-  width: 192rpx;
+  width: 184rpx;
   height: 72rpx;
   font-size: 22rpx;
   border-radius: 36rpx;

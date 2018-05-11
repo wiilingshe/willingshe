@@ -107,9 +107,7 @@
     <view type="text" value="" class="shopIimg" >
         <image src='../../images/shop.png' style='width:72rpx;height:72rpx;'></image>
     </view> 
-   <!-- <navigator class="recommend" url="../login/login" hover-class="none"> -->
      <view type="button"   class="cartBtn "  bindtap="onClickButton" ><text>加入购物车</text></view>
-   <!-- </navigator> -->
     <view type="button"   class="cartBtn  diyBgColor" bindtap="buy"><text>立即购买</text></view>
   </view>
   <template is="diaView" data="{{showDialog:showDialog}}" />

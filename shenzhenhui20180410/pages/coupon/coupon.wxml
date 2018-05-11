@@ -17,7 +17,7 @@
   </view>
   <scroll-view class="coupon-list" scroll-y="true" lower-threshold="10" bindscrolltolower="more">
     <view class="tip" wx:if="{{list.length==0}}">暂无优惠券领取，如果已经领取的请到个人中心里查看</view>
-    <view class="item" wx:for="{{list}}">
+    <view class="item" wx:for="{{list}}" style=" background-image: url(../../images/bg.png);">
       <view class="tag">新人专享</view>
       <view class="content">
         <view class="left">
@@ -25,12 +25,8 @@
           <view class="time">有效时间 {{item.useful_day}}天 （满{{item.fullmoney}}减{{item.deduction}}）</view>
         </view>
         <view class="right">
-          <button class="go" bindtap="getItem" data-id="{{item.id}}">去使用</button>
+          <view class="go" bindtap="getItem" data-id="{{item.id}}">去使用</view>
         </view>
-      </view>
-      <view class="condition">
-        <text class="txt">简约陶瓷马克杯专享；小米用户福利；限时购、三石福利价、礼品卡及详情页标注不可用券特殊商品除外</text>
-        <image src="https://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/couponArrow-71315b4145.png" class="icon"></image>
       </view>
     </view>
   </scroll-view>
