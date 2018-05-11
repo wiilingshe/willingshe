@@ -132,68 +132,68 @@ Page({
     // that.setData({
     //   location:'11111111'
     // })
-    wx.getLocation({
-      type: 'gcj02',
-      success: function (res) {
-        console.log(res)
-        data = { lat: res.latitude, lng: res.longitude, page: 1 ,limit:10}   
-        data2 = { lat: res.latitude, lng: res.longitude} 
-        // 发送请求获取首页中的推荐商家的数据更新至视图
-        request.sendRrquest(path2, 'GET', data, {}).then(function (items) {
-         // console.log(items.data)
-         console.log(items); 
-          that.setData({
-            store: items.data.data[0].list,
-          });
-        }, function (error) {
-          console.log(error);
-        }); 
-        // 获取推荐菜品图片数据(推荐商家上面的菜品图片)
-        request.sendRrquest(path3, 'GET', data2, {}).then(function (items) {
-          // console.log(items.data)
-          that.setData({
-            newStore: items.data.data[0],
-            newDish: items.data.data[1]
-          });
-          //console.log(items.data.data[0].seller)
-        }, function (error) {
-            console.log(error);
-        }); 
-        that.setData({
-          lat: res.latitude,
-          lng: res.longitude
-        })
-        // 将当前地理位置信息保存在本地缓存中
-        wx.setStorage({ key: "gps", data: { lat: res.latitude, lng: res.longitude } })
-        var qqmapsdk  = new QQMapWX({
-          key: keyt // 必填
-        });
+    // wx.getLocation({
+    //   type: 'gcj02',
+    //   success: function (res) {
+    //     console.log(res)
+    //     data = { lat: res.latitude, lng: res.longitude, page: 1 ,limit:10}   
+    //     data2 = { lat: res.latitude, lng: res.longitude} 
+    //     // 发送请求获取首页中的推荐商家的数据更新至视图
+    //     request.sendRrquest(path2, 'GET', data, {}).then(function (items) {
+    //      // console.log(items.data)
+    //      console.log(items); 
+    //       that.setData({
+    //         store: items.data.data[0].list,
+    //       });
+    //     }, function (error) {
+    //       console.log(error);
+    //     }); 
+    //     // 获取推荐菜品图片数据(推荐商家上面的菜品图片)
+    //     request.sendRrquest(path3, 'GET', data2, {}).then(function (items) {
+    //       // console.log(items.data)
+    //       that.setData({
+    //         newStore: items.data.data[0],
+    //         newDish: items.data.data[1]
+    //       });
+    //       //console.log(items.data.data[0].seller)
+    //     }, function (error) {
+    //         console.log(error);
+    //     }); 
+    //     that.setData({
+    //       lat: res.latitude,
+    //       lng: res.longitude
+    //     })
+    //     // 将当前地理位置信息保存在本地缓存中
+    //     wx.setStorage({ key: "gps", data: { lat: res.latitude, lng: res.longitude } })
+    //     var qqmapsdk  = new QQMapWX({
+    //       key: keyt // 必填
+    //     });
 
-        // 调用接口
-        qqmapsdk.reverseGeocoder({
-          location: {
-            latitude: that.data.lat,
-            longitude: that.data.lng
-          },
-          success: function (res1) {
-            // console.log(res.result);
-            var ad_info = res1.result.address
-            that.setData({
-              // location: ad_info
-            })
-            wx.setStorage({
-              key: 'location',
-              data: ad_info,
-            })
-          },
-          fail: function (res2) {
-          },
-          complete: function (res3) {
+    //     // 调用接口
+    //     qqmapsdk.reverseGeocoder({
+    //       location: {
+    //         latitude: that.data.lat,
+    //         longitude: that.data.lng
+    //       },
+    //       success: function (res1) {
+    //         // console.log(res.result);
+    //         var ad_info = res1.result.address
+    //         that.setData({
+    //           // location: ad_info
+    //         })
+    //         wx.setStorage({
+    //           key: 'location',
+    //           data: ad_info,
+    //         })
+    //       },
+    //       fail: function (res2) {
+    //       },
+    //       complete: function (res3) {
 
-          }
-        })
-      }
-    })
+    //       }
+    //     })
+    //   }
+    // })
 
     // 从本地缓存中同步获取指定 key 对应的内容。
     try{
@@ -201,86 +201,86 @@ Page({
       console.log(value)
       var value2 = wx.getStorageSync('location')
       console.log("==========="+value2)
-      // if (value) {
-      //   // 如果本地缓存中有对应的位置信息则将其保存，否则调用获取地理位置api
-      //   data = { lat: value.lat, lng: value.lng, page: 1, limit: 10} 
-      //   data2 = { lat: value.lat, lng: value.lng }
-      //   // 将数据更新
-      //   that.setData({
-      //     lat: value.lat,
-      //     lng: value.lng,
-      //     location: value2
-      //   })    
-      // } else {
-      //   console.log(1111111)
-      //   // 获取当前的地理位置
-      //   wx.getLocation({
-      //     type: 'gcj02',
-      //     success: function (res) {
-      //      console.log(res)
-      //       data = { lat: res.latitude, lng: res.longitude, page: 1 ,limit:10}   
-      //       data2 = { lat: res.latitude, lng: res.longitude}  
-      //       that.setData({
-      //         lat: res.latitude,
-      //         lng: res.longitude
-      //       })
-      //       // 将当前地理位置信息保存在本地缓存中
-      //       wx.setStorage({ key: "gps", data: { lat: res.latitude, lng: res.longitude } })
-      //       var demo = new QQMapWX({
-      //         key: keyt // 必填
-      //       });
+      if (value) {
+        // 如果本地缓存中有对应的位置信息则将其保存，否则调用获取地理位置api
+        data = { lat: value.lat, lng: value.lng, page: 1, limit: 10} 
+        data2 = { lat: value.lat, lng: value.lng }
+        // 将数据更新
+        that.setData({
+          lat: value.lat,
+          lng: value.lng,
+          location: value2
+        })    
+      } else {
+        console.log(1111111)
+        // 获取当前的地理位置
+        wx.getLocation({
+          type: 'gcj02',
+          success: function (res) {
+           console.log(res)
+            data = { lat: res.latitude, lng: res.longitude, page: 1 ,limit:10}   
+            data2 = { lat: res.latitude, lng: res.longitude}  
+            that.setData({
+              lat: res.latitude,
+              lng: res.longitude
+            })
+            // 将当前地理位置信息保存在本地缓存中
+            wx.setStorage({ key: "gps", data: { lat: res.latitude, lng: res.longitude } })
+            var demo = new QQMapWX({
+              key: keyt // 必填
+            });
 
-      //       // 调用接口
-      //       demo.reverseGeocoder({
-      //         location: {
-      //           latitude: that.data.lat,
-      //           longitude: that.data.lng
-      //         },
-      //         success: function (res) {
-      //           // console.log(res.result);
-      //           var ad_info = res.result.address
-      //           that.setData({
-      //             location: ad_info
-      //           })
-      //           wx.setStorage({
-      //             key: 'location',
-      //             data: ad_info,
-      //           })
-      //         },
-      //         fail: function (res) {
-      //           console.log(res,111111111);
-      //         },
-      //         complete: function (res) {
+            // 调用接口
+            demo.reverseGeocoder({
+              location: {
+                latitude: that.data.lat,
+                longitude: that.data.lng
+              },
+              success: function (res) {
+                // console.log(res.result);
+                var ad_info = res.result.address
+                that.setData({
+                  location: ad_info
+                })
+                wx.setStorage({
+                  key: 'location',
+                  data: ad_info,
+                })
+              },
+              fail: function (res) {
+                console.log(res,111111111);
+              },
+              complete: function (res) {
 
-      //         }
-      //       })
-      //     }
-      //   })
-      // };
-      // // 发送请求获取首页中的推荐商家的数据更新至视图
-      // request.sendRrquest(path2, 'GET', data, {})
-      //   .then(function (items) {
-      //    // console.log(items.data)
-      //    console.log(items); 
-      //     that.setData({
-      //       store: items.data.data[0].list,
-      //     });
-      //    // console.log(items.data.data[0].list)
-      //   }, function (error) {
-      //     console.log(error);
-      //   }); 
-      // // 获取推荐菜品图片数据(推荐商家上面的菜品图片)
-      // request.sendRrquest(path3, 'GET', data2, {})
-      //   .then(function (items) {
-      //     // console.log(items.data)
-      //     that.setData({
-      //       newStore: items.data.data[0],
-      //       newDish: items.data.data[1]
-      //     });
-      //     //console.log(items.data.data[0].seller)
-      //   }, function (error) {
-      //     console.log(error);
-      //   }); 
+              }
+            })
+          }
+        })
+      };
+      // 发送请求获取首页中的推荐商家的数据更新至视图
+      request.sendRrquest(path2, 'GET', data, {})
+        .then(function (items) {
+         // console.log(items.data)
+         console.log(items); 
+          that.setData({
+            store: items.data.data[0].list,
+          });
+         // console.log(items.data.data[0].list)
+        }, function (error) {
+          console.log(error);
+        }); 
+      // 获取推荐菜品图片数据(推荐商家上面的菜品图片)
+      request.sendRrquest(path3, 'GET', data2, {})
+        .then(function (items) {
+          // console.log(items.data)
+          that.setData({
+            newStore: items.data.data[0],
+            newDish: items.data.data[1]
+          });
+          //console.log(items.data.data[0].seller)
+        }, function (error) {
+          console.log(error);
+        }); 
     } catch (e) {
       console.log(e);
     }
@@ -510,6 +510,7 @@ Page({
         that.setData({
           location:res.address
         });
+        console.log(res.latitude,res.longitude)
         wx.setStorage({ key: "gps", data: { lat: res.latitude, lng: res.longitude } })
         wx.setStorage({
           key: 'location',

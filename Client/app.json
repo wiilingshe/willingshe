@@ -4,7 +4,6 @@
     "pages/submitOrder/submitOrder",
     "pages/addAddress/addAddress",
     "pages/addressLists/addressLists",
-    
     "pages/search/search", 
     "pages/list/list",
     "pages/shopList/shopList",

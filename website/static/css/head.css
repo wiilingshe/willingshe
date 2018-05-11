@@ -1,0 +1,36 @@
+.navmiddle{
+		width: 80%;
+		margin: 0 auto;
+	}
+	.login{
+		display:flex;
+		-webkit-display:flex;
+		justify-content: flex-end;
+		font-size: 16px;
+	}
+	.navlist{
+		display:flex;
+		-webkit-display:flex;
+		justify-content: space-between;
+		font-size: 18px;
+		margin-top: 20px;
+	}
+	.navlist div:nth-child(2){
+		background: #06C4ED;
+		height: 65px;
+		width: 126px;
+		line-height: 65px;
+		text-align: center;
+
+	}
+	.navlist div{
+		height: 65px;
+		width: 126px;
+		line-height: 65px;
+		text-align: center;
+
+	}
+	.navlist div:hover{
+		background: #06C4ED;
+		cursor: pointer;
+	}

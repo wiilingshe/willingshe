@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>首页</title>
+	<link rel="stylesheet" type="text/css" href="static/css/bottom.css">
+</head>
+<style type="text/css">
+	html{
+		padding: 0;
+		margin: 0;
+		clear:both;
+		font-family: sans-serif;
+	}
+	body{
+		padding: 0;
+		margin: 0;
+	}
+	.nav{
+		width: 100%;
+		background: #00B1D7;
+		color: #fff;
+		padding-bottom: 324px;
+		padding-top: 15px;
+	}
+	.navmiddle{
+		width: 80%;
+		margin: 0 auto;
+	}
+	.login{
+		display:flex;
+		-webkit-display:flex;
+		justify-content: flex-end;
+		font-size: 16px;
+	}
+	.navlist{
+		display:flex;
+		-webkit-display:flex;
+		justify-content: space-between;
+		font-size: 18px;
+		margin-top: 20px;
+	}
+	.navlist div:nth-child(2){
+		background: #06C4ED;
+		height: 65px;
+		width: 126px;
+		line-height: 65px;
+		text-align: center;
+
+	}
+	.navlist div{
+		height: 65px;
+		width: 126px;
+		line-height: 65px;
+		text-align: center;
+
+	}
+	.navlist div:hover{
+		background: #06C4ED;
+		cursor: pointer;
+	}
+	.search{
+		width: 1000px;
+		height: 215px;
+		background: rgba(0,0,0,0.4);
+		margin: 0 auto;
+		margin-top: 130px;
+		padding-top: 145px;
+	}
+	.search2{
+		width: 821px;
+		height: 60px;
+		border-radius: 30px;
+		background: #fff;
+		margin: 0 auto;
+		display:flex;
+		-webkit-display:flex;
+		justify-content: space-between;
+	}
+	.search2 input{
+		border-bottom-left-radius: 30px;
+		border-top-left-radius: 30px;
+		outline-style: none;
+		width: 668px;
+		border:0;
+		font-size: 22px;
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+	.search2 div{
+		width: 150px;
+		height: 60px;
+		text-align: center;
+		line-height: 60px;
+		font-size: 22px;
+		border-bottom-right-radius: 30px;
+		border-top-right-radius: 30px;
+		background: #f9bb30;
+		color: #fff;
+		cursor: pointer;
+	}
+	.eg1{
+		width: 750px;
+		margin: 0 auto;
+		font-size: 14px;
+		margin-top: 32px;
+	}
+	.eg{
+		display:flex;
+		-webkit-display:flex;
+		justify-content: flex-start;
+	}
+	.eg div{
+		margin-right: 69px;
+		cursor: pointer;
+	}
+	.title1{
+		text-align: center;
+		margin-top: 130px;
+		font-size: 50px;
+		/*font-weight: bold;*/
+		color: #04B6D8;
+		margin-bottom: 60px;
+	}
+	.zhong{
+		display: flex;
+		-webkit-display:flex;
+		flex-wrap:wrap;
+		width: 821px;
+		margin: 0 auto;
+	}
+	.zhong>div{
+		width: 410px;
+	}
+	.zhong>div:hover{
+		background: #ffad01;
+		color: #fff;
+		cursor: pointer;
+	}
+	.zhong>div:hover .zhong-desc{
+		color: #fff;
+	}
+	.zhong>div:nth-child(2n){
+		border-left: 1px solid #ddd;
+	}
+	.zhong>div:nth-child(1),.zhong>div:nth-child(2){
+		border-bottom:  1px solid #ddd;
+	}
+	.zhong-list .img{
+		width: 150px;
+		height: 100px;
+		background: #eee;
+		margin: 0 auto;
+		margin-top: 40px;
+	}
+	.zhong-title{
+		text-align: center;
+		font-weight: bold;
+		margin-top: 15px;
+	}
+	.zhong-desc{
+		text-align: center;
+		width: 300px;
+		margin: 0 auto;
+		margin-top: 10px;
+		line-height: 30px;
+		font-size: 14px;
+		color: #333;
+		margin-bottom: 30px;
+	}
+	.new{
+		padding-top: 37px;
+		background: #eee;
+	}
+	.new-title{
+		text-align: center;
+		color: #07A5C7;
+		font-size: 26px;
+		margin-bottom: 70px;
+
+	}
+	.new-lists{
+		display: flex;
+		-webkit-display:flex;
+		justify-content: center;
+		color: #333;
+		margin-bottom: 80px;
+	}
+	.new-lists div{
+		margin-right: 60px;
+		font-size: 18px;
+		width: 109px;
+		height: 39px;
+		text-align: center;
+		line-height: 39px;
+	}
+	.new-lists>div:hover{
+		background: #02B4D7;
+		color: #fff;
+		cursor:pointer;
+	}
+	.new-content{
+		display: flex;
+		-webkit-display:flex;
+		justify-content: center;
+		padding-bottom: 53px;
+		position: relative;
+	}
+	.new-img{
+		width: 386px;
+		height: 293px;
+		background: #fff;
+	}
+	.new-content-lists{
+		display: table;
+		height: 293px;
+		margin-left: 66px;
+	}
+	.new-content-lists>div{
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.new-content-lists>div{
+		font-size: 18px;
+	}
+	.new-content-lists i{
+		width: 13px;
+		height: 13px;
+		background: #FF881E;
+		display: inline-block;
+		margin-right: 10px;
+	}
+	.new-content-lists span{
+		color: #0ABDCB;
+	}
+	.new-content-lists-list{
+		margin-top: 55px;
+	}
+	.qiyelist{
+		display: flex;
+		-webkit-display:flex;
+		justify-content: center;
+		margin-top: 50px;
+	}
+	.qiyelist>div{
+		margin-right: 130px;
+	}
+</style>
+<body>
+	<div class="nav">
+		<div class="navmiddle">
+			<div class="login">
+				<div>
+					<span style="margin-right: 5px">[登录]</span>|<span style="margin-left: 5px;">[注册]</span>
+				</div>
+			</div>
+			<div class="navlist">
+				<div>logo</div>
+				<div>首页</div>
+				<div>企业查询</div>
+				<div>最新动态</div>
+				<div>公示公告</div>
+				<div>通知公告</div>
+				<div>政策文件</div>
+				<div>关于我们</div>
+				<div>加入我们</div>
+			</div>
+		</div>
+		<div class="search">
+			<div class="search2">
+				<input type="text" name="">
+				<div>搜索</div>
+			</div>
+			<div class="eg1">
+				<div class="eg">
+					<div>广州达森光电科技有限公司</div>
+					<div>格力</div>
+					<div>美的</div>
+					<div>了解信息科技有限公司</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="title1">服务项目</div>
+	<div class="zhong">
+		<div class="zhong-list">
+			<div class="img">
+				<img src="">
+			</div>
+			<div class="zhong-title">标题</div>
+			<div class="zhong-desc">Flex 布局语法教程分类 编程技术 网页布局(layout)是CSS的一个重点应用</div>
+		</div>
+		<div class="zhong-list">
+			<div class="img">
+				<img src="">
+			</div>
+			<div class="zhong-title">标题</div>
+			<div class="zhong-desc">Flex 布局语法教程分类 编程技术 网页布局(layout)是CSS的一个重点应用</div>
+		</div><div class="zhong-list">
+			<div class="img">
+				<img src="">
+			</div>
+			<div class="zhong-title">标题</div>
+			<div class="zhong-desc">Flex 布局语法教程分类 编程技术 网页布局(layout)是CSS的一个重点应用</div>
+		</div><div class="zhong-list">
+			<div class="img">
+				<img src="">
+			</div>
+			<div class="zhong-title">标题</div>
+			<div class="zhong-desc">Flex 布局语法教程分类 编程技术 网页布局(layout)是CSS的一个重点应用</div>
+		</div>
+	</div>
+	<div class="new">
+		<div class="new-title">咨询</div>
+		<div class="new-lists">
+			<div>最新动态</div>
+			<div>公示公告</div>
+			<div>通知公告</div>
+			<div style="margin-right: 0;">政策文件</div>
+		</div>
+		<div class="new-content">
+			<div class="new-img">
+				<img src="">
+			</div>
+			<div class="new-content-lists">
+				<div>
+					<div class="new-content-lists-list"><i></i><span>【广州市科技创新委员会】</span>2017年广州市企业研发经费投入后补助</div>
+					<div class="new-content-lists-list"><i></i><span>【广州市科技创新委员会】</span>2017年广州市企业研发经费投入后补助</div>
+					<div class="new-content-lists-list"><i></i><span>【广州市科技创新委员会】</span>2017年广州市企业研发经费投入后补助</div>
+				</div>
+			</div>
+			<div class="more" style="position: absolute;bottom: 20px;right: 10%;color: #07A5C7;">更多>></div>
+		</div>
+	</div>
+	<div class="new-title" style="margin-bottom: 0;margin-top: 36px;">咨询</div>
+	<div style="text-align: center;">
+		<img style="width: 280px;" src="static/img/xia.png">
+	</div>
+	<div style="text-align: center;margin-bottom: 30px;">Meat our experts</div>
+	<div style="text-align: center;">
+		<img src="static/img/eg.png">
+	</div>
+	<div class="new-title" style="margin-bottom: 0;margin-top: 36px;">入驻企业</div>
+	<div class="qiyelist">
+		<div style="width: 135px;text-align: center;">
+			<div style="font-weight: bold;font-size: 60px;margin-bottom: 39px;">888</div>
+			<div><img src="static/img/1.png" style="width: 80px;"></div>
+			<div style="font-size: 24px;color: #02A0C2;">教育科技</div>
+		</div>
+		<div style="width: 135px;text-align: center;">
+			<div style="font-weight: bold;font-size: 60px;margin-bottom: 39px;">888</div>
+			<div><img src="static/img/2.png" style="width: 80px;"></div>
+			<div style="font-size: 24px;color: #02A0C2;">服务行业</div>
+		</div>
+		<div style="width: 135px;text-align: center;">
+			<div style="font-weight: bold;font-size: 60px;margin-bottom: 39px;">888</div>
+			<div><img src="static/img/3.png" style="width: 80px;"></div>
+			<div style="font-size: 24px;color: #02A0C2;">政府类行业</div>
+		</div>
+		<div style="width: 135px;text-align: center;margin-right: 0;">
+			<div style="font-weight: bold;font-size: 60px;margin-bottom: 39px;">888</div>
+			<div><img src="static/img/4.png" style="width: 80px;"></div>
+			<div style="font-size: 24px;color: #02A0C2;">技术性行业</div>
+		</div>
+	</div>
+	<div class="bottom" style="margin-top: 100px;">
+		<div class="bottom2">
+			<div class="youqing">友情链接：广东高新技术产业网 | 广东省科学技术厅 | 云南省科学技术厅 | 广西科技厅 | 湖北省科学技术厅</div>
+			<div class="bottom3">
+				<div class="bottom3-list">
+					<div>首页</div>
+					<div>关于我们</div>
+					<div>新闻中心</div>
+					<div>公示公告</div>
+				</div>
+				<div class="bottom3-list">
+					<div>通知公告</div>
+					<div>全部通知</div>
+					<div>新闻中心</div>
+					<div>公示公告</div>
+				</div>
+				<div class="bottom3-list">
+					<div>首页</div>
+					<div>关于我们</div>
+					<div>新闻中心</div>
+					<div>公示公告</div>
+				</div>
+				<div class="bottom3-list">
+					<div>通知公告</div>
+					<div>全部通知</div>
+					<div>新闻中心</div>
+					<div>公示公告</div>
+				</div>
+				<div class="bottom3-list">
+					<div>首页</div>
+					<div>关于我们</div>
+					<div>新闻中心</div>
+					<div>公示公告</div>
+				</div>
+				<div class="bottom3-list bottom3-list2">
+					<div>
+						<div style="margin-bottom: 15px;">联系我们</div>
+						<div><img style="width: 12px;" src="static/img/phone.png">电话：027-1234567</div>
+						<div style="margin-top: 15px;"><img src="static/img/QQ.png" style="margin-right: 20px;width: 22px;"><img src="static/img/wechart.png"></div>
+					</div>
+					<div>
+						<img style="width: 92px;margin-left: 20px;position: relative;top: 10px;" src="static/img/code.png">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="bottom4">
+		<div style="padding-top:27px; " class="bottom4-list">关于我们 | 加入平台 | 版权声明 | 网站地图 | 隐私保护 | 联系我们</div>
+		<div style="margin-top: 32px;"><span style="margin-right: 80px;">©2012-2018 企业科技创新服务平台 版权所有 粤ICP备12030382号-7</span><span>联系地址：广东省广州市白云区丛云路982号金癸大厦 邮编：510000</span></div>
+	</div>
+</body>
+</html>

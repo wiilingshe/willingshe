@@ -1,11 +1,11 @@
 <!--pages/index/index.wxml-->
 <view class="header padded-b">
   <view class='search_case mar-b-10 font_f_m' >
-    <navigator bindtap="selectLocation" class="picker font_34 flex1" url="../address/address?current={{location}}">
+    <view bindtap="selectLocation" class="picker font_34 flex1">
     <image src='../../images/1sy_1.png' style='width:33rpx;height:40rpx;'></image>
     <view class='font_34 mar-l-10 text_s' style='max-width:65%;'>{{location}}</view>  
     <image src='../../images/1sy_2.png' style='width:25rpx;height:16rpx;margin-left:8rpx;'></image>
-    </navigator>
+    </view>
       <view class='font_24 flex10' bindtap='scan' style="width:100rpx;">
         <image src='../../images/1sy_3.png' style='width:38rpx;height:35rpx;' class='mar-b-10'></image>
         <view class=''>点餐</view>
