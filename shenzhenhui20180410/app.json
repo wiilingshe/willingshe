@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/flagship/flagship",
     "pages/indent/indent",
     "pages/returns/returns",
     "pages/login/login",
@@ -16,7 +17,6 @@
     "pages/merList/merList",
     "pages/addressList/addressList",
     "pages/address/address",
-    "pages/flagship/flagship",
     "pages/qijiandian/qijiandian",
     "pages/applyReturn/applyReturn",
     "pages/perMaterial/perMaterial" ,

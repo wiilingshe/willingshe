@@ -62,8 +62,8 @@
     <swiper-item class="swiper-items"  wx:for="{{[0,1,2,3]}}" wx:key="item.id">
       <scroll-view scroll-x="false" scroll-y="true" class='scroll-views'>
         <block wx:for="{{indexAdList}}" wx:key="id">
-          <view class="recommend"  bindtap="detial" data-id="{{item.id}}">
-            <view style='float:left;'>
+          <view class="recommend"  data-id="{{item.id}}">
+            <view style='float:left;' data-id="{{item.id}}" bindtap="detial">
               <text class="r_name">{{item.title}}</text>
               <text class="r_intor">{{item.subtitle}}</text>
               <view class="pri">
@@ -71,16 +71,18 @@
                 <button class="r_text" type='text'>直降40元</button>
               </view>
             </view>
-            <view>
+            <view data-id="{{item.id}}" bindtap="detial">
               <image src="{{item.image}}"></image>
             </view>
-            <navigator style="position:relative" url="../flagship/flagship" hover-class="none">
-              <view class="shop">
+            <!-- <navigator style="position:relative" url="../flagship/flagship" hover-class="none"> -->
+            <!-- <view style="position:relative"> -->
+              <view  style="position:relative" class="shop" bindtap="list" data-cid="{{item.id}}" data-bid="{{item.brand_id}}">
                 <image src='../../images/small.png' style='width:16px;height:16px;float:none;margin-top:6px;margin-right:8px;'></image>
                 <text>{{item.brand_name}}</text>
                 <text  style=' font-size:48rpx;float:right;'>></text>
               </view>
-            </navigator>
+            <!-- </view> -->
+            <!-- </navigator> -->
           </view>
         </block>
       </scroll-view>

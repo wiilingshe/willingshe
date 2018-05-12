@@ -1,1 +1,4 @@
 /* pages/flagship/flagship.wxss */
+scroll-view{
+	height: 100vh;
+}

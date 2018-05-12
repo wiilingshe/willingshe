@@ -158,6 +158,12 @@ Page({
       }
     });
     
+  },
+  list(e){
+    console.log(e.currentTarget.dataset.bid)
+    wx.navigateTo({
+      url:'../flagship/flagship?bid='+e.currentTarget.dataset.bid+'&cid='+e.currentTarget.dataset.cid
+    })
   }
   // onLoad: function () {
   //   var that = this;

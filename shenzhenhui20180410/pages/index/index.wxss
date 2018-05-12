@@ -132,6 +132,7 @@
   width: calc(100% - 60rpx);
   margin: 0 auto;
   margin-bottom: 20rpx;
+  overflow: hidden;
 }
 .recommend .r_name{
   color: #848780;
@@ -195,7 +196,7 @@
     width: 100%;
     height: 76rpx;
     position: absolute;
-    bottom: -80rpx;
+    /*bottom: -80rpx;*/
   }
   .shop image{
     width: 20rpx;
