@@ -32,7 +32,9 @@ Page({
     name:'',
     phone:'',
     access_token:'',
-    id:''
+    id:'',
+    spec_id:'',
+    count:'',
   },
 
   /**
@@ -53,6 +55,12 @@ Page({
         area:options.country,
         address:options.detail,
         inputTxt:options.province+options.city+options.country
+      })
+    }
+    if(options.spec_id != undefined){
+      this.setData({
+        spec_id:options.spec_id,
+        count:options.count
       })
     }
     // const path = app.data.url + '/api/address/list'
@@ -255,6 +263,17 @@ Page({
       });
       return false;
     }
+    if(that.data.phone!=''){
+      var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;  
+      if (!myreg.test(that.data.phone)) {
+          wx.showToast({
+            title: '手机号码格式错误',
+            icon: 'none',
+            duration: 1000
+          });
+          return false;  
+      } 
+    }
     if(that.data.id == ''){
       wx.showLoading()
       // 添加地址
@@ -274,11 +293,19 @@ Page({
                   icon: 'none',
                   duration: 2000
                 });
-                setTimeout(function(){
-                  wx.redirectTo({
-                    url:'../addressList/addressList'
-                  })
-                },2000)
+                if(that.data.spec_id == ''){
+                  setTimeout(function(){
+                    wx.redirectTo({
+                      url:'../addressList/addressList'
+                    })
+                  },2000)
+                }else{
+                  setTimeout(function(){
+                    wx.redirectTo({
+                      url:'../orderform/orderform?type=1&spec_id='+that.data.spec_id+'&count='+that.data.count
+                    })
+                  },2000)
+                }
               }else{
                 wx.showToast({
                   title: res.data.message,

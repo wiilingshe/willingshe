@@ -104,7 +104,7 @@
 <!--这个底部导航是需要用js来判断，如果有access_token，则直接是加入购物车，
    如果access_token 为空，则跳转到登录链接 -->
   <view class="probuy" >
-    <view type="text" value="" class="shopIimg" >
+    <view type="text" value="" class="shopIimg" bindtap="gouwuche">
         <image src='../../images/shop.png' style='width:72rpx;height:72rpx;'></image>
     </view> 
      <view type="button"   class="cartBtn "  bindtap="onClickButton" ><text>加入购物车</text></view>

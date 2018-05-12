@@ -30,7 +30,7 @@ padding: 6px 0;
 /*只设下边线*/  
 border-bottom: 1px solid #dedede;  
 /*文字14px*/  
-font-size: 14px; 
+font-size: 30rpx; 
 }  
 /*左侧栏list的item被选中时*/  
 .nav_left .nav_left_items.active{  
@@ -58,7 +58,7 @@ background: #fff;
 float: left;  
 /*每个item设置宽度是33.33%*/  
 width: 33.33%;  
-height: 120px;  
+height: 100px;  
 text-align: center;  
 }  
 .nav_right .nav_right_items image{  
@@ -70,8 +70,7 @@ background-color: #eee;
 }  
 .nav_right .nav_right_items text{  
 /*给text设成块级元素*/  
-display: block;  
-margin-top: 15px;  
+display: block;   
 font-size: 14px;  
 color: black;
 /*设置文字溢出部分为...*/  

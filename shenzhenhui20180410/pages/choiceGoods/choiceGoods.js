@@ -251,5 +251,10 @@ Page({
     this.setData({
       selectBox:false
     })
+  },
+  gouwuche(){
+    wx.switchTab({
+      url:'../shopping/shopping'
+    })
   }
 })

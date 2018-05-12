@@ -24,6 +24,7 @@ Page({
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
     book_time: null,
+    ifscroll:false,
   },
 
   /**
@@ -164,6 +165,20 @@ Page({
     wx.navigateTo({
       url:'../flagship/flagship?bid='+e.currentTarget.dataset.bid+'&cid='+e.currentTarget.dataset.cid
     })
+  },
+  scroll(e){
+    console.log(e)
+  },
+  scroll1(e){
+    if(e.detail.scrollTop > 270){
+      this.setData({
+        ifscroll:true
+      })
+    }else if(e.detail.scrollTop < 270){
+      this.setData({
+        ifscroll:false
+      })
+    }
   }
   // onLoad: function () {
   //   var that = this;

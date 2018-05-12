@@ -16,6 +16,7 @@ Page({
     mobile:'',
     userinfo:[],
     miao:60,
+    ifguo:false,
   },
 
   /**
@@ -104,6 +105,7 @@ Page({
    * 
    */
   takeCode: function(e){
+
     wx.showLoading()
     var that = this
     var path = url + '/api/Msns'
@@ -115,6 +117,9 @@ Page({
       console.log(res.data);
       wx.hideLoading()
       if(res.data.code ==1){
+        that.setData({
+          ifguo:true
+        })
         wx.showToast({
           title: '获取成功',
           icon: 'none',

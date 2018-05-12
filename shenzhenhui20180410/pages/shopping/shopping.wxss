@@ -23,6 +23,16 @@
   margin-top: 10rpx;
   color: #e11f1f;
 }
+.del1{
+  width:70rpx;
+height:42rpx;
+border-radius:60rpx;
+line-height:35rpx;
+margin-right: 30rpx;
+  text-align: center;
+  border:1px solid #eee;
+  color: #999;
+}
  
 /*全选字样*/
 .carts-footer text {

@@ -33,7 +33,8 @@
             </view>
         </view>
       </view>
-      <view class="del" data-id="{{item.id}}" bindtap="del" data-index="{{index}}">删除</view>
+      <view class="del1" data-id="{{item.id}}" bindtap="del" data-index="{{index}}">x</view>
+      <!-- <view class="del" data-id="{{item.id}}" bindtap="del" data-index="{{index}}">删除</view> -->
     </view>
     <view class="carts-footer">
         <view bindtap="bindSelectAll" class="selectall">

@@ -185,7 +185,13 @@
 
 }
 /**导航的样式*/
-.tab-item{display: inline-block;font-size: 26rpx;text-align: center;color: #656565;}
+.tab-item{
+  display: inline-block;
+  font-size: 30rpx;
+  text-align: center;
+  color: #656565;
+  font-weight: bold;
+}
 .tab-item.active{color: #e11f1f;position: relative;}
 /*.tab-item.active:after{ 
   content: "";display: block;height: 8rpx;
