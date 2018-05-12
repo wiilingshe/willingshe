@@ -361,6 +361,65 @@ App({
       }
     })
 
+  },
+   //获取openid /code
+  getSession2: function (code) {
+    var that = this;
+    console.log(that.globalData.url + '/api/wx',code)
+    wx.request({
+      url:that.globalData.url + '/api/wx',
+      method:'GET',
+      data:{js_code:code},
+      dataType:'json',
+      success:function(res){
+        console.log(res.data,123456789);
+        //获取opied
+        wx.setStorage({
+          key: 'session',
+          data: res.data.data[0],
+        })
+        var path = that.globalData.url + "/api/member/login"
+        var data = { openid: res.data.data[0].openid };
+        request.sendRrquest(path, 'POST', data, {})
+      .then(function (res) {
+        wx.stopPullDownRefresh()
+        if(res.data.code == -1){
+          that.globalData.ifzhuce = 0;
+          wx.removeStorage({
+            key: 'access_token',
+            success: function(res) {
+              console.log(res.data)
+            } 
+          })
+        }else{
+          that.globalData.ifzhuce = 1;
+          console.log(111111,res.data.data[0].access_token)
+          wx.setStorage({
+            key:"access_token",
+            data:res.data.data[0].access_token
+          })
+          wx.switchTab({
+            url: '/pages/index/index'
+          })
+        }
+      }, function (error) {
+        wx.stopPullDownRefresh()
+        console.log(error);
+      });
+        // try {
+        //   var value = wx.getStorageSync('userInfo')
+        //   if (value) {
+        //     request.sendRrquest(path, 'POST', data, {})
+        //       .then(function (res) {
+
+        //       }, function (error) {
+        //         console.log(error);
+        //       });
+        //   }
+        // } catch (e) { }
+      }
+    })
+
   }
 
 });

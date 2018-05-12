@@ -64,7 +64,7 @@
   border-bottom-left-radius: 0;
 }
 .login .priture{
-  margin-left: 44rpx;
+  margin-left: 72rpx;
 }
 .login .priture .binding{
   position: relative;

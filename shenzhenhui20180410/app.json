@@ -1,6 +1,8 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/indent/indent",
+    "pages/returns/returns",
     "pages/login/login",
     "pages/orderform/orderform",
     "pages/coupon/coupon",
@@ -10,7 +12,6 @@
     "pages/reservation/reservation",
     "pages/my/my",
     "pages/classfiy/classfiy",
-    "pages/indent/indent",
     "pages/bannerurl/bannerurl",
     "pages/merList/merList",
     "pages/addressList/addressList",

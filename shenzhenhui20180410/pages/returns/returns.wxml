@@ -1,0 +1,26 @@
+<view wx:if="{{!selectaddress}}">
+  <view class="item">退款原因：</view>
+  <textarea placeholder="请输入退款原因" bindinput="getaddress" value="{{why}}" ></textarea>
+  <view class="item" style="margin-top: 20rpx;">退款说明：</view>
+  <textarea placeholder="请输入退款说明" bindinput="getjieshi"  value="{{jieshi}}"></textarea>
+  <view  class="orderInf" bindtap="selectaddresslist" style="margin-top: 20rpx;">
+      <text class="name">{{addressinfo.name}}</text>
+      <text class="tel">{{addressinfo.mobile}}</text>
+      <text class="adress">{{addressinfo.province}}{{addressinfo.city}}{{addressinfo.country}}{{addressinfo.detail}}</text>
+      <text class="more">></text>
+  </view>
+  <view style="background-color: #fe413b;width: 100%;height: 80rpx;text-align: center;line-height: 80rpx;color: #fff;position: absolute;bottom: 0;" bindtap="tijiao">提交</view>
+</view>
+<view class="addresslist1" wx:if="{{selectaddress}}" bindtap="addresslist1">
+   <view class="addresslist">
+    <view class="addresstitle">
+      选择地址
+    </view>
+    <view  class="orderInf orderInf1" bindtap="selectaddress" wx:for="{{addressList}}" data-id="{{item.address_id}}" data-name="{{item.name}}" data-mobile="{{item.mobile}}" data-province="{{item.province}}" data-city="{{item.city}}" data-country="{{item.country}}" data-detail="{{item.detail}}">
+        <text class="name">{{item.name}}</text>
+        <text class="tel">{{item.mobile}}</text>
+        <text class="adress"><text style="color:red;" wx:if="{{item.isdefault==1}}">[默认地址]</text>{{item.province}}{{item.city}}{{item.country}}{{item.detail}}</text>
+    </view>
+    <view class="newaddress" bindtap="addaddress">+ 新增地址</view>
+  </view> 
+</view>

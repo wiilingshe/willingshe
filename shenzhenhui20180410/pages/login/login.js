@@ -173,6 +173,17 @@ Page({
           icon:"success",
           duration:2000,
           success: function (res){
+            wx.login({
+              success: function (res) {
+                console.log('获取微信授权返回结果：'+JSON.stringify(res))
+                if (res.code) {
+                  //发起网络请求
+                  app.getSession2(res.code)
+                } else {
+                  console.log('获取用户登录态失败！' + res.errMsg)
+                }
+              }
+            });
             //  wx.setStorage({
             //     key:"access_token",
             //     data:res.data.data[0].access_token
@@ -182,9 +193,6 @@ Page({
 
             //   })
             // },1500)
-            wx.switchTab({
-              url: '../index/index'
-            })
           }
         })
       }
