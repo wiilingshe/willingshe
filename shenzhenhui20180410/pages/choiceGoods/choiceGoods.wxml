@@ -74,8 +74,8 @@
       <image src="{{detailList.image}}"></image>
     </view>
     <view class="desc1">
-      <view>{{detailList2.goods.name}}</view>
-      <view style="color:#f28f27;">{{detailList.price_min}}</view>
+      <view style="margin-top: 30rpx;">{{detailList2.goods.name}}</view>
+      <view style="color:#f28f27;">{{jiage}}</view>
     </view>
     <view class="close" bindtap="close1">X</view>
   </view>

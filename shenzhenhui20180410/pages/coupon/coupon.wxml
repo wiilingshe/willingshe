@@ -25,7 +25,7 @@
           <view class="time">有效时间 {{item.useful_day}}天 （满{{item.fullmoney}}减{{item.deduction}}）</view>
         </view>
         <view class="right">
-          <view class="go" bindtap="getItem" data-id="{{item.id}}">去使用</view>
+          <view class="go" bindtap="getItem" data-id="{{item.id}}">领取</view>
         </view>
       </view>
     </view>

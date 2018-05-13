@@ -1,6 +1,11 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/article/article",
+    "pages/applyReturn/applyReturn",
+    "pages/qijiandian/qijiandian",
+    "pages/perMaterial/perMaterial" ,
+    "pages/logs/logs",
     "pages/address/address",
     "pages/login/login",
     "pages/shopping/shopping",
@@ -17,10 +22,6 @@
     "pages/bannerurl/bannerurl",
     "pages/merList/merList",
     "pages/addressList/addressList",
-    "pages/qijiandian/qijiandian",
-    "pages/applyReturn/applyReturn",
-    "pages/perMaterial/perMaterial" ,
-    "pages/logs/logs",
     "pages/set/set"
    
   ],

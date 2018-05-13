@@ -1,9 +1,9 @@
 <view class="img-list">
     <view class="top_bg" >
       <image class="bg" src="../../images/my-bg.png"></image>
-      <image class="userImg" src="{{userInfo.avatarUrl}}"></image>
+      <image class="userImg" src="{{userInfo.headimage}}"></image>
      <!-- <text class="userName">{{userInfo.nickname}}</text> -->
-      <text class="userName tel">{{userInfo.nickName}}</text>
+      <text class="userName tel">{{userInfo.nickname}}</text>
       <view class="bindable" style='display:none;'>
         <navigator   url="../set/set" hover-class="none" style='display:none;'>
           <image class="cl" src="../../images/account.png"></image>

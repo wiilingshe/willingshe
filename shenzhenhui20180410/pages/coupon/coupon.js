@@ -100,6 +100,24 @@ Page({
             icon: 'none',
             duration: 2000
           })
+          wx.request({
+            url:app.data.url+'/api/personal/coupon/center',
+            method:'POST',
+            data:{access_token:that.data.access_token},
+            success:function(res){
+              if(res.data.code == 1){
+                that.setData({
+                  list:res.data.data[0].list
+                })
+              }else{
+                wx.showToast({
+                  title: res.data.message,
+                  icon: 'none',
+                  duration: 2000
+                })
+              }
+            }
+          })
         }else{
           wx.showToast({
             title: res.data.message,

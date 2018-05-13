@@ -40,8 +40,10 @@
         <view bindtap="bindSelectAll" class="selectall">
             <icon wx:if="{{selectedAllStatus}}" type="success_circle" size="20"/>
             <icon wx:else type="circle" size="20" />
-            <text>全选</text>
-            <text class="priceTotal">{{total}}</text>
+            <text style="position: relative;top: -10rpx;">
+              <text>全选</text>
+              <text class="priceTotal">{{total}}</text>
+            </text>
         </view>
             <view class="button" bindtap="jiesuan">立即结算</view>
     </view>

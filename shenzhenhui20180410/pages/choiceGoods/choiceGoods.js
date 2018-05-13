@@ -13,6 +13,8 @@ Page({
     selectedinfo:[],
     goods:[],
     num:1,
+    jiage:0,
+    clickType:1,
   },
   onLoad: function (options) {
     let that = this;
@@ -31,6 +33,7 @@ Page({
         if(res.data.code == 1){
           that.setData({
             detailList: res.data.data[0],
+            jiage:res.data.data[0].price_min
           });
           WxParse.wxParse('content', 'html', res.data.data[0].content, that, 5)
         }else{
@@ -78,6 +81,7 @@ Page({
   },
   onClickButton: function (e) {
     let that = this;
+    that.data.clickType = 2;
     // wx.removeStorage({
     //   key: 'access_token',
     //   success: function(res) {
@@ -89,6 +93,9 @@ Page({
       success:function(res1){
         console.log(res1.data)
         if(that.data.zhuheid == ''){
+          that.setData({
+            selectBox:true
+          })
           wx.showToast({
             title: '请选择规格',
             duration: 2000
@@ -170,10 +177,26 @@ Page({
   },
   radioChange: function(e) {
     console.log(e);
+    var that = this;
+    var list = '';
     var index = e.currentTarget.dataset.id;
     var id = e.detail.value;
     var that = this
     this.data.selected[index] = id;
+    for(let key in this.data.selected){
+      if(list == ''){
+        list = this.data.selected[key]
+      }else{
+        list = list + ','+this.data.selected[key]
+      }
+    }
+    for(let i=0;i<this.data.detailList2.groups.length;i++){
+      if(this.data.detailList2.groups[i].specs == list){
+        that.setData({
+          jiage:that.data.detailList2.groups[i].price
+        })
+      }
+    }
   },
   queding(){
     var that = this;
@@ -209,6 +232,63 @@ Page({
     this.setData({
       selectBox:false
     })
+    if(this.data.clickType == 1){
+      if(app.globalData.ifzhuce == 0){
+        wx.navigateTo({
+          url:'../login/login'
+        })
+      }else{
+        wx.getStorage({
+          key: 'access_token',
+          success: function(res) {
+              console.log(res.data)
+              wx.navigateTo({
+                url:'../orderform/orderform?type=1&spec_id='+that.data.selectedinfo.id+'&count='+that.data.num
+              })
+          } 
+        })
+      }
+    }else{
+      wx.showLoading()
+      wx.getStorage({
+      key:'access_token',
+      success:function(res1){
+        console.log(res1.data)
+        if(that.data.zhuheid == ''){
+          that.setData({
+            selectBox:true
+          })
+          wx.showToast({
+            title: '请选择规格',
+            icon:'none',
+            duration: 2000
+          });
+          return false;
+        }else{
+          wx.request({
+            url:app.data.url + '/api/cart/add',
+            method:'POST',
+            data:{access_token:res1.data,id:that.data.detailList.id,total:that.data.num,specid:that.data.zhuheid},
+            success:function(res){
+              wx.hideLoading()
+              if(res.data.code == 1){
+                wx.showToast({
+                  title: '添加成功',
+                  duration: 2000
+                });
+              }
+            }
+          })
+        }
+      },
+      fail(res){
+        wx.hideLoading()
+        wx.navigateTo({
+          url:'../login/login'
+        })
+      }
+    })
+    }
     console.log(that.data.zhuheid)
   },
   oilConfirm: function () {
@@ -224,11 +304,16 @@ Page({
   },
   buy:function(){
     var that = this;
+    this.data.clickType = 1;
     if(this.data.zhuheid == ''){
       wx.showToast({
         title: '请选择规格',
+        icon:'none',
         duration: 2000
       });
+      that.setData({
+            selectBox:true
+          })
       return false;
     }
     if(app.globalData.ifzhuce == 0){

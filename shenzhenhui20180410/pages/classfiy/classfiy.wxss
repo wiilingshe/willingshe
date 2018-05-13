@@ -71,7 +71,7 @@ background-color: #eee;
 .nav_right .nav_right_items text{  
 /*给text设成块级元素*/  
 display: block;   
-font-size: 14px;  
+font-size: 13px;  
 color: black;
 /*设置文字溢出部分为...*/  
 overflow: hidden;  

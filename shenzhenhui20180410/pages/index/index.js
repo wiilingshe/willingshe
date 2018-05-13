@@ -108,10 +108,15 @@ Page({
     })
   },
   detial: function (e) {
-    console.log(e)
-    wx.navigateTo({
-      url: "../choiceGoods/choiceGoods?id=" + e.currentTarget.dataset.id
-    })
+    if(e.currentTarget.dataset.type == 1){
+      wx.navigateTo({
+        url: "../choiceGoods/choiceGoods?id=" + e.currentTarget.dataset.id
+      })
+    }else{
+      wx.navigateTo({
+        url: "../article/article?id=" + e.currentTarget.dataset.id
+      })
+    }
   },
   onShow: function(){
     

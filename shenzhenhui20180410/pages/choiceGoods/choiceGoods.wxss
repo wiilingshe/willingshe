@@ -305,6 +305,7 @@ radio-group .shuxing_name{
   text-align: center;
   line-height: 90rpx;
   color: #fff;
+  margin-top: 150rpx;
 }
 .shuxing_item1{
   color: #f28f27;

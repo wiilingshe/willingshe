@@ -10,15 +10,21 @@ Page({
   },
 
   onLoad: function () {
+    console.log(1111)
     var that = this
     //调用应用实例的方法获取全局数据
-    app.getUserInfo(function (userInfo) {
-      //更新数据
-      that.setData({
-        userInfo: userInfo,
+    console.log(app.globalData.userInfo)
+    that.setData({
+        userInfo: app.globalData.userInfo,
         loadingHidden: true
       })
-    });
+    // app.getUserInfo(function (userInfo) {
+    //   //更新数据
+    //   that.setData({
+    //     userInfo: userInfo,
+    //     loadingHidden: true
+    //   })
+    // });
 
     // this.loadOrderStatus();
   },
@@ -51,5 +57,20 @@ Page({
     wx.navigateTo({
       url: '../reservation/reservation'
     })
-  }
+  },
+  onPullDownRefresh(){
+    var that = this;
+    wx.login({
+      success: function (res) {
+        console.log('获取微信授权返回结果：'+JSON.stringify(res))
+        if (res.code) {
+          //发起网络请求
+          app.getSession1(res.code)
+        } else {
+          console.log('获取用户登录态失败！' + res.errMsg)
+        }
+      }
+    });
+    
+  },
 })

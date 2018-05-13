@@ -282,6 +282,7 @@ App({
           })
         }else{
           that.globalData.ifzhuce = 1;
+          that.globalData.userInfo = res.data.data[0].user
           console.log(111111,res.data.data[0].access_token)
           wx.setStorage({
             key:"access_token",
