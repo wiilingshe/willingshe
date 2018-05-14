@@ -1,33 +1,36 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/article/article",
+    "pages/applyReturn/applyReturn",
+    "pages/qijiandian/qijiandian",
+    "pages/perMaterial/perMaterial" ,
+    "pages/logs/logs",
+    "pages/address/address",
+    "pages/login/login",
+    "pages/shopping/shopping",
+    "pages/flagship/flagship",
+    "pages/indent/indent",
+    "pages/returns/returns",
     "pages/orderform/orderform",
     "pages/coupon/coupon",
     "pages/mycoupon/mycoupon",
-    "pages/login/login",
     "pages/choiceGoods/choiceGoods",
-    "pages/shopping/shopping",
     "pages/reservation/reservation",
     "pages/my/my",
     "pages/classfiy/classfiy",
-    "pages/indent/indent",
     "pages/bannerurl/bannerurl",
     "pages/merList/merList",
     "pages/addressList/addressList",
-    "pages/address/address",
-    "pages/flagship/flagship",
-    "pages/qijiandian/qijiandian",
-    "pages/applyReturn/applyReturn",
-    "pages/perMaterial/perMaterial" ,
-    "pages/logs/logs",
     "pages/set/set"
    
   ],
   "window":{
-    "backgroundTextStyle":"light",
+    "backgroundTextStyle":"#999",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh":true
   },
   "tabBar": {
     "color": "#666",

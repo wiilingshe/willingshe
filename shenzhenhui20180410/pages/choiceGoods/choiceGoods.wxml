@@ -9,11 +9,11 @@
             <text class="stats">{{detailList.des}}</text>
             <view class="pir_line">
                 <text class="price">￥{{detailList.price_min}}</text>
-                <view class="adv" >直降{{detailList.price_max}}元</view>
+                <!-- <view class="adv" >直降{{detailList.price_max}}元</view>
                 <view>
                   <image class="tick-ex" src="../../images/ticky.png"></image>
                   <text class="tick_text">100元优惠券可用</text>
-                </view>
+                </view> -->
             </view>
         </view>
       </view>
@@ -74,8 +74,8 @@
       <image src="{{detailList.image}}"></image>
     </view>
     <view class="desc1">
-      <view>{{detailList2.goods.name}}</view>
-      <view style="color:#f28f27;">{{detailList.price_min}}</view>
+      <view style="margin-top: 30rpx;">{{detailList2.goods.name}}</view>
+      <view style="color:#f28f27;">{{jiage}}</view>
     </view>
     <view class="close" bindtap="close1">X</view>
   </view>
@@ -104,7 +104,7 @@
 <!--这个底部导航是需要用js来判断，如果有access_token，则直接是加入购物车，
    如果access_token 为空，则跳转到登录链接 -->
   <view class="probuy" >
-    <view type="text" value="" class="shopIimg" >
+    <view type="text" value="" class="shopIimg" bindtap="gouwuche">
         <image src='../../images/shop.png' style='width:72rpx;height:72rpx;'></image>
     </view> 
      <view type="button"   class="cartBtn "  bindtap="onClickButton" ><text>加入购物车</text></view>

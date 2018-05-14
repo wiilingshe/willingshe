@@ -14,25 +14,37 @@
  <view wx:if="{{cateItems[curIndex].children.length != 0}}">
   <view class="nav_right_items">
      <navigator url="../reservation/reservation" open-type="navigate">  
-       <image src="../../images/business3.png"></image>
+       <image src="../../images/fenlei1.gif" style="width: 34px;height: 36px;margin-bottom: 5px;"></image>
        <text>燃气业务</text>
      </navigator>
    </view>
    <view class="nav_right_items">
      <navigator url="../reservation/reservation" open-type="navigate">  
-       <image src="../../images/business4.png"></image>
+       <image src="../../images/fenlei2.gif" style="width: 34px;height: 36px;margin-bottom: 5px;"></image>
        <text>气费账单</text>
      </navigator>
    </view>
    <view class="nav_right_items">
      <navigator url="../reservation/reservation" open-type="navigate">  
-       <image src="../../images/business5.png"></image>
+       <image src="../../images/fenlei3.gif" style="width: 34px;height: 36px;margin-bottom: 5px;"></image>
        <text>预约办理</text>
      </navigator>
    </view>
    <view class="nav_right_items">
      <navigator url="../reservation/reservation" open-type="navigate">  
-       <image src="../../images/business5.png"></image>
+       <image src="../../images/fenlei4.gif" style="width: 34px;height: 36px;margin-bottom: 5px;"></image>
+       <text>预约办理</text>
+     </navigator>
+   </view>
+   <view class="nav_right_items">
+     <navigator url="../reservation/reservation" open-type="navigate">  
+       <image src="../../images/fenlei5.gif" style="width: 34px;height: 36px;margin-bottom: 5px;"></image>
+       <text>燃气保险</text>
+     </navigator>
+   </view>
+   <view class="nav_right_items">
+     <navigator url="../reservation/reservation" open-type="navigate">  
+       <image src="../../images/fenlei6.gif" style="width: 34px;height: 36px;margin-bottom: 5px;"></image>
        <text>科学馆预约</text>
      </navigator>
    </view>

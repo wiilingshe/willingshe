@@ -65,7 +65,23 @@ Page({
               })
             }
           })
-      } 
+      },
+      fail:function(res){
+        wx.hideLoading()
+        wx.showModal({
+          title: '提示',
+          content: '您尚未注册，是否前往注册页面？',
+          success: function(res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: '../login/login'
+              })
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
+        })
+      }
     })
   },
   onReady: function () {
@@ -297,56 +313,68 @@ Page({
     });
   },
   del: function (e) {
-    wx.showLoading()
+    
     //删除购物车商品商品
     var that = this;
-    console.log(e)
-    wx.getStorage({
-      key:'access_token',
-      success:function(res1){
-        wx.request({
-          url:app.data.url+'/api/cart/remove',
-          method:'POST',
-          data:{access_token:res1.data,id:e.currentTarget.dataset.id},
-          success:function(res){
-            if(res.data.code == 1){
+    wx.showModal({
+      title: '提示',
+      content: '是否删除该商品？',
+      success: function(res) {
+        if (res.confirm) {
+          wx.showLoading()
+          console.log('用户点击确定')
+          console.log(e)
+          wx.getStorage({
+            key:'access_token',
+            success:function(res1){
               wx.request({
-                url:app.data.url+'/api/cart',
+                url:app.data.url+'/api/cart/remove',
                 method:'POST',
-                data:{access_token:res1.data},
-                success:function(res2){
-                  wx.hideLoading()
-                  if(res2.data.code == 1){
-                    that.setData({
-                      carts:res2.data.data
-                      // carts:[]
-                    })
-                    wx.showToast({
-                      title:'删除成功',
-                      icon:'none',
-                      duration:2000
+                data:{access_token:res1.data,id:e.currentTarget.dataset.id},
+                success:function(res){
+                  if(res.data.code == 1){
+                    wx.request({
+                      url:app.data.url+'/api/cart',
+                      method:'POST',
+                      data:{access_token:res1.data},
+                      success:function(res2){
+                        wx.hideLoading()
+                        if(res2.data.code == 1){
+                          that.setData({
+                            carts:res2.data.data
+                            // carts:[]
+                          })
+                          wx.showToast({
+                            title:'删除成功',
+                            icon:'none',
+                            duration:2000
+                          })
+                        }else{
+                          wx.showToast({
+                            title: res2.data.message,
+                            icon: 'none',
+                            duration: 2000
+                          })
+                        }
+                        that.setData({
+                          loading:true
+                        })
+                      }
                     })
                   }else{
                     wx.showToast({
-                      title: res2.data.message,
-                      icon: 'none',
-                      duration: 2000
+                      title:res.data.message,
+                      icon:'none',
+                      duration:2000
                     })
                   }
-                  that.setData({
-                    loading:true
-                  })
                 }
               })
-            }else{
-              wx.showToast({
-                title:res.data.message,
-                icon:'none',
-                duration:2000
-              })
             }
-          }
-        })
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
       }
     })
   },

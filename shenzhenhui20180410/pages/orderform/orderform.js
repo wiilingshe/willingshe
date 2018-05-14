@@ -21,6 +21,8 @@ Page({
     type:'',
     spec_id:'',
     alldata:[],
+    spec_id:'',
+    count:'',
   },
 
   /**
@@ -29,6 +31,10 @@ Page({
   onLoad: function (options) {
     console.log(options)
     var that = this;
+    that.setData({
+      spec_id:options.spec_id,
+      count:options.count
+    })
     // wx.getStorage({
     //   key: 'selectedinfo',
     //   success: function(res) {
@@ -331,7 +337,7 @@ Page({
   },
   addaddress(){
     wx.navigateTo({
-      url:'../address/address'
+      url:'../address/address?spec_id='+this.data.spec_id+'&count='+this.data.count
     })
   },
   addresslist1(){
@@ -340,6 +346,9 @@ Page({
     })
   },
   couponList(){
+    if(this.data.useing == '暂无优惠券使用'){
+      return false;
+    }
     var that = this;
     this.setData({
       youhuijuan : true

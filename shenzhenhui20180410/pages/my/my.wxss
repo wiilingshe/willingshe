@@ -12,6 +12,7 @@
   height:444rpx;
   background: #fff;
   margin-bottom: 0.3333rem;
+  position: relative;
 }
 .top_bg .bg{
     width: 100%;
@@ -23,7 +24,7 @@
 .top_bg .userImg{
     position: absolute;
     left: 50%;
-    top: 15%;
+    top: 170rpx;
     margin-left: -35px;
     border-radius: 100%;
     width: 70px;

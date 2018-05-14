@@ -289,6 +289,7 @@ Page({
     });
   },
   bindChange: function (e) {
+    wx.showLoading()
     console.log(e.detail.current)
     var that = this;
     that.setData({ 
@@ -312,6 +313,7 @@ Page({
             method:'POST',
             data:data,
             success:function(res){
+              wx.hideLoading()
               if(res.data.code == 1){
                 if(e.detail.current == 0){
                   that.setData({
@@ -455,6 +457,128 @@ Page({
             }
           })
       } 
+    })
+  },
+  refund(e){
+    var that = this;
+    var orderId = e.currentTarget.dataset.order_id;
+    wx.showModal({
+      title: '提示',
+      content: '你确定要申请退款吗？',
+      success: function (res) {
+        wx.navigateTo({
+          url:'../returns/returns?id='+orderId
+        })
+      }
+    });
+  },
+  shouhuo(e){
+    wx.showLoading()
+    var that = this;
+    var orderId = e.currentTarget.dataset.order_id;
+    wx.getStorage({
+      key:'access_token',
+      success:function(res1){
+        wx.request({
+          url:app.data.url+'/api/order/receive',
+          method:'POST',
+          data:{access_token:res1.data,order_id:orderId},
+          success:function(res){
+            wx.hideLoading()
+            if(res.data.code == 1){
+              wx.showToast({
+                title:'收货成功',
+                icon:'none',
+                duration:2000
+              })
+              if(that.data.currentTab == 0){
+                var data = {access_token:res1.data,page:1}
+              }else{
+                var data = {access_token:res1.data,page:1,type:that.data.currentTab}
+              }
+              wx.request({
+                url:app.data.url+'/api/order',
+                method:'POST',
+                data:data,
+                success:function(res){
+                  if(res.data.code == 1){
+                    if(that.data.currentTab == 0){
+                      that.setData({
+                        orderList0:res.data.data[0].list,
+                        page:1
+                      })
+                    }else if(e.detail.current == 1){
+                      that.setData({
+                        orderList1:res.data.data[0].list,
+                        page:1
+                      })
+                    }else if(e.detail.current == 2){
+                      that.setData({
+                        orderList2:res.data.data[0].list,
+                        page:1
+                      })
+                    }else if(e.detail.current == 3){
+                      that.setData({
+                        orderList3:res.data.data[0].list,
+                        page:1
+                      })
+                    }
+                  }else{
+                    wx.showToast({
+                      title: res.data.message,
+                      icon: 'none',
+                      duration: 2000
+                    })
+                  }
+                }
+              })
+            }else{
+              wx.showToast({
+                title:res.data.message,
+                icon:'none',
+                duration:2000
+              })
+            }
+          }
+        })
+      }
+    })
+  },
+  wuliu(e){
+    wx.showLoading()
+    var that = this;
+    var orderId = e.currentTarget.dataset.order_id;
+    wx.getStorage({
+      key:'access_token',
+      success:function(res1){
+        wx.request({
+          url:app.data.url+'/api/order/express',
+          method:'POST',
+          data:{access_token:res1.data,order_id:orderId},
+          success:function(res){
+            wx.hideLoading()
+            if(res.data.code == 1){
+              wx.showModal({
+                title: '物流信息',
+                content: res.data.data[0].express_name+res.data.data[0].express_num,
+                success: function(res) {
+                  if (res.confirm) {
+                    console.log('用户点击确定')
+                  } else if (res.cancel) {
+                    console.log('用户点击取消')
+                  }
+                }
+              })
+            }else{
+              wx.showToast({
+                title:res.data.message,
+                icon:'none',
+                duration:2000
+              })
+            }
+          }
+        })
+      }
     })
   }
 })

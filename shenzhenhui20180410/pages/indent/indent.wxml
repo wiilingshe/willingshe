@@ -5,7 +5,7 @@
   <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" data-otype="finish" bindtap="swichNav">已完成</view>
   <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">已取消</view>
 </view>
-<swiper current="{{currentTab}}" class="swiper-box"  style="height:{{winHeight - 31}}px" bindchange="bindChange"> 
+<swiper current="{{currentTab}}" class="swiper-box"  style="height:{{winHeight}}px" bindchange="bindChange"> 
 <view class="img-list" wx:if="{{ifshow}}">
   <swiper-item> 
    <scroll-view scroll-y="true" duration="300" style="height: {{winHeight?winHeight+'px':'auto'}}" lower-threshold="10" bindscrolltolower="more">
@@ -46,10 +46,17 @@
                 <button class="canel" data-order_id="{{item.order_id}}" bindtap="removeOrder" wx:if="{{item.order_state==0}}">取消订单</button>
                 <button class="sure" data-order_id="{{item.order_id}}" data-sid="{{item.goods[0].id}}" bindtap="payOrderByWechat" wx:if="{{item.order_state==0}}">立即付款</button>
                 <!-- <navigator  url="../applyReturn/applyReturn" hover-class="none"> -->
-                  <button class="canel" wx:if="{{item.order_state==1 || item.order_state==2}}">申请退货</button>
+                  <button data-order_id="{{item.order_id}}" bindtap="refund" class="canel" wx:if="{{(item.order_state==1 || item.order_state==2) && item.refund==null}}">申请退货</button>
                 <!-- </navigator> -->
                   <!-- <button class="logis">再次购买</button> -->
-                  <button class="logis" wx:if="{{item.order_state==2 || item.order_state==3}}">物流信息</button>
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.refund.status==-1}}" >退货不通过</button>
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.refund.status==0}}" >退货待审核</button>
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.refund.status==1}}" >退货已审核</button>
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.refund.status==2}}" >确认退款</button>
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.refund.status==3}}" >已退款</button>
+
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.order_state==2 || item.order_state==3}}" bindtap="wuliu">物流信息</button>
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.order_state==1}}" bindtap="shouhuo">确认收货</button>
             </view>
     </view>
     </scroll-view>
@@ -91,10 +98,17 @@
                 <button class="canel" bindtap="removeOrder" wx:if="{{item.order_state==0}}">取消订单</button>
                 <button class="sure" bindtap="payOrderByWechat" wx:if="{{item.order_state==0}}">立即付款</button>
                 <!-- <navigator  url="../applyReturn/applyReturn" hover-class="none"> -->
-                  <button class="canel" wx:if="{{item.order_state==1 || item.order_state==2}}">申请退货</button>
+                  <button data-order_id="{{item.order_id}}" bindtap="refund" class="canel" wx:if="{{(item.order_state==1 || item.order_state==2) && item.refund==null}}">申请退货</button>
                 <!-- </navigator> -->
-                  <button class="logis"  data-order_id="{{item.order_id}}" data-sid="{{item.goods[0].id}}" bindtap="payOrderByWechat" >再次购买</button>
+                  <!-- <button class="logis">再次购买</button> -->
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.refund.status==-1}}" >退货不通过</button>
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.refund.status==0}}" >退货待审核</button>
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.refund.status==1}}" >退货已审核</button>
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.refund.status==2}}" >确认退款</button>
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.refund.status==3}}" >已退款</button>
+                  
                   <button class="logis" wx:if="{{item.order_state==2 || item.order_state==3}}">物流信息</button>
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.order_state==1}}" bindtap="shouhuo">确认收货</button>
             </view>
     </view>
     </scroll-view>
@@ -133,10 +147,16 @@
                 <button class="canel" bindtap="removeOrder" wx:if="{{item.order_state==0}}">取消订单</button>
                 <button class="sure" bindtap="payOrderByWechat" wx:if="{{item.order_state==0}}">立即付款</button>
                 <!-- <navigator  url="../applyReturn/applyReturn" hover-class="none"> -->
-                  <button class="canel" wx:if="{{item.order_state==1 || item.order_state==2}}">申请退货</button>
+                  <button data-order_id="{{item.order_id}}" bindtap="refund" class="canel" wx:if="{{(item.order_state==1 || item.order_state==2) && item.refund==null}}">申请退货</button>
                 <!-- </navigator> -->
-                  <button class="logis">再次购买</button>
+                  <!-- <button class="logis">再次购买</button> -->
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.refund.status==-1}}" >退货不通过</button>
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.refund.status==0}}" >退货待审核</button>
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.refund.status==1}}" >退货已审核</button>
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.refund.status==2}}" >确认退款</button>
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.refund.status==3}}" >已退款</button>
                   <button class="logis" wx:if="{{item.order_state==2 || item.order_state==3}}">物流信息</button>
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.order_state==1}}" bindtap="shouhuo">确认收货</button>
             </view>
     </view>
     </scroll-view>
@@ -175,10 +195,16 @@
                 <button class="canel" bindtap="removeOrder" wx:if="{{item.order_state==0}}">取消订单</button>
                 <button class="sure" bindtap="payOrderByWechat" wx:if="{{item.order_state==0}}">立即付款</button>
                 <!-- <navigator  url="../applyReturn/applyReturn" hover-class="none"> -->
-                  <button class="canel" wx:if="{{item.order_state==1 || item.order_state==2}}">申请退货</button>
+                  <button data-order_id="{{item.order_id}}" bindtap="refund" class="canel" wx:if="{{(item.order_state==1 || item.order_state==2) && item.refund==null}}">申请退货</button>
                 <!-- </navigator> -->
-                  <button  data-order_id="{{item.order_id}}" data-sid="{{item.goods[0].id}}" bindtap="payOrderByWechat"  class="logis">再次购买</button>
+                  <!-- <button class="logis">再次购买</button> -->
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.refund.status==-1}}" >退货不通过</button>
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.refund.status==0}}" >退货待审核</button>
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.refund.status==1}}" >退货已审核</button>
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.refund.status==2}}" >确认退款</button>
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.refund.status==3}}" >已退款</button>
                   <button class="logis" wx:if="{{item.order_state==2 || item.order_state==3}}">物流信息</button>
+                  <button data-order_id="{{item.order_id}}" class="logis" wx:if="{{item.order_state==1}}" bindtap="shouhuo">确认收货</button>
             </view>
     </view>
   </scroll-view>

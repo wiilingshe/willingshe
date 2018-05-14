@@ -33,14 +33,17 @@
             </view>
         </view>
       </view>
-      <view class="del" data-id="{{item.id}}" bindtap="del" data-index="{{index}}">删除</view>
+      <view class="del1" data-id="{{item.id}}" bindtap="del" data-index="{{index}}">x</view>
+      <!-- <view class="del" data-id="{{item.id}}" bindtap="del" data-index="{{index}}">删除</view> -->
     </view>
     <view class="carts-footer">
         <view bindtap="bindSelectAll" class="selectall">
             <icon wx:if="{{selectedAllStatus}}" type="success_circle" size="20"/>
             <icon wx:else type="circle" size="20" />
-            <text>全选</text>
-            <text class="priceTotal">{{total}}</text>
+            <text style="position: relative;top: -10rpx;">
+              <text>全选</text>
+              <text class="priceTotal">{{total}}</text>
+            </text>
         </view>
             <view class="button" bindtap="jiesuan">立即结算</view>
     </view>
