@@ -13,8 +13,8 @@
 
 
     <view wx:for="{{carts}}" wx:key="{{item.id}}" class="carts-item" data-title="{{item.title}}" data-url="{{item.url}}" bindtouchend="touchend">
-     <icon wx:if="{{item.selected}}" data-type="success_circle" type="success_circle" size="20" bindtap="bindCheckbox" data-index="{{index}}"/>
-      <icon wx:else data-type="circle" type="circle" size="20" bindtap="bindCheckbox" data-index="{{index}}"/>
+     <icon wx:if="{{item.isselect}}" data-type="success_circle" type="success_circle" size="20" bindtap="bindCheckbox" data-index="{{index}}" data-id="{{item.id}}"/>
+      <icon wx:else data-type="circle" type="circle" size="20" bindtap="bindCheckbox" data-index="{{index}}" data-id="{{item.id}}"/>
       <view>
         <image class="carts-image" src="{{item.image}}" mode="aspectFill" />
       </view>

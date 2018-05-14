@@ -1,5 +1,5 @@
 <!--pages/orderform/orderform.wxml-->
-<view class="">
+<view class="" style="width: 100%;overflow-x:hidden;">
   <view  class="orderInf" bindtap="selectaddresslist">
       <text class="name">{{addressinfo.name}}</text>
       <text class="tel">{{addressinfo.mobile}}</text>

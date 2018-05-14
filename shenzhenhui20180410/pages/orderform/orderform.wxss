@@ -52,13 +52,14 @@
    float: left;
 }
 .orderDetail .title{
-   width: 360rpx;
+   width: 550rpx;
    font-size: 24rpx;
    white-space: nowrap;
    text-overflow: ellipsis;
    display: -webkit-box;
    -webkit-line-clamp: 2;
    -webkit-box-orient: vertical;
+   overflow: hidden;
 }
 .orderDetail .stying{
     display: block;

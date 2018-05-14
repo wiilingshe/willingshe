@@ -63,10 +63,10 @@
       <scroll-view scroll-x="false" scroll-y="{{ifscroll}}" class='scroll-views'>
         <block wx:for="{{indexAdList}}" wx:key="id">
           <view class="recommend"  data-id="{{item.id}}">
-            <view style='float:left;' data-id="{{item.id}}" data-type="{{item.type}}" bindtap="detial">
+            <view style='float:left;' data-id="{{item.id}}" data-type="{{item.type}}" data-content="{{item.content}}" bindtap="detial">
               <text class="r_name">{{item.title}}</text>
               <text class="r_intor">{{item.subtitle}}</text>
-              <view class="pri">
+              <view class="pri" wx:if="{{item.type==1}}">
                 <text><text style="font-size: 22rpx;position: relative;top: 10rpx;">￥</text><text style="position: relative;left: -10rpx;">{{item.goods_price}}</text></text>
                 <button class="r_text" type='text'>直降40元</button>
               </view>

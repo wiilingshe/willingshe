@@ -34,6 +34,7 @@ Page({
                   carts:res.data.data
                   // carts:[]
                 })
+                that.sum();
                 if(res.data.data.length == 0){
                   wx.request({
                     url:app.data.url+'/api/index/ad',
@@ -203,22 +204,52 @@ Page({
     //拿到下标值，以在carts作遍历指示用
     var index = parseInt(e.currentTarget.dataset.index);
     //原始的icon状态
-    var selected = this.data.carts[index].selected;
+    var selected = this.data.carts[index].isselect;
     var carts = this.data.carts;
     // 对勾选状态取反
-    carts[index].selected = !selected;
-    var selectArr = '';
+    carts[index].isselect = !selected;
+    if(!selected == true){
+
+    }else{
+      
+    }
+    var that = this;
+    wx.showLoading()
+    wx.getStorage({
+      key:'access_token',
+      success:function(res1){
+        wx.request({
+          url:app.data.url+'/api/cart/select',
+          method:'POST',
+          data:{access_token:res1.data,id:e.currentTarget.dataset.id},
+          success:function(res){
+            wx.hideLoading()
+            if(res.data.code == 1){
+              
+            }else{
+              wx.showToast({
+                title:res.data.message,
+                icon:'none',
+                duration:2000
+              })
+            }
+          }
+        })
+      }
+    })
+    var selectArr = [];
     // 遍历
     for (var i = 0; i < carts.length; i++) {
       if (carts[i].selected == true) {
-        if(selectArr == ''){
-          selectArr = carts[i].id
-        }else{
-          selectArr = selectArr+','+carts[i].id
-        }
-        // selectArr.push(carts[i].id)
+        // if(selectArr == ''){
+        //   selectArr = carts[i].id
+        // }else{
+        //   selectArr = selectArr+','+carts[i].id
+        // }
+        selectArr.push(carts[i].id)
       }
     }
+    console.log(selectArr)
     this.setData({
       selectArr:selectArr
     })
@@ -237,6 +268,7 @@ Page({
     this.setData({
       carts: carts,
     });
+    console.log(carts)
     this.sum();
   },
   bindSelectAll: function () {
@@ -246,15 +278,45 @@ Page({
     selectedAllStatus = !selectedAllStatus;
     // // 购物车数据，关键是处理selected值
     var carts = this.data.carts;
-    var selectArr = '';
+    wx.showLoading()
+    for(let i=0;i<carts.length;i++){
+      if(carts[i].isselect == 0 || carts[i].isselect == false){
+        wx.getStorage({
+          key:'access_token',
+          success:function(res1){
+            wx.request({
+              url:app.data.url+'/api/cart/select',
+              method:'POST',
+              data:{access_token:res1.data,id:carts[i].id},
+              success:function(res){
+                if(res.data.code == 1){
+                  console.log(i,carts.length)
+                    wx.hideLoading();
+                }else{
+                  wx.showToast({
+                    title:res.data.message,
+                    icon:'none',
+                    duration:2000
+                  })
+                }
+              }
+            })
+          }
+        })
+      }else{
+        wx.hideLoading();
+      }
+    }
+    var selectArr = [];
     if (carts.length > 0) {
       for (var i = 0; i < carts.length; i++) {
-        if(selectArr == ''){
-          selectArr = carts[i].id
-        }else{
-          selectArr = selectArr + ',' + carts[i].id
-        }
-        carts[i].selected = selectedAllStatus;
+        // if(selectArr == ''){
+        //   selectArr = carts[i].id
+        // }else{
+        //   selectArr = selectArr + ',' + carts[i].id
+        // }
+        selectArr.push(carts[i].id)
+        carts[i].isselect = selectedAllStatus;
       }
       this.setData({
         selectArr:selectArr
@@ -301,7 +363,7 @@ Page({
     // 计算总金额
     var total = 0;
     for (var i = 0; i < carts.length; i++) {
-      if (carts[i].selected) {
+      if (carts[i].isselect) {
         total += parseInt(carts[i].total) * parseFloat(carts[i].price).toFixed(2);
       }
     }
@@ -309,7 +371,7 @@ Page({
     this.setData({
       carts: carts,
       loadingHidden: true,
-      total: '￥' + total
+      total: '￥' + total.toFixed(2)
     });
   },
   del: function (e) {
@@ -344,6 +406,25 @@ Page({
                             carts:res2.data.data
                             // carts:[]
                           })
+                          if(res2.data.data.length == 0){
+                            wx.request({
+                              url:app.data.url+'/api/index/ad',
+                              method:'GET',
+                              success:function(res3){
+                                if(res3.data.code == 1){
+                                  that.setData({
+                                    adlist:res3.data.data
+                                  })
+                                }else{
+                                  wx.showToast({
+                                    title: res3.data.message,
+                                    icon: 'none',
+                                    duration: 2000
+                                  })
+                                }
+                              }
+                            })
+                          }
                           wx.showToast({
                             title:'删除成功',
                             icon:'none',
@@ -405,31 +486,38 @@ Page({
   },
   jiesuan(){
     var that = this;
-    wx.showLoading()
-    wx.getStorage({
-      key:'access_token',
-      success:function(res1){
-        wx.request({
-          url:app.data.url+'/api/cart/select',
-          method:'POST',
-          data:{access_token:res1.data,id:that.data.selectArr},
-          success:function(res){
-            wx.hideLoading()
-            if(res.data.code == 1){
-              wx.navigateTo({
-                url:'../orderform/orderform?type=2'
-              })
-            }else{
-              wx.showToast({
-                title:res.data.message,
-                icon:'none',
-                duration:2000
-              })
-            }
-          }
-        })
-      }
+    wx.navigateTo({
+      url:'../orderform/orderform?type=2'
     })
+    // wx.showLoading()
+    // wx.getStorage({
+    //   key:'access_token',
+    //   success:function(res1){
+    //     for(let i=0;i<that.data.selectArr.length;i++){
+    //       wx.request({
+    //         url:app.data.url+'/api/cart/select',
+    //         method:'POST',
+    //         data:{access_token:res1.data,id:that.data.selectArr[i]},
+    //         success:function(res){
+    //           wx.hideLoading()
+    //           if(res.data.code == 1){
+    //             if(i==that.data.selectArr.length-1){
+    //               setTimeout(function(){
+                    
+    //               },500)
+    //             }
+    //           }else{
+    //             wx.showToast({
+    //               title:res.data.message,
+    //               icon:'none',
+    //               duration:2000
+    //             })
+    //           }
+    //         }
+    //       })
+    //     }
+    //   }
+    // })
   },
   detail(e){
     console.log(e)

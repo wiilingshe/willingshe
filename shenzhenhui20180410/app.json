@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/shopping/shopping",
     "pages/article/article",
     "pages/applyReturn/applyReturn",
     "pages/qijiandian/qijiandian",
@@ -8,7 +9,6 @@
     "pages/logs/logs",
     "pages/address/address",
     "pages/login/login",
-    "pages/shopping/shopping",
     "pages/flagship/flagship",
     "pages/indent/indent",
     "pages/returns/returns",

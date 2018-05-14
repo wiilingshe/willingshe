@@ -108,9 +108,10 @@ Page({
     })
   },
   detial: function (e) {
+    console.log(e)
     if(e.currentTarget.dataset.type == 1){
       wx.navigateTo({
-        url: "../choiceGoods/choiceGoods?id=" + e.currentTarget.dataset.id
+        url: "../choiceGoods/choiceGoods?id=" + e.currentTarget.dataset.content
       })
     }else{
       wx.navigateTo({
