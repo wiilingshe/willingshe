@@ -454,47 +454,60 @@ Page({
      wx.scanCode({
        onlyFromCamera: true,
        success: (res) => {
-         wx.showLoading({ title: '加载中', })
-         setTimeout(function () { wx.hideLoading() }, 1500)
-         var result = res.result
-         result = result.split('?')
-         var a = result[1]
-         console.log(a)
-         a = a.split('&')
-         a = a[0].split('=')
-         var table_id = a[1]
-         var path = url + 'api/order/scan'
-         var data = { table_id: table_id, memid: memid }
+        var start = res.result.indexOf('?');
+        var end = res.result.length;
+        var canshu = res.result.substr(start,end)
+        function getUrlParms(name){
+         var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+         var r = canshu.substr(1).match(reg);
+         if(r!=null)
+         return unescape(r[2]);
+         return null;
+        }
+        wx.navigateTo({
+           url: '../menu/menu?id='+getUrlParms('id')
+         })
+         // wx.showLoading({ title: '加载中', })
+         // setTimeout(function () { wx.hideLoading() }, 1500)
+         // var result = res.result
+         // result = result.split('?')
+         // var a = result[1]
+         // console.log(a)
+         // a = a.split('&')
+         // a = a[0].split('=')
+         // var table_id = a[1]
+         // var path = url + 'api/order/scan'
+         // var data = { table_id: table_id, memid: memid }
          //console.log(data)
-         request.sendRrquest(path, 'GET', data, {})
-           .then(function (items) {
-             console.log(items.data);
-             if (items.data.code == 1) {
-               if (items.data.data.length == 0) {
-                 console.log(2);
-                 wx.navigateTo({
-                   url: '../menu/menu?' + result[1] + '&way=1'
-                 })
-               } else {
-                 console.log(3);
-                 wx.navigateTo({
-                   url: '../order_detail/order_detail?order_id=' + items.data.data[0].order_id
-                 })
-               }
-             } else {
-               wx.showModal({
-                 content: items.data.message+'，请下拉刷新页面后重新扫码',
-                 showCancel: false,
-                 confirmColor: '#fe7c00',
-                 success: function (res) {
-                   if (res.confirm) {
-                   }
-                 }
-               })
-             }
-           }, function (error) {
-             console.log(error);
-           });
+         // request.sendRrquest(path, 'GET', data, {})
+         //   .then(function (items) {
+         //     console.log(items.data);
+         //     if (items.data.code == 1) {
+         //       if (items.data.data.length == 0) {
+         //         console.log(2);
+         //         wx.navigateTo({
+         //           url: '../menu/menu?' + result[1] + '&way=1'
+         //         })
+         //       } else {
+         //         console.log(3);
+         //         wx.navigateTo({
+         //           url: '../order_detail/order_detail?order_id=' + items.data.data[0].order_id
+         //         })
+         //       }
+         //     } else {
+         //       wx.showModal({
+         //         content: items.data.message+'，请下拉刷新页面后重新扫码',
+         //         showCancel: false,
+         //         confirmColor: '#fe7c00',
+         //         success: function (res) {
+         //           if (res.confirm) {
+         //           }
+         //         }
+         //       })
+         //     }
+         //   }, function (error) {
+         //     console.log(error);
+         //   });
 
        }
      })
