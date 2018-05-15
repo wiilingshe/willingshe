@@ -40,12 +40,12 @@
     wx:key="unique" bindtap="toggle">{{item}}</view>
   </view>-->
   <view>
-    <view class="bar">
+    <!-- <view class="bar">
       <text class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">每日推荐</text>
       <text class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">生活服务</text>
       <text class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">气价查询</text>
       <text class="tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="swichNav">充值加分</text>
-    </view>
+    </view> -->
     <view>
       <view class="img-box">
         <!-- <image src="../../images/logo.png"></image>-->
@@ -68,7 +68,7 @@
               <text class="r_intor">{{item.subtitle}}</text>
               <view class="pri" wx:if="{{item.type==1}}">
                 <text><text style="font-size: 22rpx;position: relative;top: 10rpx;">￥</text><text style="position: relative;left: -10rpx;">{{item.goods_price}}</text></text>
-                <button class="r_text" type='text'>直降40元</button>
+                <!-- <button class="r_text" type='text'>直降40元</button> -->
               </view>
             </view>
             <view data-id="{{item.id}}" bindtap="detial">
