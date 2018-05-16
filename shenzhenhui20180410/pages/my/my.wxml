@@ -51,11 +51,11 @@
         </view>
       </navigator>
 
-      <navigator class="my_box" url="../perMaterial/perMaterial" hover-class="none" >
+      <!-- <navigator class="my_box" url="../perMaterial/perMaterial" hover-class="none" >
         <view class="my_line">
           <image src="../../images/my-material.png"></image>
           <text class="m_tcontent">完善资料</text>
         </view>
-      </navigator>
+      </navigator> -->
    </view>
 </view>
