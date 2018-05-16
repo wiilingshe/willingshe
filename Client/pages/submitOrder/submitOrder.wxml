@@ -43,7 +43,7 @@
               </view>
               <view class='right flex4'>
                 <view class='font_34 color_gray'>X{{item.count}}</view>
-                <view class='font_32 color_block'>￥{{item.total}}</view>
+                <view class='font_32 color_block'>￥{{item.price*item.count}}</view>
               </view>
             </view>
             <view class='font_28 color_gray3 word'><block wx:if="{{item.param||item.option}}">({{item.param}} {{item.option}})</block></view>
