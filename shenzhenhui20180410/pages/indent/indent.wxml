@@ -23,7 +23,7 @@
     <view class="container  carts-list" wx:for="{{orderList0}}">
         <view class="trade_name">
           <view>
-            XXXXXX
+            <!-- XXXXXX -->
           </view>
           <view>
             {{item.order_state==-1?'取消订单':item.order_state==0?'待付款':item.order_state==1?'已付款':item.order_state==2?'已发货':item.order_state==3?'已完成':''}}
@@ -75,7 +75,7 @@
     <view class="container  carts-list" wx:for="{{orderList1}}">
         <view class="trade_name">
           <view>
-            XXXXXX
+            <!-- XXXXXX -->
           </view>
           <view>
             {{item.order_state==-1?'取消订单':item.order_state==0?'待付款':item.order_state==1?'已付款':item.order_state==2?'已发货':item.order_state==3?'已完成':''}}
@@ -124,7 +124,7 @@
     <view class="container  carts-list" wx:for="{{orderList2}}">
         <view class="trade_name">
           <view>
-            XXXXXX
+            <!-- XXXXXX -->
           </view>
           <view>
             {{item.order_state==-1?'取消订单':item.order_state==0?'待付款':item.order_state==1?'已付款':item.order_state==2?'已发货':item.order_state==3?'已完成':''}}
@@ -172,7 +172,7 @@
     <view class="container  carts-list" wx:for="{{orderList3}}">
         <view class="trade_name">
           <view>
-            XXXXXX
+            <!-- XXXXXX -->
           </view>
           <view>
             {{item.order_state==-1?'取消订单':item.order_state==0?'待付款':item.order_state==1?'已付款':item.order_state==2?'已发货':item.order_state==3?'已完成':''}}

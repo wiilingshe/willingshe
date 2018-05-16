@@ -40,6 +40,7 @@
 
 .membership{
   background: #fff;
+  margin-bottom: 20rpx;
 
 }
 .membership .introduce image{
