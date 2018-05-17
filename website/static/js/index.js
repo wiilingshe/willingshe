@@ -3,10 +3,11 @@
     console.log(window.scrollY)
     var navheight = parseInt($('.nav').eq(0).css('height'));
     var scrolltop = window.scrollY;
-    if(scrolltop > 400 && scrolltop < 900){
-        console.log(22)
+    if(scrolltop > 250 && scrolltop < 900){
         // $('.zhong').eq(0).animate({'opacity':1},600,'swing');
         $('.title1').eq(0).animate({'margin-left':'0'},300,'swing');
+        $('.xia1').eq(0).animate({'margin-right':'0'},300,'swing');
+        $('.title1_bottom').eq(0).animate({'opacity':'1'},300,'swing');
         $('.zhong-list1').eq(0).animate({'right':'0'},300,'swing');
         $('.zhong-list2').eq(0).animate({'left':'0'},300,'swing');
         setTimeout(function(){
@@ -57,8 +58,12 @@
              $('.zheng7').eq(0).animate({'opacity':1},300,'swing');
         },600);
     }
+    if(scrolltop>1700){
+        $('.zixu').eq(0).addClass('zixu1')
+    }
     if(scrolltop>2400){
         console.log(jin)
+        $('.ruzhu').eq(0).addClass('zixu1')
         if(jin === 1){
             jin = 2;
             var a = setInterval(function(){

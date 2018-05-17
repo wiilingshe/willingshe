@@ -25,16 +25,19 @@
 		width: 100%;
 		background: #00B1D7;
 		color: #fff;
-		padding-bottom: 324px;
-		padding-top: 15px;
+		height: 812px;
+		padding-top: 0;
+		background-image: url(static/img/bg1.png);
+		background-position: center;
 	}
 	.search{
 		width: 1000px;
 		height: 215px;
 		background: rgba(0,0,0,0.4);
 		margin: 0 auto;
-		margin-top: 130px;
 		padding-top: 145px;
+		position: relative;
+    	top: 130px;
 	}
 	.search2{
 		width: 821px;
@@ -55,6 +58,7 @@
 		font-size: 22px;
 		padding-left: 30px;
 		padding-right: 30px;
+		border: 2px solid #f9bb30;
 	}
 	.search2 div{
 		width: 150px;
@@ -85,12 +89,14 @@
 	}
 	.title1{
 		text-align: center;
-		margin-top: 130px;
-		font-size: 50px;
+		margin-top: 60px;
+		font-size: 30px;
 		/*font-weight: bold;*/
-		color: #04B6D8;
-		margin-bottom: 60px;
+		color: #585959;
+		/*margin-bottom: 60px;*/
 		margin-left: 100%;
+		position: relative;
+		z-index: 11;
 	}
 	.zhong{
 		display: flex;
@@ -98,6 +104,7 @@
 		flex-wrap:wrap;
 		width: 821px;
 		margin: 0 auto;
+		position: relative;
 		/*opacity: 0;*/
 	}
 	.zhong>div{
@@ -135,7 +142,7 @@
 	.zhong-title{
 		text-align: center;
 		font-weight: bold;
-		margin-top: 15px;
+		margin-top: 18px;
 	}
 	.zhong-desc{
 		text-align: center;
@@ -148,8 +155,6 @@
 		margin-bottom: 30px;
 	}
 	.new{
-		padding-top: 37px;
-		background: #eee;
 	}
 	.new-title{
 		text-align: center;
@@ -160,6 +165,7 @@
 		position: relative;
 		top: 100px;
 		opacity: 0;
+		background-color: #ffad01
 
 	}
 	.new-title1{
@@ -182,6 +188,7 @@
 		height: 39px;
 		text-align: center;
 		line-height: 39px;
+		font-weight: bold;
 	}
 	.new-lists>div:hover{
 		background: #02B4D7;
@@ -246,6 +253,7 @@
 		display: inline-block;
 		margin-right: 90px;
 		opacity: 0;
+		background-color: #fff;
 	}
 	.zheng-li{
 		width: 150px;
@@ -269,10 +277,67 @@
 		position: relative;
 		bottom: 100px;
 		opacity: 0;
+		margin-left: 100%;
+		transform:rotate(360deg);
+	}
+	.zixu1{
+		animation:mymove 0.5s infinite forwards;
+		animation-fill-mode:forwards;
+		animation-iteration-count: 1;
+	}
+	@keyframes mymove
+	{
+	from {margin-left: 100%;transform:rotate(860deg);}
+	to {margin-left: 0;transform:rotate(0deg);}
+	}
+	.xia{
+		display: flex;
+		-wekbit-display:flex;
+		justify-content: center;
+		position: relative;
+		top: -10px;
+	}
+	.xia_line{
+		width: 110px;
+		height: 4px;
+		background-color: #00b1d7;
+		border-radius: 2px;
+	}
+	.xia_dian{
+		width: 36px;
+		height: 36px;
+		border-radius: 18px;
+		background-color: #ffad01;
+		position: relative;
+		top: -16px;
+		margin-left: 3px;
+		margin-right: 3px;
+	}
+	.zhongjian{
+		width: 70px !important;
+		height: 70px;
+		border-radius: 50%;
+		border: 1px solid #eee;
+		position: absolute;
+		left: calc(50% - 35px);
+		top: 1335px;
+		background-color: #fff;
+		z-index: 2
+	}
+	.zhongjian_dian{
+		width: 10px;
+		height: 10px;
+		border-radius: 5px;
+		background-color: #ffad01;
+		margin-top: 30px;
+		margin-left: 30px;
+	}
+	.xia1{
+		margin-right: 100%;
 	}
 </style>
 <body>
-	<div class="nav">
+	<div style="background-color: #0874a7;">
 		<div class="navmiddle">
 			<div class="login">
 				<div>
@@ -280,7 +345,7 @@
 				</div>
 			</div>
 			<div class="navlist">
-				<div>logo</div>
+				<div style="background-color: #000;">logo</div>
 				<div>首页</div>
 				<div>企业查询</div>
 				<div>最新动态</div>
@@ -291,6 +356,8 @@
 				<div>加入我们</div>
 			</div>
 		</div>
+	</div>
+	<div class="nav">
 		<div class="search">
 			<div class="search2">
 				<input type="text" name="">
@@ -307,6 +374,15 @@
 		</div>
 	</div>
 	<div class="title1">服务项目</div>
+	<span class="title1_bottom" style="position: relative;left: calc(50% - 90px);top: -52px; color: #cbeaf4;font-size: 30px;opacity: 0;">NOTICE</span>
+	<div class="xia xia1">
+		<div class="xia_line"></div>
+		<div class="xia_dian"></div>
+		<div class="xia_line"></div>
+	</div>
+	<div class="zhongjian">
+		<div class="zhongjian_dian"></div>
+	</div>
 	<div class="zhong">
 		<div class="zhong-list zhong-list1">
 			<div class="img">
@@ -338,7 +414,15 @@
 		</div>
 	</div>
 	<div class="new">
-		<div class="new-title">咨询</div>
+		<div class="new-title" style="height: 90px;margin-top: 40px;">
+			<div style="color: #595A5A;font-size: 30px;position: relative;top: 12px;">咨询</div>
+			<div style="color: #d5a666;font-size: 24px;position: relative;top: 10px;">NOTICE</div>
+		</div>
+		<div class="xia" style="top: -30px;">
+			<div class="xia_line"></div>
+			<div class="xia_dian"></div>
+			<div class="xia_line"></div>
+		</div>
 		<div class="new-lists">
 			<div class="new-lists_1">最新动态</div>
 			<div class="new-lists_2">公示公告</div>
@@ -360,13 +444,15 @@
 		</div>
 	</div>
 	<div class="zixu">
-		<div class="new-title1" style="margin-bottom: 0;margin-top: 36px;">咨询</div>
-		<div style="text-align: center;">
-			<img style="width: 280px;" src="static/img/xia.png">
+		<div class="new-title1" style="margin-bottom: 0;margin-top: 26px;color: #5E5E5E;">合作伙伴</div>
+		<div style="color: #cbeaf4;font-size: 24px;text-align: center;color: #d1d1e5;">NOTICE</div>
+		<div class="xia" style="top: 20px;margin-bottom: 20px;">
+			<div class="xia_line"></div>
+			<div class="xia_dian"></div>
+			<div class="xia_line"></div>
 		</div>
-		<div style="text-align: center;margin-bottom: 30px;">Meat our experts</div>
 	</div>
-	<div style="text-align: center;margin-top: 100px;margin-bottom: 100px;">
+	<div style="text-align: center;padding-top: 100px;padding-bottom: 90px;background-image: url(static/img/bg.png);background-position: center;">
 		<!-- <img src="static/img/eg.png"> -->
 		<div>
 			<span class="zheng zheng1">
@@ -408,30 +494,41 @@
 			</span>
 		</div>
 	</div>
-	<div class="new-title" style="margin-bottom: 0;margin-top: 36px;">入驻企业</div>
-	<div class="qiyelist">
-		<div style="width: 135px;text-align: center;">
-			<div style="font-weight: bold;font-size: 60px;margin-bottom: 39px;" class="num1">0</div>
-			<div><img src="static/img/1.png" style="width: 80px;"></div>
-			<div style="font-size: 24px;color: #02A0C2;">教育科技</div>
+	<div style="background-color: #f8f8f8;padding-bottom: 100px;padding-top: 50px;">
+		<div style="margin-bottom: 80px;margin-left: 100%;"  class="ruzhu">
+			<div class="new-title1" style="margin-bottom: 0;margin-top: 26px;color: #5E5E5E;">入驻企业</div>
+			<div style="color: #cbeaf4;font-size: 24px;text-align: center;color: #d1d1e5;">NOTICE</div>
+			<div class="xia" style="top: 20px;">
+				<div class="xia_line"></div>
+				<div class="xia_dian"></div>
+				<div class="xia_line"></div>
+			</div>
 		</div>
-		<div style="width: 135px;text-align: center;">
-			<div style="font-weight: bold;font-size: 60px;margin-bottom: 39px;" class="num2">0</div>
-			<div><img src="static/img/2.png" style="width: 80px;"></div>
-			<div style="font-size: 24px;color: #02A0C2;">服务行业</div>
-		</div>
-		<div style="width: 135px;text-align: center;">
-			<div style="font-weight: bold;font-size: 60px;margin-bottom: 39px;" class="num3">0</div>
-			<div><img src="static/img/3.png" style="width: 80px;"></div>
-			<div style="font-size: 24px;color: #02A0C2;">政府类行业</div>
-		</div>
-		<div style="width: 135px;text-align: center;margin-right: 0;">
-			<div style="font-weight: bold;font-size: 60px;margin-bottom: 39px;" class="num4">0</div>
-			<div><img src="static/img/4.png" style="width: 80px;"></div>
-			<div style="font-size: 24px;color: #02A0C2;">技术性行业</div>
+		<!-- <div class="new-title" style="margin-bottom: 0;margin-top: 36px;">入驻企业</div> -->
+		<div class="qiyelist">
+			<div style="width: 135px;text-align: center;">
+				<div style="font-weight: bold;font-size: 60px;margin-bottom: 39px;" class="num1">0</div>
+				<div><img src="static/img/1.png" style="width: 80px;"></div>
+				<div style="font-size: 24px;color: #02A0C2;">教育科技</div>
+			</div>
+			<div style="width: 135px;text-align: center;">
+				<div style="font-weight: bold;font-size: 60px;margin-bottom: 39px;" class="num2">0</div>
+				<div><img src="static/img/2.png" style="width: 80px;"></div>
+				<div style="font-size: 24px;color: #02A0C2;">服务行业</div>
+			</div>
+			<div style="width: 135px;text-align: center;">
+				<div style="font-weight: bold;font-size: 60px;margin-bottom: 39px;" class="num3">0</div>
+				<div><img src="static/img/3.png" style="width: 80px;"></div>
+				<div style="font-size: 24px;color: #02A0C2;">政府类行业</div>
+			</div>
+			<div style="width: 135px;text-align: center;margin-right: 0;">
+				<div style="font-weight: bold;font-size: 60px;margin-bottom: 39px;" class="num4">0</div>
+				<div><img src="static/img/4.png" style="width: 80px;"></div>
+				<div style="font-size: 24px;color: #02A0C2;">技术性行业</div>
+			</div>
 		</div>
 	</div>
-	<div class="bottom" style="margin-top: 100px;">
+	<div class="bottom">
 		<div class="bottom2">
 			<div class="youqing">友情链接：广东高新技术产业网 | 广东省科学技术厅 | 云南省科学技术厅 | 广西科技厅 | 湖北省科学技术厅</div>
 			<div class="bottom3">
