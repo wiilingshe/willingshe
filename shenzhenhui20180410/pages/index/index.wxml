@@ -71,7 +71,7 @@
                 <!-- <button class="r_text" type='text'>直降40元</button> -->
               </view>
             </view>
-            <view data-id="{{item.id}}" bindtap="detial">
+            <view data-id="{{item.id}}" data-type="{{item.type}}" data-content="{{item.content}}" bindtap="detial">
               <image src="{{item.image}}"></image>
             </view>
             <!-- <navigator style="position:relative" url="../flagship/flagship" hover-class="none"> -->

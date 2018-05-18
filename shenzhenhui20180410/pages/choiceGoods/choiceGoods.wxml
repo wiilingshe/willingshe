@@ -2,7 +2,14 @@
 <import src="../wxParse/wxParse.wxml"/>
 <view class="ware">
  <view class="detail">
-      <image class="show_img" src="{{detailList.image}}"></image>
+      <!-- <image class="show_img" src="{{detailList.image}}"></image> -->
+      <swiper indicator-dots="true" style="width: 100%;height: 750rpx;">
+        <block wx:for="{{detailList.images}}">
+          <swiper-item>
+            <image style="width: 100%;" src="{{item}}" class="slide-image" width="355" height="150"/>
+          </swiper-item>
+        </block>
+      </swiper>
       <view class="detail_cont">
         <view class='detcont_box'>  
             <text class="porname">{{detailList.name}}</text>

@@ -31,6 +31,7 @@ Page({
       },
       success: (res) => {
         if(res.data.code == 1){
+          res.data.data[0].images.push(res.data.data[0].image);
           that.setData({
             detailList: res.data.data[0],
             jiage:res.data.data[0].price_min
