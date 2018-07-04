@@ -1,6 +1,0 @@
-<!--index.wxml-->
-<view class="container">
-  <button class="kf_button" open-type="contact" session-from="weapp">
-   <image class="kf_image" src="../../static/img/333.jpg"></image>
-  </button>
-</view>
