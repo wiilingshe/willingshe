@@ -1,0 +1,50 @@
+<div id="show-contain">
+<<<<<<< HEAD:Public/eq/6.0/templates/show_visitor_visitor-xq.html
+	<div ng-include="'show/category/nav.tpl.html'" ng-controller="NavCtrl"></div>
+=======
+	<div ng-include="'/Public/eq/6.0/templates/nav.tpl.html'" ng-controller="NavCtrl"></div>
+>>>>>>> faf5a4d80bba0512f7946790e3a072ad236c4d34:Public/eq/6.0/templates/show.visitor-xq.tpl.html
+	<div class="cake">
+		<div class="same-content"> <a href="#/show" translate="show.visitorXq.SHOW_TIME">微课</a> > <a href="#/show/visitor" translate="show.visitorXq.SHOW_CASTER">秀客</a> > {{visitorMsg.name}} </div>
+	</div>
+	<div class="visitor-xq same-content">
+		<div class="clearfix"> <img ng-show="visitorMsg.headImg" ng-src="{{visitorMsg.headImg}}" width="200px" height="200px">
+			<div ng-show="!visitorMsg.headImg" style="width:200px;height:200px;background-color:#08a1ef;text-align:center;line-height:230px;float:left;margin-right:20px;"><em class="eqf-top-contact" style="color:#fff;font-size:50px;"></em></div>
+			<div class="visitor-dec">
+				<h4><!--<span><em class="eqf-phone"></em>个人名片微课<em>人气：33943</em></span>-->{{visitorMsg.name}}</h4>
+				<p class="des">{{visitorMsg.introduction}}</p>
+				<ul>
+					<li><span translate="show.visitorXq.TALENT_SKILL">擅长领域：</span><span ng-repeat="cate in cateTag">{{cate.name}}</span></li>
+					<li><span translate="show.visitorXq.SERVICE_ADDRESS">服务地域：</span><span ng-repeat="server in serverTag">{{server.name}}</span></li>
+					<li><span translate="show.visitorXq.PAYWAY">支付方式：</span><span ng-repeat="pay in payTag">{{pay.name}}</span></li>
+				</ul>
+			</div>
+		</div>
+		<div class="contact">
+			<!-- <a ng-if="visitorMsg.qq" href="http://wpa.qq.com/msgrd?v=3&amp;uin='+ {{visitorMsg.qq}} +'&amp;site=www.cactussoft.cn&amp;menu=yes" target="_blank" class="qq"><em class="eqf-qq"></em></a> --><a class="qq hint--top hint--rounded" data-hint="{{qqAction}}{{visitorMsg.qq}}"><em class="eqf-qq"></em></a> <a class="hint--top hint--rounded weixin" data-hint="{{('show.visitorXq.WECHAT' | translate) + visitorMsg.wechat}}"><em class="eqf-wechat"></em></a>			<a class="phone hint--top hint--rounded" data-hint="{{('show.visitorXq.PHONE' | translate) + visitorMsg.tel}}"><em class="eqf-glyphicon-earphone"></em></a> <a ng-if="visitorMsg.email" class="sixin hint--top hint--rounded" data-hint="邮箱：{{visitorMsg.email}}"
+				href="mailto:'+ {{visitorMsg.email}} +'"><em class="eqf-envelope"></em></a> <a ng-if="!visitorMsg.email" class="hui hint--top hint--rounded" data-hint="{{'show.visitorXq.NO_EMAIL_HINT' | translate}}"><em class="eqf-envelope"></em></a> </div>
+		<!--<p class="guanzhu"><a href=""><em class="eqf-plus2"></em>关注</a><a href=""><em class="eqf-envelope"></em>私信</a></p>-->
+	</div>
+	<div class="show-list same-content">
+		<h2>            <i translate="show.visitorXq.SAMPLE_WORKS">作品</i><span translate="show.visitorXq.WORKS">WORKS</span>        </h2>
+		<ul class="clearfix">
+			<li ng-repeat="tpl in visitorWorks">
+				<a href="{{PREFIX_CLIENT_HOST + '/v-' + tpl.code}}" target="_blank"> <img ng-src="{{PREFIX_FILE_HOST + tpl.cover}}" />
+					<p>{{tpl.name}}</p>
+					<p> <span><em class="eqf-eye2"></em>{{tpl.showCount}}</span> <span class="auth"><img title="{{tpl.userName}}" ng-src="{{tpl.headImg}}" /></span> </p>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="same-content clearfix pb20" ng-show="totalItems > 16">
+		<pagination style="float:left;" first-text="{{'my.scene.FIRST_PAGE' | translate}}" last-text="{{'my.scene.LAST_PAGE' | translate}}" previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page="pageSize" total-items="totalItems" max-size="10" ng-model="currentPage"
+			ng-change="pageChanged(currentPage)" boundary-links="true" rotate="true" num-pages="numPages"></pagination>
+		<div class="current_page"><span class="fl">到</span> <input type="text" ng-model="toPage" ng-keyup="$event.keyCode == 13 ? pageChanged(toPage) : null"><span class="fl">页</span> <a ng-click="pageChanged(toPage)" class="go">确定</a>
+			<!--             <span><span translate="my.scene.CURRENT_PAGE1">当前</span>: {{currentPage}} / {{numPages}} <span translate="my.scene.CURRENT_PAGE2">页</span></span> --></div>
+	</div>
+</div>
+<<<<<<< HEAD:Public/eq/6.0/templates/show_visitor_visitor-xq.html
+<div ng-include="'footer.tpl.html'"></div>
+=======
+<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'"></div>
+>>>>>>> faf5a4d80bba0512f7946790e3a072ad236c4d34:Public/eq/6.0/templates/show.visitor-xq.tpl.html

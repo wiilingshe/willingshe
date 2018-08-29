@@ -1,0 +1,108 @@
+<include file="Public:head"/>
+
+<div class="container-fluid">
+
+    <div class="row-fluid">
+        <div class="span12">
+            <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+            <h3 class="page-title">系统管理 <small>    System management</small></h3>
+
+            <ul class="breadcrumb">
+                <li><i class="icon-home"></i><a href="index.html">首页</a> 
+                    <i class="icon-angle-right"></i></li>
+
+                <li><a href="#">系统管理</a><i class="icon-angle-right"></i></li>
+                <li><a href="#">支付设置</a></li>
+            </ul>
+            <!-- END PAGE TITLE & BREADCRUMB-->
+        </div>
+    </div>
+
+    <div class="tabbable tabbable-custom tabbable-full-width">
+        <ul class="nav nav-tabs">
+            <include file="Sys:_menu"/>
+        </ul>
+        <hr>
+    </div>
+    <!-- BEGIN PAGE CONTENT-->          
+    <div class="row-fluid">
+        <div class="span12 ">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet-body">      
+                <form action="" method="post">
+
+                    <hr style="width: 50%; size: 1px; border: none;" />
+                    <table style="vertical-align: top;">
+                        <tr>
+                            <td colspan="2" class="pay_type_table">
+
+                                <table id="table1">
+                                    <tr> 
+                                        <td  height="48" align="right">卖家支付宝帐户：</td>
+                                        <td><input type="text" name="seller_email" value="{$Think.config.seller_email}" <span>&nbsp;&nbsp; </span> </td>
+                                    </tr>  
+                                    <tr>
+                                        <td height="48" align="right">合作身份者id:</td>
+                                        <td><input name="ali_partner" type="text" value="{$Think.config.ali_partner}" /><span>&nbsp;&nbsp;以2088开头的16位纯数字</span>  </td>
+                                    </tr>  
+                                    <tr>
+                                        <td height="48" align="right">安全检验码:</td>
+                                        <td><input name="ali_key" type="text" value="{$Think.config.ali_key}" /><span>&nbsp;&nbsp;以数字和字母组成的32位字符</span>  </td>
+                                    </tr> 
+
+                        </tr>  
+                        <tr>
+                            <td height="48" align="right">接口类型:</td>
+                            <td> <select name="ali_service">
+                                    <option <eq name="Think.config.ali_service" value="create_direct_pay_by_user"> selected="selected"</eq> value="create_direct_pay_by_user">即时到账</option> 
+                                    <option <eq name="Think.config.ali_service" value="create_partner_trade_by_buyer"> selected="selected"</eq>  value="create_partner_trade_by_buyer">担保交易</option> 
+                                    <option <eq name="Think.config.ali_service" value="trade_create_by_buyer"> selected="selected"</eq>  value="trade_create_by_buyer">双功能</option> 
+
+                                </select> <span>&nbsp;&nbsp;支付宝申请接入的接口 </span> </td>
+                        </tr> 
+                    </table>
+
+                    </td>
+                    </tr>            
+
+
+                    </td>
+                    </tr>               
+
+
+                    </table>
+
+
+                    <div class="form-actions">
+                        <input type="hidden" name="files" value="info.php" /> 
+                        <button type="submit" class="btn blue"><i class="icon-ok"></i> 保存</button>
+
+                        <button type="button" class="btn">放弃</button>
+
+                    </div>
+                </form>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            $('input[name="pay_type"]').on('click', function () {
+                // alert($(this).val());
+                $('#table1').hide();
+                $('#table2').hide();
+                $('#table' + $(this).val()).show();
+            });
+
+            if ($('input[name="pay_type"]') == 2) {
+                $('#table1').hide();
+                $('#table2').show();
+            }
+        });
+    </script>
+
+
+    <include file="Public:foot"/>

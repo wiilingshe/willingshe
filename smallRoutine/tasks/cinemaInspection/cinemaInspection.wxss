@@ -1,0 +1,134 @@
+/* tasks/cinemaInspection/cinemaInspection.wxss */
+.top{
+  height: 272rpx;
+  background: #FF4D63;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+}
+
+.topTitle{
+  color: #FFFFFF;
+  font-size: 40rpx;
+  font-family: "PingFang-SC-Bold";
+  padding-top: 36rpx;   
+}
+.topSubtitle{
+  font-size: 28rpx;
+  color: #FFFFFF;
+   padding-top: 10rpx; 
+}
+
+.body{
+  padding: 0 10rpx;
+  margin-top: -70rpx; 
+}
+.cinemaInspectioItem{
+  width: 100%;
+  height: 360rpx;
+	background-image: url(https://issuer.oopca.com/img/task/task_Details_bg@2x.png);
+	background-size: 100% 100%;
+	overflow:hidden;  
+  position: relative;
+  padding: 0rpx 50rpx;
+  box-sizing: border-box;
+  margin-top: -20rpx;
+  
+}
+
+.itemTitle{
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: 900;
+  margin-top: 34rpx;
+}
+.itemImg{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+}
+.itemImg view:not(:first-child){
+  margin-left: 40rpx;
+}
+.itemImg view{
+  width: 140rpx;
+  height: 140rpx;
+  margin-top: 20rpx;
+  position: relative;
+}
+.itemImg .exhibition{
+ width: 100%;
+ height: 100%;
+}
+.cancel{
+  width: 26rpx;
+  height: 26rpx;
+  position: absolute;
+  /* right: 10rpx;
+  top: 10rpx; */
+  z-index: 1;
+  padding: 20rpx;
+  right:0
+}
+.line{
+  width: 100%;
+  height: 10rpx;
+  border-bottom: 2rpx dashed #ccc;
+  margin-top: 14rpx;
+}
+.itemExplain>input{
+  font-size: 26rpx;
+  color: #999999;
+  margin-top: 14rpx;
+}
+.plh{
+  font-size: 26rpx;
+  color: #999999;
+}
+.remarks{
+  padding: 0 30rpx;
+ 
+  /* margin-top: 20rpx; */
+}
+.remarks>view{
+  background: white;
+  border-radius: 10rpx;
+  height: 320rpx;
+
+}
+.remarksTitle{
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: 900;
+  padding:28rpx;
+}
+textarea{
+  padding: 0 28rpx;
+  font-size: 26rpx;
+  color: #999999;
+  width: 92%;
+  margin-bottom: 60rpx;
+  height: 66%;
+}
+.plstrye{
+  padding: 0 28rpx;
+  font-size: 26rpx;
+  color: #999999;
+}
+.btn{
+  padding: 40rpx 32rpx 44rpx;
+}
+.btn>view{
+  width: 100%;
+  height: 98rpx;
+  background: linear-gradient(to bottom right, #FE7293, #FF5874);
+  /* position: fixed; */
+  /* bottom: 0; */
+  text-align: center;
+  line-height: 95rpx;
+  color: white;
+  font-size: 34rpx;
+  z-index: 99;
+  /* margin-top: 20rpx;  */
+  border-radius: 10rpx;
+}

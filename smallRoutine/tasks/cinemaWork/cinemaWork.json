@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "工作日报",
+  "disableScroll": false,
+  "usingComponents": {
+    "submit": "../../component/taskSubmit/taskSubmit"
+  }
+}

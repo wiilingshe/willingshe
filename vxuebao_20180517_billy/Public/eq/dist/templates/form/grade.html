@@ -1,0 +1,29 @@
+<!-- 发布预览 -->
+<div ng-include="'/Public/eq/6.0/templates/header.tpl.html'" style="height: 60px;"></div>
+<div class="container" style="background-color: #fff;padding-left: 50px;padding-right: 50px;padding-top: 30px;margin-top:30px;padding-bottom: 30px;margin-bottom: 127px;">
+<div class="row">
+	<div class="all_title">
+		<p>教师评卷</p>
+	</div>
+	<form method="post" id="form_score">
+		<div ng-repeat="list in lists">
+			<div class="grade_sort">第{{list.sort}}题</div>
+			<div class="grade_title">标题：{{list.question}}</div>
+			<div class="grade_answer">
+				<div style="margin-bottom: -10px;">考生答案：{{list.answer}}</div>
+				<span style="margin-left: -8px;">【请根据学生的回答给分】</span>
+				<input class="question_score" name="score[{{list.id}}]">
+				<span style="margin-left: 8px;">提示：本题共{{list.score}}分。</span>
+			</div>
+		</div>
+		<button class="grade_sub" ng-click="postFen($event)">提交</button>
+	</form>
+
+</div>
+</div>
+<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'" style="margin-top: 30px;position: fixed;bottom: 0px;width: 100%;"></div>
+<style type="text/css">
+body{
+	background-color: #f5f8ed;
+}
+</style>

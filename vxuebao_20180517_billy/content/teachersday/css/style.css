@@ -1,0 +1,380 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body {
+    width: 100%;
+    height: 100%;
+    font-size: 100px;
+}
+img{
+	border: none;
+}
+
+.music{
+	position:fixed; 
+	right: 0.2rem;
+	top: 0.55rem;
+	width:0.45rem; 
+	height:0.43rem;
+	z-index: 99;
+}
+.music_off{
+	position:fixed; 
+	right: 0.2rem;
+	top: 0.55rem;
+	width:0.45rem; 
+	height:0.43rem; 
+	z-index: 99;
+	opacity: 0;
+}
+.loading{
+    background-image: url(../images/001.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 9999;
+    left: 0px;
+    top: 0px;
+}
+.load{
+	position: absolute;
+	top: 4.32rem;
+	left: 2.55rem;
+	width:1.37rem;
+	height: 0.35rem;
+}
+.load_text{
+	position: absolute;
+	top: 4.88rem;
+	left: 1.01rem;
+	width: 0;
+	height: 0.42rem;
+}
+.swiper-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.swiper-slide{
+	background-image: url(../images/10068.jpg);
+    background-size: cover;
+    max-width: 640px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.full_img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.full{
+	width: 100%;
+	height: auto;
+	position: absolute;
+    left: 0;
+    top: 0;
+}
+.full_buttom{
+	width: 100%;
+	height: auto;
+	position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.p{
+	position: absolute;
+}
+.two{
+	background-image: url(../images/001.jpg);
+    background-size: cover;
+}
+.two_tit{
+	width: 5.16rem;
+	height: 0.37rem;
+	top: 29%;
+	left: 0.6rem;
+}
+.two_a{
+	top: 3.76rem;
+	right: 1.45rem;
+	width: 0.31rem;
+	height: 0.4rem;
+}
+
+.two_b{
+	top: 4.20rem;
+	right: 0.88rem;
+	width: 0.25rem;
+	height: 0.31rem;	
+}
+.two_c{
+	top: 4.88rem;
+	left: 2.28rem;
+	width: 0.24rem;
+	height: 0.31rem;
+}
+.two_d{
+	top: 5.02rem;
+	left: 2.61rem;
+	width: 0.33rem;
+	height: 0.41rem;
+
+}
+.three_a,.four_a{
+	width: 4.66rem;
+	height: 1.96rem;
+	top: 4.27%;
+	left: 0.87rem;
+}
+.three_b{
+	width: 4.52rem;
+	height: 2.2rem;
+	top: 27.1%;
+	left: 0.94rem;
+}
+.three_c{
+	width: 0.72rem;
+	height: 0.62rem;
+	top: 21.35%;
+	right:0.52rem ;
+}
+.three_e{
+	width: 1.10rem;
+	height: 1.07rem;
+	top: 43.75%;
+	left: 0.52rem;
+}
+.three_d{
+	width:4.2rem ;
+	height: 2rem;
+	top: 52.08%;
+	left: 1.09rem;
+}
+.three_f{
+	width: 0.92rem;
+	height: 0.88rem;
+	top: 62.71%;
+	right: 0.6rem;
+}
+.four_c{
+	width: 1.84rem;
+	height: 0.43rem;
+	top: 30.2%;
+	left: 2.28rem;
+}
+.five_b{
+	width: 3.68rem;
+	height: 1.66rem;
+	top: 16.46%;
+	left: 1.36rem;
+}
+.five_c{
+	widows: 4.57rem;
+	height: 0.47rem;
+	top: 38%;
+	left: 0.91rem;
+}
+/*
+.three_start,.four_b,.six_a,.ele_a{
+	-webkit-animation: flash 3s linear infinite; 
+	-moz-animation: flash 3s linear infinite;
+	-o-animation: flash 3s linear infinite;
+	animation: flash 3s linear infinite;
+}
+.three_one,.five_a,.six_b,.youxiu{
+	-webkit-animation: pulse 3s linear infinite; 
+	-moz-animation: pulse 3s linear infinite;
+	-o-animation: pulse 3s linear infinite;
+	animation: pulse 3s linear infinite;
+	
+}
+.three_two{
+	-webkit-animation: tada 3s linear infinite; 
+	-moz-animation: tada 3s linear infinite;
+	-o-animation: tada 3s linear infinite;
+	animation: tada 3s linear infinite;
+	
+}
+.three_c{
+	-webkit-animation: wobble 3s linear ; 
+	-moz-animation: wobble 3s linear ;
+	-o-animation: wobble 3s linear ;
+	animation: wobble 3s linear;
+	
+}
+.three_four,.ten_a{
+	-webkit-animation: pulse 2s linear infinite; 
+	-moz-animation: pulse 2s linear infinite;
+	-o-animation: pulse 2s linear infinite;
+	animation: pulse 2s linear infinite;
+	
+}
+.four_a,.ele_b,.ele_c,.ele_d,.ele_e{
+	-webkit-animation: tada 3s linear infinite; 
+	-moz-animation: tada 3s linear infinite;
+	-o-animation: tada 3s linear infinite;
+	animation: tada 3s linear infinite;
+}*/
+.four_gif{
+	width: 5.03rem;
+	height: 4.62rem;
+	top: 36.5%;
+	left: 0.75rem;
+}
+.seven_gif{
+	top: 54%;
+	width: 100%;
+	height: 3.96rem;
+}
+.eight_gif{
+	top: 51%;
+	width: 100%;
+	height: 3.91rem;
+}
+.nine_a{
+	-webkit-animation: bounce 5s linear infinite; 
+	-moz-animation: bounce 5s linear infinite;
+	-o-animation: bounce 5s linear infinite;
+	animation: bounce 5s linear infinite;
+}
+.nine_gif{
+	top: 21.8%;
+	left: 0.7rem;
+	width: 5rem;
+	height: 4.86rem;
+}
+.ele_b{
+	top: 62%;
+	left: 1.07rem;
+	width: 0.18rem;
+	height: 0.25rem;
+}
+.ele_c{
+	top: 31.3%;
+	left: 0.93rem;
+	width: 0.26rem;
+	height: 0.35rem;
+}
+.ele_d{
+	top: 34.4%;
+	right: 1.17rem;
+	width: 0.16rem;
+	height: 0.22rem;
+}
+.ele_e{
+	top: 60%;
+	left: 2.93rem;
+	width: 0.24rem;
+	height: 0.33rem;
+}
+.ele_f{
+	top: 55%;
+	right: 1.06rem;
+	width: 1.1rem;
+	height: 0.33rem;
+}
+.arrows{
+    width: 12%;
+    height: 5%;
+    position: absolute;
+    bottom: 2%;
+    left: 44%;
+    -webkit-animation: moveIconUp  1.5s  infinite;
+    animation: moveIconUp  1.5s  infinite;
+}
+@-webkit-keyframes moveIconUp {
+    0% {
+        -webkit-transform: translateY(50%);
+        opacity: 0;
+    }
+
+    50% {
+        -webkit-transform: translateY(0%);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: translateY(-50%);
+        opacity: 0;
+    }
+}
+
+@keyframes moveIconUp {
+    0% {
+        -webkit-transform: translateY(50%);
+        transform: translateY(50%);
+        opacity: 0;
+    }
+
+    50% {
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+}
+
+.swings{
+	-webkit-animation: swing 1s linear infinite;
+	-moz-animation: swing 1s linear infinite;
+	-o-animation: swing 1s linear infinite;
+	animation: swing 1s linear infinite;
+}
+.bounceIns{
+	-webkit-animation: bounceIn 3s linear infinite; 
+	-moz-animation: bounceIn 3s linear infinite;
+	-o-animation: bounceIn 3s linear infinite;
+	animation: bounceIn 3s linear infinite;
+}
+.flashs{ 	
+	-webkit-animation: flash  linear infinite; 
+ 	-moz-animation: flash  linear infinite;
+ 	-o-animation: flash  linear infinite;
+ 	animation: flash  linear infinite;
+ }
+.pulses{
+	-webkit-animation: pulse 3s linear infinite; 
+	-moz-animation: pulse 3s linear infinite;
+	-o-animation: pulse 3s linear infinite;
+	animation: pulse 3s linear infinite;
+}
+.wobbles{
+	-webkit-animation: wobble 3s linear infinite; 
+	-moz-animation: wobble 3s linear infinite;
+	-o-animation: wobble 3s linear infinite;
+	animation: wobble 3s linear infinite;
+}
+.tadas{
+	-webkit-animation: tada 3s linear infinite; 
+	-moz-animation: tada 3s linear infinite;
+	-o-animation: tada 3s linear infinite;
+	animation: tada 3s linear infinite;
+}
+.rubberBands{
+	-webkit-animation: rubberBand  linear infinite; 
+	-moz-animation: rubberBand  linear infinite;
+	-o-animation: rubberBand  linear infinite;
+	animation: rubberBand  linear infinite;
+}
+.rotateIns{
+	-webkit-animation: rotateIn  linear infinite; 
+	-moz-animation: rotateIn  linear infinite;
+	-o-animation: rotateIn  linear infinite;
+	animation: rotateIn linear infinite;
+}
+.shakes{
+	-webkit-animation: shake  linear infinite; 
+	-moz-animation: shake  linear infinite;
+	-o-animation: shake  linear infinite;
+	animation: shake linear infinite;
+}

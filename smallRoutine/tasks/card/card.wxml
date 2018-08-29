@@ -1,0 +1,34 @@
+<!--tasks/card/card.wxml-->
+<view class="card_box">
+  <view class="map1">
+    <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}" scale="18" show-location>
+    <cover-view class="pause" bindtap="reset">
+      <cover-image class="reset" src="{{resetIcon}}" />
+    </cover-view>
+    </map>
+  </view>
+  <view class="body">
+    <!-- <image src='{{resetIcon}}' class="reset" bindtap='reset'></image> -->
+    <view class="address">
+      <image src="{{addressImg}}"></image>
+      <text>{{addressText}}</text>
+    </view>
+    <view class="time">
+      <image src="{{timeImg}}"></image>
+      <text>{{timeText}}</text>
+    </view>
+    <view class="btnBox">
+    <view class="btn1" wx:if="{{isSuccess==1}}">
+      <image src="{{successIcon}}"></image>
+      <text>已打卡</text>
+     </view>
+    
+     <view class="btn" bindtap="getCenterLocation" wx:else>
+      <image src="{{btnImg}}"></image>
+      <text>点击打卡</text>
+     </view>   
+    </view>
+    <view class="change" bindtap="getCenterLocation" wx:if="{{isSuccess==1}}">更新打卡</view>
+
+  </view>
+</view>

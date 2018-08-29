@@ -1,0 +1,330 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title></title>
+</head>
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/run.js"></script>
+<script type="text/javascript" src="js/function.js"></script>
+<script type="text/javascript" src="js/library.js"></script>
+<script type="text/javascript" src="js/pageRun_choice.js"></script>
+<link rel="stylesheet" type="text/css" href="js/animate.min.css">
+<style>
+	*{ margin:0; padding:0}
+	img { display:inline-block; border:none; position:absolute;}
+	ul,dl,ol{ list-style:none}
+	html, body{ width:100%; height:100%;}
+	[full]{ width: 100%; height:100%; overflow:hidden}
+	/*#homeCli{
+		position:absolute; height:85px; width:85px; left:316px; top:875px; background-color:#333;
+		opacity:0; z-index:99; display:none;
+	}*/
+	/*#mobile_downbtn{
+		position:absolute; height:85px; width:85px; left:476px; top:1007px; background-color:#333; opacity:0; z-index:99;
+	}*/
+	#pages0{
+		animation-duration:1s;
+		-webkit-animation-duration:1s; 
+	}
+	#pages1{
+		animation-delay:0.5s;
+		-webkit-animation-delay:0.5s;
+		animation-duration:1s;
+		-webkit-animation-duration:1s;
+	}
+	#picP{
+		animation-delay:0.5s;
+		-webkit-animation-delay:0.5s;
+		animation-duration:0.5s;
+		-webkit-animation-duration:0.5s;
+	}
+	#picP1{
+		animation-duration:0.5s;
+		-webkit-animation-duration:0.5s;
+	}
+	#showgirl{
+		animation-duration:0.5s;
+		-webkit-animation-duration:0.5s;
+	}
+	#window img{
+		opacity:0;
+	}
+	#finger{
+		animation:fingermove ease-in-out infinite 1s alternate;
+		-webkit-animation:fingermove ease-in-out infinite 1s alternate;
+		-moz-animation:fingermove ease-in-out infinite 1s alternate;
+		-ms-animation:fingermove ease-in-out infinite 1s alternate;
+		-o-animation:fingermove ease-in-out infinite 1s alternate;
+	}
+	@keyframes fingermove
+	{
+		0%   {left:39%;opacity:1;}
+		100% {left:56%;opacity:1;}
+	}
+	@-webkit-keyframes fingermove
+	{
+		0%   {left:39%;opacity:1;}
+		100% {left:56%;opacity:1;}
+	}
+	@-moz-keyframes fingermove
+	{
+		0%   {left:39%;opacity:1;}
+		100% {left:56%;opacity:1;}
+	}
+	@-ms-keyframes fingermove
+	{
+		0%   {left:39%;opacity:1;}
+		100% {left:56%;opacity:1;}
+	}
+	@-webkit-keyframes flipOutY1{
+		0%{-webkit-transform:perspective(400px) rotateY(-90deg);
+			transform:perspective(400px) rotateY(-90deg);
+			opacity:0}
+		100%{-webkit-transform:perspective(400px) rotateY(0deg);
+			transform:perspective(400px) rotateY(0deg);
+			opacity:1}
+		}
+	@keyframes flipOutY1{
+			0%{-webkit-transform:perspective(400px) rotateY(-90deg);
+			-ms-transform:perspective(400px) rotateY(-90deg);
+			transform:perspective(400px) rotateY(-90deg);
+			opacity:0}
+			100%{-webkit-transform:perspective(400px) rotateY(0deg);
+			-ms-transform:perspective(400px) rotateY(0deg);
+			transform:perspective(400px) rotateY(0deg);
+			opacity:1}
+	}
+	
+		@keyframes finger{
+			0%{ top:210px;}
+			50%{ top:200px;}
+			100%{ top:210px;}
+		}
+		@-webkit-keyframes finger{
+			0%{ top:210px;}
+			50%{ top:200px;}
+			100%{ top:210px;}
+		}
+		@-moz-keyframes finger{
+			0%{ top:210px;}
+			50%{ top:200px;}
+			100%{ top:210px;}
+		}
+		@-o-keyframes finger{
+			0%{ top:210px;}
+			50%{ top:200px;}
+			100%{ top:210px;}
+		}
+		.finger{ animation: finger 1s ease-in-out infinite; 
+		-moz-animation: finger 1s ease-in-out infinite; 
+		-o-animation: finger 1s ease-in-out infinite; 
+		-webkit-animation: finger 1s ease-in-out infinite;
+		-webkit-transform: translate3d(0,0,0);
+			-moz-transform: translate3d(0,0,0);
+			-ms-transform: translate3d(0,0,0);
+			transform: translate3d(0,0,0);
+		}
+	.flipOutY1{
+		-webkit-backface-visibility:visible!important;
+		-ms-backface-visibility:visible!important;
+		backface-visibility:visible!important;
+		-webkit-animation-name:flipOutY1;
+		animation-name:flipOutY1}
+		
+		@keyframes sf{
+			0%{ transform:scale(1); opacity:1}
+			100%{ transform:scale(2.2); opacity:0}
+		}
+		@-webkit-keyframes sf{
+			0%{ transform:scale(1); opacity:1}
+			100%{ transform:scale(2.2); opacity:0}
+		}
+		@-moz-keyframes sf{
+			0%{ transform:scale(1); opacity:1}
+			100%{ transform:scale(2.2); opacity:0}
+		}
+		@-o-keyframes sf{
+			0%{ transform:scale(1); opacity:1}
+			100%{ transform:scale(2.2); opacity:0}
+		}
+		.sf{ animation: sf 1s ease-in-out infinite; 
+		-moz-animation: sf 1s ease-in-out infinite; 
+		-o-animation: sf 1s ease-in-out infinite; 
+		-webkit-animation: sf 1s ease-in-out infinite;
+		-webkit-transform: translate3d(0,0,0);
+			-moz-transform: translate3d(0,0,0);
+			-ms-transform: translate3d(0,0,0);
+			transform: translate3d(0,0,0);
+		}
+</style>
+<body id="content" style="position:absolute; background-color:#000;opacity:1;top:0px; left:0px;transform-origin:0 0 0;-ms-transform-origin:0 0 0;-webkit-transform-origin:0 0 0;-moz-transform-origin:0 0 0;-o-transform-origin:0 0 0;overflow: hidden;">
+	<div  id="thetop" full style="width:720px; height:1158px;  position:absolute; left:0%; top:0%;">
+		<div id="window" style="width:100%; height:100%;opacity:0;">
+			<div style="left:0%;top:0%;width:100%;height:100%;overflow:hidden;z-index:1;">
+				<img id="showgirl" style="z-index:0;" src="images/girl.png"  />
+				<img id="guideimg" style="z-index:3;" src="images/guideimg.jpg"  />
+				<img id="finger" style="z-index:3;" src="images/finger.png"  />
+				<img id="backimg" style="z-index:2;" src="images/bg.jpg"  />
+			</div>
+			<div id="mobile" style="left:0%;top:0%;width:100%;height:100%;overflow:hidden;position:absolute;z-index:2;">
+				<div id="dragmobile">
+					<img src="images/mobile.png" style="opacity:1;left:0px;top:0px;" id="drag"/>
+                    <img src="images/a.png" style="left:486px; top:1018px; opacity:1;" id="mobile_downbtn"/>
+				</div>
+			</div>
+		</div>
+				<div id="pages0" style="top:0px; left:0px; display:none;">
+                	
+                    <img id="yBg" style="left:0px; top:0px;" src="images/bg.jpg"  />
+                    <img src="images/p1.png" style="left:0px; top:0px; opacity:0;" id="picP"/>
+                    <img style="left:0px; top:0px;" src="images/girl.png" id="picP1"/>
+                    <img style="opacity:1;left:0px;top:0px;" src="images/mBg.png" id="mobileBg"/>
+                    <img src="images/black.jpg" id="black" style="width:930px;height:1288px;position:absolute; opacity:1;left:0px;top:0px;"/>
+					<img src="images/bg.png" style="left:0px; top:0px; display:none;" id="bgPre"/>
+                    <img src="images/a.png" style="left:325px; top:886px; opacity:1; display:none; z-index:99" class="sf" id="homeCli"/>
+                    <img src="images/finger.png" class="finger" style="left:340px; top:210px;"/>
+                    <img src="images/word.png" class="word" style="left:390px; top:226px;"/>
+                    <div id="mobile_topbtn" style="width:60px;height:60px;top:178px;left:322px; opacity:0; background-color:#000"></div>
+				</div>
+				<div id="pages1" style="display:none; top:0px; left:0px; width:720px; height:1158px;">
+					<img src="images/p2.png" style="left:0px; top:0px;"/>
+					<div style="width:720px; height:0px; left:0px; top:0px; overflow:hidden; position:absolute;" id="newPic">
+						<img src="images/p3.png" style="left:0px; top:0px;"/>
+					</div>
+					<img src="images/scan.png" style="left:0px; top:-182px;" id="scan"/>
+				</div>
+			</div>
+		<audio id="photosound">
+			<source src="images/photosound.mp3" type="audio/mp3">
+			<source src="images/photosound.wav" type="audio/wav">
+		</audio>
+		</body>
+		</html>
+		<script type="text/javascript">
+	var start = IsPC() ? "mousedown" : "touchstart";//background-color:red;
+	var move = IsPC() ? "mousemove" : "touchmove";
+	var end = IsPC() ? "mouseup" : "touchend";
+	var H = 1158;
+	var W = 720;
+	
+	function setPerStage(){
+		setImgPer(0,0,720,1158,'backimg');
+		setImgPer(0,0,720,1158,'guideimg');
+		setImgPer(0,700,41,51,'finger');
+		setImgPer(0,0,720,1158,'showgirl');
+		setImgPer(0,0,720,1158,'showimg');
+		setImgPer(-155.4,-133.8,1042,1422,'dragmobile');
+		$('#window').animate({opacity:'1'});
+		//drag("dragmobile");
+		draglist($('#drag'));
+	}
+	//
+	var locatex;
+	var locatey;
+	var thisx;
+	var thisy;
+	var perx;
+	var pery;
+
+	function drag(id){
+		SetListener(id,dragstart,"touchstart");
+		SetListener(id,dragmove,"touchmove");
+		SetListener(id,dragend,"touchend");
+		function dragstart(event){
+			//console.log("dragstart");
+			var event = event || window.event;
+			event.preventDefault();
+			//locatex = this.x;
+			//locatey = this.y;
+			locatex = parseFloat($('#dragmobile').css('left'));
+			locatey = parseFloat($('#dragmobile').css('top'));
+			thisx = event.touches[0].clientX;
+			thisy = event.touches[0].clientY;
+		}
+		function dragmove(event){
+			//console.log("dragmove");
+			var event = event || window.event;
+			event.preventDefault();
+			var move = event.changedTouches[0];
+			var movex = move.clientX;
+			var movey = move.clientY;
+			var stagewidth = document.body.clientWidth;
+			var stageheight = document.body.clientHeight;
+			
+			perx = Math.floor(parseFloat(movex-thisx+locatex)/stagewidth*1000)/1000*100;
+			pery = Math.floor(parseFloat(movey-thisy+locatey)/stageheight*1000)/1000*100;
+			//
+			if(perx<-38.2)			perx = -38.2;
+			if(perx>-6)	perx = -6;
+			if(pery<-18.6)			pery = -18.6;
+			if(pery>-3.9)	pery = -3.9;
+
+			/*if(perx>=-87.5&&perx<=-42.5&&pery>=-35.8&&pery<=-4.6){*/
+				getID(id).style.left = perx +"%";
+				getID(id).style.top = pery +"%";
+			/*}
+			else{}*/
+
+		}
+	function dragend(event){
+			//console.log("dragend");
+			event.preventDefault();
+			var event = event || window.event;
+		}
+	}
+	
+	//
+	function loadInit() {
+		setPerStage();
+		//nextPage(0,2);
+		//touchSwitchSetting(-1,2);
+		initStyle();
+		//
+		$(document).on('touchstart',function(){
+			$('#guideimg').hide();
+			$('#finger').hide();
+			$('#mobile').show();
+			$('#dragmobile').delay(200).animate({opacity:'1'});
+		})
+		$('#mobile_topbtn').on('touchstart',function(){
+			$('#homeCli').show();
+			$('#bgPre').show();
+			$('#picP1').addClass('animated flipOutY');
+			$('#picP').addClass('animated flipOutY1');
+			setTimeout(function(){$('#picP1').hide()},1000);
+			$('.finger').hide();
+			$('.word').hide();
+			run();
+		});
+		$('#mobile_downbtn').on('touchstart',function(){
+			document.getElementById('photosound').play();
+			$('#backimg').css('opacity','0');
+			$('#dragmobile').css('opacity','0');
+			$('#mobile').css('display','none');
+			$('#black').css('opacity','1')
+			setTimeout("$('#black').css('display','none');",100);
+			$('#window').hide();
+			$('#pages0').show();
+		});
+		$('#backimg').animate({opacity:'1'});
+		$('#guideimg').animate({opacity:'1'});
+		$('#finger').animate({opacity:'1'});
+		//$('#black').delay(100).animate({opacity:'1'});
+		$('#showimg').delay(100).animate({opacity:'1'});
+		$('#showgirl').delay(100).animate({opacity:'1'});
+		$('#mobile').hide();
+		//
+	}
+	
+	$(document).ready(function() {
+		centerFun();
+		loadInit();
+	});
+	
+</script>

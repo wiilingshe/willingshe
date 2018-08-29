@@ -1,0 +1,18 @@
+<div id="divClose" style="position: fixed; left: 0; top: 0; bottom: 0; right: 0; background: rgba(0,0,0,0.8);z-index:10000" ng-click="showGuide()" ng-show="firstLogin" ng-controller="userGuideCtrl">
+	<!--微课列表页面-用户引导1-->
+	<!-- ng-show="'bindEmailGuide' == currentGuide && isShow"  -->
+	<div class="bind-email-guide">
+		<h1><em>温馨tips：让我们帮您更好地使用微学宝：</em><span ng-click="closeDiv()">&times;</span></h1>
+		<p>感谢您使用微学宝，想要更加深入地了解微学宝吗？您可以：</p>
+		<ul class="guide-describe">
+			<ul class="item">
+				<li> <a href="http://lpt.cyberwisdom.net.cn/" class="text-primary" target="_blank">免费参加微课制作课堂</a> </li>
+			</ul>
+			</li>
+		</ul>
+		<div class="user-select">
+			<!--<span>不会使用微学宝？</span>            <a href="http://www.hdb.com/party/dcm1?hdb_from=IQQ#rd" class="text-primary" target="_blank">操作指南</a> -->
+			<p><input type="checkbox" style="margin: 4px; font-size:14px" ng-click="isShow()" /><em>不再提示</em></p> <button class="btn btn-primary" ng-click="closeDiv()">知道了</button> </div>
+	</div>
+	<!--微课列表页面-用户引导2-->
+	<!-- <div style="width: 1000px; margin: 0 auto;" ng-show="'createGuide' == currentGuide">        <img style="margin: 109px 66px 0 30px; float: right;" ng-src="{{CLIENT_CDN}}assets/images/chuangjian.png">        <img style="margin: 140px 0 0 0; float: right;" ng-src="{{CLIENT_CDN}}assets/images/guide_main.png">    </div> --></div>

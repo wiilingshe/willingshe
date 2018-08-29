@@ -1,0 +1,1 @@
+angular.module("services.localizedMessages",["I18N.MESSAGES"]).factory("localizedMessages",["$interpolate","I18N.MESSAGES",function(e,r){var n=function(e,r){return e||"?"+r+"?"};return{get:function(a,t){var o=r[a];return o?e(o)(t):n(o,a)}}}]);

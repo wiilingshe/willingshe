@@ -1,0 +1,86 @@
+<div class="tab-view statistics">
+	<ul class="nav nav-pills no-border" ng-init="tabid='viewinfo'">
+		<li ng-class="{active: tabid == 'viewinfo'}"><a class="background-color-width-change" ng-click="tabid='viewinfo'">访问概况</a></li>
+		<li ng-class="{active: tabid == 'mobileinfo'}"><a class="background-color-width-change" ng-click="tabid='mobileinfo'">移动访问</a></li>
+		<li ng-class="{active: tabid == 'viewclick'}"><a class="background-color-width-change" ng-click="tabid='viewclick'">内容统计</a></li>
+		<!-- <li ng-class="{active: tabid == 'viewDevice'}"><a ng-click="tabid='viewDevice';getDeviceDate(scene.id,-7, 0)">设备统计</a></li> -->
+		<!-- <li ng-class="{active: tabid == 'regionalStatistics'}"><a ng-click="tabid='regionalStatistics'">地域统计</a></li> -->
+	</ul>
+</div>
+<div class="spread-contain tab-content">
+	<div class="view-info clearfix day-spread text-left pt20 pl20" ng-show="tabid != 'regionalStatistics'">
+		<div class="btn-group" ng-init="interval=7" ng-hide="tabid == 'viewDevice'">
+			<!-- <button class="btn btn-default button-sm background-color-width-change" ng-class="{active: interval==1 }" ng-click="getAllStats(scene.id,-1, 0,branchid);interval=1">昨天</button> -->
+			<button class="btn btn-default button-sm background-color-width-change" ng-class="{active: interval==7 }" ng-click="getAllStats(scene.id,-7, 0,branchid);interval=7">7天</button> 
+			<button class="btn btn-default button-sm background-color-width-change" ng-class="{active: interval==15 }" ng-click="getAllStats(scene.id,-15, 0,branchid);interval=15">15天</button> 
+			<button class="btn btn-default button-sm background-color-width-change" ng-class="{active: interval==30 }" ng-click="getAllStats(scene.id,-30, 0,branchid);interval=30">30天</button>
+			<button class="btn btn-default button-sm background-color-width-change" ng-class="{active: interval==90 }" ng-click="getAllStats(scene.id,-90, 0,branchid);interval=90">90天</button> 
+			<button class="btn btn-default button-sm background-color-width-change" ng-class="{active: interval==180 }" ng-click="getAllStats(scene.id,-180, 0,branchid);interval=180">180天</button> 
+			<button class="btn btn-default button-sm background-color-width-change" ng-class="{active: interval==360 }" ng-click="getAllStats(scene.id,-360, 0,branchid);interval=360">360天</button>			
+		</div>
+		<!--<div class="btn-group" ng-init="intervals=7" ng-show="tabid == 'viewDevice'">
+			 <button ng-class="{active: intervals==1 }" class="background-color-width-change" ng-click="getDeviceDate(scene.id,-1, 0);intervals=1" class="btn btn-default button-sm">昨天</button>
+			<button ng-class="{active: intervals==7 }" class="background-color-width-change" ng-click="getDeviceDate(scene.id,-7, 0);intervals=7" class="btn btn-default button-sm">7天</button> 
+			<button ng-class="{active: intervals==30 }" class="background-color-width-change" ng-click="getDeviceDate(scene.id,-30,0);intervals=30" class="btn btn-default button-sm">30天</button> 
+		</div> -->
+		<div class="fr mr20">
+			<div class="btn-group" ng-show="tabid == 'viewclick'"> </div>
+			<div class="btn-group" ng-show="tabid == 'mobileinfo'"> 
+				<button ng-click="showLine();" ng-class="{active:viewStyle == 'line'}" class="btn btn-default button-sm background-color-width-change">线型</button>
+				<button ng-click="showPie();" ng-class="{active:viewStyle == 'pie'}" class="btn btn-default button-sm background-color-width-change">饼状</button>
+			</div>
+		</div>
+	</div>
+	<div class="view-info" ng-show="tabid == 'viewinfo'">
+		<div class="p20">
+			<eqd-line-chart legend='["微课展示","数据收集"]' option="{{dataLineChartDataOption}}"></eqd-line-chart>
+		</div>
+	</div>
+	<div class="view-info" ng-if="tabid == 'mobileinfo'">
+		<div class="panel-body">
+			<div ng-show="viewStyle == 'line'">
+				<eqd-line-chart legend='["微信朋友圈","微信群","微信朋友","其他访问"]' option="{{dataMobileChartOption}}"></eqd-line-chart>
+			</div>
+			<div ng-show="viewStyle == 'pie'" class="pie clearfix">
+				<eqd-pie-chart data="{{dataPieChart}}" name="访问来源"></eqd-pie-chart>
+			</div>
+		</div>
+	</div>
+	<div class="view-info" ng-show="tabid == 'viewclick'">
+		<div class="panel-body">
+			<!-- <div ui-grid="spreadClickGridOptions" class="myGrid1" ng-show="spreadClickGridOptions.data && spreadClickGridOptions.data.length>0"></div> -->
+			<eqd-line-chart option="{{contentDataOption}}" legend='["电话直播","按钮点击"]'></eqd-line-chart>
+		</div>
+	</div>
+	<!-- <div class="map-view" ng-show="tabid=='regionalStatistics'">        <div class="container-fluid">            <div class="row-fluid example">                <div id="graphic" class="col-md-8">                    <div class="btn-group mt20">                       <button ng-click="changeMap(1)" class="btn btn-default button-sm" ng-class="{active:startDay==1}">昨天</button>                       <button ng-click="changeMap(7)" class="btn btn-default button-sm" ng-class="{active:startDay==7}">7天</button>                       <button ng-click="changeMap(30)" class="btn btn-default button-sm" ng-class="{active:startDay==30}">30天</button>                    </div>                    <eqd-map option="{{mapOption}}" ></eqd-map>                    <div class="pv-table">                        <table class="table">                                <tr>                                    <th>地域</th>                                    <th>访问量</th>                                </tr>                                <tr ng-repeat="data in pageData">                                    <td>{{data.name}}</td>                                    <td>{{data.value}}</td>                                </tr>                        </table>                        <div ng-show="totalItems > 10" class="clearfix">                            <pagination style="float: left;" first-text="{{'my.scene.FIRST_PAGE' | translate}}" last-text="{{'my.scene.LAST_PAGE' | translate}}" previous-text="{{'my.scene.PREVIOUS_PAGE' | translate}}" next-text="{{'my.scene.NEXT_PAGE' | translate}}" max-size="10" items-per-page="10" total-items="totalItems" ng-model="page.currentPage" ng-change="pageChanged(page.currentPage)" boundary-links="true" rotate="true" num-pages="numPages"></pagination>                            <div class="current_page">                                <input type="text" ng-model="toPage" ng-keyup="$event.keyCode == 13 ? pageChanged(toPage) : null">                                <a ng-click="pageChanged(toPage)" class="go">GO</a>                                <span><span translate="my.scene.CURRENT_PAGE1">当前</span>: {{page.currentPage}} / {{numPages}} <span translate="my.scene.CURRENT_PAGE2">页</span></span>                            </div>                        </div>                    </div>                </div>            </div>        </div>    </div> -->
+	<!-- <div class="view-info" ng-show="tabid == 'viewDevice'">
+		<div class="panel-body">
+			<eqd-pie-chart data="{{sceneDeviceData}}" name="设备"></eqd-pie-chart>
+		</div>
+	</div> -->
+</div>
+<div class="expand-list clearfix" ng-show="isAllowedToAccessExpandWebsite">
+	<table class="table table-hover mt20">
+		<tr>
+			<th>微课名称</th>
+			<th>微课地址</th>
+			<th>微课展示</th>
+			<th translate="main.spread.statistics.WEB_TYPE">网址类型</th>
+			<th translate="main.spread.statistics.OPTION">操作</th>
+		</tr>
+		<tr class="spread-detail">
+			<td>{{scene.name}}</td>
+			<td>{{url}}</td>
+			<td>{{scene.showCount}}</td>
+			<td>主网址</td>
+			<td><a ng-click="viewExpandDetail();$parent.interval=7;"><span translate="main.spread.statistics.LOOK_UP">查看</span></a></td>
+		</tr>
+		<tr class="spread-detail" ng-repeat="expandWeb in expandWebs track by $index" ng-class="{'spread-detail': selectIndex == $index}">
+			<td>{{expandWeb.name}}</td>
+			<td>{{url + '/v-' + scene.code + '?qrc=' + expandWeb.id}}</td>
+			<td>{{expandWeb.showCount}}</td>
+			<td>扩展网址</td>
+			<td><a ng-click="viewExpandDetail(expandWeb.id, $index);$parent.interval=7;">查看</a></td>
+		</tr>
+	</table>
+</div>

@@ -1,0 +1,22 @@
+<?php 
+return array (
+  'home_products_num' => '75879',
+  'HOME_PAGESIZE' => '8',
+  'wei_email' => 'sales@vxuebao.com',
+  'weicode' => '微学宝微课制作工具',
+  'g_tel' => '(020) 3888 6860-347',
+  'sg_tel' => '(86 21) 6167 9301',
+  'wei_qq' => '476434157',
+  'zixun_mail' => '2131837551@qq.com',
+  'zixun_qq' => '2131837551',
+  'zixun_tel' => '13922881135',
+  'jishu_qq' => '187290327',
+  'jishu_tel' => '18617195940',
+  'address' => '广州市天河区490号壬丰大厦1702室',
+  'A_address' => '上海市长宁区延安西路1088号长峰中心大厦2607',
+  'tuijian_pic_url' => 'http://www.vxuebao.com/Uploads/tuijian_url.gif',
+  'tuijian_url' => 'http://www.hdb.com/party/1egc-comm.html',
+  'your_weixinhao_pic_url' => 'http://www.vxuebao.com/Uploads/111.jpg',
+  'your_anli_pic_url' => 'http://www.vxuebao.com/Uploads/111.jpg',
+  'your_huisi_pic_url' => 'http://www.vxuebao.com/Uploads/222.jpg',
+);

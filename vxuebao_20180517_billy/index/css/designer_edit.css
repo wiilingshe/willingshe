@@ -1,0 +1,60 @@
+
+#eq_main{width:100%;margin:0 auto;background:#f6f5f4;}
+
+/*身体css*/
+#designer_edit_contain{width:1198px;margin-left:auto;margin-right:auto;margin-top:10px;}
+.contain_center{background:#fff;padding:65px 100px;height:800px;}
+
+.center_left{width:470px;float:left;margin-right:100px;*display:inline;}
+.center_left table tr{height:50px;}
+.center_left table tr td{font-size:14px;}
+.center_left table tr .one_td{text-align:right;padding-right:30px;}
+.center_left input[type="radio"] { display: none; }
+.center_left label{border:1px solid #ccc;margin-right:5px;}
+.center_left .checked{background:#66cc00; color:#fff;}
+
+
+.center_right{width:420px;float:left;padding:;}
+.center_right img{margin-left:120px;}
+.center_right span{font-size:17px;color:#96db5b;margin-left:18px;}
+.center_right ul{overflow:hidden;width:298px;}
+.center_right ul li{font-size:17px; color:#b3b3b3; float:left;margin-bottom:10px;}
+.center_right ul .bg{width:88px;height:29px;line-height:29px;background:url(../images/designer_edit_bg.png) no-repeat;text-align:center;}
+.center_right ul .cen{margin:0 10px;}
+.center_right .bottom{margin:30px 0 0 60px;}
+
+.center_right input[type="checkbox"] {display:none;}
+.center_right ul .bg_two{background:url(../images/designer_edit_bgtwo.png) no-repeat; color:#fff;}
+
+.sub{float:left; margin:188px 0px 0 -134px;*display:inline;}
+.sub input[type="submit"] {color:#fff; font-size:20px;width:143px;height:44px;text-align:center; line-height:44px;  border: none;background:url(../images/designer_edit_sub.png) no-repeat; }
+
+
+ canvas {
+            border: solid thin #ccc;
+            cursor: pointer;
+        }
+
+        #canvasContainer {
+            position: relative;
+        }
+
+        #picker {
+            position: absolute;
+            border: solid thin #ccc;
+            cursor: move;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        #resize {
+            width: 0;
+            height: 0;
+            border-bottom: 15px solid rgba(200,200,200,0.8);
+            border-left: 15px solid transparent;
+            right: 0;
+            bottom: 0;
+            position: absolute;
+            cursor: se-resize;
+            z-index: 3;
+        }

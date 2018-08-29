@@ -1,0 +1,141 @@
+/* user/publish/publish.wxss */
+.task_box{
+  font-size: 28rpx;
+}
+.flowBox{
+  height: 100vh;
+}
+.item{
+  width: 690rpx;
+  height: 380rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding:26rpx; 
+  margin-top: 60rpx;
+
+}
+.item_top{
+  height: 231rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+ 
+
+}
+.item_bottom{
+  height: 123rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.left{
+  bottom: 0;
+  width: 200rpx;
+  height: 284rpx;
+   margin-top: -53rpx; 
+   position: relative;
+}
+.pic{
+  width: 100%;
+  height: 100%;
+}
+.state{
+  position: absolute;
+  top: 0;
+  width: 90rpx;
+  height: 38rpx;
+  color: #fff;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 38rpx;
+  border-bottom-right-radius: 12rpx;
+}
+.pink{
+  background:linear-gradient(to bottom right, #FE7293, #FF5874);
+}
+.lightGray{
+  background-color: #bbb;
+}
+.orange{
+  background: #ffa148;
+}
+.grey{
+  background: #999;
+}
+.light-grey{
+  background: #CCC;
+}
+.right{
+  padding-left: 30rpx;
+  flex: 1;
+}
+.title{
+  font-size: 40rpx;
+  color: #333333;
+  font-weight: 900;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.issue{
+  font-size: 26rpx;
+  color: #333333;
+  margin-top: 20rpx;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.issue>text{
+  color: #666666;
+}
+.portrait{
+  flex: 1;
+  padding-top: 35rpx;
+}
+.task{
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-top: 35rpx;
+}
+.portraitImg{
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  border: 0.4rpx solid #fff;
+}
+.portraitImg:not(:first-child){
+margin-left: -10rpx;
+}
+
+.task>view{
+  width: 170rpx;
+  height: 66rpx;
+  border-radius: 32rpx;
+  color: #fff;
+  line-height: 66rpx;
+  text-align: center;
+  font-size: 28rpx;
+}
+.nodata{
+  width: 100%;
+}
+.nodata>image{
+  width: 256rpx;
+  height: 170rpx;
+  margin-left: 248rpx;
+  margin-top: 420rpx;
+}
+.noMore{
+  color: #CCC;
+  width: 100vw;
+  text-align: center;
+  height: 90rpx;
+  line-height: 90rpx;
+}

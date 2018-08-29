@@ -1,0 +1,14 @@
+<div class="message-contain">
+	<div class="mes-header text-right pb20"> <a class="reject-issue" href="http://bbs.e.wesambo.com/forum.php?mod=viewthread&tid=890" target="_blank" translate="usercenter.message.REJECT_ISSUE ">审核问题</a> <a ng-show="newMsgs.length > 0" ng-click="setRead(newMsgs)" translate="usercenter.message.SET_READ">全部设为已读</a>		</div>
+	<div class="message-panel clearfix" ng-repeat="newMsg in newMsgs">
+		<div class="mes-content mes-type col-sm-2" ng-class="{new_msg: newMsg.status == 1,yidu_msg: newMsg.status == 2}"> <span ng-class="{'eqf-voice': newMsg.bizType==1,'eqf-fobden2': newMsg.bizType==2, 'eqf-star': newMsg.bizType == 3}">            </span> {{newMsg.type}} </div>
+		<div class="mes-content col-sm-7" ng-bind-html="newMsg.content"> </div>
+		<div class="mes-content col-sm-3 text-right"> {{newMsg.sendTime | date:'yyyy-MM-dd HH:mm:ss'}} </div>
+	</div>
+	<div class="mt20" ng-show="newMsgs.length == 0" translate="usercenter.message.NONE_MESSAGE"> 您暂时还没有消息！ </div>
+	<div class="clearfix mt20" ng-show="msgCount > 5">
+		<pagination style="float: left" first-text="{{'usercenter.message.FIRST_PAGE' | translate}}" last-text="{{'usercenter.message.LAST_PAGE' | translate}}" previous-text="&lsaquo;" next-text="&rsaquo;" max-size="5" items-per-page="pageSize" total-items="msgCount"
+			ng-model="currentPage.msgCurrentPage" boundary-links="true" rotate="true" num-pages="msgNumPages"></pagination>
+		<div class="current_page"> <input type="text" ng-model="toPage" ng-keyup="$event.keyCode == 13 ? pageChanged(toPage, 'msgCurrentPage') : null"> <a ng-click="pageChanged(toPage, 'msgCurrentPage')" class="go">GO</a> <span translate="{{'usercenter.message.CURRENT_PAGE1'}}">当前</span>			: {{currentPage.msgCurrentPage}} / {{msgNumPages}} <span translate="{{'usercenter.message.CURRENT_PAGE2' | translate}}">页</span> </div>
+	</div>
+</div>

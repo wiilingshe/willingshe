@@ -1,0 +1,42 @@
+/* tasks/contacts/contacts.wxss */
+.contacts_box{
+  padding: 0 30rpx;
+  background: white;
+}
+.item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 26rpx 0;
+  height: 100rpx;
+}
+.item:not(:first-child){
+  border-top: 2rpx solid #EEEEEE;
+}
+.portrait{
+  flex: 3;
+}
+.portrait>image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+
+}
+.name{
+  flex: 10;
+ 
+}
+.name>text{
+  line-height: 100rpx;
+  color: #333333;
+  font-size: 30rpx;
+}
+.phone{
+  flex: 4;
+  
+}
+.phone>text{
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 100rpx;
+}

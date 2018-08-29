@@ -1,0 +1,23 @@
+<!-- <div class="modal-header">    <span>确认信息</span></div> -->
+<!-- <div class="modal-body" ng-if="confirmObj.msg">
+	<div class="confirm-msg" ng-bind-html="confirmObj.msg"></div>
+</div>
+<div class="btn-contain btn-small"> 
+	<a ng-click="ok();" class="btn-main bl_btn">        {{confirmObj.confirmName || ('dialog.ENSURE' | translate)}}    </a> 
+	<a ng-click="cancel();" class="btn-grey0 og_btn">        {{confirmObj.cancelName || ('dialog.CANCEL' | translate)}}    </a>
+</div> -->
+
+<div ng-style="bgStyle">
+	<div id="monkey_confuse" class="monkey_bg" ng-if="confirmObj.msg">
+		<div class="confuse mark1">
+			<div class="mark2"></div>
+		</div>
+		<div class="content" >
+			<div class="confirm-msg" ng-bind-html="confirmObj.msg"></div>
+		</div>
+		<div class="choose">
+			<a class="pass" ng-click="ok()">{{confirmObj.confirmName || ('dialog.ENSURE' | translate)}}</a>
+			<a class="refuse" ng-click="cancel()">{{confirmObj.cancelName || ('dialog.CANCEL' | translate)}} </a>
+		</div>
+	</div>
+</div>

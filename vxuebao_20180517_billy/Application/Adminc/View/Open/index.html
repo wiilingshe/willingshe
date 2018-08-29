@@ -1,0 +1,68 @@
+<include file="Public:head"/>
+<block name="body">
+<div class="container-fluid">
+				<!-- BEGIN PAGE HEADER-->
+				<div class="row-fluid">
+					<div class="span12">
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+						<h3 class="page-title">系统管理 <small>    System management</small></h3>
+						<ul class="breadcrumb">
+							<li><i class="icon-home"></i><a href="index.html">首页</a> 
+								<i class="icon-angle-right"></i></li>
+							<li><a href="#">开放接口管理</a><i class="icon-angle-right"></i></li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- END PAGE HEADER-->
+                <div class="tabbable tabbable-custom tabbable-full-width" style="margin-bottom:0px; padding-bottom:0px">
+					<ul class="nav nav-tabs">
+					<li class="active"> <a href="{:U('Open/index')}"> 开放接口管理</a> </li>
+					</ul>
+					<hr>
+                </div>
+				<!-- BEGIN PAGE CONTENT-->          
+				<div class="row-fluid">
+					<div class="span12 ">
+						<!-- BEGIN EXAMPLE TABLE PORTLET-->
+							<div class="portlet-body">
+						<div class="cf">
+						<a id="export" class="btn green" href="{:U('Open/edit')}" autocomplete="off"> <i class="icon-plus"></i> 添加接入</a>
+						</div>
+                    
+                                 
+   <!-- 应用列表 -->
+
+ <div class="data-table table-striped">
+<table class="table table-striped table-bordered table-hover dataTable" >
+	<thead>
+		<tr role="row">
+			<th>编号</th>
+			<th>平台名称</th>
+			<th>公钥(app_name)</th>
+			<th>私钥(app_secret)</th>
+			<th>创建时间</th>
+			<th>状态</th>
+			<th>操作</th>
+		</tr>
+	</thead>
+	<tbody><volist name='data' id='v'>
+		<tr>
+			<td>{$v.id}</td>
+			<td>{$v.app_name}</td>
+			<td>{$v.app_key}</td>
+			<td>{$v.app_secret}</td>
+			<td>{$v.creatime|date="Y-m-d H:i:s",###}</td>
+			<td><eq name="v.ok" value="1">启用<else/>禁用</eq></td>
+			<td class="action"><a class="ajax-get no-refresh" href="{:U('Open/edit?id='.$v['id'])}">修改</a>&nbsp;<a class="ajax-get no-refresh" href="{:U('Open/del?id='.$v['id'])}">删除</a>
+			</td>
+		</tr></volist>
+	</tbody>
+</table>     
+   </div>
+ </div> </div> </div>
+  
+
+</div></div>
+</block>
+<include file="Public:foot"/>

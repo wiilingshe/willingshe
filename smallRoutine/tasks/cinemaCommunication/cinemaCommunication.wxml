@@ -1,0 +1,80 @@
+<!--tasks/cinemaCommunication/cinemaCommunication.wxml-->
+<submit custom="{{submitData}}"></submit> 
+<view class="cinemaCommunication_box">
+  <view class="top">
+    <view class="topTitie">{{data.city_name}}排片目标{{data.claim_start}}%-{{data.claim_end}}%</view>
+    <view class="topRequirement">要求：填写沟通场次结果、黄金场次结果</view>
+  </view>
+  <view class="body">
+    <view class="item">
+      <image src='{{bgImg}}'></image>
+      <view class="itemTitle">
+        <view>预排片率</view>
+        <view>第一天</view>
+      </view>
+      <view class="itemInput">
+        <input type='digit' class="inputColor" placeholder-class="phcolor" data-type="01" value='{{data.claim_first_start=="0"?"":data.claim_first_start}}' bindblur='getVal' style='color:#FFA148;font-size:40rpx;'/>
+        <text>-</text>
+        <input type='digit' class="inputColor" placeholder-class="phcolor" data-type="02" value='{{data.claim_first_end=="0"?"":data.claim_first_end}}' bindblur='getVal' style='color:#FFA148;font-size:40rpx;'/>
+        <text>%</text>
+      </view>
+      <view class="line"></view>
+      <input type='text' class="input" placeholder-class="phcolor" data-type="03" value='{{data.claim_first_remarks}}' bindinput='getVal' placeholder='如遇其他情况 请说明'/>
+    </view>
+    <view class="item">
+      <image src='{{bgImg}}'></image>
+      <view class="itemTitle">
+        <view>预排片率</view>
+        <view>第二天</view>
+      </view>
+      <view class="itemInput">
+        <input type='digit' class="inputColor" placeholder-class="phcolor"  data-type="11" value='{{data.claim_second_start=="0"?"":data.claim_second_start}}' bindblur='getVal' style='color:#FFA148;font-size:40rpx;'/>
+        <text>-</text>
+        <input type='digit' class="inputColor" placeholder-class="phcolor"  data-type="12" value='{{data.claim_second_end=="0"?"":data.claim_second_end}}' bindblur='getVal' style='color:#FFA148;font-size:40rpx;'/>
+        <text>%</text>
+      </view>
+      <view class="line"></view>
+      <input type='text' class="input" placeholder-class="phcolor" data-type="13" placeholder='如遇其他情况 请说明' value='{{data.claim_second_remarks}}' bindinput='getVal'/>
+    </view>
+    <view class="item">
+      <image src='{{bgImg}}'></image>
+      <view class="itemTitle">
+        <view>预排片率</view>
+        <view>第三天</view>
+      </view>
+      <view class="itemInput">
+        <input type='digit' class="inputColor" placeholder-class="phcolor" data-type="21" value='{{data.claim_third_start=="0"?"":data.claim_third_start}}' bindblur='getVal' style='color:#FFA148;font-size:40rpx;'/>
+        <text>-</text>
+        <input type='digit' class="inputColor" placeholder-class="phcolor" data-type="22" value='{{data.claim_third_end=="0"?"":data.claim_third_end}}' bindblur='getVal' style='color:#FFA148;font-size:40rpx;'/>
+        <text>%</text>
+      </view>
+      <view class="line"></view>
+      <input type='text' class="input" placeholder-class="phcolor"  data-type="23" placeholder='如遇其他情况 请说明' value='{{data.claim_third_remarks}}' bindinput='getVal'/>
+    </view>
+     <view class="item">
+      <image src='{{bgImg}}'></image>
+      <view class="itemTitle">
+        <view>黄金场沟通 场次数</view>
+         <view style='display:none'></view> 
+      </view>
+      <view class="itemInput">
+        <input type='digit' class="inputColor" placeholder-class="phcolor" data-type="31" value='{{data.gold_field_start=="0"?"":data.gold_field_start}}' bindblur='getVal' style='color:#FFA148;font-size:40rpx;'/>
+        <text>-</text>
+        <input type='digit' class="inputColor" placeholder-class="phcolor" data-type="32" value='{{data.gold_field_end=="0"?"":data.gold_field_end}}' bindblur='getVal' style='color:#FFA148;font-size:40rpx;'/>
+        <text>场</text>
+      </view>
+      <view class="line"></view>
+      <input type='text' class="input" placeholder-class="phcolor" data-type="33" placeholder='如遇其他情况 请说明' value='{{data.gold_field_remarks}}' bindinput='getVal'/>
+    </view>
+
+    <view class="remarks">
+      <view>
+        <view class="remarksTitle">其他备注</view>
+        <textarea placeholder-class="plstrye" placeholder='请输入文字' data-type="4" value='{{data.claim_remarks}}' bindinput='getVal'></textarea> 
+      </view>
+    </view>
+    <view class="btn">
+        <view bindtap='submit'>提交任务</view>
+    </view>
+  </view>
+</view>

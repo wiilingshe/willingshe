@@ -1,0 +1,1 @@
+angular.module("app.directives.pageTplTypes",[]).directive("pageTplTypes",["pageTplService",function(e){return{restrict:"EA",replace:!0,templateUrl:"directives/page-tpl-types.tpl.html",link:function(p,t,l){e.getPageTplTypes().then(function(e){e.data.list&&e.data.list.length>0?p.pageTplTypes=e.data.list:p.pageTplTypes=[]})}}}]);

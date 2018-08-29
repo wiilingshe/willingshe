@@ -1,0 +1,75 @@
+<div ng-include="'/Public/eq/6.0/templates/header.tpl.html'"></div>
+<div id="main" class="min-contain">
+	<div ng-include="'/Public/eq/6.0/templates/sysmessage.tpl.html'"></div>
+	<div class="info-show">
+		<div class="same-content">
+			<div class="info-title" style="padding-bottom:80px;"> 微课样例 </div>
+			<div class="info">
+				<div class="creat-scene">
+					<a ng-click="createScene()" class="clearfix background-color-width-change"> <em class="eqf-plus2"></em><span class="opacity-width-change">点击创建空白微课</span> </a>
+				</div>
+				<ul class="clearfix tab-line">
+					<li> <a ng-class="{active : 0 == childcat}" ng-click="allpage(null,null)">全部</a> </li>
+					<li ng-repeat="pageTplType in pageTplTypesList"> <a ng-click="getPageTplsByType(pageTplType.type)" ng-class="{active : pageTplType.type == childcat}">{{pageTplType.name}}</a> </li>
+					<li ng-show="userProperty.type ==2 || userProperty.type ==21 || userProperty.type ==23"><a ng-click="getCompanyTpl()" ng-class="{active: 1 == childcat}">企业样例</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="same-content">
+		<div class="sample-childcat clearfix mt20" ng-if="newArrayGroupCat">
+			<ul class="cat-list tab-box-shadow" ng-repeat="childGroup in newArrayGroupCat">
+				<li ng-repeat="cat in childGroup" ng-click="getPageTpls(type,cat.bizType,cat.id)" ng-class="{active:cat.id == categoryId}"> <a>{{cat.name}}</a><span>|</span> </li>
+			</ul>
+		</div>
+		<div class="scene-type clearfix">
+			<div class="search-tab">
+				<div class="search" ng-class="{hover:name}" style="right:0;"> <input type="text" maxlength="40" placeholder="请输入搜索内容" ng-model="name" ng-change="changeName(name)" ng-keypress="EnterPress(event,name)" ng-keydown="EnterPress(name)"> <span ng-if="searchButton" class="search-icon eqf-search" ng-click="submit(name)"></span>					<span ng-if="!searchButton" class="search-icon eqf-wrong" ng-click="clearSearch()"></span> </div>
+			</div>
+			<div class="scene-select" ng-class="{selected:!selete}" ng-click="selete=false;new=true;getPageTpls('1',null,null,'1','11')">
+				<a> <span>默认排序</span> </a>
+			</div>
+			<!--             <div class="scene-select" ng-class="{selected:!hot}" ng-init="hot=true;use='use'" ng-click="hot=!hot;new=true;filterTpl(hot,use)">                <a>                    <span>最热使用</span><em class="eqf-more"></em>                </a>            </div>  -->
+			<div class="scene-select" ng-class="{selected:selete,iconChange:new}" ng-init="new=true;" ng-click="new =!new; filterTpl(new)"> <a><span>最新发布</span><em class="eqf-more all-change"></em></a> </div>
+		</div>
+		<div style="position:relative">
+			<ul class="square-scene clearfix">
+				<li class="tab-box-shadow creat-blank all-change" ng-if="blankSample" ng-click="createScene()" style="cursor:pointer;">
+					<div class="creat-content background-color-width-change"> <i class="fa eqf-plus2"></i><span>创建空白微课</span> </div>
+				</li>
+				<li ng-repeat="tpl in tpls track by $index" class="'tab-box-shadow' animation-zoom 'all-change'" ng-show="tpls" ng-style="{'animation-delay' : $index * 50 + 'ms'}">
+					<div class="ribbon ribbon-badge" ng-if="!!tpl.price"> <span class="ribbon-inner check">{{tpl.price}}微币</span> </div>
+					<div class="image">
+						<div ng-show="!tpl.show" class="front face" ng-style="getStyle(tpl.cover)" style="background-size:cover"></div>
+						<div ng-show="tpl.show" class="ercode" qr-code qr-url="{{canvasUrl + '/v-' + tpl.code}}"> </div>
+						<div class="overlay" ng-show="!tpl.show">
+							<div class="edit">
+								<!-- ng-href="{{PREFIX_CLIENT_HOST + '/v-' + tpl.code}}" -->
+								<a class="edit-same" target="_blank" ng-href="{{canvasUrl + '/v-' + tpl.code}}"> <em class="eqf-eye" style="font-size:20px;"></em> <span>预览</span> </a>
+								<a class="edit-same" ng-click="createScene(tpl)"> <em class="eqf-xiuziti" style="font-size:18px;"></em> <span>套用制作</span> </a>
+							</div>
+						</div>
+					</div>
+					<div class="project-info">
+						<p class="ellipsis">{{tpl.name}}</p>
+						<!-- <span class="show-count"><em class="eqf-xiuziti"></em>{{tpl.useCount | fixnum}}</span>  -->
+						<div class="buttons sample clearfix" ng-if="!branchid">
+							<div class="set sample-scene"> <span class="scene-name">{{tpl.userName}}</span> </div> <a class="erweima button" ng-hover resource="tpl"><em class="eqf-QRcode"></em></a> </div>
+					</div>
+					<div class="head-img"> <img ng-if="tpl.avatar" ng-src="{{tpl.avatar}}"> <span ng-if="!tpl.avatar" class="scene-headimg"><em class="eqf-top-contact"></em></span> </div>
+				</li>
+			</ul>
+			<div style="text-align:center;margin:50px 0;" ng-if="tpls.length < 1">
+				<h2>暂无样例</h2>
+				<p style="font-size:14px;" class="mb20 mt20">该条件下暂无样例，请更换关键词搜索</p> <img ng-src="{{CLIENT_CDN}}assets/images/notfound.svg"> </div>
+		</div>
+		<div class="clearfix page-turn" style="margin-top:10px;" ng-show="totalItems > 11 && tpls.length">
+			<pagination style="float: left" first-text="首页" last-text="尾页" previous-text="&lsaquo;" next-text="&rsaquo;" max-size="10" items-per-page="12" total-items="totalItems" ng-model="currentPage" ng-change="pageChanged(currentPage)" boundary-links="true"
+				rotate="true" num-pages="numPages"></pagination>
+			<div class="current_page"><span class="fl">到</span> <input type="text" ng-model="toPage" ng-keyup="$event.keyCode == 13 ? pageChanged(toPage) : null"><span class="fl">页</span> <a ng-click="pageChanged(toPage)" class="go">GO</a>
+				<!-- <span><span>当前</span>: {{currentPage}} / {{numPages}} <span>页</span></span> --></div>
+		</div>
+	</div>
+</div>
+<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'"></div>
+<div ng-include="'/Public/eq/6.0/templates/scene.createUserGuide.tpl.html'"></div>

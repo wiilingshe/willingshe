@@ -1,0 +1,6 @@
+[ 2017-11-21T09:10:07+08:00 ] 113.96.58.75 /adminc.php?s=/user/batch.html
+ERR: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '' for key 'email'
+
+[ 2017-11-21T09:10:25+08:00 ] 113.96.58.75 /adminc.php?s=/user/batch.html
+ERR: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '' for key 'email'
+

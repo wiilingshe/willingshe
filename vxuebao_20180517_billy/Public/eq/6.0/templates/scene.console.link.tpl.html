@@ -1,0 +1,49 @@
+<div class="modal-header no-line" id="linkComponent_header">
+    <button type="button" class="n_close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">
+        <!-- <span aria-hidden="true">×</span> -->
+        <img aria-hidden="true" src="/assets/images/re-design/bg_close.png" />
+    </button>
+    <h4 class="modal-title"><i></i>链接组件
+        <span class="action">可以链接到微课其他页面或者链接网站地址</span>
+    </h4>
+</div>
+<div class="dialog-contain" id="linkComponent_content">
+	<div class = "link-modal dialog-content n_modal">
+		<form class="form-contain">
+			<div class="form-list clearfix linkComponent-btn-url">
+	            <label for="externalRadio" class="form-label" ng-init="url.link='external'" style="padding-left: 0;">
+                    <div class="radio-square" ng-class="{checked:url.link=='external'}">
+                        <em></em>
+                        <input type="radio" name="externalRadio" id="externalRadio" ng-model = "url.link" value="external" ng-change = "changed()" style="margin:0px;">
+                    </div> 	            	
+	            	<!-- <input type="radio" name="externalRadio" id="externalRadio" ng-model = "url.link" value="external" ng-change = "changed()" style="margin:0px;"> --><em>网站地址：</em>
+				</label>
+	            <div class="form-input">
+	                <input class = "" style="height:31px;width:300px;" type="text" ng-model = "url.externalLink" name="externalLink" id="externalLink" placeholder = "http://" ng-disabled = "url.link == 'internal'" ng-change = "selectRadio('external')"  limit-link-length/>
+					        </div>
+				<a href="http://dwz.cn/" class="bl_btn" target="_blank">生成短链接</a>
+	        </div>
+	        <div class="form-list clearfix linkComponent-btn-page">
+	            <label for="internalRadio" class="form-label" style="padding-left: 0;">
+                    <div class="radio-square" ng-class="{checked:url.link=='internal'}">
+                        <em></em>
+                        <input type="radio" name="internalRadio" id="internalRadio" value="internal" ng-model = "url.link" ng-change = "changed()" style="margin:0px;">
+                    </div> 	            	
+	            	<!-- <input type="radio" name="internalRadio" id="internalRadio" value="internal" ng-model = "url.link" ng-change = "changed()" style="margin:0px;"> --><em>微课页面：</em>
+				</label>
+				<div class="form-input">
+					<!-- <select style = "width:300px;" ng-model = "url.internalLink" ng-options = "page.name for page in pageList" ng-disabled = "url.link == 'external'" ng-change = "selectRadio('internal')"></select> -->
+	                <eqx-select class="select-sm select-contain border-width fl" model="url.internalLink" change="selectRadio('internal')">
+	                    <!-- <eqx-select-option value="null">无</eqx-select-option> -->
+	                    <eqx-select-option value="page" ng-disabled = "url.link == 'external'" ng-repeat="page in pageList">{{page.name}}</eqx-select-option>
+	                </eqx-select>					
+					<a style = "margin-left:10px;display: inline-block;font-size: 16px; background-image: url('assets/images/create/delete.png'); width: 14px; height: 14px;" ng-show = "url.link == 'internal'" ng-click = "removeLink('internal')"></a>					
+				</div>
+	        </div>
+		</div>
+	</div>
+</div>
+<div class="modal-footer no-line"  id="linkComponent_footer">
+    <a class="modal-submit" ng-click="confirm()">确定</a>                                
+    <a class="modal-cancle" ng-click="cancel()">取消</a>
+</div>'

@@ -1,0 +1,45 @@
+<div class="dialog-contain ">
+	<div class="dialog-head">
+		<h1 translate="scene.create.audio.TITLE">音乐素材</h1>
+		<p ng-show='!authError'>选择音乐库中音乐或把喜欢的乐曲上传到我的音乐中</p>
+		<p ng-show='authError'>{{authError}}</p>
+	</div>
+	<!--	<div class="category_list nav-list">		<ul class="category_list_container clearfix">			<li ng-class="{active: category.value == model.bgAudio.type}" ng-repeat="category in categoryList" ng-click="model.bgAudio.type = category.value">				{{category.name}}			</li>		</ul>	</div>-->
+	<div class="dialog-content bg_console clearfix" style="background-color:#E7E7E7;">
+		<div class="fl" style="width:200px;">
+			<ul class="nav nav-tabs tabs-left" style="padding-top:0;">
+				<!-- 'tabs-right' for right tabs -->
+				<li ng-class="{active: !isMySound}"> <a ng-click="selectTab(false)" translate="scene.create.audio.MUSIC_LIB">音乐库</a> </li>
+				<li ng-class="{active: isMySound}"> <a ng-click="selectTab(true)" translate="scene.create.audio.MY_MUSICS">我的音乐</a> </li>
+			</ul>
+		</div>
+		<div class="fl bg-rig">
+			<div id="bg_contain" class="tab-head">
+				<!--<form class="form-contain" role="form">-->
+				<!--			<div ng-if="model.bgAudio.type == '1'" class="form-list audio_area clearfix">					<lable class="form-label">链接地址：</lable>					<div class="form-input">						<input class="" type="text" ng-model="model.type1" placeholder="请输入mp3文件链接">					</div>				</div>-->
+				<!--				<div ng-if="isMySound" class="sound-list clearfix">					<ul>						<li ng-repeat="s in sounds">							{{s.name}}						</li>					</ul>	&lt;!&ndash;				<div class="form-input" style="margin-left:0;">						<select class="float-lf selectcartoon" ng-change="selectAudio(2)" ng-model="model.selectedMyAudio" ng-options="myAudio.name for myAudio in myAudios" id="nb_musicurl">						<option value="">选择我的音乐</option>						</select>						<p style="text-align:left;"></p>					</div>					<span class="btn-main" ng-click="goUpload()">上传音乐</span>					<div ng-if = "model.type2" style = "margin-top:10px;">						<audio ng-src="{{model.type2}}" controls="controls">						</audio>					</div>&ndash;&gt;				</div>-->
+				<!--				<div ng-if="!isMySound" class="sound-list clearfix">					<ul>						<li ng-repeat="reservedAudio in reservedAudios">							{{reservedAudio.name}}						</li>					</ul>					&lt;!&ndash;<select class="float-lf selectcartoon" ng-change="selectAudio(3)" ng-model="model.selectedAudio" ng-options="reservedAudio.name for reservedAudio in reservedAudios" id="nb_musicurl">						<option value="">选择音乐库文件</option>					</select>					<div ng-if = "model.type3" style = "margin-top:10px;">						<audio  ng-src="{{model.type3}}" controls="controls">						</audio>					</div>&ndash;&gt;				</div>-->
+				<div class="tab-pane">
+					<div class="img_list">
+						<div class="sound-list clearfix">
+							<ul>
+								<li style="cursor:pointer;" ng-class="{active: sound.src == s.src}" ng-click="selectSound($index)" ng-repeat="s in sounds"> <span>                                           <a class="sound eqf-play" title="{{s.isPlaying ? ('scene.create.audio.PAUSE' | translate) : ('scene.create.audio.PLAY' | translate)}}" ng-class="{'eqf-play': !s.isPlaying, 'eqf-stop': s.isPlaying}" ng-click="playSound($event, $index)"></a>                                           <a class="del eqf-delete" title="{{'scene.create.audio.DELETE' | translate}}" ng-show="isMySound" ng-click="deleteMySound($event, $index)"></a>                                       </span>{{s.name}}
+									</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="fanye_foot clearfix">
+					<div class="pagination_container fl">
+						<pagination style="float: left" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="{{'scene.create.audio.FIRST_PAGE' | translate}}" last-text="{{'scene.create.audio.LAST_PAGE' | translate}}" max-size="5" items-per-page="pagination.pageSize"
+							total-items="pagination.totalItems" ng-model="pagination.currentPage" ng-change="getSounds(pagination.currentPage)" boundary-links="true" rotate="true" num-pages="pagination.numPages"></pagination>
+						<div class="current_page"> <input type="text" ng-model="toPage" ng-keyup="$event.keyCode == 13 ? getSounds(toPage) : null"> <a ng-click="getSounds(toPage)" class="go">GO</a>
+							<!-- 							<span><span translate="scene.create.audio.CURRENT_PAGE1">当前</span>: {{pagination.currentPage}} / {{pagination.numPages}} <span translate="scene.create.audio.CURRENT_PAGE2">页</span></span> --></div>
+					</div>
+					<div style="text-align:right;"> <a class="btn-main login" ng-click="confirm()" translate="scene.create.audio.CONFIRM">确定</a> <a class="btn-grey0 cancel" ng-click="cancel()" translate="scene.create.audio.CANCEL">取消</a> </div>
+				</div>
+			</div>
+			<!--</form>-->
+		</div>
+	</div>
+</div>

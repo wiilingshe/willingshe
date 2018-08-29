@@ -1,0 +1,35 @@
+<div ng-include="'/Public/eq/6.0/templates/header.tpl.html'"></div>
+<div id="main" class="min_contain same-content message-contain">
+	<div class="u-content">
+		<div class="m-title">
+			<div class="m-icon fl red-bg"> <span class="eqf-music"></span> </div>
+			<div class="m-detail">
+				<div class="m-type ng-binding">站内消息</div>
+				<div class="pt20 clearfix"> <span style="float:right" class="message">                        <a class="ml20" ng-show="Msgs.length > 0" ng-click="setRead(Msgs)">标记为已读</a>                                        </span> <span class="mr20"><em>消息总数：{{msgCount}}</em></span> <span><em>未读消息：{{newMsgCount}}</em></span>					</div>
+			</div>
+		</div>
+		<div class="account-contain">
+			<table class="table table-hover" ng-show="Msgs.length > 0">
+				<thead>
+					<tr>
+						<th class="col-sm-3">类型</th>
+						<th class="col-sm-6">内容</th>
+						<th class="col-sm-3">日期</th>
+					</tr>
+				</thead>
+				<tr ng-repeat="newMsg in Msgs">
+					<td>{{newMsg.type}}<em ng-class="{new_msg: newMsg.status == 1}"></em></td>
+					<td ng-bind-html="newMsg.content"></td>
+					<td>{{newMsg.sendTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+				</tr>
+			</table>
+			<div class="mt20" ng-show="Msgs.length == 0"> 您暂时还没有消息！ </div>
+			<div class="clearfix page-turn" ng-show="Msgs.length > 10">
+				<pagination style="float: left" first-text="首页" last-text="尾页" previous-text="&lsaquo;" next-text="&rsaquo;" max-size="5" items-per-page="pageSize" total-items="msgCount" ng-model="currentPage.msgCurrentPage" boundary-links="true" rotate="true" num-pages="msgNumPages"></pagination>
+				<div class="current_page"><span class="fl">到</span> <input type="text" ng-model="toPage" ng-keyup="$event.keyCode == 13 ? pageChanged(toPage, 'msgCurrentPage') : null"><span class="fl">页</span> <a ng-click="pageChanged(toPage, 'msgCurrentPage')" class="go">确定</a>
+					<!--                     <span >当前</span>                        : {{currentPage.msgCurrentPage}} / {{msgNumPages}}                     <span >页</span> --></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'"></div>

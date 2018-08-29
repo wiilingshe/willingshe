@@ -1,0 +1,15 @@
+<div panel-draggable id="comp_setting">
+	<div class="cancel"><span class="set-title">组件设置</span><span class="set-close eqf-wrong" ng-click="cancel()"></span></div>
+	<!-- <div class="style_head clearfix"> -->
+	<ul class="nav nav-tabs">
+		<li ng-class="{active:activeTab == 'style'}"><a class="all-change" ng-click="activeTab = 'style'">样式</a></li>
+		<li ng-class="{active:activeTab == 'anim'}"><a class="all-change" ng-click="activeTab = 'anim'">动画</a></li>
+		<li ng-class="{active:activeTab == 'trigger'}"><a class="all-change" ng-click="activeTab = 'trigger'">触发</a></li>
+	</ul>
+	<!-- </div> -->
+	<div class="style_content">
+		<div ng-include="'/Public/eq/6.0/templates/scene.console.anim.tpl.html'"></div>
+		<div ng-include="'/Public/eq/6.0/templates/scene.console.style.tpl.html'"></div>
+		<div ng-include="'/Public/eq/6.0/templates/scene.console.trigger.tpl.html'"></div>
+	</div>
+</div>

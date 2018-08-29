@@ -1,0 +1,129 @@
+@charset "utf-8";
+
+/*初始化*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+	margin:0;
+	padding:0;
+	font-family:"Microsoft YaHei","微软雅黑˜",tahoma,Arial;
+}
+table{border-collapse:collapse;border-spacing:0}
+fieldset,img{border:0}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:400}
+ol,ul{list-style:none}
+caption,th{text-align:left}
+abbr,acronym{border:0;font-variant:normal}
+sup{vertical-align:text-top}
+sub{vertical-align:text-bottom}
+input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;*font-size:100%;outline:none;}
+legend{color:#000}
+body{background:#fff;font:14px/1.5 \5FAE\8F6F\96C5\9ED1,arial,sans-serif;min-width:1200px}
+a{color:#000;text-decoration:none}
+
+.clear {
+	clear: both;
+}
+
+#eq_main{width:100%;margin:0 auto;background:#f6f5f4;}
+
+/*头部css*/
+.header{width:100%;background-color:#fff;}
+.wrap{width:1170px;margin:0 auto;}
+#logo {float: left;width: 190px;}
+#menu {width: 100%;padding-left: 210px;}
+#nav {line-height: 45px;height: 45px;font-size: 18px;font-weight: 400;padding-top: 1px;overflow: hidden;}
+#nav #menu ul {display: inline;margin: 0px;padding: 0px;}
+#nav #menu #user {float: right;display: inline;margin: 0px;padding: 0px;}
+#nav #menu #user a{color: #FFF;}
+
+#nav #menu #user li {width: 90px;margin: 0px;padding: 0px;}
+#nav #menu ul li {float: left;width: 125px;text-align: center;list-style-position: inside;list-style-image: none;list-style-type: none;margin: 0px;padding: 0px;}
+#nav #menu ul li a {color: #a0a0a0;}
+#nav #menu ul li a:hover {color: #66cc00;text-decoration: none;}
+#nav #menu ul .current a {color: #66cc00;}
+
+/*身体css*/
+#show_contain{width:1198px;margin:0 auto;}
+.contain_top{height:128px; background:#fff;padding:15px 0 0 10px;margin-bottom:20px;}
+.contain_top .top_img{float:left; width:102px;margin-right:24px;*display:inline;}
+.contain_top .menu{height:82px;margin-top:10px;}
+.contain_top .menu ul li{float:left;overflow:hidden;}
+.contain_top .p_menu{position:relative;}
+.contain_top .p_menu li .active{ padding:0 8px;display:block;background:#66cc00;text-align:center;color:#fff;}
+.contain_top .p_menu li{font-size:24px; margin-right:40px; }
+.contain_top .s_menu{position:absolute;height:20px;top:58px;left:134px;}
+.contain_top .s_menu li{font-size:14px;color:#b8b8b8;margin-right:15px;height:26px;padding: 0px 8px;}
+.contain_top .s_menu li .active{height:26px;background:#66cc00;text-align:center;color:#fff;padding: 0px 8px;}
+.contain_top .ico5{float:right; margin:-72px 20px 0 0;}
+
+.contain_center{min-height:300px;}
+.contain_center .f{margin-left:0;}
+.contain_center .n_f{margin:0 20px 18px 0; float:left;}
+.contain_center .center_left{float:left;}
+.contain_center .center_right{padding:28px 15px 0;width:353px; height:235px;background:#fff;float:left;position:relative;}
+.center_right .r_top{margin-bottom:48px;height:84px;}
+.center_right .r_top span{font-size:16px; color:#545353;}
+.center_right .r_top p{font-size:12px; color:#a0a0a0;margin-top:18px;}
+.center_right .r_bottom{font-size:14px;color:#a0a0a0;position: absolute;bottom: 10px;}
+.center_right .r_bottom li{float:left;margin-right:70px;*display:inline;}
+.center_right .r_bottom img{float:left;}
+.center_right .r_bottom ul img{}
+
+.contain_bottom{width:500px;height:50px;margin-left:780px;}
+.contain_bottom ul li{float:left;margin-left:12px;color:#bdbcbc;}
+.contain_bottom li a{color:#bdbcbc;display:block;height:24px;text-align:center;line-height:24px;}
+.contain_bottom li .active2{width:24px;background:#66cc00;color:#fff;}
+
+/*分页*/
+.pages{height:100px;margin:30px 0 0 718px;}
+.pages a,.pages span {display:inline-block; padding:0px 6px;margin:0 5px; border:1px solid #f0f0f0;}
+.pages a,.pages li {display:inline-block;list-style: none;text-decoration:none; color:#58A0D3;}
+.pages a.first,.pages a.prev,.pages a.next,.pages a.end{margin:0;}
+.pages a:hover{border-color:#66cc00;}
+.pages span.current{background:#66cc00;color:#FFF;font-weight:700;border-color:#66CC00;}
+
+
+
+/*尾部css*/
+#footer {height:200px; float: left;width: 100%;background-color: #2d2c34;color: #CCCCCC;padding-top: 40px;padding-bottom: 10px;}
+.footer_top{padding-left:40px;width:1164px;height:90px;margin:0 auto;border-bottom:1px solid #d0d0d0;}
+.footer_top .t_center,.footer_top .t_left,.footer_top .t_left{float:left;margin-right:100px;}
+.footer_top .t_center div{float:left;}
+.footer_top .title{font-size:16px;margin-bottom:8px;}
+.footer_top .t_center{margin-top:30px;}
+.footer_bottom{width:1164px;margin:0 auto;padding-top:10px;}
+.footer_bottom li{float:left;margin:0 68px 0 68px;}
+
+#modal-dialog{
+	width: 840px;
+	background-color: #fff;
+	margin-top: 150px;
+}
+#modal-dialog .col-md-6 {
+	margin: 0px;
+	padding: 0px;
+	height: 520px;
+	width: 420px;
+}
+
+.modal-title{
+	text-align: center;
+	margin-top: 20px;
+}
+#modal-footer{
+	text-align: center;
+}
+.modal-body{
+	padding: 30px 30px 10px 30px;
+}
+.form-control{
+	border-radius:2px
+}
+#msg {
+	line-height: 20px;
+	color: #666;
+	margin-top: 20px;
+}
+#notice {
+	font-size: 12px;
+	color: #999;
+}

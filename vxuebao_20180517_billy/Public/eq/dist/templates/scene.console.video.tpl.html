@@ -1,0 +1,62 @@
+<div class="modal-header no-line"> 
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">        <span aria-hidden="true">×</span>    </button>
+	<h4 class="modal-title">视频组件<a class="bbs-help-tip-media" target="_blank" href="http://bbs.e.wesambo.com/forum.php?mod=viewthread&tid=1926&extra="></a>       
+		<span ng-show ='!authError' class="action">把视频通用代码复制到框中即可使用</span>      
+		<span ng-show = 'authError'>{{authError}}</span>    
+		</h4>
+</div>
+<div class="dialog-contain ">
+	<div class="video_console">
+		<ul class="nav_video">
+			<li ng-class="{active: common}" ng-click = "changeCommon()">视频通用代码</li>
+			<li ng-class="{active: mine}" ng-click = "changeMine()">我的视频</li>
+			<li class="my-bg-upload bg-img-upload blue" id="videoUploads">
+				<div class="hint--top hint--rounded" data-hint="大小不超过20M，支持格式：mp4"> 
+					<label for="videoUpload" style="width: 98px;"><span class="eqf-update"></span> 上传</label>
+					<input type="button" ng-click="doUpload()" id="videoUpload" name="videoUpload" style=" display: none;">					
+				</div>
+				<span id="progress" style="position: absolute;right: 0;top: -30px;height: 30px;width: 100%;text-align: center;line-height: 30px;  color: #666;  font-size: 13px;"></span>  
+			</li>
+		</ul>
+		<div class="modify_area" style="height:auto" ng-if="common">
+			<div class="video_tip"><span>视频通用代码：</span><span class="video_code"><a href="http://bbs.vxuebao.com/forum.php?mod=viewthread&tid=160&extra=page%3D1" target="_blank"><ins>什么是视频通用代码？</ins></a></span> </div>
+			<div class="video_tip"> <textarea style="border-radius:0px;" class="video_src" ng-model="model.src" ng-keyup="$event.keyCode == 13 ? confirm() : null"></textarea> </div>
+			<div class="video_tip"><span>将视频的通用代码粘贴到文本框里即可。</span><a href="http://bbs.vxuebao.com/forum.php?mod=viewthread&tid=160&extra=page%3D1" target="_blank"><ins>查看帮助</ins></a></div>
+			<div class="video_tip"><span>支持的视频：</span><a href="http://www.youku.com/" target="_blank"><ins>优酷</ins></a>、<a href="http://www.tudou.com/" target="_blank"><ins>土豆</ins></a>、<a href="http://v.qq.com/" target="_blank"><ins>腾讯视频</ins></a></div>
+		</div>
+		<div class="myvideo_list" ng-if="mine" style="padding: 8px;">
+			<div class="my-bg" style="height: 30px;line-height: 30px;border-bottom: 1px solid #aaa;width: 96%;margin: 0 auto;"> 
+				<span style="float:right;">
+					<a class="manage-all" ng-click="manage();" ng-if="!manageObj.manageAll"><em>管理</em></a> 
+					<a class="mul-del" ng-click="deleteFile();" style="margin: 0 5px;" ng-if="manageObj.manageAll"><em>删除</em></a>
+					<a class="cancel-all" ng-click="cancelSelect();" ng-if="manageObj.manageAll"><em>取消选择</em></a>
+				</span>	
+			</div>
+			<ul>
+				<li style="width: 80px;height: 80px;background-color: #eee;margin: 8px; float: left;  position: relative;padding: 10px;" ng-repeat="video in videoList track by $index" data-hint="{{video.name}}">
+					<img style="height: 70px;position: absolute;left: 5px;top: 5px;" ng-src="/assets/images/create/play.png" ng-click="setVideos(video);"/>
+					<div class="video-mask" style="position: absolute;font-size: 25px;width: 100%;height: 100%;left: 0;bottom: 0;" ng-if="manageObj.manageAll && mine">
+						<a class="sel-file ope-img" ng-class="{'hide-del': manageObj.selected && manageObj.manageAll}" id="{{video.id}}" ng-click="selVideo(video.id);"  style="background-color: rgba(00,00,00,0.7);position: absolute;left: 0;bottom: 0;width: 100%;"> 
+							<span class="eqf-yes ope-icon"></span> 
+						</a> 
+					</div>
+				</li>
+			</ul> 
+		</div>
+
+	</div>
+</div>
+<div class="modal-footer no-line"> 
+	<div class="pagination_container fl" ng-if="mine" style="margin-left: 14px">
+		<pagination style="float: left" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="首页" last-text="尾页" max-size="3" items-per-page="pagination.pageSize" total-items="pagination.totalItems" ng-model="currentPage" boundary-links="true" rotate="true" num-pages="pagination.numPages" ng-change="getvideos(currentPage)">
+			</pagination>
+			<div class="current_page">
+				<span class="fl">到</span> 
+				<input type="text" ng-model="toPage" ng-keyup="$event.keyCode == 13 ? getvideos(toPage) : null">
+				<span class="fl">页</span> 
+				<a ng-click="getvideos(toPage)" class="go">确定</a> 
+			</div>
+	</div> 
+		
+	<a class="modal-cancle" ng-click="cancel()">取消</a> <a class="btn btn-primary" ng-click="confirm()">确定</a>
+</div>

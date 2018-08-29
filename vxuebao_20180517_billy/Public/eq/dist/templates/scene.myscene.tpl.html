@@ -1,0 +1,18 @@
+<div class="main myscene">
+	<div class="content" ng-class="{'extend-panel':panelClose}"> <a class="back" ng-href="{{backurl}}"><i class="eqf-bg"></i></a> <iframe style="border: 0; width:100%;height:100%;" ng-src="{{iframeUrl}}" ctrl-page-scroll></iframe> </div>
+	<div class="left-bar" ng-class="{'hide-panel':panelClose}">
+		<div class="extend-bar" ng-click="panelClose=!panelClose"><span ng-class="{'eqf-right2':!panelClose,'eqf-left2':panelClose}"></span></div>
+		<h6 class="share-title">扫一扫分享给朋友</h6>
+		<div class="scene-img" qr-code qr-url="{{canvasUrl}}"></div>
+		<div class="quick-share mt20 bdsharebuttonbox">
+			<h6>分享到</h6>
+			<a href="#" class="bds_more" data-cmd="more"></a>
+			<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+			<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+			<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+			<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+			<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+		</div>
+		<div class="create-link" ng-class="{'create-link2':!isTpl}"> <a href="http://www.e.wesambo.com" target="_blank" class="pl20">我也来做一个→微学宝官方网站：www.e.wesambo.com</a> </div>
+	</div>
+</div>

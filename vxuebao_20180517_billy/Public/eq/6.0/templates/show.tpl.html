@@ -1,0 +1,39 @@
+<div id="show-contain">
+	<div ng-include="'/Public/eq/6.0/templates/nav.tpl.html'" ng-controller="NavCtrl"></div>
+	<div class="show-con same-content clearfix">
+		<div class="hd-lunbo" id="index" width="650px" height="260px" slides2>
+			<div class="slides_container"></div>
+			<div class="hd-icon">
+				<a class="eqf-left prev"></a>
+				<a class="eqf-right next"></a>
+			</div>
+		</div>
+		<aside>
+			<h2><i translate="show.ACTIVITY">活动</i><span translate="show.ACTIVITY_TIP">ACTIVITY</span></h2>
+			<ul>
+				<li ng-repeat="hdList in activeList">
+					<a ng-click="join(hdList.id)"> <img ng-src="{{PREFIX_FILE_HOST + hdList.image}}" /> {{hdList.title}} </a>
+				</li>
+			</ul>
+		</aside>
+	</div>
+	<div class="show-list same-content">
+		<h2>			<a href="#/show/recommend" translate="show.MORE">更多</a><i translate="show.RECOMMEND">推荐</i><span translate="show.RECOMMEND_TIP">RECOMMEND</span>		</h2>
+		<ul class="clearfix">
+			<li ng-repeat="tpl in sceneList">
+				<a href="{{PREFIX_CLIENT_HOST + '/v-' + tpl.code}}" target="_blank"> <img ng-src="{{PREFIX_FILE_HOST + tpl.cover}}" />
+					<p>{{tpl.name}}</p>
+					<p> <span class="auth">							<img title="{{tpl.userName}}" ng-src="{{tpl.headImg}}" />						</span> <span><em class="eqf-eye2"></em>{{tpl.showCount}}</span> </p>
+				</a> <a ng-if="tpl.isTemplate == 1" class="screen-use" target="_blank" ng-click="userTpl(tpl)">使用</a> </li>
+		</ul>
+	</div>
+	<div class="hezuo same-content" ng-show="friendLinks.length>0">
+		<h2><em translate="show.FRIEND">合作</em><span translate="show.FRIEND_TIP">FRIEND</span></h2>
+		<ul class="clearfix">
+			<li ng-repeat="list in friendLinks">
+				<a href="{{list.url}}" target="_blank"> <img ng-src="{{list.logo }}" alt="{{list.name}}" title="{{list.name}}" /> </a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'"></div>

@@ -1,0 +1,27 @@
+<div class="login-form-section">
+	<div class="login-content">
+		<form class="loginForm" novalidate>
+			<div class="section-title">
+				<h3>重设密码</h3> </div>
+			<div class="error-wrap">
+				<div class="alert alert-danger" role="alert" ng-show="authReason"> {{authReason}} </div>
+				<div class="alert alert-danger" role="alert" ng-show="authError"> {{authError}} </div>
+			</div>
+			<div class="textbox-wrap">
+				<div class="input-group"> <span class="input-group-addon "><i class="fa fa-key"></i></span> <input class="form-control" name="pass" placeholder="新密码" type="password" ng-model="password.newPw" placeholder="密码6~16个字符(英文字母或数字 区分大小写)" ng-keyup="$event.keyCode == 13 ? reset() : null"
+						ng-blur="checkPassword()" required add-class/>
+					<div ng-show="passError" class="error_text"> {{passError}} </div>
+				</div>
+			</div>
+			<div class="textbox-wrap">
+				<div class="input-group"> <span class="input-group-addon "><i class="fa fa-key"></i></span> <input class="form-control" name="confirmPassword" placeholder="确认密码" type="password" ng-model="password.confirm" ng-keyup="$event.keyCode == 13 ? reset() : null" ng-blur="checkRepeatPassword()"
+						required add-class/>
+					<div ng-show="rPassError" class="error_text"> {{rPassError}} </div>
+				</div>
+			</div>
+			<div class="login-form-action clearfix"> <button type="button" class="btn btn-success pull-left blue-btn" ng-click="reset()">确认</button> <button type="button" class="btn btn-success pull-right reset-btn" ng-click="cancel()">取消</button> </div>
+		</form>
+		<div class="login-form-tip">
+			<h6>为了获得更好的使用，建议使用谷歌浏览器（chrome）、360浏览器、IE11浏览器。</h6> </div>
+	</div>
+</div>

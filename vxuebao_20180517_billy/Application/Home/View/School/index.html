@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta property="qc:admins" content="25322764376510156375" />
+<meta name="baidu-site-verification" content="2MKKT6mbuL" />
+<meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="viewport"content="width=device-width, initial-scale=1.0" />
+<meta name="renderer" content="webkit">
+<meta property="qc:admins" content="" />
+<meta property="wb:webmaster" content="354b970d8cd61602" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link href="__PUBLIC__/Home/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/index/css/common.css">
+<link rel="stylesheet" type="text/css" href="/index/css/school.css">
+<title>微学堂</title>
+</head>
+<body>
+  <div id="eq_main">
+  <!--头部-->
+  <div class="header">
+    <div class="wrap">
+      <div class="container" id="nav">
+        <div id="logo"><img src="__PUBLIC__/Home/images/logo.png" width="190" height="45"></div>
+        <div id="menu">
+          <ul>
+              <li><a href="/">首页</a></li>
+              <li ><a href="/show/">微课案例</a></li>
+              <li class="current"><a href="/school/">微课动态</a></li>
+              <li><a target="_blank" href="http://bbs.vxuebao.com/forum.php">V粉社区</a></li>
+          </ul>
+          <ul id="user">
+            <if condition="$use eq 1">
+                <li style="background-color:#66cc00" data-toggle="modal" ><a href="http://www.vxuebao.com/#/main" class="l">进入</a></li>
+                <li style="background-color:#343b46" data-toggle="modal"><a href="/index.php?c=user&a=logout" class="r">退出</a></li>
+            <else />
+                <li style="background-color:#66cc00" data-toggle="modal" data-target="#login"><a href="#">登录</a></li>
+                <li style="background-color:#343b46" data-toggle="modal" data-target="#reg"><a href="#">注册</a></li>
+            </if>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="clear"></div>
+    <div id="school_contain">
+      <div class="contain_left">
+        <ul class="menu">
+          <li><a href="{:U('School/index',array('fid' => 63))}" class="<if condition="($_GET['fid'] eq '63') OR ($_GET['fid'] eq '')">active</if>">微课动态</a></li>
+          <li class="last"><a href="{:U('School/index',array('fid' => 68))}" class="<if condition="($_GET['fid'] eq '68')">active</if>">最新资讯</a></li>
+          <!-- <li><a href="{:U('School/index',array('fid' => 64 ))}" class="<if condition="($_GET['fid'] eq '64')">active</if>">活动</a></li>
+          <li><a href="{:U('School/index',array('fid' => 65))}" class="<if condition="($_GET['fid'] eq '65')">active</if>">更新日志</a></li>
+          <li class="last" ><a href="{:U('School/index',array('fid' => 66))}" class="<if condition="($_GET['fid'] eq '66')">active</if>">团队故事</a></li> -->
+        </ul>
+      </div>
+      <div class="contain_right">
+        <if condition="$_GET['fid'] neq 65">
+          <ul>
+            <foreach name="data" key="key" item="value">
+              <li class="f">
+              <div class="right_left">
+              <a href="http://bbs.vxuebao.com/forum.php?mod=viewthread&tid={$value.tid}&extra=page%3D1" target="blank">
+                <if condition="($value.attachment eq '')">
+                  <img src="__PUBLIC__/Home/images/school.png" />
+                <else />
+                  <img src="http://bbs.vxuebao.com/data/attachment/forum/{$value.attachment}" />
+                </if>
+              </a></div>
+              <div class="right_center">
+                <div class="r_c">
+                  <a class="name" target="blank" href="http://bbs.vxuebao.com/forum.php?mod=viewthread&tid={$value.tid}&extra=page%3D1">{$value.subject}</a>
+                  <p>{$value.message}</p>
+                  <ul>
+                    <li><img src="/index/images/show_ico1.png"><span>{$value.author}</span></li>
+                    <li style="margin-left:40px;"><img src="/index/images/school_ico1.png"><span>{$value.views}</span></li>
+                    <li style="float:right;"><img src="/index/images/time_ico.png">{$value.time}</li>
+                  </ul>
+                </div>
+              </div>        
+              </li>
+            </foreach>        
+          </ul>
+        <else />
+          <div class="content">
+            <div class="wrapper">
+              <div class="main">
+                <h1 class="title">更新日志</h1>
+                <div class="year">
+                  <h2><a href="#" style="font-size:30px;">{$data.0.year}<i></i></a></h2>
+                  <div class="list">
+                    <ul>
+                      <foreach name="data" key="key" item="value">
+                        <li class="cls">
+                          <p class="date">{$value.mon}</p>
+                          <p class="intro">{$value.subject}</p>
+                          <p class="version">&nbsp;</p>
+                          <div class="more">
+                            {$value.message}
+                          </div>
+                        </li>
+                      </foreach>
+                    </ul>
+                  </div>
+                </div>
+                <h3 class="bottom">
+              </div>
+            </div>
+          </div>
+        </if>
+      </div>
+      <div class="clear"></div>
+      <div class="pages">
+        {$page}     
+      </div>
+    </div>
+    <include file="Public:des_footer" />
+  </div>
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+<script type="text/javascript">
+  /*分页*/  
+  $(function(){
+    $("#page_sub").click(function(){
+      var p_num = $('#p_num').val();
+      if(p_num){
+        var str = window.location.href;
+        var isfid = str.indexOf('-fid');
+        if(isfid > 0){
+    
+          window.location.href = "http://"+window.location.host+'/School'+'-index-fid-'+{$data.0.fid}+'-p-'+p_num+'.html';
+        }else{
+          window.location.href = "http://"+window.location.host+'/School'+'-index'+'-p-'+p_num+'.html';
+        }
+      }else{
+        alert('请选择页码！！！');
+      }
+    });
+    $(document).keypress(function(){
+      var p_num = $('#p_num').val();
+      if(p_num){
+        var str = window.location.href;
+        var isfid = str.indexOf('-fid');
+        if(isfid > 0){
+    
+          window.location.href = "http://"+window.location.host+'/School'+'-index-fid-'+{$data.0.fid}+'-p-'+p_num+'.html';
+        }else{
+          window.location.href = "http://"+window.location.host+'/School'+'-index'+'-p-'+p_num+'.html';
+        }
+      }
+    });
+  });
+$(".main .year .list").each(function(e, target){
+  var $target=  $(target),
+  $ul = $target.find("ul");
+  $target.height($ul.outerHeight()), $ul.css("position", "absolute");
+}); 
+$(".main .year>h2>a").click(function(e){
+  e.preventDefault();
+  $(this).parents(".year").toggleClass("close");
+});
+
+</script>
+<script src="__PUBLIC__/Home/js/bootstrap.min.js"></script>
+<script src="/index/js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="__PUBLIC__/Home/js/jquery.form.js"></script>
+<script type="text/javascript">
+   function login(){
+   $('.login').ajaxSubmit(function (data) {
+    //data = eval("(" + data + ")");
+       if(data.code==200){
+          location.reload();
+       }else{
+          $('#loginError').css('display','block');
+          $('#loginError').text(data.msg).delay(3000).hide(300);
+       }
+   });
+   return false;
+}
+
+function register(){
+  var loginName=$("#loginName").val() || '';
+  var pwd1=$("#pwd1").val() || '';
+  var pwd2=$("#pwd2").val() || '';
+  if(pwd1=='' || pwd1!=pwd2 || loginName==''){
+    //alert('登录邮箱密码不能为空，且两次密码必须一致');
+    $('#registerError').css('display','block');
+    $('#registerError').text('登录邮箱密码不能为空，且两次密码必须一致').delay(3000).hide(300);
+    return false;
+  }
+  $('.reg').ajaxSubmit(function (data) {
+       //alert(data.msg);
+        $('#myAlert .modal-body').text(data.msg);
+        $('#myAlert').modal('show');
+        $("#reg").modal('hide');
+   });
+  
+  return false;
+}
+
+function forgetpwd(){
+  var email=$("#getemail").val() || '';
+  if(email==''){
+    alert('请输入邮箱号码');
+    return false;
+  }
+  $('.getpwd').ajaxSubmit(function (data) {
+    var data = eval("(" + data + ")");
+       alert(data.msg);
+   });
+    return false;
+}
+</script>
+</body>
+</html>
+<include file="Public:common2" />

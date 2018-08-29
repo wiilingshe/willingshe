@@ -1,0 +1,26 @@
+<div class="show-container">
+    <div class="select-bar">
+        <a ng-href="#/userShow" class="my-class">我的微课</a>
+        <a ng-href="#/show" class="show-class">微课广场</a>
+        <a ng-click="logout()" class="logout">退出</a>
+    </div>
+    <ul class="show-list">
+        <li class="show-item" ng-repeat="item in showList"
+            style="width:100%;height:150px;clear:both;margin-bottom: 15px;display: block">
+            <div class="item-left">
+                <a ng-href="{{item.code}}">
+                    <img class="item-img" ng-src="{{'/Uploads/'+item.cover}}"
+                         alt="{{item.name}}">
+                </a>
+            </div>
+            <div class="item-right" style="position: relative;width:250px;height: 150px">
+                <span style="width:250px;height: 30px;position: absolute;left: 0;line-height: 30px;margin-left: 5px"><b>{{item.name||"该微课无标题"}}</b></span>
+                <span style="width:250px;height: 90px;margin-top:30px;position: absolute;left: 0;margin-left: 5px;">微课简介:{{item.desc_varchar||"作者很懒,没有写任何简介"}}</span>
+                <span style="width:250px;height: 30px;margin-top:120px;position: absolute;left: 0;line-height: 30px;margin-left: 5px">
+                    <span>作者:{{item.us_name||"自己"}}</span>
+                    <span>预览次数:{{item.showCount}}</span>
+                </span>
+            </div>
+        </li>
+    </ul>
+</div>

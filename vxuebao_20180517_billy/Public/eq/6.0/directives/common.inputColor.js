@@ -1,0 +1,1 @@
+angular.module("common.directives.inputColor",[]).controller("inputColorCtrl",["$scope","$attrs",function(o,r){o.x=r.x||151,o.y=r.y||-2,o.colorMode=r.colorMode||"rgba"}]).directive("eqdInputColor",function(){return{restrict:"E",templateUrl:BASE_URL+"templates/directives.inputColor.tpl.html",replace:!0,controller:"inputColorCtrl",scope:{selectColor:"=",defaultColor:"="}}});

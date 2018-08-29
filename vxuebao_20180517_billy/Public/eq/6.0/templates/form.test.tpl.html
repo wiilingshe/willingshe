@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/assets/questionnaire.css">
+<div>
+	<div ng-include="'/Public/eq/6.0/templates/header.tpl.html'"></div>
+	<div class="form_main">
+		<div class="container">
+	  	<div class="row">
+			<div class="col-md-2" id="left">
+				<button class="btn btn-lg btn_title">基本组件</button>
+				<button type="button" class="btn btn-default btn-lg"  id="btn" data-url=''>标题</button>
+				<button type="button" class="btn btn-default btn-lg"  data-url=''>描述</button> 
+				<button type="button" class="btn btn-default btn-lg"  data-url=''>单选题</button>
+				<button type="button" class="btn btn-default btn-lg"  data-url=''>多选题</button>
+				<button type="button" class="btn btn-green btn-lg"   data-url='' >填空题</button>
+				<button type="button" class="btn btn-default btn-lg"  data-url='' >投票</button>
+				<button type="button" class="btn btn-default btn-lg"  data-url='' >连线题</button>
+				<button type="button" class="btn btn-default btn-lg"  data-url='' >问答题</button>
+				<button type="button" class="btn btn-default sub btn-lg">提交</button>
+		
+				<button type="button" class="btn btn-default btn-lg" data-url=''>分割线</button>
+		
+				<button class="btn btn-lg btn_title">人员信息</button>
+				<button type="button" class="btn btn-default btn-lg" data-url=''>姓名</button>
+				<button type="button" class="btn btn-default btn-lg" data-url=''>部门</button>
+				<button type="button" class="btn btn-default btn-lg" data-url=''>手机</button>
+				<button type="button" class="btn btn-default btn-lg" data-url=''>邮箱</button>
+				<button type="button" class="btn btn-default btn-lg" data-url=''>员工编号</button>
+				<button type="button" class="btn btn-default btn-lg" data-url=''>自定义文本</button>
+			</div>
+			<div class="col-md-10" id="right" style="padding:0;">
+				<div class="form_nav">
+					<button type="button" class="btn btn-default btn-xs">预览</button>
+					<button type="button" class="btn btn-default btn-xs">保存</button>
+					<button type="button" class="btn btn-default btn-xs">发布</button>
+				</div>
+				<form id="e_form">
+				 	
+				</form>	
+			</div>
+		</div>
+	  	</div>
+	  
+	  	<!--弹出框-->
+		<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content"></div>
+		  </div>
+		</div>
+	</div>
+	<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'"></div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var b_height = $('#left').height();
+		$('#right').css({'height' : b_height,'background-color' : '#fff','overflow':'hidden'});
+		var n_height = $('.btn-lg').innerHeight();
+		$('.form_nav').css({'height' : n_height,'background-color' : '#66cc00'});
+
+	});
+</script>

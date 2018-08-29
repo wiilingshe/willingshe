@@ -1,0 +1,23 @@
+<div class="share-title">扫一扫分享给更多人</div>
+<div class="qrcode-area">
+	<div class="share-qrcode fl">
+		<div class="qr-size" qr-code-size="160" qr-url="{{url}}"> </div>
+	</div>
+	<a class="btn btn-border ml20 copy-btn" style="position:absolute;" ng-href="{{selectedUrl}}" target="_blank"> <span class="copy-span">            <span class="eqf-eye"></span> &nbsp;预览微课 </span>
+	</a>
+	<div class="down-title">下载二维码</div>
+	<div class="qrcode-select">
+		<a class="btn btn-border background-color-width-change mr20" ng-click="downloadQrcode(qrcodeObj)" ng-repeat="qrcodeObj in qrcodeList"> <span class="eqf-download2"></span> &nbsp;{{qrcodeObj.name}} </a>
+	</div>
+	<div class="download-area" download-canvas>
+		<div class="qr-size" qr-code-size="256" qr-url="{{url}}"> </div>
+		<div class="qr-size" qr-code-size="512" qr-url="{{url}}"> </div>
+		<div class="qr-size" qr-code-size="1024" qr-url="{{url}}"> </div>
+	</div>
+</div>
+<div class="url-share"> <span>使用微课地址分享</span>
+	<div class="url-input"> <input type="text" class="form-control" ng-model="selectedUrl" disable-edit>
+		<a class="btn btn-border ml20 copy-btn" copy-button url="{{selectedUrl}}"> <span class="copy-span">                <span class="eqf-scene-copy" copy-button></span> &nbsp;复制链接 </span>
+		</a>
+	</div>
+	<div class="line url-share-line" ng-show="!branchid"></div>

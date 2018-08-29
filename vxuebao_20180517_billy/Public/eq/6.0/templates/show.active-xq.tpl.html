@@ -1,0 +1,61 @@
+<div id="show-contain">
+<<<<<<< HEAD:Public/eq/6.0/templates/show-active-active-xq.html
+	<div ng-include="'show/category/nav.tpl.html'" ng-controller="NavCtrl"></div>
+=======
+	<div ng-include="'/Public/eq/6.0/templates/nav.tpl.html'" ng-controller="NavCtrl"></div>
+>>>>>>> faf5a4d80bba0512f7946790e3a072ad236c4d34:Public/eq/6.0/templates/show.active-xq.tpl.html
+	<div class="cake">
+		<div class="same-content"> <a href="#/show" translate="show.active.INDEX">微课</a> > <a href="#/show/active" translate="show.active.ACTIVITY">活动</a> > {{activeMes.title}} </div>
+	</div>
+	<div class="same-content">
+		<div class="active-lunbo mt" slides2 id="{{'ac_' + activeId}}" width="1000px" height="400px" style="width:1000px;height:400px;">
+			<div class="slides_container"></div>
+			<div class="hd-icon">
+				<a class="eqf-left22 prev"></a>
+				<a class="eqf-right23 next"></a>
+			</div>
+		</div>
+		<div class="show-list tuijian">
+			<h2><em translate="show.active.RECOMMEND">推荐</em><a href="" ng-click="attend()" translate="show.active.JOIN_ATTEND">我要参加</a><span translate="show.active.RECOMMEND">RECOMMEND</span></h2>
+			<ul class="clearfix">
+				<li ng-repeat="recList in recSceneList">
+					<a href="{{PREFIX_CLIENT_HOST + '/v-' + recList.code}}" target="_blank"> <img ng-src="{{PREFIX_FILE_HOST + recList.cover}}" />
+						<p>{{recList.name}}</p>
+						<p> <span class="auth"><img title="{{recList.userLoginName}}" ng-src="{{recList.headImg}}" /></span> <span><em class="eqf-eye"></em>{{recList.showCount}}</span> </p>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div id="introduction" ng-bind-html="activeMes.introduction"></div>
+		<div class="show-list">
+			<h2><em translate="show.active.NEW">最新</em><span translate="show.active.NEW_TIP">NEW</span></h2>
+			<ul class="clearfix">
+				<li ng-repeat="scene in sceneList">
+					<a href="{{PREFIX_CLIENT_HOST + '/v-' + scene.code}}" target="_blank"> <img ng-src="{{PREFIX_FILE_HOST + scene.cover}}" />
+						<p>{{scene.name}}</p>
+						<p> <span class="auth"><img title="{{scene.userLoginName}}" ng-src="{{scene.headImg}}" /></span> <span><em class="eqf-eye2"></em>{{scene.showCount}}</span> </p>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="same-content clearfix" ng-show="totalItems > 16">
+			<pagination style="float:left;" first-text="{{'my.scene.FIRST_PAGE' | translate}}" last-text="{{'my.scene.LAST_PAGE' | translate}}" previous-text="&lsaquo;" next-text="&rsaquo;" max-size="16" items-per-page="pageSize" total-items="totalItems" ng-model="currentPage"
+				ng-change="pageChanged(currentPage)" boundary-links="true" rotate="true" num-pages="numPages"></pagination>
+			<div class="current_page"> <input type="text" ng-model="toPage" ng-keyup="$event.keyCode == 13 ? pageChanged(toPage) : null"> <a ng-click="pageChanged(toPage)" class="go">GO</a> <span><span translate="my.scene.CURRENT_PAGE1">当前</span>: {{currentPage}} / {{numPages}} <span translate="my.scene.CURRENT_PAGE2">页</span></span>
+			</div>
+		</div>
+		<div class="same-content hezuo" ng-show="friendLinks.length > 0">
+			<h2><em translate="show.active.FRIEND">合作</em><span translate="show.active.FRIEND_TIP">FRIEND</span></h2>
+			<ul class="clearfix">
+				<li ng-repeat="link in friendLinks">
+					<a href="{{link.url}}" target="_blank"> <img ng-src="{{link.logo}}" title="{{link.name}}" logo="{{link.name}}" /></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<<<<<<< HEAD:Public/eq/6.0/templates/show-active-active-xq.html
+<div ng-include="'footer.tpl.html'"></div>
+=======
+<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'"></div>
+>>>>>>> faf5a4d80bba0512f7946790e3a072ad236c4d34:Public/eq/6.0/templates/show.active-xq.tpl.html

@@ -1,0 +1,59 @@
+<div class="show-container">
+    <div class="select-bar">
+        <div class="nav">
+            <span ng-hide="isSearch" class="nav_guan" ng-click="logout()"></span>
+            <div class="nav_my" ng-hide="isSearch">
+                <div class="nav_myclass nav_dian">
+                    <a ng-href="#/userShow">我的微课</a>
+                </div>
+                <div class="nav_guagchang">
+                    <a ng-href="#/show">微课广场</a>
+                </div>
+            </div>
+            <span ng-class="{true: 'nav_search-ready', false: 'nav_search'}[isSearch]" class=""
+                  ng-click="searchReady()"></span>
+            <input ng-show="isSearch" ng-model="searchVal" class="nav_search_input" type="text">
+            <span ng-show="isSearch" class="nav_search_cancel" ng-click="searchCancel()">×</span>
+        </div>
+    </div>
+    <ul class="show-list">
+        <li class="show-item" ng-repeat="item in showList">
+            <div class="body_nei">
+                <div class="body_nei_1">
+                    <a ng-href="{{item.code}}"><img ng-src="{{'/Uploads/'+item.cover}}" alt="{{item.name}}"/></a>
+                </div>
+                <div class="body_nei_2">
+                    <h3>{{item.name||"该微课无标题"}}</h3>
+                    <p>微课简介:{{item.desc_varchar||"作者很懒,没有写任何简介"}}</p>
+                    <div>
+                        <ul>
+                            <li>
+                                <span class="body_look"></span>
+                                <span>{{item.us_name||"自己"}}</span>
+                            </li>
+                            <li>
+                                <span class="body_num"></span>
+                                <span>{{item.showCount||"0"}}</span>
+                            </li>
+                            <li>
+                                <a ng-href="{{item.code}}">
+                                    <span class="body_yulan"></span>
+                                    <span> 预览</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="bottom-group" ng-init="init()" ng-show="isNextPage">
+        <div class="bottom-perv">
+            <a ng-click="pervPage();selectLoad();">{{isFirstPage}}</a>
+        </div>
+        <div class="bottom-next">
+            <a ng-show="isNextPage" ng-click="nextPage();selectLoad();">下一页</a>
+            <a ng-show="!isNextPage">没有更多了</a>
+        </div>
+    </div>
+</div>

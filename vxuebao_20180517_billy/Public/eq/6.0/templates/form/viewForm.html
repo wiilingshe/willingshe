@@ -1,0 +1,47 @@
+<!-- 预览页面 -->
+<div>
+	<div ng-include="'/Public/eq/6.0/templates/header.tpl.html'" style="height:60px"></div>
+
+	<div class="container">
+		<div class="row">
+			<div class="" style="margin-top:15px;" ng-click="uploadWindow()">
+				<div style="display: inline-block;background-color: #6c0;color: #fff;padding: 5px;">点击图片可以更换头部图片</div>
+				<div class="tishi" style="display:none">请稍后，图片正在上传......</div>
+				<form id="viewPicUpload">
+					<input type="file" name="file" onchange="angular.element(this).scope().fileNameChanged(this)" style="width: 86%;height: 165px;position: absolute;opacity: 0;margin-left: -86px;">
+				</form>
+				<!-- <button ng-click="savePic()">保存</button> -->
+				<img class="previewPic" style="height: 165px;;width: 100%;">
+			</div>
+			<div style="background-color:#fff;margin-bottom: 120px;padding-bottom: 85px;" class="col-md-12">
+				<div id="mark_sore"></div>
+				<div id="form_marking">
+					<div class="marking_title_top"></div>
+					<div id="marking_inform" style="margin-bottom:0px;text-align:-webkit-auto">
+						<span class="marking_inform_desc"></span>
+					</div>
+					<hr style="height:1px;border:none;border-top:1px dashed #c0c0c0;padding-bottom: 20px;margin-top:0px">
+				</div>
+				<div class="div_question" style="display:none">
+					<div class="marking_opt"></div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="view_form_footer">
+		<div style="text-align:center;line-height:100px;color:#fff;font-size:14px">友情链接： <a target="_blank" href="http://www.learnnow.net.cn/">领思</a> <a target="_blank" href="http://wizrecord.im/">wizrecord</a> <a target="_blank" href="http://wetool.im/">wetool</a> <a target="_blank" href="http://www.weteam.im/">weteam</a>  <span style="margin: 0 20px;">|</span> CopyRight © 2014-2016 http://www.vxuebao.com  <span style="margin: 0 20px;">|</span> 关于我们/联系我们/新手教程/e-learning</div>
+	</div>
+</div>
+<style type="text/css">
+form#viewPicUpload input:hover{
+    cursor: pointer;
+}
+body{
+	background-color: #f5f8ed;
+}
+.right,
+.left{
+	margin-bottom: 20px;
+}
+</style>

@@ -1,0 +1,43 @@
+html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Helvetica,Arial,sans-serif;
+
+}
+
+a{
+  text-decoration:none;
+
+}
+
+a:hover{
+	text-decoration:none;
+}
+
+
+h1, h2, h3, h4, h5, h6{
+	font-weight:normal;
+}
+
+
+ul,ol {
+  list-style: none;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.clearfix:after {
+  content: ".";
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+  overflow:hidden;
+}
+

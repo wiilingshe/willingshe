@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" full>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no">
+	<title></title>
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/function.js"></script>
+	<script type="text/javascript" src="js/library.js"></script>
+	<script type="text/javascript" src="js/pageRun_choice.js"></script>
+	
+	<style type="text/css">
+		*{
+			margin: 0; padding: 0;
+			-webkit-tap-highlight-color: rgba(0,0,0,0); 
+			-webkit-tap-highlight-color: transparent; 
+			-moz-user-select: none; user-select: none;
+		 }
+
+		[full]{ width:100%; height:100%}
+		body,div,img{margin:0; padding:0; border:0;  -moz-user-select: none; user-select: none;}
+		iframe{border:0px;}	
+	</style>
+</head>
+
+
+
+<body style="position:absolute; width:100%; height:100%; background:#fff;overflow:hidden" ondragstart="return false;">
+	<div id="window" style="width:100%; height:100%;">
+		<div style="left:0%; top:0%;  width:100%; height:100%; overflow:hidden; position:absolute; z-index:2;">
+			<iframe id="page" src="page1.html" style="left:0%; top:0%; width:100%; height:100%; overflow:hidden;"></iframe>
+		</div>
+	</div>
+</body>
+</html>

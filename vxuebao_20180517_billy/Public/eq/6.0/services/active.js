@@ -1,0 +1,1 @@
+angular.module("services.active",[]).factory("activeService",["$rootScope","$http",function(e,t){var r={};return r.getActiveList=function(e,r,i){var a=PREFIX_S1_URL+"eqs/activity/scene";return e&&(a+=/\?/.test(a)?"&":"?",a+="promId="+e),r&&(a+=/\?/.test(a)?"&":"?",a+="pageNo="+r),i&&(a+=/\?/.test(a)?"&":"?",a+="pageSize="+i),t({withCredentials:!0,method:"GET",url:a})},r}]);

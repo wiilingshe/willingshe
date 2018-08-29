@@ -1,0 +1,23 @@
+<!-- <div class="arrow"></div><ul class="">    <li ng-click="cropBg(currentBgDef)"><span class="eqf-cut"></span><span>裁剪</span></li>    <li ng-click="replaceBg(currentBgDef)"><span class="eqf-top-background"></span><span >更换</span></li>    <li ng-click="showBgEffect();"><span class="eqf-xiaoguo"></span><span>效果</span></li>    <li ng-click="removeBG($event)"><span class="eqf-scene-delete"></span><span>删除</span></li></ul><div class="bg-effect" switch-display style="display: none;">    <div class="arrow"></div>    <ul>        <li ng-class="{'effect-selected': currentBgDef.effect.type == 'scaleUp'}" ng-click="scaleUpBg(currentBgDef)">            <span class="eqf-bigger"></span><span>放大</span>            <span style="margin-left: 60px;" ng-show="currentBgDef.effect.type == 'scaleUp'" class="eqf-glyphicon-remove" ng-click="removeBgEffect('scaleUp', $event)"></span>        </li>        <li ng-class="{'effect-selected': currentBgDef.effect.type == 'scaleDown'}" ng-click="scaleDownBg(currentBgDef)">            <span class="eqf-small"></span><span>缩小</span>                       <span style="margin-left: 60px;" ng-show="currentBgDef.effect.type == 'scaleDown'" class="eqf-glyphicon-remove" ng-click="removeBgEffect('scaleDown', $event)"></span>        </li>    </ul></div> -->
+<div class="background-container" ng-class="{'on':showBackgroundPanel}">
+	<div class="background-panel">
+		<div class="setting-group" ng-mouseenter="switchBgOption(false);$event.stopPropagation()" ng-click="cropBg(currentBgDef);">
+			<div class="setting-btn"><span class="eqf-cut"></span></div> <span>裁剪</span> </div>
+		<div class="setting-group" ng-mouseenter="switchBgOption(false);$event.stopPropagation()" ng-click="replaceBg(currentBgDef)">
+			<div class="setting-btn"><span class="eqf-refresh"></span></div> <span>更换</span> </div>
+		<div class="setting-group" ng-mouseenter="switchBgOption(true);$event.stopPropagation()">
+			<div class="setting-btn"><span class="eqf-xiaoguo"></span></div> <span>效果</span> </div>
+		<div class="setting-group" ng-mouseenter="switchBgOption(false);$event.stopPropagation()" ng-click="removeBG($event)">
+			<div class="setting-btn"><span class="eqf-scene-delete"></span></div> <span>删除</span> </div>
+	</div>
+</div>
+<div class="bgoption-container" ng-class="{'on':(showBgOptionPanel&&showBackgroundPanel)}">
+	<div class="bgoption-panel">
+		<div class="setting-group" ng-class="{active:(currentBgDef.effect && currentBgDef.effect.type=='scaleUp')}" ng-click="scaleUpBg(currentBgDef);">
+			<div class="setting-btn"><span class="eqf-bigger"></span></div> <span>放大</span> </div>
+		<div class="setting-group" ng-class="{active:(currentBgDef.effect && currentBgDef.effect.type=='scaleDown')}" ng-click="scaleDownBg(currentBgDef)">
+			<div class="setting-btn"><span class="eqf-small"></span></div> <span>缩小</span> </div>
+		<div class="setting-group" ng-if="currentBgDef.effect" ng-click="removeBgEffect($event)">
+			<div class="setting-btn"><span class="eqf-wrong"></span></div> <span>删除</span> </div>
+	</div>
+</div>

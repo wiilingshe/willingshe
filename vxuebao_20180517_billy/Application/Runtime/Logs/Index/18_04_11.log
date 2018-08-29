@@ -1,0 +1,6 @@
+[ 2018-04-11T05:36:00+08:00 ] 35.196.89.168 /index.php?g=Home'A=0&m=Index&a=fc
+ERR: 无法加载控制器:Index
+
+[ 2018-04-11T05:36:00+08:00 ] 35.196.89.168 /index.php?g=Home&m=Index&a=fc'A=0
+ERR: 无法加载控制器:Index
+

@@ -1,0 +1,40 @@
+<!-- <div class="modal-header"><h3>标题</h3><a ng-click="cancel()" style="margin-left:532px;margin-top: -18px;position: absolute;">x</a></div> -->
+<style type="text/css">
+button:first-child:hover{
+	background-color: #5bb501
+}
+button:first-child{
+	background-color:#6c0;
+}
+input:focus{
+	border: 1px solid #6c0;
+}
+textarea:focus{
+	border: 1px solid #6c0;
+}
+</style>
+<div class="modal-body" style="padding-bottom: 176px;">
+<div class="col-xs-12" style="margin-top:5px;">
+	<p class="col-xs-2" style="font-size:14px;width: 22.666667%;color: #303030;line-height:32px;text-align: center;margin-left: -8px;">问卷标题</p><input id="nameInput" style="height: 32px;width: 393px;margin-bottom: 20px;border-radius: 0px;color:#828282" type="text" class="col-xs-3">
+</div>
+<dic class="col-xs-12">
+	<p class="col-xs-2" style="font-size:14px;width: 22.666667%;color: #303030;line-height: 210px;text-align: center;margin-left: -8px;">问卷描述</p><textarea id="descInput" style="height: 210px;width: 393px;padding-top:10px;color:#828282" type="text" class="col-xs-3"></textarea>
+</div>
+<div class="col-xs-12" style="padding-left: 66px;margin-top: 20px;" id="setgoal">
+<span class="" style="line-height: 32px;">考卷总分</span><input id="zongfen_form" style="width:135px;margin-left:33px">
+<span class="" style="line-height: 32px;margin-left:49px">及格分数</span><input id="pass_form" style="margin-left: 15px;width:135px">
+</div>
+</div>
+<div class="modal-footer" style="border-top:0px;padding-bottom:25px">
+	<button ng-click="getPater()" ng-keydown="keydown()" style="width:75px;height:30px;border-radius:0px;line-height:15px;margin-top:15px;color:#fff;border:0px;margin-left: 195px; */">确定</button>
+	<button class="btn btn-default." ng-click="cancel()" style="width:75px;height:30px;border-radius:0px;line-height:15px;margin-right:200px;margin-top:15px;color: #fff;background-color: #ff766c;">取消</button>
+</div>
+<script type="text/javascript">
+$(function(){
+		var href = window.location.hash;
+		var type = href.substring(7,12);
+		if(type == 'blank'){
+			$('#setgoal').css('display','none')
+		}
+})
+</script>

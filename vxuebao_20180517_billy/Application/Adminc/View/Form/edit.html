@@ -1,0 +1,222 @@
+<include file="Public:head"/>
+<link rel="stylesheet" type="text/css" href="__ROOT__/Public/media/css/datepicker.css" />
+<link rel="stylesheet" href="__PUBLIC__/kindeditor4.1.11/themes/default/default.css" />
+<style type="text/css">
+    #J_imageView img{float:left;width:200px;margin-top:10px;}
+    #J_imageView{padding-left:165px;}
+</style>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="page-header-fixed">
+    <!-- BEGIN HEADER -->
+    <div class="container-fluid">
+        <!-- BEGIN PAGE HEADER-->
+        <div class="row-fluid">
+            <div class="span12">
+                <h4 class="page-title">
+                    用户考卷管理
+                    <small>   Form</small></h4>
+                 <ul class="breadcrumb">
+                    <li><i class="icon-home"></i><a href="index.html">首页</a> 
+                        <i class="icon-angle-right"></i></li>
+                    <li><a href="{:U('Form/index')}">用户考卷管理</a><i class="icon-angle-right"></i></li>
+                </ul>
+                <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
+        </div>
+        <!-- END PAGE HEADER-->
+        <!-- BEGIN PAGE CONTENT-->
+        <!-- END PAGE HEADER-->
+        <div class="tabbable tabbable-custom tabbable-full-width">
+            <ul class="nav nav-tabs">
+                <li class="{$ui.form}"> <a href="{:U('Form/index')}">用户考卷管理</a> </li>
+            </ul>
+            <hr>
+        </div>
+        <!-- BEGIN PAGE CONTENT-->          
+        <div class="row-fluid">
+            <div class="span12 ">
+                <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                <div class="portlet-body">
+                    <div class="portlet-body form">
+                        <!-- BEGIN FORM-->
+                        
+                        <form action="" class="form-horizontal" method="post" enctype="multipart/form-data">
+                            <div class="control-group">
+                               <div class="controls">
+                                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                                        <div class="fileupload-new thumbnail" >
+                                            <img src="{$form.photo|default='/Uploads/default_t.jpg'}"  class="thbnail"  style="max-height: 150px; line-height: 20px;">
+                                        </div>
+                                        <div class="fileupload-preview fileupload-exists thumbnail" style="max-height: 150px; line-height: 20px;"></div>
+                                        <div>
+                                            <span class="btn btn-file"><span class="fileupload-new">上传试卷封面图</span>
+                                            <span class="fileupload-exists">改变</span>
+                                            <input type="file" name="photo[]" value=""> </span>
+                                            <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">放弃</a>                                         
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="portlet-body form">
+                                <!-- BEGIN FORM-->
+                                <div class="control-group">
+                                    <label class="control-label">考卷标题</label>
+                                    <div class="controls">
+                                        <div class="input-icon">
+                                            <input name="form[title]" type="text"   class="m-wrapt"  value="{$form.title}" />
+                                            <span class="help-inline"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">描述</label>
+                                    <div class="controls">
+                                        <textarea name="form[content]" rows="3" style="width:225px;"  placeholder="请输入考卷描述...">{$form.content}</textarea>
+                                    </div> 
+                                </div> 
+                                 <div class="control-group">
+                                    <label class="control-label">类型</label>
+                                    <div class="controls">
+                                        <select name="form[type]" style="width:80px;">
+                                            <foreach name="type" key="key" item="value">
+                                                <if condition="($key gt 0)">
+                                                    <option value="{$key}" <eq name="form['type']" value="$key">selected</eq>>{$value}</option>
+                                                </if>
+                                            </foreach>
+                                        </select>
+                                    </div>
+                                </div>
+                               
+                                <div class="control-group">
+                                    <label class="control-label">是否为模板</label>
+                                    <div class="controls">
+                                       <input name="form[istpl]" type="radio" value="1" <eq name="form['istpl']" value="1">checked="checked" </eq> />是
+                                       <input name="form[istpl]" type="radio" value="0" <eq name="form['istpl']" value="0">checked="checked" </eq> />否
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">是否为热门推荐</label>
+                                    <div class="controls">
+                                       <input name="form[recommend_int]" type="radio" value="1" <eq name="form['recommend_int']" value="1">checked="checked" </eq> />是
+                                       <input name="form[recommend_int]" type="radio" value="0" <eq name="form['recommend_int']" value="0">checked="checked" </eq> />否
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <input type="hidden"  name="id" value="{$form.id}" />
+                                    <button type="submit" class="btn blue">确定提交</button>
+                                    <button type="button" class="btn give_up">放弃</button>                            
+                                </div>
+                        </form>
+                        <!-- END FORM-->       
+                    </div>
+                </div>
+                <!-- END SAMPLE FORM PORTLET-->
+            </div>
+        </div>
+        <!-- END EXTRAS PORTLET-->
+    </div>
+    <!-- END PAGE CONTENT--><!-- END PAGE CONTAINER-->
+</div>
+</div>
+<!-- END CONTAINER -->
+<div class="footer">
+    <div class="footer-inner">2015 ©</div>
+    <div class="footer-tools">
+        <span class="go-top">
+            <i class="icon-angle-up"></i>
+        </span>
+    </div>
+</div>
+<!-- END FOOTER -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<script src="__ROOT__/Public/media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+<script src="__ROOT__/Public/media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+<script src="__ROOT__/Public/media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
+<script src="__ROOT__/Public/media/js/bootstrap.min.js" type="text/javascript"></script>
+<!--[if lt IE 9]>
+<script src="__ROOT__/Public/media/js/excanvas.min.js"></script>
+<script src="__ROOT__/Public/media/js/respond.min.js"></script>  
+<![endif]-->   
+<script src="__ROOT__/Public/media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="__ROOT__/Public/media/js/jquery.blockui.min.js" type="text/javascript"></script>  
+<script src="__ROOT__/Public/media/js/jquery.cookie.min.js" type="text/javascript"></script>
+<script src="__ROOT__/Public/media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script type="text/javascript" src="__ROOT__/Public/media/js/ckeditor.js"></script>  
+<script type="text/javascript" src="__ROOT__/Public/media/js/bootstrap-fileupload.js"></script>
+<script type="text/javascript" src="__ROOT__/Public/media/js/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="__ROOT__/Public/media/js/select2.min.js"></script>
+<script type="text/javascript" src="__ROOT__/Public/media/js/wysihtml5-0.3.0.js"></script> 
+<script type="text/javascript" src="__ROOT__/Public/media/js/bootstrap-wysihtml5.js"></script>
+<script type="text/javascript" src="__ROOT__/Public/media/js/jquery.tagsinput.min.js"></script>
+<script type="text/javascript" src="__ROOT__/Public/media/js/jquery.toggle.buttons.js"></script>
+<script type="text/javascript" src="__ROOT__/Public/media/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="__ROOT__/Public/media/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="__ROOT__/Public/media/js/clockface.js"></script>
+<script type="text/javascript" src="__ROOT__/Public/media/js/date.js"></script>
+<script type="text/javascript" src="__ROOT__/Public/media/js/daterangepicker.js"></script> 
+<script type="text/javascript" src="__ROOT__/Public/media/js/bootstrap-colorpicker.js"></script>  
+<script type="text/javascript" src="__ROOT__/Public/media/js/bootstrap-timepicker.js"></script>
+<script type="text/javascript" src="__ROOT__/Public/media/js/jquery.inputmask.bundle.min.js"></script>   
+<script type="text/javascript" src="__ROOT__/Public/media/js/jquery.input-ip-address-control-1.0.min.js"></script>
+<script type="text/javascript" src="__ROOT__/Public/media/js/jquery.multi-select.js"></script>   
+<script src="__ROOT__/Public/media/js/bootstrap-modal.js" type="text/javascript" ></script>
+<script src="__ROOT__/Public/media/js/bootstrap-modalmanager.js" type="text/javascript" ></script> 
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="__ROOT__/Public/media/js/app.js"></script>
+<script src="__ROOT__/Public/media/js/form-components.js"></script>     
+<!-- END PAGE LEVEL SCRIPTS -->
+<script>
+    jQuery(document).ready(function () {
+        // initiate layout and plugins
+        App.init();
+        FormComponents.init();
+    });
+</script>
+<!-- END JAVASCRIPTS -->   
+<script src="__ROOT__/Public/media/js/nicEdit.js"></script>
+<script type="text/javascript">
+    bkLib.onDomLoaded(function() { new nicEditor({fullPanel : true}).panelInstance('area').panelInstance('area2').panelInstance('area3').panelInstance('area4').panelInstance('area5'); });
+</script>
+
+<script src="__PUBLIC__/kindeditor4.1.11/kindeditor.js"></script>
+<script src="__PUBLIC__/kindeditor4.1.11/lang/zh-CN.js"></script>
+<script>
+KindEditor.ready(function(K) {
+    var editor = K.editor({
+        uploadJson : '/adminc.php?c=lecturer&a=uploads',
+        allowFileManager : true
+    });
+    K('#J_selectImage').click(function() {
+        editor.loadPlugin('multiimage', function() {
+            editor.plugin.multiImageDialog({
+                clickFn : function(urlList) {
+                    var div = K('#J_imageView');
+                    K.each(urlList, function(i, data) {
+                        console.log(data);
+                        div.append('<div style="height:0;"><img src="' + data.url + '"><br><input name="picture[]" type="hidden" value="'+data.url+'" /></div>');
+                    });
+                    div.append('<div style="clear:both"></div>');
+                    editor.hideDialog();
+                }
+            });
+        });
+    });
+});
+</script>
+<script type="text/javascript">
+    $(function(){
+        $('.give_up').click(function(){
+            window.history.back(-1);
+        });
+    });
+</script>
+</body>
+<!-- END BODY -->
+</html>

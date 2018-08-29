@@ -1,0 +1,45 @@
+<div id="show-contain">
+	<div class="show-head">
+		<header class="clearfix">
+			<ul ng-hide="1" class="clearfix">
+				<li><a href="" translate="show.search.DISCOVER">发现</a></li>
+				<li><a href="" translate="show.search.FORUM">论坛</a></li>
+				<li><a href="" translate="show.search.NAME">NAME</a></li>
+			</ul>
+			<a class="logo" href="#/home" target="_blank"> <img ng-src="{{CLIENT_CDN}}assets/images/show/logo.png" /> </a>
+		</header>
+		<div class="banner">
+			<div class="big-font"><img ng-src="{{CLIENT_CDN}}assets/images/show/faxian.png" /></div>
+		</div>
+	</div>
+	<div class="cake">
+		<div class="same-content"> <a href="#/show" translate="show.search.HOME">首页</a> > <i translate="show.search.SEARCH">搜索</i>-{{name}} </div>
+	</div>
+	<div class="same-content" style="margin-bottom:20px;">
+		<div class="show-list same-content">
+			<h2>				<i translate="show.search.SEARCH">搜索</i><span><i translate="show.search.SEARCH_EN">SEARCH</i></span>			</h2>
+			<div class="search clearfix"> <input type="text" value="" id="search" ng-model="val" onchange="search(val)" ng-keypress="EnterPress(event,val)" ng-keydown="EnterPress(val)"> <a href="" ng-click="submit(val)"><em class="eqf-serach"></em><i translate="show.search.SEARCH">搜索</i></a>				</div>
+			<div class="search-con">
+				<p><i translate="show.search.KEY_WORD">您搜索的关键词：</i><span class="key">{{name}}</span> <i translate="show.search.RESULT_PREFIX">共有</i><span class="key">{{totalItems}}</span><i translate="show.search.RESULT_SUFFIX">条结果</i></p>
+			</div>
+			<ul class="clearfix">
+				<li ng-repeat="tpl in searchList">
+					<a href="{{PREFIX_CLIENT_HOST + '/v-' + tpl.code}}" target="_blank"> <img ng-src="{{PREFIX_FILE_HOST + tpl.cover}}" />
+						<p>{{tpl.name}}</p>
+						<p> <span><em class="eqf-eye2"></em>{{tpl.showCount}}</span> <span class="auth"><img title="{{tpl.userName}}" ng-src="{{tpl.headImg}}" /></span> </p>
+					</a> <a ng-if="tpl.isTemplate == 1" class="screen-use" target="_blank" ng-click="userTpl(tpl)">使用</a> </li>
+			</ul>
+		</div>
+		<div class="same-content clearfix" ng-show="totalItems > 16">
+			<pagination style="float:left;" first-text="{{'my.scene.FIRST_PAGE' | translate}}" previous-text="&lsaquo;" next-text="&rsaquo;" max-size="10" items-per-page="pageSize" total-items="totalItems" ng-model="currentPage" ng-change="pageChanged(currentPage)"
+				boundary-links="true" rotate="true" num-pages="numPages"></pagination>
+			<div class="current_page"><span class="fl">到</span> <input type="text" ng-model="toPage" ng-keyup="$event.keyCode == 13 ? pageChanged(toPage) : null"><span class="fl">页</span> <a ng-click="pageChanged(toPage)" class="go">确定</a>
+				<!-- <span><span translate="my.scene.CURRENT_PAGE1">当前</span>: {{currentPage}} / {{numPages}} <span translate="my.scene.CURRENT_PAGE2">页</span></span> --></div>
+		</div>
+	</div>
+</div>
+<<<<<<< HEAD:Public/eq/6.0/templates/show_search_search.html
+<div ng-include="'footer.tpl.html'"></div>
+=======
+<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'"></div>
+>>>>>>> faf5a4d80bba0512f7946790e3a072ad236c4d34:Public/eq/6.0/templates/show.search.tpl.html

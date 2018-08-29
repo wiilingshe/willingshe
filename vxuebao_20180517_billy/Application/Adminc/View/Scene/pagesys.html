@@ -1,0 +1,196 @@
+<include file="Public:head"/>
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<div class="container-fluid">
+    <!-- BEGIN PAGE HEADER-->
+    <div class="row-fluid">
+        <div class="span12">
+            <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+            <h3 class="page-title">
+                单页模板列表
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home"></i>
+                    <a href="index.html">首页</a> 
+                    <i class="icon-angle-right"></i>
+                </li>
+                <li>
+                    <a href="#">系统素材管理</a>
+                    <i class="icon-angle-right"></i>
+                </li>
+                <li><a href="#">单页模板</a></li>
+            </ul>
+            <!-- END PAGE TITLE & BREADCRUMB-->
+        </div>
+    </div>
+    <!-- END PAGE HEADER-->
+    <!-- BEGIN PAGE CONTENT-->
+    <div class="row-fluid">
+        <div class="tabbable tabbable-custom tabbable-full-width">
+            <ul class="nav nav-tabs">
+                <eq name="flag" value="useranli">  
+                <li class="<eq name="fnid" value="">active</eq>"><a  href="{:U('/Scene/index/flag/useranli')}" >全部</a></li>
+                <foreach name='scene_type_list' item='item' >                                
+                    <li class="<eq name="item['value']" value="$fnid">active</eq>"><a href="?c=scene&a=index&flag=useranli&fnid={$item.value}">{$item.title}</a></li>
+                </foreach> 
+                <else/> 
+                <li class="<eq name="fnid" value="">active</eq>"><a  href="{:U('/scene/index')}" >全部</a></li>
+				<li><a href="{:U('Scene/syspageimport')}">导入单页模板</a></li>
+                <foreach name='scene_type_list' item='item' >                                
+                    <li class="<eq name="item['value']" value="$fnid">active</eq>"><a href="?c=scene&a=index&fnid={$item.value}">{$item.title}</a></li>
+                </foreach> 
+                </eq>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div class="row-fluid search-forms search-default" style="visibility: hidden;">
+                <form class="form-search" action="{:U('Scene/pagesys')}" method="post" id="form">
+                    <div class="chat-form">
+                        <div class="input-cont">                               
+                            搜索: 
+                            <span>
+                                <label for="">
+                                    排序字段 
+                                </label>
+                                <select style='width:120px'  class="form-control" name="order">
+                                    <option value="pageid_bigint" {$select_str_order[pageid_bigint]}>ID编号</option>
+                                    <option value="listorder" {$select_str_order[listorder]}>自定义排序</option>
+                                </select>
+                                <label for="">
+                                    排序规则 
+                                </label>
+                                <select style='width:120px'  class="form-control" name="sort">
+                                    <option value="desc" {$select_str_sort[desc]}>倒序</option>
+                                    <option value="asc" {$select_str_sort[asc]}>正序</option>
+                                </select>
+
+                            </span>
+                            <button type="submit" class="btn green" style=" " id="search">搜 索 &nbsp; <i class="m-icon-swapright m-icon-white"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="row-fluid portfolio-block">         
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th width='40'>导出</th>
+							<th width='100'>排序</th>
+                            <th width='100'>ID</th>
+                            <th>缩略图</th>
+                            <th>名称</th>
+                            <th>标签</th>
+                            <th width='150'>操作</th>
+
+                        </tr>
+                    </thead>
+                <form name="myform" action="" method="post" target="_blank">
+                    <tbody>
+                    <volist name="list" id="r">
+                        <tr>
+							<td><input name="id[]" type="checkbox" value="{$r.pageid_bigint}" /></td>
+                            <td><input type="text" value="{$r.listorder}" name="listorder[{$r.pageid_bigint}]" style="width:50px;" /></td>
+                            <td>{$r.pageid_bigint}</td>
+                            <td><img src="/Uploads/{$r.thumbsrc_varchar}" width="100" /></td>
+                            <td>{$r.pagename_varchar}</td>
+                            <td>{$r.tagstr}</td>
+                            <td><a href="?c=Scene&a=editpagesys&pageid={$r.pageid_bigint}&p=<?php echo $_GET['p']?>" >编辑</a> <a onclick="return confirm('是否删除') ? true : false;" href="?c=Scene&a=delpagesys&pageid={$r.pageid_bigint}" >删除</a></td>
+                        </tr>
+                    </volist>
+
+                    </tbody>
+                </form>
+                    <tfoot>
+                        <tr>
+                            <td colspan="6"><input type="button" value="排序" onclick="document.all.myform.action='{:U('Scene/listorder')}';myform.submit();" class="btn green"/>    <input type="button" value="导出所选单页模板" onclick="document.all.myform.action='{:U('Scene/syspageexport')}';document.all.myform.target='_blank';myform.submit();" class="btn green"/></td>
+                        </tr>
+                    </tfoot>
+                </table>         
+            </div>
+
+            <div class="space5"></div>
+            <div class="pagination">
+                <div class="pages pagination-right">
+                    {$page}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<style>
+    .center{ text-align:center}
+    .center .p{ line-height:30px}
+</style>
+<script>
+function gettaghtml(){
+    var taghtml = "标签:";
+    var tagstr=new Array();
+    tagstr[11001] = "用途";
+    tagstr[11002] = "功能";
+    tagstr[11003] = "风格";
+    var tagclass=new Array();
+    tagclass[11001] = "yongtu";
+    tagclass[11002] = "gongneng";
+    tagclass[11003] = "fengge";
+    $.ajaxSetup({async:false});
+    for(i=11001;i<=11003;i++){
+        taghtml += " <select class='"+tagclass[i]+"' style='width:120px' id=tag"+i+" name='tagid[]'><option value=0>"+tagstr[i]+"</option>";
+        var url = '/index.php?c=statics&a=tagList&bizType='+i+'&time='+Math.random();
+        $.getJSON(url,function(r){
+            list = r.list;
+            for(x in list){
+                taghtml += "<option value="+list[x].id+">"+list[x].name+"</option>";
+            }
+        });
+        taghtml +="</select> ";        
+    }
+    $.cookie('taghtml',taghtml);
+    window.taghtml = taghtml;
+}
+var issearch = '{$issearch}';
+$(document).ready(function(){
+    var arrtagstr = ['gongneng','fengge','yongtu']; 
+    if($.cookie('taghtml')){
+        window.taghtml = $.cookie('taghtml');
+    }
+    if(typeof(taghtml) == "undefined") gettaghtml();    
+    $("button").before(taghtml);
+    $(".search-forms").css('visibility','visible');
+    if(issearch){
+        for(x in arrtagstr){
+            $.cookie(arrtagstr[x]) == undefined?$.cookie(arrtagstr[x],0):'';
+            $("select."+arrtagstr[x]).val($.cookie(arrtagstr[x]));
+        }
+    }else{
+        for(x in arrtagstr){
+            $.removeCookie(arrtagstr[x]);
+        }
+    }
+    $(".search-forms select").each(function(i){
+        $(this).change(function(){
+            $.cookie($(this).attr('class'),$("option:selected",$(this)).val());
+        });
+    });
+});
+</script>
+<include file="Public:foot" />
+<!--修改-->                             
+<script type="text/javascript">
+    $(function(){
+        $('.pages a').click(function(){
+            var tmpHref = $(this).attr('href');
+            $('#form').attr('action',tmpHref);
+            $('#form').submit();
+            return false;
+        });
+
+        //搜索
+        $('#search').click(function(){
+            $("#form").attr("action", "/adminc.php?s=/Scene/pagesys/p/1.html");
+            $("#form").submit();
+
+        });
+    })
+</script>

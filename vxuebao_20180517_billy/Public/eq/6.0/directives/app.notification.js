@@ -1,0 +1,1 @@
+angular.module("app.directives.notification",[]).directive("notificationFadeout",["i18nNotifications",function(i){return{restrict:"EA",link:function(t,n,o){var e=$(n);e.fadeOut(4e3,function(){i.remove(t.notification)})}}}]);

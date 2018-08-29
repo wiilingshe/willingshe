@@ -1,0 +1,51 @@
+<div class="xd-contain">
+	<div class="xd-desc pb20">
+		<p class="fr"><a href="http://bbs.e.wesambo.com/forum.php?mod=viewthread&tid=297&extra=page%3D1" target="_blank" translate="usercenter.xd.XD_LINK">什么是微币？</a></p>
+		<div><span translate="usercenter.xd.MY_XD">我的微币</span>:
+			<h3>{{xdCounts}}</h3> &nbsp;个 </div>
+		<div class="xiudian mt20 clearfix">
+			<div class="zhuansong fr">
+				<div><a class="btn btn-primary" ng-click="buyXd()" translate="usercenter.xd.BUY_XD">购买微币</a></div>
+				<div><a class="btn btn-green mt20" ng-click="openXd()" translate="usercenter.xd.GIVE_XD">转送微币</a></div>
+				<!-- <img ng-click="openXd()" ng-src="{{CLIENT_CDN}}assets/images/zengsong.png" title="{{'usercenter.xd.GIVE_XD' | translate}}" /> --></div>
+			<div class="shiyong_xd">
+				<ul class="clearfix">
+					<li class="huode"><span translate="usercenter.xd.ADD_XD">获得微币</span>
+						<p>{{getXdStat.add | fixnum}}</p>
+					</li>
+					<li class="song"><span translate="usercenter.xd.GIVE_XD">转送微币</span>
+						<p>{{getXdStat.give | fixnum}}</p>
+					</li>
+					<li class="shiyong"><span translate="usercenter.xd.PAY_XD">使用微币</span>
+						<p>{{getXdStat.pay | fixnum}}</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="xd-table">
+			<p class="xd-detail" translate="usercenter.xd.XD_DETAIL">微币详情：</p>
+			<table class="table table-bordered">
+				<tbody>
+					<tr>
+						<th class="col-sm-2" translate="usercenter.xd.XD_TYPE">类型</th>
+						<th class="col-sm-2" translate="usercenter.xd.XD_TIMES">时间</th>
+						<th class="col-sm-2" translate="usercenter.xd.XD_COUNT">数量</th>
+						<th class="col-sm-6" translate="usercenter.xd.XD_USE">使用详情</th>
+					</tr>
+					<tr ng-repeat="xd in xdLogs" style="text-valign:middle;">
+						<td>{{xd.bizTitle}}</td>
+						<td>{{xd.optTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+						<td>{{xd.xd | fixnum}}</td>
+						<td>{{xd.remark}}</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="clearfix" ng-show="XdCount > 10">
+				<pagination style="float: left" first-text="{{'usercenter.xd.FIRST_PAGE' | translate}}" last-text="{{'usercenter.xd.LAST_PAGE' | translate}}" previous-text="&lsaquo;" next-text="&rsaquo;" max-size="5" items-per-page="XdpageSize" total-items="XdCount"
+					ng-click="XdpageChanged(XdcurrentPage)" ng-model="XdcurrentPage" boundary-links="true" rotate="true" num-pages="XdNumPages"></pagination>
+				<div class="current_page"> <input type="text" ng-model="XdcurrentPage" ng-keyup="$event.keyCode == 13 ? XdpageChanged(XdcurrentPage) : null"> <a ng-click="XdpageChanged(XdcurrentPage)" class="go">GO</a> <span><span translate="usercenter.xd.CURRENT_PAGE1">当前</span>: {{XdcurrentPage}}
+					/ {{XdNumPages}} <span translate="usercenter.xd.CURRENT_PAGE2">页</span></span>
+				</div>
+			</div>
+		</div>
+	</div>

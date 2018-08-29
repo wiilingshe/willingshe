@@ -1,0 +1,68 @@
+<div class="scene-user-guide" ng-click="showNextGuide()" ng-show="firstLogin" ng-controller="SceneUserGuideCtrl">
+	<!-- 菜单栏 -->
+	<div class="menu-tool-bar" ng-class="{'active': 2 == currentGuideIndex}"></div>
+	<!-- 页面模板 -->
+	<div class="page-template" ng-class="{'active': 0 == currentGuideIndex}"> </div>
+	<!-- 页面管理 -->
+	<div class="page-manager" ng-class="{'active': 1 == currentGuideIndex}"></div>
+	<!-- 工具栏设置 -->
+	<div class="tool-bar-setting" ng-class="{'active': 3 == currentGuideIndex}"></div>
+	<!-- 工具栏非提示区域 -->
+	<div class="tool-bar-no-guide"></div>
+	<!-- 编辑区域 -->
+	<div class="page-edit-area" ng-class="{'active': 4 == currentGuideIndex}"></div>
+	<!-- 页面模板-guide -->
+	<div class="scene-guide-info " ng-show="0 == currentGuideIndex">
+		<div class="tooltip right" role="tooltip">
+			<div class="tooltip-arrow"></div>
+			<div class="tooltip-inner"> <span>页面模板，内容丰富，点击使用</span>
+				<div class="tooltip-know">知道了</div>
+			</div>
+		</div>
+	</div>
+	<!-- 页面管理-guide -->
+	<div class="scene-guide-info" ng-show="1 == currentGuideIndex">
+		<div class="tooltip left" role="tooltip">
+			<div class="tooltip-arrow"></div>
+			<div class="tooltip-inner"> <span>点击“+”可以添加新页面</span><br /> <span>按住页面可以随意拖拽更换顺序</span> <br /> <span>点击 复制/删除 当前页面，双击更改名称</span>
+				<div class="tooltip-know">知道了</div>
+			</div>
+		</div>
+	</div>
+	<!-- 菜单栏-guide -->
+	<div class="scene-guide-info" ng-show="2 == currentGuideIndex">
+		<div class="tooltip bottom" role="tooltip">
+			<div class="tooltip-arrow"></div>
+			<div class="tooltip-inner"> <span>自由组件，点击添加组件</span>
+				<div class="tooltip-know">知道了</div>
+			</div>
+		</div>
+	</div>
+	<!-- 设置-guide -->
+	<div class="scene-guide-info" ng-show="3 == currentGuideIndex">
+		<div class="tooltip bottom tooltip-setting" role="tooltip">
+			<div class="tooltip-arrow"></div>
+			<div class="tooltip-inner">
+				<div class="tooltip_setting_head">微课设置搬家啦！在这里可以进行：</div>
+				<div>
+					<p>①设置微课封面</p>
+					<p>②修改微课封面</p>
+				</div>
+				<div>
+					<p>③设置翻页方式</p>
+					<p>④设置微课尾页</p>
+				</div>
+				<div class="tooltip-know">知道了</div>
+			</div>
+		</div>
+	</div>
+	<!-- 编辑区域-guide -->
+	<div class="scene-guide-info " ng-show="4 == currentGuideIndex">
+		<div class="tooltip right tooltip-edit" role="tooltip">
+			<div class="tooltip-arrow"></div>
+			<div class="tooltip-inner"> <span>微课编辑区域，任意摆放所见即所得</span>
+				<div class="tooltip-know">知道了</div>
+			</div>
+		</div>
+	</div>
+</div>

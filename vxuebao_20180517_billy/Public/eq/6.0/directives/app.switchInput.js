@@ -1,0 +1,1 @@
+angular.module("app.directives.switchInput",[]).directive("switchInput",function(){function t(t,n,i){n.hover(function(i){t.obj.showinput=!0;var o=n.find("input");setTimeout(function(){o.focus(),o.select()},0),t.$apply()},function(n){t.obj.showinput=!1,t.$apply()})}return{restrict:"EA",scope:{obj:"="},link:t}});

@@ -1,0 +1,13 @@
+<div class="map_console">
+	<div id="l-map"></div>
+	<div class="search_area">
+		<div class="input-group"> <input type="text" class="form-control" ng-model="search.address" ng-keyup="$event.keyCode == 13 ? searchAddress() : null" placeholder="请输入地名"> <span class="input-group-btn">		    <button ng-click="searchAddress()" class="btn btn-default" type="button">搜索</button>		  </span>			</div>
+		<!-- /input-group -->
+		<div id="r-result">
+			<ul class="list-group">
+				<li class="list-group-item" ng-repeat="address in searchResult" ng-click="setPoint(address.point.lat, address.point.lng, address.address)"> {{address.address}} </li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="modal-footer"> <a class="btn-main login" style="width: 88px;" ng-click="resetAddress()">确定</a> <a class="btn-grey0 cancel" style="width: 88px;" ng-click="cancel()">取消</a></div>

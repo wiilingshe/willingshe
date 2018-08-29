@@ -1,0 +1,1 @@
+angular.module("active",[]).controller("ActiveCtrl",["$rootScope","$http","$scope","$timeout","security","$window","$stateParams",function(t,E,o,_,e,I,R,F,c){o.PREFIX_FILE_HOST=PREFIX_FILE_HOST,o.PREFIX_SERVER_HOST=PREFIX_URL,o.PREFIX_CLIENT_HOST=PREFIX_HOST}]);

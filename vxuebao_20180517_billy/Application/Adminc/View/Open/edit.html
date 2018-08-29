@@ -1,0 +1,68 @@
+<include file="Public:head"/>
+<block name="body">
+<div class="container-fluid">
+				<!-- BEGIN PAGE HEADER-->
+				<div class="row-fluid">
+					<div class="span12">
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+						<h3 class="page-title">系统管理 <small>    System management</small></h3>
+						<ul class="breadcrumb">
+							<li><i class="icon-home"></i><a href="index.html">首页</a> 
+								<i class="icon-angle-right"></i></li>
+							<li><a href="#">开放接口管理</a><i class="icon-angle-right"></i></li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- END PAGE HEADER-->
+                <div class="tabbable tabbable-custom tabbable-full-width" style="margin-bottom:0px; padding-bottom:0px">
+					<ul class="nav nav-tabs">
+					<li class="active"> <a href="{:U('Open/index')}"> 开放接口管理</a> </li>
+					</ul>
+					<hr>
+                </div>
+				<!-- BEGIN PAGE CONTENT-->          
+				<div class="row-fluid">
+					<div class="span12 ">
+						<!-- BEGIN EXAMPLE TABLE PORTLET-->
+							<div class="portlet-body">
+						<div class="cf">
+						<a id="export" class="btn green" href="{:U('Open/index')}" autocomplete="off"> <i class="icon-plus"></i> 返回接口列表</a>
+						</div>
+                    
+                                 
+   <!-- 应用列表 -->
+
+ <div>
+<form method="post"  name="myform"  class="form-horizontal" action="{:U('Open/edit')}">     
+<table style="margin-top:10px">
+  <tr>
+    <td width="180" height="48" align="right">接入平台名称：</td>
+    <td><input name="app_name" type="text" value="{$data.app_name}" /></td>
+  </tr>
+  <tr>
+    <td height="48" align="right">接入平台公钥：</td>
+    <td><input name="app_key" type="text" value="{$data.app_key}" />(使用用户中心的账户ID，纯数字)</td>
+  </tr>
+  <tr>
+    <td height="48" align="right">接入平台私钥：</td>
+    <td><input name="app_secret" type="text" value="{$data.app_secret}" style="width:300px"/></td>
+  </tr>
+  <tr>
+    <td height="48" align="right">接入平台状态：</td>
+    <td><input name="ok" type="radio" value="1"<eq name="data.ok" value="1"> checked="checked"</eq>>
+    启用&nbsp;&nbsp;&nbsp;&nbsp;<input name="ok" type="radio" value="0"<eq name="data.ok" value="0"> checked="checked"</eq>>禁用</td>
+  </tr>
+  <tr>
+    <td><input name="id" type="hidden" value="{$data.id}"></td>
+    <td><input name="" type="submit" class="btn blue" value=" 提交 "></td>
+  </tr>
+</table>
+</form>
+   </div>
+ </div> </div> </div>
+  
+
+</div></div>
+</block>
+<include file="Public:foot"/>

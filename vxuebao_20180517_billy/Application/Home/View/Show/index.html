@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<head>
+<meta name="baidu-site-verification" content="2MKKT6mbuL" />
+<meta charset="utf-8" />
+<meta name="description" content="{$Think.config.content}" />
+<meta name="keywords" content="{$Think.config.keyword}" />
+<meta name="viewport"content="width=device-width, initial-scale=1.0" />
+<meta name="renderer" content="webkit">
+<meta property="qc:admins" content="{$Think.config.THINK_SDK_QQ.qqqqqq52}" />
+<meta property="wb:webmaster" content="354b970d8cd61602" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link href="__PUBLIC__/Home/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/index/css/show.css">
+<!-- <link href="/assets/login.css?v=20170418" rel="stylesheet"> -->
+
+<title>{$Think.config.site_title}</title>
+</head>
+<body>
+  <div id="eq_main">
+  <div class="header"> 
+    <div class="wrap">
+      <div class="container" id="nav">
+        <div id="logo"><img src="__PUBLIC__/Home/images/logo.png" width="190" height="45"></div>
+        <div id="menu">
+          <ul>
+              <li><a href="/">首页</a></li>
+              <li class="current"><a href="/show/">微课案例</a></li>
+              <li><a href="/school/">微课动态</a></li>
+              <li><a target="_blank" href="http://bbs.vxuebao.com/forum.php">V粉社区</a></li>
+          </ul>
+          <ul id="user">
+            <if condition="$use eq 1">
+                <li style="background-color:#66cc00" data-toggle="modal" ><a href="http://www.vxuebao.com/#/main" class="l">进入</a></li>
+                <li style="background-color:#343b46" data-toggle="modal"><a href="/index.php?c=user&a=logout" class="r">退出</a></li>
+            <else />
+                <li style="background-color:#66cc00" data-toggle="modal" data-target="#login"><a href="#">登录</a></li>
+                <li style="background-color:#343b46" data-toggle="modal" data-target="#reg"><a href="#">注册</a></li>
+            </if>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div id="show_banner">
+      <img src="http://www.vxuebao.com/index/images/show_banner.jpg" border="0" usemap="#Map" class="img-responsive" />
+      <map name="Map">
+      <area shape="rect" coords="1276,136,1397,160" href="http://www.baidu.com">
+      </map>
+    </div>
+    <div class="clear"></div>
+    <div id="show_contain">
+      <div class="contain_top">
+        <div class="top_img"><img src="http://www.vxuebao.com/index/images/show_weike.png" /></div>
+        <div class="menu">
+          <ul class="p_menu">
+            <li><a href="{:U('Show/index?biz_id=101')}" class="active">行业</a></li>
+            <li>
+			        <ul class="s_menu"><volist name="tags" id="v">
+                <li><a href="{:U('Show/index',array('biz_id'=>$biz_id,'tagid'=>$v['tagid_int']))}"<eq name='tagid' value="$v['tagid_int']"> class="active"</eq>>{$v.name_varchar}</a></li></volist>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="ico5">
+          <form action="" method="post">
+            <input class="select" type="text"  name="search_type" value="" required="required" placeholder="请输入搜索类..." style="border:none;border-bottom:1px solid #bbcc00;height:30px;text-align:center;display:none;">
+            <input class="button" type="submit" value="" style="height:27px;width:27px; border:none;background:url(/index/images/show_ico5.png) no-repeat;" />
+          </form>
+        </div>
+      </div>
+      <div class="contain_center">
+        <ul style="background-color:$fff"><volist name="list" id="v">
+          <li class="<eq name='mod' value='0'>n_</eq>f" id="Image{$v.sceneid_bigint}" myid="{$v.sceneid_bigint}" mycode="{$v.scenecode_varchar}">
+            <div class="center_left">
+            <a  href="/v-{$v.scenecode_varchar}" onMouseOut="MM_swapImgRestoremy(this)" onMouseOver="MM_swapImage(this,'','http://qr.liantu.com/api.php?text=',1)">
+            <img src="http://www.vxuebao.com/Uploads/{$v.thumbnail_varchar}" width="235" height="235" name="Image{$v.sceneid_bigint}"></a></div>
+            <div class="center_right">
+              <div class="r_top">
+                <span>{$v.scenename_varchar}</span>
+                <p>{$v.desc_varchar}</p>
+              </div>
+              <div class="r_bottom">
+                <div style="margin-bottom:18px;">
+                  <img style="margin-top:-5px;" src="http://www.vxuebao.com/index/images/show_ico1.png"> &nbsp;&nbsp;{$v.uname}
+                </div>
+                <ul>
+                  <li><img src="http://www.vxuebao.com/index/images/show_ico3.png"> &nbsp;&nbsp;{$v.hitcount_int}</li>
+                  <li  style="cursor:pointer;" onMouseOut="MM_swapImgRestoremy(this)" onMouseOver="MM_swapImage(this,'','http://qr.liantu.com/api.php?text=',1)"><span class="glyphicon glyphicon-qrcode"></span>  &nbsp;&nbsp;扫描</li>
+                  <li style="margin-right:0;"><a href="/v-{$v.scenecode_varchar}" target="blank" style="color:#a0a0a0;"><span class="glyphicon glyphicon-search"></span> &nbsp;&nbsp;预览</a></li>
+                </ul>
+              </div>
+            </div>
+          </li></volist>
+		  <div class="clear"></div>
+        </ul>
+        <div class="clear"></div>
+      </div>
+      
+	  <div class="pages">
+      <form action="" method="get" id="form">
+  	  <ul>
+          {$page}
+  		</ul>
+      </form>
+    </div>
+    </div>
+    <div id="footer">
+      <div class="footer_top">
+        <div class="t_left">
+          <p class="title">CONTACT US</p>
+          <P style="height:20px;">地址：广州市天河区天河路490号壬丰大厦1702室</P>
+          <p>商务合作：Email:sales@vxuebao.com</p>
+        </div>
+        <div class="t_center">
+          <div style="margin-right:20px;">
+            <p style="height:20px;"><img src="http://www.vxuebao.com/index/images/show_qq.png" style="float:left;margin-bottom:-10px;"> &nbsp;QQ交流群：476434157</p>
+            <p><img src="http://www.vxuebao.com/index/images/show_weixin.png" style="float:left;"> &nbsp;微信公众号：微学宝微课制作工具
+            </p>
+          </div>
+          <div><img src="http://www.vxuebao.com/index/images/show_cord.png" style="margin-top:-34px;"></div>
+        </div>
+        <div class="t_right" style="margin-right:0;">
+          <p class="title" style="margin-bottom:20px;">企业号试用申请</p>
+          <div><img src="http://www.vxuebao.com/index/images/show_logo2.png"></div>
+        </div>
+      </div>
+      <div class="footer_bottom">
+        <ul>
+          <li>友情链接：<a style=" color:#ccc;" target="_blank" href="http://www.learnnow.com.cn/ ">领思</a>/<a style="color:#ccc;" target="_blank" href="http://www.wizrecord.im/">wizrecord</a>/<a style=" color:#ccc;" target="_blank" href="https://wetool.im/" >wetool</a></li>
+          <li>CopyRight@2014-<?php echo date('Y',time()); ?> http://www.vxuebao.com</li>
+          <li><a style=" color:#ccc;" href="http://www.cyberwisdom.im/elearning16.html">关于我们</a>/<a style=" color:#ccc;" href="http://www.cyberwisdom.im/elearning17.html">联系我们</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+<script type="text/javascript">
+  $(function(){
+    $('#page_sub').click(function(){
+      var url = window.location.href;
+      var arr = url.split('-p-');
+      $('#form').attr('action',arr[0]);
+      $('#form').submit();
+    });
+
+  });
+</script>
+<script src="__PUBLIC__/Home/js/bootstrap.min.js"></script>
+<script src="/index/js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="__PUBLIC__/Home/js/jquery.form.js"></script>
+<script type="text/javascript">
+
+
+  function MM_swapImage() { //  hcc
+
+  var JSON_URL = "http://"+window.location.host+"/index.php";
+  var i,j=0,x,a=MM_swapImage.arguments;
+   document.MM_sr=new Array;
+    var imgid=$(a[0]).parents('li').attr('id'); //alert(imgid);
+  var code =$(a[0]).parents('li').attr('mycode');
+
+
+  //更换之前保留一下src
+  $('img[name="'+imgid+'"]').attr('myadd',$('img[name="'+imgid+'"]').attr('src'));
+  a[2]+= encodeURIComponent(JSON_URL+'?c=view&id='+code ) ;
+  $('img[name="'+imgid+'"]').attr('src',a[2]);
+    
+}
+
+ function MM_swapImgRestoremy(o){
+  var a=MM_swapImgRestoremy.arguments;
+  var imgid=$(a[0]).parents('li').attr('id');
+   $('img[name="'+imgid+'"]').attr('src',$('img[name="'+imgid+'"]').attr('myadd'));
+
+ }
+
+ function login(){
+   $('.login').ajaxSubmit(function (data) {
+    //data = eval("(" + data + ")");
+       if(data.code==200){
+          location.reload();
+       }else{
+          $('#loginError').css('display','block');
+          $('#loginError').text(data.msg).delay(3000).hide(300);
+       }
+   });
+   return false;
+}
+
+function register(){
+  var loginName=$("#loginName").val() || '';
+  var pwd1=$("#pwd1").val() || '';
+  var pwd2=$("#pwd2").val() || '';
+  if(pwd1=='' || pwd1!=pwd2 || loginName==''){
+    //alert('登录邮箱密码不能为空，且两次密码必须一致');
+    $('#registerError').css('display','block');
+    $('#registerError').text('登录邮箱密码不能为空，且两次密码必须一致').delay(3000).hide(300);
+    return false;
+  }
+  $('.reg').ajaxSubmit(function (data) {
+       //alert(data.msg);
+        $('#myAlert .modal-body').text(data.msg);
+        $('#myAlert').modal('show');
+        $("#reg").modal('hide');
+   });
+  
+  return false;
+}
+
+function forgetpwd(){
+  var email=$("#getemail").val() || '';
+  if(email==''){
+    alert('请输入邮箱号码');
+    return false;
+  }
+  $('.getpwd').ajaxSubmit(function (data) {
+    var data = eval("(" + data + ")");
+       alert(data.msg);
+   });
+    return false;
+}
+
+ $('.button').mouseover(function(){
+   
+    $('.select').show('slow');
+ })
+
+ $('.select').blur(function(){
+    $('.select').hide('slow');
+ })
+</script>
+</body>
+</html>
+
+<include file="Public:common2" />

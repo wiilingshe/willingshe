@@ -1,0 +1,33 @@
+<div id="show-contain">
+	<div ng-include="'/Public/eq/6.0/templates/nav.tpl.html'" ng-controller="NavCtrl"></div>
+	<div class="show-con same-content clearfix">
+		<div class="hd-lunbo" id="st_{{bizType}}" width="650px" height="260px" slides2>
+			<div class="slides_container"></div>
+			<div class="hd-icon">
+				<a class="eqf-left prev"></a>
+				<a class="eqf-right next"></a>
+			</div>
+		</div>
+		<aside>
+			<h2><a href="#/show/active" translate="show.category.MORE">更多</a><em translate="show.category.ACTIVITY">活动</em><span translate="show.category.ACTIVITY_TIP">ACTIVITY</span></h2>
+			<ul>
+				<li ng-repeat="hdList in activeList">
+					<a ng-click="join(hdList.id)"> <img ng-src="{{PREFIX_FILE_HOST + hdList.image}}" /> {{hdList.title}} </a>
+				</li>
+			</ul>
+		</aside>
+	</div>
+	<div class="show-list same-content">
+		<h2>			<span class="category_sort">				<a ng-class="{active:order == null}" ng-click="tplNew(null)" translate="show.category.NEW">最新</a>				<!--<a ng-class="{active:order == '3'}" ng-click="tplNew('3')">最热</a>-->				<!-- <a ng-class="{active:order == '1'}" ng-click="tplNew('1')" translate="show.category.TEMPLATE">样例</a></span>{{catName}} -->			</span>			{{catName}}		</h2>
+		<div class="category">
+			<ul class="category_two clearfix">
+				<li ng-repeat="child in childCatrgoryList" ng-class="{active:child.id == categoryId}" ng-click="getPageTpls(order,child.id)"> <a title="{{child.name}}">{{child.name}}</a> </li>
+			</ul>
+		</div>
+	</div>
+	<div class="show-list same-content">
+		<ul class="clearfix" ng-show="tpls.length">
+			<li ng-repeat="tpl in tpls">
+				<a href="{{PREFIX_CLIENT_HOST + '/v-' + tpl.code}}" target="_blank"> <img ng-src="{{PREFIX_FILE_HOST + tpl.cover}}" />
+					<p>{{tpl.name}}</p>
+					<p> <span><em class="eqf-eye2"></em>{{tpl.showCount}}</span> <span class="auth"><img title="{{tpl.userName}}" ng-src="

@@ -1,0 +1,46 @@
+input{border:none;}
+#eq_main{width:100%;margin:0 auto;background:#fff;}
+#eq_main .current{color:#66cc00;}
+.header-fixed{border-bottom:1px solid #dcdcdc;height:51px;}
+/*身体css*/
+#lecturer_content{width:1198px;margin:0 auto; min-height:590px;}
+#lecturer_content ul{overflow:hidden;}
+#lecturer_content ul li{float:left;}
+
+.content_search{margin:0 216px;height:85px;padding-top:45px;}
+.content_search .s_box{width:678px;height:37px;border:1px solid #ccc;padding:0 10px;}
+.content_search .s_btn{width:85px;height:37px;margin-left:-5px;border:1px solid #ccc;background:url('../images/lecturer_sico.png') no-repeat;}
+
+.content_type{height:137px;padding:32px 18px;}
+.content_type li{margin-right:40px;height:38px;line-height:38px;}
+.content_type li a{color:#3e3e3e;}
+.content_type li a:hover{color:#66cc00;}
+.content_type li .t_des{cursor:default;}
+.content_type li .t_des:hover{color:#3e3e3e;}
+
+.content_main .main_nav{height:48px;background-color:#f6f6f6;border:1px solid #dcdcdc;padding:9px 0;}
+.content_main .main_nav li{height:30px;line-height:30px;padding:0 20px;}
+.content_main .main_nav .nav_center{border-left:1px solid #dcdcdc;border-right:1px solid #dcdcdc;}
+.content_main .main_main{margin-top:50px;}
+.content_main .main_main .f{width:570px;height:300px;margin-bottom:50px;padding:10px;border:1px solid #dcdcdc;}
+.content_main .main_main .s_f{margin-right:58px;}
+.main_main .main_l,.main_main .main_r{float:left;}
+.main_main .main_r{margin-left:16px;padding:30px 0;}
+.main_main .main_r .name{margin:0;font-size:22px;font-weight:600;color:#000;width:135px;display:inline-block;}
+.main_main .main_r span{color:#a5a5a5;margin-right:10px;}
+.main_main .main_r .describe{width:308px;font-size:16px;margin:28px 0;line-height:38px;height:114px;}
+.main_main .f li{width:90px;height:28px;color:#66cc00;border:1px solid #66cc00;line-height:28px;text-align:center;}
+.main_main .f .describe_center{margin:0 15px;}
+
+.main_page{width:516px;margin:0 auto;margin-bottom:50px; text-align:center;}
+.main_page a{margin:0 6px;width:38px;height:38px;border:1px solid #dcdcdc; color:#dcdcdc; display:inline-block;line-height:38px;text-align:center;}
+.main_page .next,.main_page .prev{width:70px;}
+.main_page .current{width:38px;height:38px;border:1px solid #66cc00; display:inline-block;line-height:38px;}
+
+.content_banner{margin-bottom:50px;overflow:hidden;}
+.content_banner img{float:left;width:597px;height:246px;}
+
+#footer .footer_t{width:976px;margin:0 auto;}
+#footer .footer_t li{float:left;}
+#footer .footer_t li a{color:#ccc;}
+#footer .footer_t .f_center_l{border-left:1px solid #fff;border-right:1px solid #fff;margin:0 20px;padding:0 20px;}

@@ -1,0 +1,12 @@
+<!--user/withdraw/withdraw.wxml-->
+<view class="withdrawBox">
+	<view class="balanceText text-c">余额（元）</view>
+	<view class="balanceNum text-c">{{usable_balances}}</view>
+	<view class="balanceButton text-c">提  现</view>
+	<view class="tips text-c">满100元可提现，单日提现总限额20000元</view>
+	<view class="tips2 text-c">每天最多可申请提现3次</view>
+	<view class="details" bindtap="todetails">
+		<view>查看提现明细</view>
+		<image src="{{Arrow}}"></image>
+	</view>
+</view>

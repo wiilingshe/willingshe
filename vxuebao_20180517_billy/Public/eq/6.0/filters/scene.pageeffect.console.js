@@ -1,0 +1,1 @@
+angular.module("scene.pageeffect.filter",[]).filter("scratchNumber",function(){return function(e,r,t){return(100*e).toFixed(r)+t}});

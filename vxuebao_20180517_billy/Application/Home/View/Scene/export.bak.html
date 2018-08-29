@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en"><head>
+        <meta charset="utf-8" />
+        <title>{$confinfo2[title]}</title>
+        <meta id="eqMobileViewport" name="viewport" content="width=320, initial-scale=1, maximum-scale=1, user-scalable=no" servergenerated="true">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="view/css/vxuebao-5.4.3.css"/>
+        <script> var your_demain = '<php>if(strpos("http://",C("site_url"))!==false)echo "http://"; echo rtrim(C("site_url"),"/")</php>';
+            var your_webname = '<php>echo C("site_name")</php>';
+            var logo_url = '<php>echo C("site_name")</php>';
+            var lastpagelink = '<php>echo C("lastpagelink")</php>';
+            var lastpagetext_color = '<php>echo C("lastpagetext_color")</php>';
+            var lastpagetext = '<php>echo C("lastpagetext")</php>';
+            var jubao_link = '<php>echo C("jubao_link")</php>';
+        </script>
+        <style>/*.scene_title_baner {visibility: hidden;}*/</style>  
+    <neq name="type" value="1">
+    <style>
+        .loadbg {position: absolute; top: -5px; left:-3px; z-index: 1000; width: 100px; height: 100px; background: url(view/images/loading.png) no-repeat; background-size: 100%; 
+                 -webkit-animation:loading 1.5s linear infinite;animation:loading 1.5s linear infinite} 
+        @-webkit-keyframes loading{ 0%{ -webkit-transform:rotate(0)} 100%{ -webkit-transform:rotate(360deg)} } 
+        @-moz-keyframes loading{ 0%{ -moz-transform:rotate(0)} 100%{ -moz-transform:rotate(360deg)} }
+        .loadlogo { margin: 11px auto; width: 90px; height: 90px; border-radius: 50%; background-position: center center; background-size: cover; background-repeat: no-repeat; background-image: url('<php>if($sceneinfo[loadinglogo]):</php>{$sceneinfo[loadinglogo]}<php>else:</php>{$confinfo2[imgsrc]}<php>endif;</php>');}
+        #linkad {visibility: hidden;}
+    </style>
+    </neq>
+
+    <!--修改开始-->
+    <link href="../assets/Js/layer/skin/layer.css" rel="stylesheet">
+    <!--修改结束-->
+    </head>
+    <body>
+
+        <div id="ppitest" style="width:1in;visible:hidden;padding:0px"></div>
+        <div class="p-index main phoneBox" id="con" style="display: none;">
+            <div class="top"></div>
+            <div class="phone_menubar"></div>
+            <div class="scene_title_baner" style="display: none">
+                <div class="scene_title">{$confinfo2[title]}</div>
+            </div>
+            <div class="nr" id="nr">
+                <div id="audio_btn" class="off">
+                    <div id="yinfu"></div>
+                    <audio loop src="" id="media" autoplay="" preload></audio>
+                </div>
+                <div id="loading" class="loading">
+                    <div class="loadbox">
+                        <div class="loadlogo"></div>
+                        <div class="loadbg"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="bottom"></div>
+        </div>
+
+    </body>
+
+
+    <script src="assets/Js/jquery.min.js"></script>
+    <script >
+            (function (window, $) {
+                window.PREFIX_URL = "";
+                window.PREFIX_S1_URL = "";
+                window.PREFIX_S2_URL = "";
+                window.PREFIX_HOST = "";
+                window.PREFIX_HOST1 = "";
+                window.PREFIX_FILE_HOST = "";
+                window.CLIENT_CDN = "";
+                window.clientWidth = document.documentElement.clientWidth;
+                window.clientHeight = document.documentElement.clientHeight;
+
+            })(window, jQuery)
+                    window.jsondata = {$jsondata};
+    </script>
+    <script type="text/javascript" src="assets/Js/vxuebao-5.4.2_view.js?v={$Think.config.jsver}"></script>
+<script type="text/javascript" src="assets/Js/APIWrapper.js"></script>
+<script type="text/javascript" src="assets/Js/SCOFunctions.js"></script>
+    <script>
+
+            var scene = {id:{$confinfo2[workid]}, code:"{$sceneinfo['scenecode_varchar']}", pageMode:{$sceneinfo['movietype_int']}, cover:"{$sceneinfo[cover]}"};
+            setTimeout("eqShow.bootstrap()",2200);
+    </script>
+<div style="display:none"><script src="http://s95.cnzz.com/stat.php?id=1258616548&web_id=1258616548" language="JavaScript"></script></div>
+    <!--修改开始-->
+    <script src="assets/Js/layer/layer.js"></script>
+    <script src="assets/Js/layer/extend/layer.ext.js"></script>
+    <script type="text/javascript">
+        layer.config({
+            extend: 'extend/layer.ext.js'
+        });
+    </script>
+
+    <!--修改结束-->
+
+</html>

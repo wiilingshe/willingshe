@@ -1,0 +1,26 @@
+<div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="quXiao()">        <span aria-hidden="true">×</span>    </button>
+	<h4 class="modal-title">{{title || ('usercenter.account.CHANGE_PASSWORD' | translate)}}</h4></div>
+<div class="modal-body">
+	<form class="form-horizontal">
+		<div class="form-group"> <label for="inputMail" class="col-sm-3 text-right" translate="usercenter.account.EMAIL">邮箱</label>
+			<div class="col-sm-7"> <span>                    {{userinfo.noRel || userinfo.loginName}}                </span> </div>
+		</div>
+		<div class="form-group"> <label for="inputPassword3" class="col-sm-3 control-label" translate="usercenter.account.ORIGINAL_PASSWORD">原始密码</label>
+			<div class="col-sm-7"> <input type="password" class="form-control" ng-model="password.old" placeholder="原始密码" ng-keyup="$event.keyCode == 13 ? reset() : null" ng-class="{error: oldPassError}" ng-blur="checkOldPassword()" class="form-control">
+				<p class="error" ng-show="oldPassError">{{oldPassError}}</p>
+			</div>
+		</div>
+		<div class="form-group"> <label for="inputNewPass" class="col-sm-3 control-label" translate="usercenter.account.NEW_PASSWORD">新密码</label>
+			<div class="col-sm-7"> <input id="inputNewPass" type="password" class="form-control" ng-model="password.newPw" placeholder="{{'usercenter.account.NEW_PASSWORD_TIP' | translate}}" ng-keyup="$event.keyCode == 13 ? reset() : null" ng-class="{error: passError}" ng-blur="checkPassword()"
+					required>
+				<p class="error" ng-show="passError">{{passError}}</p>
+			</div>
+		</div>
+		<div class="form-group"> <label for="inputRepeatPassword" class="control-label col-sm-3" translate="usercenter.account.REPEAT_PASSWORD">确认密码</label>
+			<div class="col-sm-7"> <input id="inputRepeatPassword" type="password" class="form-control" ng-model="password.confirm" placeholder="{{'usercenter.account.REPEAT_PASSWORD' | translate}}" ng-keyup="$event.keyCode == 13 ? reset() : null" ng-blur="checkRepeatPassword()">
+				<p class="error" ng-show="rPassError">{{rPassError}}</p>
+			</div>
+		</div>
+	</form>
+</div>
+<div class="modal-footer"> <a class="modal-cancle" ng-click="quXiao()" translate="usercenter.account.CANCEL">取消</a> <a class="btn btn-primary" ng-click="reset()" translate="usercenter.account.SAVE">保存</a></div>

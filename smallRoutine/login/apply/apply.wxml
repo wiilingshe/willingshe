@@ -1,0 +1,68 @@
+<view style="background-color: #fff;">
+	<view class="tou">
+		<view class="touleft">用户头像</view>
+		<view class="touright">
+			<image src="{{tou}}"></image>
+		</view>
+	</view>
+	<view class="item borderbottom1">
+		<view>
+			<text class="must">*</text>
+			<view class="itemname">姓<view class="kong"></view>名</view>
+		</view>
+		<input type="text" name="" placeholder="请输入姓名" placeholder-style="color:#CCCCCC" bindinput="bindname" value="{{userinfodata.nickname}}"></input>
+		<image src="{{img1}}"></image>
+	</view>
+	<view class="item borderbottom1">
+		<view>
+			<text class="must">*</text>
+			<view class="itemname">性<view class="kong"></view>别</view>
+		</view>
+		<input type="text" name="" placeholder="请选择" placeholder-style="color:#CCCCCC" disabled="disabled" bindtap="selectsex" value="{{sex}}"></input>
+		<image src="{{img1}}"></image>
+	</view>
+	<view class="item borderbottom1">
+		<view>
+			<text class="must">*</text>
+			<view class="itemname">从业时间</view>
+		</view>
+		<!-- <view bindchange="bindDateChange">
+		    <view class="itemtime" style="color: #ccc;" wx:if="{{date==''}}">请选择从业时间</view>
+		    <view class="itemtime" style="color: #333;" wx:if="{{date!=''}}">{{date}}</view>
+		</view> -->
+		<input type="text" name="" placeholder="请选择从业时间" placeholder-style="color:#CCCCCC" disabled="disabled" bindtap="bindDateChange" value="{{date}}" style="width: 460rpx;"></input>
+		<image src="{{img1}}"></image>
+	</view>
+	<view class="item borderbottom1">
+		<view>
+			<text class="must">*</text>
+			<view class="itemname">所在地区</view>
+		</view>
+		<picker mode="region" bindchange="bindRegionChange">
+		    <view class="itemtime" style="color: #ccc;" wx:if="{{region==''}}">请选择所在区域</view>
+		    <view class="itemtime" style="color: #333;" wx:if="{{region!=''}}">{{region}}</view>
+		</picker>
+		<image src="{{img1}}"></image>
+	</view>
+	<view class="item borderbottom1">
+		<view>
+			<text class="must">*</text>
+			<view class="itemname">手机号码</view>
+		</view>
+		<input type="number" name="" placeholder="请输入手机号" placeholder-style="color:#CCCCCC" bindinput="bindphone" value="{{userinfodata.phone}}"></input>
+	</view>
+	<view class="item">
+		<view>
+			<text class="must">*</text>
+			<view class="itemname">验<view class="kong2"></view>证<view class="kong2"></view>码</view>
+		</view>
+		<input type="text" name="" placeholder="请输入获取的验证码" placeholder-style="color:#CCCCCC" style="width: 309rpx;" bindinput="bindyan"></input>
+		<view class="btn" bindtap="getyan" wx:if="{{!ifyan}}">{{yantext}}</view>
+		<view class="btn" style="color: #999;border:1rpx solid #999;" wx:if="{{ifyan}}">{{miao}}s</view>
+	</view>
+</view>
+<view class="per">
+	<view class="pertitle">个人介绍</view>
+	<textarea bindinput="bindjieshao" class="area" placeholder='可以按照 “从业时间、工作经验、发行优势" 等的模式进行填写。' placeholder-style="color:#CCCCCC" maxlength="-1" value="{{userinfodata.introduce}}"></textarea>
+</view>
+<view class="setBtn" bindtap="sendapply">提交审核</view>

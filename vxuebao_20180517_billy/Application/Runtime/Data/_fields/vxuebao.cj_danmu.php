@@ -1,0 +1,1 @@
+a:9:{i:0;s:2:"id";i:1;s:7:"sceneid";i:2;s:6:"userid";i:3;s:7:"headimg";i:4;s:7:"content";i:5;s:7:"addtime";i:6;s:4:"isok";s:3:"_pk";s:2:"id";s:5:"_type";a:7:{s:2:"id";s:7:"int(11)";s:7:"sceneid";s:10:"bigint(20)";s:6:"userid";s:7:"int(11)";s:7:"headimg";s:12:"varchar(255)";s:7:"content";s:4:"text";s:7:"addtime";s:7:"int(11)";s:4:"isok";s:10:"tinyint(3)";}}

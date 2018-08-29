@@ -1,0 +1,39 @@
+<view wx:if="{{!ifloading}}">
+	<view class="content">
+		<button wx:if="{{!canIUse}}" class="btn3" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo1">授权</button>
+		<image src="{{img3}}"></image>
+		<view class="title">电影发行人接单工具</view>
+		<!-- <view class="btn" bindtap="login">手机登录</view> -->
+		<view class="btn" bindtap="apply">申请加入</view>
+	</view>
+	<!-- <view class="apply" bindtap="apply">
+		<view>申请加入海豚发行</view>
+		<view>
+			<image src="{{img1}}"></image>
+		</view>
+	</view> -->
+	<view class="apply" bindtap="login">
+		<view>手机登录</view>
+		<view>
+			<image src="{{img1}}"></image>
+		</view>
+	</view>
+	<!-- <button wx:if="{{!canIUse}}" class="btn3" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo1">授权</button> -->
+	<view wx:if="{{iflogin}}" class="bg" bindtap="close"></view>
+	<form report-submit="true" bindsubmit="formSubmit">
+		<view wx:if="{{iflogin}}" class="login">
+			<image src="{{img2}}" bindtap="close"></image>
+			<view class="title" bindtap="moblielogin">手机登录</view>
+			<input placeholder-style="color:#CCCCCC" placeholder="请输入手机号"  value="{{mobile}}" bindinput="bindKeyInput"></input>
+			<view style="height:20rpx;"></view>
+			<input class="input2" placeholder-style="color:#CCCCCC" placeholder="请输入验证码" value="{{yan}}" bindinput="bindKeyInput1"></input>
+			<text class="tip">{{tip}}</text>
+			<!-- <text class="getyan" bindtap="getyan" wx:if="{{!ifyan}}">{{yanzheng}}</text> -->
+			<button class="getyan" wx:if="{{!ifyan}}" formType="submit">{{yanzheng}}</button>
+			<text class="getyan" wx:if="{{ifyan}}" style="color: #999;border-color: #999;">{{miao}}s</text>
+			<view wx:if="{{canIUse && ifhave}}" class="btn2" bindtap="denglu">登录</view>
+			<button wx:if="{{!canIUse  && ifhave}}" class="btn2" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">登录</button>
+			<view wx:if="{{!ifhave}}" class="btn2" style="background-color: #ccc;background-image: none;">登录</view>
+		</view>
+	</form>
+</view>

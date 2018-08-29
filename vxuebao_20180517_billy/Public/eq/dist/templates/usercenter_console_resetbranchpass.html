@@ -1,0 +1,16 @@
+<div class="dialog-contain ">
+	<div class="dialog-head">
+		<h1 translate="usercenter.account.CHANGE_PASSWORD">修改密码</h1>
+		<p ng-show="!authError" translate="usercenter.account.CHANGE_PASSWORD_TIP">在此修改密码，退出再登录后及成功</p>
+		<p ng-show="authError">{{authError}}</p>
+	</div>
+	<div class="dialog-content">
+		<form class="form-contain" role="form">
+			<div class="form-list clearfix"> <label for="inputPassword3" class="form-label" translate="usercenter.account.BRANCH_LABEL">分账号：</label>
+				<div class="form-input" style="top: 6px;">{{branch.loginName}}</div>
+			</div>
+			<div class="tip" style="padding-left: 30px;margin: 20px 0;"> <span translate="usercenter.account.RESET_PASSWORD_TIP">重置密码后，密码将恢复为初始密码:</span> <span style="color: #ff0000;">vxuebao</span> </div>
+			<div class="btn-contain btn-big"> <a class="btn-main login" ng-click="reset()" translate="usercenter.account.RESET_PASSWORD">重置为初始密码</a> <a class="btn-grey0 cancel" ng-click="cancel()" translate="usercenter.account.CANCEL">取消</a> </div>
+		</form>
+	</div>
+</div>

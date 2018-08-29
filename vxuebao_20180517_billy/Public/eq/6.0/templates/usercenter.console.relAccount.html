@@ -1,0 +1,19 @@
+<div class="dialog-contain ">
+	<div class="dialog-head">
+		<h1>绑定账号</h1>
+		<p ng-show="!relErr">绑定已有账号</p>
+		<p ng-show="relErr">{{relErr}}</p>
+	</div>
+	<div class="dialog-content">
+		<form class="form-contain" role="form">
+			<div class="form-list clearfix"> <label for="inputPassword3" class="form-label">登录账号</label>
+				<div class="form-input"> <input type="text" class="third-name" ng-model="user.email" ng-blur="checkUpperCase();" placeholder="输入要绑定的账号" /> </div>
+			</div>
+			<div class="form-list clearfix"> <label for="inputPassword3" class="form-label">密码</label>
+				<div class="form-input"> <input type="password" class="third-pwd" style="float:right;" ng-model="user.password" placeholder="输入该账号登录密码" /> </div>
+			</div>
+			<div class="btn-contain btn-big"> <a class="btn-main login" ng-click="bindAccount()">立即绑定</a>
+				<!--<a class="btn-grey0 cancel" ng-click="cancel()">取消</a>--><a class="btn-grey0 cancel" ng-click="cancel();createAccount();">创建账号</a> </div>
+		</form>
+	</div>
+</div>

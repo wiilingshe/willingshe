@@ -1,0 +1,23 @@
+html,body,div,img{font-size:100%;margin:0px 0px 0px 0px; padding: 0px 0px 0px 0px; }
+div,img{position: relative;}
+a,img{display: block;}
+.part{overflow-x: hidden;}
+.home{width: 6.7%;position: absolute;top: 31%;left: 6%;}
+.bottom{position: fixed;bottom: 0;left: 0;width: 100%;margin:0px 0px 0px 0px; padding: 0px 0px 0px 0px;line-height: 0;border-top:#d9d9d9 1px solid;z-index: 11; background-color: #fdfdfd;}
+.bottom img{display: inline;padding: 0; margin: 0;}
+.box{margin-bottom: 20%;background-image: url(../img/3/10.png);background-repeat: repeat-y;background-position-x: 11.3%;}
+.ctrl{margin-top: 3%;width: 100%;position: relative;}
+.ctrl1{margin-top: 3%;width: 100%;position: relative;}
+.ctrl2{margin-top: 3%;width: 100%;position: relative;}
+.img{width:100% ;display:none;margin: 4% 0;}
+.btn{width: 5%;position: absolute;right: 8%;top:24%;}
+.btn1{width: 7.6%;position: absolute;right: 0%;top:20%;}
+.btn2{width: 85.6%;position: absolute;right: 7.2%;top:20%;}
+.none{display: none;}
+.show{display: block;}
+.menu{width: 26.5%;display: inline;margin:4% 1.7% 0 1.7%;}
+.fu{width: 100%;display: none;}
+#s1,#s2{display: none;}
+.w100{width: 100%;}
+.mb4{margin-bottom: 4%;}
+.mt6{margin-top: 6%;}

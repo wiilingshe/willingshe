@@ -1,0 +1,99 @@
+<div class="m-title">
+    <div class="m-icon fl" ng-switch="currentUser.type" ng-class="{'normal': userinfo.type == 1 || userinfo.type ==12, 'com-free': userinfo.type == 2 , 'com-base': currentUser.type==2 && currentUser.memberType == 1, 'com-pri': currentUser.type==2 && currentUser.memberType == 2, 'com-pro': currentUser.type==2 && currentUser.memberType == 3, 'com-tour': currentUser.type==2 && currentUser.memberType == 4, 'com-base-child': currentUser.type==21}">
+        <!--<span class="eqf-nomarluser" ng-switch-when="1"></span>
+        <span class="eqf-vipuser" ng-switch-when="3"></span>
+        <span class="eqf-companyuser free-companyuser" ng-show="!currentUser.memberType" ng-switch-when="2"></span>
+        <span class="eqf-companyuser base-companyuser" ng-show="currentUser.memberType=='1'" ng-switch-when="2"></span>
+        <span class="eqf-companyuser pri-companyuser" ng-show="currentUser.memberType=='2'" ng-switch-when="2"></span>
+        <span class="eqf-companyuser pro-companyuser" ng-show="currentUser.memberType=='3'" ng-switch-when="2"></span>
+        <span class="eqf-companyuser pro-companyuser" ng-show="currentUser.memberType=='4'" ng-switch-when="2"></span>
+        <span class="eqf-companyuser free-companyuser" ng-switch-when="21"></span>
+        <span class="eqf-serviceuser" ng-switch-when="4"></span>-->
+    </div>
+    <div class="m-detail">
+        <div class="m-type">
+            <a class="btn btn-primary btn-upgrade fr" ng-show="currentUser.type ==1 || currentUser.type ==2" ng-href="#/privilege">立即升级</a>{{userType}}&nbsp;&nbsp;{{userPay}}
+        </div>
+        <div class="pt20">
+
+            <span class="mr20">
+                开通时间：{{currentUser.joinTime || currentUser.regTime | date:'yyyy年MM月dd日 HH:mm'}} 
+            </span>
+            <span ng-show="currentUser.expiryTime && currentUser.memberType">到期时间：{{ currentUser.expiryTime | date:'yyyy年MM月dd日 HH:mm'}}</span>
+        </div>
+    </div>
+</div>
+<div class="m-cont">
+<!--     <div class="m-header">
+        立即升级为企业会员，尊享周到的企业级服务和微学宝专属特权
+        <a class="btn btn-primary btn-upgrade fr">立即升级</a>
+    </div>
+    <div class="m-card">
+        <div class="card" ng-repeat="memberPrivilege in memberPrivileges track by $index" ng-class="{ml20: $index != 0}">
+            <div class="card-title">
+                特权一
+            </div>
+            <div class="card-content">
+                {{memberPrivilege}}
+            </div>
+        </div>
+    </div> -->
+    <div class="m-title xd-cont">
+        <div class="m-icon fl xd-icon">
+            <span class="eqf-XD"></span>
+        </div>
+        <div class="m-detail">
+            <div class="fr xd-act">
+                <a ng-click="buyXd()">
+                    <span class="eqf-XD"></span>
+                    <span>购买微币</span>
+                </a>
+                <a ng-click="transferXd()">
+                    <span class="eqf-scene-gift"></span>
+                    <span>转送微币</span>
+                </a>
+                         </div>
+            <div class="m-type">
+                {{xdCounts}}
+            </div>
+            <div class="pt20">
+                <span class="first-col mr20">
+                    我的微币
+                </span>
+            </div>
+        </div> 
+        <div class="xd-panel">
+            <div class="xd-tab p20">
+                <div class="btn-group">
+                    <a class="btn btn-default button-sm background-color-width-change" ng-class="{active: !xdType }" ng-click="getXdLog(null, 1)">微币明细</a>
+                            </div>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="col-sm-4 text-left">时间</th>
+                        <th class="col-sm-4 text-left" ng-show="!xdType">支出/收入</th>
+                        <th class="col-sm-4 text-left" ng-show="xdType==2">支出</th>
+                        <th class="col-sm-4 text-left" ng-show="xdType==1">收入</th>
+                        <th class="col-sm-4 text-left">使用详情</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="xd in xdLogs">
+                        <td class=" text-left">{{xd.optTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                        <td class=" text-left">{{xd.xd}}</td>
+                        <td class=" text-left">{{xd.remark}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>  
+        <div ng-show="totalItems>10" class="page-turn clearfix">
+            <pagination style="float: left" first-text="首页" last-text="尾页" previous-text="&lsaquo;" next-text="&rsaquo;" max-size="10" items-per-page="10" total-items="totalItems" ng-model="$parent.currentPage" ng-change="pageChanged(xdType, currentPage)" boundary-links="true" rotate="true" num-pages="numPages"></pagination>
+            <div class="current_page"><span class="fl">到</span>
+                <input type="text" ng-model="toPage" ng-keyup="$event.keyCode == 13 ? pageChanged(xdType, toPage) : null"><span class="fl">页</span>
+                <a ng-click="pageChanged(xdType, toPage)" class="go">确定</a>
+                <!-- <span><span translate="main.customer.CURRENT_PAGE1">当前</span>: {{toPage}} / {{numPages}} <span translate="main.customer.CURRENT_PAGE2">页</span></span> -->
+            </div>
+        </div>        
+    </div>
+</div>

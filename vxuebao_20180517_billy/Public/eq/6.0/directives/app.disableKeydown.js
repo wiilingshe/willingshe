@@ -1,0 +1,1 @@
+angular.module("app.directives.disableKeydown",[]).directive("disableEdit",function(){function r(r,e,i){var n={37:"arrow-left",38:"arrow-up",39:"arrow-right",40:"arrow-down",9:"tab",27:"esc"};e.keydown(function(r){n[r.which]||r.preventDefault()})}return{restrice:"EA",link:r}});

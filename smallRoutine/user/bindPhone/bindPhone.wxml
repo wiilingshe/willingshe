@@ -1,0 +1,28 @@
+<!--user/bindPhone/bindPhone.wxml-->
+<view class="bindPhoneBbox">
+	<view class="formField">
+		<view class="phoneBox item border-b">
+			<view class="">
+				<view class="fieldTitle fl">手机号码</view>
+				<input type="number" cursor="1" name="" class="fl form_input" placeholder="请输入手机号" placeholder-style="color:#CCCCCC" maxlength="11" value="{{phoneNum}}" bindinput="getPhoneKey" />
+			</view>
+		</view>
+		<view class="codeBox item">
+			<view class="">
+				<text class="fieldTitle fl" space decode >验&ensp;证&ensp;码&ensp;&ensp;</text>
+				<input type="number" cursor="1" name="" class="fl form_input" placeholder="请输入获取的验证码" placeholder-style="color:#CCCCCC" maxlength="6" bindinput="getCodeKey" value="" />
+			</view>
+			<view class="codeButton">
+				<view class="getCode text-c" wx:if="{{!sendMsg}}" bindtap="getMsgCode">{{msmButtonText}}</view>
+				<view class="getCode grey text-c" wx:if="{{sendMsg}}">{{seconds}}s</view>
+			</view>
+		</view>
+	</view>
+	<view wx:if="{{isCheck}}" class="bindButton text-c" bindtap="bindMobile">
+		{{buttonText}}
+	</view>
+	<view wx:elif="{{!isCheck}}" class="bindButton text-c js_none">
+		{{buttonText}}
+	</view>
+	
+</view>

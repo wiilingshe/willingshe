@@ -1,0 +1,36 @@
+<div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">        <span aria-hidden="true">×</span>    </button>
+	<h4 class="modal-title">我的订单</h4></div>
+<div class="modal-body">
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>
+					<div class="checkbox-square customer-check fr" ng-class="{checked: selectedAll}"> <em class="eqf-clickmore"></em> <input class="check-box" type="checkbox" ng-model="selectedAll" name="iCheck" ng-change="switchSelectAll(selectedAll)"> </div>
+				</th>
+				<th>订单号</th>
+				<th>所购商品</th>
+				<th>价格</th>
+				<th>购买时间</th>
+				<th>支付方式</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="invoice in invoiceList">
+				<td>
+					<div class="checkbox-square customer-check fr" ng-class="{checked: invoice.selected}"> <em class="eqf-clickmore"></em> <input class="check-box" type="checkbox" ng-model="invoice.selected" name="iCheck" ng-change="switchSelect(invoice)"> </div>
+				</td>
+				<td>{{invoice.id}}</td>
+				<td>{{invoice.name}}</td>
+				<td>{{invoice.totalFee}}</td>
+				<td>{{invoice.createTime}}</td>
+				<td>{{invoice.payType}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="clearfix page-turn" style="margin-top:10px;margin-bottom:0;" ng-show="totalItems > 5">
+		<pagination style="float: left" first-text="首页" last-text="尾页" previous-text="&lsaquo;" next-text="&rsaquo;" max-size="10" items-per-page="pageSize" total-items="totalItems" ng-model="currentPage" ng-change="pageChanged(currentPage)" boundary-links="true"
+			rotate="true" num-pages="numPages"></pagination>
+		<div class="current_page"> <input type="text" ng-model="obj.toPage" ng-keyup="$event.keyCode == 13 ? pageChanged(obj.toPage) : null"> <a ng-click="pageChanged(obj.toPage)" class="go">GO</a> </div>
+	</div>
+</div>
+<div class="modal-footer"> <a class="modal-cancle" ng-click="cancel()">取消</a> <a type="button" class="btn btn-primary" ng-click="ok()">开发票</a></div>

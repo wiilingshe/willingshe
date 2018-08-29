@@ -1,0 +1,35 @@
+<ul class="nav pull-right clearfix" style="margin-right:0px;position:relative;">
+	<!--     <li class="divider-vertical" ng-click="goCats =!goCats" ></li> -->
+	<li class="" style="width:150px;margin-top:-2px;cursor:pointer;" ng-show="sendXd.state"><img ng-click="openReg()" ng-src="{{CLIENT_CDN}}assets/images/xiudianyaoqing.png" /></li>
+	<li class="mes_con dropdown" style="position:static;">
+		<div style="position:relative;padding-top:5px;" class="hint--right hint--rounded" data-hint="消息">
+			<a class="mes_content eqf-music dropdown-toggle background-color-width-change" style="position: relative;" ng-click="openMsgPanel()"> </a> <span class="mes_count" ng-if="newMsgCount">{{newMsgCount}}</span> </div>
+		<div class="dropdown-menu msg_pannel box-shadow zoomIn-change" role="menu" forbidden-close style="transform-origin: 100% 0;">
+			<div class="msg-title clearfix">
+				<div class="panel_title pull-left"> <em>您有</em><span class="mes_new">{{newMsgCount}}</span><em>新消息</em> </div>
+				<div class="panel_title text-right" style="margin-left:0px;"> <a ng-click="setRead()" ng-if="false">设为已读消息</a> </div>
+			</div>
+			<div ng-if="newMsgs.length>0" class="panel_content head_list_newMsg ellipsis" ng-repeat="newMsg in newMsgs"><em ng-class="{new_msg: newMsg.status == 1}"></em>
+				<a href="#/message">{{newMsg.content}}</a>
+			</div>
+			<div class="panel_more text-center"> <a href="#/message">查看全部消息 >></a> </div>
+		</div>
+	</li>
+	<li ng-show="isAuthenticated()" ng-class="{'border-img': user.type == 2 && showBranchSelect}" class="custom_img background-color-width-change" ng-mouseover="showCode = true" ng-mouseleave="showCode = false">
+		<div class="head_hover">
+			<!-- <span>{{currentUser.loginName}}</span> -->
+			<div class="vip_c">
+				<a ng-href="#/usercenter/account"> <em ng-if="!currentUser.headImg" class="icon iconfont icon-yonghu"></em> <img ng-if="currentUser.headImg" ng-src="{{currentUser.headImg.indexOf('http') < 0 ? (PREFIX_FILE_HOST + currentUser.headImg):headImg }}" /> </a>
+			</div>
+			<div class="head_click box-shadow" ng-show="showCode == true">
+				<div class="itemList"> <a href="#/usercenter/member">用户中心</a> </div>
+				<div class="itemList" ng-if="branchid"> <a ng-click="changeCurrent()">返回主账号</a> </div>
+				<div class="itemList"><a ng-click="logout()">退出</a></div>
+			</div>
+		</div>
+	</li>
+	<!--     <li ng-if="user.type == 2 && showBranchSelect" class="select-branch">        <eqx-select class="select-contain select-sm" model="global.branch"         change="selectBranch(global.branch)">            <eqx-select-option value="null" translate="header.CURRENT_ACCOUNT">                当前账号            </eqx-select-option>            <eqx-select-option value="branch" ng-repeat="branch in userbranches"  >{{branch.loginName}}</eqx-select-option>        </eqx-select>    </li> -->
+	<li class="head-creat transform-change" ng-if="myScene">
+		<a href="#/scene" class=""> <em class="eqf-plus2"></em> </a>
+	</li>
+</ul>

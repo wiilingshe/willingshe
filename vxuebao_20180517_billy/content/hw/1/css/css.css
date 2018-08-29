@@ -1,0 +1,43 @@
+body,div,img{margin:0; padding:0; border:0; -moz-user-select: none; user-select: none;}
+#window{ overflow:hidden; position:relative; width:50%; height:50%;}
+#sm{ position:absolute; left:0;}
+.imgrsp{width:100%; height:100%; display:block;}
+[full]{ width:100%; height:100%;}
+.arrow
+{
+	-webkit-animation:animations 1.4s linear infinite;
+	-moz-animation:animations 1.4s linear infinite;
+	animation:animations 1.4s linear infinite;
+}
+
+@keyframes animations
+{
+	0%{top:96%;opacity:0;}
+	50%{top:94%;opacity:1;}
+	100%{top:92%;opacity:0;}
+}
+@-webkit-keyframes animations
+{
+	0%{top:96%;opacity:0;}
+	50%{top:94%;opacity:1;}
+	100%{top:92%;opacity:0;}
+}
+@-moz-keyframes animations
+{
+	0%{top:96%;opacity:0;}
+	50%{top:94%;opacity:1;}
+	100%{top:92%;opacity:0;}
+}
+
+
+@-webkit-keyframes rotation{
+from {-webkit-transform: rotate(0deg);}
+to {-webkit-transform: rotate(360deg);}
+}
+.Rotation{
+-webkit-transform: rotate(360deg);
+animation: rotation 3s linear infinite;
+-moz-animation: rotation 3s linear infinite;
+-webkit-animation: rotation 3s linear infinite;
+-o-animation: rotation 3s linear infinite;
+}

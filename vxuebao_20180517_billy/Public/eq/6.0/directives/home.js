@@ -1,0 +1,1 @@
+angular.module("home",[]).directive("iframeImgSwitch",function(){return{compile:function(n,e){(document.documentMode||navigator.userAgent.indexOf("Edge")>0)&&(n.find(".svg-animation").css("display","none"),n.find(".noSvg").css("display","block"))}}});

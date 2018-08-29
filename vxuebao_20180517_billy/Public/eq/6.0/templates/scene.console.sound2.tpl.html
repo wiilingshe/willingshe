@@ -1,0 +1,115 @@
+<div class="modal-header no-bottom-line">
+	<button type="button" class="n_close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">        
+	<!-- 	<span aria-hidden="true"></span> -->
+		<img aria-hidden="true" src="/assets/images/re-design/bg_close.png" />   
+	</button> 
+	<h4 class="modal-title" ng-if="type == 4">音效设置
+		<span ng-show = \'selectSoundError\' class="action">{{selectSoundError}}</span>
+	</h4>
+	<!-- <h4 class="modal-title" ng-if="type == 2"> 
+		<a style="display:none;" class="modal-cancle search-txt" style="margin-left:40px" ng-click="openConvert()">
+			性别
+		</a>  
+		<h4 class="modal-title" id="myModalLabel">
+			<span style="font-size:15px">
+				当前声音为 : 
+				<a ng-click="changeTrack()">{{track}}</a>
+				<input type="radio" name="aaa" class="voice_sex" value="1">男<input type="radio" name="aaa" class="voice_sex" value="0" checked="checked">女
+			</span>
+		</h4>  
+	</h4>   -->  
+	<img src="view/images/icon.png">
+	<h4 style="font-size:17px;display:inline-block;position: absolute;margin-top: 1px;margin-left: 3px;">文本转语音</h4>
+</div>
+<div  class="dialog-contain " id="text-to-music-content">
+	<div class="dialog-content bg_console clearfix" style="background-color:#fff">
+		<div class="sound-flex">
+			<div style="min-height:190px;">
+				<div class="modal-body" style="margin-left:20px">
+					<h4 class="modal-title" ng-if="type == 2"> 
+						<a style="display:none;" class="modal-cancle search-txt" style="margin-left:40px" ng-click="openConvert()">
+							性别
+						</a>  
+						<h4 class="modal-title" id="myModalLabel" style="color:#424141">
+							<span style="font-size:15px" ng-init="choose = 'female'">
+								当前声音为 :
+								<input id="male" type="radio" name="aaa" class="voice_sex" value="1">
+								<label name="male" for="male" ng-click="choose = 'male'"><i ng-class="{'label-checked' : choose == 'male'}"></i>男音</label>
+								<input id="female" type="radio" name="aaa" class="voice_sex" value="0" checked="checked">
+								<label name="female" for="female" ng-click="choose = 'female'"><i ng-class="{'label-checked' : choose == 'female'}"></i>女音</label>
+							</span>
+						</h4>  
+					</h4> 
+					<div style="margin-top: 20px;" class="voice_spd_radio_all">
+						<p style="margin-bottom: 5px;color: #424141;display: inline-block;">语速：</p>
+						<div style="display: inline;height: 10px;">
+							<div class="voice_spd">
+								<div class="voice_spd_green">
+									<div class="voice_spd_radio">
+										<div class="voice_spd_radio_mid"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="hint--right hint--rounded" data-hint="只能取整数，上限为9">
+							<input class="voice_spd_num" ng-change="soundSpd()"  ng-model="myValue_spd">
+						</div>
+						<br/>
+					</div>
+					<div style="margin-top: 20px;" class="voice_pit_radio_all">
+						<p style="margin-bottom: 5px;color: #424141;display: inline-block;">音调：</p>
+						<div style="display: inline;height: 10px;">
+							<div class="voice_pit">
+								<div class="voice_pit_green">
+									<div class="voice_pit_radio">
+										<div class="voice_pit_radio_mid"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="hint--right hint--rounded" data-hint="只能取整数，上限为9">
+							<input class="voice_pit_num" ng-change="soundPit()"  ng-model="myValue_pit">
+						</div>
+						<br/>
+					</div>
+					<div style="margin-top: 20px;" class="voice_vol_radio_all">
+						<p style="margin-bottom: 5px;color: #424141;display: inline-block;">音量：</p>
+						<div style="display: inline;height: 10px;">
+							<div class="voice_vol">
+								<div class="voice_vol_green">
+									<div class="voice_vol_radio">
+										<div class="voice_vol_radio_mid"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="hint--right hint--rounded" data-hint="只能取整数，上限为9">
+							<input class="voice_vol_num" ng-change="soundVol()"  ng-model="myValue_vol">
+						</div>
+					</div>
+					<div class="voice_ben">请输入要转换的文本：</div>
+					<textarea style="border-color: #6c0;padding:8px" class="voice_text" id="convertVal"></textarea>
+					<div class="modal-footer" style="border-top: 0px">
+						<button type="button" class="voice_onload" ng-click="downloadSound()">
+							下载
+						</button>
+						<button type="button" class="voice_play" ng-click="playConvertSound($event)">
+							播放
+						</button>
+						<button type="button" class="voice_set" ng-click="setConvertSound()">
+							设为当前页面音乐
+						</button>
+					</div>
+				</div>
+				<div class="tab-content" id="bg_contain">
+					<div class="tab-pane tab-head active">
+						<div class="tab-pane">
+							<div class="img_list">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

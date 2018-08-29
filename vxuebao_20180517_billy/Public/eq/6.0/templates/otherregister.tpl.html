@@ -1,0 +1,14 @@
+<form name="formName" novalidate class="login-form">
+	<div class="text-center">
+		<div style="position: relative; top: 0px; font-size: 15px;">第三方账号已授权</div>
+		<div style="margin-top: 15px;">欢迎您&nbsp;<code>{{otherUserInfo.nickname}}</code>&nbsp;<img ng-src="{{otherUserInfo.figureUrl}}" />，完善以下信息，就可以使用我们的服务!</div>
+	</div>
+	<div class="login_form">
+		<div class="alert alert-danger" role="alert" ng-show="regErr"> {{regErr}} </div>
+		<div class="input-wrap"> <input name="userEmail" placeholder="邮箱 " type="email" ng-model="user.email" ng-keyup="$event.keyCode == 13 ? fullfil() : null" required autofocus> </div>
+		<div class="input-wrap"> <input name="pass" placeholder="密码" type="password" ng-model="user.password" ng-keyup="$event.keyCode == 13 ? fullfil() : null" required> </div>
+		<div class="input-wrap"> <input name="repeatPass" placeholder="确认密码" type="password" ng-model="user.repeatPassword" ng-keyup="$event.keyCode == 13 ? fullfil() : null" required> </div>
+		<div class="checkbox"> <label>            <input type="checkbox" ng-model = "user.agreement"> 我同意          </label> </div>
+		<div class="login-btn btn-main" ng-click="fullfil()" ng-disabled='form.$invalid'>完&nbsp;&nbsp;善</div>
+	</div>
+</form>

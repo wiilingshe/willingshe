@@ -1,0 +1,16 @@
+<div class="modal-header" ng-show="transferScene"> <button type="button" class="close" data-dismiss="modal" aria-label="Close">        <span aria-hidden="true" ng-click="cancel()">×</span>    </button>
+	<h4 class="modal-title">转送微课</h4></div>
+<div class="modal-body" ng-show="transferScene">
+	<form class="form-horizontal">
+		<div class="form-group"> <label for="inputPassword3" class="col-sm-3 control-label">账号:</label>
+			<div class="col-sm-7"> <input type="text" class="form-control" id="inputPassword3" ng-model="model.toUser">
+				<p class="scene-gift-tips pt20"><span>*</span><em>转出后将不再拥有此微课</em></p>
+				<p class="error" ng-show="actionerror">{{actionerror}}</p>
+			</div>
+		</div>
+	</form>
+</div>
+<div class="modal-footer" ng-show="transferScene"> <a class="modal-cancle" ng-click="cancel()">取消</a> <button type="button" class="btn btn-primary" ng-click="confirm()">确认</button></div>
+<div ng-hide="transferScene" class="gift-success-tips" id="transfer_mes">
+	<p><i>您已将此微课成功转送给</i><span style="padding:0 15px">{{model.toUser}}</span></p> <a ng-click="cancel()">x</a>
+</div>

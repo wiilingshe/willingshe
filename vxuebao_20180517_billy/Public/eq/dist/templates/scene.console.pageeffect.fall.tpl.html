@@ -1,0 +1,16 @@
+<div class="effect-img" style="background-color:#ccc"> <img ng-src="{{falling.src.path}}" style="width:60px;height:60px;top:50%;margin-top:-30px;left:50%;margin-left:-30px;position: absolute;" /></div>
+<div class="effect-form">
+	<form class="form-contain" role="form">
+		<div class="form-list clearfix">
+			<lable class="form-label">环境图片：</lable>
+			<div class="form-input"> <select ng-model="falling.src" ng-options="fallingObj.name for fallingObj in fallings">                </select> </div>
+		</div>
+		<div class="form-list clearfix" style="margin-top: 10px;">
+			<lable class="form-label">环境氛围：</lable>
+			<div class="form-input">
+				<div style="line-height: 24px;font-size: 12px;"><span style="margin-right:39px;">弱</span><span style="margin-right:37px;">中</span><span>强</span></div>
+				<div style="width: 100px;" ui-slider min="1" max="3" ng-model="falling.density"></div>
+			</div>
+		</div>
+	</form>
+</div>

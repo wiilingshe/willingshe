@@ -1,0 +1,43 @@
+<!--tasks/cinemaResources/cinemaResources.wxml投放资源-->
+<submit custom="{{submitData}}"></submit>
+<view class="cinemaResources_box">
+  <view class="top">
+    <view class="topTitle">确认影院是否提供投放资源</view>
+    <view class="topSubtitle">要求：有投放资源选择，无投放资源不用选择</view>
+  </view>
+  <view class="body">
+    <view class="item">
+     <view class="itemTitie">
+      <text>喷绘</text>
+      <checkbox-group bindchange="checkboxChange" data-type="0">
+      <checkbox value="1" checked="{{data.air_brushing_is_on}}"/>
+      </checkbox-group>
+     </view>
+     <view class="line"></view>
+     <view>
+     <input type='text' class="explain" value='{{data.air_brushing_is_on_remarks}}' placeholder-class="plh" placeholder='如遇其他情况 请说明' data-type="0" bindinput='getVal'></input>
+     </view>
+    </view>
+    <view class="item">
+     <view class="itemTitie">
+      <text>抢票</text>
+      <checkbox-group bindchange="checkboxChange" data-type="1">
+      <checkbox value="2" checked="{{data.ticket_is_on}}" data-type="1" bindchange="getCheck"/>
+      </checkbox-group>
+     </view>
+     <view class="line"></view>
+     <view>
+     <input type='text' class="explain" value='{{data.ticket_remarks}}' placeholder-class="plh" placeholder='如遇其他情况 请说明' data-type="1" bindinput='getVal'></input>
+     </view>
+    </view>
+  </view>
+  <view class="remarks">
+      <view>
+        <view class="remarksTitle">其他备注</view>
+        <textarea placeholder-class="plstrye" value='{{data.schedule_remarks}}' placeholder='请输入文字' data-type="2" bindinput='getVal'></textarea> 
+      </view>
+  </view>
+  <view class="btn">
+        <view bindtap='submit'>提交任务</view>
+    </view>
+</view>

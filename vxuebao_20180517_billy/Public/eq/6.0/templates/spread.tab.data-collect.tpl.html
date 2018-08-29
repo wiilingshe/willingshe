@@ -1,0 +1,73 @@
+<div class="my-data clearfix" id="myData">
+	<!--     <div class="pl20" ng-show="!dataShowList.length">        您的微课暂时没有数据！    </div> -->
+	<div>
+		<div class="data-item" ng-show="totalItems">
+			<div><span>数据项</span>：</div>
+			<ul class="origin-ul clearfix">
+				<li ng-repeat="header in dataHeaders track by $index">
+					<div class="square table-checkbox">
+						<div class="checkbox-square" ng-class="{checked: header.selected}"> <em class="eqf-clickmore"></em> <input type="checkbox" ng-model="header.selected" ng-change="selectHeader(header,$index,header.selected)" /> </div>
+					</div> <label>{{header.title}}</label> </li>
+			</ul>
+		</div>
+		<div ng-show="dataContain && totalItems">
+			<div class="clearfix export pb20" id="collectData"> <span ng-show="branchDelete" class="data-title" ng-click="dataDelete()">删除</span>
+				<div ng-show="!showUp && branchExport" class="no-header">
+					<a class="btn btn-primary hint--left hint--rounded" ng-click="dataOutNoHeader()" data-hint="有修改表单的使用此方式，导出没有名称的数据"> <span class="export_excel eqf-download"></span> </a>
+				</div>
+				<div ng-show="showUp && branchExport" class="btn-group no-header dropdown">
+					<a class="btn btn-primary dropdown-toggle hint--left hint--rounded" data-hint="有修改表单的使用此方式，导出没有名称的数据"> <span class="export_excel eqf-download"></span> </a>
+					<div class="data-page dropdown-menu">
+						<ul>
+							<li ng-repeat="dataPageNum in dataPageNums" ng-click="dataOutNoHeaderPage(dataPageNum.start,dataPageNum.end)">{{dataPageNum.start}}-{{dataPageNum.end}}<em>页</em></li>
+						</ul>
+					</div>
+				</div>
+				<div ng-show="!showUp && branchExport">
+					<a class="btn btn-primary" ng-click="dataOutDirect()"> <span class="export_excel">导出excel</span> </a>
+				</div>
+				<div ng-show="showUp && branchExport" class="btn-group dropdown">
+					<a class="btn btn-primary dropdown-toggle"> <span class="export_excel">导出excel</span> <span class="eqf-down2"></span> </a>
+					<div class="data-page dropdown-menu">
+						<ul>
+							<li ng-repeat="dataPageNum in dataPageNums" ng-click="dataOutPage(dataPageNum.start,dataPageNum.end)">{{dataPageNum.start}}-{{dataPageNum.end}}<em>页</em></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="data" class="mb20">
+				<div class="table-list">
+					<table class="table">
+						<tr>
+							<th>
+								<div class="square table-checkbox">
+									<div class="checkbox-square" ng-class="{checked: allSelect.selected}"> <em class="eqf-clickmore"></em> <input type="checkbox" ng-model="allSelect.selected" ng-change="selectAll()" /> </div>
+								</div>
+							</th>
+							<th class="data_header" ng-style="{width: tdW}" ng-repeat="header in dataShow track by $index">{{header.title}}</th>
+						</tr>
+						<tr ng-repeat="data in dataShowList">
+							<td>
+								<div class="square table-checkbox">
+									<div class="checkbox-square" ng-class="{checked: data.selected}"> <em class="eqf-clickmore"></em> <input type="checkbox" ng-model="data.selected" ng-change="selectData(data)" /> </div>
+								</div>
+							</td>
+							<td title="{{item}}" ng-repeat="item in data track by $index">{{item}}</td>
+						</tr>
+					</table>
+					<div ng-show="totalItems > 10" class="clearfix">
+						<pagination class="fl" first-text="首页" last-text="尾页" previous-text="&lsaquo;" next-text="&rsaquo;" max-size="10" items-per-page="10" total-items="totalItems" ng-model="page.currentPage" ng-change="pageChanged(page.currentPage)" boundary-links="true"
+							rotate="true" num-pages="numPages"></pagination>
+						<div class="current_page"><span class="fl">到</span> <input type="text" ng-model="toPage" ng-keyup="$event.keyCode == 13 ? pageChanged(toPage) : null"><span class="fl">页</span> <a ng-click="pageChanged(toPage)" class="go">确定</a>
+							<!-- <span><span>当前</span>: {{page.currentPage}} / {{numPages}} <span >页</span></span> --></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="pt20" ng-show="totalItems==0">            暂无数据！        </div> -->
+		<div class="pt20" ng-show="totalItems && !dataShowList.length"> 您没有勾选数据 </div>
+		<div style="text-align:center;" class="mt20 mb20" ng-show="totalItems==0">
+			<h2 class="mb20 mt20">您的微课数据目前为空</h2>
+			<div class="mb20">进入编辑页面添加表单类组件，收集需要的数据。</div> <img ng-src="{{CLIENT_CDN}}assets/images/userdata.svg" /> </div>
+	</div>
+</div>

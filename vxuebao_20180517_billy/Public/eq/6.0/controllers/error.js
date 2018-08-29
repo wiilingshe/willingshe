@@ -1,0 +1,1 @@
+angular.module("error",[]),angular.module("error").controller("ErrorCtrl",["$rootScope","$http","$scope","$timeout","security","$window",function(r,o,e,t,l,u,n){e.PREFIX_CLIENT_HOST=PREFIX_HOST}]);

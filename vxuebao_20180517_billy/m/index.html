@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="moblieApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>微学宝</title>
+    <link rel="stylesheet" href="../m/css/styles.min.css">
+</head>
+<body class="container" ng-controller="userShowCtrl">
+<div ng-view></div>
+<script src="//cdn.bootcss.com/zepto/1.0/zepto.min.js"></script>
+<script src="//cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>
+<script src="//cdn.bootcss.com/angular.js/1.5.0/angular-route.min.js"></script>
+<script src="js/app.js"></script>
+<script type="text/javascript">
+    //获取滚动条当前的位置
+    function getScrollTop() {
+        var scrollTop = 0;
+        if (document.documentElement && document.documentElement.scrollTop) {
+            scrollTop = document.documentElement.scrollTop;
+        }
+        else if (document.body) {
+            scrollTop = document.body.scrollTop;
+        }
+        return scrollTop;
+    }
+
+    //获取当前可是范围的高度
+    function getClientHeight() {
+        var clientHeight = 0;
+        if (document.body.clientHeight && document.documentElement.clientHeight) {
+            clientHeight = Math.min(document.body.clientHeight, document.documentElement.clientHeight);
+        }
+        else {
+            clientHeight = Math.max(document.body.clientHeight, document.documentElement.clientHeight);
+        }
+        return clientHeight;
+    }
+
+    //获取文档完整的高度
+    function getScrollHeight() {
+        return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+    }
+
+    window.onscroll = function () {
+        if (getScrollTop() + getClientHeight() == getScrollHeight()) {
+//            window.getNext();
+        }
+    }
+</script>
+</body>
+</html>

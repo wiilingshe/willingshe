@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>表单制作</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style type="text/css">
+		<!--
+		#left .btn {
+			margin-top: 10px;
+			width: 100%;
+		}
+		#left .btn-yellow {
+			background-color: #FF6633;
+			color: #fff;
+		}
+#left h5 {
+	line-height: 25px;
+	margin-top: 10px;
+	font-weight: bold;
+	margin-bottom: -5px;
+}
+		-->
+    </style>
+</head>
+  <body>
+  <div class="container">
+  	<div class="row">
+		<div class="col-md-2" id="left">
+			<h5>基本组件</h5>
+			<button type="button" class="btn btn-default" id="btn" data-url='index.php?c=form&a=bt'>标题</button>
+			<button type="button" class="btn btn-default">描述</button>
+			<button type="button" class="btn btn-default">选择题</button>
+			<button type="button" class="btn btn-yellow">填空题</button>
+			<button type="button" class="btn btn-yellow">投票</button>
+			<button type="button" class="btn btn-yellow">连线题</button>
+			<button type="button" class="btn btn-yellow">问答题</button>
+			<button type="button" class="btn btn-default submit">提交</button>
+			<button type="button" class="btn btn-default">分割线</button>
+			<h5>人员信息</h5>
+			<button type="button" class="btn btn-default">姓名</button>
+			<button type="button" class="btn btn-default">部门</button>
+			<button type="button" class="btn btn-default">手机</button>
+			<button type="button" class="btn btn-default">邮箱</button>
+			<button type="button" class="btn btn-default">员工编号</button>
+			<button type="button" class="btn btn-default" id="tp1">自定义文本</button>
+		</div>
+		<div class="col-md-10" id="right">
+			<form>
+			  <div id="content"></div>
+			</form>
+		
+		</div>
+	</div>
+  </div>
+  
+  
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>
+  <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+  	$("#btn").click(
+		function(){
+			var url=$(this).data("url");
+			$('#modal').removeData("bs.modal");
+			$('#modal').modal({remote:url});
+		}
+	);
+	$("a#sub").click(
+		function(){
+		  alert(111);
+		}
+	);
+  
+  
+  
+  
+	function modalhidden(){
+		alert('提交成功');
+		$('#modal').modal('hide');
+	}
+
+	$('.submit').click(function(){
+		var ipt = 'hahaha';
+		$.ajax({
+		   type: "POST",
+		   url: "http://local.vxuebao.com/index.php?c=form&a=create",
+		   data: {"ipe":ipt},
+		   success: function(msg){
+		     alert( msg );
+   			}
+		});
+
+	})
+
+  
+  </script>
+  </body>
+</html> 

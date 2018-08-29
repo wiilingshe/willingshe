@@ -1,0 +1,15 @@
+<!--tasks/contacts/contacts.wxml-->
+<view class="contacts_box">
+  <view class="item" wx:for="{{list}}" wx:item="{{item}}" wx:key="{{index}}">
+    <view class="portrait">
+    <image src="{{item.face}}"></image>
+    </view>
+    <view class="name">
+    <text>{{item.full_name}}</text>
+    </view>
+    <view class="phone">
+    <!-- <input type='tel' value='{{item.phone}}'></input> -->
+     <text bindtap="calling" data-tel="{{item.phone}}">{{item.phone}}</text> 
+    </view>
+  </view>
+</view>

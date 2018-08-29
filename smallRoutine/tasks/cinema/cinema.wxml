@@ -1,0 +1,24 @@
+<!--tasks/cinema/cinema.wxml.-->
+<view class="cinema_box">
+  <view class="top">
+    <view class="one">
+      <view class="title">{{dataArr.c_name}}</view>
+      <view class="btn" bindtap='goCard' wx:if="{{dataArr.is_on_clock==0}}" data-type="0">点击打卡</view>
+      <view class="btn1" bindtap='goCard' wx:if="{{dataArr.is_on_clock==1}}" data-type="1">已打卡</view>
+    </view>
+    <view class='two'>
+      <image src="{{addressIcon}}"></image>
+      <text>{{dataArr.address}}</text>
+    </view>
+  </view>
+  <view class="body">
+    <view class="item" wx:for="{{arr}}" wx:key="index" wx:item="item">
+      <view class="itemTitle">{{index+1}}.{{item.title}}</view>
+      <view class="itemContent">
+        <text>{{item.content}}</text>
+        <view class="btn" wx:if="{{item.state == 0}}" id="{{index}}" bindtap='goSubmission' data-p="{{p_id}}" data-cinema="{{cinema_id}}">提交反馈</view>
+        <view class="btn1" wx:if="{{item.state == 1}}" id="{{index}}" bindtap='goSubmission' data-p="{{p_id}}" data-cinema="{{cinema_id}}">已提交</view>
+      </view>
+    </view>
+  </view>
+</view>

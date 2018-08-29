@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+        <meta charset="utf-8" />
+        <title>{$confinfo2[title]}</title>
+        <meta id="eqMobileViewport" name="viewport" content="width=320, initial-scale=1, maximum-scale=1, user-scalable=no" servergenerated="true">
+        <meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="view/css/longpage/transition.css"/>
+        <link rel="stylesheet" href="view/css/longpage/view.css"/>
+        <script> var your_demain = '<php>if(strpos("http://",C("site_url"))!==false)echo "http://"; echo rtrim(C("site_url"),"/")</php>';
+            var your_webname = '<php>echo C("site_name")</php>';
+            var logo_url = '<php>echo C("site_name")</php>';
+            var lastpagelink = '<php>echo C("lastpagelink")</php>';
+            var lastpagetext_color = '<php>echo C("lastpagetext_color")</php>';
+            var lastpagetext = '<php>echo C("lastpagetext")</php>';
+            var jubao_link = '<php>echo C("jubao_link")</php>';
+        </script>
+        <style>/*.scene_title_baner {visibility: hidden;}*/</style>  
+    
+    <!--修改开始-->
+    <link href="assets/Js/layer/skin/layer.css" rel="stylesheet">
+    <!--修改结束-->
+    <script type="text/javascript">
+        var browser=navigator.appName 
+        var b_version=navigator.appVersion 
+        var version=b_version.split(";"); 
+        var trim_Version=version[1].replace(/[ ]/g,""); 
+        if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE6.0"){ 
+            alert("您的浏览器版本为IE 6.0，请更换IE9及以上的浏览器，或者选择chrome、火狐等浏览器打开"); 
+        }else if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE7.0"){ 
+            alert("您的浏览器版本为IE 7.0，请更换IE9及以上的浏览器，或者选择chrome、火狐等浏览器打开"); 
+        }else if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE8.0"){ 
+            alert("您的浏览器版本为IE 8.0，请更换IE9及以上的浏览器，或者选择chrome、火狐等浏览器打开"); 
+        } 
+    </script>
+    <!--修改结束-->
+   <!--  <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="/Public/css/waiwan/jquery.min.js"></script>
+    <script type="text/javascript" src="/common/js/jquery.qrcode.js"></script> -->
+
+</head>
+<body>
+    <!-- container -->
+    <div id="shareImage" style="display: none;">
+        <img src="Uploads/{$confinfo2[imgsrc]}?v=20160713" />
+    </div>
+    <!-- <div id="code"style="display:none;"></div> -->
+    <div class="viewer m-img" id="page1">
+        <div id="audio_btn" class="off">
+            <div id="yinfu"></div>
+            <audio loop src="" id="media" autoplay="" preload></audio>
+        </div>
+        <div class="nr" id="con" style="  height: 100%;"></div>
+    </div>
+    <div id="user" style="display: none;">
+        <div id="userlogo">
+            <img src="view/images/default_thum.jpg" alt="用户头像">
+        </div>
+        <div id="pageinfo">
+            <h3>{$confinfo2[title]}</h3>
+            <p>{$confinfo2[desc]}</p>
+            <div>原创 ：免费</div>
+        </div>
+    </div>
+    <div id="author" style="display: none;">
+        <span class="author">作者：<i style="font-style: normal;"></i></span>
+        <span class="readit">浏览量：<i style="font-style: normal;"></i></span>
+    </div>
+
+<!-- 控制页面广告是否显示 -->
+<eq name="isad" value="0">
+    <style>
+        #scenead{display: none;}
+    </style>
+</eq>
+
+</body>
+    <!-- container -->
+    <script type="text/javascript" src="assets/Js/iscroll.js"></script>
+    <script src="assets/Js/jquery.min.js"></script>
+    <!-- <script src="assets/Js/layer/layer.js"></script>
+    <script src="assets/Js/layer/extend/layer.ext.js"></script>
+    <script type="text/javascript">
+        layer.config({
+            extend: 'extend/layer.ext.js'
+        });
+    </script> -->
+    <script >
+            (function (window, $) {
+                window.PREFIX_URL = "";
+                window.PREFIX_S1_URL = "";
+                window.PREFIX_S2_URL = "";
+                window.PREFIX_HOST = "";
+                window.PREFIX_HOST1 = "";
+                window.PREFIX_FILE_HOST = "";
+                window.CLIENT_CDN = "";
+                window.clientWidth = document.documentElement.clientWidth;
+                window.clientHeight = document.documentElement.clientHeight;
+
+            })(window, jQuery)
+                    window.jsondata = {$jsondata};
+    </script>
+    <script src="longView/require.min.js" data-main="longView/main.js"></script>
+    <!-- <script src="longView/js/view.js"></script>
+   <script type="text/javascript" src="assets/Js/APIWrapper.js"></script>
+<script type="text/javascript" src="assets/Js/SCOFunctions.js"></script> -->
+
+    <!--修改开始-->
+    
+</html>

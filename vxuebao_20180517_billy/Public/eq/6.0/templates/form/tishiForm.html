@@ -1,0 +1,30 @@
+<div class="modal-body-one">
+请确认问卷是否保存，点击取消留在<br/>此页，确认不保存退出
+</div>
+<div class="modal-body-two">
+请确认考卷是否保存，点击取消留在<br/>此页，确认不保存退出
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" style="width: 75px;height: 30px;background-color:#6c0;border-radius: 0px;line-height: 15px;border: 0px;" ng-click="commit()">确认</button>
+	<button class="btn btn-primary" style="width: 75px;height: 30px;background-color:#ff766c;border-radius: 0px;line-height: 15px;border: 0px;" ng-click="cancel()">取消</button>
+</div>
+
+<style type="text/css">
+.modal-body-two,
+.modal-body-one{
+	text-align: center;
+    font-size: 21px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+</style>
+<script type="text/javascript">
+var href = window.location.hash;
+var pathname = href.substring(7,12);
+console.log(pathname);
+if(pathname == 'blank'){
+	$('.modal-body-two').eq(0).css('display','none')
+}else if(pathname == 'tests'){
+	$('.modal-body-one').eq(0).css('display','none')
+}
+</script>

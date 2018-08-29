@@ -1,0 +1,118 @@
+@charset "utf-8";
+
+/*初始化*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+	margin:0;
+	padding:0;
+	font-family:"Microsoft YaHei","Ã¥Â¾Â®Ã¨Â½Â¯Ã©â€ºâ€¦Ã©Â»â€˜",tahoma,Arial;
+}
+table{border-collapse:collapse;border-spacing:0}
+fieldset,img{border:0}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:400}
+ol,ul{list-style:none}
+caption,th{text-align:left}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:400}
+abbr,acronym{border:0;font-variant:normal}
+sup{vertical-align:text-top}
+sub{vertical-align:text-bottom}
+input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;*font-size:100%;outline:none;}
+legend{color:#000}
+body{background:#fff;font:14px/1.5 \5FAE\8F6F\96C5\9ED1,arial,sans-serif;min-width:1200px}
+a{color:#000;text-decoration:none}
+
+.clear {
+	clear: both;
+}
+
+
+/*头部css*/
+.header-fixed{width:100%;height:54px;background-repeat: repeat; background:#fff;}
+.header{z-index:11;position:relative;width:1224px;height:50px; margin:0 auto}
+.header .logo{position:relative;width:264px;height:50px;margin-top:4px; float:left;z-index:200;}
+.header .header-nav{float:left;width:890px;height:50px;margin-left: 20px;}
+.header .nav{margin-top:16px; float:left;font-family:"Microsoft YaHei","微软雅黑",tahoma;height:50px;line-height:30px;overflow:hidden}
+.header .nav li{float:left;position:relative;font-weight: normal;}
+.header .nav li a{color:#bdbdbd;display:block;padding:0 26px;font-size:18px;font-weight:normal;outline:none;}
+.header-fixed .header .nav li a{display:block;padding:0 26px;color:#343B46;font-size:18px;font-weight:normal;outline:none;}
+.header .nav li a:hover,.header .nav li.current a{color:#6bc30d;border-bottom-width: 2px;border-bottom-style: solid;border-bottom-color: #6bc30d;}
+.header .nav li.fmcg a{color:#ef5d2a;background:url(../images/fmcg.png) no-repeat 20px center;padding-left:49px}
+.header .login{width:142px;height:50px; float:right;top:0;right:0;}
+.header .login a{display:block;width:66px;height:50px;line-height:50px; margin-top:0px; margin-right:0px;font-size:16px;color:#fff;float:left;text-align:center;}
+.header .login a.l{background:#6bc30d;}
+.header .login a:hover.l{background:#63ba01;}
+.header .login a.r{background:#343b46;}
+.header .login a:hover.r{background:#1e2b3e;}
+.wrap{margin:0 auto;width:100%;overflow:hidden;}
+.header .wrap{margin:0 auto;width:750px;overflow:hidden; float:left;}
+
+
+
+
+/*尾部css*/
+#footer {height:160px; float: left;width: 100%;background-color: #2d2c34;color: #CCCCCC;padding-top: 40px;padding-bottom: 10px;}
+.footer_top{padding-left:40px;width:1164px;height:90px;margin:0 auto;border-bottom:1px solid #d0d0d0;}
+.footer_top .t_center,.footer_top .t_left,.footer_top .t_left{float:left;margin-right:100px;}
+.footer_top .t_center div{float:left;}
+.footer_top .title{font-size:16px;margin-bottom:8px;}
+.footer_top .t_center{margin-top:30px;}
+.footer_bottom{width:1164px;margin:0 auto;padding-top:10px;}
+.footer_bottom li{float:left;margin:0 50px 0 40px;}
+
+/*app下载样式修改*/
+.header-nav .app_div{
+	
+	overflow:hidden;
+	display:none;
+}
+
+.header-nav .app_ul{
+	background-color:#fff;
+	padding:15px 20px;
+	width:480px;
+	height:178px;
+	position:absolute;
+	z-index:1000;
+	margin-left:-416px;
+	margin-top:70px;
+
+}
+
+.header-nav .app_ul img{
+	width:110px;
+	height:110px;
+
+}
+.header-nav .app_ul li{
+	float:left;
+}
+.header-nav .app_ul .inter{
+	margin:34px 0 0 25px;
+}
+
+.header-nav .app_ul .point_ico{
+	width:22px;
+	height:12px;
+	background-image: url(../../index/images/shortcut.png);
+	background-position: -142px -140px;
+	position:absolute;
+	right:111px;
+	top:-12px;
+}
+
+.header-nav .app_ul h1{
+	font-size:18px;
+	color:#66cc00;
+	line-height:30px;
+}
+
+.header-nav .app_ul li p{
+	font-size:15px;
+	color:#3f3f3f;
+	line-height:24px;
+}
+.header-nav .app_ul li h2{
+	font-size:17px;
+	line-height:40px;
+	font-weight:600;
+	color:#3f3f3f;
+}

@@ -1,0 +1,61 @@
+<!-- 跳转页面 -->
+<div>
+	<div ng-include="'/Public/eq/6.0/templates/header.tpl.html'" style="height:60px"></div>
+	<div class="container">
+		<div class="view_box">
+			<div class="view_box_top">
+				<div class="view_box_pic">
+					<img src="view/images/view_pic.png">
+				</div>
+				<div class="view_box_top_mid" style="display:inline-block">
+					<p>问卷展示：</p><p>1</p>
+					<p style="margin-left:10px;">收集数据：</p><p>0</p><br/>
+					<p>创建时间：</p><p>x x x x x x</p><br/>
+					<p>微课状态：</p><p>已发布</p>
+				</div>
+				<div class="view_box_top_right">
+					<a class="view_see" id="student_pre">
+						<div class="view_see_top">
+							<img src="../view/images/form_view_see2.png" style="margin: 17px;padding-top: 3px;">
+						</div>
+						<div style="padding-left:8px">预览微课</div>
+					</a>
+					<div class="view_edit" ng-click="editForm()" id="student_pre_edit">
+						<div class="view_edit_top">
+							<img src="../view/images/form_view_edit2.png" style="margin: 17px;">
+						</div>
+						<a style="padding-left:8px">编辑微课</a>
+					</div>
+					<div class="view_export"  id="form_export" style="display:none">
+						<div class="view_export_top">
+							<img src="../view/images/form_view_exoprt2.png" style="margin: 15px;padding-left: 4px;">
+						</div>
+						<a style="padding-left:8px">导出微课</a>
+					</div>
+				</div>
+			</div>
+			<div style="padding-left:45px;padding-right:45px;">
+				<hr style="border:none;border-top:1px solid #ddd;height:1px;">
+			</div>
+			<div class="view_box_buttom">
+				<div>问卷地址分享</div>
+				<div style="margin-top: 15px;">
+					<!-- <input style="width:369px;height:32px;" id="form_url" disabled="disabled"> -->
+					<textarea style="width:369px;height:32px;line-height:29px" id="form_url"></textarea>
+					<button class="form_url" ng-click="copyUrl()">复制网址</button>
+				</div>
+				<div style="margin-top:30px">
+					<div style="width:180px;height:180px;border:1px solid #6c0; padding-top:10px">
+						<div id="form_code"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'"></div>
+</div>
+<style type="text/css">
+body{
+	background-color: #f5f8ed;
+}
+</style>

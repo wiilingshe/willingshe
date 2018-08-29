@@ -1,0 +1,14 @@
+/* user/assessment/assessment.wxss */
+@import "../../utils/wxParse/wxParse.wxss";
+.assessBox{
+	font-size: 28rpx;
+	width: 690rpx;
+	padding: 20rpx 30rpx 0;
+	height: calc(100vh - 20rpx);
+}
+.wxParse-p{
+	width: 690rpx;
+}
+.wxParse-p image{
+	width: 100%!important;
+}

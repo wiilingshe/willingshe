@@ -1,0 +1,101 @@
+<div class="modal-header no-line" id="ppt_header">
+	<button type="button" class="n_close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">        
+	<!-- 	<span aria-hidden="true"></span> -->
+		<img aria-hidden="true" src="/assets/images/re-design/bg_close.png" />   
+	</button> 
+	<h4 class="modal-title"><i></i>图片导入 
+		<a class="help hint--bottom hint--rounded" data-hint="点击查看图片导入说明教程" href="http://bbs.vxuebao.com/forum.php?mod=viewthread&tid=113&extra=page%3D1"><span class="icon iconfont icon-wenhao question"></span></a>
+	</h4> 
+</div>
+<div class="dialog-contain" id="ppt_content">
+	<div class="dialog-content">
+		<div class="row">
+			<div class="col-sm-2 hint--top hint--rounded" data-hint="大小不超过3M，支持格式：jpg、png、gif、jpeg">
+				<div class="ppt-uploader">
+					<span class="icon iconfont icon-shangchuan2 selctPPT"></span>
+					<label name="uploadPPT" for="uploadPPT" class="selection">选择本地图片</label>
+					<input type="file" nv-file-select="" uploader="uploader" options multiple class="uploadPPT" filters="imageFilter" id="uploadPPT" style="display: none;"> 
+				</div>
+			</div>
+			<div class="col-sm-10">
+				<div class="btn-group">
+					<label ng-repeat="value in vm.values" ng-class="{btn: true, 'btn-default': true, active: value.way == vm.selection.way}" >
+						<input type="radio" class="hidden" name="importWay" ng-model="vm.selection" ng-value="value" ng-change="vm.change($index)"/>{{value.value}}
+					</label>
+				</div>
+				<div class="ppt-uploaders">
+					<button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+						<span class="glyphicon glyphicon-upload"></span> 上传所有
+					</button>
+					<button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
+						<span class="glyphicon glyphicon-ban-circle"></span> 取消所有
+					</button>
+					<button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+						<span class="glyphicon glyphicon-trash"></span> 删除所有
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row upload-info">
+		<div class="row">
+			<div class="allProgress">
+				<p class="title">所有图片上传进度:</p>
+				<div class="progress" style="">
+					<div class="progress-bar" ng-style="{'width': uploader.progress + '%'}"></div>
+				</div>
+			</div>
+		</div>
+		<div class="table">
+			<div class="thead">
+				<ul class="thead-lists">
+					<li class="name">名称</li>
+					<li class="size" ng-show="uploader.isHTML5">大小</li>
+					<li class="process" ng-show="uploader.isHTML5">上传进度</li>
+					<li class="status">状态</li>
+					<li class="operation">操作</li>
+				</ul>
+			</div>
+			<div class="tbody">
+				<ul ng-repeat="item in uploader.queue">
+					<li>
+						<span ng-bind="item.file.name"></span>
+						<div ng-show="uploader.isHTML5"></div>
+					</li>
+					<li ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:3 }} MB</li>
+					<li ng-show="uploader.isHTML5">
+						<div class="progress">
+							<div class="progress-bar" ng-style="{'width': item.progress + '%'}"></div>
+						</div>
+					</li>
+					<li class="text-center">
+						<span ng-show="item.isSuccess" >已上传</span>
+						<span ng-show="!item.isUploading && !item.isSuccess">未上传</span>
+						<span ng-show="item.isUploading">正在上传</span>
+					</li>
+					<li nowrap>
+						<button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+							<span class="glyphicon glyphicon-upload">上传</span> 
+						</button>
+						<button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+							<span class="glyphicon glyphicon-ban-circle"></span> 取消
+						</button>
+						<button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+							<span class="glyphicon glyphicon-trash"></span> 删除
+						</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<div class="modal-footer" id="ppt_footer">
+	<div class="ppt-show">
+		<p class="amount">共导入: <span ng-bind="uploader.queue.length"></span><span>张</span></p>
+	</div> 
+	<div class="ppt-btn">
+		<a class="modal-submit" ng-click="submitImages()">保存</a>
+		<a class="modal-cancle" ng-click="cancel()">关闭</a>
+	</div>
+</div>

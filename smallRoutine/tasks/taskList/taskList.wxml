@@ -1,0 +1,50 @@
+<!--tasks/taskList/taskList.wxml-->
+<view class="taskList_box">
+  <view class="top">
+    <view class="topItem">
+        <view>走访进度</view>
+        <view>{{topData.visitNum}}/{{topData.cinemaNum}}</view>
+    </view>
+    <view class="topItem">
+        <view>预排片</view>
+        <view>{{topData.claim_start}}%-{{topData.claim_end}}%</view>
+    </view>
+    <view class="topItem">
+        <view>发行时间</view>
+        <view>还有{{topData.day}}天</view>
+    </view>
+    <view class="topItem">
+        <view>发行人</view>
+        <view>{{topData.num}}人</view>
+    </view>
+  </view>
+  <view class="search">
+    <view class="left" bindtap='isShow'>
+      <text>{{cinemaText}}</text>
+      <image src="{{arrowIcon}}"></image>
+    </view>
+    <view class="right">
+      <view class="phcolor" bindtap="goSearch">搜索影院</view>
+      <image src="{{searchIcon}}" bindtap="goSearch"></image>
+    </view>
+    <view class='cinemaStatus' wx:if="{{isCinema}}">
+      <view style='color:{{typeNo==0?"#FFA148":null}}' bindtap='whole' data-type='0'>全部影院</view>
+      <view style='color:{{typeNo==2?"#FFA148":null}}' bindtap='whole' data-type='2'>已完成</view>
+      <view style='color:{{typeNo==1?"#FFA148":null}}' bindtap='whole' data-type='1'>未完成</view>
+    </view>
+  </view>
+  <view class="nothing" wx:if="{{nothing}}">暂无数据~</view>
+  <view class="body">
+   <scroll-view scroll-y="false" style="height: calc(100vh - 281rpx);" bindscrolltolower="lower" scroll-with-animation="true">
+      <view class="item" bindtap='goCinema'wx:for="{{list}}" wx:item="{{item}}" wx:key="{{index}}" data-cinema="{{item.cinema_id}}" data-p="{{item.p_id}}">
+         <view class="titleBox">
+          <view class="title">{{item.c_name}}</view>
+          <view class="distance"><text>{{item.km}}km</text><image src='{{distanceIcon}}'></image></view>
+         </view>
+         <view class="address">{{item.address}}</view>     
+         <view class="progress"><progress percent="{{item.completion_rate}}" show-info color="#FFA148" /></view>       
+      </view>
+       </scroll-view>
+  </view>
+  <!-- <map id="map" scale="18" show-location style='display:none'></map> -->
+</view>

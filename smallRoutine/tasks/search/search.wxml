@@ -1,0 +1,23 @@
+<!--tasks/search/search.wxml-->
+<view class="search_box">
+  <view class="search">
+    <view class="left">
+      <input type="text" placeholder='搜索影院' value='{{searchinput}}' placeholder-class="phcolor"  focus="{{focus}}" bindinput="inputVal" bindconfirm="goData"/>
+      <image src="{{searchIcon}}" bindtap="goSearch"></image>
+    </view>
+    <view class="right" bindtap='cancel'>取消</view>
+  </view>
+  <view class="nothing" wx:if="{{nothing}}">暂无数据~</view>
+  <view class="body">
+   <scroll-view scroll-y style="height: calc(100vh - 164rpx);" bindscrolltolower="lower">
+      <view class="item" bindtap='goCinema'wx:for="{{list}}" wx:item="{{item}}" wx:key="{{index}}" data-cinema="{{item.cinema_id}}" data-p="{{item.p_id}}">
+         <view class="titleBox">
+          <view class="title">{{item.c_name}}</view>
+          <view class="distance"><text>{{item.km}}km</text><image src='{{distanceIcon}}'></image></view>
+         </view>
+         <view class="address">{{item.address}}</view>     
+         <view class="progress"><progress percent="{{item.completion_rate}}" show-info color="#FFA148" /></view>       
+      </view>
+       </scroll-view>
+  </view>
+</view>

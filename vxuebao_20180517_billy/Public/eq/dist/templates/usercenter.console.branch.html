@@ -1,0 +1,62 @@
+<div class="modal-header">
+	<a class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()"> <span aria-hidden="true">×</span> </a>
+	<h4 class="modal-title">添加子账号</h4></div>
+<div class="modal-body">
+	<form class="form-horizontal" role="form">
+		<div class="form-group clearfix"> <label class="control-label col-sm-3">分账号</label>
+			<div class="col-sm-7"> <input type="text" class="form-control" ng-model="branch.loginName" placeholder="请设置用户名/邮箱" ng-readonly="originData" ng-class="{error: emailFormatError}" ng-blur="checkEmailFormat(branch)" />
+				<p class="error" ng-show="emailFormatError">{{emailFormatError}}</p>
+			</div>
+		</div>
+		<div class="form-group"> <label class="control-label col-sm-3">账号密码</label>
+			<div class="col-sm-7">
+				<div class="form-control">默认密码为vxuebao</div>
+			</div>
+			<div class="col-sm-2 tip">
+				<a ng-show="resetDefalt" ng-click="openResetModal(branch);"> <span class="enable">重置</span> </a>
+				<a ng-show="!resetDefalt" ng-click="openResetModal(branch);"> <span class="disable">重置</span> </a>
+			</div>
+		</div>
+		<div class="form-group"> <label class="control-label col-sm-3">用户名</label>
+			<div class="col-sm-7"> <input type="text" class="form-control" ng-model="branch.name" placeholder="请填写用户名" ng-class="{error: nameFormatErr}" ng-blur="checkNameFormat(branch)" />
+				<p class="error" ng-show="nameFormatErr">{{nameFormatErr}}</p>
+			</div>
+		</div>
+		<div class="form-group"> <label class="control-label col-sm-3">部门</label>
+			<div class="col-sm-7">
+				<eqx-select class="select-contain border-width select-base" model="branch.dept">
+					<eqx-select-option value="null">全部</eqx-select-option>
+					<eqx-select-option value="dept" ng-repeat="dept in depts">{{dept.name}}</eqx-select-option>
+				</eqx-select>
+			</div>
+			<div class="col-sm-2 tip" ng-show="!showAddSec" style="padding-top: 10px;">
+				<a ng-click="showAddSec = true;"> <span class="enable">添加部门</span> </a>
+			</div>
+		</div>
+		<div class="form-group" ng-show="showAddSec">
+			<div class="col-sm-offset-3 col-sm-7"> <input class="form-control" type="text" ng-model="dept.name" placeholder="输入部门名称" ng-class="{error: deptFormatErr}" ng-blur="checkDeptFormat(dept)" />
+				<p class="error" ng-show="deptFormatError">{{deptFormatError}}</p>
+			</div>
+			<div class="col-sm-2 tip">
+				<a ng-click="addDept();"> <span class="enable">添加                    </span> </a>
+				<a ng-click="showAddSec = false;"> <span class="fail">取消</span> </a>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-3 col-sm-7">
+				<p class="error" ng-show="serverError">{{serverError}}</p>
+			</div>
+		</div>
+		<div class="form-group"> <label class="col-sm-3 text-right">账号权限</label>
+			<div class="col-sm-7">
+				<div class="square">
+					<div class="checkbox-square" ng-class="{checked: branchPermi.edit}"> <em class="eqf-clickmore"></em> <input type="checkbox" ng-model="branchPermi.edit" /> </div> <label>允许编辑数据内容</label></div>
+				<div class="square one-line">
+					<div class="checkbox-square" ng-class="{checked: branchPermi.delete}"> <em class="eqf-clickmore"></em> <input type="checkbox" ng-model="branchPermi.delete" /> </div> <label>允许删除数据内容</label> </div>
+				<div class="square one-line">
+					<div class="checkbox-square" ng-class="{checked: branchPermi.export}"> <em class="eqf-clickmore"></em> <input type="checkbox" ng-model="branchPermi.export" /> </div> <label>允许导出数据内容</label> </div>
+			</div>
+		</div>
+	</form>
+</div>
+<div class="modal-footer"> <a class="modal-cancle" ng-click="cancel()">取消</a> <a class="btn btn-primary" ng-click="confirm()">保存</a></div>

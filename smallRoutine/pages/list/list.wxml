@@ -1,0 +1,73 @@
+<view class="top_body">
+	<view class="top_scroll" bind:touchstart="touchStartItem" bind:touchmove="touchMoveItem" bind:touchend="touchEndItem" animation="{{animationData3}}">
+		<block wx:for="{{list3}}" wx:key="">
+			<view class="top_item">
+				<image src="{{item.bill_pic}}"></image>
+				<view class="state {{item.issue_status=='发行中'?'pink':''}} {{item.issue_status=='申请中'?'orange':''}} {{item.issue_status=='已结束'?'grey':''}}" >{{item.issue_status}}</view>
+			</view>
+		</block>
+	</view>
+</view>
+<view class="tab">
+	<view bindtap="item1" style="color: {{tabitem==0?'#FF4D63':''}};">预排片量</view>
+	<view bindtap="item2" style="color: {{tabitem==1?'#FF4D63':''}};">今日走访量</view>
+	<view class="line" animation="{{animationData}}"></view>
+	<image class="up_triangle" src="{{upTriangle}}"></image>
+</view>
+<view class="content" bind:touchstart="touchstartitem" bind:touchend="touchenditem">
+	<scroll-view class="list1" scroll-y="true" bindscrolltolower="more1" animation="{{animationData1}}" scroll-with-animation="true" scroll-top="{{scrollTop}}">
+		<view class="nodata" wx:if="{{list1.length==0}}">
+			<image src="{{img1}}"/>
+			<view>暂无内容</view>
+		</view>
+		<view class="item" wx:for="{{list1}}" wx:key="" wx:if="{{list1.length!=0}}">
+			<view class="item_left">
+				<view class="item_left_left" wx:if="{{index==0}}">
+					<image src="https://issuer.oopca.com/img/index/List_icon1@2x.png"></image>
+					<text>{{index+1}}</text>
+				</view>
+				<view class="item_left_left" wx:if="{{index==1}}">
+					<image src="https://issuer.oopca.com/img/index/List_icon2@2x.png"></image>
+					<text>{{index+1}}</text>
+				</view>
+				<view class="item_left_left" wx:if="{{index==2}}">
+					<image src="https://issuer.oopca.com/img/index/List_icon3@2x.png"></image>
+					<text>{{index+1}}</text>
+				</view>
+				<view class="item_left_left" wx:if="{{index>2}}">
+					<text>{{index+1}}</text>
+				</view>
+				<view class="item_left_city">{{item.city_name}}</view>
+			</view>
+			<view class="item_right">{{item.claim_start}}%-{{item.claim_end}}%</view>
+		</view>
+	</scroll-view>
+	<scroll-view class="list1" scroll-y="true" bindscrolltolower="more2" animation="{{animationData1}}"  scroll-with-animation="true" scroll-top="{{scrollTop2}}">
+		<view class="nodata" wx:if="{{list2.length==0}}">
+			<image src="{{img1}}"/>
+			<view>暂无内容</view>
+		</view>
+		<view class="item" wx:for="{{list2}}" wx:key="" wx:if="{{list2.length!=0}}">
+			<view class="item_left">
+				<view class="item_left_left" wx:if="{{index==0}}">
+					<image src="https://issuer.oopca.com/img/index/List_icon1@2x.png"></image>
+					<text>{{index+1}}</text>
+				</view>
+				<view class="item_left_left" wx:if="{{index==1}}">
+					<image src="https://issuer.oopca.com/img/index/List_icon2@2x.png"></image>
+					<text>{{index+1}}</text>
+				</view>
+				<view class="item_left_left"  wx:if="{{index==2}}">
+					<image src="https://issuer.oopca.com/img/index/List_icon3@2x.png"></image>
+					<text>{{index+1}}</text>
+				</view>
+				<view class="item_left_left"  wx:if="{{index>2}}">
+					<text>{{index+1}}</text>
+				</view>
+				<image class="tou" src="{{item.face}}"></image>
+				<view class="item_left_city">{{item.full_name}}</view>
+			</view>
+			<view class="item_right">{{item.num}}家</view>
+		</view>
+	</scroll-view>
+</view>

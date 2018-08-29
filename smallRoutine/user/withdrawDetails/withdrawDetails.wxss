@@ -1,0 +1,58 @@
+/* user/withdrawDetails/withdrawDetails.wxss */
+.text-c{
+	text-align: center;
+}
+.withdrawDetBox{
+	font-size: 28rpx;
+	width: 100vw;
+}
+.body{
+	width: 100%;
+	height: 100vh;
+}
+.containers{
+	width: 100%;
+	height: 150rpx;
+	background: #fff;
+}
+.rowsList{
+	height: 150rpx;
+	width: 690rpx;
+	margin: 0 auto;
+	display: flex;
+	flex-direction:row;
+	justify-content:space-between;
+}
+.rows{
+	height: 150rpx;
+}
+.right{
+	line-height: 150rpx;
+	color: #FFA148;
+}
+.titles,.times{
+	height: 75rpx;
+}
+.titles{
+	color: #333;
+	line-height: 100rpx;
+}
+.times{
+	color: #666;
+	line-height: 40rpx;
+}
+.nodata{
+	width: 100%;
+}
+.nodata>image{
+  width: 256rpx;
+  height: 170rpx;
+  margin-left: 248rpx;
+  margin-top: 420rpx;
+}
+.noMore{
+	color: #CCC;
+	width: 100vw;
+	text-align: center;
+	height: 60rpx;
+}

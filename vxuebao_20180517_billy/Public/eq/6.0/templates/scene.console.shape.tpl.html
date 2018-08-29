@@ -1,0 +1,30 @@
+<div class="modal-header no-line" id="shape_header"> 
+	<button type="button" class="n_close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">        
+	<!-- 	<span aria-hidden="true"></span> -->
+		<img aria-hidden="true" src="/assets/images/re-design/bg_close.png" />   
+	</button> 
+	<h4 class="modal-title"><i></i>形状组件
+		<span class="action">单击使用</span>
+	</h4>
+</div>
+<div class="dialog-contain " id="shape_content">
+	<div class="dialog-content bg_console clearfix" style="background-color:#fff;">
+		<div class="svg-panel" render-shape-element>
+			<ul></ul>
+		</div>
+	</div>
+</div>
+<div class="modal-footer no-line" id="shape_footer">
+	<div class="pagination_container">
+		<pagination style="float: left" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="首页" last-text="尾页" max-size="5" items-per-page="pageSize" total-items="totalItems" ng-model="$parent.currentPage" boundary-links="true" rotate="true" num-pages="numPages"></pagination>
+		<div class="current_page">
+			<span class="fl">到</span> 
+			<input type="text" ng-model="$parent.toPage" ng-keyup="$event.keyCode == 13 ? pageChanged($parent.toPage) : null">
+			<span class="fl">页</span> 
+			<a ng-click="pageChanged($parent.toPage)" class="go">确定</a>
+			<!--             <span><span>当前:</span> {{currentPage}} / {{numPages}} <span>页</span></span> -->
+		</div>
+	</div> 
+	<!-- <a class="modal-cancle" ng-click="cancel()">取消</a> 
+	<a class="btn btn-primary" ng-click="confirm()">确定</a> -->
+</div>

@@ -1,0 +1,5 @@
+<view class="content">
+	<image src="https://issuer.oopca.com/img/index/log%20in_success@2x.png"></image>
+	<view class="title">提交成功！</view>
+	<view class="tip">我们会在两天内完成审核！</view>
+</view>

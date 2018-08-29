@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "海豚发行",
+  "backgroundTextStyle": "dark",
+  "navigationBarBackgroundColor": "#FF4D63",
+  "backgroundColor": "#fff",
+  "navigationBarTextStyle": "fff",
+  "disableScroll": false,
+  "enablePullDownRefresh": true
+}

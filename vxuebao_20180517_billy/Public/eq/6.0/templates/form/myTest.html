@@ -1,0 +1,52 @@
+<!-- 考场管理 -->
+<div ng-include="'/Public/eq/6.0/templates/header.tpl.html'" style="height:60px"></div>
+<div class="container" style="background-color: #fff;padding-left: 50px;padding-right: 50px;padding-top: 30px;margin-top:30px;padding-bottom: 30px;margin-bottom: 127px;">
+<div class="row">
+	<div class="all_title" style="margin-bottom: 30px;">
+		<p>考场管理</p>
+		<div id="testId" style="display:none"></div>
+	</div>
+<div id="my_form">
+	<div class="col-md-3">序号</div>
+	<div class="col-md-4">考场名称</div>
+	<div class="col-md-5">操作</div>
+</div>
+<div ng-repeat="list in testLists" class="repeat_count">
+	<div>
+		<div class="col-md-3 formFid" style="display:none">{{list.id}}</div>
+		<div class="col-md-3 formNum">{{list.myTest_nums}}</div>
+		<div class="col-md-4 formName">{{list.title}}</div>
+		<div class="col-md-5 formEdit">
+			<button ng-click="editTest($event)" class="edit_sub">编辑</button>
+			<button ng-click="preview($event)" class="edit_sub">预览</button>
+			<button ng-click="details($event)" class="edit_sub">详情</button>
+			<button ng-click="export($event)" class="edit_sub">导出成绩单</button>
+			<button ng-click="countTest($event)" class="edit_sub">成绩统计</button>
+			<button ng-click="checkQuestion($event)" class="edit_sub">主观题批改</button>
+			<button ng-click="delete($event)" class="del_sub">删除</button>
+		</div>
+	</div>
+</div>
+</div>
+<div style="float:right;margin-top: 30px;margin-bottom: 20px;" class="page_tpl">
+	<div class="pageNo" style="display:none">1</div>
+	<button class="form_page" style="margin-right:5px;" ng-click="firstPage($event)">首页</button>
+	<button class="form_page" style="margin-right:5px;" ng-click="prePage($event)"><</button>
+	<button ng-repeat="pageCount in pageCounts" ng-click="toPage($event)" class="form_page" class="repeat_page">{{pageCount}}</button>
+	<button class="form_page" style="margin-left:5px;" ng-click="nextPage($event)">></button>
+	<button class="form_page" style="margin-left:5px;" ng-click="weiPage($event)">尾页</button>
+	<span class="fl" style="line-height:36px;margin-left:10px;margin-right:10px">到</span><input type="text" class="form_page" value="1"><span class="fl" style="line-height:36px;margin-left:10px;margin-right:10px">页</span><button class="form_page" ng-click="dingPage($event)">确定</button>
+</div>
+</div>
+<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'" style="margin-top: 30px;position: fixed;bottom: 0px;width: 100%;"></div>
+<style type="text/css">
+body{
+	background-color: #f5f8ed;
+}
+.form_green_myTest{
+	background-color: #63ba01;
+}
+span.form_green_create_three{
+	color: #fff;
+}
+</style>

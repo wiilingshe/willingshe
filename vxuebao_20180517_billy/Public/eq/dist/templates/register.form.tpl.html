@@ -1,0 +1,38 @@
+<div class="login-form-section">
+	<div class="login-content">
+		<form name="regForm" novalidate>
+			<div class="section-title">
+				<h3>注册</h3>
+				<a class="bbs-help-tip" id="registerHelp" target="_blank" href="http://bbs.e.wesambo.com/forum.php?mod=viewthread&tid=1903&extra="> </a>
+			</div>
+			<div class="textbox-wrap">
+				<div class="input-group"> <span class="input-group-addon "><i class="fa fa-user"></i></span> <input class="form-control" id="registerName" name="userEmail" placeholder="请输入邮箱" type="text" ng-model="user.email" ng-keyup="$event.keyCode == 13 ? register() : null" ng-blur="checkUsername()"
+						required autofocus add-class /> <span ng-show="usernameError" class="error_text">            {{usernameError}}          </span> </div>
+			</div>
+			<div class="textbox-wrap">
+				<div class="input-group"> <span class="input-group-addon "><i class="fa fa-key"></i></span> <input class="form-control" id="password" name="pass" placeholder="密码6~16个字符(英文字母或数字 区分大小写)" type="password" ng-model="user.password" ng-keyup="$event.keyCode == 13 ? register() : null"
+						ng-blur="checkPassword()" required add-class/> <span ng-show="passError" class="error_text">            {{passError}}          </span> </div>
+			</div>
+			<div class="textbox-wrap">
+				<div class="input-group"> <span class="input-group-addon "><i class="fa fa-key"></i></span> <input class="form-control" id="confirmPassword" name="repeatPass" placeholder="确认密码" type="password" ng-model="user.repeatPassword" ng-keyup="$event.keyCode == 13 ? register() : null"
+						ng-blur="checkRepeatPassword()" required add-class/> <span ng-show="rPassError" class="error_text">            {{rPassError}}          </span> </div>
+			</div>
+			<div class="login-form-action clearfix">
+				<div class="checkbox pull-left">
+					<div class="custom-checkbox">
+						<div class="icheckbox_square-blue" ng-class="{checked: user.agreement == true, hover: user.agreement == false && hovered == true}"> <input id="agreeArgument" class="check-box" type="checkbox" ng-mouseenter="hovered = true;" ng-mouseleave="hovered = false;" ng-model="user.agreement" name="iCheck"> </div>
+					</div> <span class="checkbox-text pull-left">&nbsp;我同意</span> </div>
+				<div class="checkbox pull-right"> <a ng-click="openLogin()" id="havaAccount"><ins>已有账户?</ins></a> </div>
+			</div>
+			<div class="login-form-action clearfix"> <button type="submit" id="registerBtn" ng-click="register()" class="btn btn-success pull-left btn-main"><span>注册</span></button> <button type="button" id="loginBtn" ng-click="openLogin()" class="btn btn-success pull-right btn-grey0"><span>登录</span>        </a></button>				</div>
+			<div class="login-form-action clearfix third-party" style="line-height:30px;"> <span>第三方账号登录</span> <a id="wechatLoginBtn" ng-click="openThirdPatyWindow('weixin')" class="wx_login"><span class="wx_title"></span></a> <a id="qqLoginBtn" ng-click="openThirdPatyWindow('qq')" class="qq_login"><span class="qq_title"></span></a>
+				<!-- <a ng-href="{{weiboUrl}}" class="weibo_login"><span class="weibo_title"></span></a> --></div>
+			<div class="login-form-tip">
+				<h6>为了获得更好的使用，建议使用谷歌浏览器（chrome）、360浏览器、IE11浏览器。</h6> </div>
+		</form>
+	</div>
+</div>
+
+
+<!--var e = '<div class = "login-form-section">  <div class = "login-content">    <form name="regForm" novalidate>      <div class = "section-title">        <h3 translate="register.TITLE">注册</h3>        <a class="bbs-help-tip" id="registerHelp" target="_blank" href="http://bbs.e.wesambo.com/forum.php?mod=viewthread&tid=1903&extra=">          </a>      </div>      <div class="textbox-wrap">        <div class="input-group">          <span class="input-group-addon "><i class="fa fa-user"></i></span>          <input class = "form-control" id = "registerName" name="userEmail" placeholder="{{'register.ACCOUNT' | translate}}" type="text" ng-model="user.email" ng-keyup="$event.keyCode == 13 ? register() : null" ng-blur="checkUsername()" required autofocus add-class />          <span ng-show="usernameError" class="error_text">            {{usernameError}}          </span>        </div>      </div>      <div class="textbox-wrap">        <div class="input-group">          <span class="input-group-addon "><i class="fa fa-key"></i></span>          <input class = "form-control" id="password" name="pass" placeholder="{{'register.PASS_PLACEHOLDER' | translate}}" type="password" ng-model="user.password" ng-keyup="$event.keyCode == 13 ? register() : null" ng-blur="checkPassword()"  required add-class/>          <span ng-show="passError" class="error_text">            {{passError}}          </span>        </div>      </div>      <div class="textbox-wrap">        <div class="input-group">          <span class="input-group-addon "><i class="fa fa-key"></i></span>          <input class = "form-control" id="confirmPassword" name="repeatPass" placeholder="{{'register.CONFIRM_PLACEHOLDER' | translate}}" type="password" ng-model="user.repeatPassword" ng-keyup="$event.keyCode == 13 ? register() : null" ng-blur="checkRepeatPassword()" required add-class/>          <span ng-show="rPassError" class="error_text">            {{rPassError}}          </span>        </div>      </div>      <div class="login-form-action clearfix">        <div class="checkbox pull-left">          <div class="custom-checkbox">            <div class="icheckbox_square-blue" ng-class = "{checked: user.agreement == true, hover: user.agreement == false && hovered == true}">              <input id="agreeArgument" class="check-box" type="checkbox" ng-mouseenter = "hovered = true;" ng-mouseleave = "hovered = false;" ng-model = "user.agreement" name="iCheck">            </div>          </div>          <span class="checkbox-text pull-left" translate="register.AGGREMENT">&nbsp;我已阅读并同意<a href="#/agreement" target = "_blank"><span translate="register.PROPOSAL">《微学宝用户注册协议》</span></a></span>        </div>        <div class = "checkbox pull-right">          <a ng-click = "openLogin()" id="havaAccount"><ins translate="register.HAS_ACCOUNT">已有账户?</ins></a>        </div>      </div>      <div class = "login-form-action clearfix">        <button type="submit" id="registerBtn" ng-click="register()" class="btn btn-success pull-left btn-main"><span translate="register.REGISTER_ACTION">注册</span></button>        <button type="button" id="loginBtn" ng-click="openLogin()" class="btn btn-success pull-right btn-grey0"><span translate="register.LOGIN_ACTION">登录</span>        </a></button>      </div>      <div class="login-form-action clearfix third-party" style="line-height:30px;">        <span translate="register.THIRDPARTY_LOGIN">第三方账号登录</span>        <a id="wechatLoginBtn" ng-click="openThirdPatyWindow('weixin')" class="wx_login"><span class="wx_title"></span></a>        <a id="qqLoginBtn" ng-click="openThirdPatyWindow('qq')" class="qq_login"><span class="qq_title"></span></a>        <!-- <a ng-href="{{weiboUrl}}" class="weibo_login"><span class="weibo_title"></span></a>     </div>      <div class = "login-form-tip">        <h6 translate="register.BROWSER_TIP">为了获得更好的使用，建议使用谷歌浏览器（chrome）、360浏览器、IE11浏览器。</h6>      </div>    </form>  </div></div>; -->
+	<!--0 == IS_OPEN_REG && (e = '<div class = "login-form-section"><img src="/assets/close_reg.jpg"></div>'), n.put("security/register/register.tpl.html", e)-->

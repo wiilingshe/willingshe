@@ -1,0 +1,85 @@
+<div>
+	<div ng-include="'/Public/eq/6.0/templates/header.tpl.html'"></div>
+	<div class="form_main">
+		<div class="container">
+	  	<div class="row" style="width:1165px;">
+			<div class="col-md-2 col-xs-2" id="left">
+				<button class="btn btn-lg btn_title" style="cursor:Default"><p style="margin-bottom:0px;padding-top: 3px;padding-bottom: 3px;font-size: 15px;">基本组件</p></button>
+				<button type="button" class="btn btn-default btn-lg"  id="btn" data-url='' ng-click="createTitle()"><p style="margin-bottom:0px;padding-top: 3px;padding-bottom: 3px;font-size: 15px;">标题</p></button>
+				<button type="button" class="btn btn-default btn-lg"  data-url='' ng-click="createRadioButtonList(3,1)"><p style="margin-bottom:0px;padding-top: 3px;padding-bottom: 3px;font-size: 15px;">单选题</p></button>
+				<button type="button" class="btn btn-default btn-lg"  data-url='' ng-click="createRadioButtonList(4,1)"><p style="margin-bottom:0px;padding-top: 3px;padding-bottom: 3px;font-size: 15px;">多选题</p></button>
+				<button type="button" class="btn btn-default btn-lg"   data-url='' ng-click="createWrite()"><p style="margin-bottom:0px;padding-top: 3px;padding-bottom: 3px;font-size: 15px;">填空题</p></button>
+				<button type="button" class="btn btn-default btn-lg"  data-url='' ng-click="createVote()"><p style="margin-bottom:0px;padding-top: 3px;padding-bottom: 3px;font-size: 15px;">投票</p></button>
+				<button type="button" class="btn btn-default btn-lg"  data-url='' ><p style="margin-bottom:0px;padding-top: 3px;padding-bottom: 3px;font-size: 15px;">连线题</p></button>
+				<button type="button" class="btn btn-default btn-lg"  data-url='' ng-click="createAsk()"><p style="margin-bottom:0px;padding-top: 3px;padding-bottom: 3px;font-size: 15px;">问答题</p></button>
+				<!-- <button type="button" class="btn btn-default sub btn-lg" ng-click="createSubmit()"><p style="margin-bottom:0px;padding-top: 3px;padding-bottom: 3px;font-size: 15px;">提交</p></button>
+		
+				<button type="button" class="btn btn-default btn-lg" data-url=''><p style="margin-bottom:0px;padding-top: 3px;padding-bottom: 3px;font-size: 15px;">分割线</p></button> -->
+		
+				<button type="button" class="btn btn-default btn-lg"><p style="margin-bottom:0px;padding-top: 3px;padding-bottom: 3px;font-size: 15px;">人员信息</p></button>
+				<button type="button" class="btn btn-default btn-lg" data-url='' ng-click="createName()"><p style="margin-bottom:0px;padding-top: 3px;padding-bottom: 3px;font-size: 15px;">姓名</p></button>
+				<button type="button" class="btn btn-default btn-lg" data-url='' ng-click="createDepartment()"><p style="margin-bottom:0px;padding-top: 3px;padding-bottom: 3px;font-size: 15px;">部门</p></button>
+				<button type="button" class="btn btn-default btn-lg" data-url='' ng-click="createMobile()"><p style="margin-bottom:0px;padding-top: 3px;padding-bottom: 3px;font-size: 15px;">手机</p></button>
+				<button type="button" class="btn btn-default btn-lg" data-url='' ng-click="createEmail()"><p style="margin-bottom:0px;padding-top: 3px;padding-bottom: 3px;font-size: 15px;">邮箱</p></button>
+				<button type="button" class="btn btn-default btn-lg" data-url='' ng-click="createNumber()"><p style="margin-bottom:0px;padding-top: 3px;padding-bottom: 3px;font-size: 15px;">员工编号</p></button>
+				<button type="button" class="btn btn-default btn-lg" data-url='' ng-click="createText()"><p style="margin-bottom:0px;padding-top: 3px;padding-bottom: 3px;font-size: 15px;">自定义文本</p></button>
+			</div>
+			<div class="col-md-10 col-xs-10" id="dan_right" style="padding:0;width:970px;">
+				<div class="form_nav">
+					<button type="button" class="btn btn-default btn-xs" ng-click="preview()"><p style="margin-bottom:0px;padding-top: 3px;padding-bottom: 3px;font-size: 15px;">预览</p></button>
+					<button type="button" class="btn btn-default btn-xs" ng-click="save()"><p style="margin-bottom:0px;padding-top: 3px;padding-bottom: 3px;font-size: 15px;">保存</p></button>
+					<button type="button" class="btn btn-default btn-xs" ng-click="get()"><p style="margin-bottom:0px;padding-top: 3px;padding-bottom: 3px;font-size: 15px;">发布</p></button>
+				</div>
+					<div id="formContent">
+						<div id="question"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	  	</div>
+	  
+	  	<!--弹出框-->
+		<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content"></div>
+		  </div>
+		</div>
+	</div>
+	<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'"></div>
+</div>
+<style type="text/css">
+.edit{
+    display: none;
+    background-color: #fff;
+    color: #999;
+    border: 1px solid #6c0;
+    width: 55px;
+    height: 25px;
+    float: right;
+    margin-left: 5px;
+    transition: all .1s;
+    margin-top: 10px;
+}
+.edit:hover{
+    display: none;
+    background-color: #6c0;
+    color: #fff;
+    border: 1px solid #6c0;
+    width: 55px;
+    height: 25px;
+    float: right;
+    margin-left: 5px;
+}
+</style>
+<script type="text/javascript">
+	$(function(){
+		var b_height = $('#left').height();
+		$('#right').css({'height' : b_height,'background-color' : '#fff','overflow':'hidden'});
+		var n_height = $('.btn-lg').innerHeight();
+		$('.form_nav').css({'height' : n_height,'background-color' : '#66cc00'});
+
+	});
+	// window.onbeforeunload=function(){
+	//   return "are you sure?";
+	// };
+</script>

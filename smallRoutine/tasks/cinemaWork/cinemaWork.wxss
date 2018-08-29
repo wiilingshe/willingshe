@@ -1,0 +1,52 @@
+/* tasks/cinemaWork/cinemaWork.wxss */
+.body {
+    height: 600rpx;
+    background: white;
+}
+
+.body > textarea {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    font-size: 28rpx;
+    color: #999999;
+    padding: 30rpx 32rpx;
+}
+
+.pl {
+    font-size: 28rpx;
+    color: #999999;
+}
+
+/* .btn{
+  width:92%;
+  left: 30rpx;
+  height: 98rpx;
+  background: linear-gradient(to bottom right, #FE7293, #FF5874);
+  position: fixed;
+  bottom: 44rpx;
+  text-align: center;
+  line-height: 95rpx;
+  color: white;
+  font-size: 34rpx;
+  z-index: 99;
+  margin-top: 20rpx;
+  border-radius: 8rpx;
+} */
+.btn{
+  padding: 40rpx 32rpx 44rpx;
+}
+.btn>view{
+  width: 100%;
+  height: 98rpx;
+  background: linear-gradient(to bottom right, #FE7293, #FF5874);
+  /* position: fixed; */
+  /* bottom: 0; */
+  text-align: center;
+  line-height: 95rpx;
+  color: white;
+  font-size: 34rpx;
+  z-index: 99;
+  /* margin-top: 20rpx;  */
+  border-radius: 10rpx;
+}

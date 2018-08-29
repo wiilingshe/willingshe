@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8" />
+    <meta name="baidu-site-verification" content="2MKKT6mbuL" />
+    	<title>{$confinfo2[title]}</title>
+    <meta name="keywords" content="移动场景应用自营销管家,移动场景自营销管家,移动场景自营销工具,活动自营销管家,场景展示,免费的报名页,收集潜在客户,二次营销,轻CRM,提高移动场景营销效果" />
+    <meta id="metaDescription" name="description" content="{$confinfo2[desc]}" />
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate">
+    <META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+    <META HTTP-EQUIV="expires" CONTENT="0">
+    <meta id="eqMobileViewport" name="viewport" content="width=320, initial-scale=1, maximum-scale=1, user-scalable=no" servergenerated="true">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  	<link rel="stylesheet" href="http://www.vxuebao.com/view/css/vxuebao-5.4.2.css"/>
+    <script> var  your_demain='<php>if(strpos("http://",C("site_url"))!==false)echo "http://"; echo rtrim(C("site_url"),"/")</php>';
+   var  your_webname='<php>echo C("site_name")</php>';
+   var  logo_url='<php>echo C("site_name")</php>';
+     var  lastpagelink='<php>echo C("lastpagelink")</php>';
+	 var lastpagetext_color='<php>echo C("lastpagetext_color")</php>';
+    var  lastpagetext='<php>echo C("lastpagetext")</php>';
+	var jubao_link='<php>echo C("jubao_link")</php>';
+   </script>
+    <neq name="type" value="1">
+    <style>
+        .loadbg {position: absolute; top: -5px; left:-3px; z-index: 1000; width: 100px; height: 100px; background: url(/Public/css/images/loading.png) no-repeat; background-size: 100%; 
+                 -webkit-animation:loading 1.5s linear infinite;animation:loading 1.5s linear infinite} 
+        @-webkit-keyframes loading{ 0%{ -webkit-transform:rotate(0)} 100%{ -webkit-transform:rotate(360deg)} } 
+        @-moz-keyframes loading{ 0%{ -moz-transform:rotate(0)} 100%{ -moz-transform:rotate(360deg)} }
+        .loadlogo { margin: 11px auto; width: 90px; height: 90px; border-radius: 50%; background-position: center center; background-size: cover; background-repeat: no-repeat; background-image: url('/Uploads/<php>if($sceneinfo[loadinglogo]):</php>{$sceneinfo[loadinglogo]}<php>else:</php>{$confinfo2[imgsrc]}<php>endif;</php>');}
+        #linkad {visibility: hidden;}
+    </style>
+    </neq>
+
+
+
+    <!--修改开始-->
+    <link href="http://www.vxuebao.com/Public/eq/5.4/layer/skin/layer.css?v=201608081457" rel="stylesheet">
+    <!--修改结束-->
+</head>
+<body>
+<div id="shareImage" style="display: none;">
+    <img src="http://www.vxuebao.com/Uploads/{$confinfo2[imgsrc]}?v=201608081457" />
+</div>
+<div class="bg_white"></div>
+<div id="ppitest" style="width:1in;visible:hidden;padding:0px"></div>
+<div class="p-index main phoneBox" id="con" style="display: none;">
+    <div class="top"></div>
+    <div class="phone_menubar"></div>
+    <div class="scene_title_baner" style="display: none">
+        <div class="scene_title">{$confinfo2[title]}</div>
+    </div>
+    <div class="nr" id="nr">
+        <div id="audio_btn" class="off">
+            <div id="yinfu"></div>
+            <audio loop src="" id="media" autoplay="" preload></audio>
+        </div>
+        <div id="loading" class="loading">
+            <div class="loadbox">
+                <div class="loadlogo"></div>
+                <div class="loadbg"></div>
+            </div>
+        </div>
+        <php>if($sceneinfo['accesscode']):</php>
+         <div id="verifyCode" class="verifyCode">
+            <div class="container">
+                <div class="scene-cover">
+                    <img class="cover-img" src="http://www.vxuebao.com/Uploads/{$confinfo2[imgsrc]}?v=201608081457" />
+                </div>
+                <div class="scene-name">{$confinfo2[title]}</div>              
+        
+                <div class="confirm-password">
+	                <label class="verify-label" for="password">请输入访问密码</label>
+	                <div class="verify-tips" id="verifyTip">
+						<ul class="password-indicator">
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					</div>
+					<div class="password-numbers">
+						<span>1</span>
+						<span>2</span>
+						<span>3</span>
+						<span>4</span>
+						<span>5</span>
+						<span>6</span>
+						<span>7</span>
+						<span>8</span>
+						<span>9</span>
+						<span>0</span>
+					</div>
+					<div class="password-operation">
+						<span class="btn-clear" id="btnClear">清空</span>
+						<span class="btn-cancel" id="btnCancel">取消</span>
+					</div>
+                </div>
+            </div>
+        </div>
+        <php>endif;</php>
+    </div>
+    <div class="bottom"><span class="scene_descript" style="visibility: hidden;"></span></div>
+</div>
+<neq name="type" value="1">
+<style>
+#scenead{display: none;}
+</style>
+</neq>
+</body>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+    <script src="http://www.vxuebao.com/Public/css/waiwan/jquery.min.js?v=20160713"></script>
+<script >
+ (function (window, $) {
+   window.PREFIX_URL = "http://"+window.location.host+"/";
+    window.PREFIX_S1_URL =  "http://"+window.location.host+"/";//"/json/";
+    window.PREFIX_S2_URL ="http://"+window.location.host+"/index.php";
+    window.PREFIX_HOST = "http://"+window.location.host+"/index.php";
+    window.PREFIX_HOST1 = "http://"+window.location.host+"/index.php";
+    window.PREFIX_FILE_HOST = "http://www.vxuebao.com/Uploads/";
+    window.CLIENT_CDN ="http://"+window.location.host+"/"; 
+   window.clientWidth = document.documentElement.clientWidth;
+    window.clientHeight = document.documentElement.clientHeight;    
+       
+})(window, jQuery)
+</script>
+
+ <script type="text/javascript" src="http://www.vxuebao.com/Public/eq/5.4/dest/vxuebao-5.4.2_view.min.js?v=20160810"></script>
+   
+<script>
+ 
+	var scene = {id:{$confinfo2[workid]},code:"{$sceneinfo['scenecode_varchar']}",pageMode:{$sceneinfo['movietype_int']},cover:"{$sceneinfo[cover]}"};
+	   <php>if($sceneinfo['accesscode']):</php>
+      eqShow.bootstrapWithPassword(); 
+	   <php>else:</php>
+	 eqShow.bootstrap();
+         //setTimeout("eqShow.bootstrap()",22000000);
+	   <php>endif;</php>
+	
+</script>
+ <script>
+          wx.config({
+			  debug: false,
+			  appId: '{$confinfo[appId]}',
+			  timestamp: "{$confinfo[timestamp]}",
+			  nonceStr: '{$confinfo[nonceStr]}',
+			  signature: '{$confinfo[signature]}',
+			  jsApiList: [
+				'onMenuShareTimeline',
+				'onMenuShareAppMessage'
+			  ]
+		  });
+          wx.ready(function () {
+		  
+			  var shareData64 = {
+				title: '{$confinfo2[title]}',
+				desc: '{$confinfo2[desc]}',
+				link: PREFIX_URL+'{$confinfo2[url]}',
+				imgUrl:  PREFIX_FILE_HOST  +'{$confinfo2[imgsrc]}'
+			  };
+			  wx.onMenuShareAppMessage(shareData64);
+			  wx.onMenuShareTimeline(shareData64);
+
+          });
+		  
+		  
+		wx.error(function (res) {
+			//alert(res.errMsg);
+		});
+        </script>
+<div style="display:none"><script src="http://s95.cnzz.com/stat.php?id=1258616548&web_id=1258616548" language="JavaScript"></script></div>
+    <!--修改开始-->
+    <script src="http://www.vxuebao.com/Public/eq/5.4/layer/layer.js?v=20160713"></script>
+    <script src="http://www.vxuebao.com/Public/eq/5.4/layer/extend/layer.ext.js?v=20160713"></script>
+    <script type="text/javascript">
+        layer.config({
+            extend: 'extend/layer.ext.js'
+        });
+    </script>
+
+    <!--修改结束-->
+</html>

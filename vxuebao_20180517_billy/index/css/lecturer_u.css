@@ -1,0 +1,81 @@
+input{border:none;}
+html{font-size:20px;}
+@media only screen and (min-width: 401px){
+    html {
+        font-size: 25px !important;
+    }
+}
+@media only screen and (min-width: 428px){
+    html {
+        font-size: 26.75px !important;
+    }
+}
+@media only screen and (min-width: 481px){
+    html {
+        font-size: 30px !important; 
+    }
+}
+@media only screen and (min-width: 569px){
+    html {
+        font-size: 35px !important; 
+    }
+}
+@media only screen and (min-width: 641px){
+    html {
+        font-size: 40px !important; 
+    }
+}
+#eq_main{width:100%;margin:0 auto;background:#fff;}
+#eq_main .current{color:#66cc00;}
+.header-fixed{border-bottom:1px solid #dcdcdc;height:51px;}
+/*身体css*/
+#lecturer_ucontent{width:1198px;margin:0 auto;}
+@media screen and (max-device-width: 1240px) {
+	
+} 
+#lecturer_ucontent ul{overflow:hidden;}
+
+.ucontent_top{height:395px;margin:55px 0 40px 0;border:1px solid #dcdcdc;padding:56px;overflow:hidden;}
+.ucontent_top .top_l,.ucontent_top .top_c,.ucontent_top .top_r{float:left;}
+.ucontent_top .top_l img{width:100%;height:auto;}
+.ucontent_top .top_c{margin-left:24px;width:673px;}
+.ucontent_top .top_c .name{margin:0;font-size:22px;font-weight:600;color:#000;width:135px;display:inline-block;}
+.ucontent_top .top_c span{font-size:14px;color:#a5a5a5;margin-right:10px;}
+.ucontent_top .top_c .describe{font-size:16px;margin:20px 0;line-height:38px;}
+.ucontent_top .top_c .describe p{margin:0;}
+.ucontent_top .top_c .long li{float:left;width:88px;height:28px;font-size:14px;color:#66cc00;border:1px solid #66cc00;line-height:28px;text-align:center;}
+.ucontent_top .top_c  .describe_center{margin:0 15px;}
+.ucontent_top .top_c .contact{height:30px;margin-top:35px;}
+.ucontent_top .top_c .contact li{float:left;height:30px;line-height:30px;color:#66cc00;}
+.ucontent_top .top_c .contact .contact_way{margin:0px;display:none;}
+.ucontent_top .top_c .contact .contact_btn{width:150px;background-color:#66cc00;text-align:center;color:#fff;cursor:pointer;}
+.ucontent_top .top_c .contact .qq{padding-left:30px; background:url('../images/lecturer_cico.png') no-repeat; background-position:0 0;}
+.ucontent_top .top_c .contact .weixin{padding-left:30px; background:url('../images/lecturer_cico.png') no-repeat; background-position:0 -28px;}
+.ucontent_top .top_c .contact .phone{padding-left:30px; background:url('../images/lecturer_cico.png') no-repeat; background-position:0 -59px;}
+.ucontent_top .top_c .contact .email{padding-left:33px; background:url('../images/lecturer_cico.png') no-repeat; background-position:0 -88px;}
+.ucontent_top .top_r{width:152px;}
+.ucontent_top .top_r .members{border:1px solid #66cc00;height:26px;line-height:26px;text-align:center;color:#66cc00;}
+.ucontent_top .top_r .code_box{height:198px;margin-top:35px;border:1px solid #dcdcdc;padding:12px;text-align:center;color:#5c5c5c;}
+
+.ucontent_main .main_title{letter-spacing:3px;height:47px;color:#8c8b8b;font-size:18px;padding:9px 19px;border:1px solid #dcdcdc;background:#f6f6f6;}
+.ucontent_main .main_detailed{ padding:18px 58px; }
+.main_detailed li{background:url('../images/lecturer_cico.png') no-repeat;background-position:0 -115px;padding-left:36px;line-height:50px;color:#838383;}
+.ucontent_main .main_photo{padding:40px 0 0 0;}
+.ucontent_main .main_photo img{width:100%;height:auto;}
+.ucontent_main .main_photo li{float:left;margin:0 22px 40px;}
+.ucontent_main .main_review{padding:40px 0; color:#838383;}
+.ucontent_main .main_review textarea{width:1198px; padding:10px;font-size:16px;}
+.ucontent_main .main_review .review_sub{width:86px;height:32px;color:#fff;line-height:32px;text-align:center;float:right;background:#66cc00;}
+
+.ucontent_discuss{margin-bottom:130px;}
+.ucontent_discuss .discuzz_f{width:1198px;border-bottom:1px solid #dcdcdc;height:120px;padding:28px 8px;}
+.ucontent_discuss .discuzz_f li{float:left;}
+.ucontent_discuss .discuzz_f li span{font-weight:600;margin-right:15px;}
+.ucontent_discuss .discuzz_f img{width:48px;height:48px;}
+.ucontent_discuss .discuzz_f .f_two{margin-left:15px; line-height:23px;color:#838383;}
+.ucontent_discuss .discuzz_f .f_last{float:right;}
+
+#footer .footer_t{width:976px;margin:0 auto;}
+#footer .footer_t li{float:left;}
+#footer .footer_t li a{color:#ccc;}
+#footer .footer_t .f_center_l{border-left:1px solid #fff;border-right:1px solid #fff;margin:0 20px;padding:0 20px;}

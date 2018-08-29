@@ -1,0 +1,4 @@
+angular.module("scene/console/adr.tpl.html", []).run(["$templateCache", function (a) {
+    console.log("adr.js");
+    a.put("scene/console/adr.tpl.html", '<div class="modal-header no-line">\n    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">\n        <span aria-hidden="true">×</span>\n    </button>\n    <h4 class="modal-title">地图\n    <span ng-show="authError" class="action ng-binding">请您先输入地址！</span>\n    </h4>\n</div>\n<div class="map_console">\n <iframe id="mapContainer" name="mapContainer" width="100%" height="450" frameborder="0" style="border:0"src="/map.html"></iframe>  \n   </div>\n<div class="modal-footer no-line">   \n<input type="text" ng-model="position" placeholder="请输入坐标" id="position" style="visibility: hidden;"/> \n  <a class="modal-cancle" ng-click="cancel()">取消</a>\n    <a class="btn btn-primary" ng-click="replaceImage()">确定</a>\n</div>');
+}])

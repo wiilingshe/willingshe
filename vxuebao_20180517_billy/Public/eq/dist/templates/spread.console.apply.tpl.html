@@ -1,0 +1,26 @@
+<div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">        <span aria-hidden="true">×</span>    </button>
+	<h4 class="modal-title">{{title}}        <span class="action" ng-show='!authError'>{{description}}</span>        <span ng-show='authError'>{{authError}}</span>    </h4></div>
+<div class="dialog-contain">
+	<div class="dialog-content ml20" style="margin-top:0;">
+		<form name="resetForm" novalidate class="form-horizontal">
+			<div class="form-group" style="margin-bottom:0;" ng-class="{mt20: applyObj.type == 2 || applyObj.type == 1 || applyObj.type == 4}">
+				<div class="col-sm-offset-3 col-sm-6">
+					<eqx-select class="select-contain select-great border-width" model="apply.showObj" change="" ng-show="applyObj.type == 2">
+						<eqx-select-option value="null">申请类别</eqx-select-option>
+						<eqx-select-option value="sceneTag" ng-repeat="sceneTag in sceneTags">{{sceneTag.name}}</eqx-select-option>
+					</eqx-select>
+					<eqx-select class="select-contain select-great border-width" model="apply.tplObj" change="" ng-show="applyObj.type == 1 && user.type == 4">
+						<eqx-select-option value="tplPrice" ng-repeat="tplPrice in tplPrices">{{tplPrice.name}}</eqx-select-option>
+					</eqx-select>
+					<div class="mt20 mb20" ng-show="applyObj.type == 1 && user.type != 4"> 确定申请为样例？ </div>
+					<div class="mt20 mb20" ng-show="applyObj.type == 4"> 确定申请为企业样例？ </div>
+				</div>
+			</div>
+		</form>
+		<ul class="mt20 clearfix apply-active">
+			<li class="mr20 mb20" style="display: inline-block;width: 95px;height: 120px;border: 1px solid #ccc;" ng-repeat="activityPageTpl in activityPageTpls" ng-click="selectActivePage(activityPageTpl)">
+				<div class="checkbox-square" ng-class="{checked: activityPageTpl.checked}"> <em class="eqf-clickmore"></em> <input type="checkbox" ng-model="activityPageTpl.checked" name="iCheck" ng-disabled="scene.isShow==1 || scene.isShow==2"> </div> <img ng-src="{{PREFIX_FILE_HOST + activityPageTpl.properties.thumbSrc}}"> </li>
+		</ul>
+	</div>
+</div>
+<div class="modal-footer"> <a class="modal-cancle" ng-click="cancel()" ng-disabled='form.$invalid'>取消</a> <a class="btn btn-primary" ng-click="apply()" ng-disabled='form.$invalid'>确定</a></div>

@@ -1,0 +1,66 @@
+<div ng-if="user" ng-include="'/Public/eq/6.0/templates/header.tpl.html'"></div>
+<div class="pri-nav" ng-if="!user">
+	<div class="link_list">
+		<ul class="clearfix">
+			<li>
+				<a target="_blank" href="#/show/visitor">微课定制</a>
+			</li>
+			<li>
+				<a target="_blank" href="#/show">微课中心</a>
+			</li>
+			<li>
+				<a href="#/privilege">会员特权</a>
+			</li>
+			<li ng-hide="isAuthenticated()">
+				<a ng-click="openLogin()">登录</a>
+			</li>
+			<li ng-hide="isAuthenticated()" class="">
+				<a ng-click="openRegister()" id="registerFormBtn">注册</a>
+			</li>
+			<li ng-show="isAuthenticated()">
+				<a href="#/main">进入</a>
+			</li>
+		</ul>
+	</div>
+	<div id="logo">
+		<a href="#/home"><img ng-src="{{logoSrc}}" alt=""></a>
+	</div>
+</div>
+<div class="privilege-contain">
+	<div class="info">
+		<div class="versions">
+			<div class="my-head"></div>
+			<div class="content-v">
+				<div class="eqf-top-contact"></div>
+				<div class="des">
+					<h2 class="text-left" style="padding-bottom:5px;">个人会员</h2>
+					<h5>提供丰富的素材和模板</h5>
+					<h5>助力快速完成创作</h5> </div>
+			</div>
+			<div class="btn-contain">
+				<a class="btn btn-primary" ng-if="!user" ng-click="openRegister()">免费注册</a>
+			</div>
+		</div>
+		<div class="versions ml20">
+			<div class="company-head"></div>
+			<div class="content-v">
+				<div class="eqf-huangguan"></div>
+				<div class="des">
+					<h2 class="text-left" style="padding-bottom:5px;">企业会员</h2>
+					<h5>在丰富的素材和模板的基础上</h5>
+					<h5>提供全面便捷的推广渠道</h5>
+					<h5>助力企业自我营销和宣传</h5> </div>
+			</div>
+			<div class="btn-contain">
+				<a class="btn btn-primary" ng-if="!user" ng-click="openRegister()">免费注册</a>
+				<a class="btn btn-primary" ng-if="user && user.type == 1" ng-click="upgradeCompany()">免费升级</a>
+			</div>
+		</div>
+	</div>
+	<div class="detail-con">
+
+		<div style="background: url(/Public/images/price.jpg) center center no-repeat; width: 1200px; height: 682px; "></div>
+
+	</div>
+</div>
+<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'"></div>

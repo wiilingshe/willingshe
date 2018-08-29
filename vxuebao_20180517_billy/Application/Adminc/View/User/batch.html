@@ -1,0 +1,126 @@
+<include file="Public:head"/>
+<link rel="stylesheet" type="text/css" href="__ROOT__/Public/media/css/datepicker.css" />
+</head>
+<body class="page-header-fixed">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <h4 class="page-title">
+                    用户管理
+                    <small>   User management</small></h4>
+                <ul class="breadcrumb">
+                    <li><i class="icon-home"></i><a href="index.html">首页</a> 
+                        <i class="icon-angle-right"></i></li>
+                    <li><a href="#">用户管理</a><i class="icon-angle-right"></i></li>
+                    <li><a href="#">用户设置</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="tabbable tabbable-custom tabbable-full-width">
+            <ul class="nav nav-tabs">
+                <li class="{$ui.users}"> <a href="{:U('user/index')}"> 前台用户管理</a> </li>
+                <li class="{$ui.users_add}"> <a href="{:U('user/add')}"> 添加新用户</a> </li>
+                <li class="{$ui.user_group}"> <a href=adminc.php?c=group> 用户组管理</a> </li>
+                <li class="{$ui.users_batch}"> <a href="{:U('user/batch')}"> 企业子账号批量导入</a> </li>
+            </ul>
+            <hr>
+        </div>          
+        <div class="row-fluid">
+            <div class="span12 ">
+   
+                <div class="portlet-body">
+                    <div class="portlet-body form">
+                 
+                        <input name="ctl00$ContentPlaceHolder1$txt" type="hidden" id="ctl00_ContentPlaceHolder1_txt" />
+                        <form action="" class="form-horizontal" method="post" enctype="multipart/form-data">
+                            <div class="control-group">
+                                <label class="control-label"></label>
+                                <div class="controls">
+                                    <img src="/Uploads/{$user.headimg|default="defaultuser.jpg"}" width="120" height="120" />
+                                </div>
+                            </div>
+                           
+                            <div class="portlet-body form">
+                                <div style="margin-left:180px;margin-bottom:20px;">
+                                    <a href="{:U('user/upbatch')}" style="color:#2d1fed;font-size:16px;font-weight:600;">点击下载附件(.csv)</a>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">企业邮箱</label>
+                                    <div class="controls">
+                                        <div class="input-icon left">
+                                            <select name="user" id="parentid">
+                                                <option value="0">请选择企业...</option>
+                                                <foreach name="parent" key="key" item="value">
+                                                    <option value="{$value.userid_int}" >{$value.email_varchar} &nbsp;({$value.uname})
+                                                    </option>
+                                                </foreach>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                               <div class="control-group">
+                                    <label class="control-label">该企业下已有的邮箱</label>
+                                    <div class="controls">
+                                        <div class="input-icon left">
+                                            <select id="son">
+                                                
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">子账号导入</label>
+                                    <div class="controls">
+                                        <div class="input-icon left">
+                                           
+                                            <input name="myfile" type="file"   class="m-wrapt" />
+                    
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div class="control-group">
+                                    <label class="control-label">温馨提示:</label>
+                                        <div class="controls">
+                                            <div class="input-icon left">
+                                                <p><strong>待导入.csv文件中请删除中文提示行</strong></p>
+                                            </div>
+                                        </div>
+                                </div>
+                                 
+                                <div class="form-actions">
+                                    <button type="submit" class="btn blue">确定提交</button>
+                                    <button type="button" class="btn">放弃</button>                            
+                                </div>
+							</div>
+                        </form>      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<include file="Public:foot"/>
+<script src="__ROOT__/Public/media/js/app.js"></script>
+<script type="text/javascript">
+    function getSelectVal(){ 
+        $.getJSON("",{parentid:$("#parentid").val()},function(json){ 
+            var son = $("#son"); 
+            $("option",son).remove(); //清空原有的选项 
+            $.each(json,function(index,array){
+                var option = "<option>"+array['email_varchar']+"</option>"; 
+                son.append(option); 
+            }); 
+
+        }); 
+    } 
+
+    $(function(){ 
+        getSelectVal(); 
+        $("#parentid").change(function(){ 
+            getSelectVal(); 
+        }); 
+    });
+</script>
+</body>
+</html>

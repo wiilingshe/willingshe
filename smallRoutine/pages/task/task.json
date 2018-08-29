@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "我的发行",
+  "backgroundTextStyle": "dark",
+  "navigationBarBackgroundColor": "#fff",
+  "backgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "disableScroll":false,
+  "enablePullDownRefresh": true
+}

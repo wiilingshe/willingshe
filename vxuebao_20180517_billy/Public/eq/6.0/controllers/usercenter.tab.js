@@ -1,0 +1,1 @@
+angular.module("usercenter.tab",["usercenter.account","usercenter.member","usercenter.trash","usercenter.apply","usercenter.companyinfo","usercenter.invoice","usercenter.invoicelist"]);

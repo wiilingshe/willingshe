@@ -1,0 +1,8 @@
+<div class="effect-img"> <img ng-src="{{CLIENT_CDN + 'assets/images/create/money_thumb2.jpg'}}" /></div>
+<div class="effect-form">
+	<form class="form-contain" role="form">
+		<div class="form-list clearfix"> <label class="form-label">提示文字：</label>
+			<div class="form-input"> <input type="text" ng-model="money.tip" placeholder="提示文字" check-count="40" ng-keyup="$event.keyCode == 13 ? confirm() : null" autofocus stop-propagation style="width: 290px;" /> </div>
+		</div>
+	</form>
+</div>

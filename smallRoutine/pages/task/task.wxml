@@ -1,0 +1,40 @@
+<view class="task_box">
+ <!-- <scroll-view scroll-y="scroll" class="item_box" height="100vh" bindscrolltolower="lower">  -->
+  <view class="item" wx:for="{{list}}" wx:item="{{item}}" wx:key="{{index}}">
+    <view class="item_top">
+      <view class="left">
+      <image src='{{item.bill_pic==""?"/static/img/err/rose@2x.png":item.bill_pic}}' class="pic"  binderror="errorFunction" data-errorimg="{{index}}"></image>
+      <view class="state1" wx:if="{{item.issue_status==0}}">申请中</view>
+      <view class="state"  wx:if="{{item.issue_status==1}}">发行中</view>
+      <view class="state1" wx:if="{{item.issue_status==2}}">已结束</view>
+      </view>
+      <view class="right">
+        <view class="title">{{item.name}}</view>
+        <view class="issue">发行周期：<text>{{item.issue_start_time}}～{{item.issue_end_time}}</text></view>
+        <view class="issue">发行区域：<text>{{item.city_name}}</text></view>
+        <view class="issue">排片要求：<text>{{item.claim_start}}%-{{item.claim_end}}%</text></view>
+      </view>
+    </view>
+    <view class="item_bottom">
+    <view class="portrait" wx:if="{{item.status==0 || item.status==1}}"></view>
+    <view class="portrait" wx:else bindtap='goContacts' data-c="{{item.c_id}}" data-p="{{item.p_id}}">
+      <image wx:for="{{item.partner_list}}" wx:for-item="item1" wx:key="index1" src='{{item1}}' binderror="error" class="portraitImg"></image>
+    </view>
+    <view class="task">
+      <view wx:if="{{item.mis_type==2}}" bindtap='goList' data-c="{{item.c_id}}" data-p="{{item.p_id}}" class="red">查看任务</view>
+      <view wx:if="{{item.mis_type==1 &&item.status==2}}" bindtap='goList' data-c="{{item.c_id}}" data-p="{{item.p_id}}" class="red">查看任务</view>
+      <view wx:if="{{item.mis_type==1 &&item.status==0}}" class="bbb">审核不通过</view>
+      <view wx:if="{{item.mis_type==1 &&item.status==1}}" class="bbb">待审核</view>
+    </view>
+    </view>
+  </view>
+  <view class="null" wx:if="{{isNull}}">
+    <image  class="imgNull" src="{{imgNull}}"></image>
+    <text>暂无内容</text>
+  </view>
+   <view class="see" wx-if="{{isLoad}}">
+    <view  bindtap='loadData'>查看历史接单</view>
+    <image  bindtap='loadData' src="{{Arrow}}"></image>
+  </view>  
+ <!-- </scroll-view>  -->
+</view>

@@ -1,0 +1,59 @@
+<div ng-include="'/Public/eq/6.0/templates/header.tpl.html'"></div>
+<div id="main" class="min_contain">
+	<div ng-include="'/Public/eq/6.0/templates/sysmessage.tpl.html'"></div>
+	<div class="info-show">
+		<div class="same-content">
+			<div class="spread-area clearfix ">
+				<div class="scene-oper opera-userinfo">
+					<a class="btn btn-border opa-btn background-color-width-change" ng-href="{{selectedUrl}}" target="_blank"> <span class="eqf-eye" style="font-size:12px;"></span> &nbsp;预览微课 </a>
+					<!-- 长图文预览 -->
+					<a ng-if="!branchid && islongpage" class="btn btn-border opa-btn edit-scene background-color-width-change" ng-href="#/scene/create/{{scene.id}}/1?pageId=1"> <span class="eqf-write"></span> &nbsp;编辑微课 </a>
+					<!-- 短页面预览 -->
+					<a ng-if="!branchid && !islongpage" ng-show="status[0]" class="btn btn-border opa-btn edit-scene background-color-width-change" ng-href="#/scene/create/{{scene.id}}?pageId=1"> <span class="eqf-write"></span> &nbsp;编辑微课 </a>
+					<!-- 长图文设置 -->
+					<a ng-if="!branchid && islongpage" class="btn btn-border opa-btn edit-scene background-color-width-change" ng-href="#/scene/create/{{scene.id}}/1?pageId=1&openSetting=show"> <span class="eqf-scene-setting"></span> &nbsp;设置微课 </a>
+					<!-- 短页面设置 -->
+					<a ng-if="!branchid && !islongpage" class="btn btn-border opa-btn edit-scene background-color-width-change" ng-href="#/scene/create/{{scene.id}}?pageId=1&openSetting=show"> <span class="eqf-scene-setting"></span> &nbsp;设置微课 </a>
+
+					<a ng-if="status[2]" class="btn btn-border edit-scene  opa-btn background-color-width-change" ng-href="/index.php?c=Scene&a=export&id={{scene.id}}" target="_blank"> <span class="eqf-download" style="font-size:12px;"></span> &nbsp;导出微课 </a>
+				</div>
+				<div class="scene-cover fl"> <img ng-src="{{PREFIX_FILE_HOST + scene.cover}}" /> </div>
+				<div class="scene-detail">
+					<div class="scene-name"> {{scene.name}}<span style="font-size:12px;padding-left:15px;color:rgba(255, 255, 255, 0.6)">{{scene.description}}</span> </div>
+					<div class="fade-color scene-tip"> <span class="first-col" style="width: 180px;">微课展示： {{scene.showCount}}</span> <span>收集数据： {{scene.dataCount}}</span> </div>
+					<div class="fade-color scene-tip"> <span class="first-col" style="width: 180px;">创建时间： {{scene.createTime | date:'yyyy年MM月dd日'}}</span> <span>最后更新： {{scene.updateTime | date:'yyyy年MM月dd日'}}</span> </div>
+					<div class="fade-color scene-tip" ng-show="branchid"> <span class="first-col">微课状态：{{sceneStadus}}</span> </div>
+					<div class="fade-color scene-tip" ng-show="!branchid">
+						<div class="first-col"> <span ng-class="{fl: (scene.status == 1 || scene.status == 2)                             && scene.publishTime}" style="padding-top:3px;">微课状态：</span>
+							<div class="switch switch-open hint--bottom hint--rounded" data-hint="点击关闭微课" ng-show="scene.status == 1 && scene.publishTime"
+								ng-click="openScene(scene.status,false)">
+								<div class="circle-con"> <i class="circle"></i> </div>
+							</div>
+							<div class="switch switch-close hint--bottom hint--rounded" data-hint="点击开放微课" ng-show="scene.status == 2 && scene.publishTime" ng-click="openScene(scene.status ,true)">
+								<div class="circle-con"> <i class="circle"></i> </div>
+							</div> <span ng-show="!scene.publishTime && (scene.status == 2 || scene.status == 1)">未发布</span> <span ng-show="scene.status==-1">审核被拒绝</span> <span ng-show="scene.status==-2">审核中</span> </div>
+					</div>
+				</div>
+			</div>
+			<div class="spread-tab">
+				<ul class="clearfix tab-line">
+					<li> <a ng-class="{active: viewControl.tab == 'share'}" ng-click="showShare('share');">分享推广</a> </li>
+					<li> <a ng-class="{active: viewControl.tab == 'statistics'}" ng-click="showStatistics('statistics');">效果统计</a> </li>
+					<li> <a ng-class="{active: viewControl.tab == 'dataCollect'}" ng-click="dataCollect('dataCollect');">数据汇总</a> </li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="same-content">
+		<div id="share" ng-if="viewControl.tab == 'share'" ng-controller="ShareCtrl">
+			<div ng-include="'/Public/eq/6.0/templates/spread.tab.share.tpl.html'"></div>
+		</div>
+		<div id="statistics" ng-if="viewControl.tab == 'statistics'" ng-controller="StatisticsCtrl">
+			<div ng-include="'/Public/eq/6.0/templates/spread.tab.statistics.tpl.html'"></div>
+		</div>
+		<div id="dataCollect" ng-if="viewControl.tab == 'dataCollect'" ng-controller="DataCollectCtrl">
+			<div ng-include="'/Public/eq/6.0/templates/spread.tab.data-collect.tpl.html'"></div>
+		</div>
+	</div>
+</div>
+<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'"></div>

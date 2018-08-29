@@ -1,0 +1,26 @@
+<div class="dialog-contain ">
+	<div class="dialog-head">
+		<h1>创建账号</h1>
+		<p ng-show="relErr">{{relErr}}</p>
+	</div>
+	<div class="dialog-content registerForm">
+		<form class="form-contain" role="form">
+			<div class="form-list clearfix"> <label for="inputPassword3" class="form-label">登录账号</label>
+				<div class="form-input"> <input type="text" class="third-name" ng-model="user.email" ng-blur="checkUsername();" placeholder="请输入邮箱" /> <span ng-show="usernameError" class="error_text">                        {{usernameError}}                    </span> </div>
+			</div>
+			<div class="form-list clearfix"> <label for="inputPassword3" class="form-label">密码</label>
+				<div class="form-input"> <input type="password" class="third-pwd" style="float:right;" maxlength="12" ng-model="user.password" ng-blur="checkPassword()" placeholder="密码6~16个字符(英文字母或数字 区分大小写)" /> <span ng-show="passError" class="error_text">                    {{passError}}                  </span>					</div>
+			</div>
+			<div class="form-list clearfix"> <label for="inputPassword3" class="form-label">确认密码</label>
+				<div class="form-input"> <input type="password" class="third-pwd" style="float:right;" maxlength="12" ng-model="user.repeatPassword" ng-blur="checkRepeatPassword()" placeholder="确认密码" /> <span ng-show="rPassError" class="error_text">                    {{rPassError}}                  </span>					</div>
+			</div>
+			<div class="login-form-action clearfix mt20">
+				<div class="checkbox pull-left">
+					<!-- <div class="square pull-left">                  <div class="checkbox-square" ng-class="{checked: user.agreement}">                    <em class="eqf-right4"></em> --><input type="checkbox" ng-model="user.agreement" />
+					<!-- </div>                </div> --><span class="checkbox-text pull-left">&nbsp;<em>我同意</em></a></span> </div>
+				<div class="pull-right"> <a ng-click="cancel();relAccount();"><ins>已有账户?</ins></a> </div>
+			</div>
+			<div class="btn-contain btn-big"> <a class="btn-main login" ng-click="registerAccount()">立即注册</a> <a class="btn-grey0 cancel" ng-click="cancel()">取消</a> </div>
+		</form>
+	</div>
+</div>

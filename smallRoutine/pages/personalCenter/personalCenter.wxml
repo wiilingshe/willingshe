@@ -1,0 +1,71 @@
+<!--pages/personalCenter/personalCenter.wxml-->
+<view class="personalCenter_box" wx:if="{{haveData}}">
+	<view class="top" bindtap="userInfo">
+	  <view class="topItem">
+			<view class="fl">
+				<image class="avatar" src="{{avatar}}"></image>
+				<!-- <image class="avatar" src=""></image> -->
+			</view>
+			<view class="fl username">{{nickname}}</view>
+	  </view>
+		<view class="topItem more_box">
+			<image class="moreIcon" src="{{moreIcon}}"></image>
+		</view>
+	</view>
+	<view class="row_list mt20" bindtap="viewNotice">
+		<view class="topItem">
+			<image class="small_icon fl" src="{{message}}"></image>
+			<text class="row_title fl">消息提醒</text>
+		</view>
+		<view class="topItem">
+			<image class="row_moreIcon fl" src="{{moreIcon}}"></image>
+		</view>
+	</view>
+	<view class="row_list mt20" bindtap="viewPublish">
+		<view class="topItem">
+			<image class="small_icon fl" src="{{participate}}"></image>
+			<text class="row_title fl">我参与的发行</text>
+		</view>
+		<view class="topItem">
+			<image class="row_moreIcon fl" src="{{moreIcon}}"></image>
+		</view>
+	</view>
+	<view class="row_list mt20" bindtap="goWallet">
+		<view class="topItem">
+			<image class="small_icon fl" src="{{wallet}}"></image>
+			<text class="row_title fl">我的钱包</text>
+		</view>
+		<view class="topItem">
+			<text class="fl right_text">{{balance}}</text>
+			<image class="row_moreIcon fl ml30" src="{{moreIcon}}"></image>
+		</view>
+	</view>
+	<view class="row_list" bindtap="viewAssessment">
+		<view class="topItem">
+			<image class="small_icon fl" src="{{reward}}"></image>
+			<text class="row_title fl">考核及奖励制度</text>
+		</view>
+		<view class="topItem">
+			<image class="row_moreIcon fl" src="{{moreIcon}}"></image>
+		</view>
+	</view>
+	<view class="row_list" bindtap="viewIssue">
+		<view class="topItem">
+			<image class="small_icon fl" src="{{issue}}"></image>
+			<text class="row_title fl">常见问题</text>
+		</view>
+		<view class="topItem">
+			<image class="row_moreIcon fl" src="{{moreIcon}}"></image>
+		</view>
+	</view>
+	<view class="row_list share">
+		<button open-type="share" class="shareBut"></button>
+		<view class="topItem">
+			<image class="small_icon fl" src="{{invite}}"></image>
+			<text class="row_title fl">邀请好友</text>
+		</view>
+		<view class="topItem">
+			<image class="row_moreIcon fl" src="{{moreIcon}}"></image>
+		</view>
+	</view>
+</view>

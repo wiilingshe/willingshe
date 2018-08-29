@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app" ng-controller="AppCtrl">
+<head>
+<meta property="qc:admins" content="25322764376510156375" />
+<meta name="baidu-site-verification" content="2MKKT6mbuL" />
+<meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="viewport"content="width=device-width, initial-scale=1.0" />
+<meta name="renderer" content="webkit">
+<meta property="qc:admins" content="" />
+<meta property="wb:webmaster" content="354b970d8cd61602" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="http://www.vxuebao.com/index/css/designer_edit.css" />
+<link rel="stylesheet" type="text/css" href="http://www.vxuebao.com/index/css/common.css" />
+<script type="text/javascript" src="http://www.vxuebao.com/index/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/index/js/photo_edit.js"></script>
+<title>编辑资料</title>
+</head>
+<body>
+  <div id="eq_main">
+    <include file="Public:des_header" />
+   
+    <div class="clear"></div>
+    <div id="designer_edit_contain">
+      <div class="contain_center">
+        <form action="" method="POST">
+        <div class="center_left">
+            <table>
+              <tr>
+                <td class="one_td">用户名</td>
+                <td><input type="text" name="uname" value="{$data.uname}" /></td>
+                <td class="work">
+                    <foreach name="type" key="key" item="value" >
+                      <label {$value['user_type']===$data['user_type']?'class="checked"':''}>
+                          <input type="radio" name="user_type" value="{$value.user_type}" {$value['user_type']===$data['user_type']?'checked="checked"':''} />
+                            <span>{$value.user_type}</span>  
+                      </label>
+                    </foreach>
+                </td>
+              </tr>
+              <tr>
+                <td class="one_td">邮箱</td>
+                <td width="167px"><input type="text" style="border:none;background:none;" name="email_varchar" value="{$data.email_varchar}" /></td>
+                <td style="color:#96db5b;">修改邮箱</td>
+              </tr>
+              <tr>
+                <td class="one_td">现居地</td>
+                <td colspan="2">
+                  <select name="province" id="province">
+                    <foreach name="pro" key="key" item="value">
+                      <option value="{$value.id}" {$value['id']==$data['proid']?'selected="selected"':''}>{$value.shortname}</option>
+                    </foreach>
+                  </select>
+                  <select name="city" id="city">
+
+                  </select>
+                </td>
+           
+              </tr>
+              <tr>
+                <td class="one_td">QQ</td>
+                <td colspan="2"><input type="text" name="qq" value="{$data.qq}" /></td>
+ 
+              </tr>
+              <tr>
+                <td class="one_td">微信</td>
+                <td colspan="2"><input type="text" name="weixin" value="{$data.weixin}" /></td>
+       
+              </tr>
+              <tr>
+                <td class="one_td">手机号</td>
+                <td colspan="2"><input type="text" name="tel" value="{$data.tel}" /></td>
+   
+              </tr>
+              <tr>
+                <td class="one_td">个人签名</td>
+                <td colspan="2">
+                  <textarea rows="3" cols="40" name="msg">{$data.msg}</textarea>
+                </td>
+   
+              </tr>
+          
+            </table>
+        </div>
+        <div class="center_right">
+          <div class="top">
+            <img src="http://www.vxuebao.com/Uploads/{$data.headimg}" style="width:145px;height:145px;" /><span class="edit_user">修改头像</span>
+          </div>
+          <div class="bottom">
+
+              <ul>
+                <foreach name="tag" key="key" item="value">
+                  <if condition="(($key % 3) eq 1)">
+                    <li class="bg cen <?php echo in_array($value['name_varchar'],$u_long)?bg_two:''?>">
+                      <label>
+                        <input type="checkbox" name="long[]" value="{$value.name_varchar}" <?php echo in_array($value['name_varchar'],$u_long)?'checked="checked"':''?>>{$value.name_varchar}</input>
+                      </label>
+                    </li>
+                  <else/>
+                    <li class="bg <?php echo in_array($value['name_varchar'],$u_long)?bg_two:''?>">
+                        <label>
+                          <input type="checkbox" name="long[]" value="{$value.name_varchar}" <?php echo in_array($value['name_varchar'],$u_long)?'checked="checked"':''?>>{$value.name_varchar}</input>
+                        </label>
+                      </li>
+                  </if>
+                </foreach>
+              </ul>
+              <div><p style="font-size:17px;color:#b3b3b3;margin-left:100px;">更多技能标签</p></div>
+          </div>
+        </div>
+        <div class="sub"><input type="submit" value="提交" /></div>
+        </form>
+        
+
+
+        <div class="b_body" style="display:none;position:fixed;background:#000;top:0;bottom:0;left:0;right:0;z-index:5;opacity:.5;"></div>
+        <div class="two_b" style="display:none;background:#fff;position:absolute;z-index:100;top:200px;left:600px;height:565px;width:502px;padding:30px;border-radius:20px;">
+          <input id="fileinput" type="file" />
+          <div class="cancle" style="position:absolute;z-index:6;cursor:pointer;right:30px;top:20px;">X</div>
+          <br />
+          <br />
+          <div id="canvasContainer">
+              <canvas id="container"></canvas>
+              <div id="picker">
+                  <div id="resize"></div>
+              </div>
+          </div>
+          <br />
+          <button id="bigger">原图放大</button>
+          <button id="smaller">原图缩小</button>
+          <p>结果：</p>
+          <div>
+              <canvas id="res1"></canvas>
+              <canvas id="res2"></canvas>
+              <canvas id="res3"></canvas>
+              <!--<button id="download">下载 </button>-->
+              <button id="upload">上传 </button>
+              (demo只上传/下载第一张图片)
+              <div id="uploadres"></div>
+          </div>
+          <p>滤镜：</p>
+          <div id="filters"></div>
+        </div>
+        
+
+
+        <div class="clear"></div>
+      </div>
+    </div>
+    <include file="Public:des_footer" />
+  </div>
+
+</body>
+</html>
+
+<script type="text/javascript">
+  
+    $(function() {
+      //单选
+        $('.work > label').click(function(){
+         
+        $('.work > label').removeAttr('class') && $(this).attr('class', 'checked');
+  
+        var $radio = $(this).find("input[type=radio]"),
+        $flag = $radio.is(":checked");
+            if( !$flag ){
+                $radio.prop("checked",true);   
+            }
+        });
+
+      //多选框
+
+        $('.bg > label').click(function(){
+    
+          var $checkbox = $(this).find("input[type=checkbox]"),
+          $flag = $checkbox.is(":checked");
+              if( !$flag ){
+                  $checkbox.prop("checked",true);   
+                  $('.bg > label').removeAttr('class') && $(this).parent().addClass('bg_two');
+              }else{
+                  $checkbox.prop("checked",false);
+                  $('.bg > label').removeAttr('class') && $(this).parent().removeClass('bg_two'); 
+              }
+
+          });
+    });
+
+//二级联动
+function getSelectVal(){ 
+    $.getJSON("",{province:$("#province").val()},function(json){ 
+        var city = $("#city"); 
+        $("option",city).remove(); //清空原有的选项 
+        $.each(json,function(index,array){ 
+            var option = "<option value='"+array['id']+"'>"+array['shortname']+"</option>"; 
+            city.append(option); 
+        }); 
+
+    }); 
+} 
+
+$(function(){ 
+    getSelectVal(); 
+    $("#province").change(function(){ 
+        getSelectVal(); 
+    }); 
+});
+
+
+
+</script>
+<script>
+        $(function () {
+            //取消
+            $('.cancle').click(function(){
+              $('.b_body').css('display','none');
+              $('.two_b').css('display','none');
+            });
+
+
+            $('.edit_user').css('cursor','pointer');
+            $('.edit_user').click(function(){
+              $('.b_body').css('display','block');
+              $('.two_b').css('display','block');
+            })
+            var canvas = document.getElementById("container"),
+                context = canvas.getContext("2d"),
+                //文件服务器地址
+                fileServer = "?",
+                //适配环境，随时修改事件名称
+                eventName = { down: "mousedown", move: "mousemove", up: "mouseup", click: "click" };
+            //////////canvas尺寸配置
+            var canvasConfig = {
+                //容器canvas尺寸
+                width: 500,
+                height: 300,
+                //原图放大/缩小
+                zoom: 1,
+                //图片对象
+                img: null,
+                //图片完整显示在canvas容器内的尺寸
+                size: null,
+                //图片绘制偏移，为了原图不移出框外，这个只能是负值or 0
+                offset: { x: 0, y: 0 },
+                //当前应用的滤镜
+                filter: null
+            }
+            canvas.width = canvasConfig.width;
+            canvas.height = canvasConfig.height;
+            ///////////设置选择工具配置
+            var config = {
+                //图片选择框当前大小、最大大小、最小大小
+                pickerSize: 100,
+                minSize: 50,
+                maxSize: 200,
+                x: canvas.width / 2 - 100 / 2,
+                y: canvas.height / 2 - 100 / 2
+            }
+            /////////////结果canvas配置
+            var resCanvas = [$("#res1")[0].getContext("2d"), $("#res2")[0].getContext("2d"), $("#res3")[0].getContext("2d")];
+            //结果canvas尺寸配置
+            var resSize = [100, 50, 32]
+            resSize.forEach(function (size, i) {
+                $("#res" + (i + 1))[0].width = size;
+                $("#res" + (i + 1))[0].height = size;
+            });
+            //////// 滤镜配置
+            var filters = [];
+            filters.push({
+                name: "灰度", func: function (pixelData) {
+                    //r、g、b、a
+                    //灰度滤镜公式： gray=r*0.3+g*0.59+b*0.11
+                    var gray;
+                    for (var i = 0; i < canvasConfig.width * canvasConfig.height; i++) {
+                        gray = pixelData[4 * i + 0] * 0.3 + pixelData[4 * i + 1] * 0.59 + pixelData[4 * i + 2] * 0.11;
+                        pixelData[4 * i + 0] = gray;
+                        pixelData[4 * i + 1] = gray;
+                        pixelData[4 * i + 2] = gray;
+                    }
+                }
+            });
+            filters.push({
+                name: "黑白", func: function (pixelData) {
+                    //r、g、b、a
+                    //黑白滤镜公式： 0 or 255
+                    var gray;
+                    for (var i = 0; i < canvasConfig.width * canvasConfig.height; i++) {
+                        gray = pixelData[4 * i + 0] * 0.3 + pixelData[4 * i + 1] * 0.59 + pixelData[4 * i + 2] * 0.11;
+                        if (gray > 255 / 2) {
+                            gray = 255;
+                        }
+                        else {
+                            gray = 0;
+                        }
+                        pixelData[4 * i + 0] = gray;
+                        pixelData[4 * i + 1] = gray;
+                        pixelData[4 * i + 2] = gray;
+                    }
+                }
+            });
+            filters.push({
+                name: "反色", func: function (pixelData) {
+                    for (var i = 0; i < canvasConfig.width * canvasConfig.height; i++) {
+                        pixelData[i * 4 + 0] = 255 - pixelData[i * 4 + 0];
+                        pixelData[i * 4 + 1] = 255 - pixelData[i * 4 + 1];
+                        pixelData[i * 4 + 2] = 255 - pixelData[i * 4 + 2];
+                    }
+                }
+            });
+            filters.push({ name: "无", func: null });
+            // 添加滤镜按钮
+            filters.forEach(function (filter) {
+                var button = $("<button>" + filter.name + "</button>");
+                button.on(eventName.click, function () {
+                    canvasConfig.filter = filter.func;
+                    //重绘
+                    draw(context, canvasConfig.img, canvasConfig.size);
+                })
+                $("#filters").append(button);
+            });
+            //下载生成的图片(只下载第一张)
+            $("#download").on(eventName.click, function () {
+
+                //将mime-type改为image/octet-stream，强制让浏览器直接download
+                var _fixType = function (type) {
+                    type = type.toLowerCase().replace(/jpg/i, 'jpeg');
+                    var r = type.match(/png|jpeg|bmp|gif/)[0];
+                    return 'image/' + r;
+                };
+                var saveFile = function (data, filename) {
+                    var save_link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a');
+                    save_link.href = data;
+                    save_link.download = filename;
+                    var event = document.createEvent('MouseEvents');
+                    event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+                    save_link.dispatchEvent(event);
+                };
+                var imgData = $("#res1")[0].toDataURL("png");
+                imgData = imgData.replace(_fixType("png"), 'image/octet-stream');//base64
+                saveFile(imgData, "头像created on" + new Date().getTime() + "." + "png");
+            });
+            //上传图片
+            $("#upload").on(eventName.click, function () {
+                var imgData = $("#res1")[0].toDataURL("png");
+                imgData = imgData.replace(/^data:image\/(png|jpg);base64,/, "");
+                if (!fileServer) {
+                    alert("请配置文件服务器地址");
+                    return;
+                }
+
+                var blobBin = atob(imgData);
+                var array = [];
+                for (var i = 0; i < blobBin.length; i++) {
+                    array.push(blobBin.charCodeAt(i));
+                }
+                var blob = new Blob([new Uint8Array(array)], { type: 'image/png' });
+                var file = new File([blob], "userlogo.png", { type: 'image/png' });
+                var formdata = new FormData();
+                formdata.append("userlogo", file);
+                $.ajax({
+                    type: 'POST',
+                    url: fileServer,
+                    data: formdata,
+                    processData: false,
+                    contentType: false,
+                    success: function (msg) {
+                       // $("#uploadres").text(JSON.stringify(msg));
+                       $('.b_body').css('display','none');
+                       $('.two_b').css('display','none');
+                    }
+                });
+            });
+            //绑定选择图片事件
+            $("#fileinput").change(function () {
+                var file = this.files[0],
+                    URL = (window.webkitURL || window.URL),
+                    url = URL.createObjectURL(file),
+                    img = new Image();
+                img.src = url;
+                img.onload = function () {
+                    canvasConfig.img = img;
+                    canvasConfig.size = getFixedSize(img, canvas);
+                    draw(context, img, canvasConfig.size);
+                    setPicker();
+                }
+
+            });
+            //移动选择框
+            //绑定鼠标在选择工具上按下的事件
+            $("#picker").on(eventName.down, function (e) {
+                e.stopPropagation();
+                var start = { x: e.clientX, y: e.clientY, initX: config.x, initY: config.y };
+                $("#canvasContainer").on(eventName.move, function (e) {
+                    // 将x、y限制在框内
+                    config.x = Math.min(Math.max(start.initX + e.clientX - start.x, 0), canvasConfig.width - config.pickerSize);
+                    config.y = Math.min(Math.max(start.initY + e.clientY - start.y, 0), canvasConfig.height - config.pickerSize);
+                    setPicker();
+                })
+            });
+            //原图移动事件
+            $("#container").on(eventName.down, function (e) {
+                e.stopPropagation();
+                var start = { x: e.clientX, y: e.clientY, initX: canvasConfig.offset.x, initY: canvasConfig.offset.y };
+                var size = canvasConfig.size;
+                $("#canvasContainer").on(eventName.move, function (e) {
+                    // 将x、y限制在框内
+                    // 坐标<0  当图片大于容器  坐标>容器-图片   否则不能移动
+                    canvasConfig.offset.x = Math.max(Math.min(start.initX + e.clientX - start.x, 0), Math.min(canvasConfig.width - size.width * canvasConfig.zoom, 0));
+                    canvasConfig.offset.y = Math.max(Math.min(start.initY + e.clientY - start.y, 0), Math.min(canvasConfig.height - size.height * canvasConfig.zoom, 0));
+                    //重绘蒙版
+                    draw(context, canvasConfig.img, canvasConfig.size);
+                })
+            });
+            //改变选择框大小事件
+            $("#resize").on(eventName.down, function (e) {
+                e.stopPropagation();
+                var start = { x: e.clientX, init: config.pickerSize };
+                $("#canvasContainer").on(eventName.move, function (e) {
+                    config.pickerSize = Math.min(Math.max(start.init + e.clientX - start.x, config.minSize), config.maxSize);
+                    $("#picker").css({ width: config.pickerSize, height: config.pickerSize });
+                    draw(context, canvasConfig.img, canvasConfig.size);
+                })
+            });
+            $(document).on(eventName.up, function (e) {
+                $("#canvasContainer").unbind(eventName.move);
+            })
+            //原图放大、缩小
+            $("#bigger").on(eventName.click, function () {
+                canvasConfig.zoom = Math.min(3, canvasConfig.zoom + 0.1);
+                //重绘蒙版
+                draw(context, canvasConfig.img, canvasConfig.size);
+            })
+            $("#smaller").on(eventName.click, function () {
+                canvasConfig.zoom = Math.max(0.4, canvasConfig.zoom - 0.1);
+                //重绘蒙版
+                draw(context, canvasConfig.img, canvasConfig.size);
+            })
+
+            // 定位选择工具
+            function setPicker() {
+                $("#picker").css({
+                    width: config.pickerSize + "px", height: config.pickerSize + "px",
+                    top: config.y, left: config.x
+                });
+                //重绘蒙版
+                draw(context, canvasConfig.img, canvasConfig.size);
+            }
+            //绘制canvas中的图片和蒙版
+            function draw(context, img, size) {
+                var pickerSize = config.pickerSize,
+                    zoom = canvasConfig.zoom,
+                    offset = canvasConfig.offset;
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(img, 0, 0, img.width, img.height, offset.x, offset.y, size.width * zoom, size.height * zoom);
+                //绘制挖洞后的蒙版
+                context.save();
+                context.beginPath();
+                pathRect(context, config.x, config.y, pickerSize, pickerSize);
+                context.rect(0, 0, canvas.width, canvas.height);
+                context.closePath();
+                context.fillStyle = "rgba(255,255,255,0.9)";
+                context.fill();
+                context.restore();
+                //绘制结果
+                var imageData = context.getImageData(config.x, config.y, pickerSize, pickerSize)
+                resCanvas.forEach(function (resContext, i) {
+                    resContext.clearRect(0, 0, resSize[i], resSize[i]);
+                    resContext.drawImage(canvas, config.x, config.y, pickerSize, pickerSize, 0, 0, resSize[i], resSize[i]);
+                    //添加滤镜效果
+                    if (canvasConfig.filter) {
+                        var imageData = resContext.getImageData(0, 0, resSize[i], resSize[i]);
+                        var temp = resContext.getImageData(0, 0, resSize[i], resSize[i]);// 有的滤镜实现需要temp数据
+                        canvasConfig.filter(imageData.data, temp);
+                        resContext.putImageData(imageData, 0, 0, 0, 0, resSize[i], resSize[i]);
+                    }
+                });
+            }
+            //逆时针用路径自己来绘制矩形，这样可以控制方向，以便挖洞
+            // 起点x，起点y，宽度，高度
+            function pathRect(context, x, y, width, height) {
+                context.moveTo(x, y);
+                context.lineTo(x, y + height);
+                context.lineTo(x + width, y + height);
+                context.lineTo(x + width, y);
+                context.lineTo(x, y);
+            }
+            // 根据图片和canvas的尺寸，确定图片显示在canvas中的尺寸
+            function getFixedSize(img, canvas) {
+                var cancasRate = canvas.width / canvas.height,
+                    imgRate = img.width / img.height, width = img.width, height = img.height;
+                if (cancasRate >= imgRate && img.height > canvas.height) {
+                    height = canvas.height;
+                    width = imgRate * height;
+                }
+                else if (cancasRate < imgRate && img.width > canvas.width) {
+                    width = canvas.width;
+                    height = width / imgRate;
+                }
+                return { width: width, height: height };
+            }
+        });
+    </script>

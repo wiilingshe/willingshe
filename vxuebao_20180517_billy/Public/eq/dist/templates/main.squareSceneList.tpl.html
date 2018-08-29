@@ -1,0 +1,37 @@
+<ul class="square-scene clearfix">
+	<li ng-repeat="scene in myScenes track by $index" class="tab-box-shadow animation-zoom" ng-style="{'animation-delay' : $index * 50 + 'ms'}">
+		<div class="ribbon ribbon-badge" ng-if="!scene.show && !scene.publishTime"> <span class="ribbon-inner unpublish">未发布</span> </div>
+		<!--         <div ng-if="!scene.show && scene.publishTime && scene.updateTime > scene.publishTime" class="ribbon ribbon-badge" style="z-index:1000;top:20px;width:140px;height:80px;">            <span style="display:inline-block;" class="hint--right hint--rounded" data-hint="发电机房卡掉了">ff</span>        </div> -->
+		<div ng-show="!scene.show && scene.publishTime && scene.updateTime > scene.publishTime" class="ribbon ribbon-badge"> <span class="ribbon-inner new">有修改</span> <span class="ribbon-inner new hint--bottom hint--rounded" data-hint="内容有修改，新修改未发布" style="transform: rotate(0deg);background:none;"></span> </div>
+		<div ng-if="!scene.show && scene.status == -1" class="ribbon ribbon-badge">
+		<span class="ribbon-inner check">未通过审核</span> </div>
+		<div ng-if="!scene.show && scene.status == -2" class="ribbon ribbon-badge"> <span class="ribbon-inner check">审核中</span> </div>
+		<div class="image">
+			<div ng-if="!scene.show" class="front face" ng-style="getStyle(scene.cover,$index)"></div>
+			<div ng-if="scene.show" class="ercode" qr-code qr-url="{{canvasUrl + '/v-' + scene.code}}"> </div>
+			<div class="overlay" ng-show="!scene.show">
+				<div class="edit">
+					<!-- ng-href="{{PREFIX_CLIENT_HOST +'/scene/preview/' + scene.id}}" -->
+					<a class="edit-same" ng-click="showPreview($event,scene)"> <em class="fa fa-youtube-play" style="font-size:26px;"></em>
+						<!--<em class="eqf-eye background-color-width-change" style="font-size:18px"></em>--><span>预览</span> </a>
+					<a class="edit-same" ng-if="scene.company_ext[0]||!branchid" ng-click="editScene($event,scene.id)"> <em class="eqf-xiuziti background-color-width-change" style="font-size:18px;"></em> <span>编辑</span> </a>
+					<a class="edit-same" ng-click="showDetail(scene.id)"> <em class="eqf-date background-color-width-change" style="font-size:18px;"></em> <span>详情</span> </a>
+				</div>
+				<!--<div class="sample" ng-if="!branchid && scene.isTpl == 0 && userProperty.type ==2 && scene.status != -1 && scene.status != -2" >                    <a ng-click="creatCompanyTpl($event,scene.id,$index)">申请为系统模板</a>                </div>                <div class="sample" ng-if="scene.isTpl == 3 && userProperty.type ==2 && scene.status != -1 && scene.status != -2" >                    <a ng-click="clearCompanyTpl($event,scene.id,$index)">取消为系统模板</a>                </div>--></div>
+		</div>
+		<div class="project-info">
+			<p class="ellipsis">{{scene.name}}</p>
+			<a class="show-count" ng-href="#/spread/statistics/{{scene.id}}"> <em class="eqf-eye"></em>{{scene.showCount | fixnum}} </a>
+			<a ng-href="#/spread/dataCollect/{{scene.id}}" class="show-count" ng-if="scene.dataCount > 0"> <em class="eqf-date"></em><span>{{scene.dataCount | fixnum}}</span> </a>
+			<div class="buttons clearfix">
+				<div class="set" ng-if="scene.company_ext[1]||!branchid">
+					<a class="delete background-color-width-change button" ng-if="scene.company_ext[1]||!branchid" ng-click="deleteScene($event,scene.id)"> <em class="eqf-scene-delete"></em><span>删除</span> </a>
+					<a ng-if="scene.status != -1 && scene.status != -2&&!branchid" ng-click="copyScene($event,scene.id)" class="button background-color-width-change operation"> <em class="eqf-scene-copy"></em><span>复制</span> </a>
+					<a class="button background-color-width-change" ng-if="isAllowedToAccessTransfer && scene.status != -1 && scene.status != -2&&!branchid" ng-click="transferScene($event,scene.id)"> <em class="eqf-scene-gift"></em><span>转送</span> </a>
+					<a ng-if="(!scene.publishTime || scene.updateTime > scene.publishTime) && scene.status != -1 && scene.status != -2&&!branchid" ng-click="publishScene($event,scene)" class="button background-color-width-change operation">
+					<em class="eqf-scene-send"></em><span>发布</span> </a>
+					<a ng-if="!branchid" class="button background-color-width-change" ng-click="sceneSettings($event,scene.id)"> <em class="eqf-scene-setting"></em><span>设置</span> </a>
+				</div> <a class="erweima button" ng-hover resource="scene"><em class="eqf-QRcode"></em></a> </div>
+		</div>
+	</li>
+</ul>

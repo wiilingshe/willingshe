@@ -1,0 +1,11 @@
+<div ng-class="{'monkey_action_result_sucess' : isSuccess, 'monkey_action_result_false' : !isSuccess}" ng-if="msgObj.msg" ng-style="bgStyle">
+	<div  class="bind-email-guide"></div>
+	<div id="monkey_action_result" class="monkey_bg">
+		<div class="content" >
+			<div class="confirm-msg" ng-class="msgObj.title ? '' : 'msg-padding'" ng-bind-html="msgObj.msg"></div>
+		</div>
+		<div class="choose">
+			<a ng-click="close();" class="pass">{{msgObj.btn || ('dialog.CLOSE' | translate)}}</a>
+		</div>
+	</div>
+</div>

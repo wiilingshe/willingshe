@@ -1,0 +1,39 @@
+<div style="position: fixed; left: 0; top: 0; bottom: 0; right: 0;z-index:10000" ng-click="showGuide()" ng-show="isFirstLogin" ng-controller="userCenterGuideCtrl" id="companyVip">
+	<!--微课列表页面-用户引导1-->
+	<div class="bind-email-guide" ng-if="isCompanyVip">
+		<h1><em>亲爱的微学宝会员：</em><span ng-click="showNextGuide()">&times;</span></h1>
+		<p>恭喜您成为微学宝企业成员，现在您将尊享以下特权：</p>
+		<ul class="guide-describe">
+			<li>
+				<ul>
+					<li style="padding-bottom:15px;">1、可以设置自定义加载LOGO</li>
+					<li style="padding-bottom:15px;"> 2、课件导出次数无限制</li>
+					<li style="padding-bottom:15px;"> 3、导出后课件加载LOGO可自定义</li>
+					<li style="padding-bottom:15px;"> 4、企业子账号管理（开发中）</li>
+					<li style="padding-bottom:15px;"> 5、可以获赠两门定制课件</li>
+					<li>看到这些是不是很开心呐，在您使用过程中小宝将竭诚为您服务！</li>
+				</ul>
+			</li>
+		</ul>
+		<div class="user-select">
+			<p><input type="checkbox" style="margin: 4px; font-size:14px" checked="checked" ng-click="isShow()" /><em>不再提示</em></p> <button class="btn btn-primary" style="line-height: 20px;" ng-click="showNextGuide()">知道了</button> </div>
+	</div>
+	<div class="bind-email-guide" ng-if="!isCompanyVip">
+		<h1><em>亲爱的微学宝会员：</em><span ng-click="showNextGuide()">&times;</span></h1>
+		<p>感谢您成为微学宝会员，现在您可以免费升级为企业会员，升级后您将尊享以下特权：</p>
+		<ul class="guide-describe">
+			<li>
+				<ul>
+					<li style="list-style:disc;padding-bottom:15px;">创建子账号、管理子账号，做好企业微课安全</li>
+					<li style="list-style:disc;padding-bottom:15px;"> 创建企业独享的微课模板、页面模板</li>
+					<li style="list-style:disc;padding-bottom:15px;"> 15微币“微学宝技术支持”底标免费用</li>
+					<li style="list-style:disc;padding-bottom:15px;"> 30微币品牌联合底标免费用</li>
+					<li style="list-style:disc;padding-bottom:15px;"> 微课加载LOGO自定义（100微币付费）</li>
+					<li class="pb20"><a href="http://bbs.e.wesambo.com/forum.php?mod=viewthread&tid=77" target="_blank">了解详情</a></li>
+				</ul>
+			</li>
+		</ul>
+		<div class="user-select">
+			<p><input type="checkbox" style="margin: 4px; font-size:14px" ng-click="isShow()" /><em>不再提示</em></p> <button class="btn btn-primary" style="line-height: 20px;" ng-click="showNextGuide()">知道了</button> </div>
+	</div>
+</div>

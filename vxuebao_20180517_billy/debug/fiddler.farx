@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AutoResponder LastSave="2016-06-28T16:40:39.9755918+08:00" FiddlerVersion="4.6.2.0">
+  <State Enabled="true" Fallthrough="true" UseLatency="false">
+    <ResponseRule Match="http://test.vxuebao.com/Public/(.*)" Action="http://127.0.0.1:3333/Public/$1" Enabled="true" />
+    <ResponseRule Match="EXACT:http://test.vxuebao.com/" Action="http://127.0.0.1:3333/Public/index.html" Enabled="true" />
+  </State>
+</AutoResponder>

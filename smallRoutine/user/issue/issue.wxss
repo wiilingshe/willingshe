@@ -1,0 +1,125 @@
+/* user/issue/issue.wxss */
+.fl{
+	float: left;
+}
+view{
+	word-break:break-all;
+}
+.text-c{
+	text-align: center;
+}
+.inline{
+	display: inline-block;
+}
+.pt39{
+	padding-top: 39rpx;
+}
+.mt39{
+	margin-top: 39rpx;
+}
+.pb80{
+	padding-bottom: 80rpx;
+}
+.mb80{
+	margin-bottom: 80rpx;
+}
+.top_line{
+	border-top: 2rpx solid #EEE;
+}
+.issue_box{
+	font-size: 28rpx;
+	height: 100vh;
+	background-color: #fff;
+}
+.clearfix{
+	clear: both;
+}
+.body{
+	height: 100vh;
+	position: relative;
+}
+.containers{
+}
+.rowList{
+	width: 100%;
+	height: auto;
+	position: relative;
+}
+.itemBox{
+	width: 690rpx;
+	margin: 0 auto;
+}
+.questionCont,.answerCont{
+	width: 100%;
+	height: auto;
+	display: flex;
+	display: -webkit-flex;
+}
+.questionCont{
+	color: #333;
+	font-weight: 700;
+	padding: 37rpx 0 0;
+	display: flex;
+	display: -webkit-flex;
+}
+.answerCont{
+	color: #666;
+	padding: 28rpx 0 0 0;
+}
+.logogram{
+	width: 49rpx;
+}
+.content{
+	width: fit-content;
+	width: 640rpx;
+}
+.blank{
+	height: 39rpx;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+}
+.serviceBox{
+	width: 110rpx;
+	height: 110rpx;
+	border-radius: 50%;
+	position: fixed;
+	bottom: 100rpx;
+	right: 50rpx;
+	background: linear-gradient(to bottom right, #FE7293, #FF5874);
+	box-shadow:2rpx 2rpx 10rpx #FF4D63;
+	z-index: 99;
+	padding-left:0;
+	padding-right:0;
+	border-color: #FE7293;
+}
+.serviceIcon{
+	width: 56rpx;
+	height: 56rpx;
+	margin-left: 29rpx;
+	margin-top: 12rpx;
+	display: block;
+}
+.serviceText{
+	height: 42rpx;
+	line-height: 42rpx;
+	color: #fff;
+	text-align: center;
+	font-size: 24rpx;
+}
+.nodata{
+	width: 100%;
+}
+.nodata>image{
+  width: 256rpx;
+  height: 170rpx;
+  margin-left: 248rpx;
+  margin-top: 420rpx;
+}
+.noMore{
+	color: #CCC;
+	width: 100vw;
+	text-align: center;
+	height: 90rpx;
+	line-height: 90rpx;
+}

@@ -1,0 +1,7 @@
+<div class="btn-group" style="padding: 0;">
+	<div class="dropdown"> <a class="btn dropdown-toggle first-child" data-toggle="dropdown" title="{{'common.template.TPL' | translate}}" style=" color: #fff;" translate="common.template.TPL">            页面模板            &nbsp;            <b class="caret">            </b>        </a>
+		<ul class="dropdown-menu size-menu">
+			<li ng-repeat="type in pageTplTypes"> <a ng-href="#/scene/create/{{type.value}}?pageId=1">                    {{type.name}}                </a> </li>
+		</ul>
+	</div>
+</div>

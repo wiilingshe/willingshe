@@ -1,0 +1,20 @@
+<div class="share-tab">
+	<ul class="nav nav-pills no-border">
+		<li ng-class="{active: viewControl.subtab == 'socialShare'}"> <a class="background-color-width-change" ng-click="showSelectSubTab('socialShare')">社交分享</a> </li>
+		<li ng-class="{active: viewControl.subtab == 'siteImport'}"> <a class="background-color-width-change" ng-click="showSelectSubTab('siteImport')">网址嵌入</a> </li>
+	</ul>
+</div>
+<div class="tab-content p20">
+	<div ng-if="viewControl.subtab == 'socialShare'" ng-controller="SocialShareCtrl">
+		<div class="social-share" ng-include="'/Public/eq/6.0/templates/spread.tab.subtab.social-share.tpl.html'"></div>
+	</div>
+	<div ng-if="viewControl.subtab == 'expandWeb'" ng-controller="ExpandWebCtrl">
+		<div ng-include="'/Public/eq/6.0/templates/spread.tab.subtab.expand-web.tpl.html'"></div>
+	</div>
+	<div ng-if="viewControl.subtab == 'domainBind'" ng-controller="DomainBindCtrl">
+		<div ng-include="'/Public/eq/6.0/templates/spread.tab.subtab.domain-bind.tpl.html'"></div>
+	</div>
+	<div ng-if="viewControl.subtab == 'siteImport'" ng-controller="SiteImportCtrl">
+		<div ng-include="'/Public/eq/6.0/templates/spread.tab.subtab.site-import.tpl.html'"></div>
+	</div>
+</div>

@@ -1,0 +1,130 @@
+<div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">        <span aria-hidden="true">×</span>    </button>
+	<h4 class="modal-title">{{title}}</h4></div>
+<div class="modal-body">
+	<form class="form-horizontal upgrade">
+		<div class="form-group"> <label class="control-label col-sm-2">                用户昵称            </label>
+			<div class="col-sm-8"> <input type="text" class="form-control" ng-model="applyInfo.nick" placeholder="30个字符" /> </div>
+		</div>
+		<div class="form-group"> <label class="control-label col-sm-2">                简短介绍            </label>
+			<div class="col-sm-8"> <input type="text" class="form-control" ng-model="applyInfo.shortIntroduction" placeholder="30个字符" ng-class="{error: introError}" ng-blur="checkIntroFormat(applyInfo)" />
+				<p class="error" ng-show="introError">{{introError}}</p>
+			</div>
+			<div class="col-sm-2 tips ng-scope">必填</div>
+		</div>
+		<div class="form-group"> <label class="control-label col-sm-2">详细介绍</label>
+			<div class="col-sm-8"> <textarea class="form-control" ng-model="applyInfo.introduction" placeholder="400个字符" ng-class="{error: introError1}" ng-blur="checkIntroFormat1(applyInfo)"></textarea>
+				<p class="error" ng-show="introError1">{{introError1}}</p>
+			</div>
+			<div class="col-sm-2 tips ng-scope">必填</div>
+		</div>
+		<div class="form-group"> <label class="text-right col-sm-2">代表作品</label>
+			<div ng-show="myShowScene" class="clearfix">
+				<div class="col-sm-7">
+					<p ng-show="sceneSelected.length < 1" style="color:#999">请选择3个代表作品，作品默认会加入微课</p>
+					<p ng-show="sceneSelected.length >0" class="select-icon"> <span ng-repeat="scene in sceneSelected" class="ellipsis" title="{{scene.name}}">{{scene.name}}</span> </p>
+				</div>
+				<div class="dropdown" style="width:50px;float:left;"> <a ng-show="myShowScene.length > 0" class="more dropdown-toggle" style="color:#08a1ef">选择</a>
+					<div class="other-label dropdown-menu" style="width:500px;left:-400px;">
+						<div class="select-contain">
+							<div class="square col-sm-6 ellipsis" ng-repeat="scene in myShowScene" forbidden-close>
+								<div class="checkbox-square" ng-class="{checked: scene.ischecked}"> <em class="eqf-clickmore"></em> <input type="checkbox" id="{{scene.name + $index}}" class="area" ng-model="scene.ischecked" ng-value="other" /> </div> <label for="{{scene.name + $index}}" title="{{scene.name}}">                                    {{scene.name}}                                </label>								</div>
+						</div>
+						<div class="col-sm-12 text-right" forbidden-close> <a class="modal-cancle" ng-click="scene_cancel($event)">取消</a> <a class="btn btn-primary" ng-click="sceneSelect(scene, $event,true)">确认                            </a>
+							<p class="error" style="float:left;" ng-show="sceneError">{{sceneError}}</p>
+						</div>
+					</div>
+					<div class="otherBg" forbidden-close></div>
+				</div>
+				<div class="col-sm-1 tips" style="padding-top:0;padding-bottom:0;">必填</div>
+			</div>
+			<div class="col-sm-8" style="color:#ff0000" ng-show="!myShowScene"> 您暂无代表作品，请先创建微课 </div>
+			<p class="col-sm-8 error" style="padding-left:145px" ng-show="sceneNull">{{sceneNull}}</p>
+		</div>
+		<div class="form-group"> <label class="col-sm-2 text-right">服务地域</label>
+			<div class="col-sm-7">
+				<p style="color:#999" ng-show="serverSelected.length < 1">请选择1-3个服务的地域</p>
+				<p ng-show="serverSelected.length >0" class="select-icon"> <span ng-repeat="server in serverSelected" class="ellipsis" title="{{server.name}}">{{server.name}}</span> </p>
+				<p class="error" style="float:left;" ng-show="serverNull">{{serverNull}}</p>
+			</div>
+			<div class="dropdown" style="float:left;width:50px;"> <a ng-show="moreArea" class="more dropdown-toggle" style="color:#08a1ef">选择</a>
+				<div class="other-label dropdown-menu" style="width:500px;left:-400px;">
+					<div class="select-contain">
+						<div class="square col-sm-4" ng-repeat="server in serverLabel" forbidden-close>
+							<div class="checkbox-square" ng-class="{checked: server.ischecked}"> <em class="eqf-clickmore"></em> <input type="checkbox" id="{{server.name + $index}}" class="area" ng-model="server.ischecked"> </div> <label for="{{server.name + $index}}">{{server.name}}                            </label> </div>
+					</div>
+					<div class="col-sm-12 text-right" style="line-height:36px;" forbidden-close> <a class="modal-cancle" ng-click="server_cancel($event)">取消</a> <a class="btn btn-primary" ng-click="serverSubmit(applyInfo,$event,true)">确认</a>
+						<p class="error" style="float:left;" ng-show="serverError">{{serverError}}</p>
+					</div>
+				</div>
+				<div class="otherBg" forbidden-close></div>
+			</div>
+			<div class="col-sm-1 tips" style="padding-top:0;padding-bottom:0;">必填</div>
+		</div>
+		<div class="form-group"> <label class="col-sm-2 text-right">擅长领域</label>
+			<div class="col-sm-7">
+				<p style="color:#999" ng-show="cateSelected.length < 1">请选择1-3类擅长的领域</p>
+				<p ng-show="cateSelected.length >0" class="select-icon"> <span ng-repeat="cate in cateSelected" class="ellipsis" title="{{cate.name}}">{{cate.name}}</span> </p>
+				<p class="error" ng-show="cateNull">{{cateNull}}</p>
+			</div>
+			<div class="dropdown" style="float:left;width:50px;"> <a ng-show="moreLabel" class="more dropdown-toggle" style="color:#08a1ef">选择</a>
+				<div class="other-label dropdown-menu" style="width:550px;left:-420px;">
+					<div class="select-contain">
+						<div class="square col-sm-3" ng-repeat="otherCate in cateLabel" forbidden-close>
+							<div class="checkbox-square" ng-class="{checked: otherCate.ischecked}"> <em class="eqf-clickmore"></em> <input type="checkbox" id="{{otherCate.name + $index}}" class="area" ng-model="otherCate.ischecked" ng-value="other" /> </div> <label for="{{otherCate.name + $index}}">                                {{otherCate.name}}                            </label>							</div>
+					</div>
+					<div class="col-sm-12 text-right" style="line-height:36px;" forbidden-close> <a class="modal-cancle" ng-click="cate_cancel($event)">取消</a> <a class="btn btn-primary" ng-click="queren(applyInfo, $event,true)">确认                        </a>
+						<p class="error" style="float:left;" ng-show="cateError">{{cateError}}</p>
+					</div>
+				</div>
+				<div class="otherBg" forbidden-close></div>
+			</div>
+			<div class="col-sm-1 tips" style="padding-top:0;padding-bottom:0;">必填</div>
+		</div>
+		<div class="form-group" style="position:relative;"> <label class="col-sm-2 text-right">支付方式</label>
+			<div style="float:left;width:380px;">
+				<div class="square" style="width:90px;float:left;margin-left:15px;" ng-repeat="pay in payLabel">
+					<div class="checkbox-square" ng-class="{checked: pay.ischecked}"> <em class="eqf-clickmore"></em> <input type="checkbox" id="{{pay.name + $index}}" ng-model="pay.ischecked" class="area" /> </div> <label for="{{pay.name + $index}}">{{pay.name}}</label> </div>
+			</div>
+			<div class="col-sm-1 tips" style="margin-left:12px;">必填</div>
+			<div class="col-sm-offset-2 col-sm-10" ng-show="payError">
+				<p class="error">{{payError}}</p>
+			</div>
+		</div>
+		<div class="form-group"> <label class="control-label col-sm-2">                服务QQ            </label>
+			<div class="col-sm-8"> <input type="text" class="form-control" ng-model="applyInfo.qq" value="" ng-class="{error: qqError}" placeholder="服务QQ" ng-blur="checkQQFormat(applyInfo)" maxlength="20" />
+				<p class="error" ng-show="qqError">{{qqError}}</p>
+			</div>
+			<div class="col-sm-2 tips">必填</div>
+		</div>
+		<div class="form-group"> <label class="control-label col-sm-2">微信号</label>
+			<div class="col-sm-8"> <input type="text" class="form-control" ng-class="{error: wechatError}" ng-model="applyInfo.wechat" value="" placeholder="微信号" maxlength="20" />
+				<p class="error" ng-show="wechatError">{{wechatError}}</p>
+			</div>
+			<div class="col-sm-2 tips">必填</div>
+		</div>
+		<div class="form-group"> <label class="control-label col-sm-2">                联系邮箱            </label>
+			<div class="col-sm-8"> <input type="text" class="form-control" ng-model="applyInfo.email" value="" ng-class="{error: emailError}" ng-blur="checkEmailFormat(applyInfo)" placeholder="联系邮箱" maxlength="40" />
+				<p class="error" ng-show="emailError">{{emailError}}</p>
+			</div>
+			<div class="col-sm-2 tips">必填</div>
+		</div>
+		<div class="form-group"> <label class="control-label col-sm-2">手机号</label>
+			<div class="col-sm-6"> <input type="text" class="form-control" ng-model="applyInfo.phone" value="" ng-class="{error: telError}" placeholder="手机号" ng-change="changePhone(applyInfo.phone)" maxlength="20" />
+				<p class="error" ng-show="telError">{{telError}}</p>
+			</div>
+			<div class="col-sm-2" style="padding:0;" ng-show="showPhone"> <span class="code" ng-show="!isCodeAccessiable" ng-click="getCode(applyInfo,1)">验证码</span> <span class="code enble" ng-show="isCodeAccessiable">{{codeTip}}</span> </div>
+			<div class="col-sm-2 tips ng-scope">必填</div>
+		</div>
+		<div class="form-group clearfix" ng-show="showPhone"> <label for="inputPassword3" class="col-sm-2 control-label">验证码</label>
+			<div class="col-sm-8"> <input type="type" class="form-control" ng-class="{error:codeError}" placeholder="验证码" ng-model="applyInfo.code" ng-blur="checkCode(applyInfo)">
+				<p class="error" ng-show="codeError">{{codeError}}</p>
+			</div>
+			<div class="col-sm-2 tips">必填</div>
+		</div>
+		<div class="form-group cleafix" ng-show="!invoiceStat"> <label class="col-sm-3 control-label">发票信息</label>
+			<div class="col-sm-7"> <a class="btn blue" ng-click="invoice()" style="color:#fff;">修改发票信息</a> </div>
+		</div>
+	</form>
+	<p ng-show="authError" style="text-align:center;color:#ff5448;">{{authError}}</P>
+</div>
+<div class="modal-footer"> <a class="modal-cancle" ng-click="cancel()">取消</a> <a class="btn btn-primary" ng-click="submit(applyInfo)" ng-show="applyXiuke">提交申请</a> <a class="btn btn-primary" ng-click="reset(applyInfo)" ng-show="!applyXiuke">确定</a></div>

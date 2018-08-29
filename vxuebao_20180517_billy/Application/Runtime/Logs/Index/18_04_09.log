@@ -1,0 +1,9 @@
+[ 2018-04-09T05:41:10+08:00 ] 35.196.10.249 /index.php?g=Home&m=Index&a=fc
+ERR: 无法加载控制器:Index
+
+[ 2018-04-09T05:41:11+08:00 ] 35.196.10.249 /index.php?g=Home'A=0&m=Index&a=fc
+ERR: 无法加载控制器:Index
+
+[ 2018-04-09T05:41:12+08:00 ] 35.196.10.249 /index.php?g=Home&m=Index&a=fc'A=0
+ERR: 无法加载控制器:Index
+

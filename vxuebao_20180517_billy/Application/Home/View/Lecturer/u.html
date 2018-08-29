@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="baidu-site-verification" content="2MKKT6mbuL" />
+	<meta charset="utf-8" />
+	<meta name="description" content="{$Think.config.content}" />
+	<meta name="keywords" content="{$Think.config.keyword}" />
+	<meta name="viewport"content="width=device-width, initial-scale=1.0" />
+	<meta name="renderer" content="webkit">
+	<meta property="qc:admins" content="{$Think.config.THINK_SDK_QQ.qqqqqq52}" />
+	<meta property="wb:webmaster" content="354b970d8cd61602" />
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="/index/css/common.css">
+	<link rel="stylesheet" type="text/css" href="/index/css/lecturer_u.css">
+	<link href="/index/css/shortcut.css" rel="stylesheet">
+	<link href="/assets/login.css" rel="stylesheet">
+	<title>{$list.usname}个人主页</title>
+</head>
+<body>
+	<div id="eq_main">
+  <!--头部-->
+    <include file="Public:des_header" />
+    <div class="clear"></div>
+    <div id="lecturer_ucontent">
+    	<div class="ucontent_top">
+    		<div class="top_l">
+    			<img src="{$list.photo}" />
+    		</div>
+			<div class="top_c">
+				<div>
+					<span class="name">{$list.usname}</span>
+					<span>人气：{$list.views}</span>
+					<span>|</span>
+					<span>评论：{$list.reply}</span>
+				</div>
+				<div class="describe">
+					<p>{$list.usjianjie}</p>
+					<p>隶属机构：{$list.jigou}</p>
+					<p>主讲课程：{$list.class}</p>
+				</div>
+				<ul class="long">
+					<foreach name="list['tags']" key="k" item="v">
+    					<li class="<if condition="($k eq 1)">describe_center</if>">{$v}</li>
+    				</foreach>
+				</ul>
+				<div class="contact">
+					<ul>
+						<li class="contact_btn">点击查看联系方式</li>
+						<li class="contact_way">
+							<ul>
+								<li class="qq">{$touch.qq}</li>
+								<li class="weixin">{$touch.weixin}</li>
+								<li class="phone">{$touch.phone}</li>
+								<li class="email">{$touch.email}</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="top_r">
+				<div class="members">{$list.huiyuan}</div>
+				<div class="code_box">
+					<div id="code"></div>
+					<p>扫我在手机上查看讲师介绍</p>
+				</div>
+			</div>
+    	</div>
+    	<div class="ucontent_main">
+    		<ul>
+    			<li>
+	    			<div class="main_title">专业背景</div>
+	    			<div class="main_detailed">
+	    				{$list.beijin}
+	    			</div>
+	    		</li>
+	    		<li>
+	    			<div class="main_title">主讲课程</div>
+	    			<div class="main_detailed">
+	    				{$list.kecheng}
+	    			</div>
+	    		</li>
+	    		<li>
+	    			<div class="main_title">授课特点</div>
+	    			<div class="main_detailed">
+	    				{$list.tedian}
+	    			</div>
+	    		</li>
+	    		<li>
+	    			<div class="main_title">服务客户</div>
+	    			<div class="main_detailed">
+	    				{$list.fuwu}
+	    			</div>
+	    		</li>
+	    		<li>
+	    			<div class="main_title">照片墙</div>
+	    			<div class="main_photo">
+	    				<ul>
+	    				<foreach name="list['picture']" key="key" item="value">
+	    					<li><img src="{$value}" /></li>
+	    				</foreach>
+	    				</ul>
+	    			</div>
+	    		</li>
+	    		<li>
+	    			<div class="main_title">课程展示</div>
+	    			<div class="main_detailed">
+	    				{$list.zanshi}
+	    			</div>
+	    		</li>
+	    		<li>
+	    			<div class="main_title">全部评论</div>
+	    			<div class="main_review">
+	    				<form action="{:U('lecturer/discut',array('userid'=>$list['id'],'u'=>$_GET['u']))}" method="post" id="form">
+	    					<textarea name="content" rows="7" value="" id="reply_content" placeholder="请输入你的评论" oninput="if(value.length>200) {value=value.slice(0,200);remaining.value=0;}else {remaining.value=200-value.length;}"></textarea>
+	    					<p>还可以输入<input value="200" id="remaining" class="current" style="width:40px;text-align:center;" />个字符</p>
+	    					<input type="submit" class="review_sub" value="评论" />
+	    				</form>
+	    			</div>
+	    		</li>
+    		</ul>
+    	</div>
+    	<div class="ucontent_discuss">
+    		<ul>
+    		<foreach name="discuts" key="key" item="value">
+    			<li class="discuzz_f">
+    				<ul>
+    					
+    					<li><img src="http://www.vxuebao.com{$value.headimg|default='/index/images/lecturer_img2.jpg'}" /></li>
+    					<li class="f_two">
+    						<span class="current">{$value.usname}</span>
+    						<span>{$value.addtime}</span>
+    						<p>{$value.content}</p>
+    					</li>
+    					<li class="current f_last">{$key+1}F</li>
+    				</ul>
+    			</li>
+  			</foreach>
+    		</ul>
+    		
+    	</div>
+    </div>
+    <div id="footer" style="height:100px;">
+      <div class="footer_t">
+        <ul>
+          <li class="f_left_l">友情链接：
+          	<a  target="_blank" href="http://www.learnnow.net.cn/ ">领思</a>/<a target="_blank" href="http://wizrecord.im/">wizrecord</a>/<a target="_blank" href="http://wetool.im/" >wetool</a>/<a target="_blank" href="http://www.weteam.im/" >weteam</a>
+          </li>
+          <li class="f_center_l">CopyRight@2014-2016 http://www.vxuebao.com</li>
+          <li>关于我们/联系我们/新手教程/e-learning</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+<include file="Public:common" />
+<script type="text/javascript">
+	$(function(){
+    /*二维码鼠标经过*/
+        $(".dowmload_app").hover(function(){
+           $('.app_div').css('display','block');
+        },function(){
+             $('.app_div').css('display','none');
+            }
+        );
+
+    /*点击查看联系方式*/
+    	var url ="http://"+window.location.host+"/"+"index.php?c=user&a=check";
+    	$(".contact_btn").click(function(){
+		   	$.ajax({
+		       type: "POST",
+		       url: url,
+		       success: function(msg){
+		         if(typeof msg == "object") {
+		            if(msg.code == 200){
+				        if($(".contact_way").css('display') == 'none'){
+	    					$(".contact_way").show();
+	    				}else{
+	    					$(".contact_way").hide();
+	    				}
+		            }else{
+		            	/*$('#loginModal').modal('show');*/
+		              alert('请先登录，方可查看讲师联系方式！！！');
+		            }
+		         }
+		       }
+		    });
+    	});
+
+    	/*未登录不可以评论*/
+    	function check(){
+		   	$.ajax({
+		       type: "POST",
+		       url: url,
+		       success: function(msg){
+		         if(typeof msg == "object") {
+		            if(msg.code == 200){
+				      $('#form').attr('onsubmit','return true');
+		            }else{
+		              $('#form').attr('onsubmit','return false');
+		              $(':input[type=submit]').click(function(){
+		              	//$('#loginModal').modal('show');	
+		              	alert('请先登录！！！');	              	
+		              });
+		            }
+		         }
+		       }
+		    });	    	
+    	};
+
+    	check();
+
+
+	
+
+   });
+</script>
+<script type="text/javascript" src="/common/js/qrcode.js"></script>
+<script type="text/javascript" src="/common/js/jquery.qrcode.js"></script> 
+<script type="text/javascript">
+
+	function getCookie(name){ 
+				    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+				    if(arr=document.cookie.match(reg))
+				        return unescape(arr[2]); 
+				    else 
+				        return null; 
+	}
+	var u = getCookie('USERID');
+	//生成二维码
+	var link = 'http://' + window.location.host + '/'+'lecturer-mobile_u?userid=<?php echo $_GET["userid"]?>&u='+u;
+
+	$("#code").qrcode({ 
+	    render: "canvas", //渲染方式 
+	    width: 130, //宽度 
+	    height:130, //高度 
+	    text: link
+	}); 
+</script>
+<script type="text/javascript" src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/index/js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/index/js/jpages.min.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/index/js/jquery.lazyload.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/Public/eq/5.4/layer/layer.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/index/js/scrop.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/index/js/common_v.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/Public/eq/5.4/index.js"></script>
+<script type="text/javascript">
+    var modeltype,URL=window.location.href;
+    modeltype=URL.split("#")[1];
+    if(modeltype=='login'){
+        $('#loginModal').modal('show');
+    }
+    if(modeltype=='register'){
+        $('#regModal').modal('show');
+    }
+    if(modeltype=='forget'){
+        $('#forgetModal').modal('show');
+    }
+    if(modeltype=='resetpwd'){
+        $('#resetpwdModal').modal('show');
+    }
+    var PREFIX_URL = "http://" + window.location.host + "/";
+    var checkEmailFormat = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+    function centerModals() {
+        $('.modal').each(function (i) {
+            var $clone = $(this).clone().css('display', 'block').appendTo('body');
+            var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 5);
+            top = top > 0 ? top : 0;
+            $clone.remove();
+            $(this).find('.modal-content').css("margin-top", top);
+        });
+    }
+    $('.modal').on('show.bs.modal', centerModals);
+    $(window).on('resize', centerModals);
+    jQuery(".slide").slide({mainCell: ".bd ul", autoPlay: true, interTime: 5000, delayTime: 5000});
+    (function () {
+        var gotop = document.getElementById('gotop');
+        gotop.onclick = function () {
+            console.log("返回顶部");
+            $('html,body').animate({'scroll-top': 0}, 'fast');
+        }
+    })()
+    function toQzoneLogin(type)
+    {   
+        if(type=='qq'){
+        
+            childWindow = window.open("/qq/example/oauth/index.php","TencentLogin","width=450,height=320,menubar=0,scrollbars=1, resizable=1,status=1,titlebar=0,toolbar=0,location=1"); 
+        }else{
+            childWindow = window.open("https://open.weixin.qq.com/connect/qrconnect?appid=wx5a3ca7ea184c3a3b&redirect_uri=http%3A%2F%2Fwww.vxuebao.com%2Fpassword.html&scope=snsapi_login&response_type=code&state=WECHAT_STATE#wechat_redirect","TencentLogin","width=600,height=600,menubar=0,scrollbars=1, resizable=1,status=1,titlebar=0,toolbar=0,location=1");   
+        }
+    } 
+    
+    function closeChildWindow()
+    {
+        childWindow.close();
+    }
+
+    
+</script>
+
+</body>
+</html>

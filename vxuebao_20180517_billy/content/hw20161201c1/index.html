@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<div id='wx_pic' style='margin:0 auto;display:none;'>
+			<img src='img/wx_pic.jpg' />
+		</div>
+		<meta charset="utf-8" />
+		<title>复盘——苦逼到NB的必经之路</title>
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+		<style>
+			html,body,div,img{font-size:100%;margin:0px 0px 0px 0px; padding: 0px 0px 0px 0px; }
+			div{position: relative;}
+			a,img{display: block;}
+		</style>
+	</head>
+	<body>
+		<img src="img/01.jpg" width="100%" alt=""/>
+		<img src="img/02.jpg" width="100%" alt=""/>
+		<img src="img/03.jpg" width="100%" alt=""/>		
+		<img src="img/04.jpg" width="100%" alt="复盘vs不复盘"/>				
+		<img src="img/05.jpg" width="100%"/>
+		<img src="img/06.jpg" width="100%"/>
+		<img src="img/07.jpg" width="100%"/>
+		<img src="img/08.jpg" width="100%"/>
+		<script type="text/javascript" src="js/jquery-1.7.2.js"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+		<script type="text/javascript" language="javascript">
+			//加载微信
+			var myurl=location.href.split('#')[0];
+			var mydir=myurl.substring(0,myurl.lastIndexOf("/",myurl.substring(0,myurl.indexOf(".html")).length)+1);
+			$.get("/index.php?c=view&a=huawei&url="+encodeURIComponent(myurl), function(ddd){
+				loadjsoncomplete(ddd);
+			});
+			function loadjsoncomplete(myJsonObject){
+				if(myJsonObject && myJsonObject.appId){
+					
+				}else{
+					myJsonObject=escapemystr(myJsonObject);
+					myJsonObject=eval('('+myJsonObject+')');
+				}
+				////////////////////////////////////////
+				wx.config({
+					debug: false,
+					appId: myJsonObject.appId,
+					timestamp: myJsonObject.timestamp,
+					nonceStr: myJsonObject.nonceStr,
+					signature: myJsonObject.signature,
+					jsApiList: [
+						'onMenuShareTimeline',
+						'onMenuShareAppMessage',
+						'onMenuShareQQ',
+						'onMenuShareWeibo',
+						'onMenuShareQZone'
+					]
+				});
+
+				wx.ready(function () {
+					var shareData64 = {
+						title: '复盘——苦逼到NB的必经之路',
+						desc: '复盘让每一次学习和实践更有意义',
+						link: myJsonObject.url,
+						imgUrl:  mydir+'img/wx_pic.jpg'
+					};
+					wx.onMenuShareAppMessage(shareData64);
+					wx.onMenuShareTimeline(shareData64);
+					wx.onMenuShareQQ(shareData64);
+					wx.onMenuShareWeibo(shareData64);
+					wx.onMenuShareQZone(shareData64);
+				});	  
+				wx.error(function (res) {
+					//alert(res.errMsg);
+				});
+				///////////////////////////////////////fun
+				function escapemystr(estr) {
+					//%5C%22
+					estr = escape(estr);
+					estr = shieldFixStr(estr, "%5C%22", "%22");
+					estr = unescape(estr);
+					estr = estr.substring(estr.indexOf("{"), estr.lastIndexOf("}")+1);
+					return estr;
+				}
+				function shieldFixStr(contentStr, searchStr, replaceStr) {
+					while (contentStr.indexOf(searchStr) != -1) {
+						contentStr = shieldStr(contentStr, searchStr, replaceStr);
+					}
+					return contentStr;
+					function shieldStr(contentStr, searchStr, replaceStr) {
+						var tmpIdx = contentStr.indexOf(searchStr);
+						if (tmpIdx != -1) {
+							contentStr = contentStr.substring(0, tmpIdx)+replaceStr+contentStr.substring(tmpIdx+searchStr.length, contentStr.length);
+						}
+						return contentStr;
+					}
+				}
+				///////////////////////////////////////funend
+			}
+			////////////////////////////加载微信 end
+		</script>
+	</body>
+</html>

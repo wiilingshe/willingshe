@@ -1,0 +1,25 @@
+<div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">        <span aria-hidden="true">×</span>    </button>
+	<h4 class="modal-title" translate="usercenter.privilege.QR_CODE">请使用微信扫一扫二维码进行</h4></div>
+<div>
+	<ul class="nav nav-bg">
+		<li ng-class="{active:payWay=='alipay'}"><a ng-click="getWeChatUrl('alipay');">支付宝</a></li>
+		<li ng-class="{active:payWay=='wechat'}"><a ng-click="getWeChatUrl('wechat');" ng-hide="type==3">微信</a></li>
+		<!-- <li ng-class="{active:method=='onlineBank'}"><a ng-click="method='onlineBank'">网银支付</a></li> -->
+	</ul>
+	<div class="tab-content">
+		<div class="tab-pane" ng-class="{active:payWay=='alipay'}">
+			<h4 class="text-center mt20">扫码支付</h4>
+			<h3 class="text-center" style="color:red;margin-top:15px;">{{money}}</h3>
+			<div class="qrcode text-center" style="width:100%;padding:12px 0" qr-code qr-url="{{qrCodeUrl}}"></div>
+		</div>
+		<div class="tab-pane" ng-class="{active:payWay=='wechat'}">
+			<h4 class="text-center mt20">扫码支付</h4>
+			<h3 class="text-center" style="color:red;margin-top:15px;">{{money}}</h3>
+			<div class="qrcode text-center" style="width:100%;padding:12px 0" qr-code qr-url="{{qrCodeUrl}}"></div>
+		</div>
+		<!-- <div class="tab-pane" ng-class="{active:method=='onlineBank'}" >            <h4 class="text-center mt20">选择一家银行机构支付</h4>            <h3 class="text-center">{{money}}</h3>            <div class="bank-contain">                <div><span class="bank-icbc"></span></div>                <div><span class="bank-cmb"></span></div>                <div><span class="bank-cbc"></span></div>                <div><span class="bank-abc"></span></div>                <div><span class="bank-bc"></span></div>                <div><span class="bank-psbc"></span></div>                <div><span class="bank-spdb"></span></div>                <div><span class="bank-cgb"></span></div>                <div><span class="bank-ceb"></span></div>                <div><span class="bank-cmbc"></span></div>                <div><span class="bank-ecitic"></span></div>                <div><span class="bank-cib"></span></div>                <div><span class="bank-pab"></span></div>                <div><span class="bank-pab2"></span></div>                <div><span class="bank-bocom"></span></div>                <div><span class="bank-bob"></span></div>                <div><span class="bank-shbank"></span></div>                <div><span class="bank-nbbank"></span></div>                <div><span class="bank-srcb"></span></div>                <div><span class="bank-hzcb"></span></div>            </div>        </div> --></div>
+	<div style="text-align:center;margin-bottom:20px;" ng-if="counts.length>0">
+		<div class="btn-group"> <button class="btn btn-default btn-sm" ng-class="{active:count.value==curentCount}" ng-repeat="count in counts track by $index" ng-click="setCount(count.value,$index)">{{count.name}}</button> </div>
+	</div>
+</div>
+<div class="modal-footer"> <a class="btn btn-primary" ng-click="paymented()">完成支付</a></div>

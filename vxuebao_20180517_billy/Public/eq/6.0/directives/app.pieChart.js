@@ -1,0 +1,1 @@
+angular.module("app.directives.pieChart",[]).directive("pieChart",["$compile",function(t){return{restrict:"EA",link:function(t,e,a){var n,r;t.$watch(function(){return a.data},function(){a.data&&(r=JSON.parse(a.data)),n?(n.destroy(),n=new Chart(e[0].getContext("2d")).Pie(r)):n=new Chart(e[0].getContext("2d")).Pie(r)})}}}]);

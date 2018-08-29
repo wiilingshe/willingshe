@@ -1,0 +1,29 @@
+<div class="modal-header no-line" id="turnTo_header">
+	<button type="button" class="n_close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">        
+		<img aria-hidden="true" src="/assets/images/re-design/bg_close.png" />  
+	</button>
+	<h4 class="modal-title">
+		<i></i>
+		上(下)一页        
+		<a class="bbs-help-tip-media" target="_blank" href="http://bbs.e.wesambo.com/forum.php?mod=viewthread&tid=5051&extra="></a>            
+		<span ng-show = 'authError'>{{authError}}</span>    
+	</h4>
+</div>
+<div class="dialog-contain" id="turnTo_content" style="margin-bottom: 10px;">
+	<div class="modify_area tel_title tab-same clearfix"> 
+		<span ng-repeat="button in buttons track by $index" ng-class="{spanborder: $index == btnIndex}">			
+			<a ng-click = "chooseTabButton(button, $index)">{{button.text}}</a>		
+		</span> 
+	</div>
+	<div class="dialog-content">
+		<form class="form-contain" role="form">
+			<div class="modify_area form-list clearfix" style="padding-left: 50px;"> 
+				<label class="form-label" style="font-size: 14px;padding-top: 8px;width: 80px;">按钮名称：</label>
+				<div class="form-input" style="width: 400px;"> 	
+					<input type="text" check-count="40" ng-model="model.title" ng-keyup="$event.keyCode == 13 ? confirm() : null" autofocus stop-propagation style="width: 100%;border-color: #66cc00;" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="modal-footer no-line" id="turnTo_footer"> <a class="modal-submit" ng-click="confirm()">确定</a> <a class="modal-cancle" ng-click="cancel()">取消</a></div>

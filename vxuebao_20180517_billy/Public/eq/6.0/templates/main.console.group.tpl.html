@@ -1,0 +1,4 @@
+<div class="modal-header"> <span translate="main.customer.CREATE_GROUP">新建组</span></div>
+<div class="modal-body add-new-cat" forbidden-list-close> <input type="text" class="form-control" ng-model="group.name" placeholder="{{'main.customer.GROUP_NAME' | translate}}" /></div>
+<p ng-show="authError" style="text-align:center;">{{authError}}</p>
+<div class="btn-contain btn-small"> <a class="btn-main login" ng-click="confirm()" translate="main.customer.CONFIRM">确认</a> <a class="btn-grey0 cancel" ng-click="cancel()" translate="main.customer.CANCEL">取消</a></div>

@@ -1,0 +1,30 @@
+<div>
+	<div class="site-import-area" ng-repeat="contentText in contentTexts track by $index">
+		<div class="site-import-title pb20"> {{contentText.title}} </div>
+		<div class="site-import-col code-col">
+			<div class="code-area">
+				<div class="code-con" ng-if="$index == 0">
+					<div> &lt;script type="text/javascript"&nbsp; </div>
+					<div class="mid-con"> src="{{selectedUrl}}"&gt; </div>
+					<div> &lt;/script&gt; </div>
+				</div>
+				<div class="code-con" ng-if="$index == 1 || $index == 2">
+					<div> &lt;iframe border=0 width=320px height=641px&nbsp; </div>
+					<div class="mid-con"> src="{{selectedUrl}}"&gt; </div>
+					<div> &lt;/iframe&gt; </div>
+				</div>
+				<div class="copy-link fr">
+					<a class="btn btn-border" copy-button url="{{contentText.url}}"> <span class="eqf-scene-copy"></span> 复制代码 </a>
+				</div>
+			</div>
+		</div>
+		<div class="site-import-col des-col">
+			<div class="des-area fr">
+				<div> {{contentText.textOne}} </div>
+				<div class="mid-con"> {{contentText.textTwo}} </div>
+				<div class="mid-con"> {{contentText.textThree}} </div>
+			</div>
+		</div>
+		<div class="line" ng-show="$index!=2"></div>
+	</div>
+</div>

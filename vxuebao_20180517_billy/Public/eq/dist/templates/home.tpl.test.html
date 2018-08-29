@@ -1,0 +1,97 @@
+<div class="topButton" align="center">
+	<table class="toptable" cellspacing="0">
+		<tr>
+			<td><img style="cursor:pointer;" height="45" src="{{logoSrc}}" onclick="openFirstPage()" alt="HTML5在线制作" title="微场景免费在线制作"></td>
+			<td id="loginc" align="right"> </td>
+			<td class="tbutton">
+				<a href="#/show">
+					<font color="white">用户案例</font>
+				</a>
+			</td>
+			<td class="tbutton" ng-hide="isAuthenticated()">
+				<a ng-click="openLogin()">
+					<font color="white">登录</font>
+				</a>
+			</td>
+			<td class="tbutton" ng-hide="isAuthenticated()">
+				<a ng-click="openRegister()">
+					<font color="white">注册</font>
+				</a>
+			</td>
+			<td ng-show="isAuthenticated()" class="tbutton">
+				<a href="#/main">
+					<font color="white">进入</font>
+				</a>
+			</td>
+		</tr>
+	</table>
+</div>
+<div id="body" class="body" align="center">
+	<div class="contant">
+		<table class="pages" cellspacing="0">
+			<tr>
+				<td valign="top"> <img style="margin-left:70px;margin-top:80px;" src="static/img/index/advantage.png" alt="HTML5在线制作" title="微场景免费在线制作"> </td>
+			</tr>
+			<tr>
+				<td valign="top"><img style="margin-left:167px;" src="static/img/index/4.png" alt="HTML5在线制作" title="微场景免费在线制作"><img style="margin-left:20px;" src="static/img/index/5.png" alt="HTML5在线制作" title="微场景免费在线制作"><img style="margin-left:20px;" src="static/img/index/2.png"
+						alt="HTML5在线制作" title="微场景免费在线制作"><img style="margin-left:20px;" src="static/img/index/1.png" alt="HTML5在线制作" title="微场景免费在线制作"> <img style="margin-left:20px;" src="static/img/index/3.png" alt="HTML5在线制作" title="微场景免费在线制作"> </td>
+			</tr>
+			<tr>
+				<td valign="top" align="center"><img style="margin-top:30px;" src="static/img/index/btn-bg.png" alt="HTML5在线制作" title="微场景免费在线制作"></td>
+			</tr>
+			<tr>
+				<td valign="top" align="right">
+					<table cellspacing="0" style="width:100%;">
+						<tr>
+							<td valign="top" align="left" width="450"><img width="300" src="static/img/index/slide_02.png" alt="HTML5在线制作" title="微场景免费在线制作"></td>
+							<td valign="bottom">
+								<div style="color:white;">
+									<h3>让您SHOW得如此精彩</h3>
+									<p>海量素材，多样模板，拖拽组件，一键推广</p>
+									<p>多种互动效果，满足极致交互体验</p>
+									<p>图文动画，音频视频，多媒体视听感受</p> <br></div>
+							</td>
+							<td valign="top" align="right">
+								<div style="color:white;" align="left">
+									<h3>SHOW,让移动推广变得如此简单</h3>
+									<p>精美画面，社交展示，数据收集，持续营销</p>
+									<p>移动时代专业级的场景制作平台</p>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">
+					<div style="margin-top:190px;"><img style="margin-left:110px;" src="static/img/index/pro_10.png" alt="HTML5在线制作" title="微场景免费在线制作"><img style="margin-left:30px;" src="static/img/index/pro_13.png" alt="HTML5在线制作" title="微场景免费在线制作"><img style="margin-left:30px;" src="static/img/index/pro_15.png"
+							alt="HTML5在线制作" title="微场景免费在线制作"><br><br><br><br><img style="margin-left:80px;" src="static/img/index/pro_17.png" alt="HTML5在线制作" title="微场景免费在线制作"> <img style="margin-left:30px;" src="static/img/index/pro_26.png" alt="HTML5在线制作" title="微场景免费在线制作">
+						<img
+							style="margin-left:30px;" src="static/img/index/pro_27.png" alt="HTML5在线制作" title="微场景免费在线制作"></div>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">
+					<div id="temptest" style="width:800px;" align="right"><br/><br/><br/><br/><br/><br/><br/><br/>
+						<p style="color:white;">业务QQ：'+zixun_qq+'</p>
+						<p style="color:white;">业务电话：'+zixun_tel+'</p>
+						<p style="color:white;">邮箱：'+zixun_mail+'</p>
+						<p style="color:white;">联系地址：'+address+'</p>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top"></td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="foot" align="right">
+	<table>
+		<tr>
+			<td style="color:white;font-family:微软雅黑;font-size:12px;" align="right">{{web_ipc}} &nbsp;&nbsp; 2015 '+lastpagetext+'版权所有&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		</tr>
+	</table>
+</div>
+<div class="gotoBottom" onclick="godown()">联系</div>
+<div class="gotoTop" onclick="goup()">UP</div>

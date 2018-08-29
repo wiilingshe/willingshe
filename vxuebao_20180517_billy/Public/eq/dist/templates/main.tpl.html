@@ -1,0 +1,414 @@
+<div>
+	<div ng-include="'/Public/eq/6.0/templates/header.tpl.html'">
+	</div>
+	<div id="main" class="min_contain">
+		<div class="same-content" style="min-height:798px;">
+			<div class="ad mt20" ng-init="showAd= true;" id="ad_001" slides3 width="1180px" height="40px" ng-show="showAd== true">
+				<div class="slides_container add_margin"></div>
+			</div>
+			<div class="self_info">
+				<div class="self_photo" ng-mouseenter="showMask=true" ng-mouseleave="showMask=false">
+					<div class="p-mask2" ng-show="showMask">
+						<a ng-click="customerUpload()"><em class="eqf-top-pic background-color-width-change"></em><span>更换</span></a>
+					</div>
+					<div class="self_img" ng-class="{'person-freed2':userinfo.type == 1 || userinfo.type == 22,'person-pay2':userinfo.type == 12,'company-pay2':userinfo.type == 2}" ng-hide="userinfo.headImg">
+					</div>
+					<img ng-src="{{PREFIX_FILE_HOST + userinfo.headImg}}" ng-show="userinfo.headImg" />
+				</div>
+				<div class="private">
+					<span class="name">{{userinfo.name}}</span>
+					<span class="type">账户类型:
+	        			<span ng-if="userinfo.type == 1">个人免费用户</span>
+						<span ng-if="userinfo.type == 12">个人付费用户</span>
+						<span ng-if="userinfo.type == 2">企业付费用户</span>
+						<span ng-if="userinfo.type == 22">设计师</span>
+						<span ng-if="userinfo.type == 21">企业子用户</span>
+						<span ng-if="userinfo.type == 23">企业免费用户</span>
+					</span>
+					<span class="coin">我的微币:{{xdCounts}}</span>
+					<span class="msg">未读消息:{{newMsgCount}}条</span>
+				</div>
+
+				<div class="self_total">
+					<ul>
+						<li><i></i><span>{{allPageCount || 0 | fixnum}}</span><span>微课统计</span></li>
+						<li><i></i><span>{{datasCount.pv || 0 | fixnum}}</span><span>微课展示</span></li>
+						<li><i></i><span>{{datasCount.dt || 0 | fixnum}}</span><span>微课收集</span></li>
+					</ul>
+				</div>
+				<div class="self_state" style="height:150px;">
+					<span ng-click="buyXd()">获取微币</span>
+					<span><a href="javascript:void(0)" ng-click="transferXd()">转送微币</a></span>
+					<span><a ng-click="upgrade()">账号升级</a></span>
+				</div>
+			</div>
+			<nav class="main_navbar" style="margin-bottom:8px">
+				<ul ng-init="listType=0">
+					<li class="first_list" ng-repeat="list in lists" ng-class="{active:listType==$index}" ng-click="navChange($index);">
+						<a href="javascript:void(0)" ng-bind="list.title"></a>
+					</li>
+
+					<li class="first_list" id="account" style="    margin-left: 921px;">
+						<div ng-if="user.type == 2 || user.type == 23" class="select-branch fl">
+							<eqx-select class="select-contain select-sm" model="branchCurrent" change="selectBranch(branchCurrent)">
+								<eqx-select-option value="null">账号选择</eqx-select-option>
+								<eqx-select-option value="branch" ng-repeat="branch in branches">{{branch.loginName}}</eqx-select-option>
+							</eqx-select>
+						</div>
+					</li>
+					<li class="first_list" style="margin-left:868px">
+						<div id="weikefl" class="f1">
+							<eqx-select class="select-sm select-contain" model="scene.type" change="getMyScenes()">
+								<eqx-select-option value="null">分类</eqx-select-option>
+								<eqx-select-option value="type" ng-repeat="type in scene.types">{{type.name}}</eqx-select-option>
+							</eqx-select>
+						</div>
+					</li>
+					<li>
+						<input id="pptSearch" type="text" style="display:none;margin-left:1025px;height:28px;width:140px;border-radius: 6px;line-height: 30px;margin-top:11px;" ng-model="query" placeholder="search...">
+					</li>
+					<li class="first_list">
+						<div id="searchweike">
+							<input type="text" maxlength="40" placeholder="search..." ng-model="name" ng-change="changeName(name)" ng-keypress="EnterPress(event,name)" ng-keydown="EnterPress(name)">
+							<span ng-if="searchButton" class="search-icon eqf-search" ng-click="submit(name)"></span>
+							<span ng-if="!searchButton" class="search-icon eqf-wrong" ng-click="clearSearch()"></span>
+						</div>
+						<div id="searchmuban" style="display:none">
+							<input type="text" maxlength="40" placeholder="search..." ng-model="name" ng-change="changeName(name)" ng-keypress="EnterPressTwo(event,name)" ng-keydown="EnterPressTwo(name)">
+							<span ng-if="searchButton" class="search-icon eqf-search" ng-click="submitTwo(name)"></span>
+							<span ng-if="!searchButton" class="search-icon eqf-wrong" ng-click="clearSearchTwo()"></span>
+						</div>
+
+					</li>
+
+				</ul>
+			</nav>
+
+			<div class="tab-bottom-line" style="margin-bottom:8px;border-bottom: 1px solid #dfe4e8;background-color:#fff;display:none;" id="mubannav" ng-controller="SceneCtrl">
+				<ul class="clearfix tab-line" style="width:100%;border-top: 2px solid #eee;">
+					<li style="margin-left:15px">
+						<a ng-class="{active : 0 == childcat}" style="color:#585858;padding-top:13px;" ng-click="allpage(null,null)">全部</a>
+					</li>
+					<li ng-repeat="pageTplType in pageTplTypesList">
+						<a ng-click="getPageTplsByType(pageTplType.type)" style="color:#585858;padding-top:13px" ng-class="{active : pageTplType.type == childcat}">{{pageTplType.name}}</a>
+					</li>
+					<li ng-show="userProperty.type ==2 || userProperty.type ==21 || userProperty.type ==23">
+						<a ng-click="getCompanyTpl()" ng-class="{active: 1 == childcat}">企业样例</a>
+					</li>
+				</ul>
+				<div class="sample-childcat clearfix" ng-if="newArrayGroupCat">
+					<ul class="cat-list tab-box-shadow" style="width:100%;height:auto;padding-bottom: 8px;border-top:1px solid #eee;" ng-repeat="childGroup in newArrayGroupCat">
+						<li ng-repeat="cat in childGroup" ng-click="getPageTpls(type,cat.bizType,cat.id)" ng-class="{active:cat.id == categoryId}">
+							<a>{{cat.name}}</a><span>|</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="main_content" ng-if="listType==0">
+				<div class="row">
+					<div class="col-sm-5 thumb_sm_5" ng-if="page.currentPage==1">
+						<div class="lt_img default_tpl"></div>
+						<div class="rt_content">
+							<div class="create">
+								<i ng-click="createScene(listType)"></i><span class="create_text">一起创建微课吧</span>
+								<span class="create_tips">黑夜给了我黑色的眼睛，我却用它来创建微课。</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-5 thumb_sm_5" ng-repeat="scene in myScenes track by $index">
+						<div class="ribbon ribbon-badge" ng-if="!scene.show && !scene.publishTime">
+							<span class="ribbon-inner unpublish">未发布</span>
+						</div>
+						<div class="ribbon ribbon-badge" ng-show="!scene.show && scene.publishTime && scene.updateTime > scene.publishTime">
+							<span class="ribbon-inner new">有修改</span>
+							<span class="ribbon-inner new hint--bottom hint--rounded" data-hint="内容有修改，新修改未发布" style="transform: rotate(0deg);background:none;"></span>
+						</div>
+						<div class="ribbon ribbon-badge" ng-if="!scene.show && scene.status == -1">
+							<span class="ribbon-inner check">未通过审核</span></div>
+						<div class="ribbon ribbon-badge" ng-if="!scene.show && scene.status == -2">
+							<span class="ribbon-inner check">审核中</span>
+						</div>
+						<div class="lt_img" ng-style="getStyle(scene.cover,$index)">
+							<div class="overlay" ng-show="!scene.show">
+								<div class="edit">
+									<a class="edit-same" ng-if="scene.company_ext[0]||!branchid" ng-click="editScene($event,scene.id,listType)"> <em class="icon-edit background-color-width-change"></em><span>编辑</span></a>
+									<a class="edit-same" ng-click="showDetail(scene.id)"><em class="icon-detail background-color-width-change"></em><span>详情</span> </a>
+								</div>
+							</div>
+							<div ng-show="scene.show" class="face front qrcode" qr-code qr-url="{{canvasUrl+'/v-'+scene.code}}">
+							</div>
+						</div>
+						<div class="rt_content">
+							<h4>{{scene.name?scene.name:("未添加微课标题")}}</h4>
+							<p>{{scene.description?scene.description:("未添加微课描述")}}</p>
+							<div class="scene_info">
+								<span class="user_name"><em class="icon-user"></em><span>{{userinfo.name}}</span></span>
+								<span class="user_preview"><em class="icon-preview"></em><span class="views">{{scene.showCount | fixnum}}</span></span>
+								<span style="margin-left:35px"><img style="margin-right:8px;margin-bottom:-2px;" src="view/images/shujushouji.png">{{scene.dataCount}}</span>
+							</div>
+							<ul class="icon_list" ng-if="scene.company_ext[1]||!branchid">
+								<a ng-click="showPreview($event,scene, listType)"><em class="icon-view"></em><span>预览</span></a>
+								<a ng-if="scene.company_ext[1]||!branchid" ng-click="deleteScene($event,scene.id)"><em class="icon-delete"></em><span>删除</span></a>
+								<a ng-if="scene.status != -1 && scene.status != -2&&!branchid" ng-click="copyScene($event,scene.id,listType)"><em class="icon-copy"></em><span>复制</span></a>
+								<a ng-if="isAllowedToAccessTransfer && scene.status != -1 && scene.status != -2&&!branchid" ng-click="transferScene($event,scene.id)"><em class="icon-gift"></em><span>转送</span></a>
+								<a ng-if="!branchid" ng-click="sceneSettings($event,scene.id,listType)"><em class="icon-set"></em><span>设置</span></a>
+								<a class="edit-scene" ng-href="/index.php?c=Scene&a=export&id={{scene.id}}" target="_blank"><em class="icon-export"></em><span>导出</span></a>
+								<a ng-hover resource="scene"><em class="icon-code"></em><span>扫一扫</span></a>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div ng-app="scene" ng-controller="SceneCtrl" style="position:relative" ng-if="listType==1">
+				<ul class="square-scene clearfix">
+					<li ng-repeat="tpl in tpls track by $index" class="tab-box-shadow animation-zoom all-change" ng-show="tpls" ng-style="{'animation-delay' : $index * 50}">
+						<div class="ribbon ribbon-badge" ng-if="!!tpl.price">
+							<span class="ribbon-inner check">{{tpl.price}}微币</span>
+						</div>
+						<div class="image">
+							<div ng-show="!tpl.show" class="front face" ng-style="getStyle(tpl.cover)" style="background-size:cover"></div>
+							<div ng-show="tpl.show" class="ercode" qr-code qr-url="{{canvasUrl+'/v-'+scene.code}}">
+							</div>
+							<div class="overlay" ng-show="!tpl.show">
+								<div class="edit">
+									<!-- ng-href="{{PREFIX_CLIENT_HOST  /v-  tpl.code}}" -->
+									<a class="edit-same" target="_blank" ng-href="{{canvasUrl + '/v-' + tpl.code}}">
+										<em class="eqf-eye" style="font-size:20px;"></em>
+										<span>预览</span>
+									</a>
+									<a class="edit-same" ng-click="createScene(tpl)">
+										<em class="eqf-xiuziti" style="font-size:18px;"></em>
+										<span>套用制作</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="project-info">
+							<p class="ellipsis">{{tpl.name}}</p>
+							<!-- <span class="show-count"><em class="eqf-xiuziti"></em>{{tpl.useCount | fixnum}}</span>  -->
+							<div class="buttons sample clearfix" ng-if="!branchid">
+								<div class="set sample-scene">
+									<span class="scene-name">{{tpl.userName}}</span>
+								</div>
+								<a class="erweima button" ng-hover resource="tpl"><em class="eqf-QRcode"></em></a>
+							</div>
+						</div>
+						<div class="head-img">
+							<img ng-if="tpl.avatar" ng-src="{{tpl.avatar}}">
+							<span ng-if="!tpl.avatar" class="scene-headimg"><em class="eqf-top-contact"></em></span>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="main_content" ng-if="listType==2">
+				<div class="row" style="margin-left:8px;" >
+					<div id="createPpt" class="col-sm-3 thumb_sm_3" style="background-color:#fff;margin-top:10px;height:330px;width:280px;margin-right:13px;">
+						<div class="lt_img default_tpl" style="border: 1px solid #6c0;width: 230px;height: 300px;background-color: #fff;margin-left: 10px;margin-top: 19px;"></div>
+						<div class="rt_content" style="display:block;">
+							<div class="create">
+								<a href="javascript:void(0)"><img ng-click="getPpt(sm)" src="assets/add2.png" style="margin-left:67px;margin-top:69px;" ></a>
+								<div style="width:210px;">
+									<h3 style="text-align:center;line-height:50px;font-size:23px;color:#6c0;">点击加号</h3>
+									<h3 style="text-align:center;font-size:23px;color:#6c0;">开始导入PPT</h3>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div ng-if="ifCompany==2 || ifCompany==21  || ifCompany==23" class="col-sm-3 thumb_sm_3" ng-repeat="ppt in ppts | filter : query" style="margin-bottom:50px;padding-left:0px;" id="ppt{{ppt.id}}">
+						<div class="ribbon ribbon-badge" ng-if="ppt.is_del==1" style="overflow:hidden;margin-top:10px;">
+							<span id="pptState{{ppt.id}}" class="ribbon-inner unpublish" style="background-color:#ff6d75;color:#fff;">转换中</span>
+						</div>
+						<div class="ribbon ribbon-badge" ng-if="ppt.is_del==0" style="overflow:hidden;margin-top:10px;">
+							<span id="pptState{{ppt.id}}" class="ribbon-inner unpublish" style="background-color:#64ff78;color:#fff;">已转换</span>
+						</div>
+				  <div class="lt_img" style="background-color:#fff;background-repeat: no-repeat;width:280px;height:280px;background-size: contain;background-image: url({{canvasUrl}}/Uploads/{{ppt.photo}});">
+							<div class="overlay" ng-show="!scene.show">
+
+								<div class="edit">
+
+									<a id="ppt_{{ppt.id}}" ng-if="ppt.is_del==0" class="edit-same" target="_blank" ng-href={{canvasUrl}}/Uploads/{{ppt.pptlink}}><em class="eqf-eye background-color-width-change"></em><span>预览</span> </a>
+									<a id="ppt_{{ppt.id}}" ng-if="ppt.is_del==1" class="edit-same" target="_blank"><em class="eqf-eye background-color-width-change"></em><span>预览</span> </a>
+								</div>
+
+							</div>
+
+							<div style="width:280px;height:280px;padding-top:35px;" ng-show="ppt.show" id={{ppt.id}} class="face front qrcode" qr-code qr-url="{{urlPpt+'/Uploads/'+ppt.pptlink}}"> 
+							</div>
+
+							<div style="width:280px;height:100px;background-color:#fff;margin-top: 235px;">
+
+								<span style="position: absolute;margin-top: 65px;margin-left: 10px;" class="user_name"><em style="color:#63ba01;font-size:24px;" class="icon-user"></em><span style="width: 150px;position: absolute;margin-left: 5px;margin-top: 5px;">{{userinfo.name}}</span></span>
+
+								<div style="position:absolute;margin-left: 196px;margin-top:63px;">
+
+									<a ng-click="deleteScene2(ppt.id)" data-hint="删除"class="hint--bottom"><em style="font-size:24px" class="icon-delete" stylt="color:transparent"></em><span></span></a>
+									<a ng-href="/index.php?c=ppt&a=zip&id={{ppt.id}}" target="_blank" data-hint="导出"class="hint--bottom"><em style="font-size:24px" class="icon-export" stylt="color:transparent"></em><span></span></a>
+									<a ng-hover resource="ppt" data-hint="二维码"class="hint--bottom"><em style="font-size:22px;" class="icon-code"></em><span></span></a>
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="rt_content">
+
+							<h4 style="margin-left:-50px;text-align: center;margin-top: 250px;font-size:14px;color:black">{{ppt.title?ppt.title:("未添加微课标题")}}</h4>
+
+						</div>
+
+						<ul class="icon_list" ng-if="scene.company_ext[1]||!branchid">
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="main_content" ng-if="listType==3">
+				<div class="row">
+					<div class="col-sm-5 thumb_sm_5" ng-if="page.currentPage3==1">
+						<div class="lt_img default_tpl"></div>
+						<div class="rt_content">
+							<div class="create">
+								<i ng-click="createScene(listType)"></i><span class="create_text">一起创建微课吧</span>
+								<span class="create_tips">黑夜给了我黑色的眼睛，我却用它来创建微课。</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-5 thumb_sm_5" ng-repeat="longList in longLists track by $index">
+						<div class="ribbon ribbon-badge" ng-if="!longList.show && !longList.publishTime">
+							<span class="ribbon-inner unpublish">未发布</span>
+						</div>
+						<div class="ribbon ribbon-badge" ng-show="!longList.show && scene.publishTime && longList.updateTime > longList.publishTime">
+							<span class="ribbon-inner new">有修改</span>
+							<span class="ribbon-inner new hint--bottom hint--rounded" data-hint="内容有修改，新修改未发布" style="transform: rotate(0deg);background:none;"></span>
+						</div>
+						<div class="ribbon ribbon-badge" ng-if="!longList.show && scene.status == -1">
+							<span class="ribbon-inner check">未通过审核</span></div>
+						<div class="ribbon ribbon-badge" ng-if="!longList.show && scene.status == -2">
+							<span class="ribbon-inner check">审核中</span>
+						</div>
+						<div class="lt_img" ng-style="getStyle(longList.cover,$index)">
+							<div class="overlay" ng-show="!longList.show">
+								<div class="edit">
+									<a class="edit-same" ng-if="longList.company_ext[0]||!branchid" ng-click="editScene($event,longList.id,listType)"> <em class="icon-edit background-color-width-change"></em><span>编辑</span></a>
+									<a class="edit-same" ng-click="showDetail(longList.id)"><em class="icon-detail background-color-width-change"></em><span>详情</span> </a>
+								</div>
+							</div>
+							<div ng-show="longList.show" class="face front qrcode" qr-code qr-url="{{canvasUrl+'/v-'+longList.code}}">
+							</div>
+						</div>
+						<div class="rt_content">
+							<h4>{{longList.name?longList.name:("未添加微课标题")}}</h4>
+							<p>{{longList.description?longList.description:("未添加微课描述")}}</p>
+							<div class="scene_info">
+								<span class="user_name"><em class="icon-user"></em><span>{{userinfo.name}}</span></span>
+								<span class="user_preview"><em class="icon-preview"></em><span class="views">{{longList.showCount | fixnum}}</span></span>
+								<span style="margin-left:35px"><img style="margin-right:8px;margin-bottom:-2px;" src="view/images/shujushouji.png">{{longList.dataCount}}</span>
+							</div>
+							<ul class="icon_list" ng-if="longList.company_ext[1]||!branchid">
+								<a ng-click="showPreview($event,longList,listType)"><em class="icon-view"></em><span>预览</span></a>
+								<a ng-if="longList.company_ext[1]||!branchid" ng-click="deleteScene($event,longList.id)"><em class="icon-delete"></em><span>删除</span></a>
+								<a ng-if="longList.status != -1 && longList.status != -2&&!branchid" ng-click="copyScene($event,longList.id,listType)"><em class="icon-copy"></em><span>复制</span></a>
+								<a ng-if="isAllowedToAccessTransfer && longList.status != -1 && longList.status != -2&&!branchid" ng-click="transferScene($event,longList.id)"><em class="icon-gift"></em><span>转送</span></a>
+								<a ng-if="!branchid" ng-click="sceneSettings($event,longList.id,listType)"><em class="icon-set"></em><span>设置</span></a>
+								<a class="edit-scene" ng-href="/index.php?c=longList&a=export&id={{longList.id}}" target="_blank"><em class="icon-export"></em><span>导出</span></a>
+								<a ng-hover resource="longList"><em class="icon-code"></em><span>扫一扫</span></a>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="weike">
+			<div class="container">
+				<div class="clearfix page-turn" ng-show="totalItems > 11">
+					<div class="current_page right_page"><span class="fl">到</span>
+						<input type="text" ng-model="toPage" ng-keyup="$event.keyCode == 13 ? pageChanged(toPage) : null">
+						<span class="fl">页</span> <a ng-click="pageChanged(toPage)" class="go">确定</a>
+					</div>
+					<pagination class="right_page" first-text="首页" last-text="尾页" previous-text="&lsaquo;" next-text="&rsaquo;" max-size="10" items-per-page="pageSize" total-items="totalItems" ng-model="page.currentPage" ng-change="pageChanged(page.currentPage)" boundary-links="true"
+						rotate="true" num-pages="numPages"></pagination>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div ng-app="scene" ng-controller="SceneCtrl" id="muban" style="display:none">
+				<div class="clearfix page-turn" style="margin-top:10px;" ng-show="totalItems > 11 && tpls.length">
+					<pagination style="float: left" first-text="首页" last-text="尾页" previous-text="&lsaquo;" next-text="&rsaquo;" max-size="10" items-per-page="12" total-items="totalItems" ng-model="currentPage" ng-change="pageChanged(currentPage)" boundary-links="true" rotate="true"
+						num-pages="numPages"></pagination>
+					<div class="current_page">
+						<span class="fl">到</span>
+						<input type="text" ng-model="toPage" ng-keyup="$event.keyCode == 13 ? pageChanged(toPage) : null">
+						<span class="fl">页</span>
+						<a ng-click="pageChanged(toPage)" class="go">GO</a>
+						<!-- <span><span>当前</span>: {{currentPage}} / {{numPages}} <span>页</span></span> -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div id="pptpage" style="display:none">
+				<div class="clearfix page-turn" ng-show="totalItems2 > 11">
+					<div class="current_page right_page"><span class="fl">到</span>
+						<input type="text" ng-model="toPage" ng-keyup="$event.keyCode == 13 ? pageChanged2(toPage) : null">
+						<span class="fl">页</span> <a ng-click="pageChanged2(toPage)" class="go">确定</a>
+					</div>
+					<pagination class="right_page" first-text="首页" last-text="尾页" previous-text="&lsaquo;" next-text="&rsaquo;" max-size="10" items-per-page="pageSize" total-items="totalItems2" ng-model="page.currentPage2" ng-change="pageChanged2(page.currentPage2)" boundary-links="true"
+						rotate="true" num-pages="numPages"></pagination>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div id="longPage" style="display:none">
+				<div class="clearfix page-turn" ng-show="totalItems3 > 11">
+					<div class="current_page right_page"><span class="fl">到</span>
+						<input type="text" ng-model="toPage" ng-keyup="$event.keyCode == 13 ? pageChanged3(toPage) : null">
+						<span class="fl">页</span> <a ng-click="pageChanged3(toPage)" class="go">确定</a>
+					</div>
+					<pagination class="right_page" first-text="首页" last-text="尾页" previous-text="&lsaquo;" next-text="&rsaquo;" max-size="10" items-per-page="pageSize" total-items="totalItems3" ng-model="page.currentPage3" ng-change="pageChanged3(page.currentPage3)" boundary-links="true"
+						rotate="true" num-pages="numPages"></pagination>
+				</div>
+			</div>
+		</div>
+	<div class="container">
+		<div id="longPage" style="display:none">
+			<div class="clearfix page-turn" ng-show="totalItems3 > 11">
+				<div class="current_page right_page"><span class="fl">到</span>
+					<input type="text" ng-model="toPage" ng-keyup="$event.keyCode == 13 ? pageChanged3(toPage) : null">
+					<span class="fl">页</span> <a ng-click="pageChanged3(toPage)" class="go">确定</a>
+				</div>
+				<pagination class="right_page" first-text="首页" last-text="尾页" previous-text="&lsaquo;" next-text="&rsaquo;" max-size="10" items-per-page="pageSize" total-items="totalItems3" ng-model="page.currentPage3" ng-change="pageChanged3(page.currentPage3)" boundary-links="true"
+					rotate="true" num-pages="numPages"></pagination>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div id="longPage" style="display:none">
+			<div class="clearfix page-turn" ng-show="totalItems3 > 11">
+				<div class="current_page right_page"><span class="fl">到</span>
+					<input type="text" ng-model="toPage" ng-keyup="$event.keyCode == 13 ? pageChanged3(toPage) : null">
+					<span class="fl">页</span> <a ng-click="pageChanged3(toPage)" class="go">确定</a>
+				</div>
+				<pagination class="right_page" first-text="首页" last-text="尾页" previous-text="&lsaquo;" next-text="&rsaquo;" max-size="10" items-per-page="pageSize" total-items="totalItems3" ng-model="page.currentPage3" ng-change="pageChanged3(page.currentPage3)" boundary-links="true"
+					rotate="true" num-pages="numPages"></pagination>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div id="longPage" style="display:none">
+			<div class="clearfix page-turn" ng-show="totalItems3 > 11">
+				<div class="current_page right_page"><span class="fl">到</span>
+					<input type="text" ng-model="toPage" ng-keyup="$event.keyCode == 13 ? pageChanged3(toPage) : null">
+					<span class="fl">页</span> <a ng-click="pageChanged3(toPage)" class="go">确定</a>
+				</div>
+				<pagination class="right_page" first-text="首页" last-text="尾页" previous-text="&lsaquo;" next-text="&rsaquo;" max-size="10" items-per-page="pageSize" total-items="totalItems3" ng-model="page.currentPage3" ng-change="pageChanged3(page.currentPage3)" boundary-links="true"
+					rotate="true" num-pages="numPages"></pagination>
+			</div>
+		</div>
+	</div>
+		<div ng-include="'/Public/eq/6.0/templates/main.userGuide.tpl.html'"></div>
+		<div ng-include="'/Public/eq/6.0/templates/userCenter.userCenterGuid.tpl.html'"></div>
+	</div>
+	<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'"></div>

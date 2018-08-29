@@ -1,0 +1,26 @@
+<div  id="add-sound-link">
+	<div class="modal-header no-bottom-line" id="add-sound-link-head"> 
+		<button type="button" class="n_close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">        
+		<!-- 	<span aria-hidden="true"></span> -->
+			<img aria-hidden="true" src="/assets/images/re-design/bg_close.png" />   
+		</button> 
+		<h4 class="modal-title">外部链接        
+			<span ng-show ='!authError' class="action">可从外部使用链接添加音乐</span>        
+			<span ng-show = 'authError' class="action">{{authError}}</span>    
+		</h4> 
+	</div>
+	<div class="dialog-contain " id="add-sound-link-content">
+		<div class="dialog-content">
+			<form class="form-contain" role="form">
+				<div class="form-list audio_area clearfix">
+					<lable class="form-label">链接地址：</lable>
+					<div class="form-input"> <input type="text" class="link" ng-model="soundLink.src" ng-click="selectLink()" placeholder="请输入mp3格式的音乐链接"> </div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="modal-footer no-line" id="add-sound-link-footer"> 
+		<a class="modal-submit" ng-click="confirm()">确定</a>
+		<a class="modal-cancle" ng-click="cancel()">取消</a> 
+	</div>
+</div>

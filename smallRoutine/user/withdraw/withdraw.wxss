@@ -1,0 +1,60 @@
+/* user/withdraw/withdraw.wxss */
+.text-c{
+	text-align: center;
+}
+.withdrawBox{
+	font-size: 28rpx;
+	width: 100%;
+	height: calc(100vh - 268rpx);
+	color: #333;
+	padding-top: 268rpx;
+}
+.balanceText{
+	width: 100%;
+	height: 28rpx;
+	line-height: 28rpx;
+	font-size: 28rpx;
+}
+.balanceNum{
+	width: 100%;
+	height: 105rpx;
+	line-height: 105rpx;
+	font-size: 60rpx;
+}
+.balanceButton{
+	width: 690rpx;
+	height: 90rpx;
+	line-height: 90rpx;
+	color: #fff;
+	background: linear-gradient(to bottom right, #FE7293, #FF5874);
+	font-size: 34rpx;
+	border-radius: 10rpx;
+	margin: 0 auto;
+	margin-top: 110rpx;
+}
+.tips,.tips2{
+	color: #999;
+	height: 40rpx;
+	line-height: 40rpx;
+	width: 100%;
+}
+.tips{
+	margin-top: 40rpx;
+}
+.details{
+	width:100%;
+	display:flex;
+	flex-direction:row;
+	justify-content:center;
+	position: absolute;
+	bottom: 100rpx;
+}
+.details>view{
+	color: #FFA148;
+}
+.details>image{
+	width:18rpx;
+	height:18rpx;
+	margin-top:10rpx;
+	margin-left:8rpx;
+}

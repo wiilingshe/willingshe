@@ -1,0 +1,30 @@
+<view class="attention" wx:if="{{!ifattention}}">
+	<view class="attention_left">
+		<image src="{{img1}}"/>
+		<text>关注公众号接收最新通知</text>
+	</view>
+	<view class="attention_right">
+		<view bindtap="tip" bindtap="showtip">马上关注</view>
+		<!-- <button class="kefu" open-type="contact" /> -->
+	</view>
+</view>
+<view class="home" animation="{{animationData}}" bind:touchmove="touchmoveitem" bind:touchstart="touchstartitem" bind:touchend="touchenditem" style="padding-top: calc(50vh - 500rpx);">
+	<view class="home_item {{index==0?'current':'other'}}" wx:for="{{list}}" wx:key="item" data-index="{{index}}">
+		<view class="picbox">
+			<view class="picbox_top">{{item.issue_status}}</view>
+			<image class="pic" src='{{item.bill_pic}}' binderror="errorimg" data-index="{{index}}"></image>
+		</view>
+		<view class="title">{{item.name}}</view>
+		<view class="en_title">{{item.name_en}}</view>
+		<view class="details">{{item.ct_name}}</view>
+		<view class="details">{{item.country_name}} / {{item.duration}}分钟</view>
+		<view class="details">{{item.release_time}} 大陆上映</view>
+		<button class="btn" bindtap="todetails" data-id="{{item.c_id}}">查看详情</button>
+	</view>
+</view>
+<view wx:if="{{tipbox}}" class='bg' bindtap="close"></view>
+<view wx:if="{{tipbox}}" class="tip">
+	<view class="tip_zi">关注「海豚发行」公众号，实时接收最新通知。进入客服消息后，发送“1”获取关注链接。</view>
+	<view class="tipbtn">确定</view>
+	<button class="kefu" open-type="contact" />
+</view>

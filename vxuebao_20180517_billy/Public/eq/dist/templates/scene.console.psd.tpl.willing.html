@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>定义input type="file" 的样式</title>
+<style type="text/css">
+body{ font-size:14px;}
+input{ vertical-align:middle; margin:0; padding:0}
+.file-box{ position:relative;width:340px}
+.txt{ height:22px; border:1px solid #cdcdcd; width:180px;}
+.btnn{ background-color:#FFF; border:1px solid #CDCDCD;height:24px; width:70px;}
+.file{ position:absolute; top:0; right:80px; height:24px; filter:alpha(opacity:0);opacity: 0;width:260px }
+</style>
+</head>
+<body>
+<div class="modal-header no-line">
+	<button type="button" class="close" ng-click="cancel()" aria-label="Close" ng-click="cancel()">
+		<span aria-hidden="true">×</span>
+	</button>
+	<h4 class="modal-title">
+		<span class="eqf-update selctPPT"></span>
+		PSD导入 
+		<a style="display:none" target="_blank" class="help hint--bottom hint--rounded" data-hint="点击查看psd导入说明教程" href="javascript:void(0)"><span class="eqf-exclaquestion-sign question">
+		</span>
+		</a>
+	</h4> 
+</div>  
+<div class="dialog-contain ">
+	<div class="dialog-content"> 
+		<div class="row">
+			<div class="col-sm-3"> 
+				<div style="width:232px">   
+					<div>
+						<!-- <div style="margin-left:10px" id="uploader" class="wu-example"><!--用来存放文件信息
+							<div id="thelist" class="uploader-list">
+							</div>
+							<div style="margin-left:22px" class="btns">
+								<div class="hint--right hint--rounded" id="picker" data-hint="文件最大不能超过40M!">
+								</div><div class="row" style="width:973px">
+								<div style="margin-left:758px">
+									<button type="button" class="btn btn-default" ng-click="cancel()" >关闭</button>
+									<button id="ctlBtn" class="btn btn-primary">开始上传</button>
+								</div>
+							</div>
+						</div>
+					</div> -->  
+						<div class="input-chunk">  
+    						<div class="hint--right hint--rounded" id="picker" data-hint="文件最大不能超过40M!" style="width:300px;    margin-left: 33px;">
+    						<input type='text' name='textfield' id='textfield' class='txt' />  
+ 							<input type='button' class='btnn' value='浏览...' />
+    						<input type="file" name="fileField" class="file" id="file" size="28" onchange="document.getElementById('textfield').value=this.value" />
+    						</div><br>
+    						<div id="onprogress" style="margin-left: 298px;margin-top:-45px;display:none;"><img src="/img/loading.gif">
+    							<p>Uploading...</p>
+    						</div>  
+    						 
+						</div>
+						<div class="row" style="width:973px">
+								<div style="margin-left:758px">
+									<button type="button" class="btn btn-default" ng-click="cancel()" >关闭</button>
+									<button id="ctlBtn" class="btn btn-primary" ng-click="uploadFile();">开始上传</button>
+								</div>
+							</div>     
+				</div>
+			</div> 
+		</div> 
+	</div> 
+	<div class="row">
+		<div style="margin-left:825px;padding-bottom: 20px;">
+			<button type="button" class="btn btn-default" ng-click="cancel()" style="margin-right:10px; display:none">关闭</button>
+		</div>
+		<div class="row">  
+			<div class="col-sm-offset-1 col-sm-10">
+				<div class="row" style="display:none"> 
+					<div class="col-sm-offset-2 col-sm-3">
+						<div class="btn-group" style="display:none">
+							<label ng-repeat="value in vm.values" ng-class="{btn: true, \'btn-default\': true, active: value.way == vm.selection.way}">
+								<input type="radio" class="hidden" name="importWay" ng-model="vm.selection" ng-value="value" ng-change="vm.change($index)"/>
+								{{value.value}}
+							</label>
+						</div>
+					</div>
+					<div class="col-sm-offset-1 col-sm-6">
+						<button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+							<span class="glyphicon glyphicon-upload"></span> 
+							上传所有
+						</button>
+						<button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
+							<span class="glyphicon glyphicon-ban-circle"></span> 
+							取消所有
+						</button>
+						<button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+							<span class="glyphicon glyphicon-trash"></span> 
+							删除所有
+						</button>
+					</div>
+				</div> 
+				<div class="row" style="display:none">
+					<div class="allProgress">
+						<p class="title">
+							所有图片上传进度:
+						</p>
+						<div class="progress" style="">
+							<div class="progress-bar" ng-style="{'width': uploader.progress + '%'}">
+							</div>
+						</div>
+					</div>
+				</div>              
+			</div>
+		</div>  
+	</div>
+</div>
+</body>
+</html>

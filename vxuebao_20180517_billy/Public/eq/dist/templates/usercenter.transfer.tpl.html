@@ -1,0 +1,22 @@
+<div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">        <span aria-hidden="true">×</span>    </button>
+	<h4 class="modal-title">转送微币</h4></div>
+<div class="modal-body">
+	<form class="form-horizontal">
+		<div class="form-group"> <label class="col-sm-3 text-right">我的微币</label>
+			<div class="col-sm-7"> <span>{{xdCount}}</span><span>个</span> </div>
+		</div>
+		<div class="form-group"> <label for="inputMail" class="col-sm-3 control-label">转送账号</label>
+			<div class="col-sm-7"> <input id="inputMail" type="text" class="form-control" ng-model="userXd.toUser" placeholder="请填写要转送的账号" ng-class="{error: mailFormatErr}" ng-blur="checkEmailFormat(userXd)">
+				<p class="error" ng-show="mailFormatErr">{{mailFormatErr}}</p>
+			</div>
+		</div>
+		<div class="form-group"> <label for="inputPass" class="col-sm-3 control-label">转送数目</label>
+			<div class="col-sm-7"> <input id="inputPass" type="text" class="form-control" maxlength="12" ng-model="userXd.xdCount" placeholder="请填写转送微币数目" ng-class="{error: xdFormatErr}" ng-blur="checkXdFormat(userXd)">
+				<p class="error" ng-show="xdFormatErr">{{xdFormatErr}}</p>
+				<p class="error" ng-show="relErr">{{relErr}}</p>
+			</div>
+		</div>
+		<div class="action" style="text-align:center;"><a style="font-size:12px;" href="http://bbs.e.wesambo.com/forum.php?mod=viewthread&tid=1959&extra=page%3D1" target="_blank">微币转送是用户个人行为，请注意防范风险！</a></div>
+	</form>
+</div>
+<div class="modal-footer"> <a class="modal-cancle" ng-click="cancel()">取消</a> <a type="button" class="btn btn-primary" ng-click="confirm()">确认</a></div>

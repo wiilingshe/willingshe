@@ -1,0 +1,73 @@
+<div class="modal-header no-bottom-line">
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">
+		<span aria-hidden="true">×</span>  
+	</button>
+	<h4 class="modal-title" ng-if="type == 4">音效设置
+		<span ng-show = \'selectSoundError\' class="action">{{selectSoundError}}</span>
+	</h4>
+	<h4 class="modal-title" ng-if="type == 2"> 
+		<a style="display:none;" class="modal-cancle search-txt" style="margin-left:40px" ng-click="openConvert()">
+			性别
+		</a>  
+		<h4 class="modal-title" id="myModalLabel">
+			<span style="font-size:15px">
+				当前声音为 : 
+				<a ng-click="changeTrack()">{{track}}</a>
+			</span>
+		</h4>  
+	</h4>    
+</div>
+<div  class="dialog-contain ">
+	<div class="dialog-content bg_console clearfix">
+		<div class="sound-flex">
+			<div style="min-height:190px;">
+				<div class="modal-body">
+					<p style="margin-bottom: 5px;font-weight: bold;">语速：</p>
+					<select id="spd" style="width: 558px;height: 30px;border-radius: 5px;    border: 0;">
+						<option>5</option>
+						<option>4</option>
+						<option>3</option>
+						<option>2</option>
+						<option>1</option>
+					</select>
+					<p style="margin-bottom: 5px;margin-top:5px;font-weight: bold;">音调：</p>
+					<select id="pit" style="width: 558px;height: 30px;border-radius: 5px;    border: 0;">
+						<option>5</option>
+						<option>4</option>
+						<option>3</option>
+						<option>2</option>
+						<option>1</option>
+					</select>
+					<p style="margin-bottom: 5px;margin-top:5px;font-weight: bold;">音量：</p>
+					<select id="vol" style="width: 558px;height: 30px;border-radius: 5px;margin-bottom:20px;    border: 0;">
+						<option>5</option>
+						<option>4</option>
+						<option>3</option>
+						<option>2</option>
+						<option>1</option>
+					</select>
+					<textarea style="width:100%;height:75px;border-radius:8px" id="convertVal"></textarea>
+					<div class="modal-footer" style="border-top: 0px">
+						<button type="button" class="btn btn-default" ng-click="downloadSound()">
+							下载
+						</button>
+						<button type="button" class="btn btn-default" ng-click="playConvertSound()">
+							播放
+						</button>
+						<button type="button" class="btn btn-primary" ng-click="setConvertSound()">
+							设为当前页面音乐
+						</button>
+					</div>
+				</div>
+				<div class="tab-content" id="bg_contain">
+					<div class="tab-pane tab-head active">
+						<div class="tab-pane">
+							<div class="img_list">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

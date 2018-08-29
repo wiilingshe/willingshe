@@ -1,0 +1,74 @@
+<!-- 考场列表 -->
+<script type="text/javascript" src="/index/js/echarts.min.js"></script>
+<div ng-include="'/Public/eq/6.0/templates/header.tpl.html'" style="height:60px"></div>
+<div class="container" style="background-color: #fff;padding-left: 50px;padding-right: 50px;padding-top: 30px;margin-top:30px;padding-bottom: 30px;margin-bottom: 140px;">
+<div class="row">
+	<div class="all_title" style="margin-bottom: 30px;">
+		<button ng-click="percentage()">收起统计</button>
+		<p>考卷答案统计</p>
+	</div>
+	<div class="statistics_per">
+		<div class="statistics_per_header">
+			<div>
+				<span>请填写良好分数：</span>
+				<input>
+			</div>
+			<div>
+				<span>请填写优秀分数：</span>
+				<input>
+			</div>
+			<button ng-click="getPer()">提交</button>
+		</div>
+		<hr style="border-top: 1px solid #e6e6e6;margin-left: 20px;margin-right: 20px;">
+		<div class="col-md-6">
+			<div class="col-xs-12" style="padding-right:93px">提示：自动生成的不包括主观题的统计结果，如你的考卷存在问答题，可以先批改后再来查看统计结果</div>
+			<line id="piemain" legend="legend" item="item" data="data"></line>
+		</div>
+		<div class="col-md-6">
+			<div style="margin-top:-10px">
+				<line id="linemain" legend="legend" item="item" data="data"></line>
+			</div>
+		</div>
+	</div>
+	<div id="my_form">
+	<div class="col-md-1" style="position: inherit;display:none">考生id</div>
+	<div class="col-md-3" style="position: inherit;">考场名称</div>
+	<div class="col-md-2" style="position: inherit;">考生名字</div>
+	<div class="col-md-2" style="position: inherit;">考试时间</div>
+	<div class="col-md-2" style="position: inherit;">考试分数</div>
+	<div class="col-md-3" style="position: inherit;">操作</div>
+	</div>
+	<div ng-repeat="list in lists" class="repeat_count">
+		<div class="test_count">
+			<div class="mid_stu_info" style="display:none;">{{list}}</div>
+			<div class="col-md-1 formFid" style="position: inherit;display:none">{{list.eid}}</div>
+			<div class="col-md-3" style="position: inherit;overflow: hidden;">{{list.etitle}}</div>
+			<div class="col-md-2" style="border-left:0px;position: inherit;">{{list.eusername}}</div>
+			<div class="col-md-2" style="border-left:0px;position: inherit;">{{list.estime}}</div>
+			<div class="col-md-2" style="border-left:0px;position: inherit;">{{list.escore}}</div>
+			<div class="col-md-3" style="border-left:0px;position: inherit;">
+				<button class="stu_info see_btn" style="width:90px" ng-click="stu_info($event)">考生信息</button>
+				<button ng-click="marking($event)" class="see_btn">阅卷</button>
+			</div>
+		</div>
+		<div class="stu_info_id col-md-12" style="display:none">
+			<div class="stu_info_id_name"></div>
+		</div>
+	</div>
+</div>
+<div style="float:right;margin-top: 30px;margin-bottom: 20px;" class="page_tpl">
+	<div class="pageNo" style="display:none">1</div>
+	<button class="form_page" style="margin-right:5px;" ng-click="firstPage($event)">首页</button>
+	<button class="form_page" style="margin-right:5px;" ng-click="prePage($event)"><</button>
+	<button ng-repeat="page in pages" ng-click="toPage($event)" class="form_page" class="repeat_page">{{page}}</button>
+	<button class="form_page" style="margin-left:5px;" ng-click="nextPage($event)">></button>
+	<button class="form_page" style="margin-left:5px;" ng-click="weiPage($event)">尾页</button>
+	<span class="fl" style="line-height:36px;margin-left:10px;margin-right:10px">到</span><input type="text" class="form_page" value="1"><span class="fl" style="line-height:36px;margin-left:10px;margin-right:10px">页</span><button class="form_page" ng-click="dingPage($event)">确定</button>
+</div>
+</div>
+<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'" style="margin-top: 30px;position: fixed;bottom: 0px;width: 100%;"></div>
+<style type="text/css">
+	body{
+	background-color: #f5f8ed;
+	}
+</style>

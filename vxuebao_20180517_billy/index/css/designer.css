@@ -1,0 +1,63 @@
+
+#eq_main{width:100%;margin:0 auto;background:#f6f5f4;}
+
+/*banner的css*/
+#designer_banner{text-align:center;height:100px;}
+
+/*身体css*/
+#designer_contain{width:1198px;margin:0 auto;background:#fff; min-height:590px;}
+.contain_top{padding:15px 0 0 10px;margin-bottom:20px;}
+.contain_top .o_menu,.contain_top .t_menu{width:850px;height:42px;}
+.contain_top ul li{float:left;overflow:hidden;font-size:18px;margin-left:20px;*display:inline;}
+.contain_top ul li a{color:#313131;}
+.contain_top ul li .current{background:#66cc00; color:#FFF;}
+.contain_top ul li span{font-size:14px;color:#959595;}
+.contain_top input{float:right; margin:-80px 60px 0 0;*display:inline;}
+
+.contain_center{width:1198px;padding:0 35px;}
+.contain_center ul .f{height:155px;}
+.contain_center .center_left{height:145px;width:145px;}
+.contain_center .center_left{float:left;}
+.contain_center .center_center{padding:20px 24px 0;width:466px; height:125px;float:left;}
+
+.center_center .r_top{margin-bottom:48px;}
+.center_center .r_top .name a{font-size:16px; color:#0068b7;font-weight:600;}
+.center_center .r_top ul{overflow:hidden;width:1198px;}
+.center_center .r_top ul li{float:left;*display:inline;height:34px;line-height:34px;}
+.center_center .r_top ul li span{color:#0068b7;}
+.center_center .r_top p{font-size:12px; color:#a0a0a0;}
+.contain_center .center_right{float:left; margin-left:60px;padding-top:20px;height:125px;width:405px;text-align:center;}
+.contain_center .center_right img{width:103px;height:100px;}
+.contain_center .center_right .two{margin:0 34px;}
+
+.contain_bottom{height:50px;text-align:right;margin-right:138px;}
+.contain_bottom ul li{float:left;margin-left:12px;color:#bdbcbc;}
+.contain_bottom li a{color:#bdbcbc;}
+.contain_bottom li .active2{display:block;height:24px;width:24px;background:#66cc00;text-align:center;color:#fff;}
+
+
+.pages a,.pages span {
+    display:inline-block;
+    padding:0px 6px;
+    margin:0 5px;
+    border:1px solid #f0f0f0;
+  
+
+}
+.pages a,.pages li {
+    display:inline-block;
+    list-style: none;
+    text-decoration:none; color:#58A0D3;
+}
+.pages a.first,.pages a.prev,.pages a.next,.pages a.end{
+    margin:0;
+}
+.pages a:hover{
+    border-color:#66cc00;
+}
+.pages span.current{
+    background:#66cc00;
+    color:#FFF;
+    font-weight:700;
+    border-color:#50A8E6;
+}

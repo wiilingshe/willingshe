@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\Common Files\DigitalOfficeProShared\Converter\HTML5Point\SupportFiles\Converter.exe" -input "D:\vxuebao\{#input#}" -output "D:\vxuebao\{#output#}" -xml "D:\vxuebao\static\xml\settings.xml"

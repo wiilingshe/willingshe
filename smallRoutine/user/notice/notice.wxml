@@ -1,0 +1,17 @@
+<!--user/notice/notice.wxml-->
+<view class="notice_box">
+	<scroll-view class="flow_box" scroll-y bindscrolltolower="lower">
+		<block wx:for="{{list}}" wx:key="">
+			<view class="rows_list" bindtap="toNotice" data-n="{{item.nt_id}}" data-ass="{{item.ass_id}}" data-other="{{item.other_ass_id}}">
+				<view class="line" wx:if="{{index+1!=list.length || list.length==1}}"></view>
+				<view class="list_title">{{item.nt_name}}</view>
+				<view class="list_content">{{item.msg}}</view>
+			</view>
+		</block>
+		<view class="nodata" wx:if="{{nodata}}">
+			<image src="{{nodataImg}}"></image>
+			<view class="noMore">暂无内容</view>
+		</view>
+		<view class="noMore" wx:if="{{noMore}}">没有更多数据了</view>
+	</scroll-view>
+</view>

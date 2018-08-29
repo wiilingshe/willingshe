@@ -1,0 +1,28 @@
+<div class="modal-header no-line" id="submit_header"> 
+	<button type="button" class="n_close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">        
+		<img aria-hidden="true" src="/assets/images/re-design/bg_close.png" />  
+	</button>
+	<h4 class="modal-title"><i></i>按钮名称        
+		<a class="bbs-help-tip-media" target="_blank" href="http://bbs.e.wesambo.com/forum.php?mod=viewthread&tid=5051&extra=">            </a>        
+		<span class="action" ng-show = '!authError'>每个微课只能添加一个提交按钮</span>        
+		<span ng-show = 'authError'>{{authError}}</span>    
+	</h4>
+</div>
+<div class="dialog-contain" id="submit_content">
+	<div class="modify_area tel_title tab-same clearfix" style="padding-left:30px;"> 
+		<span ng-repeat="button in buttons track by $index" ng-class="{spanborder: $index == btnIndex}">			
+			<a ng-click = "chooseTabButton(button, $index)">{{button.text}}</a>		
+		</span> 
+	</div>
+	<div class="dialog-content">
+		<form class="form-contain" role="form">
+			<div class="modify_area form-list clearfix" style="margin-left: 50px;"> <label class="form-label">按钮名称：</label>
+				<div class="form-input" style="width: 575px;margin-left: -1px;"> 
+					<input type="text" check-count="40" ng-model="model.title" ng-keyup="$event.keyCode == 13 ? confirm() : null" autofocus stop-propagation style="width: 100%;"/>
+					<!--<span class="title-tip">{{model.title.length}}/15</span>-->
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="modal-footer no-line" id="submit_footer"><a class="modal-submit" ng-click="confirm()">确定</a> <a class="modal-cancle" ng-click="cancel()">取消</a> </div>

@@ -1,0 +1,22 @@
+<div class="header-wap">
+	<div class="header-contain">
+		<div class="same-content clearfix">
+			<div class="logo" id="logo">
+				<a href="#/main" class="hint--bottom hint--rounded" data-hint="{{'header.BACK_TO_SCENE_HINT' | translate}}"><img ng-src="{{logoSrc}}" alt=""></a>
+			</div>
+			<div class="head_nav" ng-if="showToolBar();">
+				<ul class="clearfix head_navs">
+					<li class="background-color-width-change" ng-class="{isActive: isActive == 'main'}"> <a href="#/main">我的微课</a> </li>
+					<li class="background-color-width-change" ng-class="{isActive: isActive == 'form'}"><a href="#/form">问卷创建</a></li>
+					<li style="display:none" ng-class="{isActive: isActive == 'customer'}" class="background-color-width-change"> <a href="#/main/customer">我的客户</a> </li>
+					<li style="display:none" ng-class="{isActive: isActive == 'update'}" class="background-color-width-change"> <a href="/img/price.html">账号升级</a> </li>
+					<li class="background-color-width-change"> <a href="http://bbs.vxuebao.com/forum.php?mod=forumdisplay&fid=40" target="_blank">                         教程                        </a> </li>
+					<li style="display:none" class="background-color-width-change"> <a href="#/show" target="_blank">							微客						</a> </li>
+					<!--<li><a href="#/privilege">会员特权</a></li>-->
+				</ul>
+				<login-toolbar></login-toolbar>
+			</div>
+		</div>
+	</div>
+	<!-- 	<div ng-class="{hovering: isProjectsDropdownVisible}">			<div class="big-dropdown clearfix">			<div class="same-content" style="text-align:center;" ng-mouseenter="showBoardsDropdown()" ng-mouseleave="hideBoardsDropdown()">				<a class="scene" href="#/main" ng-click="hideBoardsDropdown()">					<img ng-src="{{logoSrc}}" >					<p>移动微课</p>				</a>				<a class="print" href="/print" target="_blank">					<img ng-src="{{CLIENT_CDN}}assets/images/printmachine.svg" >					<p>轻印刷</p>				</a>				</div>							</div>	</div> -->
+</div>

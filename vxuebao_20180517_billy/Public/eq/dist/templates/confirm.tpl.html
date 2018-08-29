@@ -1,0 +1,5 @@
+<!-- <div class="modal-header">    <span>确认信息</span></div> -->
+<div class="modal-body" ng-if="confirmObj.msg">
+	<div class="confirm-msg" ng-bind-html="confirmObj.msg"></div>
+</div>
+<div class="btn-contain btn-small"> <a ng-click="ok();" class="btn-main">        {{confirmObj.confirmName || ('dialog.ENSURE' | translate)}}    </a> <a ng-click="cancel();" class="btn-grey0">        {{confirmObj.cancelName || ('dialog.CANCEL' | translate)}}    </a></div>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app" ng-controller="AppCtrl">
+<head>
+<meta property="qc:admins" content="25322764376510156375" />
+<meta name="baidu-site-verification" content="2MKKT6mbuL" />
+<meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="viewport"content="width=device-width, initial-scale=1.0" />
+<meta name="renderer" content="webkit">
+<meta property="qc:admins" content="" />
+<meta property="wb:webmaster" content="354b970d8cd61602" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="/index/css/designer.css">
+<link rel="stylesheet" type="text/css" href="/index/css/common.css">
+<!--  <link rel="stylesheet" href="//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css">
+<link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> -->
+<!-- <link href="/assets/vxuebao-5.4.2.css" rel="stylesheet"> -->
+<link href="/assets/login.css" rel="stylesheet">
+
+<title>设计师</title>
+</head>
+<body>
+  <div id="eq_main">
+  <!--头部-->
+    <include file="Public:des_header" />
+    <div id="designer_banner">
+      <img src="/index/images/designer_banner.jpg" border="0" width="1903px">
+    </div>
+    <div class="clear"></div>
+    <div id="designer_contain">
+      <div class="contain_top">
+        <div class="o_menu">     
+          <ul>
+            <li><span>行业：</span></li>
+            <li><a class="industry <if condition="($sql['cj_usermsg.tag'] eq 0)">current</if>"  href="{:U('Designer/index',array('industry' => 0,'city'=>$_GET['city']))}">全部</a></li>
+            <foreach name="list1" key="key" item="value" >
+              <if condition="($key lt 9)" >
+                <li><a class="industry <if condition="($value['tagid_int'] eq $sql['cj_usermsg.tag'])">current</if>" href="{:U('Designer/index',array('industry' => $value['tagid_int'],'city'=>$_GET['city']))}">{$value.name_varchar}</a></li>
+              </if>
+            </foreach>
+          </ul>
+        </div>
+        <div class="t_menu">   
+          <ul>
+            <li><span>城市：</span></li>
+            <li><a class="city <if condition="($sql['cj_usermsg.cityid'] eq 0)">current</if>" href="{:U('Designer/index',array('industry'=>$_GET['industry'],'city' => 0))}">全部城市</a></li>
+            <foreach name="list2" key="key" item="value">
+          
+                <li><a class="city <if condition="($value['id'] eq $sql['cj_usermsg.cityid'])">current</if>" href="{:U('Designer/index',array('industry'=>$_GET['industry'],'city' => $value['id']))}" >{$value.shortname}</a></li>
+            
+            </foreach>
+          </ul>
+        </div>
+        <div class="ico5">
+          <form action="" method="post">
+            <input type="text" style="width:180px;"  name="search_type" value="" required="required" placeholder="请输入搜索类...">
+            <input type="submit" value="" style="height:24px;width:24px; border:none;background:url(/index/images/designer_ico1.png) no-repeat;margin-top:-78px;" />
+          </form>
+        </div>
+      </div>
+
+        <div class="contain_center">
+    
+        <ul id="user_list">
+          <foreach name='data' key='key' item='value'>
+            <li class="f">
+              <div class="center_left"><a href="{:U('designer_show',array('userid'=>$value[userid_int]))}"><img src="/Uploads/{$value.headimg}" style="width:145px;height:145px;"></a></div>
+              <div class="center_center">
+                <div class="r_top">
+                  <span class="name"><a href="{:U('designer_show')}">{$value.uname}</a></span>
+                  <ul>
+                    <li>{$value.pro}{$value.city}</li>
+                    <li style="margin:0 20px;">发布作品：<span>{$value.product_num}</span></li>
+                    <li>人气：<span>{$value.sentiment}</span></li>
+                  </ul>
+                  <p>{$value.msg}
+                  </p>
+                </div>
+                </div>
+                <div class="center_right">
+                  <foreach name="value['product']" key='k' item='v'>
+                    <if condition="($k eq 1)">
+                      <a target="_blank" href="/v-{$v.scenecode_varchar}"> 
+                      <img class="two" src="/Uploads/{$v.thumbnail_varchar}" />
+                      </a>
+                    <else />
+                      <a target="_blank" href="/v-{$v.scenecode_varchar}"> 
+                      <img src="/Uploads/{$v.thumbnail_varchar}" />
+                      </a>
+                    </if>
+                  </foreach>
+                </div>
+            </li>
+          </foreach>
+         </ul>                                                                                                            
+        <div class="clear"></div>
+
+      </div>
+      <div class="contain_bottom">
+        <div class="pages">
+          <form action="" method="get" id="form">
+          <ul>
+            {$page}
+          </ul>
+          </form>
+        </div>
+        </ul>
+      </div>
+    </div>
+    <include file="Public:des_footer" />
+  </div>
+
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+<include file="Public:common" />
+<script type="text/javascript">
+  /*分页*/  
+  $(function(){
+    $('#page_sub').click(function(){
+      var url = window.location.href;
+      var arr = url.split('-p-');
+      $('#form').attr('action',arr[0]);
+      $('#form').submit();
+    })
+  })
+</script>
+<script type="text/javascript" src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/index/js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/index/js/jpages.min.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/index/js/jquery.lazyload.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/Public/eq/5.4/layer/layer.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/index/js/scrop.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/index/js/common_v.js"></script>
+<script type="text/javascript" src="/Public/eq/5.4/index.js"></script>
+<script type="text/javascript">
+    var modeltype,URL=window.location.href;
+    modeltype=URL.split("#")[1];
+    if(modeltype=='login'){
+        $('#loginModal').modal('show');
+    }
+    if(modeltype=='register'){
+        $('#regModal').modal('show');
+    }
+    if(modeltype=='forget'){
+        $('#forgetModal').modal('show');
+    }
+    if(modeltype=='resetpwd'){
+        $('#resetpwdModal').modal('show');
+    }
+
+    var PREFIX_URL = "http://" + window.location.host + "/";
+    var checkEmailFormat = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+    function centerModals() {
+        $('.modal').each(function (i) {
+            var $clone = $(this).clone().css('display', 'block').appendTo('body');
+            var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 5);
+            top = top > 0 ? top : 0;
+            $clone.remove();
+            $(this).find('.modal-content').css("margin-top", top);
+        });
+    }
+    $('.modal').on('show.bs.modal', centerModals);
+    $(window).on('resize', centerModals);
+    jQuery(".slide").slide({mainCell: ".bd ul", autoPlay: true, interTime: 5000, delayTime: 5000});
+    (function () {
+        var gotop = document.getElementById('gotop');
+        gotop.onclick = function () {
+            console.log("返回顶部");
+            $('html,body').animate({'scroll-top': 0}, 'fast');
+        }
+    })()
+    function toQzoneLogin(type)
+    {   
+        if(type=='qq'){
+        
+            childWindow = window.open("/qq/example/oauth/index.php","TencentLogin","width=450,height=320,menubar=0,scrollbars=1, resizable=1,status=1,titlebar=0,toolbar=0,location=1"); 
+        }else{
+            childWindow = window.open("https://open.weixin.qq.com/connect/qrconnect?appid=wx5a3ca7ea184c3a3b&redirect_uri=http%3A%2F%2Fwww.vxuebao.com%2Fpassword.html&scope=snsapi_login&response_type=code&state=WECHAT_STATE#wechat_redirect","TencentLogin","width=600,height=600,menubar=0,scrollbars=1, resizable=1,status=1,titlebar=0,toolbar=0,location=1");   
+        }
+    } 
+    
+    function closeChildWindow()
+    {
+        childWindow.close();
+    }
+
+</script>
+
+</body>
+</html>

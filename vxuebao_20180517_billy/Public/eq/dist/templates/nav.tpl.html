@@ -1,0 +1,32 @@
+<div class="show-head">
+	<link href="/index/css/index_v.css" rel="stylesheet" type="text/css" />
+	<link href="/index/css/y_add.css" rel="stylesheet" type="text/css">
+	<div class="header ng-scope">
+		<div class="header-line"></div>
+		<div class="logo">
+			<a href="/"><img src="/Uploads/ad/2016-03-25/56f48fcc5a56a.png"></a>
+		</div>
+		<div class="wrap">
+			<div class="header-nav">
+				<ul class="nav">
+					<li><a href="/" hidefocus="true">首页</a></li>
+					<li><a href="/img/game.html" hidefocus="true">微课大赛</a></li>
+					<li class="current"><a href="#/show" hidefocus="true">微课广场</a></li>
+					<li class=" "><a href="http://bbs.vxuebao.com/forum.php?gid=37 " hidefocus="true">微课魔法书</a></li>
+					<li class=" "><a href="img/price.html " hidefocus="true">服务价格</a></li>
+					<!--<li class=" "><a href="http://bbs.vxuebao.com" hidefocus="true">论坛</a></li>-->
+					<!-- ngRepeat: menu in menus -->
+				</ul>
+			</div>
+		</div>
+		<div class="login"> <a ng-hide="isAuthenticated()" ng-click="openLogin()" class="l">登录</a><a ng-hide="isAuthenticated()" ng-click="openRegister()" class="r">注册</a> <a ng-show="isAuthenticated()" href="#/main" class="l ng-hide">进入</a><a ng-show="isAuthenticated()" href="index.php?c=user&amp;a=logout"
+				class="r ng-hide">退出</a></div>
+	</div>
+	<div class="banner"> </div>
+	<nav>
+		<ul class="clearfix">
+			<li><a href="#/show/" ng-class="{active: childCat == 'index'}">微课</a></li>
+			<li ng-repeat="type in sceneType"> <a ng-class="{active: childCat == type.value}" ng-click="getCategoryPage(type.value,type.id)">{{type.name}}</a> </li>
+		</ul>
+	</nav>
+</div>

@@ -1,0 +1,29 @@
+<div class="dialog-contain domain-xiudian">
+	<div class="dialog-head">
+		<h1 translate="usercenter.server.REL_DNS">绑定域名</h1>
+		<p ng-show="!actionerror" translate="usercenter.server.ERROR_DNS">请您输入正确的域名地址</p>
+		<p ng-show="actionerror">{{actionerror}}</p>
+	</div>
+	<div class="dialog-content">
+		<form class="form-contain" role="form">
+			<div class="form-list clearfix"> <label class="form-label" translate="usercenter.server.REL_DNS">绑定域名</label>
+				<div class="form-input"> <input type="text" class="dns" ng-model="domainMess.url" placeholder="{{'usercenter.server.DOMAIN_TIP' | translate}}"> </div>
+			</div>
+		</form>
+		<div class="clearfix xiudian-time" ng-init="someVariable = null"> <span class="form-label" style="font-size:16px" translate="usercenter.server.SELECT_DATA">选择有效期</span> <span ng-repeat="type in domainMess.typeList" style="padding-left:10px;">                <input type="radio" ng-model="$parent.someVariable" id="'{{type.value}}'" ng-value="domainMess.type">                <label for="'{{type.value}}'">{{type.label}}<span translate="usercenter.server.XD">微币</span>{{type.value}}
+			<span
+				translate="usercenter.server.DAY">天</span>
+				</label>
+				</span>
+		</div>
+		<div class="btn-contain btn-big"> <a class="btn-main login" ng-click="submit(domainMess.url,someVariable.value,someVariable.label)" translate="usercenter.server.CONFIRM">确认</a> <a class="btn-grey0 cancel" ng-click="quXiao()" translate="usercenter.server.CANCEL">取消</a> </div>
+	</div>
+	<div class="xiudian clearfix" ng-show="xiudian">
+		<div class="chongzhi">
+			<h1 translate="usercenter.server.XD_INSUFFICIENT">微币不足</h1>
+			<p translate="" translate-value-xdCounts="{{xdCounts}}" translate-value-count="{{count}}">我的微币：{{xdCounts}}，需消耗{{count}}微币</p>
+			<div class="erweima"> <span translate="usercenter.server.QR_CODE1">微信扫描二维码，</span></br><span translate="usercenter.server.QR_CODE2">关注易起秀微信账号，马上充值</span> </div>
+		</div> <img ng-src="{{CLIENT_CDN}}assets/images/111.jpg">
+		<div class="know"><a class="btn-main" ng-click="know()" translate="usercenter.server.KNOW">知道了</a></div>
+	</div>
+</div>

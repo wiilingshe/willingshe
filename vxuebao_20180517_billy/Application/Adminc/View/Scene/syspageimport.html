@@ -1,0 +1,73 @@
+<include file="Public:head"/>
+<div class="container-fluid">
+    <!-- BEGIN PAGE HEADER-->
+    <div class="row-fluid">
+        <div class="span12">
+            <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+            <h3 class="page-title">
+                单页模板列表
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home"></i>
+                    <a href="index.html">首页</a> 
+                    <i class="icon-angle-right"></i>
+                </li>
+                <li>
+                    <a href="#">系统素材管理</a>
+                    <i class="icon-angle-right"></i>
+                </li>
+                <li><a href="#">单页模板</a></li>
+            </ul>
+            <!-- END PAGE TITLE & BREADCRUMB-->
+        </div>
+    </div>
+    <!-- END PAGE HEADER-->
+    <!-- BEGIN PAGE CONTENT-->
+    <div class="row-fluid">
+        <div class="tabbable tabbable-custom tabbable-full-width">
+            <ul class="nav nav-tabs">
+                <eq name="flag" value="useranli">  
+                <li><a  href="{:U('/Scene/index/flag/useranli')}" >全部</a></li>
+                <foreach name='scene_type_list' item='item' >                                
+                    <li class="<eq name="item['value']" value="$fnid">active</eq>"><a href="?c=scene&a=index&flag=useranli&fnid={$item.value}">{$item.title}</a></li>
+                </foreach> 
+                <else/> 
+                <li><a  href="{:U('/scene/pagesys')}" >全部</a></li>
+				<li class="active"><a href="{:U('Scene/syspageimport')}">导入单页模板</a></li>
+                <foreach name='scene_type_list' item='item' >                                
+                    <li><a href="?c=scene&a=index&fnid={$item.value}">{$item.title}</a></li>
+                </foreach> 
+                </eq>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div class="row-fluid portfolio-block">    
+			<div class="portlet-body form">     
+               <form class="form-horizontal" method="post" enctype="multipart/form-data">
+			   <div class="portlet-body form">
+			    <div class="control-group" style="margin-top:15px">
+					<label class="control-label">选择单页模板ZIP包</label>
+					<div class="controls">
+						<div class="input-icon left">
+							<input name="myfile" type="file"   class="m-wrapt" />(zip或者rar格式)
+						</div>
+					</div>
+				</div>
+				<div class="form-actions">
+					<button type="submit" class="btn blue">确定提交</button>
+					<button type="button" class="btn">放弃</button>                            
+				</div>
+				</div>
+			   </form>
+			   </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<style>
+    .center{ text-align:center}
+    .center .p{ line-height:30px}
+</style>
+<include file="Public:foot" />

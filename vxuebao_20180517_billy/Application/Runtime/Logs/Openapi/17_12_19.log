@@ -1,0 +1,3 @@
+[ 2017-12-19T16:54:58+08:00 ] 183.136.176.199 /api.php?c=Sso&a=qq
+ERR: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '64c2392708be84ba2f957553f9dc10cc@qq.com' for key 'email'
+

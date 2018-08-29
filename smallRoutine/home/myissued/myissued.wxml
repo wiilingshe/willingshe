@@ -1,0 +1,199 @@
+<!-- <scroll-view scroll-y="true" style="height: calc(100vh);"  scroll-with-animation="true" scroll-top="{{scrollTop}}" scroll-with-animation="true"> -->
+<import src="../../utils/wxParse/wxParse.wxml"/>
+<!-- <scroll-view style="height: calc(100vh);" scroll-y="{{ifscroll2}}" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll"> -->
+	<view class="topcontent">
+		<view class="picbox">
+			<!-- <view class="picbox_top">{{info.issue_status}}</view> -->
+			<image src="{{info.bill_pic}}"></image>
+		</view>
+		<view>
+			<view class="title">{{info.name}}<view class="issuestatus">{{info.issue_status}}</view></view>
+			<view class="info">
+				<text class="infoleft">发行周期：</text>
+				<text class="inforight">{{info.issue_start_time}}～{{info.issue_end_time}}</text>
+			</view>
+			<view class="info">
+				<text class="infoleft">上映时间：</text>
+				<text class="inforight">{{info.release_time}}</text>
+			</view>
+			<view class="info">
+				<text class="infoleft">发行人员：</text>
+				<text class="inforight">{{info.mission_num}}/{{info.issue_num}}</text>
+				<view class="ifFull" wx:if="{{info.issue_num==info.mission_num}}">满员</view>
+			</view>
+		</view>
+	</view>
+	<view class="tab">
+		<view bindtap="option1" style="color: {{tabitem==0?'#FF4D63':''}};font-weight:{{tabitem==0?'bold':''}};">项目信息</view>
+		<view bindtap="option2" style="color: {{tabitem==1?'#FF4D63':''}};font-weight:{{tabitem==1?'bold':''}};">任务要求</view>
+		<view bindtap="option3" style="color: {{tabitem==2?'#FF4D63':''}};font-weight:{{tabitem==2?'bold':''}};">资料下载</view>
+		<view bindtap="option4" style="color: {{tabitem==3?'#FF4D63':''}};font-weight:{{tabitem==3?'bold':''}};">招募计划</view>
+	</view>
+	<view class="selected" animation="{{animationData}}"></view>
+	<scroll-view scroll-y="true" style="height: calc(100vh - 390rpx);" scroll-top="{{scrollTop}}" scroll-with-animation="true" bindscrolltoupper="upper2" bindscroll="scroll2">
+		<view class="basicinfo" id="info1" style="height: {{ifmore==true?'auto':'280rpx'}};">
+			<view class="title">
+				<view class="shu"></view><view class="name">基本信息</view>
+			</view>
+			<view class="basicinfo_info">
+				<view class="basicinfo_info_left">中文片名</view>
+				<view class="basicinfo_info_right">{{info.name}}</view>
+			</view>
+			<view class="basicinfo_info">
+				<text decode="true" class="basicinfo_info_left" wx:if="{{ifios==true}}">英&ensp;&ensp;文&ensp;&ensp;名</text>
+				<text decode="true" class="basicinfo_info_left" wx:if="{{ifios==false}}">英&ensp;文&ensp;名</text>
+				<view class="basicinfo_info_right">{{info.name_en}}</view>
+			</view>
+			<view class="basicinfo_info">
+				<text decode="true" class="basicinfo_info_left" wx:if="{{ifios==true}}">国&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;别</text>
+				<text decode="true" class="basicinfo_info_left" wx:if="{{ifios==false}}">国&ensp;&ensp;&ensp;&ensp;别</text>
+				<view class="basicinfo_info_right">{{info.country_name}}</view>
+			</view>
+			<view class="basicinfo_info">
+				<text decode="true" class="basicinfo_info_left" wx:if="{{ifios==true}}">类&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;型</text>
+				<text decode="true" class="basicinfo_info_left" wx:if="{{ifios==false}}">类&ensp;&ensp;&ensp;&ensp;型</text>
+				<view class="basicinfo_info_right">{{info.ct_name}}</view>
+			</view>
+			<view class="basicinfo_info">
+				<text decode="true" class="basicinfo_info_left" wx:if="{{ifios==true}}">片&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;长</text>
+				<text decode="true" class="basicinfo_info_left" wx:if="{{ifios==false}}">片&ensp;&ensp;&ensp;&ensp;长</text>
+				<view class="basicinfo_info_right">{{info.duration}}分钟（以公映许可证为准）</view>
+			</view>
+			<view class="basicinfo_info">
+				<text class="basicinfo_info_left">发行版本</text>
+				<view class="basicinfo_info_right">{{info.version_name}}</view>
+			</view>
+			<view class="basicinfo_info" wx:if="{{info.story!=null}}">
+				<text decode="true" class="basicinfo_info_left">故事梗概</text>
+				<view class="basicinfo_info_down">
+					{{info.story}}
+				</view>
+			</view>
+			<view class="basicinfo_info" wx:if="{{info.selling_point!=null}}">
+				<text class="basicinfo_info_left">卖点分析</text>
+				<view class="basicinfo_info_down">
+					{{info.selling_point}}
+				</view>
+			</view>
+			<view class="basicinfo_info" wx:if="{{info.drumbeating!=null}}">
+				<text decode="true" class="basicinfo_info_left">宣传方案</text>
+				<view class="basicinfo_info_down">
+					{{info.drumbeating}}
+				</view>
+			</view>
+		</view>
+		<view class="xiala" bindtap="moreinfo">
+			<image src="/static/img/task/home_Details_Collapse.png" style="transform: {{ifmore==true?'rotate(0deg)':'rotate(180deg)'}};"/>
+		</view>
+		<view class="basicinfo" id="info2" style="margin-top: 20rpx;">
+			<view class="title">
+				<view class="shu"></view><view class="name">任务要求</view>
+			</view>
+			<view class="basicinfo_info" style="padding-left: 25rpx;">
+				<view class="nodata" wx:if="{{info.mission == ''}}">
+					<image src="{{img2}}"></image>
+					<view>暂无内容</view>
+				</view>
+				<!-- <rich-text class="basicinfo_info_down" nodes="{{info.mission}}"  wx:if="{{info.mission != ''}}"></rich-text> -->
+				<template is="wxParse" data="{{wxParseData:detiel.nodes}}"/>
+			</view>
+		</view>
+		<view class="basicinfo" id="info3" style="margin-top: 20rpx;">
+			<view class="title">
+				<view class="shu"></view><view class="name">资料下载</view>
+			</view>
+			<view class="nodata" wx:if="{{info.datumLst.length == 0}}">
+				<image src="{{img2}}"></image>
+				<view>暂无内容</view>
+			</view>
+			<view class="basicinfo_info basicinfo_info1" wx:for="{{info.datumLst}}" wx:key="">
+				<view class="basicinfo_info1_left">
+					<image src="{{item.ext==('docx'|| 'doc')?'https://issuer.oopca.com/img/index/home_Details_word.png':item.ext=='pdf'?'https://issuer.oopca.com/img/index/home_Details_pdf.png':'https://issuer.oopca.com/img/index/home_Details_xls.png'}}"></image>
+					<view class="basicinfo_info1_left_name">
+						<view class="basicinfo_info1_left_name_up">{{item.title}}</view>
+					</view>
+				</view>
+				<view class="basicinfo_info1_right">
+					<!-- <button class="kefu" open-type="contact" /> -->
+					<image src="https://issuer.oopca.com/img/index/home_Details_read.png" data-url="{{item.datum}}" bindtap="downloaditem"></image>
+				</view>
+			</view>
+		</view>
+		<view class="basicinfo" id="info4" style="margin-top: 20rpx;padding-bottom: 0;">
+			<view class="title" style="margin-bottom: 10rpx;">
+				<view class="shu" style="height: 28rpx;"></view><view class="name" style="font-size: 30rpx;">招募计划</view>
+			</view>
+			<view class="citylist">
+				<view class="citylistitem {{selectone=='all'?'citylistitem1':''}}" style="margin-right: 30rpx;" bindtap="selecteditem" data-index="all">全部</view>
+				<view wx:if="{{item.region_id!=8}}" class="citylistitem {{selectone==index?'citylistitem1':''}}" style="margin-right: {{index==2||index==6?'0':'30rpx'}}" wx:for="{{regionlist}}" wx:key="" data-index="{{index}}" data-id="{{item.region_id}}" bindtap="selecteditem">{{item.region_name}}</view>
+				<!-- <view class="citylistitem">华东(10)</view>
+				<view class="citylistitem">华北(10)</view>
+				<view class="citylistitem">华中(10)</view>
+				<view class="citylistitem citylistitem1">全部(100)</view>
+				<view class="citylistitem">华东(10)</view>
+				<view class="citylistitem">华北(10)</view>
+				<view class="citylistitem">华中(10)</view> -->
+			</view>
+			<!-- <view class="citylist">
+				<view class="citylistitem">华南(10)</view>
+				<view class="citylistitem">东北(10)</view>
+				<view class="citylistitem">西北(10)</view>
+				<view class="citylistitem">西南(10)</view>
+			</view> -->
+			<view class="tab1">
+				<view>城市</view>
+				<view>排片目标</view>
+				<view>人数</view>
+				<view>状态</view>
+			</view>
+			<view style="border-bottom: 1rpx solid #eee;">
+				<view class="tab2" wx:for="{{regionlists}}" wx:key="">
+					<view class="name1">{{item.city_name}}</view>
+					<view>{{item.claim_start}}%-{{item.claim_end}}%</view>
+					<view>{{item.recruit}}人</view>
+					<view class="btn" bindtap="alertModal" data-index="{{index}}" wx:if="{{item.saveRecruitNum<item.recruit && item.pma_status==-1}}"  data-city="{{item.city_name}}市" data-id="{{item.p_id}}">申请</view>
+					<view class="btn" bindtap="alertModal" wx:if="{{item.saveRecruitNum<item.recruit && item.pma_status==0}}"  data-city="{{item.city_name}}市" data-id="{{item.p_id}}">被拒绝</view>
+					<view class="btn2" wx:if="{{item.saveRecruitNum<item.recruit && item.pma_status==1}}"  data-city="{{item.city_name}}市" data-id="{{item.p_id}}">申请中</view>
+					<view class="btn2" wx:if="{{item.saveRecruitNum<item.recruit && item.pma_status==2}}"  data-city="{{item.city_name}}市" data-id="{{item.p_id}}">已申请</view>
+					<view class="btn2"  wx:if="{{item.saveRecruitNum>=item.recruit}}">满员</view>
+				</view>
+				<!-- <view class="tab2">
+					<view class="name1">城市城</view>
+					<view>20%-30%</view>
+					<view>1人</view>
+					<view class="btn2">满员</view>
+				</view> -->
+				<view class="nodata" wx:if="{{regionlists.length==0}}">
+					<image src="https://issuer.oopca.com/img/public/rose@2x.png"></image>
+					<view>暂无数据</view>
+				</view>
+			</view>
+			<view class="more" wx:if="{{regionlists.length!=0}}" bindtap="tocity">查看全部</view>
+		</view>
+	</scroll-view>
+<!-- </scroll-view> -->
+<!-- </scroll-view> -->
+<view class="bg" wx:if="{{ifbg}}"></view>
+<view class="alertModal" wx:if="{{tip}}">
+	<view class="alertModal_title">提示</view>
+	<view class="alertModal_content">是否确认申请<text>【{{alertcity}}】</text></view>
+	<view class="alertModal_btn">
+		<view class="alertModal_btn_left" bindtap='close3'>取消</view>
+		<view class="alertModal_btn_right" bindtap="confirmapply">确认申请</view>
+	</view>
+</view>
+<view class="body" wx:if="{{sendok}}">
+	<view class="close">
+		<image src="{{close}}" bindtap='close1'></image>
+	</view>
+	<view>
+		<view class="icon">
+			<image src="{{icon}}"></image>
+		</view>
+		<view class="prompt">您已成功提交申请</view>
+		<view class="isConfirm">等待平台审核确认</view>
+		<view class="btn">
+			<view style="background-image: -webkit-linear-gradient(90deg, #F79539, #FFB167);" bindtap='close1'>关  闭</view>
+		</view>
+	</view>
+</view>

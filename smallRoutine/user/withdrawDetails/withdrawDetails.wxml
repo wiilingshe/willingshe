@@ -1,0 +1,21 @@
+<!--user/withdrawDetails/withdrawDetails.wxml-->
+<view class="withdrawDetBox">
+	<scroll-view class="body" scroll-y bindscrolltolower="lower">
+		<block wx:for="{{list}}" wx:key="">
+			<view class="containers">
+				<view class="rowsList" style="border-top:{{index!=0?'2rpx solid #EEE':'none'}}">
+					<view class="rows left">
+						<view class="titles">{{item.status_name}}</view>
+						<view class="times">{{item.create_time}}</view>
+					</view>
+					<view class="rows right">-{{item.withdraw_fee}}元</view>
+				</view>
+			</view>
+		</block>
+		<view class="nodata" wx:if="{{nodata}}">
+			<image src="{{nodataImg}}"></image>
+			<view class="noMore">暂无内容</view>
+		</view>
+		<view class="noMore" wx:if="{{noMore}}">没有更多数据了</view>
+	</scroll-view>
+</view>

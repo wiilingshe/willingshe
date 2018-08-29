@@ -1,0 +1,54 @@
+<div nv-file-drop="" uploader="uploader">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<div ng-show="uploader.isHTML5">
+					<!-- 3. nv-file-over uploader="link" over-class="className" -->
+					<div ng-show="category.fileType != '2'" class="well my-drop-zone" nv-file-over="" uploader="uploader"> 拖拽图片到此区域 </div>
+					<div ng-show="category.fileType == '2'" class="well my-drop-zone" nv-file-over="" uploader="uploader"> 拖拽音乐到此区域 </div>
+				</div>
+				<!-- Example: nv-file-select="" uploader="{Object}" options="{Object}" filters="{String}" -->
+				<div id="upload_btn" class="btn-main"> <span ng-show="category.fileType == '0' || category.fileType == '1'">选择图片</span> <span ng-show="category.fileType == '2' || category.fileType == '4'">选择音乐</span> <input type="file" id="uploadBtn" ng-click="removeQueue()" nv-file-select=""
+						uploader="uploader" multiple/> </div> <br/> </div>
+			<div class="col-md-9" style="margin-bottom: 40px">
+				<!-- <p>等待上传图片个数: {{ uploader.queue.length }}</p> -->
+				<p ng-show="category.fileType == '1' && !category.headerImage && !category.coverImage">每次最多上传5张图片，上传图片建议大小在3M以内，格式为jpg\\bmp\\png\\gif</p>
+				<p ng-show="category.fileType == '0'">上传图片建议像素为640px*1008px，上传图片大小在3M以内，格式为jpg\\bmp\\png\\gif</p>
+				<p ng-show="category.fileType == '2' || category.fileType == '4'">上传音乐大小不超过{{category.limitSize / 1024 / 1024}}M，格式为mp3</p>
+				<p ng-show="category.fileType == '1' && (category.headerImage || category.coverImage)">上传图片建议像素为250px*250px，上传图片大小在3M以内，格式为jpg\\bmp\\png\\gif</p>
+				<table class="table">
+					<thead>
+						<tr>
+							<th width="50%">名称</th>
+							<th ng-show="uploader.isHTML5">大小</th>
+							<!--                                 <th ng-show="uploader.isHTML5">进度</th>                                <th>操作</th> -->
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="item in uploader.queue">
+							<td> <strong>{{ item.file.name }}</strong>
+								<!-- Image preview -->
+								<!--auto height-->
+								<!--<div ng-thumb="{ file: item.file, width: 100 }"></div>-->
+								<!--auto width-->
+								<!-- <div ng-show="uploader.isHTML5" ng-thumbnail="{ file: item._file, height: 100 }"></div> -->
+								<!--<div ng-thumbnail="{ file: item._file, height: 100 }"></div>                                    fixed width and height -->
+								<!--<div ng-thumb="{ file: item.file, width: 100, height: 100 }"></div>-->
+							</td>
+							<td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+							<td ng-show="uploader.isHTML5">
+								<div class="progress" style="margin-bottom: 0;">
+									<div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+								</div>
+							</td>
+							<!--<td nowrap>                                    <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">                                        <span class="glyphicon glyphicon-upload"></span> 上传                                    </button>                                    <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">                                        <span class="glyphicon glyphicon-ban-circle"></span> 取消                                    </button>                                    <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">                                        <span class="glyphicon glyphicon-trash"></span> 删除                                    </button>                                </td> -->
+						</tr>
+					</tbody>
+				</table>
+				<div>
+					<!-- <div>                            上传进度:                            <div class="progress" style="">                                <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>                            </div>                        </div> --><button type="button" class="btn btn-secondary btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">                            <span class="glyphicon glyphicon-upload"></span> 上传                        </button>
+					<!--  <button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">                            <span class="glyphicon glyphicon-ban-circle"></span> 取消                        </button> --><button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">                            <span class="glyphicon glyphicon-trash"></span> 删除                        </button> </div>
+			</div>
+		</div>
+	</div>
+</div>

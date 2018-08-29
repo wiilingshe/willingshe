@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" full>
+<head>
+	<div id='wx_pic' style='margin:0 auto;display:none;'>
+		<img src='images/pic300.jpg' />
+	</div>
+	<meta charset="UTF-8">
+    <meta id="metaDescription" name="description" content="猴塞雷！">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>恭喜范永君老师成功晋级为华大高级讲师！</title>
+	<style>
+		body{font-size:20px; color:#999; overflow:hidden;margin:0 auto;background:#0F2030;}
+		[full]{width:100%;height:100%;}
+		div{position:absolute;}
+		img{position:absolute;}
+		.btn{cursor:pointer;}
+		.toBig{
+			transform: scale(1,1);
+			-ms-transform: scale(1,1);	/* IE 9 */
+			-webkit-transform: scale(1,1);	/* Safari 和 Chrome */
+			-o-transform: scale(1,1);	/* Opera */
+			-moz-transform: scale(1,1);
+		}
+		.toBig:hover{
+			transform: scale(1.2,1.2);
+			-ms-transform: scale(1.2,1.2);	/* IE 9 */
+			-webkit-transform: scale(1.2,1.2);	/* Safari 和 Chrome */
+			-o-transform: scale(1.2,1.2);	/* Opera */
+			-moz-transform: scale(1.2,1.2);
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery-1.7.2.js"></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript">
+		function isWeiXin(){//是否是微信
+			var ua = window.navigator.userAgent.toLowerCase();
+			if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		var myurl=location.href.split('#')[0];
+		var mydir=myurl.substring(0,myurl.lastIndexOf("/",myurl.substring(0,myurl.indexOf(".html")).length)+1);
+		var isgameok=false;
+		var iskeyok=(mydir.indexOf("vxuebao.com")>=0)?false:true;
+		function initgamecomplete(){
+			if(!isgameok){
+				isgameok=true;
+				checkgamekeycomplete();
+			}
+		}
+		function initkeycomplete(){
+			if(!iskeyok){
+				iskeyok=true;
+				checkgamekeycomplete();
+			}
+		}
+		function checkgamekeycomplete(){
+			if(isgameok && iskeyok){
+				init();
+			}
+		}
+		$.get("/index.php?c=view&a=huawei&url="+encodeURIComponent(myurl), function(ddd){
+			loadjsoncomplete(ddd);
+		});
+		//loadjsoncomplete('{"appId":"wx405be55c24ca0c31","url":"http:\/\/www.vxuebao.com\/content\/2\/share.html?from=singlemessage&isappinstalled=0","nonceStr":"cJjoyI0T0oaj3XN0","timestamp":1464243344,"jsapi_ticket":"bxLdikRXVbTPdHSM05e5u_7yvT2Z3wfNlelDqo-aM5oVdyyNAu4E31F4mcD6jBvC_B0wWzA2iWPkcvHTRv08Kw","signature":"edc6443268556957d84bd2e467a0e766b7835a9c"}');//test data
+		function loadjsoncomplete(myJsonObject){
+			//alert("myJsonObject="+myJsonObject)
+			if(myJsonObject && myJsonObject.appId){
+				
+			}else{
+				myJsonObject=escapemystr(myJsonObject);
+				myJsonObject=eval('('+myJsonObject+')');
+			}
+			//alert(myJsonObject.timestamp);
+			//alert(myJsonObject.appId+":"+myJsonObject.timestamp+":"+myJsonObject.nonceStr+":"+myJsonObject.signature);
+			////////////////////////////////////////
+			if(!isWeiXin()){
+				initkeycomplete();
+			}
+			wx.config({
+				debug: false,
+				appId: myJsonObject.appId,
+				timestamp: myJsonObject.timestamp,
+				nonceStr: myJsonObject.nonceStr,
+				signature: myJsonObject.signature,
+				jsApiList: [
+					'onMenuShareTimeline',
+					'onMenuShareAppMessage',
+					'onMenuShareQQ',
+					'onMenuShareWeibo',
+					'onMenuShareQZone'
+				]
+			});
+
+			wx.ready(function () {
+			  
+				var shareData64 = {
+					title: '恭喜范永君老师成功晋级为华大高级讲师！',
+					desc: '猴塞雷！',
+					link: myJsonObject.url,
+					imgUrl:  mydir+'images/pic300.jpg'
+				};
+				wx.onMenuShareAppMessage(shareData64);
+				wx.onMenuShareTimeline(shareData64);
+				wx.onMenuShareQQ(shareData64);
+				wx.onMenuShareWeibo(shareData64);
+				wx.onMenuShareQZone(shareData64);
+				initkeycomplete();
+
+			});	  
+			wx.error(function (res) {
+				//alert(res.errMsg);
+			});
+			///////////////////////////////////////fun
+			function escapemystr(estr) {
+				//%5C%22
+				estr = escape(estr);
+				estr = shieldFixStr(estr, "%5C%22", "%22");
+				estr = unescape(estr);
+				estr = estr.substring(estr.indexOf("{"), estr.lastIndexOf("}")+1);
+				return estr;
+			}
+			function shieldFixStr(contentStr, searchStr, replaceStr) {
+				while (contentStr.indexOf(searchStr) != -1) {
+					contentStr = shieldStr(contentStr, searchStr, replaceStr);
+				}
+				return contentStr;
+				function shieldStr(contentStr, searchStr, replaceStr) {
+					var tmpIdx = contentStr.indexOf(searchStr);
+					if (tmpIdx != -1) {
+						contentStr = contentStr.substring(0, tmpIdx)+replaceStr+contentStr.substring(tmpIdx+searchStr.length, contentStr.length);
+					}
+					return contentStr;
+				}
+			}
+
+		}
+	</script>
+	<script type="text/javascript">
+		window.onresize=stageCentreSetting;
+		window.onorientationchange = stageCentreSetting;
+		function stageCentreSetting(){
+			var obj=getId("F4");
+			bw=document.documentElement.clientWidth;
+			bh=document.documentElement.clientHeight;
+			var scaleX=bw/640;
+			var scaleY=bh/1005;
+			scaleNum=Math.min(scaleX,scaleY);
+			var objwper=(640*scaleNum)/bw*100;
+			var objhper=(1005*scaleNum)/bh*100;
+			obj.style.width=objwper+"%";
+			obj.style.height=objhper+"%";
+			obj.style.left=(100-objwper)/2+"%";
+			obj.style.top=(100-objhper)/2+"%";
+		}
+		//是否电脑
+		function IsPC()  {  
+		   var userAgentInfo = navigator.userAgent;  
+		   var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");  
+		   var flag = true;  
+		   for (var v = 0; v < Agents.length; v++) {  
+			   if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; break; }  
+		   }  
+		   return flag;  
+		}
+		var isHaveTouch=(IsPC())?false:true;
+		function addListenerStartObj(obj,className,clickFun){
+			if(obj.killListtener){
+				obj.killListtener();
+			}
+			obj.killListtener=function(){
+				obj.removeEventListener('touchstart',touchstart);
+				obj.onmousedown=null;
+			}
+			obj.isHaveListenerClick=true;
+			if(isHaveTouch){
+				obj.addEventListener('touchstart',touchstart,false);
+			}else{
+				obj.style.cursor="pointer";
+				obj.onmousedown=touchstart;
+			}
+			function touchstart(evt){
+				evt.preventDefault();
+				clickFun(evt,obj);
+			}
+		}
+		function removeListenerObj(obj) {
+			obj.className=null;
+			obj.style.cursor="";
+			obj.isHaveListenerClick=false;
+			if(obj.killListtener){
+				obj.killListtener();
+			}
+		}
+		function getId(o){
+			return document.getElementById(o);
+		}
+		function show(objD){
+			objD.style.display='block';
+		}
+		function init(){
+			show(getId("F4"));
+			stageCentreSetting();
+			var obj=getId("f4_sharebtn");
+			show(obj);
+			addListenerStartObj(obj,"",objClick);
+			function objClick(e){
+				removeListenerObj(obj);
+				show(getId("f4_clewshare"));
+			}
+		}
+	</script>
+</head>
+<body onLoad="initgamecomplete()" full ondragstart="return false;">
+	<div id="F4" style="left:0%;top:0%;width:100%;height:100%;overflow:hidden;background:url(images/p4.jpg);background-size:100% 100%;display:none;">
+		<img id="f4_1" style="left:4.531%;top:14.328%;width:91.406%;height:72.836%;" src="images/p4_1.png" alt="" />
+		<img id="f4_2" style="left:-3.344%;top:24.08%;width:88.125%;height:36.517%;" src="images/png/p4_20023.png" alt="" />
+		<img id="f4_3" style="left:41.188%;top:59.104%;width:16.875%;height:12.836%;" src="images/p4_3.png" alt="" />
+		<img id="f4_4" style="left:54.234%;top:9.95%;width:42.813%;height:23.383%;" src="images/png/p4_40023.png" alt="" />
+		<img id="f4_5" style="left:79.578%;top:25.572%;width:13.75%;height:8.756%;" src="images/p4_5.png" alt="" />
+		<img id="f4_sharebtn" style="left:27.453%;top:76.468%;width:46.875%;height:9.353%;" src="images/p4_sharebtn.png" alt="" />
+		<img id="f4_clewshare" style="left:0%;top:0%;width:100%;height:100%;display:none;" src="images/p4_clewshare.png" alt="" />
+	</div>
+</body>
+</html>

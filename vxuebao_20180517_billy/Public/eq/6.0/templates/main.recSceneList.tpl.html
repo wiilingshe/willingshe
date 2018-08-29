@@ -1,0 +1,42 @@
+<ul class="rec-scene">
+	<li ng-repeat="scene in myScenes track by $index" class="mb20 clearfix tab-box-shadow animation-opacity" ng-style="{'animation-delay' : $index * 50 + 'ms'}">
+		<div class="scene-img scene_contain" style="overflow:hidden" ng-hover resource="scene">
+			<a ng-click="showPreview($event,scene)" style="display:block;">
+				<div class="ribbon ribbon-badge" ng-if="!scene.show && !scene.publishTime"> <span class="ribbon-inner unpublish">未发布</span> </div>
+				<div ng-if="!scene.show && scene.publishTime && scene.updateTime > scene.publishTime" class="ribbon ribbon-badge"> <span class="ribbon-inner new">有修改</span> </div>
+				<div ng-if="!scene.show && scene.status == -1" class="ribbon ribbon-badge"> <span class="ribbon-inner check">未通过审核</span> </div>
+				<div ng-if="!scene.show && scene.status == -2" class="ribbon ribbon-badge"> <span class="ribbon-inner check">审核中</span> </div>
+				<div class="f1-card">
+					<!--微课图片-->
+					<div ng-show="!scene.show" class="front face" ng-style="getStyle(scene.cover)"></div>
+					<!--微课对应的二维码图片-->
+					<div ng-show="scene.show" class="face front qrcode" qr-code qr-url="{{canvasUrl + '/v-' + scene.code}}"> </div>
+				</div>
+			</a>
+		</div>
+		<div class="scene-data">
+			<div class="scene-data-header">
+				<div class="scene-info"> <span class="item-title">{{scene.name}}</span>
+					<p class="item_title" ng-class="{'scene-description': scene.description}" ng-model="scene.description">{{scene.description?scene.description:("未添加微课描述")}}</p>
+				</div>
+			</div>
+			<div class="scene-data-footer clearfix">
+				<div class="user-param"> <a ng-href="#/spread/statistics/{{scene.id}}" class="background-color-width-change button"><em class="eqf-eye" style="font-size:12px;"></em><span>{{scene.showCount | fixnum}}</span></a> <a class="background-color-width-change button" ng-show="scene.dataCount > 0"
+						ng-href="#/spread/dataCollect/{{scene.id}}"><em class="eqf-date" style="font-size:12px;"></em><span>{{scene.dataCount | fixnum}}</span></a> </div>
+				<div class="user-operate-site set" role="menu" ng-if="!branchid">
+					<a class="button background-color-width-change delete" ng-click="deleteScene($event,scene.id)"> <em class="eqf-scene-delete"></em><span>删除</span> </a>
+					<a class="button background-color-width-change operation" ng-if="scene.status != -1 && scene.status != -2" ng-click="copyScene($event,scene.id)"> <em class="eqf-scene-copy"></em><span>复制</span> </a>
+					<a class="button background-color-width-change" ng-if="isAllowedToAccessTransfer && scene.status != -1 && scene.status != -2" ng-click="transferScene($event,scene.id)"> <em class="eqf-scene-gift"></em><span>转送</span> </a>
+					<a class="button background-color-width-change sample" ng-if="(scene.isTpl == 3 && userProperty.type ==2 && scene.status != -1 && scene.status != -2) || (scene.isTpl == 3 && userProperty.type ==23 && scene.status != -1 && scene.status != -2)" ng-click="clearCompanyTpl($event,scene.id,$index)">
+						<em class="eqf-scene-company"></em><span>取消企业样例</span> </a>
+					<a class="button background-color-width-change sample" ng-if="(scene.isTpl == 0 && userProperty.type ==2 && scene.status != -1 && scene.status != -2) || (scene.isTpl == 0 && userProperty.type ==23 && scene.status != -1 && scene.status != -2)" ng-click="creatCompanyTpl($event,scene.id,$index)">
+						<em class="eqf-scene-company"></em><span>生成企业样例</span> </a>
+					<!--                     <a class="button background-color-width-change">                        <em class="eqf-share"></em><span>分享</span>                    </a>  -->
+					<a class="button background-color-width-change operation" ng-if="(!scene.publishTime || scene.updateTime > scene.publishTime) && scene.status != -1 && scene.status != -2" ng-click="publishScene($event,scene)"> <em class="eqf-scene-send"></em><span>发布</span> </a>
+					<a class="button background-color-width-change" ng-click="sceneSettings($event,scene.id)"> <em class="eqf-scene-setting"></em><span>设置</span> </a>
+					<a class="button background-color-width-change" ng-click="editScene($event,scene.id)"> <em class="eqf-xiuziti"></em><span>编辑</span> </a>
+</ul>
+</div>
+</div>
+</li>
+</ul>

@@ -1,0 +1,50 @@
+<div class="modal-header no-line" id="sound_effect_header"> 
+	<button type="button" class="n_close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">        
+	<!-- 	<span aria-hidden="true"></span> -->
+		<img aria-hidden="true" src="/assets/images/re-design/bg_close.png" />   
+	</button> 
+	<h4 class="modal-title">
+		<i></i>
+		音效组件        
+		<a class="bbs-help-tip-media" target="_blank" href="http://bbs.e.wesambo.com/forum.php?mod=viewthread&tid=10990&extra="> </a>
+		<span class="action" ng-show ='!authError'>音效不能大于100kb</span>        
+		<span ng-show = 'authError'>{{authError}}</span>    
+	</h4>
+</div>
+<div class="dialog-contain"  id="sound_effect_content">
+	<div class="modify_area  tel_title tab-same clearfix"> 
+		<span ng-repeat="button in buttons track by $index" ng-class="{spanborder: $index == btnIndex}">			
+			<a ng-click = "chooseTabButton(button, $index)">{{button.text}}</a>	
+			<b ng-if="$index == btnIndex"></b>	
+		</span>
+		<div ng-class="{'spanborder': model.imgSrc}" class="auto-upload hint--top hint--rounded" data-hint="上传图片大小不超过3M，支持上传格式：jpg、png、gif" ng-click="openImageModal()" style="margin-top: 11px;"> 
+			<em class="eqf-upload" style="font-size:16px;"></em><em>自定义</em> 
+		</div>
+	</div>
+	<div class="button_console dialog-content">
+		<form class="form-contain" form="role">
+			<div class="form-list clearfix btn-name" ng-if="!model.imgSrc"> 
+				<label for="buttonName" class="form-label">按钮名称：</label>
+				<div class="form-input"> 
+					<input id="buttonName" class="btn-name" type="text" ng-model="model.title" check-count="40" ng-keyup="$event.keyCode == 13 ? confirm() : null" autofocus stop-propagation/> 
+				</div>
+			</div>
+			<div class="form-list clearfix btn-pic" ng-if="model.imgSrc"> 
+				<label class="form-label">按钮图片：</label>
+				<div class="form-image btn-small"> 
+					<img ng-src="{{PREFIX_FILE_HOST + model.imgSrc}}" alt="{{'scene.create.soundComponent.IMAGE_TIP' | translate}}" /> 
+					<a class="btn-main btn-picture" ng-click="openImageModal()">更换图片</a> 
+				</div>
+			</div>
+			<div class="form-list clearfix btn-setting"> 
+				<label for="btnSound" class="form-label">音效设置：</label>
+				<div class="form-input"> <a id="btnSound" ng-click="openSoundModal()">设置音效</a> </div>
+			</div>
+			<div class="form-list clearfix btn-choose" ng-show="model.sound.name"> 
+				<label class="form-label">已选音效：</label>
+				<div class="form-input"><span>{{model.sound.name}}</span></div>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="modal-footer no-line" id="sound_effect_footer"> <a class="modal-submit" ng-click="confirm()">确定</a> <a class="modal-cancle" ng-click="cancel()">取消</a></div>

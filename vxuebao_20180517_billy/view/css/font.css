@@ -1,0 +1,206 @@
+@font-face {
+    font-family: Allura-Regular;
+    src: url(/assets/fonts/Allura-Regular.woff)
+}
+
+@font-face {
+    font-family: Amaranth-Regular;
+    src: url(/assets/fonts/Amaranth-Regular.woff)
+}
+
+@font-face {
+    font-family: Anton-Regular;
+    src: url(/assets/fonts/Anton-Regular.woff)
+}
+
+@font-face {
+    font-family: Arial-Regular;
+    src: url(/assets/fonts/Arial-Regular.woff)
+}
+
+@font-face {
+    font-family: Arialnarrow-Regular;
+    src: url(/assets/fonts/Arialnarrow-Regular.woff)
+}
+
+@font-face {
+    font-family: Arialroundedmtbold-Regular;
+    src: url(/assets/fonts/Arialroundedmtbold-Regular.woff)
+}
+
+@font-face {
+    font-family: Banglasangammn-Regular;
+    src: url(/assets/fonts/Banglasangammn-Regular.woff)
+}
+
+@font-face {
+    font-family: Blackopsone-Regular;
+    src: url(/assets/fonts/Blackopsone-Regular.woff)
+}
+
+@font-face {
+    font-family: Bradleyhand-Bold;
+    src: url(/assets/fonts/Bradleyhand-Bold.woff)
+}
+
+@font-face {
+    font-family: Cabinsketch-Bold;
+    src: url(/assets/fonts/Cabinsketch-Bold.woff)
+}
+
+@font-face {
+    font-family: mnjbwks;
+    src: url(/assets/fonts/mnjbwks.woff)
+}
+
+@font-face {
+    font-family: fzjz;
+    src: url(/assets/fonts/fzjz.woff)
+}
+
+@font-face {
+    font-family: fzxy;
+    src: url(/assets/fonts/fzxy.woff)
+}
+
+@font-face {
+    font-family: fzzy;
+    src: url(/assets/fonts/fzzy.woff)
+}
+
+@font-face {
+    font-family: hzgb;
+    src: url(/assets/fonts/hzgb.woff)
+}
+
+@font-face {
+    font-family: changyi;
+    src: url(/assets/fonts/changyi.woff)
+}
+
+@font-face {
+    font-family: eqfonts;
+    src: url(fonts/eqfonts.eot?hnv3rd);
+    src: url(fonts/eqfonts.eot?hnv3rd#iefix) format('embedded-opentype'), url(fonts/eqfonts.ttf?hnv3rd) format('truetype'), url(fonts/eqfonts.woff?hnv3rd) format('woff'), url(fonts/eqfonts.svg?hnv3rd#eqfonts) format('svg');
+    font-weight: 400;
+    font-style: normal
+}
+
+@font-face {
+    font-family: daiyuti;
+    src: url(/assets/fonts/china/daiyuti.woff)
+}
+
+@font-face {
+    font-family: dieyuti;
+    src: url(/assets/fonts/china/dieyuti.woff)
+}
+
+@font-face {
+    font-family: lingxinti;
+    src: url(/assets/fonts/china/lingxinti.woff)
+}
+
+@font-face {
+    font-family: liuzihei;
+    src: url(/assets/fonts/china/liuzihei.woff)
+}
+
+@font-face {
+    font-family: qingkongti;
+    src: url(/assets/fonts/china/qingkongti.woff)
+}
+
+@font-face {
+    font-family: qingyunti;
+    src: url(/assets/fonts/china/qingyunti.woff)
+}
+
+@font-face {
+    font-family: shuaixianti;
+    src: url(/assets/fonts/china/shuaixianti.woff)
+}
+
+@font-face {
+    font-family: yuandieti;
+    src: url(/assets/fonts/china/yuandieti.woff)
+}
+
+@font-face {
+    font-family: zongyiti;
+    src: url(/assets/fonts/china/zongyiti.woff)
+}
+
+@font-face {
+    font-family: lilianghei;
+    src: url(/assets/fonts/china/lilianghei.woff)
+}
+
+@font-face {
+    font-family: xiaobozhezhiti;
+    src: url(/assets/fonts/china/xiaobozhezhiti.woff)
+}
+
+[class^=eqf-], [class*=" eqf-"] {
+    font-family: eqfonts;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.eqf-eqxiu:before {
+    content: "\e600"
+}
+
+.eqf-eye3:before {
+    content: "\e601"
+}
+
+.eqf-flower:before {
+    content: "\e602"
+}
+
+.eqf-flower2:before {
+    content: "\e603"
+}
+
+.eqf-flower-line:before {
+    content: "\e604"
+}
+
+.eqf-good:before {
+    content: "\e605"
+}
+
+.eqf-love:before {
+    content: "\e606"
+}
+
+.eqf-love-line:before {
+    content: "\e607"
+}
+
+.eqf-roll:before {
+    content: "\e608"
+}
+
+.eqf-roll-line:before {
+    content: "\e609"
+}
+
+.eqf-star:before {
+    content: "\e60a"
+}
+
+.eqf-star-line:before {
+    content: "\e60b"
+}
+
+.eqf-vote:before {
+    content: "\e60c"
+}

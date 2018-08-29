@@ -1,0 +1,183 @@
+<?php if (!defined('THINK_PATH')) exit();?><link rel="stylesheet" href="/assets/vxuebao-5.4.2.css"/>
+<link rel="stylesheet" href="/assets/questionnaire.css"/>
+<script type="text/javascript" src="/Public/js/jquery-1.7.1.min.js"></script>
+<div class="view_form_header" style="display: block;">
+	<a href="http://www.vxuebao.com" target="_blank">
+		<img style="margin-top: 12px;margin-left: 20px;" src="/Uploads/ad/2016-03-25/56f48fcc5a56a.png">
+	</a>
+</div>
+<div class="container view_container">
+<div class="row view_row">
+<div class="view_mar_top" style="margin-top:30px;">
+<img src="/view/images/preview.png" style="height: 19%;width: 100%;">
+</div>
+<div style="background-color:#fff" class="">
+	<div id="mark_sore"></div>
+	<div id="form_marking">
+		<div class="marking_title_top"></div>
+		<div id="marking_inform">
+			<span>姓名：</span><span class="marking_inform_name"></span>
+			<span>考试时间：</span><span class="marking_inform_time"></span>
+		</div>
+		<hr style="height:1px;border:none;border-top:1px dashed #c0c0c0;padding-bottom: 20px;">
+	</div>
+	<div class="div_question">
+		<div class="marking_opt" style="display:none"></div>
+	</div>
+	
+</div>
+</div>
+</div>
+<!-- <div class="view_form_footer">
+<div style="text-align:center;line-height:100px;color:#fff;font-size:14px">友情链接： <a target="_blank" href="http://www.learnnow.net.cn/">领思</a> <a target="_blank" href="http://wizrecord.im/">wizrecord</a> <a target="_blank" href="http://wetool.im/">wetool</a> <a target="_blank" href="http://www.weteam.im/">weteam</a>  <span style="margin: 0 20px;">|</span> CopyRight © 2014-2016 http://www.vxuebao.com  <span style="margin: 0 20px;">|</span> 关于我们/联系我们/新手教程/e-learning</div>
+</div> -->
+<style type="text/css">
+body{
+	background-color: #f5f8ed;
+	margin: 0px;
+	padding: 0px;
+}
+.sright input,
+.sleft input,
+.right input,
+.left input{
+	margin-bottom: 22px;
+}
+</style>
+<script>
+	var pathname = window.location.pathname;
+	var eid = pathname.substr(31);
+	var sUserAgent = navigator.userAgent.toLowerCase();
+    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+    var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+    var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+    var bIsAndroid = sUserAgent.match(/android/i) == "android";
+    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+	$(function(){
+		$.ajax({
+			type:'GET',
+			url:'/index.php?c=form&a=examread',
+			data:{'eid':eid},
+			success:function(data){
+				var data = eval('('+data+')');
+				$('.marking_title_top').eq(0).text(data.title);
+				$('.marking_inform_name').eq(0).text(data.username);
+				$('.marking_inform_time').eq(0).text(data.time);
+				var timu_len = data.list.length;
+				for(i=0;i<timu_len;i++){
+					if(data.list[i].type == 3 || data.list[i].type == 4 || data.list[i].type == 6 || data.list[i].type == 9 || data.list[i].type == 17){
+						var radioHtml = ''
+						for(x=0;x<data.list[i].question.length;x++){
+							var a = '<div class="preview_left">'+data.list[i].question[x]+'</div>';
+							var radioHtml = radioHtml+a;
+						}
+						if(data.list[i].type == 9){
+							radioHtml = '<div class="preview_left">A.对</div><div class="preview_left">B.错</div>'
+						}
+						var html = '<div class="marking_opt"><div class="mobiphone"><span class="div_topic_question">'+(i+1)+'.</span><span class="duoxuan_show" style="color:#f3695f;font-size:16px">【多选题】</span><div class="marking_title div_title_question preview_left" style="display:inline-block">'+data.list[i].ipttitle+'</div><div class="preview_score">（分值：'+data.list[i].e_score+'）</div></div><div class="form_opt opt_all">'+radioHtml+'</div><hr class="timu_hr" style="height:1px;border:none;border-top:1px dashed #d4d4d4;"><div class="t_answer"><span>正确答案：</span><span class="stu_tanswer">'+data.list[i].tanswer+'</span></div><div class="s_answer"><span>学生答案：</span><span class="stu_answer">'+data.list[i].answer+'</span></div></div>';
+						$('.marking_opt:last').after(html);
+						if(data.list[i].type == 3){
+							$('.marking_opt').eq(i+1).find('.duoxuan_show').eq(0).css('display','none')
+						}else if(data.list[i].type == 6 || data.list[i].type == 17){
+							$('.marking_opt').eq(i+1).find('.duoxuan_show').eq(0).css('display','none')
+							$('.marking_opt').eq(i+1).find('.preview_score').eq(0).text('（此题为投票题，不计入总分）')
+						}
+					}else if(data.list[i].type == 5 || data.list[i].type == 8){
+						var html = '<div class="marking_opt"><div class="mobiphone"><span class="div_topic_question">'+(i+1)+'.</span><div class="marking_title div_title_question preview_left" style="display:inline-block">'+data.list[i].ipttitle+'</div><div class="preview_score">（分值：'+data.list[i].e_score+'）</div></div><div class="form_opt opt_all"></div><hr class="timu_hr" style="height:1px;border:none;border-top:1px dashed #d4d4d4;"><div class="t_answer"><span>正确答案：</span><span class="stu_tanswer">'+data.list[i].tanswer+'</span></div><div class="s_answer"><span>学生答案：</span><span class="stu_answer">'+data.list[i].answer+'</span></div></div>'
+						$('.marking_opt:last').after(html);
+						if(data.list[i].type == 8){
+							$('.marking_opt').eq(i+1).find('.stu_tanswer').eq(0).text('无标准答案，待审卷老师评分')
+						}
+					}else if(data.list[i].type == 7){
+						var leftData = data.list[i].question.left;
+						var rightData = data.list[i].question.right;
+						leftData = leftData.replace(/&quot;/g,"\"");
+						rightData = rightData.replace(/&quot;/g,"\"");
+						leftData = eval('('+leftData+')');
+						rightData = eval('('+rightData+')');
+						var leftHtmls = '';
+						var righHtmls = '';
+						for(l=0;l<leftData.length;l++){
+							var leftClass="L"+l;
+							var rightClass = 'R' + l;
+							var leftHtml = '<input disabled="disabled" class="'+leftClass+'" value="'+leftData[l][leftClass]+'">';
+							var righHtml = '<input disabled="disabled" class="'+rightClass+'" value="'+rightData[l][rightClass]+'">';
+							leftHtmls = leftHtmls + leftHtml;
+							righHtmls = righHtmls + righHtml;
+						};
+						var html = '<div class="marking_opt"><div class="mobiphone" style="margin-bottom:15px;"><span class="div_topic_question">'+(i+1)+'.</span><div class="marking_title div_title_question preview_left" style="display:inline-block">'+data.list[i].ipttitle+'</div><div class="preview_score">（分值：'+data.list[i].e_score+'）</div></div><div style="color:#f3695f;margin-bottom: 15px;">正确答案：</div><canvas width="600" height="300" id="canvas'+i+'" style="position:absolute"></canvas><div class="left" style="width: 156px;display: inline-block;">'+leftHtmls+'</div><div class="right" style="width: 156px;display: inline-block;margin-left: 100px;">'+righHtmls+'</div><div style="color:#6c0;margin-bottom: 15px;">学生答案：</div><canvas width="600" height="300" id="myCanvas'+i+'" style="position:absolute"></canvas><div class="sleft" style="width: 156px;display: inline-block;">'+leftHtmls+'</div><div class="sright" style="width: 156px;display: inline-block;margin-left: 100px;">'+righHtmls+'</div></div>';
+						$('.marking_opt:last').after(html);
+						var answer = data.list[i].tanswer;
+						var sanswer = data.list[i].answer;
+						var canvasId = $('.marking_opt:last').find('canvas').eq(0).attr('id');
+						var inputWidth = $('.marking_opt:last').find('.right').children('input').eq(0).css('width');
+						inputWidth = parseInt(inputWidth)
+						var canvasTop = $('.marking_opt:last').find('canvas').eq(0).offset().top;
+						var canvasLeft = $('.marking_opt:last').find('canvas').eq(0).offset().left;
+						var c = document.getElementById(canvasId);
+						var cxt = c.getContext('2d');
+						for(var key in answer){
+							var leftClass = answer[key].substring(0,2);
+							var rightClass = answer[key].substr(2);
+							var leftTop = $('.marking_opt:last').find('.'+leftClass).eq(0).offset().top;
+							var leftLeft = $('.marking_opt:last').find('.'+leftClass).eq(0).offset().left;
+							var rightTop = $('.marking_opt:last').find('.'+rightClass).eq(0).offset().top;
+							var rightLeft = $('.marking_opt:last').find('.'+rightClass).eq(0).offset().left;
+							cxt.moveTo(inputWidth+1,parseInt(leftTop-canvasTop+8));
+							cxt.lineTo(parseInt(rightLeft-canvasLeft+1),parseInt(rightTop-canvasTop+8));
+							cxt.stroke();
+						}
+						var scanvasTop = $('.marking_opt:last').find('canvas').eq(1).offset().top;
+						var scanvasLeft = $('.marking_opt:last').find('canvas').eq(1).offset().left;
+						var scanvasId = $('.marking_opt:last').find('canvas').eq(1).attr('id');
+						var sc = document.getElementById(scanvasId);
+						var scxt = sc.getContext('2d');
+						for(var key in sanswer){
+							var leftClass = sanswer[key].substring(0,2);
+							var rightClass = sanswer[key].substr(2);
+							console.log(leftClass,rightClass)
+							var leftTop = $('.marking_opt:last').find('.'+leftClass).eq(1).offset().top;
+							var leftLeft = $('.marking_opt:last').find('.'+leftClass).eq(1).offset().left;
+							var rightTop = $('.marking_opt:last').find('.'+rightClass).eq(1).offset().top;
+							var rightLeft = $('.marking_opt:last').find('.'+rightClass).eq(1).offset().left;
+							console.log(leftTop,leftLeft,rightTop,rightLeft);
+							scxt.moveTo(inputWidth+1,parseInt(leftTop-scanvasTop+8));
+							scxt.lineTo(parseInt(rightLeft-scanvasLeft+1),parseInt(rightTop-scanvasTop+8));
+							scxt.stroke();
+						}
+					}
+				}
+				if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM){
+					console.log($('.marking_opt'));
+					$('.marking_opt').css({'font-size':'39px','border':'1px solid rgb(153, 153, 153)','padding':'35px'});
+					$('.div_title_question').css({'font-size':'39px','line-height':'45px','display':''});
+					$('.div_topic_question').css('font-size','39px');
+					$('.preview_score').css('font-size','39px');
+					$('.marking_opt').css('background-color','#fff');
+					$('.duoxuan_show').css('font-size','39px');
+					$('.preview_left').css({'margin-bottom':'21px'});
+					console.log($('.timu_hr').length)
+					$('.timu_hr').remove();
+					$('.mobiphone').after('<hr style="height: 1px; background-color: rgb(224, 224, 224); margin: 20px 25px;">')
+				}
+			}
+		});
+		
+	    if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM){
+	    	$('body').css('background-color','rgb(240, 240, 240)');
+	    	$('.div_question').css({'background-color':'rgb(240, 240, 240)','border':'0px','width':'auto','padding-left':'51px','padding-right':'51px'});
+	    	$('.view_form_header').eq(0).remove();
+	    	$('.view_container').eq(0).removeClass('container');
+	    	$('.view_row').eq(0).removeClass('row');
+	    	$('.view_mar_top').eq(0).remove();
+	    	$('#form_marking').css({'background-color':'#6c0','font-size':'56px','padding':'1px','margin-bottom':'23px'});
+	    	$('#form_marking hr').css('display','none')
+	    	$('#mark_sore').parent().css('background-color','rgb(240, 240, 240)');
+	    	$('.marking_title_top').eq(0).css({'font-size':'56px'});
+	    	$('#marking_inform').css({'font-size':'39px','color':'#fff'});
+	    }
+	})
+</script>

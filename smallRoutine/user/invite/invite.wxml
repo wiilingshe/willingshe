@@ -1,0 +1,5 @@
+<!--user/invite/invite.wxml-->
+<view class="inviteBox">
+	<view></view>
+	<button class="shareButton" open-type="share">邀请好友</button>
+</view>

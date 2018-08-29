@@ -1,0 +1,69 @@
+<view class="basicinfo" id="info4">
+	<view class="topcontent">
+		<view class="citylist">
+			<view class="citylistitem {{selectone=='all'?'citylistitem1':''}}" style="margin-right: 20rpx;" bindtap="selecteditem" data-index="all">全部</view>
+			<view wx:if="{{item.region_id!=8}}" class="citylistitem {{selectone==index?'citylistitem1':''}}" style="margin-right: {{index==2?'0':'20rpx'}}" wx:for="{{regionlist}}" wx:key="" data-index="{{index}}" data-id="{{item.region_id}}" bindtap="selecteditem">{{item.region_name}}</view>
+		</view>
+		<view class="tab1">
+			<view>城市</view>
+			<view>排片目标</view>
+			<view>人数</view>
+			<view>状态</view>
+		</view>
+	</view>
+	<scroll-view scroll-top="{{top1}}" scroll-y="true" style="border-bottom: 1rpx solid #eee;margin-top: 20rpx;height: calc(100vh - 268rpx);" bindscrolltolower="lower" scroll-with-animation="true">
+		<view class="tab2" wx:for="{{regionlists}}" wx:key="">
+			<view class="name1">{{item.city_name}}</view>
+			<view>{{item.claim_start}}%-{{item.claim_end}}%</view>
+			<view>{{item.recruit}}人</view>
+			<view class="btn" bindtap="alertModal" data-index="{{index}}" wx:if="{{item.saveRecruitNum<item.recruit && item.pma_status==-1}}"  data-city="{{item.city_name}}市" data-id="{{item.p_id}}">申请</view>
+					<view class="btn" bindtap="alertModal" wx:if="{{item.saveRecruitNum<item.recruit && item.pma_status==0}}"  data-city="{{item.city_name}}市" data-id="{{item.p_id}}">被拒绝</view>
+					<view class="btn2" wx:if="{{item.saveRecruitNum<item.recruit && item.pma_status==1}}"  data-city="{{item.city_name}}市" data-id="{{item.p_id}}">申请中</view>
+					<view class="btn2" wx:if="{{item.saveRecruitNum<item.recruit && item.pma_status==2}}"  data-city="{{item.city_name}}市" data-id="{{item.p_id}}">已申请</view>
+			<view class="btn2"  wx:if="{{item.saveRecruitNum>=item.recruit}}">满员</view>
+		</view>
+		<view class="nodata" wx:if="{{regionlists.length==0}}">
+			<image src="https://issuer.oopca.com/img/public/rose@2x.png"></image>
+			<view>暂无数据</view>
+		</view>
+	</scroll-view>
+</view>
+<view class="bg" wx:if="{{ifbg}}"></view>
+<view class="alertModal" wx:if="{{tip}}">
+	<view class="alertModal_title">提示</view>
+	<view class="alertModal_content">是否确认申请<text>【{{alertcity}}】</text></view>
+	<view class="alertModal_btn">
+		<view class="alertModal_btn_left" bindtap='close3'>取消</view>
+		<view class="alertModal_btn_right" bindtap="confirmapply">确认申请</view>
+	</view>
+</view>
+<view class="body" wx:if="{{sendok}}">
+	<view class="close">
+		<image src="{{close}}" bindtap='close1'></image>
+	</view>
+	<view>
+		<view class="icon">
+			<image src="{{icon}}"></image>
+		</view>
+		<view class="prompt">您已成功提交申请</view>
+		<view class="isConfirm">等待平台审核确认</view>
+		<view class="btn">
+			<view style="background-image: -webkit-linear-gradient(90deg, #F79539, #FFB167);" bindtap='close1'>关  闭</view>
+		</view>
+	</view>
+</view>
+<view class="body" wx:if="{{noget}}">
+	<view class="close">
+		<image src="{{close}}" bindtap='close2'></image>
+	</view>
+	<view>
+		<view class="icon">
+			<image src="{{img1}}" style="width: 276rpx;height: 239rpx;margin-left: 40rpx;margin-top: 0;"></image>
+		</view>
+		<view class="prompt">未抢到发行名额</view>
+		<view class="isConfirm" style="padding-top: 10rpx;">记得下次早点来哦</view>
+		<view class="btn">
+			<view style="background-image: -webkit-linear-gradient(90deg, #F79539, #FFB167);" bindtap='close2'>关  闭</view>
+		</view>
+	</view>
+</view>

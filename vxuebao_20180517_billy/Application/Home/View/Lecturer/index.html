@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="baidu-site-verification" content="2MKKT6mbuL" />
+	<meta charset="utf-8" />
+	<meta name="description" content="{$Think.config.content}" />
+	<meta name="keywords" content="{$Think.config.keyword}" />
+	<meta name="viewport"content="width=device-width, initial-scale=1.0" />
+	<meta name="renderer" content="webkit">
+	<meta property="qc:admins" content="{$Think.config.THINK_SDK_QQ.qqqqqq52}" />
+	<meta property="wb:webmaster" content="354b970d8cd61602" />
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+	<link href="/assets/login.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/index/css/common.css">
+	<link rel="stylesheet" type="text/css" href="http://local.vxuebao.com/index/css/lecturer.css">
+	<link href="/index/css/shortcut.css" rel="stylesheet">
+	<title>找讲师</title>
+</head>
+<body>
+	<div id="eq_main">
+  <!--头部-->
+    <include file="Public:des_header" />
+    <div class="clear"></div>
+    <div id="lecturer_content">
+    	<div class="content_search">
+    		<form method="get" action="">
+    			<input type="text" name="search_type" required="required" value="" class="s_box" />
+    			<input type="submit" value="" class="s_btn" />
+    		</form>
+    	</div>
+    	<div class="content_type">
+    		<div class="a_type">
+    			<ul>
+    				<li><a  class="t_des" href="javascript:void(0);">地区:</a></li>
+    				<foreach name="area" key="key" item="value">
+    					<li><a href="{:U('Lecturer/index',array('area' => $key,'class' => $_GET['class']))}" class='<if condition='($_GET["area"] eq $key)'>current</if>'>{$value}</a></li>
+    				</foreach>
+    			</ul>
+    		</div>
+    		<div class="c_type">
+    			<ul>
+    				<li><a  class="t_des" href="javascript:void(0);">课程:</a></li>
+    				<li><a href="{:U('Lecturer/index',array('area' => $_GET['area'],'class' => 0))}" class='<if condition='($_GET["class"] eq "") OR ($_GET["class"] eq "0")'>current</if>'>全部</a></li>
+    				<foreach name="class" key="key" item="value">
+    				<li><a href="{:U('Lecturer/index',array('area' => $_GET['area'],'class' => $value['class']))}" class='<if condition='($_GET["class"] eq $value["class"])'>current</if>'>{$value.class}</a></li>
+    				</foreach>
+    			</ul>
+    		</div>
+    	</div>
+    	<div class="content_main">
+    		<div class="main_nav">
+    			<ul>
+    				<li><a  href="{:U('Lecturer/index?class2=rec')}" <eq name='class2' value='rec'> class="current"</eq>>名师推荐</a></li>
+    				<li class="nav_center"><a href="{:U('Lecturer/index?class2=hot')}" <eq name='class2' value='hot'> class="current"</eq>>最热排行</a></li>
+    				<li><a href="{:U('Lecturer/index?class2=new')}" <eq name='class2' value='new'> class="current"</eq>>最新入驻</a></li>
+    			</ul>
+    		</div>
+    		<div class="main_main">
+    			<ul>
+    			<foreach name="list" key="key" item="value">
+    				<li class="f <if condition="($key%2 eq 0)">s_f</if>">
+    					<div class="main_l">
+    						<a href="{:U('Lecturer/u',array('userid'=>$value[id],'u'=>$sid))}"><img src="{$value.photo}" /></a>
+    					</div>
+    					<div class="main_r">
+    						<div>
+    							<span class="name"><a href="{:U('Lecturer/u',array('userid'=>$value[id],'u'=>$sid))}">{$value.usname}</a></span>
+    							<span>人气：{$value.views}</span>
+    							<span>|</span>
+    							<span>评论：{$value.reply}</span>
+    						</div>
+    						<div class="describe">
+	    						<p>{$value.usjianjie}</p>
+	    						<p>隶属机构：{$value.jigou}</p>
+	    						<p>主讲课程：{$value.class}</p>
+    						</div>
+    						<ul>
+    						<foreach name="value['tags']" key="k" item="v">
+    							<li class="<if condition="($k eq 1)">describe_center</if>">{$v}</li>
+    						</foreach>
+    						</ul>
+    					</div>
+    				</li>
+    			</foreach>
+    			</ul>
+    		</div>
+    		<div class="main_page">
+    			<div>
+    				{$page}
+    			</div>
+    		</div>
+    	</div>
+    	<div class="content_banner">
+    		<a href="" target="_blank"><img src="/index/images/lecturer_banner.jpg" /></a>
+    		<a href="" target="_blank"><img src="/index/images/lecturer_banner2.jpg" /></a>
+    		<a href="" target="_blank"><img src="/index/images/lecturer_banner2.jpg" /></a>
+    		<a href="" target="_blank"><img src="/index/images/lecturer_banner.jpg" /></a>
+    	</div>
+    </div>
+    <div id="footer" style="height:100px;">
+      <div class="footer_t">
+        <ul>
+          <li>友情链接：
+          	<a  target="_blank" href="http://www.learnnow.net.cn/ ">领思</a>/<a target="_blank" href="http://wizrecord.im/">wizrecord</a>/<a target="_blank" href="http://wetool.im/" >wetool</a>/<a target="_blank" href="http://www.weteam.im/" >weteam</a>
+          </li>
+          <li class="f_center_l">CopyRight@2014-2016 http://www.vxuebao.com</li>
+          <li>关于我们/联系我们/新手教程/e-learning</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+<include file="Public:common" />
+<script type="text/javascript">
+	$(function(){
+    /*二维码鼠标经过*/
+        $(".dowmload_app").hover(function(){
+           $('.app_div').css('display','block');
+        },function(){
+             $('.app_div').css('display','none');
+            }
+        );
+   });
+</script>
+<script type="text/javascript" src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/index/js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/index/js/jpages.min.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/index/js/jquery.lazyload.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/Public/eq/5.4/layer/layer.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/index/js/scrop.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/index/js/common_v.js"></script>
+<script type="text/javascript" src="/Public/eq/5.4/index.js"></script>
+<script type="text/javascript">
+    var modeltype,URL=window.location.href;
+    modeltype=URL.split("#")[1];
+    if(modeltype=='login'){
+        $('#loginModal').modal('show');
+    }
+    if(modeltype=='register'){
+        $('#regModal').modal('show');
+    }
+    if(modeltype=='forget'){
+        $('#forgetModal').modal('show');
+    }
+    if(modeltype=='resetpwd'){
+        $('#resetpwdModal').modal('show');
+    }
+    var PREFIX_URL = "http://" + window.location.host + "/";
+    var checkEmailFormat = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+    function centerModals() {
+        $('.modal').each(function (i) {
+            var $clone = $(this).clone().css('display', 'block').appendTo('body');
+            var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 5);
+            top = top > 0 ? top : 0;
+            $clone.remove();
+            $(this).find('.modal-content').css("margin-top", top);
+        });
+    }
+    $('.modal').on('show.bs.modal', centerModals);
+    $(window).on('resize', centerModals);
+    jQuery(".slide").slide({mainCell: ".bd ul", autoPlay: true, interTime: 5000, delayTime: 5000});
+    (function () {
+        var gotop = document.getElementById('gotop');
+        gotop.onclick = function () {
+            console.log("返回顶部");
+            $('html,body').animate({'scroll-top': 0}, 'fast');
+        }
+    })()
+    function toQzoneLogin(type)
+    {   
+        if(type=='qq'){
+        
+            childWindow = window.open("/qq/example/oauth/index.php","TencentLogin","width=450,height=320,menubar=0,scrollbars=1, resizable=1,status=1,titlebar=0,toolbar=0,location=1"); 
+        }else{
+            childWindow = window.open("https://open.weixin.qq.com/connect/qrconnect?appid=wx5a3ca7ea184c3a3b&redirect_uri=http%3A%2F%2Fwww.vxuebao.com%2Fpassword.html&scope=snsapi_login&response_type=code&state=WECHAT_STATE#wechat_redirect","TencentLogin","width=600,height=600,menubar=0,scrollbars=1, resizable=1,status=1,titlebar=0,toolbar=0,location=1");   
+        }
+    } 
+    
+    function closeChildWindow()
+    {
+        childWindow.close();
+    }
+</script>
+</body>
+</html>

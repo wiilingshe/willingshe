@@ -1,0 +1,63 @@
+<div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">            <span aria-hidden="true">×</span>        </button>
+	<h4 class="modal-title">{{title}}</h4> </div>
+<div class="userinfo-contain">
+	<form class="form-horizontal">
+		<fieldset>
+			<div ng-if="type != 22 && type != 2 && type != 23" class="form-group cleafix"> <label for="username" class="col-sm-3 control-label">                        昵称                    </label>
+				<div class="col-sm-7"> <input type="text" ng-model="companyUserInfo.name" class="form-control" id="username" placeholder="{{userinfo.name?userinfo.name:('填写用户昵称')}}" maxlength="12"> </div>
+			</div>
+			<div ng-if="type == 2 || type == 23">
+				<div class="form-group cleafix"> <label class="col-sm-3 control-label">昵称</label>
+					<div class="col-sm-7"> <input type="text" ng-model="companyUserInfo.uname" class="form-control" id="inputAddress" placeholder="填写用户昵称"> </div>
+				</div>
+				<div class="form-group cleafix"> <label class="col-sm-3 control-label">公司</label>
+					<div class="col-sm-7"> <input type="text" ng-model="companyUserInfo.name" class="form-control" id="inputAddress" placeholder="请填写公司名称"> </div>
+				</div>
+				<div class="form-group cleafix"> <label class="col-sm-3 control-label">联系人</label>
+					<div class="col-sm-7"> <input type="text" ng-model="companyUserInfo.contacts" class="form-control" id="inputAddress" placeholder="请填写联系人"> </div>
+				</div>
+				<div class="form-group cleafix"> <label class="col-sm-3 control-label">联系电话</label>
+					<div class="col-sm-7"> <input type="text" ng-model="companyUserInfo.mobile" class="form-control" id="inputAddress" placeholder="请填写联系电话"> </div>
+				</div>
+				<div class="form-group cleafix"> <label class="col-sm-3 control-label">联系邮箱</label>
+					<div class="col-sm-7"> <input type="text" ng-blur="checkEmail(companyUserInfo)" class="form-control" ng-model="companyUserInfo.email" id="inputAddress" placeholder="请填写联系邮箱"> </div>
+				</div>
+				<div class="form-group cleafix"> <label class="col-sm-3 control-label">联系地址</label>
+					<div class="col-sm-7"> <input type="text" class="form-control" ng-model="companyUserInfo.address" id="inputAddress" placeholder="请填写公司地址"> </div>
+				</div>
+			</div>
+			<div ng-if="type == 22">
+				<div class="form-group cleafix"> <label for="username" class="col-sm-3 control-label">                        昵称                    </label>
+					<div class="col-sm-7"> <input type="text" ng-model="designerUserInfo.name" class="form-control" id="username" placeholder="填写用户昵称" maxlength="12"> </div>
+				</div>
+				<div class="form-group cleafix"> <label class="col-sm-3 control-label">QQ</label>
+					<div class="col-sm-7"> <input type="text" ng-model="designerUserInfo.qq" class="form-control" id="inputAddress" placeholder="请填写QQ号码"> </div>
+				</div>
+				<div class="form-group cleafix"> <label class="col-sm-3 control-label">微信</label>
+					<div class="col-sm-7"> <input type="text" ng-model="designerUserInfo.weixin" class="form-control" id="inputAddress" placeholder="请填写微信号码"> </div>
+				</div>
+				<div class="form-group cleafix"> <label class="col-sm-3 control-label">手机号</label>
+					<div class="col-sm-7"> <input type="text" ng-model="designerUserInfo.mobile" class="form-control" id="inputAddress" placeholder="请填写联系电话"> </div>
+				</div>
+				<div class="form-group cleafix"> <label class="col-sm-3 control-label">邮箱</label>
+					<div class="col-sm-7"> <input type="text" ng-blur="checkEmail(companyUserInfo)" ng-disabled="true" class="form-control" ng-model="designerUserInfo.email" id="inputAddress" placeholder="请填写联系邮箱"> </div>
+				</div>
+				<div class="form-group cleafix"> <label class="col-sm-3 control-label">现居地</label>
+					<div class="col-sm-3"> <select class="form-control" ng-model="province" ng-options="province.shortname for province in provinces" ng-change="getProvinceInfo(province.id,province.shortname)"><option value="" ng-click="clearProvinceInfo()">请选择省份</option></select> </div>
+					<div class="  col-sm-3"> <select class="form-control" ng-model="city" ng-options="city.shortname  for city in cities" ng-change="getCityInfo(city.id,city.shortname)"><option value="" ng-click="clearCityInfo()">请选择城市</option></select> </div>
+				</div>
+				<div class="form-group cleafix"> <label class="col-sm-3 control-label">个性签名</label>
+					<div class="col-sm-7"> <textarea type="text" class="form-control" style="height:80px;" ng-model="designerUserInfo.signature" id="inputAddress" placeholder="请填写个性签名" /> </div>
+				</div>
+				<div class="form-group cleafix"> <label class="col-sm-3 control-label">标签</label>
+					<div class="col-sm-7"> <input type="text" class="form-control" ng-model="designerUserInfo.tags" id="inputAddress" placeholder="标签之间用空格隔开"> </div>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+	<p ng-show="authError" style="text-align:center;color:#ff5448;">{{authError}}</P>
+</div>
+<div class="modal-footer"> <a class="modal-cancle" ng-click="cancel();">取消</a> <a class="btn btn-primary" ng-if="type ==2" ng-click="saveCompanyInfo(companyUserInfo)">保存提交</a> <a class="btn btn-primary" ng-if="type ==23" ng-click="saveCompanyInfo(companyUserInfo)">保存提交</a> <a class="btn btn-primary" ng-if="type == 22" ng-click="saveDesignerInfo(designerUserInfo)">保存提交</a>
+	<a
+		class="btn btn-primary" ng-if="type !=2 && type != 22 && type != 23" ng-click="saveUserInfo(companyUserInfo)">保存提交</a>
+</div>

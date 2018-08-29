@@ -1,0 +1,21 @@
+image{
+	width: 200rpx;
+	height: 230rpx;
+}
+.title{
+	font-size: 44rpx;
+	color: #333;
+	font-weight: bold;
+	margin-bottom: 4rpx;
+}
+.tip{
+	font-size: 28rpx;
+	color: #666;
+}
+.content{
+	text-align: center;
+	width: 336rpx;
+	position:absolute;
+	top:50%;transform:translateY(-50%);
+	left: calc(50% - 168rpx);
+}

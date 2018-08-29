@@ -1,0 +1,33 @@
+<div class="account-contain">
+	<div class="tab-box-shadow">
+		<div class="account-items clearfix" ng-if="userinfo.noRel">
+			<div class="item-one"> <em class="red-color eqf-exclamation-sign"></em> <span>登陆账号</span> </div>
+			<div class="item-two"> <span>未绑定</span> </div>
+			<div class="item-three"> <a ng-click="createAccount()" class="text-primary">绑定账号</a> </div>
+		</div>
+		<div class="account-items clearfix">
+			<div class="item-one "> <em ng-class="{'eqf-yes green-color':userinfo.email && userinfo.checkEmail == 1,'eqf-exclamation-sign red-color': userinfo.checkEmail != 1}"></em> <span>保密邮箱</span> </div>
+			<div class="item-two"> <span ng-if="userinfo.email &&( userinfo.checkEmail == 0 || userinfo.checkEmail==null)">                    <em style="font-weight:lighter;">您的邮箱：{{ userinfo.email}}尚未验证，请尽快登录邮箱进行验证。</em>                    </span> </span> <span ng-if="userinfo.email && userinfo.checkEmail == 1">                    <span class="action">您的邮箱：{{ userinfo.email}}已验证，请放心使用</span>				</span> <span ng-if="userinfo.email==null">未绑定</span> </div>
+			<div class="item-three"> <a ng-if="userinfo.email &&( userinfo.checkEmail == 0 || userinfo.checkEmail==null)" ng-click="verifyEmail()" class="text-primary pr20">再次验证</a> <a ng-click="relEmail(('usercenter.account.REL_EMAIL' | translate))" ng-if="userinfo.email==null" class="text-primary">绑定邮箱</a>				<a ng-click="relEmail(('usercenter.account.CHANGE_EMAIL' | translate))" ng-if="userinfo.email" class="action text-primary">修改邮箱</a> </div>
+		</div>
+		<div class="account-items clearfix">
+			<div class="item-one"> <em class="eqf-yes green-color"></em><span>账号类型</span> </div>
+			<div class="item-two"> <span ng-show="userinfo.type ==1">普通用户</span> <span ng-show="userinfo.type ==2">企业用户</span> <span ng-show="userinfo.type ==21">企业子用户</span> <span ng-show="userinfo.type ==3">高级用户</span> <span ng-show="userinfo.type ==4">服务用户</span> <span ng-show="userinfo.type ==99">运营用户</span>				<span class="account-action">，升级账号可以尊享更多特权</span></div>
+			<div class="item-three"> <span class="pr20" ng-show="userinfo.type ==1 && !emailAccount && !userinfo.noRel">    <a class="text-primary" href="http://wetool.im/f/0viuuz" target="_blank">升级为企业账号</a>                </span>
+				<!--             <span ng-show="companyInfo.status == 0" translate="usercenter.account.COMPANY_STATUS1">企业账号申请中</span> --><a href="/img/price.html" class="action text-primary" target="_blank">我的特权</a> </div>
+		</div>
+		<div class="account-items clearfix">
+			<div class="item-one"> <em class="eqf-yes green-color"></em><span>登录密码</span> </div>
+			<div class="item-two"><span class="account-action">建议使用6-16个字符，可包括大小写字母和数字</span> </div>
+			<div class="item-three"> <a ng-if="!userinfo.noRel" class="text-primary" ng-click="goReset()">修改密码</a> </div>
+		</div>
+		<div class="account-items clearfix tab-box-shadow" ng-if="userinfo.type ==2">
+			<div class="item-one"> <em ng-class="{'eqf-yes green-color':userinfo.phone && userinfo.checkPhone == 1,'eqf-exclamation-sign red-color': userinfo.checkPhone != 1}"></em><span>手机验证</span> </div>
+			<div class="item-two"> <span class="red-color" ng-if="!userinfo.phone">未绑定</span> <span ng-if="userinfo.phone && userinfo.checkPhone == 0" class="red-color">                    未验证                </span> <span ng-if="userinfo.phone && userinfo.checkPhone == 1">                    <em class="green-color">已验证</em>                    <span class="account-action action" translate-value-phone="{{userinfo.phone}}" >您验证的手机：{{userinfo.phone}}，若已丢失或停用，请立即更换，避免账户被盗</span>				</span>
+			</div>
+			<div class="item-three"> <a ng-if="!userinfo.phone" ng-click="checkMobile('绑定手机')" class="text-primary">绑定手机</a> <a class="text-primary" ng-if="userinfo.phone && userinfo.checkPhone == 0" ng-click="checkMobile('手机验证')">手机验证</a> <a ng-if="userinfo.phone" class="action text-primary"
+					ng-click="checkMobile('修改手机号')">修改手机号</a> </div>
+		</div>
+	</div>
+</div>
+</div>

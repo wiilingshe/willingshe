@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+  Options +FollowSymlinks
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^vxuebao.com  [NC]
+  RewriteRule (.*) http://www.vxuebao.com/$1 [R=301,L] 
+  RewriteRule ^main$    #/main [QSA,L]
+  ####RewriteRule ^password\.html$ /password.php [L]####
+  
+  RewriteRule ^v-(.*)$ index.php?s=/View/index/id/$1 [QSA,PT,L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)$ index.php?s=/$1 [QSA,PT,L]
+</IfModule>

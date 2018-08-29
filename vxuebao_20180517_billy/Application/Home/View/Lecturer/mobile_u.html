@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="baidu-site-verification" content="2MKKT6mbuL" />
+	<meta charset="utf-8" />
+	<meta name="description" content="{$Think.config.content}" />
+	<meta name="keywords" content="{$Think.config.keyword}" />
+	<meta name="viewport"content="width=device-width, initial-scale=1.0" />
+	<meta name="renderer" content="webkit">
+	<meta property="qc:admins" content="{$Think.config.THINK_SDK_QQ.qqqqqq52}" />
+	<meta property="wb:webmaster" content="354b970d8cd61602" />
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="/index/css/lecturer_mobile.css">
+	<title>{$list.usname}个人主页</title>
+	<script type="text/javascript">
+		(function(doc,win){
+			var docEl = doc.documentElement,
+			resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+			 recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if(clientWidth==750){
+                    docEl.style.fontSize = '100px';
+                }else{
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                }
+            };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+
+	</script>
+</head>
+<body>
+	<div id="eq_main">
+   		<div id="mobile_content">
+   			<div class="content_top" style="background:url({$list.photo}) no-repeat;background-size:7.5rem 4.28rem;">
+   				<div class="glass"></div>
+   				<div class="user_main">
+   					<div class="user_left">
+   						<img src="{$list.photo}" />
+   						<div style="margin-top:0.075rem;">  							
+							<span>人气：{$list.views}</span>
+							<span style="margin:0 0.05rem;">|</span>
+							<span>评论：{$list.reply}</span>
+   						</div>
+   					</div>
+   					<div class="user_right">
+   						<div>
+   							<span class="name">{$list.usname}</span>
+   							<span class="members">{$list.huiyuan}</span>
+   						</div>
+   						<div>
+   							<p>{$list.usjianjie}</p>
+							<p>隶属机构：{$list.jigou}</p>
+							<p>主讲课程：{$list.class}</p>
+							<ul class="long">
+							<foreach name="list['tags']" key="k" item="v">
+    							<li class="<if condition="($k eq 1)">describe_center</if>">{$v}</li>
+    						</foreach>
+							</ul>
+   						</div>
+   					</div>
+   				</div>	
+   			</div>
+   			<div class="clear"></div>
+   			<div class="content_main">
+   				<ul>
+	    			<li class="f">
+		    			<div class="main_title">专业背景</div>
+		    			<div class="main_detailed">{$list.beijin}</div>
+		    		</li>
+		    		<li class="f">
+		    			<div class="main_title">主讲课程</div>
+		    			<div class="main_detailed">{$list.kecheng}</div>
+		    		</li>
+		    		<li class="f">
+		    			<div class="main_title">授课特点</div>
+		    			<div class="main_detailed">{$list.tedian}</div>
+		    		</li>
+		    		<li class="f_spacail">
+		    			<div class="main_title">服务客户</div>
+		    			<div class="main_detailed">{$list.fuwu}</div>
+		    		</li>
+		    		<li class="f_spacail f_photo">
+		    			<div class="main_title">照片墙</div>
+		    			<div class="main_photo">
+		    				<ul>
+		    				<foreach name="list['picture']" key="key" item="value">
+		    					<li><img src="{$value}" /></li>
+		    				</foreach>
+		    				</ul>
+		    			</div>
+		    		</li>
+		    		<li class="f">
+		    			<div class="main_title">课程展示</div>
+		    			<div class="main_detailed">{$list.zanshi}</div>
+		    		</li>
+		    	</ul>
+   			</div>
+   			<div class="clear"></div>
+			<div class="content_bottom">
+				<div class="btn" id="contact_btn">
+					<img src="/index/images/lecturer_contact_ico.png" />
+				</div>
+				<div class="btn" id="review_btn">
+					<img src="/index/images/lecturer_review_ico.png" />
+				</div>
+			</div>
+   		</div>
+   		<div id="goodcover"></div>
+   		<div class="contact">
+			<div class="close1">
+				<span>联系方式</span>
+				<a href="javascript:void(0)" class="closebt"><img src="/index/images/close.gif"></a>
+			</div>
+			<ul class="contact_way">
+				<li class="qq">
+					<ul>
+						<li>{$touch.qq}</li>
+						<li class="state">QQ号码</li>
+					</ul>
+				</li>
+				<li class="weixin">
+					<ul>
+						<li>{$touch.weixin}</li>
+						<li class="state">微信号码</li>
+					</ul>
+				</li>
+				<li class="phone">
+					<ul>
+						<li>{$touch.phone}</li>
+						<li class="state">手机号码</li>
+					</ul>
+				</li>
+				<li class="email">
+					<ul>
+						<li>{$touch.email}</li>
+						<li class="state">邮箱号码</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="review">
+			<div class="close1">
+				<span>全部评论</span>
+				<a href="javascript:void(0)" class="closebt"><img src="/index/images/close.gif"></a>
+			</div>
+			<div class="discuts">
+	    		<ul>
+		    		<foreach name="discuts" key="key" item="value">
+		    			<li class="discuzz_f">
+		    				<ul>		
+		    					<li class="f_one"><img src="http://www.vxuebao.com{$value.headimg|default='/index/images/lecturer_img2.jpg'}" /></li>
+		    					<li>
+		    						<span class="current" style="color:#5d5d5d;">{$value.usname|default='路人甲'}:</span>
+		    						<p style="color:#5d5d5d;">{$value.content}</p>
+		    						<p style="color:#c8c8c8; font-size:0.17rem;">{$value.addtime}</p>
+		    					</li>
+		    				</ul>
+		    			</li>
+		  			</foreach>
+	    		</ul>
+    		</div>
+    		<div class="main_review">
+				<form action="{:U('lecturer/discut',array('userid'=>$list['id'],'u'=>$_GET['u']))}" method="post" id="form">
+    					<input name="content"  value="" id="reply_content" oninput="if(value.length>200) {value=value.slice(0,200);}">
+					<input type="submit" class="review_sub" value="发送" />
+				</form>
+	    	</div>
+		</div>
+		<div><input type="hidden" value="<?php echo $_GET['u'];?>" class="h_u" /></div>
+    </div>
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript">
+    /*	function body_width(){
+    		var w = window.screen.availWidth;
+    		if(w < 750 || w == 750){
+    			var result = (w/10)+'px';
+    			$("html").css('font-size',result);
+    		};
+    	};
+    	body_width();*/
+
+
+    	$(function(){
+    		$('.btn').click(function() {
+    			if($(this).attr("id") == 'contact_btn'){
+    				$('.contact').center();
+		        	$('.contact').fadeIn();
+		        	
+    			}else if($(this).attr("id") == 'review_btn'){
+    				$('.review').center();
+		        	$('.review').fadeIn();
+    			}
+		        	$(this).css('background','#666');
+		        	$('#goodcover').show();
+		        	$('#goodcover').css('height',$(document).height());
+		       
+   			});
+		    $('.closebt').click(function() {
+		        $('.contact').hide();
+		        $('.review').hide();
+		        $('#goodcover').hide();
+		        $('#contact_btn').css('background','#6bc30d');
+		        $('#review_btn').css('background','#6bc30d');
+		    });
+			$('#goodcover').click(function() {
+		        $('.contact').hide();
+		        $('.review').hide();
+		        $('#goodcover').hide();
+		        $('#contact_btn').css('background','#6bc30d');
+		        $('#review_btn').css('background','#6bc30d');
+		    });
+
+		    jQuery.fn.center = function(loaded) {
+		        var obj = this;
+		        /*body_width = parseInt($(window).width());
+		        body_height = parseInt($(window).height());*/
+		        block_width = parseInt(obj.width());
+		        block_height = parseInt(obj.height());
+		        if (!loaded) {
+
+		            obj.css({
+		                'position': 'fixed'
+		            });
+		            obj.css({
+		                'bottom': '10%',
+		                'left': '49%',
+		                'margin-top': -((block_height+53)/2),
+		                'margin-left': -((block_width+32)/2),
+		            });
+		            $(window).bind('resize', function() {
+		                obj.center(!loaded);
+		            });
+		            $(window).bind('scroll', function() {
+		                obj.center(!loaded);
+		            });
+
+		        } else {
+		            obj.stop();
+		            obj.css({
+		                'position': 'fixed'
+		            });
+		            obj.animate({
+		                'bottom': '10%'
+		            }, 200, 'linear');
+		        }
+		    };
+
+			var u = $('.h_u').value;
+		     /*点击查看联系方式*/
+	    	$("#contact_btn").click(function(){         
+	            if(u){
+			        if($(".contact_way").css('display') == 'none'){
+    					$(".contact_way").show();
+    				}
+	            }else{
+	            	if(!$('#p_lo').length){
+	  			        $('.contact').append("<div id='p_lo' style='font-size:0.3rem;color:#bbb;'>请先登录，方可查看联系方式！！！</div>");
+	            	}
+	            }
+    		});
+
+    		/*未登录不可以评论*/
+    		function check(){
+	            if(u){
+			      $('#form').attr('onsubmit','return true');
+	            }else{
+	              $('#form').attr('onsubmit','return false');
+	              $(':input[type=submit]').click(function(){
+	              	$("#reply_content").attr('placeholder','您需要先登录才可以评论！！！');        	
+	            });
+	        		}
+	    		}
+					
+
+			check();	
+    	});
+
+    </script>
+    <script type="text/javascript" src="/index/js/jquery.nicescroll.js"></script>
+	<script type="text/javascript">
+		$(".discuts").niceScroll({
+			cursorcolor:"#fff",  
+			cursoropacitymax:0,  
+			touchbehavior:false,  
+			cursorwidth:"0",  
+			cursorborder:"0",  
+			cursorborderradius:"0" 
+		}); 
+	</script>
+</body>
+</html>

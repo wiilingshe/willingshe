@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" create_directory_for_output="true">
+  <lms create_lms="true" course_title="111" lesson_title="222" description="333" keywords="" mastery_score="100" lms_type="Scorm1Point2" max_time_allowed="100" />
+  <player path="C:\Program Files (x86)\Common Files\DigitalOfficeProShared\Converter\HTML5Point\SupportFiles\DefaultPlayer" />
+  <output advance_on_mouse_click="true" enable_swipe_navigation="true" enable_keyboard_navigation="true" loop_presentation="false" background_color="-2830136" embed_fonts="true" font_file_type="Woff" fit_to_window="true" include_hidden_slides="true" convert_video_to_ogg="true" avoid_slide_load_check="false" save_master_as_image="true" create_slide_outline="false" avoid_common_files="false" image_quality="100" video_quality="70" video_conversion="true" audio_conversion="true" subset_font="true" keep_original_image_dimension="false" single_html_per_slide="false" window_scale="100" include_slide_notes="true" disable_emf_conversion="false" show_center_play_button="False" custom_goto_slide_api_call="" />
+</Settings>

@@ -1,0 +1,147 @@
+page{
+	background-image: -webkit-linear-gradient(90deg, #FF5874, #FE7293);
+}
+.content{
+	width: 679rpx;
+	height: 919rpx;
+	background-image: url(https://issuer.oopca.com/img/index/in_bg.png);
+	background-size: 100%;
+	margin: 0 auto;
+	overflow:hidden;
+	margin-top: 60rpx;
+	position: relative;
+}
+.content image{
+	width: 180rpx;
+	height: 180rpx;
+	display: block; 
+	margin: 0 auto; 
+	margin-top: 147rpx;
+}
+.content .title{
+	width: 419rpx;
+	text-align: center;
+	color: #666;
+	line-height: 43rpx;
+	font-size: 30rpx;
+	margin: 0 auto;
+	margin-top: 40rpx;
+	font-family: PingFang-SC-Medium;
+}
+.content .btn{
+	width: 300rpx;
+	height: 85rpx;
+	border:2rpx solid #FF4D63;
+	border-radius: 42rpx;
+	color: #FF4D63;
+	text-align: center;
+	margin: 0 auto;
+	line-height: 85rpx;
+	font-size: 32rpx;
+	margin-top: 300rpx;
+	background-color: #fff;
+}
+.apply{
+	display: flex;
+	justify-content: center;
+	margin-top: 140rpx;
+}
+.apply{
+	font-size: 28rpx;
+	color: #fff;
+}
+.apply image{
+	height: 21rpx;
+	width: 21rpx;
+	margin-left: 10rpx;
+}
+.login{
+	width: 510rpx;
+	height: 500rpx;
+	border-radius: 10rpx;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-left: -255rpx;
+	margin-top: -250rpx;
+	background-color: #fff;
+	z-index: 5;
+}
+.login image{
+	width: 30rpx;
+	height: 30rpx;
+	position: absolute;
+	top: 50rpx;
+	right: 40rpx;
+}
+.bg{
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0,0,0,0.6);
+	position: fixed;
+	top: 0;
+	z-index: 4;
+}
+.login .title{
+	text-align: center;
+	font-size: 34rpx;
+	font-weight: bold;
+	margin-top: 50rpx;
+}
+.login input{
+	width: 420rpx;
+	height: 100rpx;
+	border-bottom: 1rpx solid #CCCCCC;
+	margin: 0 auto;
+	font-size: 28rpx;
+}
+.input2{
+	position: relative;
+	margin-top: 20rpx;
+}
+.login .getyan{
+	border:1rpx solid #FFA148;
+	width: 145rpx;
+	height: 45rpx;
+	border-radius: 30rpx;
+	text-align: center;
+	font-size: 24rpx;
+	line-height: 45rpx;
+	color: #FFA148;
+	padding: 0rpx 11rpx;
+	position: absolute;
+	top:240rpx;
+	right:46rpx;
+	z-index: 2;
+	background-color: #fff;
+}
+.login .getyan::after{
+  border: none;
+}
+.btn2{
+	width: 420rpx;
+	height: 80rpx;
+	margin: 0 auto;
+	background-image: -webkit-linear-gradient(90deg, #FF5874, #FE7293);
+	text-align: center;
+	line-height: 80rpx;
+	color: #fff;
+	font-size: 30rpx;
+	border-radius: 10rpx;
+	margin-top: 67rpx;
+}
+.btn3{
+	position: absolute;
+	width: 100%;
+	bottom: 100rpx;
+	height: 130rpx;
+	opacity: 0;
+	z-index: 2;
+}
+.tip{
+	position: absolute;
+	top:326rpx;
+	color:red;
+	font-size:24rpx;
+	left:47rpx;
+}

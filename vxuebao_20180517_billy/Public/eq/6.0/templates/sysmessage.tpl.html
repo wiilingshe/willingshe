@@ -1,0 +1,13 @@
+<!-- 系统消息 -->
+<div class="sys-contain myMove" ng-if="!!sysMsgs.length && openSysMsgDialog">
+	<div class="same-content sys-msg" sys-msg-adjust>
+		<div class="sys-msg-container" ng-class="{'is-closed': !openSysMsg}">
+			<ul class="messages">
+				<li class="message" ng-repeat-start="sysMsg in sysMsgs"> <span>{{($index + 1) + "."}}</span><span>{{sysMsg.content}}</span></li>
+				<li class="separator" ng-if="!$last" ng-repeat-end></li>
+			</ul>
+		</div>
+		<!-- <a class="btn btn-link msg" ng-click="openSysMsg =!openSysMsg" ng-hide="isSysMsgVeryShort">{{openSysMsg ? ("收起") : ("展开")}}</a> -->
+		<a class="eqf-wrong msg-close" ng-click="closeSysMsgDialog()" style="margin-top:7px;"></a>
+	</div>
+</div>

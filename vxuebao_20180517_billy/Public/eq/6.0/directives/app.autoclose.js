@@ -1,0 +1,1 @@
+angular.module("app.directives.autoclose",[]).directive("autoClose",["$compile",function(e){return{restrict:"EA",link:function(e,t,o){$(document).click(function(t){return t.target.className,!$(event.target).closest(".drop-area").length&&(e.showObj={showGroup:!1},void e.$apply())})}}}]);

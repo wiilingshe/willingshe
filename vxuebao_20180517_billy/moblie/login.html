@@ -1,0 +1,33 @@
+<section ng-init="setCenter()" class="login same login_contain" id="login" style="margin-top: 0;padding: 0">
+    <div class="register_con register_input">
+        <h3>{{userTitle}}</h3>
+        <p>现在马上登录吧！</p>
+        <form ng-show="!isRegister" class="reg_input" role="form" name="myForm" novalidate>
+            <input type="email" ng-model="loginName" name="name" id="log_email" placeholder="请输入邮箱" required>
+            <!--<p class="loginError" ng-show="myForm.name.$error.required">请输入用户名</p>-->
+            <!--<p class="loginError" ng-show="myForm.name.$error.email">请输入正确邮箱</p>-->
+            <input type="password" ng-model="password" name="password" id="log_password" placeholder="请输入密码" required
+                   style="margin-top: 20px;margin-bottom: 10px;">
+            <!--<p class="loginError" ng-show="myForm.password.$error.required">请输入密码</p>-->
+            <div type="submit" class="zc_content" id="logBtn" ng-click="login()"><span class="zhuce">登录</span></div>
+            <p class="loginError" style="text-align: center">{{loginError}}</p>
+        </form>
+        <form ng-show="isRegister" class="reg_input" role="form" name="myForm" novalidate>
+            <input type="email" ng-model="loginName" name="name" id="reg_email" placeholder="请输入注册邮箱" required>
+            <!--<p class="registerError" ng-show="myForm.name.$error.required">请输入注册邮箱</p>-->
+            <!--<p class="registerError" ng-show="myForm.name.$error.email">请输入正确邮箱</p>-->
+            <input type="password" ng-model="password" name="password" id="reg_password" placeholder="请输入注册密码" required>
+            <!--<p class="registerError" ng-show="myForm.password.$error.required">请输入6-16位的密码</p>-->
+            <div type="submit" class="zc_content" id="regBtn" ng-click="register()"><span class="zhuce">注册</span></div>
+            <p class="registerError" ng-show="loginError">注册失败</p>
+        </form>
+    </div>
+    <div style="text-align: center;margin-top: 5px; letter-spacing: 4px;">
+        <span>
+            <a style="color: #676767" >我要注册 | </a>
+            <!--ng-click="isRegister=true"-->
+            <a style="color: #676767">绑定微信 | </a>
+            <a style="color: #676767">忘记密码</a>
+        </span>
+    </div>
+</section>

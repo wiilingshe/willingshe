@@ -1,0 +1,74 @@
+<!--tasks/cinemaInspection/cinemaInspection.wxml-->
+<submit custom="{{submitData}}"></submit>
+<view class="cinemaInspection_box">
+    <view class="top">
+        <view class="topTitle">上传海报、展架/立牌、预告片等物料落实凭证</view>
+        <view class="topSubtitle">要求：带位置的照片、带本人照片的照片</view>
+    </view>
+    <view class="body">
+        <view class="cinemaInspectioItem">
+            <view class="itemTitle">海报 落实图片上传</view>
+            <view class="itemImg">
+                <view wx:for="{{data.bill_pics_list}}" wx:item="{{item}}" wx:key="{{index}}">
+                    <image src='{{item.pi_img}}' class="exhibition"></image>
+                    <image src='{{cancelIcon}}' bindtap='cancelImg' data-index="{{index}}" data-pid="{{item.pi_id}}"
+                           data-type="0" class="cancel"></image>
+                </view>
+                <view bindtap='upImg1' data-value="0" wx:if="{{data.bill_pics_list.length < 4}}">
+                    <image src='{{bgImg}}' class="exhibition"></image>
+                </view>
+            </view>
+            <view class="line"></view>
+            <view class="itemExplain">
+                <input placeholder-class="plh" placeholder='如遇其他情况 请说明' data-type="0" bindinput="getVal"
+                       value='{{data.bill_pics_remarks}}'></input>
+            </view>
+        </view>
+        <view class="cinemaInspectioItem">
+            <view class="itemTitle">展架/立牌 落实图片上传</view>
+            <view class="itemImg">
+                <view wx:for="{{data.display_rack_pics_list}}" wx:item="{{item}}" wx:key="{{index}}">
+                    <image src='{{item.pi_img}}' class="exhibition"></image>
+                    <image src='{{cancelIcon}}' bindtap='cancelImg' data-index="{{index}}" data-pid="{{item.pi_id}}"
+                           data-type="1" class="cancel"></image>
+                </view>
+                <view bindtap='upImg1' data-value="1" wx:if="{{data.display_rack_pics_list.length < 4}}">
+                    <image src='{{bgImg}}' class="exhibition"></image>
+                </view>
+            </view>
+            <view class="line"></view>
+            <view class="itemExplain">
+                <input placeholder-class="plh" placeholder='如遇其他情况 请说明' data-type="1" bindinput="getVal"
+                       value='{{data.display_rack_pics_remarks}}'></input>
+            </view>
+        </view>
+        <view class="cinemaInspectioItem">
+            <view class="itemTitle">预告片 落实图片上传</view>
+            <view class="itemImg">
+                <view wx:for="{{data.prevue_pics_list}}" wx:item="{{item}}" wx:key="{{index}}">
+                    <image src='{{item.pi_img}}' class="exhibition"></image>
+                    <image src='{{cancelIcon}}' bindtap='cancelImg' data-index="{{index}}" data-pid="{{item.pi_id}}"
+                           data-type="2" class="cancel"></image>
+                </view>
+                <view bindtap='upImg1' data-value="2" wx:if="{{data.prevue_pics_list.length < 4}}">
+                    <image src='{{bgImg}}' class="exhibition"></image>
+                </view>
+            </view>
+            <view class="line"></view>
+            <view class="itemExplain">
+                <input placeholder-class="plh" placeholder='如遇其他情况 请说明' data-type="2" bindinput="getVal"
+                       value='{{data.prevue_pics_remarks}}'></input>
+            </view>
+        </view>
+    </view>
+    <view class="remarks">
+        <view>
+            <view class="remarksTitle">其他备注</view>
+            <textarea placeholder-class="plstrye" placeholder='请输入文字' data-type="3" bindinput="getVal"
+                      value='{{data.materiel_remarks}}'></textarea>
+        </view>
+    </view>
+    <view class="btn">
+        <view bindtap='submit'>提交任务</view>
+    </view>
+</view>

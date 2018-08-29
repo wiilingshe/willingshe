@@ -1,0 +1,10 @@
+<!--tasks/cinemaWork/cinemaWork.wxml-->
+<submit custom="{{submitData}}"></submit> 
+<view class="cinemaWork_box">
+  <view class="body">
+    <textarea placeholder='对该项目的结果以及执行' placeholder-class='pl' bindinput="getVal" value='{{valueData}}'></textarea>
+  </view>
+ <view class="btn">
+        <view bindtap='submit'>提交任务</view>
+    </view>
+</view>

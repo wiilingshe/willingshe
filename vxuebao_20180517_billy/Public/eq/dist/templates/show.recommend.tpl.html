@@ -1,0 +1,29 @@
+<div id="show-contain">
+<<<<<<< HEAD:Public/eq/6.0/templates/show_recommend_recommend.html
+	<div ng-include="'show/category/nav.tpl.html'" ng-controller="NavCtrl"></div>
+=======
+	<div ng-include="'/Public/eq/6.0/templates/nav.tpl.html'" ng-controller="NavCtrl"></div>
+>>>>>>> faf5a4d80bba0512f7946790e3a072ad236c4d34:Public/eq/6.0/templates/show.recommend.tpl.html
+	<!--	<div class="cake">		<div class="same-content">			<a href="#/show">首页</a> > 推荐		</div>	</div>-->
+	<div class="show-list same-content">
+		<h2>			<span class="category_sort">				<a ng-class="{active:order == null}" ng-click="tplNew(null)" translate="show.recommend.LATEST">最新</a>|				<!--<a ng-class="{active:order == '3'}" ng-click="tplNew('3')">最热</a>-->				<a ng-class="{active:order == '1'}" ng-click="tplNew('1')" translate="show.recommend.TEMPLATE">样例</a></span>			<i translate="show.recommend.RECOMMEND1">推荐</i><span translate="show.recommend.RECOMMEND2">RECOMMEND</span>		</h2>
+		<ul class="clearfix">
+			<li ng-repeat="tpl in recommendList">
+				<a href="{{PREFIX_CLIENT_HOST + '/v-' + tpl.code}}" target="_blank"> <img ng-src="{{PREFIX_FILE_HOST + tpl.cover}}" />
+					<p>{{tpl.name}}</p>
+					<p> <span><em class="eqf-eye2"></em>{{tpl.showCount}}</span> <span class="auth"><img title="{{tpl.userName}}" ng-src="{{tpl.headImg}}" /></span> </p>
+				</a> <a ng-if="tpl.isTemplate == 1" class="screen-use" target="_blank" ng-click="userTpl(tpl)" translate="show.recommend.USE_TEMPLATE">使用</a> </li>
+		</ul>
+	</div>
+	<div class="same-content clearfix" style="margin-bottom:20px;" ng-show="totalItems > 16">
+		<pagination style="float:left;" first-text="{{'my.scene.FIRST_PAGE' | translate}}" last-text="{{'my.scene.LAST_PAGE' | translate}}" previous-text="&lsaquo;" next-text="&rsaquo;" max-size="10" items-per-page="pageSize" total-items="totalItems" ng-model="currentPage"
+			ng-change="pageChanged(currentPage)" boundary-links="true" rotate="true" num-pages="numPages"></pagination>
+		<div class="current_page"><span class="fl">到</span> <input type="text" ng-model="toPage" ng-keyup="$event.keyCode == 13 ? pageChanged(toPage) : null"><span class="fl">页</span> <a ng-click="pageChanged(toPage)" class="go">确定</a>
+			<!--             <span><span translate="my.scene.CURRENT_PAGE1">当前</span>: {{currentPage}} / {{numPages}} <span translate="my.scene.CURRENT_PAGE2">页</span></span> --></div>
+	</div>
+</div>
+<<<<<<< HEAD:Public/eq/6.0/templates/show_recommend_recommend.html
+<div ng-include="'footer.tpl.html'"></div>
+=======
+<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'"></div>
+>>>>>>> faf5a4d80bba0512f7946790e3a072ad236c4d34:Public/eq/6.0/templates/show.recommend.tpl.html

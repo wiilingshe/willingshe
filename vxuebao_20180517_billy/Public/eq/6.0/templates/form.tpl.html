@@ -1,0 +1,56 @@
+<!-- <script type="text/javascript" src="../../../Public/js/jquery.min.js"></script> -->
+<div ng-if="userType == 2 || userType == 21 || userType == 23">
+	<div ng-include="'/Public/eq/6.0/templates/header.tpl.html'"></div>
+		<div class="form_main">
+			<div class="form_center">
+				<ul>
+					<li ng-click="create()" style="border:1px solid #fff;">
+						<div style="height:10px"></div>
+						<a>空白创建</a>
+						<div style="height:10px"></div>
+						<p><img style="width:30%" src="/view/images/kongbai.png" /></p>
+						<button><img src="/assets/images/form_new_ico.png" /> 新建</button>
+					</li>
+					<li class="center_li" style="border:1px solid #fff;" ng-click="viewTpl()">
+						<div style="height:10px"></div>
+						<a>模板中心</a>
+						<div style="height:10px"></div>
+						<p><img style="width:30%" src="/assets/images/form_tem_ico.png" /></p>
+						<button><div style="display: inline-block;width: 35px;height: 35px;background-color: #fff;border-radius: 35px;margin-top: 13px;margin-left: -100px;"><img src="view/images/form_view_see2.png" style="left: 104px;padding-left: 12px;padding-top: 10px;"/></div> <div style="display:inline-block;position: absolute;margin-left: 9px;">查看</div></button>
+					</li>
+					<li style="border:1px solid #fff;" ng-click="createTest()">
+						<div style="height:10px"></div>
+						<a>创建考试</a>
+						<div style="height:10px"></div>
+						<p><img style="width:30%" src="/assets/images/form_test_ico.png" /></p>
+						<button><img src="/assets/images/form_new_ico.png" /> 新建</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'"></div>
+</div>
+<div ng-if="userType == 1" class="free_user container">
+<h3>您好！该功能目前只向企业用户开放，点击下面网址申请成为企业用户。</h3>
+<a href="https://wetool.im/f/0viuuz" style="font-size:30px">https://wetool.im/f/0viuuz</a>
+</div>
+<style type="text/css">
+.form_green_create{
+	background-color: #63ba01;
+}
+span.form_green_create_one{
+	color: #fff;
+}
+</style>
+<script type="text/javascript">
+	$(function(){
+		$('.form_center li').mouseover(function(){
+			$(this).css('border','1px solid #66cc00');
+		});
+		$('.form_center li').mouseout(function(){
+			$(this).css('border','1px solid #fff');
+		});
+		
+	})
+</script>

@@ -1,0 +1,483 @@
+<include file="Public:head"/>
+<div class="container-fluid">
+				<!-- BEGIN PAGE HEADER-->
+				<div class="row-fluid">
+					<div class="span12">
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+						<h3 class="page-title">
+							{$title} <small> {$title}列表 </small>
+						</h3>
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home"></i>
+								<a href="index.html">首页</a> 
+								<i class="icon-angle-right"></i>
+							</li>
+							<li>
+								<a href="#">{$title}管理</a>
+								<i class="icon-angle-right"></i>
+							</li>
+							<li><a href="#">{$title}列表</a></li>
+						</ul>
+						<!-- END PAGE TITLE & BREADCRUMB-->
+					</div>
+				</div>
+				<!-- END PAGE HEADER-->
+				<!-- BEGIN PAGE CONTENT-->
+				<div class="row-fluid">
+					<div class="tabbable tabbable-custom tabbable-full-width">
+						<ul class="nav nav-tabs">
+                            <li class="<eq name="biztype_int" value="0">active</eq>"><a  href="/adminc.php?c=scene&a=index&apply={$apply}&flag={$flag}" >全部</a></li>
+							<foreach name='scene_type_list' item='item' >                                
+							<li class="<eq name="item['value']" value="$biztype_int">active</eq>"><a href="?c=scene&a=index&apply={$apply}&flag={$flag}&biztype_int={$item.value}">{$item.name}</a></li>
+                            </foreach> 
+						</ul>
+                        </div>
+                        
+                        
+						<div class="tab-content">
+                            <div class="row-fluid search-forms search-default">
+									<form class="form-search" action="#" method="post">
+										<div class="chat-form">
+											<div class="input-cont">   
+                                            <select name="field" style="width:120px">
+             <option value="scenename_varchar"  <eq name="field" value="scenename_varchar"> selected="selected" </eq>>名称</option>
+              <option value="scenecode_varchar"  <eq name="field" value="scenecode_varchar"> selected="selected" </eq>>编码</option>
+            </select>
+<input type="text"  name="keyword"  placeholder="请输入关键词..." class="m-wrap" value="{$keyword}" style="width:200px">
+<select id="scenetypeB" name="biztype_int" onChange="changeSceneType()" style="width:120px" >
+<option value="">请选择</option>
+                        <foreach name='scene_type_list' item='item' >
+                         
+	    <option value="{$item.id}" <eq name="item[value]" value="$biztype_int"> selected="selected" </eq>>{$item.name}</option>
+          </foreach>                     
+                       
+                       </select>- 
+                       <select  id="scenetypeS" name="tagid_int" style="width:120px" >
+                        <option value="">请选择</option>
+                        <foreach name='scene_type_list2' item='item' >
+	    <option value="{$item.tagid_int}" <eq name="item[tagid_int]" value="$tagid_int"> selected="selected" </eq>>{$item.name_varchar}</option> 
+          </foreach>     
+                       </select>
+             <select name="apply" style="width:120px" >
+              <option value="">选择审核状态</option>
+              <option <eq name="apply" value="0">selected="selected" </eq> value="0">未申请</option>
+			  <option <eq name="apply" value="1">selected="selected" </eq> value="1">待审核</option>
+              <option <eq name="apply" value="2">selected="selected" </eq> value="2">审核通过</option>
+              <option <eq name="apply" value="-1">selected="selected" </eq> value="-1">审核未通过</option> 
+             </select>   
+     
+
+<button type="submit" class="btn green" style=" ">搜 索 &nbsp; <i class="m-icon-swapright m-icon-white"></i></button>
+											</div>
+
+
+										</div>
+									</form>
+								</div>
+                                
+                                
+                    
+                       
+                  
+                        <foreach name='select' item='item' >
+                        <div class="row-fluid portfolio-block">
+									<span class="span1">{$item.sceneid_bigint}</span>
+									<div class="span4 portfolio-text">
+										<img src="/Uploads/{$item.thumbnail_varchar}" class="" style="width:112px; height:112px">
+                                        
+                <img src="http://qr.liantu.com/api.php?bg=f3f3f3&fg=333333&gc=222222&el=l&w=112&m=5&text=http://{$_SERVER['HTTP_HOST']}/v-{$item.scenecode_varchar}"/>                        
+
+										<div class="portfolio-text-info">
+
+                                                                                    <h4> <a href="/?c=view&id={$item.sceneid_bigint}" target="_blank">{$item.scenename_varchar}</a></h4>
+
+											<p>添加时间：<span> {$item.createtime_time}</span></p>
+<p>
+类别： 
+<code>  {$item.scenetype_int|getSceneType="scene_type",###}- {$item.tagid_int|getSceneTag=###}</code>&nbsp;，翻页方式: <code>{$item.movietype_int|getPageMode=###}</code>		</p>
+								<p>制作者： {$item.email_varchar}</p>
+									  </div>
+
+						  </div>
+
+									<div class="span5">
+														<if condition="$flag eq 'all' ">
+															<div class="portfolio-info">审核系统模板
+																<p>
+																<a title="点击更改审核状态"  href="javascript:;"  onclick="shenheApply({$item.sceneid_bigint},'sysmb',this)" class="btn purple-stripe">
+																<if condition="$item.applyTemplate eq 2">
+																审核通过
+																<elseif condition="$item.applyTemplate eq 1 "/>
+																等待审核
+																<else/>
+																未审核                                   
+																</if>
+																</a>
+															   </p>
+															  <p>使用{$item.usecount_int}次</p>
+															</div>
+															
+															<div class="portfolio-info">审核设计师案例
+																<p>
+																<a title="点击更改审核状态"  href="javascript:;"  onclick="shenheApply({$item.sceneid_bigint},'designer',this)" class="btn purple-stripe">
+																<if condition="$item.applyPromotion eq 2">
+																审核通过
+																<elseif condition="$item.applyPromotion eq 1"/>
+																等待审核
+																<else/>
+																未审核                                   
+																</if>
+																</a>
+															   </p>
+															  <p>使用{$item.usecount_int}次</p>
+															</div>
+															<div class="portfolio-info">审核首页推荐
+																	<p>
+																	<a title="点击更改审核状态"  href="javascript:;"  onclick="shenheApply({$item.sceneid_bigint},'indextj',this)" class="btn purple-stripe">
+																	<if condition="$item.applyIndex eq 2">
+																	审核通过
+																	<elseif condition="$item.applyIndex eq 1"/>
+																	等待审核
+																	<else/>
+																	未审核                                  
+																	</if>
+																	</a>
+																   </p>
+																  <p>使用{$item.usecount_int}次</p>
+																</div>
+																<div class="portfolio-info">审核广场推荐
+																	<p>
+																	<a title="点击更改审核状态"  href="javascript:;"  onclick="shenheApply({$item.sceneid_bigint},'guanchan',this)" class="btn purple-stripe">
+																	<if condition="$item.guanchan eq 2">
+																	审核通过
+																	<elseif condition="$item.guanchan eq 1"/>
+																	等待审核
+																	<else/>
+																	未审核                                    
+																	</if>
+																	</a>
+																   </p>
+																  <p>使用{$item.usecount_int}次</p>
+																</div>
+																
+																
+																
+														<else/>
+															<if condition="$flag eq 'sysmb' ">
+															<div class="portfolio-info">审核系统模板
+																<p>
+																<a title="点击更改审核状态"  href="javascript:;"  onclick="shenheApply({$item.sceneid_bigint},'sysmb',this)" class="btn purple-stripe">
+																<if condition="$item.applyTemplate eq 2">
+																审核通过
+																<elseif condition="$item.applyTemplate eq 1 "/>
+																等待审核
+																<else/>
+																未审核                                   
+																</if>
+																</a>
+															   </p>
+															  <p>使用{$item.usecount_int}次</p>
+															</div>
+															<elseif condition="$flag eq 'designer' /">
+																<div class="portfolio-info">审核设计师案例
+																<p>
+																<a title="点击更改审核状态"  href="javascript:;"  onclick="shenheApply({$item.sceneid_bigint},'designer',this)" class="btn purple-stripe">
+																<if condition="$item.applyPromotion eq 2">
+																审核通过
+																<elseif condition="$item.applyPromotion eq 1"/>
+																等待审核
+																<else/>
+																未审核                                   
+																</if>
+																</a>
+															   </p>
+															  <p>使用{$item.usecount_int}次</p>
+															</div>
+															<elseif condition="$flag eq 'indextj' /">
+																<div class="portfolio-info">审核首页推荐
+																	<p>
+																	<a title="点击更改审核状态"  href="javascript:;"  onclick="shenheApply({$item.sceneid_bigint},'indextj',this)" class="btn purple-stripe">
+																	<if condition="$item.applyIndex eq 2">
+																	审核通过
+																	<elseif condition="$item.applyIndex eq 1"/>
+																	等待审核
+																	<else/>
+																	未审核                                  
+																	</if>
+																	</a>
+																   </p>
+																  <p>使用{$item.usecount_int}次</p>
+																</div>
+															<elseif condition="$flag eq 'guanchan' /">
+																<div class="portfolio-info">审核广场推荐
+																	<p>
+																	<a title="点击更改审核状态"  href="javascript:;"  onclick="shenheApply({$item.sceneid_bigint},'guanchan',this)" class="btn purple-stripe">
+																	<if condition="$item.guanchan eq 2">
+																	审核通过
+																	<elseif condition="$item.guanchan eq 1"/>
+																	等待审核
+																	<else/>
+																	未审核                                    
+																	</if>
+																	</a>
+																   </p>
+																  <p>使用{$item.usecount_int}次</p>
+																</div>
+															</if>
+															
+														</if>
+                                        
+                                        
+										<div class="portfolio-info">
+											微课关闭情况
+<p>
+ <eq name="item['showstatus_int']" value="1">
+ <a href="/adminc.php?c=scene&a=is_showstatus&id={$item.sceneid_bigint}&no=1" title="点击关闭" class="btn purple-stripe"style="color:#0af005;"><i class="icon-play"></i> 开启</a>
+ <else/>
+ 
+ <a href="/adminc.php?c=scene&a=is_showstatus&id={$item.sceneid_bigint}" title="点击开启" class="btn purple-stripe" style="color:#000;"><i class="icon-pause"></i>  关闭</a>
+ </eq> 
+ 
+</p><code>权重：{$item.rank}</code>
+										</div>
+
+									
+                                    
+                             
+									</div>
+                                    <!--  <eq name="flag" value="useranli">
+                                 <div class="portfolio-info">
+											有无广告
+										<p> <eq name="item['shenhe']" value="1"><a title="点击取消通过审核"  href="/adminc.php?c=scene&a=shenhe&id={$item.sceneid_bigint}&no=1" class="btn purple-stripe">已审核</a><else/>
+                                        <a title="点击通过审核" href="/adminc.php?c=scene&a=shenhe&id={$item.sceneid_bigint}" class="btn purple-stripe"> 未审核</a></eq>
+                          
+                                        </p>
+                                      <neq name="flag" value="useranli">   <code>使用{$item.usecount_int}次</code></neq>
+										</div>
+									</div>        
+                                    </eq>-->
+                                    
+                                    
+                                    
+                                    
+                                
+
+		<div class="span2 portfolio-btn" style="float: right;">
+        
+<a href="javascript:;" onclick="ajaxpreview('{$item.scenecode_varchar}');return false;" class="btn blue " style="width:47%"><i class="icon-eye-open"></i> 预览</a> 
+<a href="?c=scene&a=e&<eq name="flag" value="useranli">&flag=useranli</eq>&id={$item.sceneid_bigint}" class="btn blue " style="width:47%" >
+<span><i class="icon-pencil"></i>  修改</span></a>
+
+ <a href="javascript:;" onClick="javascript:if(confirm('你确信要删除[{$item.scenename_varchar}]吗？')) window.location='?c=scene&a=del&id={$item.sceneid_bigint}<eq name="flag" value="useranli">&flag=useranli</eq>'" class="btn blue " style="width:47%">    
+<span><i class="icon-remove"></i>   删除</span></a>  
+<a href="index.php?c=Scene&a=export&id={$item.sceneid_bigint}" target="_blank" class="btn blue " style="width:47%"><i class=" icon-bookmark"></i>  导出HTML</a> 
+
+									</div>
+
+						  </div>
+                  
+                                   </foreach>  
+                                   <div class="space5"></div>
+                                   <div class="pagination pagination-right">
+
+									 <div class="pages">
+
+									  {$page}
+
+									</div>
+
+								</div>
+                                </div>
+                                </div>
+                                 </div>
+                                 </div>
+                                <style>
+                                .center{ text-align:center}
+								.center .p{ line-height:30px}
+                                </style>
+       <include file="Public:foot" />                             
+ <script type="text/javascript">
+<!--
+  function shenheApply(id,flag,obj){
+	  var modalobj = $('#modal-preview');
+		if(modalobj.length == 0) {
+			$(document.body).append('<div id="modal-preview" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true" style="position:absolute;top:40%;padding-top: 30px;"></div>');
+			var modalobj = $('#modal-preview');
+		}
+		var title='审核系统模板';
+		var status=$(obj).attr("applyTemplate");
+		if(flag=='designer'){
+			var title='审核设计师推荐';
+			var stauts=$(obj).attr("applyPromotion");
+		}else if(flag=='indextj'){
+			var title='审核首页推荐';
+			var stauts=$(obj).attr("applyIndex");
+		}else if(flag=='guanchan'){
+			var title='审核广场推荐';
+			var stauts=$(obj).attr("applyGuanchan");
+		}
+		var isselctOk=status==2? ' selected="selected" ' : '';
+		var isselctNo=status<0? ' selected="selected" ' : '';
+		
+		html = ' <div class="modal-body center">'+
+		  ' <p> <h3>'+title+'</h3> </p>'+
+		   ' <p>  <select id="applystatus"> <option value="2" '+isselctOk+'>审核通过</option> <option value="-1" '+isselctNo+'>审核未通过</option></select> </p>'+
+		     ' <p>  <a href="javascript:;" onclick="ajax_shenheApply('+id+')" class="btn blue " style="width:47%"> 提交</a>  </p>'+
+		 ' </div>  <div class="modal-footer"><a href="#" class="btn" data-dismiss="modal" aria-hidden="true">关闭</a></div>';
+		modalobj.html(html);
+		modalobj.css({'width' :  330, 'marginLeft' : 0 - 330 / 2});
+		modalobj.css({'height' : 450});
+		modalobj.on('hidden', function(){modalobj.remove();});
+		return modalobj.modal({'show' : true});
+	 }
+	 function ajax_shenheApply(id){
+		 $.post('/adminc.php?c=scene&a=shenheOk', { id:id,applystatus:$('#applystatus').val()},
+		  function(data){
+			   
+			   if(data.status==1){
+				   alert('审核已处理');
+			      $('#modal-preview').remove();
+				  parent.location.reload();
+			   }
+		},'json');
+  }
+	 
+	function ajaxpreview(styleid) {
+            if(typeof(taghtml) == "undefined") gettaghtml();
+		var modalobj = $('#modal-preview');
+		if(modalobj.length == 0) {
+			$(document.body).append('<div id="modal-preview" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true" style="position:absolute;top:40%;background-image:url(/Public/media/image/bg/4.jpg);"></div>');
+			var modalobj = $('#modal-preview');
+		}
+                window.code = styleid;
+                var jsonurl = '/index.php?c=scene&a=view&id='+styleid+'&time='+Math.random();
+                $.ajaxSetup({async:false});
+                $.get(jsonurl,function(json){
+                    window.scenelist = json.list;
+
+                    var num = json.list.length;
+                    setsys = '缩略图: <input type="text" style="width:100px" id="thumb_status" placeholder="截屏粘贴缩略图" /> <textarea style="display:none;" id="thumbdata" name="thumbdata"></textarea> 页码: <select id="selectnum" style="width:50px;">';
+                    for(i=1;i<=num;i++){
+                        setsys+="<option value="+i+">"+i+"</option>";
+                    }
+                    setsys+='</select><br> 名称: <input type="text" placeholder="模板名称" id="pagename" /><br> '+taghtml+' <br><button id="addpagesys"> 添加到素材模板 </button>';                    
+                });
+                html = '<iframe onload="processingComplete()" width="330px" scrolling="no" height="100%" frameborder="0" src="/index.php?c=view&id='+styleid+'" id="preview" name="preview" style="width: 330px; overflow: visible; height: 641px; margin-left: 120px;"></iframe><div class="modal-footer" style="text-align:center;">'+setsys+' <button class="" data-dismiss="modal" aria-hidden="true">关闭</button></div>';
+                modalobj.html(html);
+                modalobj.css({'width' :  330, 'marginLeft' : 0 - 330 / 2});
+                modalobj.css({'height' : 641});
+                modalobj.on('hidden', function(){modalobj.remove();});
+                return modalobj.modal({'show' : true});                
+	}
+        
+function gettaghtml(){
+    var taghtml = "";
+    tagstr=new Array();
+    tagstr[11001] = "用途";
+    tagstr[11002] = "功能";
+    tagstr[11003] = "风格";
+    $.ajaxSetup({async:false});
+    for(i=11001;i<=11003;i++){
+        taghtml += " <select style='width:80px' id=tag"+i+"><option value=0>"+tagstr[i]+"</option>";
+        var url = '/index.php?c=statics&a=tagList&bizType='+i+'&time='+Math.random();
+        $.getJSON(url,function(r){
+            list = r.list;
+            for(x in list){
+                taghtml += "<option value="+list[x].id+">"+list[x].name+"</option>";
+            }
+        });
+        taghtml +="</select> ";        
+    }
+    window.taghtml = taghtml;
+}
+
+function processingComplete(){
+    setInterval("$('#nr', window.frames['preview'].document).height(487)",1000);
+    //$('#nr', window.frames['preview'].document).height(487); 兼容处理,原因不明
+    $('#audio_btn', window.frames['preview'].document).remove(); //去除音乐图标,方便截图
+}
+
+
+
+
+$(document).ready(function(){
+            $("body").on('paste', $("#thumb_status"), function (e) {
+                var clipboardData = e.originalEvent.clipboardData,
+                        i = 0,
+                        items, item, types;
+
+                if (clipboardData) {
+                    items = clipboardData.items;
+
+                    if (!items) {
+                        return;
+                    }
+
+                    item = items[0];
+                    types = clipboardData.types || [];
+
+                    for (; i < types.length; i++) {
+                        if (types[i] === 'Files') {
+                            item = items[i];
+                            break;
+                        }
+                    }
+
+                    if (item && item.kind === 'file' && item.type.match(/^image\//i)) {
+                        var imgReader = function (item) {
+                            var blob = item.getAsFile(),
+                                    reader = new FileReader();
+                            reader.readAsDataURL(blob)
+                            reader.onload = function (e) {
+                                var img = new Image();
+                                $("#thumbdata").val(e.target.result);
+                            };
+                        };
+                        imgReader(item);
+                        $("#thumb_status").val('已获取');
+
+                    }
+                }
+            });
+    $("body").on('click','button#addpagesys',function(){
+            jsonstr = scenelist[$("#selectnum").val()-1];
+            jsonstr = JSON.stringify(jsonstr.elements);
+            jieri = $("#tag11001").val();
+            gongneng = $("#tag11002").val();
+            fengge = $("#tag11003").val();
+            if(jieri && gongneng && fengge){
+                //alert('请选择分类');
+                //return false;
+            }
+            $.post('/adminc.php?c=Scene&a=addpagesys',{code:code,pagename:$("#pagename").val(),element:jsonstr,thumbdata:$("#thumbdata").val(),tagid:jieri+","+gongneng+","+fengge},function(r){
+                alert(r.info);
+            });
+    });
+
+    
+});
+        
+//-->
+</script>  
+
+<script type="text/javascript">
+    $(document).ready(function(){
+  $("#dtagid").change(function(){ 
+//  var url = $("#text").val();
+  var biztype = $("#dtagid").val();
+  $("#tagid").empty();
+   $.get("adminc.php?c=Scene&a=Type",{biztype:biztype}, function(data){
+if(data != null){
+   $("#tagid ").append(data);
+    }else{$('#tagid').after();
+        }
+   });
+    }); 
+	});
+</script>
+
+
+                              
+                             
+      

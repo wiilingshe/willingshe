@@ -1,0 +1,27 @@
+<div class="modal-header no-line">
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">        
+		<span aria-hidden="true">×</span>    
+	</button>
+	<h4 class="modal-title">按钮名称        
+		<a class="bbs-help-tip-media" target="_blank" href="http://bbs.e.wesambo.com/forum.php?mod=viewthread&tid=5051&extra="></a>            
+		<span ng-show = 'authError'>{{authError}}</span>    
+	</h4>
+</div>
+<div class="dialog-contain">
+	<div class="modify_area tel_title tab-same clearfix" style="padding-left:30px;"> 
+		<span ng-repeat="button in buttons track by $index" ng-class="{spanborder: $index == btnIndex}">			
+			<a ng-style = "button.btnStyle" ng-click = "chooseTabButton(button, $index)">{{button.text}}</a>		
+		</span> 
+	</div>
+	<div class="dialog-content">
+		<form class="form-contain" role="form">
+			<div class="modify_area form-list clearfix" style="margin-left: 100px;"> 
+				<label class="form-label">按钮名称：</label>
+				<div class="form-input" style="width: 400px;"> 	
+					<input type="text" check-count="40" ng-model="model.title" ng-keyup="$event.keyCode == 13 ? confirm() : null" autofocus stop-propagation style="width: 290px;" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="modal-footer no-line"> <a class="modal-cancle" ng-click="cancel()">取消</a> <a class="btn btn-primary" ng-click="confirm()">确定</a></div>

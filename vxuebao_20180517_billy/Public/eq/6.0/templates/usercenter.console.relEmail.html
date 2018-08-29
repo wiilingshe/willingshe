@@ -1,0 +1,20 @@
+<div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">        <span aria-hidden="true">×</span>    </button>
+	<h4 class="modal-title">{{title || '绑定邮箱'}}</h4></div>
+<div class="modal-body">
+	<form class="form-horizontal">
+		<div class="form-group"> <label for="inputMail" class="col-sm-3 control-label">邮箱</label>
+			<div class="col-sm-7"> <input id="inputMail" type="text" class="form-control" ng-model="userinfo.email" ng-class="{error: emailFormatErr}" ng-blur="checkUpperCase();checkEmailFormat(userinfo)" placeholder="{{'usercenter.account.ENTRY_EMAIL' | translate}}">
+				<p class="error"
+					ng-show="emailFormatErr">{{emailFormatErr}}</p>
+			</div>
+		</div>
+		<div class="form-group"> <label for="inputPass" class="col-sm-3 control-label" translate="usercenter.account.PASSWORD">密码</label>
+			<div class="col-sm-7"> <input id="inputPass" type="password" class="form-control" ng-model="userinfo.password" placeholder="{{'usercenter.account.ENTRY_PASSWORD_ACCOUNT' | translate}}" ng-class="{error: passFormatErr}" ng-blur="checkPassFormat(userinfo)">
+				<p class="error"
+					ng-show="passFormatErr">{{passFormatErr}}</p>
+				<p class="error" ng-show="relErr">{{relErr}}</p>
+			</div>
+		</div>
+	</form>
+</div>
+<div class="modal-footer"> <a class="modal-cancle" ng-click="cancel()" translate="usercenter.account.CANCEL">取消</a> <a type="button" class="btn btn-primary" ng-click="relEmail(userinfo)" translate="usercenter.account.IMMEDIATE_BIND">立即绑定</a></div>

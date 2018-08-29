@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "排片沟通",
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#FF4D63",
+  "backgroundColor": "#f5f5f5",
+  "navigationBarTextStyle": "#fff",
+  "disableScroll": false,
+  "usingComponents": {
+    "submit": "../../component/taskSubmit/taskSubmit"
+  }
+}

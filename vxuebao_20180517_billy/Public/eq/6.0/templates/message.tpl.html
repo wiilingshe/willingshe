@@ -1,0 +1,26 @@
+<!-- <div class="modal-header"> 
+	<span class="glyphicon glyphicon-exclamation-sign"></span> 
+	<span>{{msgObj.title || ('dialog.TIP' | translate)}}</span>
+</div>
+<div class="modal-body" ng-if="msgObj.msg">
+	<div class="msg" ng-class="msgObj.title ? '' : 'msg-padding'" ng-bind-html="msgObj.msg"></div>
+</div>
+<div class="modal-footer"> 
+	<a ng-click="close();" class="btn btn-primary" style="width: 88px;">{{msgObj.btn || ('dialog.CLOSE' | translate)}}</a>
+</div> -->
+
+<div ng-style="bgStyle">
+	<div id="monkey_warn" class="monkey_bg" ng-if="msgObj.msg">
+		<div class="warn mark1">
+			<div class="mark2"></div>
+		</div>
+		<div class="content" >
+			<div class="confirm-msg" ng-class="msgObj.title ? '' : 'msg-padding'" ng-bind-html="msgObj.msg"></div>
+		</div>
+		<div class="choose">
+			<!-- <a class="pass" ng-click="ok()">{{confirmObj.confirmName || ('dialog.ENSURE' | translate)}}</a>
+			<a class="refuse" ng-click="cancel()">{{confirmObj.cancelName || ('dialog.CANCEL' | translate)}} </a> -->
+			<a ng-click="close();" class="pass" ng-if="!closeBtn">{{msgObj.btn || ('dialog.CLOSE' | translate)}}</a>
+		</div>
+	</div>
+</div>

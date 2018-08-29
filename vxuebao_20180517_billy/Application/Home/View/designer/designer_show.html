@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app" ng-controller="AppCtrl">
+<head>
+<meta property="qc:admins" content="25322764376510156375" />
+<meta name="baidu-site-verification" content="2MKKT6mbuL" />
+<meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="viewport"content="width=device-width, initial-scale=1.0" />
+<meta name="renderer" content="webkit">
+<meta property="qc:admins" content="" />
+<meta property="wb:webmaster" content="354b970d8cd61602" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="http://www.vxuebao.com/index/css/designer_show.css">
+<link rel="stylesheet" type="text/css" href="http://www.vxuebao.com/index/css/common.css">
+<!-- <link rel="stylesheet" href="//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css">
+<link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="http://www.vxuebao.com/assets/vxuebao-5.4.2.css" rel="stylesheet"> -->
+<link href="/assets/login.css" rel="stylesheet">
+
+<title>个人秀</title>
+</head>
+<body>
+  <div id="eq_main">
+    <include file="Public:des_header" />
+   
+    <div class="clear"></div>
+    <div id="designer_show_contain">
+      <div class="contain_top">
+        <div class="top_img"><img src="http://www.vxuebao.com/Uploads/{$data.headimg}" style="width:145px;height:145px;" /></div>
+        <div class="data">
+          <div>
+            <ul class="data_top">
+              <li><span style="font-size:28px;">{$data.uname}</span></li>
+              <li>{$data.province}{$data.city}</li>
+              <li>发布作品 : <span>{$data.product_num}</span></li>
+              <li>人气 : <span>{$data.sentiment}</span></li>
+            </ul>
+          </div>
+          <div>
+            <ul class="data_center">
+              <li><span style="margin-right:15px;">擅长</span></li>
+              <foreach name="data['long']" key="key" item="value">
+                <li class="bg">{$value.name_varchar}</li>
+              </foreach>
+            </ul>
+          </div>
+          <div>
+            <ul class="data_bottom">
+              <li><img src="http://www.vxuebao.com/index/images/common_ico1.png">{$data.qq}</li>
+              <li><img src="http://www.vxuebao.com/index/images/common_ico2.png">{$data.weixin}</li>
+              <li><img src="http://www.vxuebao.com/index/images/common_ico3.png">{$data.email_varchar}</li>
+              <li><img src="http://www.vxuebao.com/index/images/common_ico4.png">{$data.tel}</li>
+            </ul>
+          </div>
+          <div><p>{$data.msg}</p></div>
+        </div>
+       
+      </div>
+      <div class="clear"></div>
+      <div class="contain_center">
+        <div class="title">
+          <p>个人秀</p>
+        </div>
+        <div class="center_main">
+          <ul>          
+            <foreach name="data['product']" key="k" item="v">
+              <if condition="($k % 4 eq 3)">
+                <li class="n_f" id="Image{$v.sceneid_bigint}" myid="{$v.sceneid_bigint}" mycode="{$v.scenecode_varchar}">
+                  <div >
+                    <a  href="/v-{$v.scenecode_varchar}" onMouseOut="MM_swapImgRestoremy(this)" onMouseOver="MM_swapImage(this,'','http://qr.liantu.com/api.php?text=',1)">
+                      <img src="http://www.vxuebao.com/Uploads/{$v.thumbnail_varchar}" style="width:235px;height:235px;" name="Image{$v.sceneid_bigint}" />
+                    </a>
+                  </div>
+                    <div class="r_bottom">
+                      <ul>
+                        <li><img src="http://www.vxuebao.com/index/images/show_ico3.png">{$v.hitcount_int}</li>
+                        <li style="cursor:pointer;" onMouseOut="MM_swapImgRestoremy(this)" onMouseOver="MM_swapImage(this,'','http://qr.liantu.com/api.php?text=',1)"><img src="/index/images/show_ico2.png">扫描</li>
+                        <li style="margin-right:0;"><a href="/v-{$v.scenecode_varchar}" style="color:#a0a0a0;"><img src="http://www.vxuebao.com/index/images/show_ico4.png">预览</a></li>
+                      </ul>
+                  </div>
+                </li>
+              <else />
+                <li class="f" id="Image{$v.sceneid_bigint}" myid="{$v.sceneid_bigint}" mycode="{$v.scenecode_varchar}">
+                  <div >
+                    <a  href="/v-{$v.scenecode_varchar}" onMouseOut="MM_swapImgRestoremy(this)" onMouseOver="MM_swapImage(this,'','http://qr.liantu.com/api.php?text=',1)">
+                      <img src="http://www.vxuebao.com/Uploads/{$v.thumbnail_varchar}" style="width:235px;height:235px;" name="Image{$v.sceneid_bigint}" />
+                    </a>
+                  </div>
+                    <div class="r_bottom">
+                      <ul>
+                        <li><img src="http://www.vxuebao.com/index/images/show_ico3.png">{$v.hitcount_int}</li>
+                        <li style="cursor:pointer;" onMouseOut="MM_swapImgRestoremy(this)" onMouseOver="MM_swapImage(this,'','http://qr.liantu.com/api.php?text=',1)"><img src="/index/images/show_ico2.png">扫描</li>
+                        <li style="margin-right:0;"><a href="/v-{$v.scenecode_varchar}" style="color:#a0a0a0;"><img src="http://www.vxuebao.com/index/images/show_ico4.png">预览</a></li>
+                      </ul>
+                  </div>
+                </li>
+              </if>
+            </foreach>
+          </ul>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <include file="Public:des_footer" />
+  </div>
+
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+<include file="Public:common" />
+<script type="text/javascript" src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/index/js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/index/js/jpages.min.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/index/js/jquery.lazyload.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/Public/eq/5.4/layer/layer.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/index/js/scrop.js"></script>
+<script type="text/javascript" src="http://www.vxuebao.com/index/js/common_v.js"></script>
+<script type="text/javascript" src="/Public/eq/5.4/index.js"></script>
+<script type="text/javascript">
+    var modeltype,URL=window.location.href;
+    modeltype=URL.split("#")[1];
+    if(modeltype=='login'){
+        $('#loginModal').modal('show');
+    }
+    if(modeltype=='register'){
+        $('#regModal').modal('show');
+    }
+    if(modeltype=='forget'){
+        $('#forgetModal').modal('show');
+    }
+    if(modeltype=='resetpwd'){
+        $('#resetpwdModal').modal('show');
+    }
+    $('.close_ico').click(function(){
+        location.replace(location.href);
+
+    });
+
+    var PREFIX_URL = "http://" + window.location.host + "/";
+    var checkEmailFormat = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+    function centerModals() {
+        $('.modal').each(function (i) {
+            var $clone = $(this).clone().css('display', 'block').appendTo('body');
+            var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 5);
+            top = top > 0 ? top : 0;
+            $clone.remove();
+            $(this).find('.modal-content').css("margin-top", top);
+        });
+    }
+    $('.modal').on('show.bs.modal', centerModals);
+    $(window).on('resize', centerModals);
+    jQuery(".slide").slide({mainCell: ".bd ul", autoPlay: true, interTime: 5000, delayTime: 5000});
+    (function () {
+        var gotop = document.getElementById('gotop');
+        gotop.onclick = function () {
+            console.log("返回顶部");
+            $('html,body').animate({'scroll-top': 0}, 'fast');
+        }
+    })()
+    function toQzoneLogin(type)
+    {   
+        if(type=='qq'){
+        
+            childWindow = window.open("/qq/example/oauth/index.php","TencentLogin","width=450,height=320,menubar=0,scrollbars=1, resizable=1,status=1,titlebar=0,toolbar=0,location=1"); 
+        }else{
+            childWindow = window.open("https://open.weixin.qq.com/connect/qrconnect?appid=wx5a3ca7ea184c3a3b&redirect_uri=http%3A%2F%2Fwww.vxuebao.com%2Fpassword.html&scope=snsapi_login&response_type=code&state=WECHAT_STATE#wechat_redirect","TencentLogin","width=600,height=600,menubar=0,scrollbars=1, resizable=1,status=1,titlebar=0,toolbar=0,location=1");   
+        }
+    } 
+    
+    function closeChildWindow()
+    {
+        childWindow.close();
+    }
+
+</script>
+<script type="text/javascript">
+  function MM_swapImage() { //  hcc
+  var JSON_URL = "http://"+window.location.host+"/index.php";
+  var i,j=0,x,a=MM_swapImage.arguments;
+   document.MM_sr=new Array;
+    var imgid=$(a[0]).parents('li').attr('id'); //alert(imgid);
+  var code =$(a[0]).parents('li').attr('mycode');
+
+
+  //更换之前保留一下src
+  $('img[name="'+imgid+'"]').attr('myadd',$('img[name="'+imgid+'"]').attr('src'));
+  a[2]+= encodeURIComponent(JSON_URL+'?c=view&id='+code ) ;
+  $('img[name="'+imgid+'"]').attr('src',a[2]);
+    
+}
+
+ function MM_swapImgRestoremy(o){
+  var a=MM_swapImgRestoremy.arguments;
+  var imgid=$(a[0]).parents('li').attr('id');
+  
+   $('img[name="'+imgid+'"]').attr('src',$('img[name="'+imgid+'"]').attr('myadd'));
+
+ }
+</script>
+</body>
+</html>
+
+

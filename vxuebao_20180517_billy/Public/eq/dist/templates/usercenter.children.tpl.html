@@ -1,0 +1,27 @@
+<div class="children branches" ng-show="userinfo.type==2 || userinfo.type==23">
+	<h2 class="subhead mb20" style="margin-top:0">    <em >分账号管理</em>    <div class="fr">        <span ng-if="branchName.name" class="mr20">当前子账号：{{branchName.name}}<em class="eqf-wrong2 pl20" title="返回主账号" ng-click="changeCurrent()"></em></span>        <a class="text-center" ng-click="manageBranch()">            <em class="eqf-plus2"></em><i >添加分账号</i>        </a>    </div>    </h2>
+	<div class="branch-list tab-box-shadow">
+		<table class="table table-hover mb20">
+			<tr>
+				<th class="col-sm-3">分账号</th>
+				<th class="col-sm-2">用户名</th>
+				<th class="col-sm-2">部门</th>
+				<th class="col-sm-2">创建时间</th>
+				<th class="col-sm-2">管理</th>
+			</tr>
+			<tr ng-repeat="branch in branches">
+				<td>{{branch.loginName}}</td>
+				<td>{{branch.name}}</td>
+				<td>{{branch.deptName}}</td>
+				<td>{{branch.regTime | date:'yyyy-MM-dd'}}</td>
+				<td> <a class="branch-close" ng-show="branch.status==1" ng-click="openBranch(branch, false);"><em >关闭</em></a> <a class="branch-close" ng-show="branch.status==2" ng-click="openBranch(branch, true);"><em>开放</em></a> <a class="branch-close" ng-click="manageBranch(branch)">修改</a>					<a ng-click="selectBranch(branch)" ng-model="branch">查看</a> </td>
+			</tr>
+		</table>
+	</div>
+	<div class="clearfix  page-turn" ng-show="branchesCount > 10">
+		<pagination style="float: left" first-text="首页" last-text="尾页" previous-text="&lsaquo;" next-text="&rsaquo;" max-size="5" items-per-page="XdpageSize" total-items="branchesCount" ng-model="page.currentPage" ng-change="pageChanged(page.currentPage)" boundary-links="true"
+			rotate="true" num-pages="numPages"></pagination>
+		<div class="current_page"><span class="fl">到</span> <input type="text" ng-model="toPage"><span class="fl">页</span> <a ng-click="pageChanged(toPage)" class="go">确定</a>
+			<!-- <span><span>当前</span>: {{currentPage.branchCurrentPage}} / {{branchesNumPages}} <span >页</span></span> --></div>
+	</div>
+</div>

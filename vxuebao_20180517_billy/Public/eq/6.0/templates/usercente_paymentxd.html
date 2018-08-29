@@ -1,0 +1,6 @@
+<div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">        <span aria-hidden="true">×</span>    </button>
+	<h4 class="modal-title" translate="usercenter.privilege.QR_CODE">请使用微信扫一扫二维码进行</h4></div>
+<div class="modal-body">
+	<div class="qrcode" style="width:100%" qr-code qr-url="{{qrCodeUrl}}"></div>
+</div>
+<div class="modal-footer"> <a class="btn btn-primary" ng-click="paymented()" translate="usercenter.privilege.PAYED">完成支付</a></div>

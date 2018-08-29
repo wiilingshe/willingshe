@@ -1,0 +1,20 @@
+<!--component/taskSubmit/taskSubmit.wxml-->
+<view class="taskSubmit_box" wx:if="{{isShow}}">
+   <view class="bg" bindtap='close'></view>
+   <view class="body">
+     <view class="close">
+      <image src="{{close}}" bindtap='close'></image>
+     </view>
+     <view>
+     <view class="icon">
+       <image src="{{icon}}"></image>
+     </view>
+     <view class="prompt">提交成功</view>
+     <view class="isConfirm">等待海豚审核确认</view>
+     <view class="btn">
+        <view catchtap='goCinema'>下一项任务</view>
+     </view>
+     </view>
+   </view>
+
+</view>

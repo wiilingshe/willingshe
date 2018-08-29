@@ -1,0 +1,1 @@
+angular.module("security.register", ["security.register.form", "security.otherregister.form"]);

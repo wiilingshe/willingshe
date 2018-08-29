@@ -1,0 +1,50 @@
+<div ng-include="'/Public/eq/6.0/templates/header.tpl.html'"></div>
+<div id="main" class="pt20 mb20">
+	<div class="invitation-contain same-content text-center pt20 pb20">
+		<h3>快快邀请小伙伴们一起来秀吧!</h3>
+		<!-- <h1 translate="usercenter.invitation.INVITATION_TIP1">你的朋友需要微学宝</h1> -->
+		<div class="link-content clearfix">
+			<div class="method fl">
+				<div class="circle">1</div>
+				<div class="line"></div>
+				<div class="circle">2</div>
+			</div>
+			<div class="fl ml20">
+				<div class="url-contaion">
+					<div class="title">复制分享链接，通过微信、QQ等方式将链接分享给您的小伙伴，邀请他们加入微学宝</div>
+					<p class="copy-url mb20"><em>我的精美微课都是用微学宝做的，免费好用，你也来试试吧，官网地址：</em><br/>{{showUrl}}</p> <a class="text-primary copy-btn text-left" style="display:block;" copy-button url="{{showUrl}}">复制链接分享</a> </div>
+				<div class="share-containt"> <span class="tip mt20">也可以直接发送邮件给您的小伙伴或者扫一扫下面的二维码邀请他们加入微学宝</span>
+					<div class="tab-div">
+						<ul class="nav nav-tabs">
+							<li ng-class="{active: tabid == 'email'}"><a ng-click="tabid = 'email'"><i>Email</i></a></li>
+							<li ng-class="{active: tabid == 'wechat'}"><a ng-click="tabid = 'wechat'"><i>微信</i></a></li>
+							<li ng-class="{active: tabid == 'qq'}"><a ng-click="tabid = 'qq'"><i>QQ</i></a></li>
+						</ul>
+						<div>
+							<div class="tab-pane" ng-if="tabid == 'qq'">
+								<div class="view">
+									<div class="info">
+										<h2>QQ分享</h2> <span>用QQ扫描右侧二维码</span> </div>
+									<div class="qrcode" qr-code qr-url="{{showUrl}}"></div> <img ng-src="{{CLIENT_CDN}}assets/images/usercenter/qq.png" /> </div>
+							</div>
+							<div class="tab-pane" ng-if="tabid == 'wechat'">
+								<div class="view">
+									<div class="info">
+										<h2>微信分享</h2> <span>用微信扫描右侧二维码分享到朋友圈</span> </div>
+									<div class="qrcode" qr-code qr-url="{{showUrl}}"></div> <img ng-src="{{CLIENT_CDN}}assets/images/usercenter/pic.png" /> </div>
+							</div>
+							<div class="tab-pane" ng-if="tabid == 'email'">
+								<h2 class="ml20 mt20">发送邮件给你的小伙伴</h2>
+								<div class="form-group mt20">
+									<div class="col-sm-9"> <input type="text" ng-blur="checkEmailFormat(email)" class="form-control input-lg" placeholder="输入小伙伴的邮箱" ng-model="email" />
+										<p class="error" ng-show="emailFormatErr">{{emailFormatErr}}</p>
+									</div> <a class="btn-primary btn colsm-2" ng-disabled="emailFormatErr" ng-click="sendEmail(email)">发送邀请</a> </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'"></div>

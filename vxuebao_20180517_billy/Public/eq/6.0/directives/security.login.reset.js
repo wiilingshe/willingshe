@@ -1,0 +1,1 @@
+angular.module("security.login.reset").directive("equals",function(){return{restrict:"A",require:"?ngModel",link:function(e,i,n,u){if(u){e.$watch(n.ngModel,function(){t()}),n.$observe("equals",function(e){t()});var t=function(){var e=u.$viewValue,i=n.equals;u.$setValidity("equals",e===i)}}}}});

@@ -1,0 +1,148 @@
+/* user/wallet/wallet.wxss */
+.fl{
+	float: left;
+}
+.text-c{
+	text-align: center;
+}
+.br{
+	border-right: 2rpx solid #fff;
+}
+.wallet_box{
+	font-size: 28rpx;
+}
+.top{
+	width: 100vw;
+	height: 222rpx;
+	background-color: #FE7293;
+}
+.balance,.withdraw{
+	width: calc(100vw/2);
+	height: 222rpx;
+}
+.piece{
+	width: 100%;
+	height: 73rpx;
+	margin-top: 38rpx;
+}
+.piece view{
+	color: #fff;
+}
+.topTitle{
+	font-size: 24rpx;
+}
+.amount{
+	font-size: 44rpx;
+}
+.goWithdraw{
+	height: 44rpx;
+	line-height: 44rpx;
+	width: fit-content;
+	border: 1rpx solid #fff;
+	border-radius: 30rpx;
+	padding: 0 20rpx;
+	margin-top: 15rpx;
+	margin-left: calc((100vw/2 - 90rpx)/2);
+}
+.body{
+	background-color: #fff;
+	height: calc(100vh - 242rpx);
+	margin-top: 20rpx;
+}
+.headerTitle{
+	height: 88rpx;
+	line-height: 88rpx;
+	font-size: 30rpx;
+	font-weight: bold;
+	text-indent: 29rpx;
+	border: 1rpx solid #EEE;
+	margin-bottom: 41rpx;
+}
+.item{
+	height: 256rpx;
+	width: 690rpx;
+	box-sizing: border-box;
+	margin: 0 auto;
+	margin-bottom: 59rpx;
+	display:flex;
+	flex-direction:row;
+	justify-content:space-between;
+
+}
+.picBox{
+	width: 180rpx;
+	height: 256rpx;
+	position: relative;
+}
+.poster{
+	width: 100%;
+	height: 100%;
+	box-shadow:0rpx 0rpx 40rpx #DDDDDD;
+}
+.textBox{
+	width: 469rpx;
+	padding-left: 41rpx;
+	padding-top: 33rpx;
+}
+.textTitle{
+	display: -webkit-box;
+	font-size: 36rpx;
+	font-weight: 900;
+	color: #333;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	-webkit-line-clamp:1;
+	-webkit-box-orient:vertical;
+	margin-bottom: 29rpx;
+}
+.issue{
+	font-size: 26rpx;
+	color: #333;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	margin-bottom: 19rpx;
+}
+.issue text{
+	color: #666;
+}
+.issue .income{
+	display: flex;
+  justify-content: flex-end;
+  font-size: 30rpx;
+  color: #FFA148;
+}
+.state{
+	width: 90rpx;
+	height: 38rpx;
+	position: absolute;
+	top: 0;
+	color: #fff;
+	text-align: center;
+	line-height: 38rpx;
+	border-bottom-right-radius: 15rpx;
+	font-size: 24rpx;
+}
+.processing{
+	background-color: #FF4D63;
+}
+.over{
+	background-color: #999999;
+}
+.nodata{
+	width: 100%;
+}
+.nodata>image{
+  width: 256rpx;
+  height: 170rpx;
+  margin-left: 248rpx;
+  margin-top: 210rpx;
+}
+.noMore{
+	color: #CCC;
+	width: 100vw;
+	text-align: center;
+	height: 60rpx;
+	line-height: 60rpx;
+}

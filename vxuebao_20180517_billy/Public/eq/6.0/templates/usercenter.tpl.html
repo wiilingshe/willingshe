@@ -1,0 +1,60 @@
+<div ng-include="'/Public/eq/6.0/templates/header.tpl.html'"></div>
+<div id="main" class="min_contain">
+	<div ng-include="'/Public/eq/6.0/templates/sysmessage.tpl.html'"></div>
+	<div class="info-show">
+		<div class="same-content">
+			<div class="info-area">
+				<div class="opera-userinfo">
+					<div ng-if="applyInfo != 4" class="scene-oper fr" ng-click="editMessage()">
+						<a class="btn btn-border opa-btn background-color-width-change"> <span class="eqf-xiuziti"></span> &nbsp;编辑信息 </a>
+					</div>
+					<div ng-if="applyInfo == 4" class="scene-oper fr" style="font-size:12px;color:rgba(255, 255, 255, 0.6)"> 服务用户基本信息修改待审核 </div>
+				</div>
+				<div class="u-photo fl" ng-mouseenter="showMask=true" ng-mouseleave="showMask=false">
+					<div class="p-mask" ng-show="showMask">
+						<a ng-click="customerUpload()"> <em class="eqf-top-pic background-color-width-change" style="font-size:18px;"></em> <span>更换</span> </a>
+					</div>
+					<div ng-class="{'person-freed':userinfo.type == 1 || userinfo.type == 22,'person-pay':userinfo.type == 12,'company-pay':userinfo.type == 2}" ng-hide="userinfo.headImg"> <span class="" ng-show="!userinfo.headImg"></span> </div> <img style="background-color:#63ba01;" ng-src="{{PREFIX_FILE_HOST + userinfo.headImg}}" ng-show="userinfo.headImg"> </div>
+				<div class="u-detail">
+					<div class="u-name"> <span><em class="pr20">{{userinfo.name}}</em><em style="font-size:12px;color:rgba(255, 255, 255, 0.6)">{{userinfo.loginName}}</em></span> </div>
+					<div class="u-col pt20">
+						<div class="first-col" style="display:inline-block"> 账号类型： <span ng-show="userinfo.type == 1">个人免费用户</span> <span ng-show="userinfo.type == 12">个人付费用户</span> <span ng-show="userinfo.type == 22">设计师</span> <span ng-show="userinfo.type == 2">企业付费用户</span> <span ng-show="userinfo.type == 23">企业免费用户</span> <span ng-show="userinfo.type == 21">企业子用户</span>							<span ng-show="userinfo.type == 3">高级用户</span> <span ng-show="userinfo.type == 4">服务商用户</span> <span ng-show="userinfo.type == 99">运营用户</span> </div>
+						<div style="display:inline-block">
+							<a ng-href="">
+								<!--ng-if="userinfo.type==1 || (userinfo.type==2 && userinfo.memberType != 3)"--><!-- <ins>点我拥有更多特权</ins> --> </a> <a ng-if="applyInfo == 0" ng-click="applyShow()" style="padding-left:0"><ins>升级为秀客</ins></a> <span ng-if="applyInfo == 2">秀客审核中</span> <span ng-if="applyInfo == 3"><em>秀客申请未通过</em>                                    <a ng-click="applyShow()" style="padding-left:10px"><ins>再次申请秀客</ins></a>                                </span>							</span>
+							<!--                             <a class="pl20" ng-if="" ng-click="applyShow()">                                <ins>升级为服务商会员</ins>                            </a>  --></div>
+					</div>
+					<div class="u-col">
+						<div class="first-col fl">我的微币：{{xdCounts}}</div>
+						<div> <a ng-click="buyXd()">                                &nbsp;<!-- <ins>获取微币</ins>   -->                          </a> </div>
+					</div>
+					<div class="u-col">
+						<div class="first-col fl">未读消息：{{newMsgCount}}&nbsp;&nbsp;条</div>
+					</div>
+				</div>
+			</div>
+			<div class="spread-tab">
+				<ul class="clearfix tab-line">
+					<li> <a ng-class="{active: viewControl.tab == 'member'}" ng-click="showTab('member');">会员服务</a> </li>
+					<li> <a ng-class="{active: viewControl.tab == 'account'}" ng-click="showTab('account');">账号安全</a> </li>
+					<li ng-show="userinfo.type == 2 userinfo.type==23"> <a ng-class="{active: viewControl.tab == 'children'}" ng-click="showTab('children');">账号管理</a> </li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="same-content u-content min_contain">
+		<div ng-if="viewControl.tab == 'member'" ng-controller="MemberCtrl">
+			<div ng-include="'/Public/eq/6.0/templates/usercenter.member.tpl.html'"></div>
+		</div>
+		<div ng-if="viewControl.tab == 'account'" ng-controller="UsercenterAccountCtrl">
+			<div ng-include="'/Public/eq/6.0/templates/usercenter.account.tpl.html'"></div>
+		</div>
+		<div ng-if="viewControl.tab == 'children'" ng-controller="UsercenterAccountCtrl">
+			<div ng-include="'/Public/eq/6.0/templates/usercenter.children.tpl.html'"></div>
+		</div>
+		<div ng-if="viewControl.tab == 'trash'" ng-controller="TrashCtrl">
+			<div ng-include="'/Public/eq/6.0/templates/usercenter.trash.tpl.html'"></div>
+		</div>
+	</div>
+</div>
+<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'"></div>

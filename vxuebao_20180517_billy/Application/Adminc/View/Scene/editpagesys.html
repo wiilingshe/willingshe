@@ -1,0 +1,136 @@
+<include file="Public:head"/>
+<div class="container-fluid">
+    <!-- BEGIN PAGE HEADER-->
+    <div class="row-fluid">
+        <div class="span12">
+            <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+            <h3 class="page-title">单页模板 <small>    单页模板编辑</small></h3>
+
+            <ul class="breadcrumb">
+                <li><i class="icon-home"></i><a href="index.html">首页</a> 
+                    <i class="icon-angle-right"></i></li>
+                <li><a href="#"></i><a href="adminc.php?c=ad&a=index">单页模板</a><i class="icon-angle-right"></i></li>
+                <li><a href="#">单页模板编辑</a></li>
+            </ul>
+            <!-- END PAGE TITLE & BREADCRUMB-->
+        </div>
+    </div>
+
+    <!-- END PAGE HEADER-->
+    <!--内容显示 Begin-->
+    <div class="col_main">
+
+        <form action="" method="post" enctype="multipart/form-data" onSubmit="return checkForm()">
+            <div style="text-align: left; padding: 1px; text-align: left;">
+                <hr style="width: 50%; size: 1px; border: none;" />
+                <table style="vertical-align: top;">
+                    <tr>
+                        <td >
+
+                        </td>
+                        <td colspan="2"> 
+                            <div class="bianqian">加载中</div>
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                    <div class="controls">
+                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                            <div class="fileupload-new thumbnail" >
+                                <img src="/Uploads/{$info.thumbsrc_varchar|default="default_t.jpg"}"  class="thbnail"  style="max-height: 150px; line-height: 20px;"> 
+                            </div>
+                            <div class="fileupload-preview fileupload-exists thumbnail" style="max-height: 150px; line-height: 20px;"></div>
+                            <div>
+
+                                <span class="btn btn-file"><span class="fileupload-new">上传图片</span>
+                                    <span class="fileupload-exists">改变</span>
+                                    <input type="file" name="photo2"> </span>
+                                <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">删除</a>
+                            </div></div></div>
+                    </tr>
+                    <tr>
+                        <td>  
+                        </td>
+                        <td colspan="2">
+                        </td>
+                    </tr>
+                </table>
+                <div><strong> 名称:</strong> <input type="text" placeholder="模板名称" name="pagename" value="{$info.pagename_varchar}" /></div>
+                <div class="form-actions">
+                    <span id="Span1" class="btn btn_primary btn_input">
+                        <input name="pageid" type="hidden"  id="pageid"  class="frm_input"  value="{$info.pageid_bigint}" />
+
+                        <button type="submit" class="btn blue"><i class="icon-ok"></i> 保存</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <!--内容显示 End-->
+
+    <script type="text/javascript">
+        function checkForm() {
+            if ($('#title').val() == '') {
+                alert('文件名不能为空');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</div> </div> </div> </div>
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script>
+function gettaghtml(){
+    var taghtml = "";
+    var tagstr=new Array();
+    tagstr[11001] = "用途";
+    tagstr[11002] = "功能";
+    tagstr[11003] = "风格";
+    var tagclass=new Array();
+    tagclass[11001] = "yongtu";
+    tagclass[11002] = "gongneng";
+    tagclass[11003] = "fengge";
+    $.ajaxSetup({async:false});
+    for(i=11001;i<=11003;i++){
+        taghtml += " <select class='"+tagclass[i]+"' style='width:120px' id=tag"+i+" name='tagid[]'><option value=0>"+tagstr[i]+"</option>";
+        var url = '/index.php?c=statics&a=tagList&bizType='+i+'&time='+Math.random();
+        $.getJSON(url,function(r){
+            list = r.list;
+            for(x in list){
+                taghtml += "<option value="+list[x].id+">"+list[x].name+"</option>";
+            }
+        });
+        taghtml +="</select> ";        
+    }
+    $.cookie('taghtml',taghtml);
+    window.taghtml = taghtml;
+}
+function in_array(search,array){
+    for(var i in array){
+        if(array[i]==search){
+            return true;
+        }
+    }
+    return false;
+}
+var tagidstr = '{$info.tagid_int}';
+$(document).ready(function(){
+    if($.cookie('taghtml')){
+        window.taghtml = $.cookie('taghtml');
+    }
+    if(typeof(taghtml) == "undefined") gettaghtml();            
+    $(".bianqian").html(taghtml);
+    arrtagid = tagidstr.split(',');
+    $("select").each(function(){
+        $("option",$(this)).each(function(){
+            console.log($(this).val());
+            if(in_array($(this).val(),arrtagid)){
+                $(this).parent().val($(this).val());
+            }
+        });
+    });
+});
+</script>
+
+<include file="Public:foot"/>

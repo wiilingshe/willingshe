@@ -1,0 +1,75 @@
+/* component/taskSubmit/taskSubmit.wxss */
+.bg{
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0,0,0,0.6);
+	position: fixed;
+	top: 0;
+  z-index: 103;
+}
+
+.body{
+  width: 510rpx;
+  height: 620rpx;
+  background: white;
+  position: fixed; 
+  z-index: 104;
+  left: 50%;
+  margin-left: -255rpx;
+  top: 50%;
+  margin-top: -310rpx;
+  border-radius: 10rpx;
+  
+}
+.close{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 40rpx;
+}
+.close>image{
+  width: 30rpx;
+  height: 30rpx;
+}
+.icon{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  
+}
+.icon>image{
+  width: 188rpx;
+  height: 210rpx;
+  /* height: 188rpx; */
+  margin-left: 14rpx;
+  margin-top: 20rpx;
+}
+.prompt{
+  text-align: center;
+  font-size: 34rpx;
+  color: #333333;
+  font-weight: 900;
+  margin-top: 30rpx;
+}
+.isConfirm{
+  font-size: 26rpx;
+  color: #666666;
+  text-align: center;
+  padding: 18rpx 0;
+}
+.btn{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.btn>view{
+  width: 420rpx;
+  height: 80rpx;
+  background: linear-gradient(to bottom right, #FE7293, #FF5874);
+  color: white;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+}

@@ -1,0 +1,110 @@
+<div class="server-contain clearfix" ng-controller="ServerTabCtrl">
+	<div class="server-dns server-same p20">
+		<h3 translate="usercenter.server.REL_DNS">            绑定域名        </h3>
+		<!--status: 1 正常使用            status: 2 审核中            status: 3 审核失败            status: 4 停用            status: 5 到期-->
+		<div class="mt20" ng-show="!isShowBindPanel">
+			<div ng-show="status==1">
+				<div class="pass-check">
+					<div class="check-icon"> <span class="eqf-yes2"></span> </div>
+					<div class="check-desc"> <span translate="usercenter.server.DNS_PASSED" translate-value-url="{{domainInfo.url}}">您申请的绑定域名{{domainInfo.url}}已经通过审核</span>
+						<div class="line"></div>
+						<h3 translate="usercenter.server.CHECK_PASSED" translate-value-restTime="{{domainInfo.restTime}}">                            已通过审核，可放心使用，剩余有效期{{domainInfo.restTime}}天                        </h3> </div>
+				</div>
+			</div>
+			<div ng-show="status==2">
+				<div class="is-in-check">
+					<div class="check-icon"> <span class="eqf-clock-o"></span> </div>
+					<div class="check-desc"> <span translate="usercenter.server.SUBMITTED_AUDIT" translate-value-url="{{domainInfo.url}}">您申请的绑定域名{{domainInfo.url}}已经提交审核</span>
+						<div class="line"></div>
+						<h3 translate="usercenter.server.AUDIT" translate-value-ipAddress="{{domainInfo.ipAddress}}">审核中，请确保申请的域名解析指向指定IP地址：{{domainInfo.ipAddress}}</h3>
+						<div class="check-tip" translate-value-ipAddress="{{domainInfo.ipAddress}}"> 申请的域名需要解析至指定的IP地址：{{domainInfo.ipAddress}}，才能通过审核并正常使用。 <a href="http://bbs.e.wesambo.com/forum.php?mod=viewthread                            &tid=8604" target="_blank"><ins>如何操作？</ins></a> </div>
+					</div>
+				</div>
+			</div>
+			<div ng-show="status==3">
+				<div class="is-in-fail">
+					<div class="check-icon"> <span class="eqf-fobden2"></span> </div>
+					<div class="check-desc"> <span translate-value-url="{{domainInfo.url}}" translate="usercenter.server.DNS_UN_PASSED">您申请的绑定域名{{domainInfo.url}}未通过微学宝审核，请重新申请</span>
+						<div class="line"></div>
+						<h3>                            {{domainInfo.remark}}                        </h3> </div>
+				</div>
+				<div class="btn-dns"> <a class="btn btn-primary btn-small" ng-click="reApply()" translate="usercenter.server.RE_APPLY">重新申请</a> </div>
+			</div>
+			<div ng-show="status==5 ||status == 4">
+				<div class="is-in-fail">
+					<div class="check-icon"> <span class="eqf-fobden2"></span> </div>
+					<div class="check-desc"> <span translate-value-url="{{domainInfo.url}}" translate="usercenter.server.DNS_EXPIRE">您申请的绑定域名{{domainInfo.url}}已到期</span>
+						<div class="line"></div>
+						<h3 translate="usercenter.server.DNS_OVERDUE">                            域名已到期，需要重新申请                        </h3> </div>
+				</div>
+				<div class="btn-dns"> <a style="margin-top: 360px;" ng-click="reApply()" translate="usercenter.server.RE_APPLY">重新申请</a> </div>
+			</div>
+		</div>
+		<div ng-show="isShowBindPanel">
+			<div class="step-bar mt20" ng-init="step=1;"> <span class="circle fl" ng-class="{'fill-color': step == 1}" ng-click="goStep(1);">1</span> <span class="line"></span> <span class="circle circle-center" ng-class="{'fill-color': step == 2}" ng-click="goStep(2);">2</span> <span class="line"></span>				<span class="circle fr" ng-class="{'fill-color': step == 3}" ng-click="goStep(3);">3</span> </div>
+			<div class="step1-container" ng-show="step==1;"> <span class="mt20" translate="usercenter.server.REL_DNS_TIP1">域名绑定通过审核后，绑定后的微课即可以使用新域名进行分享</span> <span translate="usercenter.server.REL_DNS_TIP2">微课网址显示为：申请得绑定域名＋微课编码</span>
+				<div class="scene-exp"> <img src="{{CLIENT_CDN}}assets/images/usercenter/beforebind.png"> </div>
+				<div class="scene-exp new-dom"> <img src="{{CLIENT_CDN}}assets/images/usercenter/afterbind.png"> </div>
+				<div class="btn-dns"> <a class="btn btn-primary btn-small" ng-click="goStep(step+1)" translate="usercenter.server.REL_DNS">绑定域名</a> </div>
+			</div>
+			<div class="step2-container" ng-show="step==2;">
+				<p class="line-height36"> <span translate="usercenter.server.DECLARE">声明：</span> <br/> <span translate="usercenter.server.DECLARE1">                        1.申请绑定得域名需要经过工信部网站备案。                    </span> <br/> <span translate="usercenter.server.DECLARE2">                        2.若域名所属放在使用中违反相关法律法规，微学宝有权随时取消域名绑定。                    </span>					<br/> <span translate="usercenter.server.DECLARE3">                        3.您提供的信息仅会在域名绑定环节中使用。                    </span> <br/> <span>                        4.达到一定申请条件的用户，方可免费获得域名绑定授权。                    </span> <span class="tip"><a class="enable" href="http://bbs.e.wesambo.com/forum.php?mod=viewthread&tid=8604&page=1&extra=#pid64503" target="_blank">查看申请条件</a></span>					</p>
+				<div class="btn-dns"> <a class="modal-cancle" ng-click="goStep(step-1);" translate="usercenter.server.DISAGREE">不同意</a> <a class="btn btn-primary" ng-click="goStep(step+1);" translate="usercenter.server.AGREE">同意</a> </div>
+			</div>
+			<div class="step3-container" ng-show="step==3;">
+				<form class="form-horizontal mt20" role="form">
+					<div class="form-group"> <label class="col-sm-2 control-label" translate="usercenter.server.DOMAIN">域名网址</label>
+						<div class="col-sm-7"> <input type="text" class="form-control" ng-model="model.url" placeholder="{{'usercenter.server.DOMAIN_TIP' | translate}}" autofocus ng-class="{error: domainFormatErr}" ng-blur="checkDomainFormat(model)">
+							<p class="error" ng-show="domainFormatErr">{{domainFormatErr}}</p>
+						</div>
+						<div class="col-sm-2 tip">
+							<a ng-click="isOpenDomain = true;isOpenTip = false;"> <span class="enable" translate="usercenter.server.DOMAIN_IS">什么是域名?</span> </a>
+						</div>
+					</div>
+					<div class="form-group" ng-init="someVariable = null"> <label class="col-sm-2 text-right" translate="usercenter.server.SELECT_DATA">选择有效期</label>
+						<div class="col-sm-7">
+							<div class="square" ng-repeat="type in domainInfo.typeList">
+								<div class="radio-square checked"> <em></em> <input type="radio" ng-model="model.day" id="'{{type.value}}'" ng-value="type" ng-disabled="true"> </div> <label for="'{{type.value}}'">{{type.label}}<span translate="usercenter.server.XD">微币</span>{{type.value}}<span translate="usercenter.server.DAY">天</span></label>								</div>
+						</div>
+					</div>
+					<div class="form-group"> <label class="control-label col-sm-2" translate="usercenter.server.APPLICATION_ID">应用ID</label>
+						<div class="col-sm-7"> <input type="text" class="form-control" ng-model="model.appId" placeholder="{{usercenter.server.WECHAT_ID | translate}}"> </div>
+						<div class="col-sm-2 tip">
+							<a ng-click="isOpenTip = true;isOpenDomain = false;"> <span class="enable" translate="usercenter.server.WHAT_KEY">什么是应用ID和应用密钥</span> </a>
+						</div>
+					</div>
+					<div class="form-group"> <label class="control-label col-sm-2" translate="usercenter.server.APPLICATION_KEY">应用密钥</label>
+						<div class="col-sm-7"> <input type="password" class="form-control" ng-model="model.secretId" placeholder="{{'usercenter.server.WECHAT_APPSECRECT' | translate}}"> </div>
+						<div class="col-sm-3 tip">
+							<a href="http://bbs.e.wesambo.com/forum.php?mod=viewthread                            &tid=8604" target="_blank" translate="usercenter.server.WHY_WRITE_KEY"> <span class="enable" translate="usercenter.server.WHY_WRITE_KEY">为什么填写应用ID和应用密钥                                </span> </a>
+						</div>
+					</div>
+				</form>
+				<div class="clearfix">
+					<div class="operation col-sm-offset-2 text-right"> <a href="http://bbs.e.wesambo.com/forum.php?mod=viewthread&tid=8604" target="_blank"><ins translate="usercenter.server.OPTION">不会操作？</ins></a> </div>
+					<div class="btn-dns"> <a class="modal-cancle" ng-click="goStep(step-1)" translate="usercenter.server.LAST_STEP">上一步</a> <button class="btn btn-primary" ng-click="submit()" translate="usercenter.server.SUBMIT_APPLY">提交申请</button> </div>
+				</div>
+				<div ng-show="isOpenTip" class="tip-modal">
+					<div style="margin: 30px 45px;"> <span style="font-size: 24px;color:#66666" translate="usercenter.server.WHAT_KEY_ANSWER">                            应用ID和应用密钥是微信公众号得开发者信息                        </span> </div>
+					<div>
+						<div style="margin:0 45px;"> <img src="{{CLIENT_CDN}}assets/images/usercenter/OR3.png"> <span style="margin-left: 10px;" translate="usercenter.server.WHAT_KEY_ANSWER1">绑定域名后，微课可以使用得地址</span> </div>
+						<div style="margin:45px 45px 20px 45px;"> <img style="position:absolute;" src="{{CLIENT_CDN}}assets/images/usercenter/OR4.png">
+							<p> <span translate="usercenter.server.WHAT_KEY_ANSWER2">                                您只需要做以下操作即可实现这样得效果：                                </span> <br/> <span translate="usercenter.server.WHAT_KEY_ANSWER3">                                1.申请微信公众号                                </span>								<br/> <span translate="usercenter.server.WHAT_KEY_ANSWER4">                                2.将申请得域名网址提交到公众号--js安全域名接口                                </span> <br/> <span translate="usercenter.server.WHAT_KEY_ANSWER5">                                3.在公众号开发者信息中获取应用ID和应用密钥，并在申                                </span>								<br/>
+								<!--请绑定域名时添加他们                                <br/>--><span translate="usercenter.server.WHAT_KEY_ANSWER6">                                4.提交至微学宝审核，并由微学宝提交至工信部备案                                </span> </p>
+						</div>
+						<div class="btn-dns1" style="text-align:center;"> <a class="btn btn-primary" ng-click="isOpenTip = false;"><span translate="usercenter.server.ENSURE">确定</span></a> </div>
+					</div>
+				</div>
+				<div ng-show="isOpenDomain" class="tip-modal" style="height: 400px;">
+					<div style="margin: 30px 45px;"> <span style="font-size: 24px;color:#66666" translate="usercenter.server.DOMAIN_IS">                            什么是域名                        </span> </div>
+					<div>
+						<div style="margin:45px 45px 20px 45px;">
+							<p style="margin-left: 0;" translate="usercenter.server.DOMAIN_IS_ANSWER"> 域名级数是指一个域名由多少级组成，域名的各个级别被“.”分开，简而言之，有多少个点就是几级域名。如：e.wesambo.com为一级域名，而bbs.e.wesambo.com为二级域名。 </p>
+						</div>
+						<div class="btn-dns1" style="text-align:center;"> <a class="btn btn-primary" ng-click="isOpenDomain = false;"><span translate="usercenter.server.ENSURE">确定</span></a> </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

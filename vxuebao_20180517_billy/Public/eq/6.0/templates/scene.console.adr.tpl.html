@@ -1,0 +1,18 @@
+<div class="modal-header no-line" id="map_header">     
+    <button type="button" class="n_close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">        
+    <!--    <span aria-hidden="true"></span> -->
+        <img aria-hidden="true" src="/assets/images/re-design/bg_close.png" />   
+    </button>     
+    <h4 class="modal-title"><i></i>地图     
+        <span ng-show="authError" class="action ng-binding">请您先输入地址！</span>
+    </h4> 
+    <input id = "mapsrc" type="hidden" value="{{mapSrc}}"/>
+</div> 
+<div class="map_console" id="map_content" > 
+    <iframe id="mapContainer" name="mapContainer" width="100%" height="520" frameborder="0" style="border:0"src="/map.html"></iframe>
+</div> 
+<div class="modal-footer no-line" id="map_footer">    
+    <input style="visibility: hidden;position: absolute; z-index: 0;" type="text" ng-model="position" placeholder="请输入坐标" id="position" />  
+    
+    <a class="modal-submit" ng-click="replaceImage()">确定</a> <a class="modal-cancle" ng-click="cancel()">取消</a>       
+</div>

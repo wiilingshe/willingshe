@@ -1,0 +1,212 @@
+  <include file="Public:head" />
+			<!-- BEGIN PAGE CONTAINER-->
+			<style type="text/css">
+<!--
+.fnid_0 {
+	float: left;
+	height: 220px;
+	width: 110px;
+	border: 1px solid #ddd;
+	padding: 5px;
+	margin:  0 5px;
+}
+.fnid_0 img {
+	float: left;
+	height: 160px;
+	width: 110px;
+}
+.fnid_1 {
+	float: left;
+	height: 160px;
+	width: 110px;
+	border: 1px solid #ddd;
+	padding: 5px;
+	margin:  0 5px;
+}
+.fnid_1 img {
+	float: left;
+	height: 110px;
+	width: 110px;
+}
+-->
+            </style>
+			
+			<div class="container-fluid">
+				<!-- BEGIN PAGE HEADER-->   
+				<div class="row-fluid">
+					<div class="span12">
+						<!-- BEGIN STYLE CUSTOMIZER -->
+						<!-- END BEGIN STYLE CUSTOMIZER -->   
+						<h3 class="page-title">
+	<eq name="user[userid_int]" value="0"> 系统素材编辑<small>   Template editing system</small><else/>用户素材编辑 <small>   Edit user case</small></eq> 
+						</h3>
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home"></i>
+
+								<a href="index.html">首页</a> 
+
+								<span class="icon-angle-right"></span>
+
+							</li>
+
+							<li>
+
+								<a href="#">添加系统素材</a>
+
+								<span class="icon-angle-right"></span>
+
+							</li>
+
+							<li><a href="#"> <eq name="user[userid_int]" value="0"> 系统素材添加<else/>用户素材添加 </eq> </a></li>
+
+						</ul>
+
+					</div>
+
+				</div>
+
+				<!-- END PAGE HEADER-->
+
+				<!-- BEGIN PAGE CONTENT-->
+
+				<div class="row-fluid">
+
+					<div class="span12">
+
+						<!-- BEGIN SAMPLE FORM PORTLET-->   
+
+		  <div class="tabbable tabbable-custom tabbable-full-width">
+							<ul class="nav nav-tabs">
+                               <li class="">
+                               
+      <a class="button2" href='?c=File&filetype={$fnid}' style='margin-bottom: 2px;'>系统 <if condition="$fnid eq '1'">图片<elseif condition="$fnid eq 2"/>音乐 
+ <else /> 背景</if>列表</a>                          
+
+            </li>
+                <li class="<eq name="user[userid_int]" value="0"> active<else/>active </eq> "> 
+                <a href="">    添加 <php>if($fnid ==1):</php>图标<php>elseif($fnid ==2): </php>音乐 
+<php>else: </php>背景
+<php>endif;</php>素材</a> </li>
+							</ul>
+                            <hr>
+                </div>
+<link rel="stylesheet" href="__PUBLIC__/kindeditor4.1.11/themes/default/default.css" />
+<script src="__PUBLIC__/kindeditor4.1.11/kindeditor.js"></script>
+<script src="__PUBLIC__/kindeditor4.1.11/lang/zh-CN.js"></script>
+<script>
+KindEditor.ready(function(K) {
+	var editor = K.editor({
+		allowFileManager : true
+	});
+	K('#J_selectImage').click(function() {
+		editor.loadPlugin('multiimage', function() {
+			editor.plugin.multiImageDialog({
+				clickFn : function(urlList) {
+					var div = K('#J_imageView');
+					K.each(urlList, function(i, data) {
+						div.append('<div class="fnid_{$fnid}"><img src="' + data.url + '"><br><input name="photo[]" type="hidden" value="'+data.url+'" />文件名：<input name="filename[]" value="' + data.url + '" type="text" style="width:80px"/></div>');
+					});
+					div.append('<div style="clear:both"></div>');
+					editor.hideDialog();
+				}
+			});
+		});
+	});
+});
+</script>							
+        <div class="portlet-body form">
+<form action="" method="post"  class="form-horizontal">
+<div class="control-group">
+	<label class="control-label">素材上传</label>
+	<div class="control">
+		<input type="button" id="J_selectImage" value="批量上传" />
+		
+	<div style="clear:both"></div>
+	</div>
+	<div id="J_imageView"></div>
+	<div style="clear:both"></div>
+	<div class="control-group" style="margin-top:20px">
+		<label class="control-label">选择分类</label>
+		<div class="controls">
+			<select name="dtagid" id="dtagid" class="m-wrap" style="width:120px"></select>-<select name="tagid" id="tagid" class="m-wrap" style="width:120px"></select>
+			<span class="help-inline"></span>
+		</div>
+	</div> 
+	
+	<div class="form-actions">
+       <span id="Span1" class="btn btn_primary btn_input">
+       <button type="submit" class="btn blue">确定提交</button>
+	   <button type="button" class="btn" onclick="javascrtpt:window.location.href='{:U("File/index",array("filetype"=>$fnid))}'">放弃</button>    </span>
+     </div>
+	
+	        
+</div>
+</form>
+</div>
+
+</div>
+</div>
+    
+    
+    
+      
+
+
+   
+    
+<include file="Public:foot" /> 
+  <script type="text/javascript">
+   function checkForm(){
+	   if($('#title').val()==''){
+		   alert('文件名不能为空');
+		 return false;  
+		 }
+		 return true;
+	}
+   $(document).ready(function(){
+   	var id={$fnid};
+   	if(id ==0){var type='bgType'}
+   	if(id ==1){var type='tpType'}
+   	if(id ==2){var type=''}
+    if(type != ''){
+   $.ajax({
+   	url:"adminc.php?c=upfile&a=systag",
+   	type:"get",
+   	data:{type:type},
+     dataType: 'json',
+    async : true,
+	success:function(data){
+		$.each(data.list, function(value,name){
+        var html="<option value="+name.value+">"+name.name+"</option>";
+        $('#dtagid').append(html); 
+		})
+   }	
+   });
+   
+   }
+$("#dtagid").bind("change mouseout",function(){
+    var biztype = $("#dtagid").val();
+    $("#tagid").empty();
+    if(biztype != ''){
+   $.ajax({
+   	url:"adminc.php?c=upfile&a=systag&type=11",
+   	type:"get",
+   	data:{bizType:biztype},
+     dataType: 'json',
+    async : true,
+	success:function(data){
+		$.each(data.list, function(value,name){
+        var html="<option value="+name.id+">"+name.name+"</option>";
+     $('#tagid').append(html); 
+        
+		})
+   }	
+   });
+    }
+    });
+   });
+  </script>
+ 
+
+

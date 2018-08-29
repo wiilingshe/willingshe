@@ -1,0 +1,67 @@
+<!--附加套餐-->
+<submit custom="{{submitData}}"></submit> 
+<view class="cinemaInspection_box">
+  <view class="top">
+    <view class="topTitle">完成附加活动，可获得额外佣金</view>
+    <view class="topSubtitle">要求：上传活动图片、路演完成情况等</view>
+  </view>
+  <view class="body">
+    <view class="cinemaInspectioItem">
+     <view class="itemTitle">喷绘 图片上传</view>
+     <view class="itemImg">
+      <view wx:for="{{data.air_brushing_pics_list}}" wx:item="{{item}}" wx:key="{{index}}">
+         <image src='{{item.pi_img}}' class="exhibition"></image> 
+         <image src='{{cancelIcon}}' bindtap='cancelImg' data-index="{{index}}" data-pid="{{item.pi_id}}" data-type="0" class="cancel"></image>
+      </view>
+      <view bindtap='upImg1' data-value="0" wx:if="{{data.air_brushing_pics_list.length < 4}}">
+        <image src='{{bgImg}}'  class="exhibition"></image>
+      </view>
+     </view>
+     <view class="line"></view> 
+     <view class="itemExplain">
+     <input placeholder-class="plh" placeholder='如遇其他情况 请说明' data-type="0" bindinput="getVal" value='{{data.air_brushing_pics_remarks}}'></input>
+     </view>
+    </view>
+    <view class="cinemaInspectioItem">
+     <view class="itemTitle">抢票 出票图片上传</view>
+     <view class="itemImg">
+      <view wx:for="{{data.ticket_pics_list}}" wx:item="{{item}}" wx:key="{{index}}">
+         <image src='{{item.pi_img}}' class="exhibition"></image> 
+         <image src='{{cancelIcon}}' bindtap='cancelImg' data-index="{{index}}" data-pid="{{item.pi_id}}" data-type="1" class="cancel"></image>
+      </view>
+      <view bindtap='upImg1' data-value="1" wx:if="{{data.ticket_pics_list.length < 4}}">
+        <image src='{{bgImg}}'  class="exhibition"></image>
+      </view>
+     </view>
+     <view class="line"></view>
+    <view class="itemExplain">
+     <input placeholder-class="plh" placeholder='如遇其他情况 请说明'  data-type="1" bindinput="getVal" value='{{data.ticket_pics_remarks}}'></input>
+     </view>
+    </view>
+    <view class="cinemaInspectioItem">
+     <view class="itemTitle">发布会 路演图片上传</view>
+     <view class="itemImg">
+      <view wx:for="{{data.conference_pics_list}}" wx:item="{{item}}" wx:key="{{index}}">
+         <image src='{{item.pi_img}}' class="exhibition"></image> 
+         <image src='{{cancelIcon}}' bindtap='cancelImg' data-index="{{index}}" data-pid="{{item.pi_id}}" data-type="2" class="cancel"></image>
+      </view>
+      <view bindtap='upImg1' data-value="2" wx:if="{{data.conference_pics_list.length < 4}}">
+        <image src='{{bgImg}}'  class="exhibition"></image>
+      </view>
+     </view>
+     <view class="line"></view>
+    <view class="itemExplain">
+     <input placeholder-class="plh" placeholder='如遇其他情况 请说明'  data-type="2" bindinput="getVal" value='{{data.conference_pics_remarks}}'></input>
+     </view>
+    </view>
+  </view>
+    <view class="remarks">
+      <view>
+        <view class="remarksTitle">其他备注</view>
+         <textarea placeholder-class="plstrye" placeholder='请输入文字' data-type="3" bindinput="getVal" value='{{data.meal_remarks}}'></textarea>  
+      </view>
+    </view>
+   <view class="btn">
+        <view bindtap='submit'>提交任务</view>
+    </view>
+</view>

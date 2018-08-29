@@ -1,0 +1,39 @@
+<div id="show-contain">
+	<div ng-include="'/Public/eq/6.0/templates/show.category.tpl.html'" ng-controller="NavCtrl"></div>
+	<!--	<div class="cake">		<div class="same-content">			<a href="#/show">微课</a> > 活动		</div>	</div>-->
+	<div class="same-content">
+		<div class="active-lunbo mt" slides2 id="active" width="1000px" height="400px" style="width:1000px;height:400px;">
+			<div class="slides_container"></div>
+			<div class="hd-icon">
+				<a class="eqf-left prev"></a>
+				<a class="eqf-right next"></a>
+			</div>
+		</div>
+		<div class="active-list mt">
+			<h2><em translate="show.active.ACTIVITY">活动1</em><span>ACTIVITY</span></h2>
+			<ul>
+				<li ng-repeat="hdList in activeList">
+					<div class="join hdList"> <span><em translate="show.active.WORKS">作品</em>：{{hdList.joinNum}}</span><span><em translate="show.active.DEADLINE">截止日期</em>：{{hdList.endDate | date:'yyyy-MM-dd''}}</span> <a ng-show="hdList.join" ng-click="attend()" translate="show.active.ATTEND">参加</a>						<a ng-show="!hdList.join" style="background-color:#ccc" translate="show.active.OVER">结束</a> </div>
+					<div>
+						<a ng-click="join(hdList.id)"> <img ng-src="{{PREFIX_FILE_HOST + hdList.image}}" />{{hdList.title}} </a>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="same-content clearfix pb20" ng-show="totalItems > 10">
+			<pagination style="float:left;" first-text="{{'my.scene.FIRST_PAGE' | translate}}" last-text="{{'my.scene.LAST_PAGE' | translate}}" previous-text="&lsaquo;" next-text="&rsaquo;" max-size="10" items-per-page="pageSize" total-items="totalItems" ng-model="currentPage"
+				ng-change="pageChanged(currentPage)" boundary-links="true" rotate="true" num-pages="numPages"></pagination>
+			<div class="current_page"><span class="fl">到</span> <input type="text" ng-model="toPage" ng-keyup="$event.keyCode == 13 ? pageChanged(toPage) : null"><span class="fl">页</span> <a ng-click="pageChanged(toPage)" class="go">确定</a>
+				<!-- 	            <span><span translate="my.scene.CURRENT_PAGE1">当前</span>: {{currentPage}} / {{numPages}} <span translate="my.scene.CURRENT_PAGE2">页</span></span> --></div>
+		</div>
+		<div class="same-content hezuo" ng-show="friendLinks.length > 0">
+			<h2>合作<span>FRIEND</span></h2>
+			<ul class="clearfix">
+				<li ng-repeat="link in friendLinks">
+					<a href="{{link.url}}" target="_blank"> <img ng-src="{{link.logo}}" title="{{link.name}}" alt="{{link.name}}" /> </a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'"></div>

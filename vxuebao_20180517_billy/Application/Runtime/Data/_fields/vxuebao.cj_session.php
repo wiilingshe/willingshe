@@ -1,0 +1,1 @@
+a:5:{i:0;s:10:"session_id";i:1;s:14:"session_expire";i:2;s:12:"session_data";s:3:"_pk";s:10:"session_id";s:5:"_type";a:3:{s:10:"session_id";s:12:"varchar(255)";s:14:"session_expire";s:7:"int(11)";s:12:"session_data";s:4:"blob";}}

@@ -1,0 +1,93 @@
+@charset "utf-8";
+
+/*初始化*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+    margin:0;
+    padding:0;
+    font-family:"Microsoft YaHei","Ã¥Â¾Â®Ã¨Â½Â¯Ã©â€ºâ€¦Ã©Â»â€˜",tahoma,Arial;
+}
+table{border-collapse:collapse;border-spacing:0}
+fieldset,img{border:0}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:400}
+ol,ul{list-style:none}
+caption,th{text-align:left}
+h1,h2,h3,h4,h5,h6{font-weight:400}
+sub{vertical-align:text-bottom}
+input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;*font-size:100%;outline:none;}
+a{color:#000;text-decoration:none}
+input{border:none;}
+
+.clear {
+    clear: both;
+}
+/*@media only screen and (min-width: 750px){
+    html {
+        font-size: 75px !important; 
+    }
+}*/
+
+#eq_main{width:100%;margin:0 auto;background:#fff;}
+#eq_main .current{color:#66cc00;}
+
+/*身体css*/
+#mobile_content{width:7.5rem;margin:0 auto;}
+#mobile_content ul{overflow:hidden;}
+
+.content_top{height:4.28rem; width:7.5rem; font-size:0.16rem;color:#fff;}
+
+.glass{width: 7.5rem;height: 4.28rem;background: inherit;-webkit-filter: blur(10px);-moz-filter: blur(10px);-ms-filter: blur(10px);-o-filter: blur(10px);filter: blur(10px);filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=4, MakeShadow=false);}
+
+.user_main{position:relative;top:-3.25rem;left:0.26rem;width:7.15rem;height:2.27rem;}
+.user_main img{width:1.78rem;height:1.78rem;border-radius:1.78rem;}
+.user_main .user_left,.user_main .user_right{float:left;}
+.user_left{text-align:center;}
+.user_right .name{font-size:0.4rem;width:2.5rem;display:inline-block;margin-bottom:0.1rem;}
+.user_right .members{font-size:0.22rem;padding:0 0.1rem;height:0.33rem;line-height:0.33rem;border:1px solid #fff;text-align:center;display:inline-block;}
+.user_right{font-size:0.24rem;margin-left:0.24rem;}
+.user_right p{line-height:0.375rem;}
+.user_right ul{margin-top:0.225rem;}
+.user_right ul li{float:left;border:1px solid #fff;margin-right:0.195rem;width:1.05rem;height:0.31rem;text-align:center;line-height:0.31rem;}
+
+.content_main{width:7.12rem; font-size:0.3rem;color:#838383;float:left;margin-top:-1.8rem;padding-right:0.38rem;}
+.content_main .main_title{font-size:0.33rem;color:#8c8b8b;padding-left:0.195rem;margin-bottom:0.162rem;}
+.content_main .main_detailed li{border-left:1px solid #eeeeee;padding-left:0.195rem;background:url(../images/lecturer_mobile_ico2.png) no-repeat 0 0.19rem;line-height:0.48rem;background-size:0.14rem 1px;}
+.content_main .f{background:url(../images/lecturer_mobile_ico.png) no-repeat 0.278rem 0.06rem;margin-bottom:0.285rem;background-size:0.23rem 0.66rem;}
+.content_main .main_detailed,.content_main .main_title{margin-left:0.38rem;}
+.content_main .f_spacail{background:url(../images/lecturer_mobile_ico3.png) no-repeat 0.278rem 0.06rem;margin-bottom:0.285rem;background-size:0.23rem 0.23rem;}
+.content_main .f_spacail li{border:none;background:none;}
+.content_main .f_photo li{float:left;margin-left:0.33rem;margin-bottom:0.33rem;}
+.content_main .f_photo li img{width:3.15rem;height:2.138rem;}
+
+/*联系方式和评论*/
+.contact{display:none;width:5.82rem;height:7.125rem;position:absolute;z-index:1200;background:#fff;padding:0.35rem;padding-top:0;}
+.review{display:none;width:5.82rem;height:8.85rem;position:absolute;z-index:1200;background:#fff;padding:0.35rem;padding-top:0;}
+.close1 span{font-size:0.36rem;color:#666666;}
+.contact ul li{font-size:0.32rem;color:#66cc00;}
+.contact ul ul{height:1.125rem;border-bottom:1px solid #ddd;padding-top:0.3rem;}
+.contact .qq{padding-left:0.3rem; background:url('../images/qq_ico2.png') no-repeat left center;padding-left:0.75rem;background-size:0.338rem;}
+.contact .weixin{padding-left:0.3rem; background:url('../images/weixin_ico2.png') no-repeat left center;padding-left:0.75rem;background-size:0.338rem;}
+.contact .phone{padding-left:0.3rem; background:url('../images/phone_ico2.png') no-repeat left center;padding-left:0.75rem;background-size:0.338rem;}
+.contact .email{padding-left:0.3rem; background:url('../images/email_ico2.png') no-repeat left center;padding-left:0.75rem;background-size:0.338rem;}
+.contact .state{color:#ddd;}
+
+.discuts{font-size:0.26rem;height:6.8rem;overflow:hidden;margin-top:0.075rem;}
+.discuzz_f{height:0.825rem;border-bottom:1px solid #ddd;padding:0.263rem 0;}
+.discuzz_f li{float:left;}
+.discuzz_f li img{width:0.58rem;height:0.58rem;border-radius:0.75rem;}
+.discuzz_f .f_one{margin-right:0.15rem;}
+
+.main_review{font-size:0.26rem;padding-top:0.225rem;border-top:1px solid #ddd;}
+.review_sub{border:none;background:#fff;color:#6bc30d;width:0.95rem;}
+#reply_content{height:0.525rem;width:4.3rem;border-radius:0.075rem;border:1px solid #ccc;background:#f3f3f3;padding:0 0.15rem;margin-right:0.075rem;}
+
+.content_bottom{width:7.12rem;padding-left:6.3rem;}
+#contact_btn{cursor:pointer;padding:14px;position:fixed;bottom:1.125rem;width:0.28rem;height:0.28rem;z-index:1000;background:#6bc30d;border-radius:0.45rem;}
+#contact_btn img{float:left;width:0.3rem;height:0.3rem;}
+#review_btn{cursor:pointer;padding:14px;position:fixed;bottom:0.13rem;width:0.28rem;height:0.28rem;z-index:1000;background:#6bc30d;border-radius:0.45rem;}
+#review_btn img{float:left;width:0.28rem;height:0.28rem;}
+#goodcover {display: none;position: absolute;top: 0%;left: 0%;width: 100%;background-color: black;z-index: 1001;-moz-opacity: 0.8;opacity: 0.50;filter: alpha(opacity=80);}
+.closebt img { width: 0.2rem;height:0.2rem;}
+.closebt {float: right;}
+
+.contact_way{display:none;}
+

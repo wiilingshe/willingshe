@@ -1,0 +1,114 @@
+<include file="Public:head"/>
+<link rel="stylesheet" type="text/css" href="__ROOT__/Public/media/css/datepicker.css" />
+<style type="text/css">
+    .table th,.table td{text-align:center;}
+    .left{float:left;margin-right:10px;}
+    .sub{height:30px;background-color:#4d90fe;color:#fff;border:none;}
+</style>
+</head>
+<body class="page-header-fixed">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <h4 class="page-title">
+                    用户管理
+                    <small>   User management</small></h4>
+                <ul class="breadcrumb">
+                    <li><i class="icon-home"></i><a href="index.html">首页</a> 
+                        <i class="icon-angle-right"></i></li>
+                    <li><a href="{:U('Form/index')}">用户考卷管理</a><i class="icon-angle-right"></i></li>
+                </ul>
+            </div>
+        </div>
+        <div class="tabbable tabbable-custom tabbable-full-width">
+            <ul class="nav nav-tabs">
+            	<li class="<eq name="type" value="0">active</eq>"> <a href="{:U('Form/index',array('type' => 0))}"> 全部</a> </li>
+                <li class="<eq name="type" value="1">active</eq>"> <a href="{:U('Form/index',array('type' => 1))}"> 调查</a> </li>
+                <li class="<eq name="type" value="2">active</eq>"> <a href="{:U('Form/index',array('type' => 2))}"> 考试</a> </li>
+                <li class="<eq name="type" value="3">active</eq>"> <a href="{:U('Form/index',array('type' => 3))}"> 投票</a> </li>
+                <li class="<eq name="type" value="4">active</eq>"> <a href="{:U('Form/index',array('type' => 4))}"> 邀请</a> </li>
+                <li class="<eq name="type" value="5">active</eq>"> <a href="{:U('Form/index',array('type' => 5))}"> 聚会</a> </li>
+                <li class="<eq name="type" value="6">active</eq>"> <a href="{:U('Form/index',array('type' => 6))}"> 会议</a> </li>
+            </ul>
+            <hr>
+        </div>          
+        <!--内容-->
+        <form action="" method="post" id="form">
+            <div>
+                <label class="left">按标题搜索:</label>
+                <div>
+                    <div>
+                        <input name="ipttitle" type="text" class="left"  value="{$ipttitle}" />
+                        <button type="submit" class="left sub" style=" " id="search">搜索</button>
+                    </div>
+                </div>
+            </div>
+            <div style="clear:both;"></div>  
+        </form>
+        <div style="padding: 1px;">
+            <div id="ctl00_ContentPlaceHolder1_UpdatePanel1">
+                <div class="portlet-body" style=" margin-top:15px;">
+                    <table class="table table-striped table-bordered table-advance table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col" width="5%"><i class="icon-briefcase"></i>ID</th>
+                                <th scope="col" width="15%">标题</th>
+                                <th scope="col" width="25%">photo</th> 
+                                <th scope="col" width="25%">描述</th> 
+                                <th scope="col" width="5%">模板</th>                      
+                                <th align="center" scope="col" abbr="lbtnOperate" width="25%"><i class="icon-bookmark"></i>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <foreach name='list' item='value' key="key" >
+                                <tr>
+                                    <td>{$value.id}</td>
+                                    <td>{$value.title}</td>
+                                    <td><img src="{$value.photo}" width="100px"></td>
+                                    <td>{$value.content}</td>
+                                    <td>
+                                    	<eq name="value['istpl']" value="1">
+                                    		是
+                                    	<else />
+                                    		否
+                                    	</eq>
+	                                </td>
+                                     <td align="center" style="width:20px;"> 
+                                        <a href="?c=form&a=edit&id={$value.id}"class="btn blue"><i class=" icon-edit"> 
+                                        </i>编辑</a>  
+                                        <a href="javascript:;" onClick="if(confirm('你确信要删除[{$value.title}]吗？')) window.location='?c=form&a=delet&id={$value.id}'" class="btn"><i class="icon-remove icon-white"></i> 删除</a>
+                                    </div>
+                                    </td>
+                                </tr>
+                            </foreach>
+                            <tr>
+                                <td colspan="12"> </td>  
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pages" style="margin:30px 0;float:right;">{$page}</div>               
+                </div>
+            </div>
+        </div>
+        <!--结束-->
+    </div>
+</div>
+</div>
+<include file="Public:foot"/>
+<script src="__ROOT__/Public/media/js/app.js"></script>
+<script type="text/javascript">
+	$('.pages a').click(function(){
+		var temHtml = $(this).attr('href');
+		$('#form').attr('action',temHtml);
+		$('#form').submit();
+		return false;
+	});
+	$('#search').click(function(){
+		var temHtml = window.location.href;
+		var arr = temHtml.split('/p/');
+		$("#form").attr("action", arr[0]);
+        $("#form").submit();
+	});
+</script>
+</body>
+</html>

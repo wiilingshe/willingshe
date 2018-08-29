@@ -1,0 +1,9 @@
+[ 2018-03-01T04:59:37+08:00 ] 203.208.60.155 /index.php?m=Index&a=reg
+ERR: 无法加载控制器:Index
+
+[ 2018-03-01T07:17:19+08:00 ] 203.208.60.156 /index.php?g=Home&m=Index&a=help
+ERR: 无法加载控制器:Index
+
+[ 2018-03-01T08:08:54+08:00 ] 203.208.60.156 /index.php?g=Home&m=Index&a=fc
+ERR: 无法加载控制器:Index
+

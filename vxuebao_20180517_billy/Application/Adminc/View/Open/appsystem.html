@@ -1,0 +1,87 @@
+<include file="Public:head"/>
+<block name="body">
+<div class="container-fluid">
+				<!-- BEGIN PAGE HEADER-->
+				<div class="row-fluid">
+					<div class="span12">
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+						<h3 class="page-title">系统管理 <small>    System management</small></h3>
+						<ul class="breadcrumb">
+							<li><i class="icon-home"></i><a href="index.html">首页</a> 
+								<i class="icon-angle-right"></i></li>
+							<li><a href="#">APP系统参数设置</a><i class="icon-angle-right"></i></li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- END PAGE HEADER-->
+                <div class="tabbable tabbable-custom tabbable-full-width" style="margin-bottom:0px; padding-bottom:0px">
+					<ul class="nav nav-tabs">
+					<li class="active"> <a href="{:U('Open/index')}"> APP系统参数设置</a> </li>
+					</ul>
+					<hr>
+                </div>
+				<!-- BEGIN PAGE CONTENT-->          
+				<div class="row-fluid">
+					<div class="span12 ">
+						<!-- BEGIN EXAMPLE TABLE PORTLET-->
+							<div class="portlet-body">
+						
+                    
+                                 
+   <!-- 应用列表 -->
+
+ <div>
+<link rel="stylesheet" href="__PUBLIC__/kindeditor/themes/default/default.css" />
+<script src="__PUBLIC__/kindeditor/kindeditor-min.js"></script>
+<script src="__PUBLIC__/kindeditor/lang/zh_CN.js"></script>
+<script>
+KindEditor.ready(function(K) {
+	var uploadbutton = K.uploadbutton({
+		button : K('#uploadButton')[0],
+		fieldName : 'imgFile',
+		url : '__PUBLIC__/kindeditor/php/upload_json.php?dir=file',
+		afterUpload : function(data) {
+			if (data.error === 0) {
+				var url = K.formatUrl(data.url, 'absolute');
+				K('#app_link').val(url);
+			} else {
+				alert(data.message);
+			}
+		},
+		afterError : function(str) {
+			alert('自定义错误信息: ' + str);
+		}
+	});
+	uploadbutton.fileBox.change(function(e) {
+		uploadbutton.submit();
+	});
+});
+</script>
+<form action="{:U('Open/appsystem')}" method="post" enctype="multipart/form-data"  name="myform"  class="form-horizontal">     
+<table style="margin-top:10px">
+  <tr>
+    <td width="180" height="48" align="right">APP平台名称：</td>
+    <td><input name="app_name" type="text" value="{$data.app_name}" /></td>
+  </tr>
+  <tr>
+    <td height="48" align="right">APP版本号：</td>
+    <td><input name="app_view" type="text" value="{$data.app_view}" /></td>
+  </tr>
+  <tr>
+    <td height="48" align="right">APP升级链接：</td>
+    <td><input name="app_link" id="app_link" type="text" value="{$data.app_link}" style="width:300px"/><input type="button" id="uploadButton" value="Upload" /></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><input name="" type="submit" class="btn blue" value=" 提交 "></td>
+  </tr>
+</table>
+</form>
+   </div>
+ </div> </div> </div>
+  
+
+</div></div>
+</block>
+<include file="Public:foot"/>

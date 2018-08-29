@@ -1,0 +1,164 @@
+/* tasks/cinemaCommunication/cinemaCommunication.wxss */
+.top{
+  height: 200rpx;
+  /* background: linear-gradient(to bottom right, #FE7293, #FF5874); */
+  background: #FF4D63;
+  padding: 0 32rpx;
+}
+.topTitie{
+  font-size: 40rpx;
+  color: white;
+  height: 50rpx;
+  line-height: 50rpx;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.topRequirement{
+  font-size: 28rpx;
+  color: #FFFFFF;
+  margin-top: 18rpx;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.item{
+  padding: 0 12rpx;
+  height: 310rpx;
+  position: relative;
+}
+.item:first-child{
+   margin-top: -90rpx;
+}
+
+.item>image{
+width: 100%;
+height: 310rpx;
+}
+.line{
+  height: 2rem;
+  width: 87%;
+  border-top: 2rpx dashed #CCCCCC;
+  position: absolute;
+  z-index: 1;
+  bottom: 20rpx;
+  left: 48rpx;
+}
+.phcolor{
+  color: #999999; 
+  font-size: 26rpx;
+}
+.input{
+  position: absolute;
+  bottom: 32rpx;
+  left: 58rpx;
+  width: 93%;
+  color: #999999;
+  font-size: 26rpx;
+}
+.itemTitle{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 40rpx 54rpx;
+}
+.itemTitle>view:first-child{
+  color: #333333;
+  font-size: 30rpx;
+  font-weight: 900;
+  flex: 1;
+}
+.itemTitle>view:last-child{
+  width: 110rpx;
+  height: 40rpx;
+  background: #FFA148;
+  font-size: 26rpx;
+  color: white;
+  text-align: center;
+  line-height: 40rpx;
+  border-radius: 20rpx;
+}
+.itemInput{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: absolute;
+  top: 120rpx;
+  box-sizing: border-box;
+ padding-left: 80rpx;
+  padding-right: 40rpx; 
+
+}
+.itemInput>input{
+  flex: 1;
+  font-size: 26rpx;
+  color: #999999;
+}
+.itemInput>text{
+  flex: 1;
+   text-align: center; 
+  color: #666666;
+  font-size: 30rpx;   
+}
+
+.remarks{
+  padding: 0 30rpx;
+  margin-top: 20rpx;
+}
+.remarks>view{
+  background: white;
+  border-radius: 10rpx;
+  height: 320rpx;
+  
+}
+.remarksTitle{
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: 900;
+  padding:28rpx;
+}
+textarea{
+  padding: 0 28rpx;
+  font-size: 26rpx;
+  color: #999999;
+  width: 92%;
+  height: 204rpx;
+}
+.plstrye{
+  padding: 0 28rpx;
+  font-size: 26rpx;
+  color: #999999;
+}
+
+
+.inputColor{
+  font-size: 40rpx;
+  color: #FFA148;
+}
+.btn{
+  padding: 40rpx 32rpx 44rpx;
+}
+.btn>view{
+  width: 100%;
+  height: 98rpx;
+  background: linear-gradient(to bottom right, #FE7293, #FF5874);
+  /* position: fixed; */
+  /* bottom: 0; */
+  text-align: center;
+  line-height: 95rpx;
+  color: white;
+  font-size: 34rpx;
+  z-index: 99;
+  /* margin-top: 20rpx;  */
+  border-radius: 10rpx;
+}

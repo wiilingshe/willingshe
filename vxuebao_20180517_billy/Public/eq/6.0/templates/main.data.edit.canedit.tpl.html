@@ -1,0 +1,233 @@
+<div class="main clearfix">
+    <div class="panel panel-default same-content" style="margin-top:20px;">
+      <div class="return">
+        <a ng-href="#/main/customer"><span class="fa fa-mail-reply" translate="main.customer.BACK_UP">返回</span></a>
+      </div>
+      <div class="custom-detail">
+        <table width="100%" >
+          <tr><td><span>姓名</span>：{{dataDetail.name}}</td><td><span>电话</span>：{{dataDetail.tel}}</td><td><span>来源</span>：{{dataDetail.originName}}</td></tr>
+          <tr ng-if="isAllowedToAccessGrouping && sceneId != 'create'">
+            <td colspan="3"><span>分组</span>：<span class="userList" ng-repeat="groupName in groupNames">{{groupName.name}}<em class="delete" ng-click="deleteAssociation(dataDetail.id,groupName.id)">x</em></span>
+            <div class="group-cat btn-group dropdown">
+                <em class="add dropdown-toggle" title="{{'main.customer.ADD_GROUP' | translate}}">+</em>
+                <div class="dropdown-menu">            
+                    <ul class="group-list group-over" role="menu">
+                        <li class="group-menu" ng-repeat="group in groups" forbidden-close>
+                            <div class="select-group">
+                                <span class = "eqf-no" style="color:#ff0000" ng-click = "deleteGroup(group, $index);"></span>
+                                <div class="checkbox-square" ng-class="{checked: group.selected}">
+                                  <em class="eqf-right4"></em>
+                                  <input type="checkbox" ng-model="group.selected" name="iCheck">
+                                </div>
+                                <span>{{group.name}}</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="select-group addGroup" forbidden-close ng-click="addGroup();">
+                        <em>+</em>
+                        <span class="add-group">添加分组</span>
+                    </div> 
+                    <div style="text-align:center;padding-top:10px;">                   
+                      <a class="btn btn-primary" ng-click="assignGroup();">确定</a>
+                    </div>
+                </div>
+                <div class="confirm-group"></div>
+            </div>                  
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="panel-body">
+        <form name="formName" class="form-horizontal" role="form">
+          <div class="form-group">
+            <label for="userName" class="col-sm-3 control-label" translate="main.customer.CUSTOMER_NAME">
+              姓名
+            </label>
+            <div class="col-sm-7">
+              <input type="text" name="name" ng-model="dataDetail.name" class="form-control"
+              id="userName" placeholder="{{'main.customer.CUSTOMER_NAME' | translate}}" show-icon callback-fn="updateData(arg1)">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="sex" class="col-sm-3 control-label" translate="main.customer.CUSTOMER_SEX">
+              性别
+            </label>
+            <div class="col-sm-7">
+              <eqx-select class="customer-edit border-width select-contain select-great" model="sex" change="updateSex(sex)">
+                <eqx-select-option value="null">请选择性别</eqx-select-option>
+                <eqx-select-option value="sexOption" ng-repeat="sexOption in sexOptions">{{sexOption.name}}</eqx-select-option>
+              </eqx-select>
+            </div>
+          </div>
+          <div class="form-group" ng-repeat="mobile in formMobiles track by $index">
+            <label for="mobile" class="col-sm-3 control-label" ng-show="$index==0" translate="main.customer.CUSTOMER_MOBILE">
+              手机
+            </label>
+            <label for="{{'main.customer.CUSTOMER_MOBILE' | translate}}" class="col-sm-3 control-label" ng-show="$index!=0">
+            </label>
+            <div class="col-sm-7" id="mobileAddress">
+              <div class="input-group">
+                <input type="text" name="mobile" ng-model="formMobiles[$index]" class="form-control"
+                placeholder="{{'main.customer.CUSTOMER_MOBILE' | translate}}" show-icon callback-fn="updateData(arg1,formMobiles)">
+                <span class="input-group-btn" >
+                  <button class="btn btn-default add-btn btn-sm" ng-click="removeInputs($index, 'mobile', formMobiles)"
+                  type="button">
+                    <span class="fa fa-minus" >
+                    </span>
+                  </button>
+                </span>
+              </div>
+            </div>
+            <div class="col-sm-1">
+              <span ng-click="addInputs(formMobiles)" ng-show="$index==0" class="fa fa-plus add-inputs">
+              </span>
+            </div>
+          </div>
+          <div class="form-group" ng-repeat="email in formEmails track by $index">
+            <label for="email" class="col-sm-3 control-label" ng-show="$index==0" translate="main.customer.CUSTOMER_EMAIL">
+              邮箱
+            </label>
+            <label for="email" class="col-sm-3 control-label" ng-show="$index!=0">
+            </label>
+            <div class="col-sm-7" id="emailAddress">
+              <div class="input-group">
+                <input type="text" name="email" ng-model="formEmails[$index]" class="form-control"
+                placeholder="{{'main.customer.CUSTOMER_EMAIL' | translate}}" show-icon callback-fn="updateData(arg1,formEmails, formName.emial.$invalid)">
+                <span class="input-group-btn">
+                  <button class="btn btn-default add-btn btn-sm" ng-click="removeInputs($index, 'email', formEmails)"
+                  type="button">
+                    <span class="fa fa-minus">
+                    </span>
+                  </button>
+                </span>
+              </div>
+              <!-- /input-group -->
+            </div>
+            <div class="col-sm-1">
+              <span ng-click="addInputs(formEmails)" ng-show="$index==0" class="fa fa-plus add-inputs">
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="company" class="col-sm-3 control-label">
+              公司
+            </label>
+            <div class="col-sm-7">
+              <input type="text" name="company" ng-model="dataDetail.company" class="form-control"
+              id="company" placeholder="{{'main.customer.CUSTOMER_COMPANY' | translate}}" show-icon callback-fn="updateData(arg1)">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="job" class="col-sm-3 control-label" translate="main.customer.CUSTOMER_JOB">
+              职务
+            </label>
+            <div class="col-sm-7">
+              <input type="text" name="job" ng-model="dataDetail.job" class="form-control"
+              id="job" placeholder="{{'main.customer.CUSTOMER_JOB' | translate}}" show-icon callback-fn="updateData(arg1)" required>
+            </div>
+          </div>
+          <div class="form-group" ng-repeat="tel in formTels track by $index">
+            <label for="tel" class="col-sm-3 control-label" ng-show="$index==0" translate="main.customer.CUSTOMER_TELEPHONE">
+              固定电话
+            </label>
+            <label for="tel" class="col-sm-3 control-label" ng-show="$index!=0">
+            </label>
+            <div class="col-sm-7" id="tel">
+              <div class="input-group">
+                <input type="text" name="tel" ng-model="formTels[$index]" class="form-control"
+                placeholder="{{'main.customer.CUSTOMER_TELEPHONE' | translate}}" show-icon callback-fn="updateData(arg1,formTels)">
+                <span class="input-group-btn">
+                  <button class="btn btn-default add-btn btn-sm" ng-click="removeInputs($index, 'email', formTels)"
+                  type="button">
+                    <span class="fa fa-minus">
+                    </span>
+                  </button>
+                </span>
+              </div>
+              <!-- /input-group -->
+            </div>
+            <div class="col-sm-1">
+              <span ng-click="addInputs(formTels)" ng-show="$index==0" class="fa fa-plus add-inputs">
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="address" class="col-sm-3 control-label" translate="main.customer.CUSTOMER_ADDRESS">
+              地址
+            </label>
+            <div class="col-sm-7">
+              <input type="text" name="address" ng-model="dataDetail.address" class="form-control"
+              id="address" placeholder="{{'main.customer.CUSTOMER_ADDRESS' | translate}}" show-icon callback-fn="updateData(arg1)">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="website" class="col-sm-3 control-label" translate="main.customer.CUSTOMER_WEBSITE">
+              个人网址
+            </label>
+            <div class="col-sm-7">
+              <input type="text" name="website" ng-model="dataDetail.website" class="form-control"
+              id="website" placeholder="{{'main.customer.CUSTOMER_WEBSITE' | translate}}" show-icon callback-fn="updateData(arg1)">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="qq" class="col-sm-3 control-label" translate="main.customer.QQ">
+              QQ号
+            </label>
+            <div class="col-sm-7">
+              <input type="text" name="qq" ng-model="dataDetail.qq" class="form-control"
+              id="qq" placeholder="{{'main.customer.QQ' | translate}}" show-icon callback-fn="updateData(arg1)">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="weixin" class="col-sm-3 control-label" translate="main.customer.WECHAT">
+              微信号
+            </label>
+            <div class="col-sm-7">
+              <input type="text" name="weixin" ng-model="dataDetail.weixin" class="form-control"
+              id="weixin" placeholder="{{'main.customer.WECHAT' | translate}}" show-icon callback-fn="updateData(arg1)">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="yixin" class="col-sm-3 control-label">
+              易信号
+            </label>
+            <div class="col-sm-7">
+              <input type="text" name="yixin" ng-model="dataDetail.yixin" class="form-control"
+              id="yixin" placeholder="{{'main.customer.YIXIN' | translate}}" show-icon callback-fn="updateData(arg1)">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="weibo" class="col-sm-3 control-label">
+              微博号
+            </label>
+            <div class="col-sm-7">
+              <input type="text" name="weibo" ng-model="dataDetail.weibo" class="form-control"
+              id="weibo" placeholder="{{'main.customer.WEIBO' | translate}}" show-icon callback-fn="updateData(arg1)">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="laiwang" class="col-sm-3 control-label">
+              来往号
+            </label>
+            <div class="col-sm-7">
+              <input type="text" name="laiwang" ng-model="dataDetail.laiwang" class="form-control"
+              id="inputEmail3" placeholder="{{'main.customer.LAIWANG' | translate}}" show-icon callback-fn="updateData(arg1)">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="remark" class="col-sm-3 control-label" translate="main.customer.CUSTOMER_REMARK">
+              其它
+            </label>
+            <div class="col-sm-7">
+              <input type="text" name="remark" ng-model="dataDetail.remark" class="form-control"
+              id="remark" placeholder="{{'main.customer.CUSTOMER_REMARK' | translate}}" show-icon callback-fn="updateData(arg1)">
+            </div>
+          </div>
+        </form>
+          <div class="btn-contain btn-big">
+              <a class="btn btn-primary login" ng-click="saveData(dataDetail)">保存</a>
+              <a ng-click="cancel()" class="btn-grey0 btn">取消</a>
+          </div>             
+      </div>
+    </div>
+</div>

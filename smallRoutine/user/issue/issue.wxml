@@ -1,0 +1,28 @@
+<!--user/issue/issue.wxml-->
+<view class="issue_box">
+	<scroll-view scroll-y class="body" bindscrolltolower="lower">
+		<view class="containers">
+				<button open-type="contact" class="serviceBox">
+					<image class="serviceIcon" src="{{service}}"></image>
+					<view class="serviceText">客服</view>
+				</button>
+			<view class="rowList clearfix {{index!=0?'mt39':''}}" wx:for="{{list}}" wx:key="">
+				<view class="itemBox {{index!=0?'top_line':''}} {{index+1==list.length?'pb80':''}}">
+					<view class="questionCont ">
+						<text space decode class="logogram">Q&emsp;</text>
+						<view class="content">{{item.title}}</view>
+					</view>
+					<view class="answerCont clearfix">
+						<text space decode class="logogram ">A&emsp;</text>
+						<view class="content ">{{item.content}}</view>
+					</view>
+				</view>
+			</view>
+			<view class="nodata" wx:if="{{nodata}}">
+				<image src="{{nodataImg}}"></image>
+				<view class="noMore">暂无内容</view>
+			</view>
+			<view class="noMore" wx:if="{{noMore}}">没有更多数据了</view>
+		</view>
+	</scroll-view>
+</view>

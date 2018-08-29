@@ -1,0 +1,113 @@
+/* user/userInfo/userInfo.wxss */
+.fl{
+	float: left;
+}
+.text-c{
+	text-align: center;
+}
+.body{
+
+}
+.border-t{
+	border: 1rpx solid #EEE;
+}
+.line{
+	height: 2rpx;
+	background-color: #EEE;
+	width: calc(100vw - 60rpx);
+	position: absolute;
+	top: 0;
+	left: 33rpx;
+}
+.userInfo_box{
+	font-size: 28rpx;
+	height: 100vh;
+}
+.top{
+	width: calc(100vw - 61rpx);
+	height: 124rpx;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+  padding: 38rpx 31rpx;
+  background-color: #fff;
+}
+.avatar{
+	width: 125rpx;
+	height: 125rpx;
+  border-radius: 62rpx;
+}
+.top_title{
+	height:124rpx;
+	line-height:124rpx;
+	color:#333333;
+}
+.row_list{
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: #fff;
+  width:calc(100vw - 61rpx);
+  height:100rpx;
+  line-height: 100rpx;
+  padding: 0rpx 31rpx;
+}
+.right_box{
+	height: 100rpx;
+}
+.row_moreIcon{
+	display: block;
+	width: 13rpx;
+	height: 24rpx;
+	margin-top: 38rpx;
+}
+.form_title{
+	height: 100rpx;
+	line-height: 100rpx;
+}
+.form_input{
+	height: 100rpx;
+	width: 450rpx;
+	line-height: 100rpx;
+	min-height: 100rpx;
+	margin-left: 60rpx;
+}
+.textarea{
+	width: calc(100% - 60rpx);
+	margin-top: 20rpx;
+	height: 300rpx;
+	padding: 0 0 40rpx;
+}
+.intro_title,textarea{
+	width: 100% ;
+	background-color: #fff;
+	padding: 0 30rpx;
+}
+.intro_title{
+	height: 86rpx;
+	line-height: 86rpx;
+}
+textarea{
+	height: calc(100% - 86rpx);
+}
+.plstrye{
+  padding: 0 28rpx;
+  font-size: 26rpx;
+  color: #999999;
+}
+.submitBox{
+	width: 100vw;
+	padding-bottom: 48rpx;
+}
+.review{
+	width: 690rpx;
+	height: 98rpx;
+	background: linear-gradient(to bottom right, #FE7293, #FF5874);
+	text-align: center;
+	line-height: 98rpx;
+	color: white;
+	font-size: 34rpx;
+  border-radius: 8rpx;
+  margin: 0 auto;
+}

@@ -1,0 +1,42 @@
+<div class="expandweb-title"> <span>可以用于不同渠道推广和查看效果</span>
+	<div class="fr">
+		<a class="btn btn-border background-color-width-change" ng-click="addExpandWeb(expandWebs)" ng-show="expandWebs.length"> <span class="eqf-plus2"></span> 添加扩展网址 </a>
+		<a class="btn btn-border background-color-width-change" ng-href="#/spread/statistics/{{scene.id}}" ng-show="expandWebs.length"> <span class="eqf-date"></span> 查看推广效果 </a>
+	</div>
+</div>
+<div class="expandweb-area" auto-focus-selected>
+	<div class="expand-web-option add-web text-center" ng-show="!expandWebs.length && !branchid">
+		<a ng-click="addExpandWeb(expandWebs)"> <span class="eqf-plus2"></span> 添加扩展网址 </a>
+	</div>
+	<div class="expand-web-option expand-web mt20 p20" ng-repeat="expandWeb in expandWebs" switch-input obj="expandWeb">
+		<div class="qr-size fl" qr-code-size="80" qr-url="{{selectedUrl + '?qrc=' + expandWeb.id}}"> </div>
+		<div class="expand-name expand-col fl">
+			<div class="title">扩展名称</div>
+			<div class="content" ng-show="!expandWeb.showinput">{{expandWeb.name}}</div>
+			<div ng-show="expandWeb.showinput"> <input type="text" ng-model="expandWeb.name" ng-focus="recordName(expandWeb.name)" ng-blur="updateName(expandWeb)"> </div>
+		</div>
+		<div class="expand-url expand-col fl">
+			<div class="title">扩展网址</div>
+			<div class="clearfix">
+				<div class="content fl">{{selectedUrl + '?qrc=' + expandWeb.id}}</div>
+				<a class="btn btn-border ml20 copy-btn" copy-button url="{{selectedUrl + '?qrc=' + expandWeb.id}}"> <span class="copy-span">                        <span class="eqf-scene-copy" url="{{selectedUrl + '?qrc=' + expandWeb.id}}" copy-button></span> &nbsp;复制链接 </span>
+				</a>
+			</div>
+		</div>
+		<div class="expand-pv expand-col fl">
+			<div class="title">展示</div>
+			<div class="content">{{expandWeb.showCount}}</div>
+		</div>
+		<div class="expand-ope expand-col fr pr20" ng-show="expandWeb.showinput">
+			<eqx-select class="select-sm select-contain mr20" model="qrcode.type" change="downloadQrcode(qrcode.type)">
+				<eqx-select-option value="null">下载二维码</eqx-select-option>
+				<eqx-select-option value="qrcodeObj" ng-repeat="qrcodeObj in qrcodeList">{{qrcodeObj.name}}</eqx-select-option>
+			</eqx-select> <a class="fr" ng-click="deleteWeb($index, expandWeb)">删除</a> </div>
+		<div class="download-area" download-canvas>
+			<div class="qr-size" qr-code-size="256" qr-url="{{selectedUrl + '?qrc=' + expandWeb.id}}"> </div>
+			<div class="qr-size" qr-code-size="512" qr-url="{{selectedUrl + '?qrc=' + expandWeb.id}}"> </div>
+			<div class="qr-size" qr-code-size="1024" qr-url="{{selectedUrl + '?qrc=' + expandWeb.id}}"> </div>
+		</div>
+	</div>
+</div>
+</div>

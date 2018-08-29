@@ -1,0 +1,226 @@
+<div class="scene-setting-component">
+	<div class="setting-bg"></div>
+	<div class="left-con" ng-mousedown="closeSetting($event)">
+		<div class="phone-view nr" scene-view id="phoneView" scene-id="{{sceneId}}" scene-name="{{scene.name}}" scene-cover="{{PREFIX_FILE_HOST + scene.cover}}" scene-description="{{scene.description}}" ng-click="$event.stopPropagation()" ng-mousedown="$event.stopPropagation()">
+			</div>
+		<div class="phone" ng-click="$event.stopPropagation()" ng-mousedown="$event.stopPropagation()">
+			<h4 class="name" ng-if="showPhoneTitle">{{scene.name}}</h4>
+			<h4 class="name" ng-if="!showPhoneTitle">正在设置的内容用于微课分享时显示</h4> </div>
+		<div ng-if="!islongpage">
+			<div class="ctrl-panel" ng-click="$event.stopPropagation()" ng-mousedown="$event.stopPropagation()">
+				<!--             <div class="ctrl-left" ng-class="{enabled:phonePageMode=='EW'}" ng-click="prePage(1)"></div>            <div class="ctrl-right" ng-class="{enabled:phonePageMode=='EW'}" ng-click="nextPage(1)"></div> -->
+				<a class="next-page" ng-click="nextPage()">下一页</a> <a class="pre-page" ng-click="prePage()">上一页</a> 
+			</div>
+			</div>
+		<div class="phone" ng-click="$event.stopPropagation()" ng-mousedown="$event.stopPropagation()">
+			<h4 class="name" ng-if="showPhoneTitle">{{scene.name}}</h4>
+			<h4 class="name" ng-if="!showPhoneTitle">正在设置的内容用于微课分享时显示</h4> </div>
+		<div ng-if="!islongpage">
+			<div class="ctrl-panel" ng-click="$event.stopPropagation()" ng-mousedown="$event.stopPropagation()">
+				<!--             <div class="ctrl-left" ng-class="{enabled:phonePageMode=='EW'}" ng-click="prePage(1)"></div>            <div class="ctrl-right" ng-class="{enabled:phonePageMode=='EW'}" ng-click="nextPage(1)"></div> -->
+				<a class="next-page" ng-click="nextPage()">下一页</a> <a class="pre-page" ng-click="prePage()">上一页</a> 
+			</div>
+		</div>
+	</div>
+	<div class="scene-setting-info fade" ng-init="tabid='customset'">
+		<div class="form-contain">
+			<ul class="nav nav-tabs">
+				<li ng-class="{active:tabid=='customset'}"><a ng-click="tabid='customset'">常用设置</a></li>
+				<li ng-class="{active:tabid=='shareset'}"><a ng-click="tabid='shareset'">分享设置</a></li>
+				<li ng-class=" {active:tabid=='companyset'}"><a ng-click="tabid='companyset'">高级设置</a></li>
+			</ul>
+			<div style="position: fixed;top: 40px;bottom: 80px;left: 0;right: 0;">
+				<form class="form-horizontal" role="form" eqd-scroll style="height: 100%;" name="myForm" ng-show="tabid=='customset'" novalidate disable-mouse="true" prevent-exception="true">
+					<div class="basic-setting clearfix">
+						<div class="content clearfix">
+							<div class="basic-info clearfix">
+								<div class="left">
+									<div class="cover-img">
+										<a ng-click="openImageModal();" ng-if="userProperty.type ==2 || userProperty.p_type ==2"> <img ng-src="{{PREFIX_FILE_HOST +  scene.cover}}" /> <em>更换封面</em> </a>
+										<a ng-if="userProperty.type !=2 && userProperty.p_type !=2"> <img ng-src="{{PREFIX_FILE_HOST +  scene.cover}}" /></a>
+									</div>
+								</div>
+								<div class="right">
+									<div class="setting-group setting-name"> 
+										<em style="margin-bottom:5px;">标题</em>
+										<div class="setting-value"> 
+											<input name="name" type="text" class="form-control name" ng-class="{redborder:(!scene.name || countCharacters(scene.name.trim())>48)}" id="name" placeholder="微课名称" ng-change="changeSceneName();maxLength24()" ng-focus="changeView()" ng-model="scene.name" stop-propagation> 
+											<span class="input-tip">{{(scene.name?countCharacters(scene.name.trim()):0)}}/48</span> 
+										</div>
+									</div>
+									<div class="setting-group setting-description"> 
+										<em style="line-height:48px;">描述</em>
+										<div class="setting-value"> 
+											<textarea style="font-size:12px;" placeholder="点击添加描述即可在左侧同步看到最终分享时的效果" ng-model="scene.description" class="description form-control" rows="2" id="description" ng-focus="changeView()" name="description" ng-change="maxLength30()" stop-propagation></textarea>											
+										</div>
+									</div>
+								</div>
+							</div>
+							<h6 class="des mt20">微课类型</h6>
+							<!-- <h6 class="des" style="margin-left:200px;">类型标签</h6> -->
+							<div class="setting-group setting-flip">
+								<div class="setting-line">
+									<div class="scene-type-contain select-up-show border">
+										<eqx-select class="select-great select-contain" model="scene.type">
+											<eqx-select-option value="type.value" ng-repeat="type in types">{{type.name}}</eqx-select-option>
+										</eqx-select>
+									</div>
+								</div>
+								<h6 class="des mt20" ng-if="!islongpage">翻页方式</h6>
+								<div class="setting-line" ng-if="!islongpage">
+									<div class="scene-type-contain select-up-show border">
+										<eqx-select class="select-great select-contain" change="changePageMode()" model="scene.pageMode">
+											<eqx-select-option value="pagemode.id" ng-repeat="pagemode in pagemodes">{{pagemode.name}}</eqx-select-option>
+										</eqx-select>
+									</div>
+									<div class="music-cycle border" ng-class="{checkedbg: !scene.property.triggerLoop}">
+										<div class="checkbox-square" ng-class="{checked: scene.property.triggerLoop}"> 
+											<em class="eqf-yes2"></em> 
+											<input type="checkbox" ng-change="changeLoop()" ng-model="scene.property.triggerLoop" name="iCheck"> </div> 
+											<em>循环播放</em> 
+										</div>
+									<div class="music-cycle border" ng-class="{checkedbg: !scene.property.autoFlip}">
+										<div class="checkbox-square" ng-class="{checked: scene.property.autoFlip}"> 
+											<em class="eqf-yes2"></em> 
+											<input type="checkbox" ng-change="changeAutoFlip()" ng-model="scene.property.autoFlip"> 
+										</div> 
+										<em>自动播放</em> 
+									</div>
+									<div class="flip-num" style="width:120px;" ng-if="scene.property.autoFlip"> 
+										<input type="number" ng-change="changeAutoFlip()" class="form-control" min="0" max="60" limit-input ng-model="scene.property.autoFlipTime" stop-propagation/> 
+										<span class="speed">秒</span> 
+									</div>
+								</div>
+								<div style="position: relative;height: 30px;line-height: 30px;">
+									<h6 class="des" style="position: absolute; left: 0;top: 10px;">微课音乐</h6>
+									<h6 class="des mt20" style="position: absolute; left: 200px; top: -10px;" ng-if="!islongpage">微课页码</h6></div>
+								<div class="setting-line" style="margin-bottom:20px;">
+									<div class="scene-music" style="position:relative"> 
+										<span class="form-control bg-music ellipsis" style="padding-top: 9px;" ng-click="openAudioModal()">{{(!!scene.bgAudio) ? (scene.bgAudio.name ? scene.bgAudio.name : ('已添加')) : ('微课音乐')}}</span> 
+										<span class="eqf-top-music music-icon" ng-click="openAudioModal()"></span>										
+									</div>
+									<div class="music-cycle border" ng-class="{checkedbg: !scene.property.slideNumber,uncheckedbg:scene.property.slideNumber}" ng-if="!islongpage">
+										<div class="checkbox-square" ng-class="{checked: scene.property.slideNumber}"> 
+											<em class="eqf-yes2"></em> 
+											<input type="checkbox" ng-change="changeProgess()" ng-model="scene.property.slideNumber"> 
+										</div> 
+										<em>显示</em> 
+									</div>
+								</div>
+								<div>
+									<h6 class="des" style="float:left;width:550px;">评论设置</h6>
+								</div>
+								<div class="setting-line" style="margin-bottom:50px;">
+									<div class="music-cycle border" ng-class="{checkedbg: !scene.property.iftanmu}" style="margin-left:0px;margin-top:10px;">
+										<div class="checkbox-square" ng-class="{checked: scene.property.iftanmu}"> 
+											<em class="eqf-yes2"></em> 
+											<input type="checkbox" ng-change="changetanmu()" ng-model="scene.property.iftanmu" name="iCheck"> </div> 
+											<em>是否显示评价</em> 
+										</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+				<form class="form-horizontal" role="form" eqd-scroll style="height: 100%;" name="myForm" ng-show="tabid=='shareset'" novalidate>
+					<div class="basic-setting clearfix">
+						<div class="content clearfix">
+							<h6 class="des mt20">微课访问状态</h6>
+							<!-- <h6 class="des" style="margin-left:200px;">类型标签</h6> -->
+							<div class="setting-group setting-flip">
+								<div class="setting-line">
+									<div class="scene-type-contain border">
+										<eqx-select class="select-great select-contain" change="changeSceneState()" model="sceneStatue">
+											<eqx-select-option value="1">允许访问</eqx-select-option>
+											<eqx-select-option value="2">不允许访问</eqx-select-option>
+											<eqx-select-option value="3" ng-if="scene.applyTemplate!=2 && isScenePasswordAccessible">加密访问</eqx-select-option>
+										</eqx-select>
+									</div>
+									<div class="flip-num" ng-if="sceneStatue == 3"> 
+										<input type="text" maxlength="4" class="form-control password" id="accessCode" placeholder="请设置4位数字的密码" ng-change="fourNumberPassword();changeCode();" ng-model="scene.accessCode" maxlength="4" ng-change="fourNumberPassword()" stop-propagation ng-disabled="scene.applyPromotion == '1' || oldSceneApplyState.applyPromotion == '1' || oldSceneApplyState.applyPromotion == '2' || scene.applyTemplate == '1' || oldSceneApplyState.applyTemplate == '1' || oldSceneApplyState.applyTemplate == '2' || scene.isShow == '1' || scene.promIds">										
+									</div>
+								</div>
+								<h6 class="des mt20">微学宝分享</h6>
+								<div class="setting-line">
+									<div class="form-col2 border hint--right hint--rounded" data-hint="{{scene.publishTime?'申请加入微课广场':'发布后才能申请'}}" ng-class="{checkedbg: scene.isShow!=1,uncheckedbg:scene.isShow==1}">
+										<div class="checkbox-square" ng-class="{checked: scene.isShow==1}"> 
+											<em class="eqf-yes2"></em> 
+											<input id="eqShowGround" type="checkbox" class="option" ng-true-value="1" ng-false-value="0" ng-model="scene.isShow" ng-disabled="sceneStatue==2 || sceneStatue==3 || !scene.publishTime || $parent.scene.isShow==1 || $parent.scene.isShow==2 || scene.status == -1 && scene.status == -2">											
+										</div> 
+										<em>申请加入微课广场</em> 
+									</div>
+									<div class="scene-type-contain border ml20" ng-if="scene.isShow==1">
+										<eqx-select class="select-great select-contain" change="changeTagId()" model="scene.tagId">
+											<eqx-select-option value="null">选择类型</eqx-select-option>
+											<eqx-select-option value="sceneTag.id" ng-repeat="sceneTag in sceneTags">{{sceneTag.name}}</eqx-select-option>
+										</eqx-select>
+									</div> 
+									<a class="logo-tip" target="_blank" href="#/show" style="text-decoration:underline;position:absolute;right:20px;">访问微课</a> 
+								</div>
+								<div class="setting-line">
+									<div class="form-col2 border hint--right hint--rounded" data-hint="{{scene.publishTime?'申请为系统模板':'发布后才能申请'}}" ng-class="{checkedbg: scene.isSysTpl!=1,uncheckedbg:scene.isSysTpl==1}">
+										<div class="checkbox-square" ng-class="{checked: scene.isSysTpl==1}"> 
+											<em class="eqf-yes2"></em> 
+											<input id="eqShowGround" type="checkbox" class="option" ng-true-value="1" ng-false-value="0" ng-model="scene.isSysTpl" ng-disabled="sceneStatue==2 || sceneStatue==3 || !scene.publishTime || $parent.scene.isSysTpl==1 || $parent.scene.isSysTpl==2 || scene.status == -1 && scene.status == -2">
+										</div> 
+										<em>申请为系统模板</em> 
+									</div>
+									<div class="scene-type-contain border ml20" ng-if="scene.isSysTpl==1">
+										<eqx-select class="select-great select-contain" change="changeTagId()" model="scene.tagId">
+											<eqx-select-option value="null">选择类型</eqx-select-option>
+											<eqx-select-option value="sceneTag.id" ng-repeat="sceneTag in sceneTags">{{sceneTag.name}}</eqx-select-option>
+										</eqx-select>
+									</div>
+								</div>
+								<div class="setting-line">
+									<div class="form-col2 border hint--right hint--rounded" data-hint="{{scene.publishTime?'申请首页推荐':'发布后才能申请'}}" ng-class="{checkedbg: scene.isShowIndex!=1,uncheckedbg:scene.isShowIndex==1}">
+										<div class="checkbox-square" ng-class="{checked: scene.isShowIndex==1}"> 
+											<em class="eqf-yes2"></em> 
+											<input id="eqShowGround" type="checkbox" class="option" ng-true-value="1" ng-false-value="0" ng-model="scene.isShowIndex" ng-disabled="sceneStatue==2 || sceneStatue==3 || !scene.publishTime || $parent.scene.isShowIndex==1 || $parent.scene.isShowIndex==2 || scene.status == -1 && scene.status == -2">	
+										</div> 
+										<em>申请首页推荐</em> 
+									</div>
+									<div class="scene-type-contain border ml20" ng-if="scene.isShowIndex==1">
+										<eqx-select class="select-great select-contain" change="changeTagId()" model="scene.tagId">
+											<eqx-select-option value="null">选择类型</eqx-select-option>
+											<eqx-select-option value="sceneTag.id" ng-repeat="sceneTag in sceneTags">{{sceneTag.name}}</eqx-select-option>
+										</eqx-select>
+									</div>
+								</div>
+								<div class="last-page-contain" ng-if="appendActive">
+									<div eqd-scroll style="height: 100%;">
+										<ul>
+											<li class="last-cover-img" ng-repeat="pageTpl in activityPageTpls" ng-click="chooseActivityPageTpl(pageTpl.id)"> 
+												<img class="lp-list" ng-src="{{PREFIX_FILE_HOST + pageTpl.properties.thumbSrc}}" />
+												<div class="checkbox-square" ng-class="{checked: scene.property.activityPageId == pageTpl.id}"> 
+													<em class="eqf-yes2"></em> 
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+				<form eqd-scroll style="height: 100%;" class="form-horizontal setting-group" role="form" name="myForm" ng-show="tabid=='companyset'" novalidate>
+					<div class="basic-setting clearfix">
+						<h6 class="des mt20" ng-if="userProperty.type !=1 && userProperty.type !=23">加载设置</h6>
+						<div class="setting-line mr20" ng-if="userProperty.type !=1 && userProperty.type !=23" style="border-bottom:1px solid #ccd5db;height:56px;margin-top:20px;">
+							<div class="form-col2 border" ng-class="{checked: !loadingLogo,uncheckedbg: loadingLogo}">
+								<div class="checkbox-square" ng-click="changeLogo()" ng-class="{checked: loadingLogo}"> 
+									<em class="eqf-yes2"></em> 
+									<input type="checkbox"> 
+								</div> 
+								<em>自定义加载logo</em> 
+							</div>
+							<div class="setting-logo border" ng-if="loadingLogo" ng-click="uploadLoadingLogo()">
+								<div class="load-logo-contain"> 
+									<img ng-if="!scene.loadingLogo" ng-src="{{CLIENT_CDN}}assets/images/create/pic.svg"> 
+									<img ng-if="scene.loadingLogo" ng-src="{{PREFIX_FILE_HOST + scene.loadingLogo}}"> 
+								</div> 
+								<span class="des">设置加载logo</span> 
+							</div>
+						</div>
+					</div>
+					<h6 style="visibility:hidden;" class="des mt20"></h6>

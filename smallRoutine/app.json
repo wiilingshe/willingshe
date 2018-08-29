@@ -1,0 +1,74 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/home/home",
+    "pages/logs/logs",
+    "pages/list/list",
+    "pages/task/task",
+    "pages/personalCenter/personalCenter",
+    "tasks/taskList/taskList",
+    "login/apply/apply",
+    "tasks/search/search",
+    "user/userInfo/userInfo",
+    "user/bindPhone/bindPhone",
+    "user/notice/notice",
+    "user/issue/issue",
+    "user/publish/publish",
+    "user/wallet/wallet",
+    "user/withdraw/withdraw",
+    "user/withdrawDetails/withdrawDetails",
+    "user/invite/invite",
+    "user/assessment/assessment",
+    "tasks/contacts/contacts",
+    "tasks/cinema/cinema",
+    "tasks/cinemaCommunication/cinemaCommunication",
+    "tasks/cinemaResources/cinemaResources",
+    "tasks/cinemaWork/cinemaWork",
+    "tasks/cinemaInspection/cinemaInspection",
+    "tasks/cinemaAdditional/cinemaAdditional",
+    "component/taskSubmit/taskSubmit",
+    "tasks/card/card",
+    "home/myissued/myissued",
+    "home/allCity/allCity",
+    "login/review/review"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "backgroundColor": "#f5f5f5",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#FF4D63",
+    "backgroundColor": "#fff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "iconPath": "static/img/tab/home_icon1.png",
+        "selectedIconPath": "static/img/tab/home_icon1_hover.png",
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "iconPath": "static/img/tab/home_icon2.png",
+        "selectedIconPath": "static/img/tab/List_icon2_hover.png",
+        "pagePath": "pages/list/list",
+        "text": "榜单"
+      },
+      {
+        "iconPath": "static/img/tab/home_icon3.png",
+        "selectedIconPath": "static/img/tab/task_icon3_hover.png",
+        "pagePath": "pages/task/task",
+        "text": "任务"
+      },
+      {
+        "iconPath": "static/img/tab/home_icon4.png",
+        "selectedIconPath": "static/img/tab/my_icon4_hover.png",
+        "pagePath": "pages/personalCenter/personalCenter",
+        "text": "我的"
+      }
+    ]
+  },
+  "extEnable": true
+}

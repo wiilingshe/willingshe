@@ -1,0 +1,9 @@
+{
+	"navigationBarTitleText": "影片详情",
+	"backgroundTextStyle": "dark",
+	"navigationBarBackgroundColor": "#fff",
+	"backgroundColor": "#fff",
+	"navigationBarTextStyle": "black",
+	"disableScroll":false,
+	"enablePullDownRefresh": true
+}

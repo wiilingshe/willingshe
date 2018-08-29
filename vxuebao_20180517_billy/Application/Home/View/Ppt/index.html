@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<!--http://local.vxuebao.com/index.php?c=Ppt&a=index<br />-->
+只能上传.pptx后缀文件，PPT版本大于2007，最大10M<br />
+PPT压缩方法：点击左上角的OFFICE按钮，选择另存为。点击“保存按钮”旁边的工具，选择压缩图片。在选项中勾选所有压缩选项，目标输出选择“屏幕”
+<form action="{:U('Ppt/upload')}" enctype="multipart/form-data" method="post" >
+<input type="file" name="photo" />
+<input type="submit" value="提交" >
+</form>
+<br />
+<form action="{:U('Ppt/change2')}" enctype="application/x-www-form-urlencoded" method="post" >
+title<input name="title" type="text" value="111"/><br />
+desc<input name="desc" type="text" value="222" /><br />
+photo<input name="photo" type="text" value="333" /><br />
+ppturl<input name="ppturl" type="text" value="ppt/201609/57eb7ca5022fe.pptx" /><br />
+
+
+<input type="submit" value="提交" >
+</form>
+</body>
+</html>

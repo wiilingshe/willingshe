@@ -1,0 +1,94 @@
+<div class="btn-toolbar" id="btn-toolbar" data-role="editor-toolbar">
+	<div id="fontFamily" class="btn-group multifont" ng-show="showCustomFamilyFont">
+		<div class="dropdown font-dropdown"> 
+			<a class="btn dropdown-toggle hint--bottom hint--rounded" data-toggle="dropdown" data-hint="多字体">
+				<span>微软雅黑</span><b class="caret caret-up"></b><b class="caret caret-down"></b>
+			</a>
+			<ul class="dropdown-menu fontname-menu" style="max-height: 350px;overflow-y:auto;"> </ul>
+		</div>
+	</div>
+	<div class="btn-group">
+		<div class="dropdown">
+			<a class="btn dropdown-toggle first-child hint--bottom hint--rounded" data-toggle="dropdown" data-hint="字体大小"> 
+				<i style="position: relative;top: 2px;" class="icon iconfont icon-wenzi1"></i> &nbsp; <b class="caret"></b> 
+			</a>
+			<ul class="dropdown-menu size-menu">
+				<li> <a dropdown-toggle data-edit="fontSize 96px">                        96px                    </a> </li>
+				<li> <a dropdown-toggle data-edit="fontSize 64px">                        64px                    </a> </li>
+				<li> <a dropdown-toggle data-edit="fontSize 48px">                        48px                    </a> </li>
+				<li> <a dropdown-toggle data-edit="fontSize 32px">                        32px                    </a> </li>
+				<li> <a dropdown-toggle data-edit="fontSize 24px">                        24px                    </a> </li>
+				<li> <a dropdown-toggle data-edit="fontSize 20px">                        20px                    </a> </li>
+				<li> <a dropdown-toggle data-edit="fontSize 18px">                        18px                    </a> </li>
+				<li> <a dropdown-toggle data-edit="fontSize 16px">                        16px                    </a> </li>
+				<li> <a dropdown-toggle data-edit="fontSize 14px">                        14px                    </a> </li>
+				<li> <a dropdown-toggle data-edit="fontSize 13px">                        13px                    </a> </li>
+				<li> <a dropdown-toggle data-edit="fontSize 12px">                        12px                    </a> </li>
+			</ul>
+		</div>
+	</div>
+	<div class="btn-group">
+		<div class="dropdown">
+			<a class="btn dropdown-toggle hint--bottom hint--rounded" data-toggle="dropdown" data-hint="字体颜色"> 
+				<i class="icon iconfont icon-wenzi"></i> &nbsp; <b class="caret"></b> 
+			</a>
+			<ul class="dropdown-menu color-menu"> </ul>
+		</div>
+	</div>
+	<div class="btn-group">
+		<div class="dropdown">
+			<a class="btn dropdown-toggle hint--bottom hint--rounded" data-toggle="dropdown" data-hint="背景颜色"> 
+				<span class="bg-box"><i></i></span> &nbsp; <b class="caret" style="bottom: 5px;right: 11px;"></b> 
+			</a>
+			<ul class="dropdown-menu bgcolor-menu"> </ul>
+		</div>
+	</div>
+	<div class="btn-group" style="line-height: 31px;">
+		<a class="btn hint--bottom hint--rounded" data-edit="bold" data-hint="加粗"> <i style="ont-size: 16px;position: relative;top: 3px;" class="eqf-b"></i> </a>
+	</div>
+	<div class="btn-group">
+		<a class="btn hint--bottom hint--rounded" data-edit="justifyleft" data-hint="居左"> <i class="icon iconfont icon-iconzuoduiqi"></i> </a>
+		<a class="btn hint--bottom hint--rounded" data-edit="justifycenter" data-hint="居中"> <i class="icon iconfont icon-iconjuzhongduiqi"></i> </a>
+		<a class="btn hint--bottom hint--rounded" data-edit="justifyright" data-hint="居右"> <i class="icon iconfont icon-iconyouduiqi"></i> </a>
+	</div>
+	<div class="btn-group">
+		<a class="btn hint--bottom hint--rounded" ng-click="increaseLineHeight()" data-hint="增大行间距"> <i class="reset-sign sign-bigger"></i> </a>
+		<a class="btn hint--bottom hint--rounded" ng-click="decreaseLineHeight()" data-hint="减小行间距"> <i class="reset-sign sign-smaller"></i> </a>
+	</div>
+	<div class="btn-group font-link" ng-show="showLinkOption" style="line-height: 38px;">
+		<div class="dropdown"> 
+			<a class="btn dropdown-toggle createLink hint--bottom hint--rounded" data-toggle="dropdown" sceneid="{{sceneId}}" data-hint="添加超链接：先选中要加链接的文字">
+				<i class="eqf-link"></i>
+			</a>
+			<div class="dropdown-menu input-append" style="min-width: 485px;padding:20px;left: -200px;">
+				<div class="span4" style="margin-top:10px;" ng-init="link='external'">
+					<div class="radio-square" ng-class="{checked:link=='external'}" style="margin-top:13px;"> 
+						<em></em> <input name="external" ng-model="link" class="span2" type="radio" value="external"> 
+					</div>
+					<!-- <input name = "external" ng-model = "link" class = "span2" type = "radio" value = "external" style="vertical-align:middle;margin:0px;">  -->
+					<span>网站地址：</span> 
+					<input class="span2" placeholder="URL" sceneid="{{sceneId}}" type="text" data-edit="createLink" value="http://" style="border-radius:0px;width:230px;height:35px;border-color: #66cc00;padding-left: 10px;" /> 
+					<a href="http://dwz.cn/" class="make-short-link" target="_blank"> <span>生成短链接</span> </a>
+				</div>
+				<!-- <input class="span2" placeholder="URL" sceneid="{{sceneId}}" type="text" data-edit="createLink" value="http://"/>   -->
+				<div class="span4" style="margin-top: 25px;">
+					<div class="radio-square" ng-class="{checked:link=='internal'}" style="margin-top:13px;"> 
+						<em></em> <input name="internal" ng-model="link" class="span2" type="radio" value="internal"> 
+					</div>
+					<!-- <input name = "internal" ng-model = "link" class = "span2" type = "radio" value = "internal" style="vertical-align:middle;margin:0px;">  -->
+					<span>微课页面：</span> 
+					<select class="span2" style="width: 230px;height:35px;border-color: #66cc00;padding-left: 7px;" ng-options="page.name for page in internalLinks" sceneid="{{sceneId}}" data-edit="createLink" pageid="{{internalLink.id}}" ng-model="internalLink"></select> 
+				</div>
+				<div class="modal-footer" style="text-align:center;margin-top: 5px;padding: 0;">
+					<a class="modal-submit" style="color:#FFF; margin-top:20px;" dropdown-toggle>确定</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="btn-group" ng-show="showLinkOption" style="line-height: 38px;"> 
+		<a class="btn hint--bottom hint--rounded" data-edit="unlink" data-hint="清除超链接"><i class="eqf-linkout"></i></a> 
+	</div>
+	<div class="btn-group">
+		<a class="btn last-child hint--bottom hint--rounded" data-edit="RemoveFormat" data-hint="清除样式"> <i class="reset-sign sign-clear"></i> </a>
+	</div>
+</div>

@@ -1,0 +1,67 @@
+<!--user/wallet/wallet.wxml-->
+<block wx:if="{{haveData}}">
+	<view class="wallet_box">
+		<view class="top">
+			<view class="balance fl">
+				<view class="piece br">
+					<view class="text-c topTitle">余额（元）</view>
+					<view class="text-c amount">{{balance}}</view>
+					<!-- <view class="goWithdraw" >提现</view> -->
+				</view>
+			</view>
+			<view class="withdraw fl">
+				<view class="piece">
+					<view class="text-c topTitle">待提现</view>
+					<view class="text-c amount">{{usable_balance}}</view>
+				</view>
+			</view>
+		</view>
+		<scroll-view scroll-y class="body" bindscrolltolower="lower">
+			<view class="headerTitle">收益记录</view>
+			<!-- <block wx:if="{{dataType==1}}" wx:for="{{list1}}" wx:key="">
+				<view class="item">
+					<view class="picBox">
+						<view class="state processing">发行中</view>
+						<image class="poster" src="{{item.bill_pic}}"></image>
+					</view>
+					<view class="textBox">
+						<view class="textTitle">{{item.name}}</view>
+						<view class="issue">项目底薪：<text>{{item.base_commission}}元</text></view>
+						<view class="issue">项目奖励：<text>{{item.bonus}}元</text></view>
+						<view class="issue"><text class="income">+{{item.total_bonus}}</text></view>
+					</view>
+				</view>
+			</block>
+			<block wx:if="{{dataType==2}}" wx:for="{{list2}}" wx:key="">
+				<view class="item">
+					<view class="picBox">
+						<image class="poster" src="{{pic}}"></image>
+					</view>
+					<view class="textBox">
+						<view class="textTitle">{{item.income_title}}</view>
+						<view class="issue"><text>{{item.create_time}}</text></view>
+						<view class="issue"><text class="income">+{{item.fee}}</text></view>
+					</view>
+				</view>
+			</block> -->
+			<!-- <view class="item">
+				<view class="picBox">
+					<image class="poster" src="{{pic}}"></image>
+					<view class="state over">已结束</view>
+				</view>
+				<view class="textBox">
+					<view class="textTitle">复仇者联盟</view>
+					<view class="issue">项目底薪：<text>50元</text></view>
+					<view class="issue">项目奖励：<text>50元</text></view>
+					<view class="issue"><text class="income">+100.00</text></view>
+				</view>
+			</view> -->
+			<view class="nodata" wx:if="{{nodata}}">
+				<image src="{{nodataImg}}"></image>
+				<view class="noMore">暂无内容</view>
+			</view>
+			<view class="noMore" wx:if="{{noMore}}">没有更多数据了</view>
+		</scroll-view>
+	</view>
+</block>
+

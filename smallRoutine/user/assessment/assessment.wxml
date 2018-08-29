@@ -1,0 +1,5 @@
+<!--user/assessment/assessment.wxml-->
+<import src="../../utils/wxParse/wxParse.wxml"/> 
+<scroll-view class="assessBox" scroll-y>
+	<template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+</scroll-view>

@@ -1,0 +1,49 @@
+ <div class="header-fixed">
+      <div class="header">
+        <div class="logo">
+          <a href="#">
+            <img src="/index/images/logo.png">
+          </a>
+        </div>
+        <div class="wrap">
+          <div class="header-nav">
+            <ul class="nav">
+              <li><a href="/">首页</a></li>
+             <!--  <li><a href="/img/game.html">微课大赛</a></li> -->
+              <!-- <li {:basename($_SERVER['REQUEST_URI']) == 'designer' ? 'class="current"' : ''}><a  href="/designer/">设计师</a></li> -->
+              <li><a href="/show/">微课广场</a></li>
+              <!-- <li><a href="http://bbs.vxuebao.com/forum.php?gid=37">微课魔法书</a></li> -->
+              <li {$_SERVER['REQUEST_URI'] == $link ? 'class="current"' : ''}><a  href="/school/">微学堂</a></li>
+              <!--<li><a href="/img/price.html">服务价格</a></li>-->
+              <li><a target="_blank" href="http://bbs.vxuebao.com/forum.php">V粉社区</a></li>
+             <!--  <li <?php if(strstr($_SERVER['REQUEST_URI'],'lecturer')){ echo 'class="current"';}?>><a href="/lecturer/">找讲师</a></li>
+              <li><a href="javascript:" class="dowmload_app">APP下载</a></li> -->
+          </ul>
+           <div class="app_div">
+                <ul class="app_ul">
+                    <li class="point_ico"></li>
+                    <li>
+                        <h1>APP下载vxuebao</h1>
+                        <img src="/Uploads/app_ico.png" />
+                        <img class="app_code" src="/Uploads/app_code.png"  />
+                    </li>
+                    <li class="inter">
+                       <h2>Android版下载</h2>
+                       <p>版本V1.0  大小是3.7M</p>
+                       <p>支持Andriod4.0以上版本</p> 
+                    </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+        <div class="login">
+          <if condition="$use eq 1">
+            <a href="http://www.vxuebao.com/#/main" class="l">进入</a>
+            <a href="/index.php?c=user&a=logout" class="r">退出</a>
+          <else />  
+            <a class="l" data-toggle="modal" data-target="#loginModal" onClick="clearAlertText()">登录</a>
+            <a class="r" data-toggle="modal" data-target="#regModal" onClick="cleaerErrorText()">注册</a>
+          </if>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,44 @@
+<div>
+	<div ng-include="'/Public/eq/6.0/templates/header.tpl.html'"></div>
+		<div class="form_main">
+			<div class="form_center">
+				<!-- <a ng-click="create()">问卷</a>
+				<a ng-click="createTest()">考试</a> -->
+				<ul>
+					<li ng-click="create()" style="border:1px solid #fff;">
+						<a>空白创建</a>
+						<p><img src="/assets/images/form_null_ico.png" /></p>
+						<button><img src="/assets/images/form_new_ico.png" /> 新建</button>
+					</li>
+					<li class="center_li" style="border:1px solid #fff;" ng-click="viewTpl()">
+						<a href="#/form/tem">模板中心</a>
+						<p><img src="/assets/images/form_tem_ico.png" /></p>
+						<button><img src="/assets/images/form_new_ico.png" /> 查看</button>
+					</li>
+					<li style="border:1px solid #fff;" ng-click="createTest()">
+						<a>创建考试</a>
+						<p><img src="/assets/images/form_test_ico.png" /></p>
+						<button><img src="/assets/images/form_new_ico.png" /> 新建</button>
+					</li>
+				</ul>
+				
+				<!-- <div class="center_bottom">
+					<a ng-click="myForm()">我的问卷</a>
+					<a ng-click="myTest()">我的考卷</a>
+				</div> -->
+			</div>
+		</div>
+
+	<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'"></div>
+</div>
+<script type="text/javascript">
+	$(function(){
+
+		$('.form_center li').mouseover(function(){
+			$(this).css('border','1px solid #66cc00');
+		});
+		$('.form_center li').mouseout(function(){
+			$(this).css('border','1px solid #fff');
+		});
+	})
+</script>

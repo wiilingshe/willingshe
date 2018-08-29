@@ -1,0 +1,44 @@
+<!-- 考场列表 -->
+<div ng-include="'/Public/eq/6.0/templates/header.tpl.html'" style="height:60px"></div>
+<div class="container" style="background-color: #fff;padding-left: 50px;padding-right: 50px;padding-top: 30px;margin-top:30px;padding-bottom: 30px;margin-bottom: 127px;">
+<div class="row">
+	<div class="all_title" style="margin-bottom: 30px;">
+		<p>考卷答案统计</p>
+	</div>
+	<div id="my_form">
+	<div class="col-md-2">考生id</div>
+	<div class="col-md-2">考场名称</div>
+	<div class="col-md-2">考生名字</div>
+	<div class="col-md-2">考试时间</div>
+	<div class="col-md-2">考试分数</div>
+	<div class="col-md-2">操作</div>
+	</div>
+	<div ng-repeat="list in lists" class="repeat_count">
+		<div class="test_count">
+			<div class="col-md-2 formFid">{{list.eid}}</div>
+			<div class="col-md-2" style="border-left:0px">{{list.etitle}}</div>
+			<div class="col-md-2" style="border-left:0px">{{list.eusername}}</div>
+			<div class="col-md-2" style="border-left:0px">{{list.estime}}</div>
+			<div class="col-md-2" style="border-left:0px">{{list.escore}}</div>
+			<div class="col-md-2" style="border-left:0px">
+				<button ng-click="marking($event)" class="see_btn">阅卷</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div style="float:right;margin-top: 30px;margin-bottom: 20px;" class="page_tpl">
+	<div class="pageNo" style="display:none">1</div>
+	<button class="form_page" style="margin-right:5px;" ng-click="firstPage($event)">首页</button>
+	<button class="form_page" style="margin-right:5px;" ng-click="prePage($event)"><</button>
+	<button ng-repeat="page in pages" ng-click="toPage($event)" class="form_page" class="repeat_page">{{page}}</button>
+	<button class="form_page" style="margin-left:5px;" ng-click="nextPage($event)">></button>
+	<button class="form_page" style="margin-left:5px;" ng-click="weiPage($event)">尾页</button>
+	<span class="fl" style="line-height:36px;margin-left:10px;margin-right:10px">到</span><input type="text" class="form_page" value="1"><span class="fl" style="line-height:36px;margin-left:10px;margin-right:10px">页</span><button class="form_page" ng-click="dingPage($event)">确定</button>
+</div>
+</div>
+<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'" style="margin-top: 30px;position: fixed;bottom: 0px;width: 100%;"></div>
+<style type="text/css">
+	body{
+	background-color: #f5f8ed;
+	}
+</style>

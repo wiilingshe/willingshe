@@ -1,0 +1,111 @@
+/* tasks/cinema/cinema.wxss */
+.top{
+  height: 200rpx;
+  padding: 0 30rpx 0 28rpx;
+  background: white;
+}
+
+.one{
+  padding-top: 44rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.title{
+  font-size: 30rpx;
+  color: #333333;
+  flex: 1;
+  height: 66rpx;
+  line-height: 66rpx;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  font-weight: 900;
+}
+.btn{
+  width: 170rpx;
+  height: 66rpx;
+  border-radius: 32rpx;
+  line-height: 66rpx;
+  text-align: center;
+  color: white;
+  font-size: 28rpx;
+  background: linear-gradient(to bottom right, #FE7293, #FF5874); 
+  box-shadow:2rpx 2rpx 10rpx #FF4D63;
+  z-index: 99;
+}
+.btn1{
+  width: 170rpx;
+  height: 66rpx;
+  border-radius: 32rpx;
+  line-height: 66rpx;
+  text-align: center;
+  color: white;
+  font-size: 28rpx;
+  background: linear-gradient(to bottom right, #97D47B, #7CBA5D); 
+  box-shadow:2rpx 2rpx 10rpx #96CE7C;
+}
+
+.two{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 26rpx;
+}
+.two>image{
+  width: 20rpx;
+  height: 24rpx;
+  margin-top: 4rpx;
+  margin-right: 8rpx;
+}
+.two>text{
+  flex: 1;
+  color: #666666;
+  font-size: 26rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.body{
+  padding: 30rpx;
+}
+.item{
+  height: 160rpx;
+  background: white;
+  border-radius: 10rpx;
+  box-shadow:2rpx 2rpx 20rpx #EEEEEE;
+  margin-bottom: 20rpx;
+  padding: 0 32rpx;
+}
+
+.itemTitle{
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: 900;
+  padding-top: 40rpx;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.itemContent{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.itemContent>text{
+  font-size:26rpx;
+  color: #666666;
+  height: 66rpx;
+  line-height: 66rpx;
+ 
+}

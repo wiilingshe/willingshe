@@ -1,0 +1,54 @@
+<div class="scratch-pre">
+	<div class="effect-img scratch-img" scratch-effect> <img ng-src="{{scratch.image.path}}" /> </div>
+</div>
+<div class="effect-form scratch-form" style="margin-left: 210px;" id="pageeffect_scratch_content">
+	<form class="form-contain" role="form">
+		<div class="form-list clearfix"> <label class="form-label" style="padding-top: 9px;">覆盖效果：</label>
+			<div class="form-input scratch-radio">
+				<!-- <eqx-select class="select-sm border-width select-contain" model="scratch.image" change="replaceImage(scratch)">
+					<eqx-select-option value="null">自定义</eqx-select-option>
+					<eqx-select-option value="scracthImage" ng-repeat="scracthImage in scratches">{{scracthImage.name}}</eqx-select-option>
+				</eqx-select> -->
+				<ul>
+					<li class="fl" ng-class="{checked: scratchName=='自定义'}" ng-click="changeImg(null)">
+						<div class="radio-square"> 
+							<em></em>
+						</div>
+						<label for="input_name">自定义</label>
+					</li>
+					<li class="fl" ng-class="{checked: scratchName==scracthImage.name}" ng-if="scracthImage.name" ng-repeat="scracthImage in scratches track by $index" ng-click="changeImg(scracthImage)">
+						<div class="radio-square"> 
+							<em></em>
+						</div>
+						<label for="input_name">{{scracthImage.name}}</label>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="form-list clearfix"> <label class="form-label">透明度：</label>
+			<div class="form-input">
+				<div class="scratch-bar">
+					<eqd-input-number ng-model='scratch.opacity' step='0.39' min='0' max='100' unit='%' ng-mouseenter="currentTipsIndex = 1" ng-mouseleave="currentTipsIndex = 0"></eqd-input-number>
+					<span style="width: {{256 * scratch.opacity}}px"><b></b></span>
+					<label>{{scratch.opacity | scratchNumber: 0 : '%'}}</label>
+				</div>
+			</div>
+			<div class="tooltip right" role="tooltip" ng-show="currentTipsIndex == 1">
+				<div class="tooltip-arrow"></div>
+				<div class="tooltip-inner">按住鼠标左键左右滑动可快速调整数值 </div><!--  双击鼠标可以输入数值， -->
+			</div>
+		</div>
+		<div class="form-list clearfix"> <label class="form-label">涂抹比例：</label>
+			<div class="form-input">
+				<div class="scratch-bar">
+					<eqd-input-number ng-model='scratch.percentage' step='0.39' min='0' max='100' unit='%' ng-mouseenter="currentTipsIndex = 1" ng-mouseleave="currentTipsIndex = 0"></eqd-input-number>
+					<span style="width: {{256 * scratch.percentage}}px"><b></b></span>
+					<label>{{scratch.percentage | scratchNumber: 0 : '%'}}</label>
+				</div>
+			</div>
+		</div>
+		<div class="form-list clearfix"> <label class="form-label">提示文字：</label>
+			<div class="form-input"> <input type="text" ng-model="scratch.tip" placeholder="{{'scene.create.scratch.LABEL_TIP' | translate}}" check-count="40" ng-keyup="$event.keyCode == 13 ? confirm() : null" autofocus stop-propagation style="width: 300px;height: 30px;margin-top: 5px;" /> </div>
+		</div>
+	</form>
+</div>

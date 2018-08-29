@@ -1,0 +1,50 @@
+<div class="effect-img"> 
+	<img ng-src="{{finger.bgImage.path}}" /> 
+	<img class="finger-zw" ng-src="{{finger.zwImage.path}}" /> 
+	<img class="finger-line" ng-src="{{CLIENT_CDN + 'view/images/finger_line.png'}}" finger-move>
+</div>
+<div class="effect-form" id="pageeffect_finger_content">
+	<form class="form-contain" role="form">
+		<div class="form-list clearfix"> <label class="form-label">背景图片：</label>
+			<!-- <div class="form-input">
+				<eqx-select class="select-sm border-width select-contain" model="finger.bgImage" change="replaceImg(finger)">
+					<eqx-select-option value="null">自定义</eqx-select-option>
+					<eqx-select-option value="bgImage" ng-repeat="bgImage in fingerBackgrounds">{{bgImage.name}}</eqx-select-option>
+				</eqx-select>
+			</div> -->
+			<div class="form-input scratch-radio">
+				<ul>
+					<li class="fl" ng-class="{checked: fingerBgName=='自定义'}" ng-click="changeImg(null)">
+						<div class="radio-square"> 
+							<em></em>
+						</div>
+						<label for="input_name">自定义</label>
+					</li>
+					<li class="fl" ng-class="{checked: fingerBgName==bgImage.name}" ng-if="bgImage.name" ng-repeat="bgImage in fingerBackgrounds track by $index" ng-click="changeImg(bgImage)">
+						<div class="radio-square"> 
+							<em></em>
+						</div>
+						<label for="input_name">{{bgImage.name}}</label>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="form-list clearfix"> <label class="form-label">指纹图片：</label>
+			<!-- <div class="form-input">
+				<eqx-select class="select-sm border-width select-contain" model="finger.zwImage">
+					<eqx-select-option value="zwImage" ng-repeat="zwImage in fingerZws">{{zwImage.name}}</eqx-select-option>
+				</eqx-select>
+			</div> -->
+			<div class="form-input scratch-radio">
+				<ul>
+					<li class="fl" ng-class="{checked: fingerName==zwImage.name}" ng-if="zwImage.name" ng-repeat="zwImage in fingerZws track by $index" ng-click="changeFingerType(zwImage)">
+						<div class="radio-square"> 
+							<em></em>
+						</div>
+						<label for="input_name">{{zwImage.name}}</label>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</form>
+</div>

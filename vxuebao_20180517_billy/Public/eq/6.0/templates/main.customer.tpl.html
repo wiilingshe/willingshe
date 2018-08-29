@@ -1,0 +1,118 @@
+<div ng-include="'/Public/eq/6.0/templates/header.tpl.html'"></div>
+<div id="main" class="customer min_contain">
+	<div ng-include="'/Public/eq/6.0/templates/sysmessage.tpl.html'"></div>
+	<div class="info-show">
+		<div class="same-content">
+			<div class="cus-title"> 我的客户 </div>
+		</div>
+	</div>
+	<div class="same-content min_contain">
+		<div class="cus-bar clearfix" ng-show="dataShow == 'message'">
+			<div class="group-action fl clearfix" ng-show="!hideOpea">
+				<div class="group-cat btn-group dropdown" ng-show="!branchid"> <a class="dropdown-toggle">                        添加到组                        <span class="eqf-more pl20"></span>                    </a>
+					<div class="dropdown-menu transform-change">
+						<ul role="menu">
+							<li ng-repeat="group in groups" forbidden-close>
+								<div class="select-group">
+									<div class="checkbox-square customer-check fr" ng-class="{checked: group.selected}"> <em class="eqf-clickmore"></em> <input class="check-box" type="checkbox" ng-model="group.selected" name="iCheck"> </div>
+									<div class="group-name"> <span class="ellipsis">{{group.name}}</span> <a class="fr" ng-click="deleteGroup(group, $index);">删除</a> </div>
+								</div>
+							</li>
+						</ul>
+						<div class="select-group add-group text-center" forbidden-close ng-click="addGroup();"> <em>+</em> <span class="add-group">添加分组</span> </div>
+						<div class="text-center" style="padding-top:10px;"> <a class="btn btn-primary" ng-click="assignGroup();">确定</a> </div>
+					</div>
+					<div class="confirm-group"></div>
+				</div>
+			</div>
+			<div class="fr">
+				<eqx-select class="select-sm select-contain border-width" model="customer.group" change="getDataBySceneId(pageNo,branchid,customer.group.id,customer.origin.ID)">
+					<eqx-select-option value="null">全部群组</eqx-select-option>
+					<eqx-select-option value="mygroup" ng-repeat="mygroup in groups">{{mygroup.name}}</eqx-select-option>
+				</eqx-select>
+				<eqx-select class="select-sm select-contain border-width" model="customer.origin" change="getDataBySceneId(pageNo,branchid,customer.group.id,customer.origin.ID)">
+					<eqx-select-option value="null">全部来源</eqx-select-option>
+					<eqx-select-option value="myorigin" ng-repeat="myorigin in origins">{{myorigin.TITLE}}</eqx-select-option>
+				</eqx-select>
+				<div class="add-data btn-group dropdown" ng-if="!branchid">
+					<a class="btn btn-border dropdown-toggle"> <span class="eqf-plus2"></span> 添加数据 </a>
+					<div class=" dropdown-menu">
+						<ul role="menu">
+							<li ng-click="sceneData()" forbidden-close> <a>微课数据</a> </li>
+						</ul>
+					</div>
+				</div>
+				<a ng-if="branchExport" class="btn btn-border" ng-click="downLoad(customer.group.id,customer.origin.ID)" tooltip-placement="bottom" tooltip="将数据导出为excel文件" tooltip-append-to-body="true"> <span class="eqf-download"></span> 导出数据 </a>
+			</div>
+		</div>
+		<div ng-show="dataShow == 'message' && customerDatas.length" class="cus-table mt20">
+			<table class="table table-hover customer-data-table" style="background-color:#fff;">
+				<thead>
+					<tr>
+						<th ng-if="!hideOpea" class="col-sm-1 check-line">
+							<div class="checkbox-square customer-check" ng-class="{checked: allImages.selected}"> <em class="eqf-clickmore"></em> <input class="check-box" type="checkbox" ng-change="selectAll()" ng-model="allImages.selected" name="iCheck"> </div>
+						</th>
+						<th>姓名</th>
+						<th>手机</th>
+						<th>客户群组</th>
+						<th>客户来源</th>
+						<th ng-if="!branchid">管理</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="customerData in customerDatas">
+						<td ng-if="!hideOpea" class="check-line">
+							<div class="checkbox-square" ng-class="{checked: customerData.selected}"> <em class="eqf-clickmore"></em> <input type="checkbox" ng-model="customerData.selected" name="iCheck" ng-change="selectCustomer(customerData)"> </div>
+						</td>
+						<td>{{customerData.name}}</td>
+						<td>{{customerData.mobile}}</td>
+						<td>{{customerData.groupName}}</td>
+						<td>{{customerData.originName}}</td>
+						<td ng-if="!branchid"> <span ng-show="branchEdit" class="hint--bottom hint--rounded" data-hint="{{'main.customer.EDIT_CUSTOMER' | translate}}">                            <a class="eqf-write" ng-click="editCustom(customerData, $index)"></a>                        </span>							<span ng-show="branchDelete" class="hint--bottom hint--rounded" data-hint="{{'main.customer.DELETE_CUSTOMER' | translate}}">                            <a style="margin-left: 30px;" class="eqf-scene-delete" ng-click="removeCustomer(customerData)" ng-if="!hideOpea" ></a>                        </span>							</td>
+					</tr>
+				</tbody>
+			</table>
+			<div ng-show="totalItems > 10" class="clearfix page-turn">
+				<pagination style="float: left" first-text="首页" last-text="尾页" previous-text="&lsaquo;" next-text="&rsaquo;" max-size="10" items-per-page="10" total-items="totalItems" ng-model="model.currentPage" ng-change="pageChanged(model.currentPage,branchid,customer.group.id,customer.origin.ID)"
+					boundary-links="true" rotate="true" num-pages="numPages"></pagination>
+				<div class="current_page"><span class="fl">到</span> <input type="text" ng-model="model.toPage" ng-keyup="$event.keyCode == 13 ? pageChanged(model.toPage,branchid,customer.group.id,customer.origin.ID) : null"><span class="fl">页</span> <a ng-click="pageChanged(model.toPage,branchid,customer.group.id,customer.origin.ID)"
+						class="go">确定</a>
+					<!-- <span><span translate="main.customer.CURRENT_PAGE1">当前</span>: {{model.currentPage}} / {{numPages}} <span translate="main.customer.CURRENT_PAGE2">页</span></span> --></div>
+			</div>
+		</div>
+		<div ng-show="dataShow == 'dataIn' && !hideOpea">
+			<div class="new-export new-import clearfix">
+				<div class="custom-data"> <em>可导入数据：</em> <span>{{customCount.unImp}}</span> <span style="cursor:pointer" ng-show="customCount.unImp < 1" ng-click="dataShow = 'message'"><em>返回</em></span> </div>
+			</div>
+			<div class="import-container clearfix" style="text-align:center;" ng-show="importDatas">
+				<div class="select-scene fl" style="text-align:left;">
+					<h2 translate="main.customer.SELECT_SCENE">1.选择新数据微课</h2>
+					<ul style="height:489px;overflow-y:auto;">
+						<li ng-repeat="importData in importDatas" ng-click="selectScene(importData.ID,$index)" ng-class="{active: select == $index}"><span>{{importData.TITLE}}</span></li>
+					</ul>
+				</div>
+				<div class="data-column ml20 mr20 fl">
+					<h2 translate="main.customer.DRAG_DATA">2.拖拽导入的数据</h2>
+					<ul class="item-remove-droppable" style="height:489px;overflow-y:auto;width:210px;" item-remove-droppable>
+						<li item-draggable item-id="{{field.id}}" class="list_darggable" ng-repeat="field in fields"><span>{{field.title}}</span></li>
+					</ul>
+				</div>
+				<div class="name-to-name fl">
+					<h2 translate="main.customer.DRAG_NAME">3.拖入对应名称</h2>
+					<div class="clearfix drag" style="height:489px;">
+						<div>
+							<ul>
+								<li style="border-bottom:none;" class="clearfix" ng-repeat="staticFiled in staticFileds">
+									<div class="list-attribute fl" item-droppable item-id="{{staticFiled.id}}" translate="main.customer.DRAG_HERE">拖拽到此处</div>
+									<div class="list-field fr">{{staticFiled.name}}</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="action" style="text-align:right" ng-show="importDatas"> <span style="padding-right:60px;" translate="main.customer.DRAG_TIP">拖拽名称标签放到右侧对应名称中</span> <span style="padding-right:182px;" translate="main.customer.DELETE_TIP">导入后原微课数据不会删除</span>
+				<a type="button" class="btn btn-grey0" ng-click="dataShow = 'message'"><em translate="main.customer.CANCEL">取消</em></a> <a type="button" class="btn btn-primary" ng-click="confirm()" translate="main.customer.IMPORT">导入</a> </div>
+		</div>
+	</div>
+	<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'"></div>

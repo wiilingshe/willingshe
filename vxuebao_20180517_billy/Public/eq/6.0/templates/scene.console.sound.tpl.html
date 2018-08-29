@@ -1,0 +1,183 @@
+<div class="modal-header no-bottom-line" id="sound_head"> 
+	<button type="button" class="n_close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">        
+	<!-- 	<span aria-hidden="true"></span> -->
+		<img aria-hidden="true" src="/assets/images/re-design/bg_close.png" />   
+	</button> 
+	<h4 class="modal-title" ng-if="type == 4"><i class="sound-of-effect"></i>音效设置        
+		<span ng-show = 'selectSoundError' class="action">{{selectSoundError}}</span>    
+	</h4>
+	<h4 class="modal-title" ng-if="type == 2"><i class="sound-of-music"></i>音乐素材  
+		<!-- <a class="modal-cancle search-txt" style="margin-left:40px;display:none;" ng-click="openConvert()">在线语音录入</a>   -->
+		<!-- <a class="modal-cancle search-txt" style="margin-left:123px;" ng-click="setPageMusic()">设为当前页面音乐</a>  
+		<a class="modal-cancle search-txt" ng-click="clearCurrentMusic();">清空当前页面音乐</a>  -->   
+		<span ng-show = 'selectSoundError' class="action">{{selectSoundError}}</span>  
+		<div style="float: right;margin-top: 5px;">
+			<a class="help hint--bottom hint--rounded" target="_blank" data-hint="点击查看背景音乐导入说明教程" href="http://bbs.vxuebao.com/forum.php?mod=viewthread&tid=78&extra=page%3D1">
+				<span class="icon iconfont icon-wenhao question"></span>
+			</a>
+			<input id="search-value" type="text" placeholder="输入名称搜索音乐" onkeypress="enterSearchSound(1)">
+			<a class="modal-cancle search-txt icon iconfont icon-search" ng-click="getSoundsTo(1)"></a>
+			
+		</div> 
+		   
+	</h4> 
+</div>
+<div class="dialog-contain " id="sound_content">
+	<div class="dialog-content bg_console clearfix">
+		<div ng-show="soundAction" style="position: absolute;left: 0;right: 0;top: -65px;bottom: -76px;background-color: rgba(0,0,0,.3);z-index: 1;">
+			<div id="monkey_warn" class="monkey_bg">
+				<div class="warn mark1">
+					<div class="mark2"></div>
+				</div>
+				<div class="content" >
+					<div class="sound-action-upload">
+						<p><span>通过本地电脑上传或者添加外链，大小不超过10M，格式为MP3.注意：音乐大小会影响打开速度。</span></p>
+						<div class="know">
+							<input id="nohint" type="checkbox" ng-model="actionShow" ng-change="isCheckbox(actionShow)">
+							<label name="nohint" for="nohint">不再提示</label> 
+							<span>
+								<a>知道了</a>
+								<input type="file" ng-click="closeAction()" nv-file-select="" uploader="uploader" multiple="multiple">
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="sound-flex">
+			<div class="cate-title">
+				<ul class="nav tabs-left">
+					<!-- 'tabs-right' for right tabs -->
+					<li ng-class="{active: !isMySound}" ng-show="type == 2"> <a ng-click="selectTab(false)">音乐库</a> <b></b></li>
+					<li ng-class="{active: !isMySound}" ng-show="type == 4"> <a ng-click="selectTab(false)">音效库</a> <b></b></li>
+					<li ng-class="{active: isMySound && isMySound!='history'}" ng-show="type == 2"> <a ng-click="selectTab(true)">我的音乐</a> <b></b></li>
+					<li ng-class="{active: isMySound && isMySound!='history'}" ng-show="type == 4"> <a ng-click="selectTab(true)">我的音效</a> <b></b></li>
+					<!-- <li class="add-tag"> 
+						<a ng-click="urlLink()"><span class="eqf-link" style="padding-right:10px;" ></span><span>添加外链</span></a> 
+					</li>
+					<li class="clearfix"> 
+						<audio style="margin: 25px 0 0 20px;height:30px;" eqx-audio></audio>
+						<div style="font-size: 12px; width: 120px;height:40px;line-height:40px;overflow:hidden;float:right;"> 
+							<span ng-show="sound.name">
+								<i>已选择：</i>{{sound.name | maxLength: 16}}                        
+								<a class="eqf-wrong2" style="margin-left: 10px;" title="清除" ng-click="clear()"></a>                    
+							</span> 
+						</div>
+						<div class="music-cate">
+							<ul class="clearfix" ng-init="$parent.sysCatId = '0'">
+								<li ng-show='sysCate' ng-class="{'active': sysCatId == '0'}" ng-click="clearSearchVal();getSysMusicList('0')">最新</li>
+								<li ng-repeat="music in sysMusicList" ng-class="{active:sysCatId == music.value}" ng-click="getSysMusicList(music.value)">{{music.name}}</li>
+							</ul>
+						</div>
+					</li> -->
+				</ul>
+				<ul class="sound-settings">
+					<li class="modal-cancle search-txt">
+						<a ng-click="clearCurrentMusic();"><span class="icon iconfont icon-shanchu"></span><i>清空当前页面音乐</i></a>
+					</li>  
+					<li class="add-sound-link"> 
+						<a ng-click="urlLink()"><span class="icon iconfont icon-tianjia"></span><i>添加外链</i></a> 
+					</li>
+				</ul>
+			</div>
+			<div class="cate-list">
+				<ul class="sound-choose" ng-hide="isMySound">
+					<li class="clearfix"> 
+						<audio style="margin: 25px 0 0 20px;height:30px;" eqx-audio></audio>
+						<div style="float:right;height: 40px;"> 
+							<span ng-show="sound.name">
+								<i>已选择：</i>{{sound.name | maxLength: 16}}                        
+								<a class="eqf-wrong2" style="margin-left: 10px;" title="清除" ng-click="clear()"></a>                    
+							</span> 
+						</div>
+						<div class="music-cate">
+							<ul class="clearfix" ng-init="$parent.sysCatId = '0'">
+								<li ng-show='sysCate' ng-class="{'active': sysCatId == '0'}" ng-click="clearSearchVal();getSysMusicList('0')">最新</li>
+								<li ng-repeat="music in sysMusicList" ng-class="{active:sysCatId == music.value}" ng-click="getSysMusicList(music.value)">{{music.name}}</li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+				<div class="tab-content" id="bg_contain">
+					<div class="tab-pane tab-head active">
+						<div class="tab-pane">
+							<div class="img_list">
+								<div class="sound-action" ng-show="actionContent">
+									<p>通过本地电脑上传或者添加外链，大小不超过10M，格式为MP3. (注意：音乐大小会影响打开速度。)</p>
+								</div>
+								<div class="sound-list clearfix" ng-show="!actionContent">
+									<ul>
+										<li style="cursor:pointer;" ng-class="{active: isSoundSelected(type, sound, s)}" ng-repeat="s in sounds track by $index" ng-init="hover = !1" ng-mouseover="hover = !0" ng-mouseleave="hover = !1">
+											<span>
+												<em style="position: relative;top: -5px;">{{s.size}}</em>
+												<a ng-click="setPageMusic(s,type, isSoundSelected(type, sound, s))" class="data-tip-top" data-tip="设为当前页面音乐" ng-class="{'set-to-page-music-hover' : hover || isSoundSelected(type, sound, s), 'set-to-page-music' : !hover}" ng-if="type == 2"></a>
+												<a  ng-click="ok(s,type, isSoundSelected(type, sound, s))" class="data-tip-top" data-tip="{{type == 2 ? '设为背景音乐' : '设置为音效'}}" ng-class="{'set-to-bg-music-hover' : hover || isSoundSelected(type, sound, s), 'set-to-bg-music' : !hover}"></a>
+												<a class="sound icon iconfont icon-bofang2" title="{{s.isPlaying ? ('暂停') : ('播放')}}" ng-class="{'icon-bofang2': !s.isPlaying, 'icon-iconfontcolor96': s.isPlaying}" ng-click="playSound($event, $index)" style="position: relative;top: -4px;"></a>
+												<a style="margin-left: 15px;" class="del eqf-wrong2" title="删除" ng-show="isMySound && isMySound!='history'" ng-click="deleteMySound($event, $index)"></a>
+											</span>
+											<div class="linkName" title="{{s.name}}">{{s.name}}
+												<em style="padding-left:10px;" class="eqf-link3" ng-show="s.isValue"></em>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer no-line" style="padding: 20px;">
+		<ul class="sound_uploader">
+			<li class="my-bg-upload" style="background-color: #FF766C" ng-click="soundUploadCode()">
+				<div id="upload-progress"></div>
+				<div class="my-upload-action hint--top hint--rounded" data-hint="大小不超过10M，支持格式：MP3" ng-if="alertAction"> </div>
+				<div class="sound-upload form">
+					<div class="form-menus"> </div> 
+					<i class="bg-phone-ico" style="margin: 6px 5px 0 0;"></i>
+					<em>手机上传</em> 
+					<input type="file" nv-file-select="" uploader="uploader" multiple="multiple" style="display: none;">							
+				</div>
+			</li>
+			<li class="my-bg-upload" style="background-color: #63ba01;">
+				<div id="upload-progress"></div>
+				<div class="my-upload-action" ng-if="alertAction" ng-click="popSoundAction()"> </div>
+				<div class="sound-upload form">
+					<div class="form-menus"> </div> 
+					<i class="bg-com-ico" style="margin: 8px 5px 0 0;"></i>
+					<em>电脑上传</em> 
+					<input type="file" nv-file-select="" uploader="uploader" multiple="multiple">							
+				</div>
+			</li>
+		</ul>
+		<div style="float: right;margin-top: 3px;">
+			<div class="pagination_container fl" ng-show="pagination.totalItems > 10 && isMySound!='history'">
+				<pagination style="float: left" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="首页" last-text="尾页" max-size="5" items-per-page="pagination.pageSize" total-items="pagination.totalItems" ng-model="pagination.currentPage" ng-change="getSounds(pagination.currentPage)"
+					boundary-links="true" rotate="true" num-pages="pagination.numPages"></pagination>
+				<div class="current_page">
+					<span class="fl">到</span> 
+					<input type="text" ng-model="toPage" ng-keyup="$event.keyCode == 13 ? getSounds(toPage) : null">
+					<span class="fl">页</span> 
+					<a ng-click="getSounds(toPage)" class="go">确定</a> 
+				</div>
+			</div> 
+			<!-- <a class="modal-cancle" ng-click="cancel()">返回</a>   -->
+			<a style="width: 50px;height: 30px;margin-left: 100px;line-height: 30px;" class="modal-submit" ng-if="type==4" ng-click="ok()">确定</a>
+			<!-- <a class="btn btn-default" ng-click="cancel()">取消</a> -->
+		</div>
+		<a></a>
+		
+	</div>
+</div>
+
+<!-- <div class="" id="convert" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> --> <!--新增willing-->
+<!-- <div class="modal fade bs-example-modal-sm" id="convert" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> -->
+	<!-- <div class="modal-dialog modal-sm" style="margin-left: 25%;margin-top: 15%;"> -->
+		<!-- <div class="modal-content" style="width:50%">
+			<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">在线文本转语音<span style="padding-left:20px">当前声音为 : <a ng-click="changeTrack()">{{track}}</a></span></h4></div>
+			<div class="modal-body"><textarea style="width:100%;height:75px;border-radius:8px" id="convertVal"></textarea>
+				<div class="modal-footer" style="border-top: 0px"><button type="button" class="btn btn-default" ng-click="playConvertSound()">播放</button><button type="button" class="btn btn-primary" ng-click="setConvertSound()">设为当前页面音乐</button></div>
+			</div>
+		</div> -->

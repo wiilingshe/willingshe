@@ -1,0 +1,54 @@
+<div class="sample contain min_contain">
+	<header>
+		<div class="we_nav content_center">
+			<div class="link_list">
+				<ul class="clearfix">
+					<li class="bg_hover"><a>用户案例</a></li>
+					<li ng-hide="isAuthenticated()"><a ng-click="login()">登录</a></li>
+					<li ng-hide="isAuthenticated()" class=""><a ng-click="register()">注册</a></li>
+					<li ng-show="isAuthenticated()"><a href="#/main">进入</a></li>
+				</ul>
+			</div>
+			<div id="logo">
+				<a href="#/home"><img ng-src="{{logoSrc}}" alt=""></a>
+			</div>
+		</div>
+	</header>
+	<div class="content_center">
+		<!-- 		    <div class="pv_contain clearfix">		    	<div class="img_pv_contain">			    	<div class="pv_images" >						<ul>							<li  class="con_list" ng-repeat="dayTop in dayTop" ng-show="page == 'day'">							<a ng-href="{{PREFIX_CLIENT_HOST + '/v-' + dayTop.code}}" target="_blank">								<div class="pv_images_cont">									<div ng-hide="showCode2 == true"><img ng-src="{{PREFIX_FILE_HOST + dayTop.image.imgSrc}}" alt="" width="235px" /></div>									<div ng-show="showCode2 == true" qr-code qr-url="{{PREFIX_FILE_HOST + dayTop.image.imgSrc}}" class="qrcode">																		</div>									<p class="anli_name" title="{{dayTop.name}}">{{dayTop.name}}</p>								</div>							</a>							<p class="changj_pv"><span class="er_name"><em>{{dayTop.userName}}</em><a ng-mouseover="showCode2 = true" ng-mouseleave="showCode2 = false" href="">二维码</a></span><span class="changj_show_num">展示:{{dayTop.showCount | fixnum}}</span></p>													</li>						</ul>						<ul>							<li class="con_list" ng-repeat="monthTop in monthTop" ng-show="page == 'month'">							<a ng-href="{{PREFIX_CLIENT_HOST + '/v-' + monthTop.code}}" target="_blank">								<div class="pv_images_cont">									<div ng-hide="showCode1 == true"><img ng-src="{{PREFIX_FILE_HOST + monthTop.image.imgSrc}}" alt="" width="235px" /></div>									<div ng-show="showCode1 == true" qr-code qr-url="{{PREFIX_CLIENT_HOST + '/v-' + monthTop.code}}" class="qrcode">									</div>								</div>								<p class="anli_name" title="{{monthTop.name}}">{{monthTop.name}}</p>							</a>							<p class="changj_pv"><span class="er_name"><em>{{monthTop.userName}}</em><a ng-mouseover="showCode1 = true" ng-mouseleave="showCode1 = false" href="">二维码</a></span><span class="changj_show_num">展示:{{monthTop.showCount | fixnum}}</span></p>														</li>						</ul>						<ul>							<li class="con_list" ng-repeat="weekTop in weekTop" ng-show="page == 'week'">							<a ng-href="{{PREFIX_CLIENT_HOST + '/v-' + weekTop.code}}" target="_blank">								<div class="pv_images_cont" >									<div ng-hide="showCode3 == true"><img ng-src="{{PREFIX_FILE_HOST + weekTop.image.imgSrc}}" alt="" width="235px" /></div>									<div ng-show="showCode3 == true" qr-code qr-url="{{PREFIX_CLIENT_HOST + '/v-' + weekTop.code}}" class="qrcode">									</div>									<p class="anli_name" title="{{weekTop.name}}">{{weekTop.name}}</p>								</div>							</a>							<p class="changj_pv"><span class="er_name"><em>{{weekTop.userName}}</em><a ng-mouseover="showCode3 = true" ng-mouseleave="showCode3 = false" href="">二维码</a></span><span class="changj_show_num">展示:{{weekTop.showCount | fixnum}}</span></p>													</li>						</ul>			    	</div>		    			    			    			    			 		</div>		    	<div class="pv_nav">		    		<h1><img ng-src="{{CLIENT_CDN}}assets/images/sample/desr.png" alt="" /></h1>		    		<ul class="clearfix">		    			<li ng-class="{hover:page == 'month'}" ng-click="page = 'month'">本月排名</li><li ng-class="{hover:page == 'week'}" ng-click="page = 'week'">本周排名</li><li ng-click="page = 'day'" ng-class="{hover:page == 'day'}">昨日排名</li>		    		</ul>		    	</div>		    </div> -->
+		<div class="header_con">
+			<div class="sample_cat clearfix" data-ng-init="load()">
+				<div class="sample_images mains">
+					<div class="clearfix">
+						<div class="con_list" ng-repeat="home in homes">
+							<a ng-href="{{PREFIX_CLIENT_HOST + '/v-' + home.code}}" target="_blank">
+								<div ng-show="showCode == true" class="cj_img qrcode" qr-code qr-url="{{PREFIX_CLIENT_HOST + '/v-' + home.code}}">
+									<!-- <img ng-src="{{PREFIX_SERVER_HOST + 'eqs/qrcode/' + home.code + '.png'}}" alt="" width="235px" /> --></div>
+								<div ng-hide="showCode == true" class="cj_img"><img ng-src="{{PREFIX_FILE_HOST + home.image.imgSrc}}" alt="" width="235px" /></div>
+								<p class="anli_name" title="{{home.name}}">{{home.name}}</p>
+							</a>
+							<p class="clearfix"><span class="er_name"><em>{{home.userName}}</em><a ng-mouseover="showCode = true" ng-mouseleave="showCode = false" href="">二维码</a></span>微课展示:{{home.showCount | fixnum}}</p>
+						</div>
+					</div>
+					<div class="mores" ng-init="showMoreButton = true;" ng-hide='homes.length < 9'> <a ng-click="showMore(type)" ng-show='showMoreButton'>查看更多</a>
+						<p ng-show="!showMoreButton" style="font-size:16px;">没有更多了</p>
+					</div>
+					<p style="text-align:center;margin-top:100px;" ng-show='homes.length <= 0'>该分类下暂无微课</p>
+				</div>
+				<div class="sample_cats">
+					<div class="sample_fix fixed">
+						<div class="cat-list">
+							<h1><img ng-src="{{CLIENT_CDN}}assets/images/sample/case.png" alt="" /></h1>
+							<ul class="clearfix">
+								<li id="one1" ng-class="{hover:typeindex == 'all'}" ng-click="getHomes('all', null, 1, 9);type=null">全部案例</li>
+								<li ng-repeat="sceneType in sceneTypes" ng-class="{hover: typeindex == $index}" ng-click="getHomes($index, sceneType.value, 1, 9)"> {{sceneType.name}} </li>
+							</ul>
+						</div>
+						<div> </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'"></div>

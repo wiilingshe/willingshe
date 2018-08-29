@@ -1,0 +1,54 @@
+@charset "utf-8";
+
+/*初始化*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+	margin:0;
+	padding:0;
+	font-family:"Microsoft YaHei","Ã¥Â¾Â®Ã¨Â½Â¯Ã©â€ºâ€¦Ã©Â»â€˜",tahoma,Arial;
+}
+table{border-collapse:collapse;border-spacing:0}
+fieldset,img{border:0}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:400}
+ol,ul{list-style:none}
+caption,th{text-align:left}
+abbr,acronym{border:0;font-variant:normal}
+sup{vertical-align:text-top}
+sub{vertical-align:text-bottom}
+input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;*font-size:100%;outline:none;}
+legend{color:#000}
+body{background:#fff;font:14px/1.5 \5FAE\8F6F\96C5\9ED1,arial,sans-serif;min-width:1200px}
+a{color:#000;text-decoration:none}
+
+.clear {
+	clear: both;
+}
+
+
+/*头部css*/
+.header{width:100%;background-color:#fff;}
+.wrap{width:1170px;margin:0 auto;}
+#logo {float: left;width: 190px;}
+#menu {width: 100%;padding-left: 210px;}
+#nav {line-height: 45px;height: 45px;font-size: 18px;font-weight: 400;padding-top: 1px;overflow: hidden;}
+#nav #menu ul {display: inline;margin: 0px;padding: 0px;}
+#nav #menu #user {float: right;display: inline;margin: 0px;padding: 0px;}
+#nav #menu #user a{color: #FFF;}
+
+#nav #menu #user li {width: 90px;margin: 0px;padding: 0px;}
+#nav #menu ul li {float: left;width: 125px;text-align: center;list-style-position: inside;list-style-image: none;list-style-type: none;margin: 0px;padding: 0px;}
+#nav #menu ul li a {color: #a0a0a0;}
+#nav #menu ul li a:hover {color: #66cc00;text-decoration: none;}
+#nav #menu ul .current a {color: #66cc00;}
+
+
+
+
+/*尾部css*/
+#footer {height:200px; float: left;width: 100%;background-color: #2d2c34;color: #CCCCCC;padding-top: 40px;padding-bottom: 10px;}
+.footer_top{padding-left:40px;width:1164px;height:90px;margin:0 auto;border-bottom:1px solid #d0d0d0;}
+.footer_top .t_center,.footer_top .t_left,.footer_top .t_left{float:left;margin-right:100px;}
+.footer_top .t_center div{float:left;}
+.footer_top .title{font-size:16px;margin-bottom:8px;}
+.footer_top .t_center{margin-top:30px;}
+.footer_bottom{width:1164px;margin:0 auto;padding-top:10px;}
+.footer_bottom li{float:left;margin:0 68px 0 68px;}

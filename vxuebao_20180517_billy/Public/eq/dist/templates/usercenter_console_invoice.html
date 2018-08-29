@@ -1,0 +1,83 @@
+<div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">        <span aria-hidden="true">×</span>    </button>
+	<h4 class="modal-title">发票信息</h4></div>
+<div class="modal-body invoice" style="height:415px;overflow: hidden;padding:20px 20px 0 20px;">
+	<div eqd-scroll style="height:100%;">
+		<form class="form-horizontal" ng-class="{disabled:!editInfo.isEditable}">
+			<div class="form-group clearfix"> <label for="inputPassword3" class="col-sm-3 control-label">收件人</label>
+				<div class="col-sm-7"> <span class="noEdit" ng-model="invoice.receiver">{{invoice.receiver}}</span> <input type="text" class="form-control" ng-model="invoice.receiver" placeholder="请填写收件人" maxlength="24"> </div>
+			</div>
+			<div class="form-group clearfix"> <label for="inputPassword3" class="col-sm-3 control-label">联系电话</label>
+				<div class="col-sm-7"> <span class="noEdit" ng-model="invoice.phone">{{invoice.phone}}</span> <input type="text" class="form-control" ng-model="invoice.phone" placeholder="请填写联系电话" maxlength="24"> </div>
+			</div>
+			<div class="form-group clearfix"> <label for="inputPassword3" class="col-sm-3 control-label">收货地址</label>
+				<div class="col-sm-7"> <span class="noEdit" ng-model="invoice.address">{{invoice.address}}</span> <input type="text" class="form-control" ng-model="invoice.address" placeholder="请填写收货地址" maxlength="40"> </div>
+			</div>
+			<div class="form-group clearfix"> <label for="inputPassword3" class="col-sm-3 control-label">发票类型</label>
+				<div class="col-sm-7">
+					<div class="btn-group"> <a class="btn btn-default background-color-width-change" ng-class="{active:invoiceStatus == 1}" ng-click="changeType(1)">增值税普票</a> <a class="btn btn-default background-color-width-change" ng-class="{active:invoiceStatus == 2}" ng-click="changeType(2)">增值税专票</a>						<a class="btn btn-default background-color-width-change" ng-class="{active:invoiceStatus == 3}" ng-click="changeType(3)">个人普票</a> </div>
+				</div>
+			</div>
+			<div ng-show="invoiceStatus == 1">
+				<div class="form-group clearfix"> <label for="inputPassword3" class="col-sm-3 control-label">发票抬头</label>
+					<div class="col-sm-7"> <span class="noEdit" ng-model="invoiceListPu.title">{{invoiceListPu.title}}</span> <input type="text" class="form-control" ng-model="invoiceListPu.title" placeholder="请填写发票抬头" maxlength="24"> </div>
+					<div class="col-sm-2 tips"><a href="http://bbs.e.wesambo.com/forum.php?mod=viewthread&tid=12324" target="_blank" style="text-decoration:underline;">了解详情</a></div>
+				</div>
+				<div class="form-group cleafix"> <label class="col-sm-3 control-label">发票内容</label>
+					<div class="col-sm-7"> <span class="">技术服务费</span> </div>
+				</div>
+			</div>
+			<div ng-show="invoiceStatus == 2">
+				<div class="form-group clearfix"> <label for="inputPassword3" class="col-sm-3 control-label">发票抬头</label>
+					<div class="col-sm-7"> <span class="noEdit" ng-model="invoiceListzhuan.title">{{invoiceListzhuan.title}}</span> <input type="text" class="form-control" ng-model="invoiceListzhuan.title" placeholder="请填写发票抬头" maxlength="24"> </div>
+					<div class="col-sm-2 tips"><a href="http://bbs.e.wesambo.com/forum.php?mod=viewthread&tid=12324" target="_blank" style="text-decoration:underline;">了解详情</a></div>
+				</div>
+				<div class="form-group cleafix"> <label class="col-sm-3 control-label">发票内容</label>
+					<div class="col-sm-7"> <span class="">技术服务费</span> </div>
+				</div>
+				<div class="form-group cleafix"> <label class="col-sm-3 control-label">税务登记证</label>
+					<div class="col-sm-7" style="position:relative;">
+						<div class="see-image zoomIn-change" ng-model="picture.tax" ng-show="tax" ng-style="{'background-image':'url(' + (PREFIX_FILE_HOST + picture.tax) + ')','background-size':'cover'}">
+							<a class="eqf-wrong2" ng-click="tax=false;" style="position:absolute;top:-5px;right:-5px;font-size:14px;"></a>
+						</div> <a class="btn blue mr20 upload" ng-click="addPictures('tax')">上传</a> <a ng-if="picture.tax" class="btn blue" ng-init="$parent.tax=false;" ng-click="$parent.tax=!$parent.tax">查看</a> </div>
+				</div>
+				<div class="form-group cleafix"> <label class="col-sm-3 control-label">银行许可证</label>
+					<div class="col-sm-7" style="position:relative;">
+						<div class="see-image zoomIn-change" ng-model="picture.bank" ng-show="bank" ng-style="{'background-image':'url(' + (PREFIX_FILE_HOST + picture.bank) + ')','background-size':'cover'}">
+							<a class="eqf-wrong2" ng-click="bank=false;" style="position:absolute;top:-5px;right:-5px;font-size:14px;"></a>
+						</div> <a class="btn blue mr20 upload" ng-click="addPictures('bank')">上传</a> <a ng-if="picture.bank" class="btn blue" ng-init="$parent.bank=false;" ng-click="$parent.bank=!$parent.bank">查看</a> </div>
+				</div>
+				<div class="form-group cleafix"> <label class="col-sm-3 control-label">一般纳税人资质证明</label>
+					<div class="col-sm-7" style="position:relative;">
+						<div class="see-image zoomIn-change" ng-show="people" ng-model="picture.people" ng-style="{'background-image':'url(' + (PREFIX_FILE_HOST + picture.people) + ')','background-size':'cover'}">
+							<a class="eqf-wrong2" ng-click="people=false;" style="position:absolute;top:-5px;right:-5px;font-size:14px;"></a>
+						</div> <a class="btn blue mr20 upload" ng-click="addPictures('people')">上传</a> <a ng-if="picture.people" class="btn blue mr20" ng-init="$parent.people=false;" ng-click="$parent.people=!$parent.people">查看</a> </div>
+				</div>
+				<div class="form-group cleafix"> <label class="col-sm-3 control-label">开票信息加盖公章</label>
+					<div class="col-sm-7" style="position:relative;">
+						<div class="see-image zoomIn-change" ng-show="mes" ng-model="picture.mes" ng-style="{'background-image':'url(' + (PREFIX_FILE_HOST + picture.mes) + ')','background-size':'cover'}">
+							<a class="eqf-wrong2" ng-click="mes=false;" style="position:absolute;top:-5px;right:-5px;font-size:14px;"></a>
+						</div> <a class="btn blue mr20 upload" ng-click="addPictures('mes')">上传</a> <a ng-if="picture.mes" class="btn blue" ng-init="$parent.mes=false;" ng-click="$parent.mes=!$parent.mes">查看</a> </div>
+				</div>
+			</div>
+			<div ng-show="invoiceStatus == 3">
+				<div class="form-group clearfix"> <label for="inputPassword3" class="col-sm-3 control-label">发票抬头</label>
+					<div class="col-sm-7"> <span class="">个人</span> </div>
+					<div class="col-sm-2"><a href="http://bbs.e.wesambo.com/forum.php?mod=viewthread&tid=12324" target="_blank" style="text-decoration:underline;">了解详情</a></div>
+				</div>
+				<div class="form-group cleafix"> <label class="col-sm-3 control-label">发票内容</label>
+					<div class="col-sm-7"> <span>技术服务费</span> </div>
+				</div>
+			</div>
+			<p class="red-color text-center" ng-show="authError">{{authError}}</p>
+			<div class="invoice-action">
+				<p>发票须知：</p>
+				<p>1.30个工作日内必须提交发票申请，过期将不予开具；发票申请提交后，30个工作日内开具完成并寄出；外国用户仅能提供发票扫描件</p>
+				<p>2.微学宝发票项目为：技术服务费。（目前仅开具此项内容，不能开其他项目）</p>
+				<p>3.如果一个月内购买多次，建议一次性提交发票申请，多个订单可合并</p>
+				<p>4.单次订单低于100元开具发票，需支付10元运费</p>
+				<p>5.如发票信息填写错误造成发票无法报销，微学宝不予退换发票，请认真填写，确保无误 </p>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="modal-footer mt20"> <a class="modal-cancle" ng-if="editInfo.isEditable" ng-click="cancel();">取消</a> <a class="btn btn-primary" ng-if="editInfo.isEditable" ng-click="saveUserInvoice(userinfo)">保存提交</a> <a class="modal-cancle" ng-if="!editInfo.isEditable" ng-click="reset();">修改发票信息</a>	<a class="btn btn-primary" ng-if="!editInfo.isEditable" ng-click="submit(userinfo)">提交</a> </div>

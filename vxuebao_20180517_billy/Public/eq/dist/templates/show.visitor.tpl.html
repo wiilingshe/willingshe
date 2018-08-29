@@ -1,0 +1,79 @@
+<div id="show-contain">
+	<div ng-include="'/Public/eq/6.0/templates/nav.tpl.html'" ng-controller="NavCtrl"></div>
+	<!--    <div class="cake">        <div class="same-content">            <a href="#/show">首页</a> > 秀客        </div>    </div>-->
+	<div class="visitor-contain">
+		<div class="visitor same-content clearfix">
+			<section>
+				<h2><span ng-hide="1"><a href="/#/usercenter/account" translate="show.visitor.JOIN_SHOW_CASTER">加入秀客</a><a ng-hide="1" href="" translate="show.visitor.SHOW_GROUND">秀客家园</a><a href="http://e.wesambo.com/v-UxzGEm" translate="show.visitor.FEEDBACK">反馈</a></span>找秀客<a class="apply_showker" href="http://bbs.e.wesambo.com/forum.php?mod=viewthread&tid=11204" target="_blank">申请成为秀客</a></h2>
+				<div class="select-list"> <span translate="show.visitor.SERVICE_ADDRESS">服务地域</span>|<a ng-class="{active:serverAll == 'all'}" ng-click="serverWu('province','serverAll')" translate="show.visitor.UNLIMITED">不限</a> <a ng-repeat="server in serverLabel | filter: getLimitedServeRegion"
+						ng-click="subServer(server)" ng-class="{active:currentServer ==server}">{{server.name}}</a> <a ng-show="moreArea" class="more" data-toggle="dropdown" translate="show.visitor.MORE">更多</a>
+					<div class="other-label dropdown-menu"> <a ng-repeat="otherServer in serverLabel | filter: getOtherServeRegion" ng-click="subServer(otherServer)" ng-class="{active:currentServer == otherServer}">                                {{otherServer.name}}                            </a>
+						<!--                       <div style="text-align: center;"><a class="btn-main" >确认</a></div>--></div>
+				</div>
+				<div class="select-list" style="position:relative;"> <span translate="show.visitor.TALENT_SKILL">擅长领域</span>|<a ng-class="{active:cateAll == 'all'}" ng-click="serverWu('company_industry','cateAll')" translate="show.visitor.UNLIMITED">不限</a> <a ng-repeat="tag in cateLabel | filter: getLimitedCateRegion"
+						ng-click="subLabel(tag)" ng-class="{active:currentCate ==tag}">{{tag.name}}</a> <a data-toggle="dropdown" ng-show="moreLabel" class="more" translate="show.visitor.MORE">更多</a>
+					<div class="other-label dropdown-menu"> <a ng-repeat="otherCate in cateLabel | filter: getOtherCateRegion" ng-click="subLabel(otherCate)" ng-class="{active:currentCate == otherCate}">                                {{otherCate.name}}                            </a>
+						<!--<div style="text-align: center;"><a class="btn-main" ng-click="queren()">确认</a></div>--></div>
+				</div>
+				<div class="select-list"> <span translate="show.visitor.PAYWAY">付款方式</span>|<a ng-class="{active:payAll == 'all'}" ng-click="serverWu('payType','payAll')" translate="show.visitor.UNLIMITED">不限</a> <a ng-repeat="pay in payLabel" ng-click="subPay(pay)" ng-class="{active: currentPay == pay}">{{pay.name}}</a>					</div>
+			</section>
+			<aside class="visitor-list">
+				<h2>本周之星<a class="apply_showker" href="http://bbs.e.wesambo.com/forum.php?mod=viewthread&tid=13804" target="_blank">申请本周之星</a></h2>
+				<div class="visitor-same">
+					<div class="visitor-one clearfix">
+						<a ng-click="visitorXq(recommendVisitor.userId)"> <img ng-show="recommendVisitor.headImg" ng-src="{{recommendVisitor.headImg}}" width="80px" height="80px">
+							<div ng-show="!recommendVisitor.headImg" style="width:80px;height:80px;text-align:center;line-height:80px;background-color:#08a1ef;float:left;margin-right:20px;padding-top:8px;">
+							<em class="eqf-top-contact" style="color:#fff;font-size:30px;"></em> </div>
+						</a>
+						<h3><a ng-click="visitorXq(recommendVisitor.userId)">{{recommendVisitor.name}}</a></h3>
+						<p class="dec" style="white-space:normal" title="{{recommendVisitor.introduction}}">{{recommendVisitor.introduction}}</p>
+						<!--<p class="guanzhu"><a href=""><em class="eqf-plus2"></em>关注</a><a href=""><em class="eqf-envelope"></em>私信</a></p>-->
+					</div>
+					<div class="visitor-works">
+						<ul>
+							<li class="ellipsis"><span translate="show.visitor.SAMPLE_WORK">作品</span>|<a href="{{PREFIX_CLIENT_HOST + '/v-' + work1Code}}" target="_blank">{{work1Name}}</a></li>
+							<li class="ellipsis"><span translate="show.visitor.SAMPLE_WORK">作品</span>|<a href="{{PREFIX_CLIENT_HOST + '/v-' + work2Code}}" target="_blank">{{work2Name}}</a></li>
+							<li class="ellipsis"><span translate="show.visitor.SAMPLE_WORK">作品</span>|<a href="{{PREFIX_CLIENT_HOST + '/v-' + work3Code}}" target="_blank">{{work3Name}}</a></li>
+						</ul>
+					</div>
+				</div>
+			</aside>
+		</div>
+		<div class="same-content visitor-item">
+			<h2 translate="show.visitor.SHOW_CASTER_LIST"><!-- <a><em class="eqf-refresh"></em>换一批</a> -->秀客列表</h2>
+			<div class="visitor-content">
+				<p ng-if="visitorList.length == 0" style="padding:20px 0;">暂无秀客列表</p>
+				<ul class="clearfix" ng-if="visitorList.length >0">
+					<li class="visitor-list visitor-same" ng-repeat="visitor in visitorList">
+						<div class="visitor-one clearfix">
+							<a ng-click="visitorXq(visitor.userId)"> <img ng-show="visitor.headImg" ng-src="{{visitor.headImg}}" width="80px" height="80px">
+								<div ng-show="!visitor.headImg" style="width:80px;height:80px;text-align:center;line-height:80px;background-color:#08a1ef;float:left;margin-right:20px;padding-top:8px;">
+								<em class="eqf-top-contact" style="color:#fff;font-size:30px;"></em> </div>
+							</a>
+							<div>
+								<h3><a ng-click="visitorXq(visitor.userId)">{{visitor.name}}</a></h3>
+								<p class="dec" style="white-space:normal" title="{{visitor.introduction}}"><span>{{visitor.introduction}}</span></p>
+								<!--<p class="guanzhu"><a href=""><em class="eqf-plus2"></em>关注</a><a href=""><em class="eqf-envelope"></em>私信</a></p>-->
+							</div>
+						</div>
+						<div class="visitor-works">
+							<!--                             <ul>                                <li><span>作品</span>|<a href="{{PREFIX_CLIENT_HOST + '/v-' + visitor.represent1.split('_')[0]}}" target="_blank">{{visitor.represent1.substring(visitor.represent1.indexOf('_')+1)}}</a></li>                                <li><span>作品</span>|<a href="{{PREFIX_CLIENT_HOST + '/v-' + visitor.represent2.split('_')[0]}}" target="_blank">{{visitor.represent2.substring(visitor.represent2.indexOf('_')+1)}}</a></li>                                <li><span>作品</span>|<a href="{{PREFIX_CLIENT_HOST + '/v-' + visitor.represent3.split('_')[0]}}" target="_blank">{{visitor.represent3.substring(visitor.represent3.indexOf('_')+1)}}</a></li>                            </ul> -->
+							<ul>
+								<li class="ellipsis"><span>作品</span>|<a href="{{PREFIX_CLIENT_HOST + '/v-' + visitor.represent1Code}}" target="_blank">                                    {{visitor.represent1Name}}</a></li>
+								<li class="ellipsis"><span>作品</span>|<a href="{{PREFIX_CLIENT_HOST + '/v-' + visitor.represent2Code}}" target="_blank">                                    {{visitor.represent2Name}}</a></li>
+								<li class="ellipsis"><span>作品</span>|<a href="{{PREFIX_CLIENT_HOST + '/v-' + visitor.represent3Code}}" target="_blank">                                    {{visitor.represent3Name}}</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="same-content clearfix" ng-show="totalItems > 12" style="margin-bottom:20px;">
+			<pagination style="float:left;" first-text="{{'my.scene.FIRST_PAGE' | translate}}" previous-text="&lsaquo;" next-text="&rsaquo;" last-text="{{'my.scene.LAST_PAGE' | translate}}" max-size="10" items-per-page="pageSize" total-items="totalItems" ng-model="currentPage"
+				ng-change="pageChanged(currentPage)" boundary-links="true" rotate="true" num-pages="numPages"></pagination>
+			<div class="current_page"> <input type="text" ng-model="toPage" ng-keyup="$event.keyCode == 13 ? pageChanged(toPage) : null"> <a ng-click="pageChanged(toPage)" class="go">GO</a>
+				<!-- <span><span translate="my.scene.CURRENT_PAGE1">当前</span>: {{currentPage}} / {{numPages}} <span translate="my.scene.CURRENT_PAGE2">页</span></span> --></div>
+		</div>
+	</div>
+</div>
+<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'"></div>

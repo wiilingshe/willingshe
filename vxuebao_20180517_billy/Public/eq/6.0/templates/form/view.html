@@ -1,0 +1,107 @@
+<!-- 跳转页面 -->
+<div id="picCut" style="background-image: url(assets/images/re-design/particle1.png);">
+	<span style="font-size: 36px;margin-left: 36px;">保存成功！</spn>
+</div>
+<div>
+	<div ng-include="'/Public/eq/6.0/templates/header.tpl.html'" style="height:60px"></div>
+	<div class="container">
+		<div class="view_box">
+			<div class="view_box_top">
+				<div class="view_box_pic">
+					<img class="form_pic" style="width:151px;height:151px">
+				</div>
+				<div class="view_box_top_mid" style="display:inline-block">
+					<p ng-if="ifFormType == 1">问卷标题：</p>
+					<p ng-if="ifFormType == 2">考卷标题：</p>
+					<p class="form_title"></p><br/>
+					<!-- <p style="margin-left:10px;">表单描述：</p><p class="form_desc"></p><br/> -->
+					<p>创建时间：</p><p class="create_time"></p><br/>
+					<p>微课状态：</p><p class="form_status"></p>
+				</div>
+				<div class="view_box_top_right">
+					<a class="view_see" id="student_pre">
+						<div class="view_see_top">
+							<img src="../view/images/form_view_see2.png" style="margin: 17px;padding-top: 3px;">
+						</div>
+						<div ng-if="ifFormType == 1" style="padding-left:8px">进入问卷</div>
+						<div ng-if="ifFormType == 2" style="padding-left:8px">进入考试</div>
+					</a>
+					<div class="view_edit" ng-click="viewForm()" id="student_pre_edit">
+						<div class="view_edit_top">
+							<img src="../view/images/form_view_edit2.png" style="margin: 17px;">
+						</div>
+						<a ng-if="ifFormType == 1" style="padding-left:8px">预览问卷</a>
+						<a ng-if="ifFormType == 2" style="padding-left:8px">预览考卷</a>
+
+					</div>
+					<div class="view_edit" ng-click="editForm()" id="student_pre_edit">
+						<div class="view_edit_top">
+							<img src="../view/images/form_view_edit2.png" style="margin: 17px;">
+						</div>
+						<a ng-if="ifFormType == 1" style="padding-left:8px">编辑问卷</a>
+						<a ng-if="ifFormType == 2" style="padding-left:8px">编辑考卷</a>
+
+					</div>
+					<div class="view_export"  id="form_export" style="display:none">
+						<div class="view_export_top">
+							<img src="../view/images/form_view_exoprt2.png" style="margin: 15px;padding-left: 4px;">
+						</div>
+						<a ng-if="ifFormType == 1" style="padding-left:8px">导出问卷</a>
+						<a ng-if="ifFormType == 2" style="padding-left:8px">导出考卷</a>
+					</div>
+				</div>
+			</div>
+			<div style="margin-left:50px">
+				<button ng-if="ifFormType == 1" class="btn pic_upload_k" ng-click="picUpload()">更换问卷封面</button>
+				<button ng-if="ifFormType == 2" class="btn pic_upload_k" ng-click="picUpload()">更换考卷封面</button>
+			</div>
+			<div style="margin-left:50px" class="pic_upload" style="margin-top: 10px;">
+				
+				<div style="margin-left:6px;margin-top: 10px;display: inline-block;">
+				<img id="xuwanting" src="/view/images/view_pic.png">
+				</div>
+				<div style="display:none;margin-left:10px" class="pic_hint"><p>图片上传中，请稍后...</p></div>
+				<p class="pic_path" style="display:none"></p>
+				<form style="display:none">
+		            <b>x1</b><input type="text" size="4" id="x1">
+		            <b class="ml5">y1</b><input type="text" size="4" id="y1">
+		            <b class="ml5">x2</b><input type="text" size="4" id="x2">
+		            <b class="ml5">y2</b><input type="text" size="4" id="y2">
+		            <b class="ml5">w</b><input type="text" size="4" id="w">
+		            <b class="ml5">h</b><input type="text" size="4" id="h">
+		        </form>
+		        <form id= "uploadForm" style="margin-top:10px">
+		        	<button class="btn btn-primary bl_btn">
+		        		选择图片
+						<input class="pic_edit_file" type="file" onchange="angular.element(this).scope().fileChanged(this)" name="file">
+		        	</button>
+			        <!-- <input class="btn btn-primary bl_btn"  type ="submit" value="上传" ng-click="doUpload()" style="margin-left: 5px;margin-top: 10px;"/>  -->
+			        <button class="btn btn-primary bl_btn" ng-click="confirm()">确定</button>
+				</form>
+			</div>
+			<div style="padding-left:45px;padding-right:45px;">
+				<hr style="border:none;border-top:1px solid #ddd;height:1px;">
+			</div>
+			<div class="view_box_buttom">
+				<div ng-if="ifFormType == 1">问卷地址分享</div>
+				<div ng-if="ifFormType == 2">考卷地址分享</div>
+				<div style="margin-top: 15px;">
+					<!-- <input style="width:369px;height:32px;" id="form_url" disabled="disabled"> -->
+					<textarea style="width:369px;height:32px;line-height:29px" id="form_url"></textarea>
+					<button class="form_url" ng-click="copyUrl()">复制网址</button>
+				</div>
+				<div style="margin-top:30px">
+					<div style="width:180px;height:180px;border:1px solid #6c0; padding-top:14px">
+						<div id="form_code"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'"></div>
+</div>
+<style type="text/css">
+body{
+	background-color: #f5f8ed;
+}
+</style>

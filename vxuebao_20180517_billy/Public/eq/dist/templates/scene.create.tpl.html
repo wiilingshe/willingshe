@@ -1,0 +1,259 @@
+<div class="create-bg" style="position: fixed;top: 0;left: 0;right: 0;bottom: 0;background-color: #d0cfd8"></div>
+<div class="creat_head" conver-to-image>
+	<div class="creat_head_con clearfix">
+		<div class="creat_logo"><a href="#/main" ng-click="stopCopy()">		<img ng-src="{{logoSrc}}" alt=""></a></div>
+		<div class="creat_con clearfix">
+			<ul class="comp_panel clearfix">
+				<li comp-draggable="panel" ctype="x" class="comp-draggable text" ng-click="createComp('x');showXiuFontTip=false;"> <span class="eqf-xiuziti eqf-btn"></span> <span class="tip">多字体</span> </li>
+				<li comp-draggable="panel" ctype="2" class="comp-draggable text" ng-click="createComp('2');"> <span class="eqf-text-word eqf-btn"></span> <span class="tip">文本</span> </li>
+				<li comp-draggable="panel" ctype="3" class="comp-draggable bg" ng-click="createComp('3');"> <span class="eqf-top-background eqf-btn"></span> <span class="tip">背景</span> </li>
+				<li comp-draggable="panel" ctype="9" class="comp-draggable music" ng-click="createComp('9');"> <span class="eqf-top-music eqf-btn"></span> <span class="tip">音乐</span> </li> 
+				<li comp-draggable="panel" ctype="q" class="comp-draggable music" ng-click="createComp('q');"> <span class="eqf-voice eqf-btn"></span> <span class="tip">文本转语音</span> </li> <!-- willing语音 -->
+				<li comp-draggable="panel" ctype="v" class="comp-draggable vedio" ng-click="createComp('v');"> <span class="fa fa-film eqf-btn"></span>
+					<!--<span class="eqf-top-video eqf-btn"></span>--> <span class="tip">视频</span> </li> 
+				<li comp-draggable="panel" ctype="4" class="comp-draggable image" ng-click="createComp('4');"> <span class="eqf-top-pic eqf-btn"></span> <span class="tip">图片</span> </li>
+				<li comp-draggable="panel" ctype="z" class="comp-draggable image" ng-click="createComp('z');"> <span class="eqf-clound eqf-btn"></span> <span class="tip">PSD导入</span> </li>
+				<li comp-draggable="panel" ctype="4" class="comp-draggable image" ng-click="createComp('22');"> <span class="eqf-scene-list eqf-btn"></span> <span class="tip">图片导入</span> </li>
+				<li comp-draggable="panel" ctype="h" class="comp-draggable image" ng-click="createComp('h');"> <span class="eqf-shape eqf-btn"></span> <span class="tip">形状</span> </li>
+				<li comp-draggable="panel" ctype="p" class="comp-draggable images" ng-click="createComp('p');"> <span class="eqf-top-pics eqf-btn"></span> <span class="tip">图集</span> </li>
+				<li class="interaction hint--bottom hint--rounded"> <span class="eqf-refresh eqf-btn"></span>
+					<div class="form-menus">
+						<div class="popover bottom">
+							<div class="arrow"></div>
+							<div class="popover-content">
+								<ul class="menus">
+									<li comp-draggable="panel" ctype="l" class="menu-item comp-draggable button hint--right hint--rounded" data-hint="点击添加链接" ng-click="createComp('l');"> <span class="eqf-link"></span> <span class="menu-item-name">链接</span> </li>
+									<li comp-draggable="panel" ctype="8" class="menu-item comp-draggable phone hint--right hint--rounded" data-hint="点击添加电话" ng-click="createComp('8');"> <span class="eqf-glyphicon-earphone"></span> <span class="menu-item-name">电话</span> </li>
+									<li comp-draggable="panel" ctype="m" class="menu-item comp-draggable button hint--right hint--rounded ui-draggable" data-hint="点击添加地图" ng-click="createComp('m');"> 
+										<span class="eqf-map"></span>
+										<span class="menu-item-name">地图</span> 
+									</li>
+									<li comp-draggable="panel" ctype="6" class="menu-item comp-draggable button hint--right hint--rounded" data-hint="点击添加触发"
+										ng-click="openTriggerMode()"> <span class="eqf-chufa"></span> <span class="menu-item-name">触发</span> </li>
+									<li comp-draggable="panel" ctype="s" class="menu-item comp-draggable button hint--right hint--rounded" data-hint="点击添加音效" ng-click="createComp('s');"> <span class="eqf-music"></span> <span class="menu-item-name">音效</span> </li>
+									<li ng-if="isInteractionCounterAccessable" class="menu-item"> <span class="eqf-clock-o"></span> <span class="menu-item-name">计数</span> <span class="caret"></span>
+										<div class="menu-item-menu">
+											<div class="popover right">
+												<div class="arrow"></div>
+												<div class="popover-content">
+													<ul class="menus">
+														<li comp-draggable="panel" ctype="i" class="menu-item comp-draggable textarea hint--right hint--rounded" data-hint="点击添加计数器" ng-click="createComp('i', '&#xe60d;');"> <span class="icon iconfont">&#xe60d;</span> <span class="menu-item-name">喜欢</span> </li>
+														<li comp-draggable="panel" ctype="i" class="menu-item comp-draggable radio-input hint--right hint--rounded" data-hint="点击添加计数器" ng-click="createComp('i', '&#xe607;');"> <span class="icon iconfont">&#xe607;</span> <span class="menu-item-name">顶起</span> </li>
+														<li comp-draggable="panel" ctype="i" class="menu-item comp-draggable radio-input hint--right hint--rounded" data-hint="点击添加计数器" ng-click="createComp('i', '&#xe63f;');"> <span class="icon iconfont">&#xe63f;</span> <span class="menu-item-name">送花</span> </li>
+														<li comp-draggable="panel" ctype="i" class="menu-item comp-draggable radio-input hint--right hint--rounded" data-hint="点击添加计数器" ng-click="createComp('i', '&#xe6b8;');"> <span class="icon iconfont">&#xe6b8;</span> <span class="menu-item-name">投票</span> </li> </ul> </div> </div> </div> </li>
+									<li comp-draggable="panel" class="menu-item comp-draggable button hint--bottom hint--rounded"> <span class="eqf-date2"></span> <span class="menu-item-name">统计</span> <span class="caret"></span>
+										<div class="menu-item-menu">
+											<div class="popover right">
+												<div class="arrow"></div>
+												<div class="popover-content">
+													<ul class="menus">
+														<li comp-draggable="panel" ctype="d" class="menu-item comp-draggable textarea hint--right hint--rounded" data-hint="点击添加计数器" ng-click="createComp('d', '&#xf0073;');"> <span class="icon iconfont">&#xf0073;</span> <span class="menu-item-name">阅读量</span> </li> </ul> </div> </div> </div> </li> </ul> </div> </div> </div> <span class="tip">互动</span> </li>
+				<li class="form hint--bottom hint--rounded"> <span class="fa fa-tasks eqf-btn"></span>
+					<!--<span class="eqf-top-list eqf-btn"></span>-->
+					<div class="form-menus">
+						<div class="popover bottom">
+							<div class="arrow"></div>
+							<div class="popover-content">
+								<ul class="menus">
+									<li class="menu-item"> <span class="eqf-glyphicon-list"></span> <span class="menu-item-name">快捷表单</span> <span class="caret"></span>
+										<div class="menu-item-menu">
+											<div class="popover right">
+												<div class="arrow"></div>
+												<div class="popover-content">
+													<ul class="menus">
+														<li comp-draggable="panel" ctype="g101" class="menu-item comp-draggable contact hint--right hint--rounded" data-hint="点击添加联系人" ng-click="createCompGroup('g101');"> <span class="eqf-top-contact"></span> <span class="menu-item-name">联系人</span> </li> </ul> </div> </div> </div> </li>
+									<li class="menu-item"> <span class="eqf-date3"></span> <span class="menu-item-name">选项</span> <span class="caret"></span>
+										<div class="menu-item-menu">
+											<div class="popover right">
+												<div class="arrow"></div>
+												<div class="popover-content">
+													<ul class="menus">
+														<li comp-draggable="panel" ctype="5" class="menu-item comp-draggable textarea hint--right hint--rounded" data-hint="点击添加输入框" ng-click="createComp('5');"> <span class="eqf-write"></span> <span class="menu-item-name">输入框</span> </li>
+														<li ng-if="isRadioCheckboxRatingAccessable" comp-draggable="panel" ctype="r" class="menu-item comp-draggable radio-input hint--right hint--rounded" data-hint="点击添加下一页按钮"
+															ng-click="createComp('t','next');"> <span class="eqf-down"></span> <span class="menu-item-name">下一页</span> </li>
+														<li ng-if="isRadioCheckboxRatingAccessable" comp-draggable="panel" ctype="r" class="menu-item comp-draggable radio-input hint--right hint--rounded" data-hint="点击添加上一页按钮"
+															ng-click="createComp('t','pre');"> <span class="eqf-up"></span> <span class="menu-item-name">上一页</span> </li> 
+														<li ng-if="isRadioCheckboxRatingAccessable" comp-draggable="panel" ctype="r" class="menu-item comp-draggable radio-input hint--right hint--rounded" data-hint="点击添加单选按钮"
+															ng-click="createComp('r');"> <span class="eqf-single"></span> <span class="menu-item-name">单选</span> </li>
+														<li ng-if="isRadioCheckboxRatingAccessable" comp-draggable="panel" ctype="c" class="menu-item comp-draggable radio-input hint--right hint--rounded" data-hint="点击添加多选按钮"
+															ng-click="createComp('c');"> <span class="eqf-morechoice"></span> <span class="menu-item-name">多选</span> </li>
+														<li ng-if="isRadioCheckboxRatingAccessable" comp-draggable="panel" ctype="a" class="menu-item comp-draggable radio-input hint--right hint--rounded"
+															data-hint="点击添加评分组件" ng-click="createComp('a');"> <span class="eqf-star"></span> <span class="menu-item-name">评分</span> </li> </ul> </div> </div> </div> </li>
+									<li comp-draggable="panel" ctype="6" class="menu-item comp-draggable button hint--right hint--rounded" data-hint="一个微课建议只添加一个"
+										ng-click="createComp('6');"> <span class="eqf-top-button"></span> <span class="menu-item-name">提交按钮</span> </li> </ul> </div> </div> </div> <span class="tip">表单</span> </li>
+				<li ng-click="openPageEffectModal(tpl.obj.properties)" class="comp-draggable images"> <span class="eqf-top-star eqf-btn"></span> <span class="tip">特效</span> </li> </ul> </div>
+		<div class="create-action">
+			<ul>
+				<li id="autoSave" class="act-border setting gray-dark all-change" style="width:70px;background-color:#fff;display:none"> <span class="tip" style="color:#999;">已自动保存</span> </li>
+				<li class="act-border setting gray-dark all-change" ng-click="sceneSetting.showFlag=!sceneSetting.showFlag"> <span class="tip">设置</span> </li>
+				<li class="act-border save gray-dark all-change" ng-click="saveScene(true)"> <span class="tip">保存</span> </li>
+				<li class="publish gray-dark all-change" ng-click="publishScene()"> <span class="tip">发布</span> </li>
+				<li class="act-border quit out-red" ng-click="exitScene()"> <span class="tip">退出</span> </li>  </ul> </div>
+		<div ng-hide="showToolBar();">
+			<div ng-show="isEditor" style="position: absolute;right: 225px;top: 20px;"> <select ng-model="scene.isTpl">				<option value="0">非模板</option>				<option value="1">保存为pc模板</option>				<option value="2">保存为移动端模板</option>			</select> </div> </div></div></div>
+<div class="create_scene">
+	<div class="main clearfix" mouse-comp-select>
+		<div class="content">
+			<div class="create_left" conver-to-image>
+				<ul class="nav nav-tabs">
+					<li ng-class="{active:tabid=='template'}"><a ng-click="setTplTab()" class="all-change">模板中心</a></li>
+					<li ng-class="{active:tabid=='myCollection'}"><a ng-click="getPageTplsByMyType();" class="all-change">我的模板</a></li>
+					<li ng-class="{active:tabid=='company'}"><a ng-click="getPageTplsByCompanyType();" ng-show="userProperty.type ==2 || userProperty.type ==21 || userProperty.type ==23" class="all-change">企业模板</a> <a ng-show="userProperty.type ==1" class="all-change" ng-click="tabid='company'">企业模板</a> </li> </ul>
+				<div class="tab-panel"
+					style="height:100%;" ng-show="tabid=='template'">
+					<div class="sel-contain all-change" style="left:10px;">
+						<eqx-select class="select-great" model="pageTpl.format" change="getPageTpls()">
+							<eqx-select-option value="null">用途</eqx-select-option>
+							<eqx-select-option value="type.id" ng-repeat="type in tplFormatList">{{type.name}}</eqx-select-option> </eqx-select> </div>
+					<div class="sel-contain all-change" style="left:103px;">
+						<eqx-select class="select-great" model="pageTpl.style" change="getPageTpls()">
+							<eqx-select-option value="null">功能</eqx-select-option>
+							<eqx-select-option value="type.id" ng-repeat="type in tplStyleList">{{type.name}}</eqx-select-option> </eqx-select> </div>
+					<div class="sel-contain all-change" style="left:196px;">
+						<eqx-select class="select-great" model="pageTpl.interaction" change="getPageTpls()">
+							<eqx-select-option value="null">风格</eqx-select-option>
+							<eqx-select-option value="type.id" ng-repeat="type in tplInteractionList">{{type.name}}</eqx-select-option> </eqx-select> </div>
+					<!-- <div class="sel-contain select-color all-change hint--right hint--rounded" style="left:250px;" ng-click="pageTpl.showColorPanel = !pageTpl.showColorPanel;$event.stopPropagation();" data-hint="按颜色查找">	  				<div class="tpl-color">		  				<em style="top:5px;left:5px;background-color:#ff5448;" ng-if="!pageTpl.color"></em>		  				<em style="top:5px;left:15px;background-color:#f2a653;" ng-if="!pageTpl.color"></em>		  				<em style="top:15px;left:5px;background-color:#08a1ef;" ng-if="!pageTpl.color"></em>		  				<em style="top:15px;left:15px;background-color:#44cb83;" ng-if="!pageTpl.color"></em>	  				</div>		  		</div> -->
+					<div ng-if="pageTpl.showColorPanel" ng-change="getPageTpls()" ng-click="$event.stopPropagation()" ng-model="pageTpl.color" page-tpl-color class="page-color-panel zoomIn-change"> </div>
+					<div style="left:10px;top:50px;position:absolute;"> <input class="search" placeholder="输入名称搜索模板" ng-keypress="enterPress($event)" type="text" ng-model="pageTpl.name" /><span ng-if="showSearch" class="eqf-search search-icon" ng-click="getPageTpls()"></span> <span ng-if="!showSearch" class="eqf-wrong search-icon"
+							ng-click="resetTplFilter()"></span> </div>
+					<div class="page_tpl_container clearfix">
+						<div eqd-scroll style="height: 100%;" refresh="refreshTpl()">
+							<ul class="tpl-container">
+								<li class="page_tpl_item comp-draggable animation-zoom" ng-repeat="pageTpl in pageTpls track by $index" title="点击使用" ng-click="insertPageTpl(pageTpl.id);" ng-style="{'animation-delay': $index%42 * 50 + 'ms'}"> <img ng-src="{{PREFIX_FILE_HOST + pageTpl.properties.thumbSrc}}" src="assets/images/create/pic.svg" load-err> </li> </ul> </div> </div> </div>
+				<div class="tab-panel" ng-show="tabid=='myCollection'" style="height:100%;padding-top:10px;">
+					<div class="empty-collection" ng-if="!myPageTpls || myPageTpls.length==0">
+						<p class="pb20">暂无模板</p> <img ng-src="{{CLIENT_CDN}}assets/images/create/collection.svg"> </div>
+					<div eqd-scroll style="height: 100%;" ng-if="myPageTpls" refresh="refreshTpl()">
+						<ul class="page_tpl_container clearfix" style="position:relative;top:0;">
+							<li thumb-tpl my-tpl="pageTpl" class="nr page_tpl_item comp-draggable my-tpl animation-zoom" ng-repeat="pageTpl in myPageTpls" title="点击使用" id="my-tpl" ng-click="insertPageTpl(pageTpl.id);" ng-style="{'animation-delay': $index * 50 + 'ms'}"> </li> </ul> </div> </div>
+				<div class="tab-panel" style="height:100%;padding-top:10px;" ng-show="tabid=='recentlyUsed'">
+					<div ng-if="!myRecentlyTpls" class="empty-recent"></div>
+					<div eqd-scroll style="height: 100%;" ng-if="myRecentlyTpls">
+						<ul class="page_tpl_container clearfix" style="position:relative;top:0;">
+							<li class="nr page_tpl_item comp-draggable animation-zoom" ng-repeat="pageTpl in myRecentlyTpls track by $index" ng-style="{'animation-delay': $index * 50 + 'ms'}" ng-click="insertPageTpl(pageTpl.id);"> <img ng-src="{{PREFIX_FILE_HOST + pageTpl.properties.thumbSrc}}" src="assets/images/create/pic.svg" load-err> </li> </ul> </div> </div>
+				<div class="tab-panel" style="height:100%;padding-top:10px;" ng-show="tabid=='company'" ng-if="userProperty.type ==1">
+					<div class="empty-collection">
+						<div class="pb20 pl20 pr20"><a class="text-primary" target="_blank" href="#/privilege">申请为企业账号</a></div> <img ng-src="{{CLIENT_CDN}}assets/images/create/collection.svg"> </div> </div>
+				<div class="tab-panel" style="height:100%;padding-top:10px;" ng-show="tabid=='company'"
+					ng-if="userProperty.type ==2 || userProperty.type ==21 || userProperty.type ==23">
+					<div class="empty-company" ng-if="!myCompanyTpls || myCompanyTpls.length==0">
+						<div>在页面管理中选中页面，点击企业模板，即可生成企业页面模板！</div> </div>
+					<div eqd-scroll ng-if="myCompanyTpls && myCompanyTpls.length>0" style="height: 100%;">
+						<ul class="page_tpl_container clearfix" style="top:0;position:relative;">
+							<li thumb-tpl my-tpl="pageTpl" style="position: relative;" id="company-tpl" class="nr page_tpl_item comp-draggable my-tpl  animation-zoom" ng-repeat="pageTpl in myCompanyTpls" ng-style="{'animation-delay': $index * 50 + 'ms'}" ng-click="insertPageTpl(pageTpl.id);"> </li> </ul> </div> </div> </div>
+			<div class="workspace">
+				<div class="container" multi-comp-drag>
+					<div edit-common edit-keymap>
+						<div class="nr sortable" id="nr" element-anim paste-element></div>
+						<!-- <div ng-if="showPhone" class="phone">
+							<h4 class="name">{{scene.name}}</h4> 
+						</div> -->
+						<!-- <div class="box" outer-box>
+							<div class="internal-box"></div> </div> -->
+						<div class="history" ng-class="{history2:showPhone}"> 
+							<ul>
+								<li data-hint="撤消(ctrl+z)" ng-class="{active: canBack}" class="hint--left hint--rounded" ng-click="back()">
+									<i class="eqf-bg" style="font-size:12px;"></i>
+								</li> 
+								<li data-hint="恢复(ctrl+y)" ng-class="{active: canForward}" class="hint--left hint--rounded" ng-click="forward()">
+									<i class="eqf-back" style="font-size:12px;"></i>
+								</li>
+								<li data-hint="刷新预览" class="active hint--left hint--rounded" ng-click="refreshPage(tpl.obj, pageNum, $event)">
+									<i class="eqf-play2"></i>
+								</li> 
+								<li data-hint="复制当前页" style="margin-bottom:1px;" class="active hint--left hint--rounded" ng-click="duplicatePage()">
+									<i class="eqf-scene-copy"></i>
+								</li> 
+								<li data-hint="背景" ng-click="closeOtherPanel('showBackgroundPanel');openBgPanel();" close-panel model="showBackgroundPanel" pause="{{!controlView.showBgTag}}" class="hint--left hint--rounded" ng-class="{active:controlView.showBgTag}">
+									<i class="eqf-top-background" style="font-size:13px;"></i>
+								</li> 
+								<li data-hint="音乐" close-panel model="showMusicPanel" pause="{{!scene.bgAudio}}" class="hint--left hint--rounded"
+										ng-click="openAudioPanel();closeOtherPanel('showMusicPanel');" ng-class="{active:scene.bgAudio}">
+										<i class="eqf-top-music"></i>
+								</li>
+								<li data-hint="特效" close-panel model="showEffectsPanel" pause="{{!(tpl.obj.properties.scratch || tpl.obj.properties.finger || tpl.obj.properties.fallingObject || tpl.obj.properties.effect)}}" class="hint--left hint--rounded" style="margin-bottom:1px;" ng-click="openEffects();closeOtherPanel('showEffectsPanel');" ng-class="{active:(tpl.obj.properties.scratch || tpl.obj.properties.finger || tpl.obj.properties.fallingObject || tpl.obj.properties.effect)}">
+									<i class="eqf-top-star" style="font-size:16px;"></i>
+								</li>
+								<li data-hint="网格设置" class="hint--left hint--rounded grid-guide" ng-click="$event.stopPropagation();closeOtherPanel('gridGuideSetting.showFlag');" ng-class="{active: (gridGuideSetting.showFlag || gridGuideSetting.isGridEnabled)}">
+									<i class="eqf-wangge" style="font-size:13px;"></i>
+								</li> 
+								<li data-hint="手机边框" class="hint--left hint--rounded" ng-click="switchPhone()" ng-class="{active: showPhone}">					
+									<em class="imp heart" ng-if="showPhoneTip"></em>					
+									<i class="eqf-phone" style="font-size:15px;"></i>
+								</li>
+								<li id="warn" data-hint="警告" class="hint--left hint--rounded" style="display:none;">
+									<i class="eqf-exclamation-sign"></i>
+								</li>
+							</ul>
+							<div class="grid-guide-container" ng-click="$event.stopPropagation();" ng-class="{'on': gridGuideSetting.showFlag}"
+								grid-guide-setting></div>
+							<div ng-controller="editBgCtrl" ng-include="'/Public/eq/6.0/templates/scene.editbg.tpl.html'"></div>
+							<div class="effects-container" ng-class="{'on':showEffectsPanel}">
+								<div class="effects-panel">
+									<div class="setting-group" ng-click="openPageEffectModal(tpl.obj.properties)">
+										<div class="setting-btn"><span class="eqf-refresh"></span></div> 
+										<span>更换</span> 
+									</div>
+									<div class="setting-group" ng-click="removeScratch($event);showEffectsPanel=false;">
+										<div class="setting-btn"><span class="eqf-scene-delete"></span></div> 
+										<span>删除</span></div> 
+									</div> 
+								</div>
+							<div class="music-container" ng-class="{'on':showMusicPanel}">
+								<div class="music-panel">
+									<div class="setting-group" ng-click="openAudioModal()"> 
+										<span>更换</span>
+										<div class="setting-btn"><span class="eqf-refresh" ng-click="openPageEffectModal(tpl.obj.properties)"></span></div> 
+									</div>
+									<div class="setting-group" ng-click="removeAudio($event);showMusicPanel=false;"> 
+										<span>删除</span>
+										<div class="setting-btn"><span class="eqf-scene-delete"></span></div> 
+									</div> 
+								</div> 
+							</div> 
+							<div class="scaleBox" style="position: absolute;top: 20px;right: 100px;width: 100px;padding: 10px 20px;text-align: center;font-size: 20px;color: #999;font-weight: 600;background-color: rgba(255,255,255,.5);border-radius: 10px;display:none;">{{scale}}倍</div>
+						</div> 
+					</div> 
+				</div>
+			</div>
+			<div id="containment" class="create_right" conver-to-image>
+				<div class="nav_top">
+					<div class="nav_top_list">
+						<div class="save_template" ng-include="'/Public/eq/6.0/templates/scene.saveTemplate.tpl.html'" ng-controller="saveTemplateCtrl"></div> 
+					</div> 
+				</div>
+				<div class="nav_content">
+					<div eqd-scroll style="height: 100%;" prevent-exception="true" disable-mouse="true">
+						<ul class="page-uls" id="pageList" ui-sortable="sortableOptions" ng-model="pages">
+							<li class="blurClass" ng-repeat="page in pages track by $index" ng-click="navTo(page, $index, $event);" ng-init="setEditableStatus($index,false)" ng-class="{current: pageNum-1 == $index}" blur-children> 
+								<span class="number"><em>{{$index+1}}</em></span> 
+								<span class="page-name" ng-click="pageNum-1 == $index?setEditableStatus($index,true,$event):return;" ng-show="!editableStatus[$index]">{{page.name}}</span> 
+								<input style="width: 110px;display:inline-block; height: 25px; line-height: 25px; color: #999;margin-top:22px;margin-left:2px;box-shadow:none;"
+										type="text" ng-model="page.name" ng-show="editableStatus[$index]" ng-blur="setEditableStatus($index,false);savePageNames(page, $index)" ng-focus="getOriginPageName(page)" check-count="30" custom-focus stop-propagation/> 
+							</li> 
+						</ul> 
+					</div>
+					<div class="page-list-label" ng-show="isTplEditor && controlView.pageList == true" panel-draggable>
+						<div ng-include="'/Public/eq/6.0/templates/scene.page.tpl.html'" ng-controller="PageTplController"></div> 
+					</div> 
+					<div class="tpl-option"></div>
+					<!-- <div ng-include="'scene/tplOption.tpl.html'" ng-controller="tplOptionCtrl"></div> --> </div>
+				<div class="nav_bottom"> <a ng-click="insertPage()" class="hint--top hint--rounded fade-color" data-hint="添加一页">+</a> </div>
+				<div ng-show="isTplEditor" style="position: absolute;bottom: 20px;right: 268px;width: 100px;">
+					<div class="btn-main" style="width: 100px;" ng-click="chooseThumb()">选择本页缩略图</div> <img width="100" ng-src="{{PREFIX_FILE_HOST + tpl.obj.properties.thumbSrc}}"> 
+				</div> 
+			</div>
+			<!--多选操作菜单-->
+			<div ng-include="'/Public/eq/6.0/templates/scene.select.tpl.html'" ng-controller="selectCtrl"></div> </div></div>
+	<div ng-class="{showin:showXiuFontTip}" class="showxiu">
+		<div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="showXiuFontTip=false;">	        <span aria-hidden="true">×</span>	    </button>
+			<h4 class="modal-title">多字体</h4> </div>
+		<div class="modal-body">
+			<p style="line-height: 30px;"> 多字体保存后将会自动生成为图片，添加过多多字体会影响您的微课加载速度。此外，为了保证您的多字体能够正常使用，请您等待字体完全加载完再进行下一步操作。 </p> </div>
+		<div class="modal-footer"> <input type="checkbox" style="margin-top:0;margin-right:5px;" ng-model="hideFontTip" ng-change="switchShowFontTip(hideFontTip)"><span style="margin-right:10px;">不再提示</span> <a type="button" class="btn btn-primary" ng-click="createComp('x');showXiuFontTip=false;">确定</a>
+			</div></div>
+	<div class="scene-setting" ng-if="sceneSetting.showFlag == true" scene-setting-component></div></div>
+<div class="creat-feedback">
+	<div></div>
+</div>

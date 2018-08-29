@@ -1,0 +1,102 @@
+<!--user/userInfo/userInfo.wxml-->
+<view class="userInfo_box" wx:if="{{haveData}}">
+	<view class="top">
+		<view class="text-c">
+			<text class="top_title fl">用户头像</text>
+		</view>
+		<view class="text-c">
+			<image class="avatar" src="{{avatar}}"></image>
+		</view>
+	</view>
+	<view class="body">
+		<view class="row_list">
+			<view class="line"></view>
+			<view class="">
+				<text class="fl form_title" space decode>昵&emsp;&emsp;称&ensp;</text>
+				<input type="text" cursor="1" name="nickname" class="fl form_input" placeholder="请输入昵称" placeholder-style="color:#CCCCCC" value="{{nickname}}" disabled="disabled" />
+			</view>
+			<view class="text-c right_box">
+				<image class="row_moreIcon fl" src="{{moreIcon}}"></image>
+			</view>
+		</view>
+		<view class="row_list">
+			<view class="line"></view>
+			<view class="">
+				<text class="fl form_title" space decode>姓&emsp;&emsp;名&ensp;</text>
+				<input type="text" cursor="1" name="full_name" class="fl form_input" placeholder="请输入姓名" placeholder-style="color:#CCCCCC" value="{{full_name}}" bindinput="bindFullName" />
+			</view>
+			<view class="text-c right_box">
+				<image class="row_moreIcon fl" src="{{moreIcon}}"></image>
+			</view>
+		</view>
+		<view class="row_list">
+			<view class="line"></view>
+			<view class="">
+				<text class="fl form_title" space decode>性&emsp;&emsp;别&ensp;</text>
+				<input type="text" name="" class="fl form_input" placeholder="请选择" placeholder-style="color:#CCCCCC" bindtap="selectsex" value="{{sex}}" disabled="disabled" />
+			</view>
+			<view class="text-c right_box">
+				<image class="row_moreIcon fl" src="{{moreIcon}}"></image>
+			</view>
+		</view>
+		<view class="row_list">
+			<view class="line"></view>
+			<view class="">
+				<text class="fl form_title" space decode>生&emsp;&emsp;日&ensp;</text>
+				<input hidden name="birthday" type="text" value="{{date}}"/>
+				<picker mode="date" value="{{date}}" fields="day" bindchange="bindDateChange" class="fl form_input" start="1920-01-01" end="2010-12-31">
+			    <view class="picker">
+			      <view class="" style="color: #ccc;" wx:if="{{date==''}}">请选择生日</view>
+			      <view class="" name="date" style="color: #333;" wx:if="{{date!=''}}">{{date}}</view>
+			    </view>
+				 </picker>
+			</view>
+			<view class="text-c right_box">
+				<image class="row_moreIcon fl" src="{{moreIcon}}"></image>
+			</view>
+		</view>
+		<view class="row_list" bindtap="goBindPhone">
+			<view class="line"></view>
+			<view class="">
+				<text class="fl form_title" >手机号码</text>
+				<input type="text" name="phone" class="fl form_input" placeholder="未绑定" placeholder-style="color:#CCCCCC" value="{{phone}}" disabled="disabled" />
+			</view>
+			<view class="text-c right_box">
+				<image class="row_moreIcon fl" src="{{moreIcon}}"></image>
+			</view>
+		</view>
+		<view class="row_list">
+			<view class="line"></view>
+			<view class="">
+				<text class="fl form_title" space decode>从业时间</text>
+				<input type="text" name="" class="fl form_input" placeholder="请选择从业时间" placeholder-style="color:#CCCCCC" bindtap="selectJobTime" value="{{jobTime}}" disabled="disabled" />
+			</view>
+			<view class="text-c right_box">
+				<image class="row_moreIcon fl" src="{{moreIcon}}"></image>
+			</view>
+		</view>
+		<view class="row_list">
+			<view class="line"></view>
+			<view class="">
+				<text class="fl form_title">所在地区</text>
+				<picker mode="region" bindchange="bindRegionChange" class="fl form_input">
+			    <view class="picker">
+			      <view class="" style="color: #ccc;" wx:if="{{region=='' || region==null}}">请选择所在地区</view>
+			      <view class="" style="color: #333;" wx:if="{{region!='' && region!=null}}">{{region}}</view>
+			    </view>
+				 </picker>
+			</view>
+			<view class="text-c right_box">
+				<image class="row_moreIcon fl" src="{{moreIcon}}"></image>
+			</view>
+		</view>
+		<view class="textarea">
+			<view class="intro_title">个人介绍</view>
+			<textarea placeholder="可以按照 “从业时间、工作经验、发行优势” 等的模式进行填写。" class="" name="introduce" placeholder-class="plstrye" value="{{introduce}}" bindinput="bindIntroduce" maxlength="500"></textarea>
+		</view>
+		<view class="submitBox">
+			<view class="review" bindtap="subReview">保 存</view>
+		</view>
+		
+	</view>
+</view>

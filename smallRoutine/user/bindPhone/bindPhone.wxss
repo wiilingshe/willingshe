@@ -1,0 +1,70 @@
+/* user/bindPhone/bindPhone.wxss */
+.fl{
+	float: left;
+}
+.text-c{
+	text-align: center;
+}
+.border-b{
+	border-bottom: 2rpx solid #EEE;
+}
+.bindPhoneBbox{
+	font-size: 28rpx;
+}
+.formField{
+	width: 100vw;
+	height: auto;
+	background-color: #fff;
+}
+.item{
+	width: 690rpx;
+	height: 100rpx;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.form_input{
+	height: 100rpx;
+	width: 350rpx;
+	line-height: 100rpx;
+	min-height: 100rpx;
+	margin-left: 37rpx;
+}
+.fieldTitle{
+	height: 100rpx;
+	line-height: 100rpx;
+}
+.codeButton{
+	height: 100rpx;
+}
+.getCode{
+	width: 160rpx;
+	height: 50rpx;
+	line-height: 50rpx;
+	margin-top: 25rpx;
+	border: 2rpx solid #FFA148;
+	color: #FFA148;
+	font-size: 26rpx;
+	border-radius: 30rpx;
+}
+.grey{
+	color: #CCC;
+	border: 2rpx solid #CCC;
+}
+.bindButton{
+	width: 690rpx;
+	height: 90rpx;
+	line-height: 90rpx;
+	margin: 0 auto;
+	display: block;
+	font-size: 32rpx;
+	color: #fff;
+	background:linear-gradient(to bottom right, #FE7293, #FF5874);
+	border-radius: 10rpx;
+	margin-top: 60rpx;
+}
+.js_none{
+	background: #CCC;
+	color: #fff;
+}

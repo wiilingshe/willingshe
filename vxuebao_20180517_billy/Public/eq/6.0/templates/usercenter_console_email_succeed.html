@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				font-family: "Microsoft YaHei", Tahoma, Helvetica, Arial, sans-serif;
+			}
+			
+			.content {
+				font-size: 18px;
+				height: 80px;
+				width: 400px;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-top: -40px;
+				margin-left: -200px;
+			}
+			
+			p {
+				margin-top: 15px;
+			}
+			
+			a {
+				color: #08a1ef;
+			}
+		</style>
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script language="javascript">
+			$(document).ready(function() {
+						function jump(count) {
+							window.setTimeout(function() {
+										count--;
+										if (count > 0) {
+											$('#num').attr('innerHTML', count);						jump(count);					} else {						location.href="http://e.wesambo.com/#/usercenter/userinfo";					}				}, 1000);			}			jump(5);		});
+		</script>
+	</head>
+
+	<body>
+		<div class="content">
+			<p>您的邮箱验证成功！</p>
+			<p style="margin-top:15p;"><a href="#">如果您的浏览器没有自动跳转，请点击此链接</a></p>
+			<p style="margin-top:25p;"><a href="#" style="background-color:#08a1ef;font-size:14px;padding:4px 8px;color:#fff;text-decoration:none;">进首页看看</a></p>
+		</div>
+	</body>
+
+</html>

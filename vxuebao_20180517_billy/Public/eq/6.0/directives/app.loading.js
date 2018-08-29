@@ -1,0 +1,1 @@
+angular.module("app.directives.loading",[]).directive("loginLoading",function(){return{restrict:"EA",link:function(o,i,n){o.$on("loginLoading",function(o,n){var t=$('<div class="homeMask" style="position: absolute;width: 100%;top:0;bottom:0;background-color:#ccc;opacity:0.8;">正在跳转，请稍后...</div>');t.appendTo($(i))})}}});

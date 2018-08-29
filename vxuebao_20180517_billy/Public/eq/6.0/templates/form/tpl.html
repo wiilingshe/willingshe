@@ -1,0 +1,85 @@
+<!-- 模板中心 -->
+<div ng-include="'/Public/eq/6.0/templates/header.tpl.html'"></div>
+<div class="tpl_search">
+<input type="text" style="height:37px;width:400px;border-radius: 0px;margin-top:-30px" id="tpl_search">
+<a class="search_sub" ng-click="tplSearch()">
+<img src="view/images/search.png" style="margin-left:-4px">
+</a>
+</div>
+<div class="container">
+	<div style="width:100%;height:45px;margin-top:85px" class="select_div">
+		<div class="tpl_select">
+			<a ng-click="change(0)" style="marginn-left:0px;">分类：</a>
+		</div>
+		<div class="tpl_select">
+			<a ng-click="change(1)">调查</a>
+		</div>
+		<div class="tpl_select">
+			<a ng-click="change(2)">考试</a>
+		</div>
+		<div class="tpl_select">
+			<a ng-click="change(3)">投票</a>
+		</div>
+		<div class="tpl_select">
+			<a ng-click="change(4)">邀请</a>
+		</div>
+		<div class="tpl_select">
+			<a ng-click="change(5)">聚会</a>
+		</div>
+		<div class="tpl_select">
+			<a ng-click="change(6)">会议</a>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div style="padding-right: 35px;">
+		<div class="tpl_hot">
+			<a class="" ng-click="tplHot()">最受欢迎</a>
+			<span style="color:#999;margin-left: 12px;">|</span>
+			<a class="" ng-click="tplNew()">最新发布</a>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="tpl_list" ng-repeat="list in lists">
+		<div class="tpl_list_demo">
+			<div class="translucent_form">
+				<div class="translucent_mid" ng-click="preview($event)">
+					<span style="display:none">预览</span>
+				</div>
+				<div class="translucent_see" ng-click="useTpl($event)">
+					<span style="display:none">套用</span>
+				</div>
+			</div>
+			<div style="display:none" class="tpl_id">{{list.id}}</div>
+			<div style="display:none" class="tpl_type">{{list.type}}</div>
+			<div class="tpl_list_pic" style="background:url({{list.photo}});background-size:100%">
+			</div>
+			<div class="tpl_list_title">
+				<p>{{list.title}}</p>
+			</div>
+		</div>
+	</div>
+	<div>
+		<div style="float:right;margin-top: 30px;margin-bottom: 120px;" class="page_tpl">
+			<div class="pageNo" style="display:none">1</div>
+			<button class="form_page" style="margin-right:5px;" ng-click="firstPage($event)">首页</button>
+			<button class="form_page" style="margin-right:5px;" ng-click="prePage($event)"><</button>
+			<button ng-repeat="page in pages" ng-click="toPage($event)" class="form_page" class="repeat_page">{{page}}</button>
+			<button class="form_page" style="margin-left:5px;" ng-click="nextPage($event)">></button>
+			<button class="form_page" style="margin-left:5px;" ng-click="weiPage($event)">尾页</button>
+			<span class="fl" style="line-height:36px;margin-left:10px;margin-right:10px">到</span><input type="text" class="form_page" value="1"><span class="fl" style="line-height:36px;margin-left:10px;margin-right:10px">页</span><button class="form_page" ng-click="dingPage($event)">确定</button>
+		</div>
+	</div>
+</div>
+
+</div>
+<div ng-include="'/Public/eq/6.0/templates/footer.tpl.html'" style="margin-top: 30px;position: fixed;bottom: 0px;width: 100%;"></div>
+<style type="text/css">
+body{
+	background-color: #fff;
+}
+.header-wap{
+	    border-bottom: 1px solid #ddd;
+}
+</style>

@@ -1,0 +1,9 @@
+[ 2018-05-08T00:38:43+08:00 ] 103.82.141.123 /index.php?m=vod-search&wd=%7Bif-A:assert($_POST%5Ba%5D)%7D%7Bendif-A%7D
+ERR: 无法加载模块:Vod-search
+
+[ 2018-05-08T17:26:05+08:00 ] 180.76.116.42 /index.php?m=member&c=index&a=register&siteid=1
+ERR: 无法加载模块:Member
+
+[ 2018-05-08T22:39:05+08:00 ] 14.215.176.21 //index.php?m=admin&c=index&a=login&pc_hash=
+ERR: 无法加载模块:Admin
+

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{$Think.config.site_title}</title>
+    <link href="__PUBLIC__/Home/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/Home/css/index.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+<body>
+<div class="container" id="nav">
+  <div id="logo"><img src="http://www.vxuebao.com{$logo}" width="190" height="45"></div>
+  <div id="menu">
+      <ul>
+          <li class="current"><a href="/">首页</a></li>
+          <li><a href="/show/">微课案例</a></li>
+          <li><a href="/school/">微课动态</a></li>
+          <li><a target="_blank" href="http://bbs.vxuebao.com/forum.php">V粉社区</a></li>
+      </ul>
+    <ul id="user">
+          <li style="background-color:#66cc00" data-toggle="modal" data-target="#login"><a href="#">登录</a></li>
+          <li style="background-color:#343b46" data-toggle="modal" data-target="#reg"><a href="#">注册</a></li>
+    </ul>
+  </div>
+</div>
+<div class="slide">
+    <div class="bd">
+    <ul>
+    <volist name="banner" id="v">
+      <li style="background: url(http://www.vxuebao.com/Uploads{$v.url}) 50% 0px no-repeat;"><a target="_blank" href="{$v.link}" style="display:block;height:400px;"></a></li>
+    </volist>
+    </ul>
+    </div>
+    <div>
+        <a class="prev" href="javascript:void(0)"></a>
+        <a class="next" href="javascript:void(0)"></a>
+    </div>
+</div>
+<div id="ad1">
+    <img src="__PUBLIC__/Home/images/a1d1.jpg" width="1200" height="180">
+</div>
+<div id="ad2"><img src="__PUBLIC__/Home/images/a2d2.jpg" width="1200" height="750"><div class="clearfix"></div></div>
+<div id="ad3"><img src="__PUBLIC__/Home/images/a3d3.jpg" width="1200" height="120"></div>
+    
+<div id="list" class="container">
+  <div class="row">
+   	<div class="col-md-3">
+            	<div class="pic"><a href="#"><img src="__PUBLIC__/Home/images/list.jpg" width="100%" height="100%" class="img-responsive center-block"></a><span class="eqcode"><img src="__PUBLIC__/Home/images/eqcode2.png"  width="100%" height="100%" class="img-responsive center-block"></span></div>
+              	<div class="p01">
+                    <p><span class="label"><img src="__PUBLIC__/Home/images/list.jpg" width="24" height="24"></span><a href="#">PPT的一百种死法</a></p>
+                </div>
+                <div class="p02">
+                	<p class="qrcode"><span class="glyphicon glyphicon-qrcode"></span> 扫描</p>
+                	<p class="search"><span class="glyphicon glyphicon-search"></span> <a href="uploads/ppt/201610/5812afa6c81f6/index.html" target="_blank">预览</a></p>
+            	</div>
+            </div>
+
+<volist name="pro" id="v">
+        <div class="col-md-3">
+          <div class="pic"><a href="#"><img src="http://www.vxuebao.com/Uploads/{$v.thumbnail_varchar}" width="100%" height="100%" class="img-responsive center-block"></a><span class="eqcode"><img src="index.php?c=Qrcode&code={$v.scenecode_varchar}"  width="100%" height="100%" class="img-responsive center-block"></span></div>
+            <div class="p01">
+                <p><span class="label"><img src="http://www.vxuebao.com/Uploads/{$v.thumbnail_varchar}" width="24" height="24"></span><a href="#">{$v.scenename_varchar}</a></p>
+            </div>
+            <div class="p02">
+              <p class="qrcode"><span class="glyphicon glyphicon-qrcode"></span> 扫描</p>
+              <p class="search"><span class="glyphicon glyphicon-search"></span> <a href="v-{$v.scenecode_varchar}" target="_blank">预览</a></p>
+          </div>
+        </div>
+      </volist>      
+            
+        </div>
+    </div>
+    <div id="ad4"><img src="__PUBLIC__/Home/images/a4d4.jpg" width="1200" height="115"></div>
+    <div id="ad5">
+      <img src="__PUBLIC__/Home/images/a5d5.jpg" width="1200" height="395" border="0" usemap="#Map"/>
+      <map name="Map" id="Map"><area shape="rect" coords="69,68,297,140" target="_blank" href="http://www.cgnpc.com.cn/" />
+      <area shape="rect" coords="346,68,576,143" target="_blank" href="http://www.bankcomm.com/BankCommSite/default.shtml" />
+      <area shape="rect" coords="622,68,852,142" target="_blank" href="http://www.cmbc.com.cn/" />
+      <area shape="rect" coords="900,69,1131,143" target="_blank" href="http://www.apollo.com.cn/" />
+      <area shape="rect" coords="68,161,298,234" target="_blank" href="http://www.huawei.com/cn/" />
+      <area shape="rect" coords="346,162,576,234" target="_blank" href="http://www.fineland.com.cn/cn/index.asp" />
+      <area shape="rect" coords="621,160,849,233" target="_blank" href="http://www.meiyijia.com.cn/" />
+      <area shape="rect" coords="901,160,1130,233" target="_blank" href="http://www.zlyz.com.cn/" />
+      <area shape="rect" coords="68,253,298,327" target="_blank" href="http://cn.cvte.com/" />
+      <area shape="rect" coords="347,254,577,326" target="_blank" href="http://www.csair.com/cn/index.shtml" />
+      <area shape="rect" coords="623,255,852,323" target="_blank" href="https://www.hsbc.com.cn/1/2/" />
+      <area shape="rect" coords="900,253,1130,328" target="_blank" href="http://www.cib.com.cn/cn/index.html" />
+      </map>
+    </div>
+
+
+<div id="footer" class="ng-scope">
+    <div class="footer_box">
+
+
+        <div class="footer_nav">
+            <div class="tit">了解更多产品</div>
+            <div class="txt">
+                <div align="center">
+                <volist name="links" id="v">
+                    <a target="_blank" class="link" href="{$v.link}">
+                        <img src="http://www.vxuebao.com/Uploads{$v.url}">
+                        <br>
+                        {$v.descript}
+                    </a>
+                </volist>
+                </div>
+            </div>
+        </div>
+        <div class="footer_con">
+            <div class="txt01">
+                <div class="title">联系我们</div>
+                <div>
+                    <p>Email：sales@vxuebao.com</p>
+                    <p>广州办公室电话： 020-3888 6860</p>
+                    <p>加入微学宝用户交流5群：476434157</p>
+              
+                </div>
+            </div>
+            <div class="txt02">
+                <a href="http://www.cyberwisdom.im/elearning16.html" target="_blank">
+                    关于我们
+                </a>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+        <div class="footer_QR">
+            <div class="pic"><img src="{$Think.config.your_huisi_pic_url}" width="110px"></div>
+            <div class="txt"><?php echo C('weicode');?></div>
+            
+        </div>
+        <div class="footer_wb">
+            <div class="pic"><img src="http://www.vxuebao.com/Uploads/weibo.jpg" width="110px" /></div>
+            <div class="txt">新浪微博</div>
+        </div>
+        <div style="clear:both"></div>
+
+
+        <div class="di">
+            <p>
+                CopyRight © 2014-<?php echo date('Y',time()); ?> http://www.vxuebao.com,All Rights Reserved.&nbsp;&nbsp;版权所有&nbsp;&nbsp;
+                <a target="_blank" rel="nofollow" href="http://www.miitbeian.gov.cn/">
+                    粤ICP备13053614号-4                </a>
+            </p>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+
+<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+<script src="__PUBLIC__/Home/js/bootstrap.min.js"></script>
+<script src="/index/js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="__PUBLIC__/Home/js/jquery.form.js"></script>
+<script>
+
+$(document).ready(function(){
+  var modeltype,URL=window.location.href;
+  modeltype=URL.split("#")[1];
+  if(modeltype=='resetpwd'){
+      $('#resetpwdModal').modal('show');
+  }
+
+  $(".pic").mouseover(function(){
+    $(this).find('span.eqcode').show(); 
+  });
+  $(".pic").mouseout(function(){
+    $(this).find('span.eqcode').hide(); 
+  });
+  
+  
+  $(".qrcode,.search").mouseover(function(){
+    $(this).parent().parent().find('span.eqcode').show(); 
+  });
+  $(".qrcode,.search").mouseout(function(){
+    $(this).parent().parent().find('span.eqcode').hide(); 
+  });
+  $('.slide').slide({mainCell:".bd ul",autoPlay:true,interTime:5000});
+});
+
+function login(){
+   $('.login').ajaxSubmit(function (data) {
+    //data = eval("(" + data + ")");
+       if(data.code==200){
+          location.reload();
+       }else{
+        //alert(data.msg);
+        $('#loginError').css('display','block');
+        $('#loginError').text(data.msg).delay(3000).hide(300);
+       }
+   });
+   return false;
+}
+
+function register(){
+  var loginName=$("#loginName").val() || '';
+  var pwd1=$("#pwd1").val() || '';
+  var pwd2=$("#pwd2").val() || '';
+  if(pwd1=='' || pwd1!=pwd2 || loginName==''){
+    //alert('登录邮箱密码不能为空，且两次密码必须一致');
+    $('#registerError').css('display','block');
+    $('#registerError').text('登录邮箱密码不能为空，且两次密码必须一致').delay(3000).hide(300);
+    return false;
+  }
+  $('.reg').ajaxSubmit(function (data) {
+       //alert(data.msg);
+        $('#myAlert .modal-body').text(data.msg);
+        $('#myAlert').modal('show');
+        $("#reg").modal('hide');
+   });
+  
+  return false;
+}
+
+//重设密码
+function resetpwd(){
+  var pwd1 = $("#newPwd").val() || '';
+  var pwd2 = $("#newPwd2").val() || '';
+  if(pwd1 == '' || pwd1 != pwd2){
+    $('#resetpwdError').css('display','block');
+    $('#resetpwdError').text('密码不能为空且两次密码必须一致').delay(3000).hide(300);
+    return false;
+  }
+  $('.resetpwdModal').ajaxSubmit(function(data){
+      $('#myAlert .modal-body').text(data.msg);
+      $('#myAlert').modal('show');
+      $("#resetpwdModal").modal('hide');
+  });
+  return false;
+
+}
+
+function forgetpwd(){
+  var email=$("#getemail").val() || '';
+  if(email==''){
+    alert('请输入邮箱号码');
+    return false;
+  }
+  $('.getpwd').ajaxSubmit(function (data) {
+    var data = eval("(" + data + ")");
+       alert(data.msg);
+   });
+    return false;
+}
+
+</script>
+</body>
+</html>
+<include file="Public:common2" />

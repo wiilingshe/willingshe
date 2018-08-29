@@ -1,0 +1,1 @@
+angular.module("app.directives.customer",[]).directive("forbiddenListClose",function(){return{restrict:"A",link:function(i,e,n){$(e).click(function(i){return!1})}}});

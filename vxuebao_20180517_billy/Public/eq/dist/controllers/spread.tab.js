@@ -1,0 +1,1 @@
+angular.module("spread.tab", ["spread.share", "spread.statistics", "spread.dataCollect"]);

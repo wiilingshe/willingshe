@@ -1,0 +1,81 @@
+<include file="Public:head"/>
+<div class="container-fluid">
+				<!-- BEGIN PAGE HEADER-->
+				<div class="row-fluid">
+					<div class="span12">
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+						<h3 class="page-title">编辑广告位</h3>
+
+							<ul class="breadcrumb">
+							<li><i class="icon-home"></i><a href="index.html">首页</a></li>
+						</ul>
+						<!-- END PAGE TITLE & BREADCRUMB-->
+					</div>
+				</div>
+
+				<!-- END PAGE HEADER-->
+     <!--内容显示 Begin-->
+    <div class="col_main">
+        <input name="ctl00$ContentPlaceHolder1$txt" type="hidden" id="ctl00_ContentPlaceHolder1_txt" />
+        <div class="main_hd">
+            <div class="title_tab" id="topTab">
+                <ul class="tab_navs mt title_tab"> 
+                </ul>
+            </div>
+            
+        </div>
+       <form action="" method="post" enctype="multipart/form-data" onSubmit="return checkForm()">
+       <foreach name="list" key="key" item="value">
+        <div style="text-align: left; padding: 1px; text-align: left;">
+            <hr style="width: 50%; size: 1px; border: none;" />
+            <table style="vertical-align: top;">
+                <tr>
+                    		
+										<div class="controls">
+											<div class="fileupload fileupload-new" data-provides="fileupload">
+												<div class="fileupload-new thumbnail" >
+                        
+													<img src="assets/images/login/{$value.name}"  class="thbnail"  style="max-height: 300px; max-width:250px; line-height: 20px;" />
+                       
+                        </div>
+			<div class="fileupload-preview fileupload-exists thumbnail" style="max-height: 150px; line-height: 20px;"></div>
+<div>
+
+												
+                          <span class="btn btn-file"><span class="fileupload-new">上传图片</span>
+                          <span class="fileupload-exists">改变</span>
+                           <input type="file" name="photo2"> </span>
+                        <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">删除</a>    
+											</div></div></div>
+                </tr>
+                <tr>
+                    <td>                    </td>
+                    <td colspan="2">                    </td>
+                </tr>
+            </table>
+          <div class="form-actions">
+                <span id="Span1" class="btn btn_primary btn_input">
+                <input name="id" type="hidden"  id="id"  class="frm_input"  value="<?php echo $_GET['id']?>" />               
+                <button type="submit" class="btn blue"><i class="icon-ok"></i> 保存</button>
+          </div>
+        </div>
+        </foreach>
+        </form>
+        
+    </div>
+    <!--内容显示 End-->
+
+  <script type="text/javascript">
+   function checkForm(){
+	   if($('#title').val()==''){
+		   alert('文件名不能为空');
+		 return false;  
+		 }
+		 return true;
+	}
+  </script>
+    </div> </div> </div> </div>
+ 
+
+
+  <include file="Public:foot"/>

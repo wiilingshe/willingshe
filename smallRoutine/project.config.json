@@ -1,0 +1,245 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.1.1",
+	"appid": "wx5b418a13a6bbed76",
+	"projectname": "%E6%B5%B7%E8%B1%9A%E5%8F%91%E8%A1%8C",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 10,
+			"list": [
+				{
+					"id": -1,
+					"name": "发行城市",
+					"pathName": "home/allCity/allCity",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的发行",
+					"pathName": "home/myissued/myissued",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "任务页",
+					"pathName": "pages/task/task",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "注册页面",
+					"pathName": "tasks/taskList/taskList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "任务搜索页",
+					"pathName": "tasks/search/search",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "任务联系人",
+					"pathName": "tasks/contacts/contacts",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "任务影院",
+					"pathName": "tasks/cinema/cinema",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "个人中心",
+					"pathName": "pages/personalCenter/personalCenter",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "登录页",
+					"pathName": "pages/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "申请加入",
+					"pathName": "login/apply/apply",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "pages/home/home",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "常见问题",
+					"pathName": "user/issue/issue",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "任务提交弹窗",
+					"pathName": "component/taskSubmit/taskSubmit",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "工作日报",
+					"pathName": "tasks/cinemaWork/cinemaWork",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "定位打卡",
+					"pathName": "tasks/card/card.wxml",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "定位打卡",
+					"pathName": "/tasks/card/card.wxml",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "定位打卡",
+					"pathName": "tasks/card/card.wxml",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "定位打卡",
+					"pathName": "tasks/card/card",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的钱包",
+					"pathName": "user/wallet/wallet",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "任务",
+					"pathName": "pages/task/task",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "任务详情",
+					"pathName": "tasks/cinema/cinema",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "任务搜索",
+					"pathName": "tasks/search/search",
+					"query": ""
+				},
+				{
+					"id": 21,
+					"name": "任务列表",
+					"pathName": "tasks/taskList/taskList.wxml",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "任务列表",
+					"pathName": "tasks/taskList/taskList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "任务排片沟通",
+					"pathName": "tasks/cinemaCommunication/cinemaCommunication",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "任务物料检查",
+					"pathName": "tasks/cinemaInspection/cinemaInspection",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "消息提醒",
+					"pathName": "user/notice/notice",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的信息",
+					"pathName": "user/userInfo/userInfo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "绑定手机",
+					"pathName": "user/bindPhone/bindPhone",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "任务-投放资源",
+					"pathName": "tasks/cinemaResources/cinemaResources",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "榜单",
+					"pathName": "pages/list/list",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "审核页面",
+					"pathName": "login/review/review",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "提现",
+					"pathName": "user/withdraw/withdraw",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "提现明细",
+					"pathName": "user/withdrawDetails/withdrawDetails",
+					"query": ""
+				}
+			]
+		}
+	}
+}
